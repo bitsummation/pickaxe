@@ -1,6 +1,6 @@
 # Pickaxe
 ---
-An easy to use SQL based web scraper language. If you know SQL and a litle about CSS selectors and want to capture data from the web, this is the tool for you.
+An easy to use SQL based web scraper language. If you know SQL and a little about CSS selectors and want to capture data from the web, this is the tool for you.
 ## Downloads
 ---
 Found [here](http://brockreeve.com/page/Pickaxe-A-SQL-web-scraper.aspx).
