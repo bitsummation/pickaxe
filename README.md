@@ -18,7 +18,7 @@ select
 	pick '.content a' take text, --name
 	pick '.message a' take text, --comment
 	pick '.age span' take text --date
-from download page 'https://github.com/Antaris/RazorEngine'
+from download page 'https://github.com/bitsummation/pickaxe'
 where nodes = 'table.files tr.js-navigation-item'
 ```
 #### Example 2
@@ -34,11 +34,11 @@ More in-depth tutorials are listed in the tutorials section. Features include.
 * Download images
 * Expand statement to generate urls that page
 
-
 ## Tutorials
 ---
 * [Pickaxe Tutorial #1](http://brockreeve.com/post/2015/07/23/SQL-based-web-scraper-language-Tutorial-1.aspx)
 * [Pickaxe Tutorial #2](http://brockreeve.com/post/2015/07/31/SQL-based-web-scraper-language-Tutorial-2.aspx)
+
 ## Video
 ---
 30 minute in depth video of language features. [Pickaxe Video Tutorial](https://www.youtube.com/watch?v=-F-FftxaXOs)
