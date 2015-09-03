@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{EE99F3BE-6D67-49C9-8443-E5AD5DE4BD91}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Pickaxe.Sdk</RootNamespace>
+    <AssemblyName>Pickaxe.Sdk</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Block.cs" />
+    <Compile Include="BooleanExpression.cs" />
+    <Compile Include="CaseBooleanStatement.cs" />
+    <Compile Include="CaseExpression.cs" />
+    <Compile Include="CaseVariableStatement.cs" />
+    <Compile Include="DivisionOperator.cs" />
+    <Compile Include="DownloadImageExpression.cs" />
+    <Compile Include="EachStatement.cs" />
+    <Compile Include="EqualsExpression.cs" />
+    <Compile Include="ExpandExpression.cs" />
+    <Compile Include="ExpandIterationVariable.cs" />
+    <Compile Include="GreaterThanEqualExpression.cs" />
+    <Compile Include="GreaterThanExpression.cs" />
+    <Compile Include="InsertIntoDirectoryStatement.cs" />
+    <Compile Include="InsertOverwriteStatement.cs" />
+    <Compile Include="LessThanEqualExpression.cs" />
+    <Compile Include="LessThanExpression.cs" />
+    <Compile Include="LineInfo.cs" />
+    <Compile Include="AdditionOperator.cs" />
+    <Compile Include="MultiplicatonOperator.cs" />
+    <Compile Include="NotEqualExpression.cs" />
+    <Compile Include="NullLiteral.cs" />
+    <Compile Include="ProxyList.cs" />
+    <Compile Include="ProxyStatement.cs" />
+    <Compile Include="SelectAll.cs" />
+    <Compile Include="SelectArg.cs" />
+    <Compile Include="SelectId.cs" />
+    <Compile Include="SubtrationOperator.cs" />
+    <Compile Include="TableMemberReference.cs" />
+    <Compile Include="TableVariableReference.cs" />
+    <Compile Include="TableVariableRowGetter.cs" />
+    <Compile Include="TableVariableRowReference.cs" />
+    <Compile Include="TakeHtmlStatement.cs" />
+    <Compile Include="VariableDeclarationStatement.cs" />
+    <Compile Include="AstNode.cs" />
+    <Compile Include="BufferTable.cs" />
+    <Compile Include="ChildCollection.cs" />
+    <Compile Include="DownloadPageExpression.cs" />
+    <Compile Include="FileTable.cs" />
+    <Compile Include="FromStatement.cs" />
+    <Compile Include="IAstVisitor.cs" />
+    <Compile Include="InsertIntoStatement.cs" />
+    <Compile Include="IntegerLiteral.cs" />
+    <Compile Include="PickStatement.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="SelectStatement.cs" />
+    <Compile Include="StringLiteral.cs" />
+    <Compile Include="TableColumnArg.cs" />
+    <Compile Include="TakeAttributeStatement.cs" />
+    <Compile Include="TakeTextStatement.cs" />
+    <Compile Include="VariableReferance.cs" />
+    <Compile Include="WhenBooleanStatement.cs" />
+    <Compile Include="WhenLiteralStatement.cs" />
+    <Compile Include="WhereStatement.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

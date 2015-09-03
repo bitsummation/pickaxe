@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2F7623E0-3B2B-4242-8113-636A74F82D09}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Pickaxe.Runtime</RootNamespace>
+    <AssemblyName>Pickaxe.Runtime</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Fizzler.Systems.HtmlAgilityPack">
+      <HintPath>..\Binaries\fizzler-0.9\Fizzler.Systems.HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack">
+      <HintPath>..\Binaries\fizzler-0.9\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Binaries\Log4Net\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="BufferTable.cs" />
+    <Compile Include="CodeTable.cs" />
+    <Compile Include="Debug\BreakProcesser.cs" />
+    <Compile Include="Debug\IBreak.cs" />
+    <Compile Include="Debug\IDebug.cs" />
+    <Compile Include="DownloadImage.cs" />
+    <Compile Include="DownloadPage.cs" />
+    <Compile Include="Expand.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="FileTable.cs" />
+    <Compile Include="Http.cs" />
+    <Compile Include="DownloadError.cs" />
+    <Compile Include="Internal\HttpRequest.cs" />
+    <Compile Include="Internal\HttpRequestFactory.cs" />
+    <Compile Include="Internal\ProxyHttpRequest.cs" />
+    <Compile Include="Proxy.cs" />
+    <Compile Include="Internal\ProxyHttpRequestSelector.cs" />
+    <Compile Include="Internal\ProxySelector.cs" />
+    <Compile Include="IRow.cs" />
+    <Compile Include="IRowReader.cs" />
+    <Compile Include="IRowWriter.cs" />
+    <Compile Include="ProgressArgs.cs" />
+    <Compile Include="ResultRow.cs" />
+    <Compile Include="Runable.cs" />
+    <Compile Include="RuntimeBase.cs" />
+    <Compile Include="RuntimeTable.cs" />
+    <Compile Include="Table.cs" />
+    <Compile Include="TableDescriptor.cs" />
+    <Compile Include="TablePrimitive.cs" />
+    <Compile Include="VariableTypePair.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

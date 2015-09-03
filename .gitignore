@@ -1,0 +1,59 @@
+# use glob syntax.
+syntax: glob
+
+# OS junk files
+[Tt]humbs.db
+*.DS_Store
+
+# Visual Studio files
+*.user
+*.aps
+*.pch
+*.vspscc
+*.vssscc
+*_i.c
+*_p.c
+*.ncb
+*.suo
+*.tlb
+*.tlh
+*.bak
+*.[Cc]ache
+*.ilk
+*.log
+*.lib
+*.sbr
+*.sdf
+*.opensdf
+*.unsuccessfulbuild
+*.cachefile
+ipch/
+obj/
+*.[Oo]bj
+[Bb]in
+[Bb]in/[Dd]ebug*/
+[Rr]elease*/
+TestResults*/
+Build\Artifact*/
+Ankh.NoLoad
+*.VisualState.xml
+*.bat
+*.DotSettings
+Application/Crimson.CMR.Web/Content/build/template.js
+
+#Mercurial patching
+*.orig
+*.rej
+
+# Tooling
+*.[Rr]eSharper
+*Packages.dgml
+_ReSharper*/
+[Tt]est[Rr]esult*
+*.[Pp]ublish.xml
+[pP]ackages/**/*
+*StyleCop.Cache
+*.dotCover
+*.nupkg
+*.build*/
+
