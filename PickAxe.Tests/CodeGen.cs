@@ -13,9 +13,7 @@
  */
 
 using NUnit.Framework;
-using Pickaxe.CodeDom.Visitor;
 using Pickaxe.Emit;
-using Pickaxe.Parser;
 using System;
 using System.Collections.Generic;
 using System.Linq;

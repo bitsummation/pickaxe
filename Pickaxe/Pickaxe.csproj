@@ -60,25 +60,13 @@
     <Folder Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Pickaxe.CodeDom\Pickaxe.CodeDom.csproj">
-      <Project>{0e2a75fa-428f-413f-8652-f909b576b3a6}</Project>
-      <Name>Pickaxe.CodeDom</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Pickaxe.Emit\Pickaxe.Emit.csproj">
       <Project>{993be73f-783e-4a78-aa20-40cab88b1812}</Project>
       <Name>Pickaxe.Emit</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Pickaxe.Parser\Pickaxe.Parser.csproj">
-      <Project>{2ef31714-0e48-46ac-8fb9-8b7e5353853d}</Project>
-      <Name>Pickaxe.Parser</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Pickaxe.Runtime\Pickaxe.Runtime.csproj">
       <Project>{2f7623e0-3b2b-4242-8113-636a74f82d09}</Project>
       <Name>Pickaxe.Runtime</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Pickaxe.Sdk\Pickaxe.Sdk.csproj">
-      <Project>{ee99f3be-6d67-49c9-8443-e5ad5de4bd91}</Project>
-      <Name>Pickaxe.Sdk</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

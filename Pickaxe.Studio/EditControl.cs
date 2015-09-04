@@ -28,8 +28,6 @@ using ICSharpCode.TextEditor;
 using ICSharpCode.TextEditor.Document;
 using log4net;
 using Pickaxe.Runtime;
-using Pickaxe.CodeDom.Visitor;
-using Pickaxe.Parser;
 using Pickaxe.Emit;
 
 namespace Pickaxe.Studio

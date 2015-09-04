@@ -14,8 +14,6 @@
 
 using log4net;
 using Pickaxe.Runtime;
-using Pickaxe.CodeDom.Visitor;
-using Pickaxe.Parser;
 using System;
 using System.CodeDom;
 using System.Collections.Generic;
