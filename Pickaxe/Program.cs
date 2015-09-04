@@ -43,35 +43,13 @@ namespace Pickaxe
         {
             Log.Info("Compiling...");
 
-            var errors = new List<Exception>();
-            var parser = new CodeParser(source);
-            var ast = parser.Parse();
+            var compiler = new Compiler(source);
+            var generatedAssembly = compiler.ToAssembly();
 
-            if (parser.Errors.Any()) //antlr parse errors
-                errors.AddRange(parser.Errors);
+            if (compiler.Errors.Any())
+                ListErrors(compiler.Errors.Select(x => x.Message).ToArray());
 
-            CodeCompileUnit unit = null;
-            if (!errors.Any())
-            {
-                var generator = new CodeDomGenerator(ast);
-                unit = generator.Generate();
-                if (generator.Errors.Any()) //Semantic erros
-                    errors.AddRange(generator.Errors);
-            }
-
-            Assembly generatedAssembly = null;
-            if (!errors.Any())
-            {
-                var persist = new Persist(unit);
-                generatedAssembly = persist.ToAssembly();
-                if (persist.Errors.Any()) //c# compile errors
-                    errors.AddRange(persist.Errors.Select(x => new Exception(x)));
-            }
-
-            if (errors.Any())
-                ListErrors(errors.Select(x => x.Message).ToArray());
-
-            if (!errors.Any())
+            if (!compiler.Errors.Any())
             {
                 var runable = new Runable(generatedAssembly);
                 //runable.Select += OnSelectResults;

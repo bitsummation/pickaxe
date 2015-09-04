@@ -226,7 +226,6 @@ namespace Pickaxe.Studio
         private void Compile(string source)
         {
             ThreadContext.Properties[TextBoxAppender.LogKey] = _logValue;
-            var errors = new List<Exception>();
 
             Invoke(new Action(() =>
             {
@@ -237,34 +236,13 @@ namespace Pickaxe.Studio
                 //highlightingStrategy.SetColorFor("Selection", _executionHighlight);
             }));
 
+            var compiler = new Compiler(source);
+            var generatedAssembly = compiler.ToAssembly();
 
-            var parser = new CodeParser(source);
-            var ast = parser.Parse();
-            if (parser.Errors.Any()) //antlr parse errors
-                errors.AddRange(parser.Errors);
+            if (compiler.Errors.Any())
+                ListErrors(compiler.Errors.Select(x => x.Message).ToArray());
 
-            CodeCompileUnit unit = null;
-            if (!errors.Any())
-            {
-                var generator = new CodeDomGenerator(ast);
-                unit = generator.Generate();
-                if (generator.Errors.Any()) //Semantic erros
-                    errors.AddRange(generator.Errors);
-            }
-
-            Assembly generatedAssembly = null;
-            if (!errors.Any())
-            {
-                var persist = new Persist(unit);
-                generatedAssembly = persist.ToAssembly();
-                if (persist.Errors.Any()) //c# compile errors
-                    errors.AddRange(persist.Errors.Select(x => new Exception(x)));
-            }
-
-            if (errors.Any())
-                ListErrors(errors.Select(x => x.Message).ToArray());
-
-            if (!errors.Any())
+            if (!compiler.Errors.Any())
             {
                 _runable = new Runable(generatedAssembly);
                 _runable.Select += OnSelectResults;

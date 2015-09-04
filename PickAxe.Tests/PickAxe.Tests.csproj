@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="CodeGen.cs" />
     <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="SelectTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />

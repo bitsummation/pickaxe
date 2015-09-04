@@ -26,19 +26,9 @@ using Pickaxe.Runtime;
 
 namespace Pickaxe.Emit
 {
-    public class Persist
+    internal static class Persist
     {
-        private CodeCompileUnit _unit;
-
-        public Persist(CodeCompileUnit unit)
-        {
-            _unit = unit;
-            Errors = new List<string>();
-        }
-
-        public IList<string> Errors { get; private set; }
-
-        public void ToFile(string path)
+        public static void ToFile(CodeCompileUnit unit, string path)
         {
             var provider = CodeDomProvider.CreateProvider("CSharp");
             var options = new CodeGeneratorOptions();
@@ -46,11 +36,11 @@ namespace Pickaxe.Emit
             using (StreamWriter sourceWriter = new StreamWriter(path))
             {
                 provider.GenerateCodeFromCompileUnit(
-                    _unit, sourceWriter, options);
+                    unit, sourceWriter, options);
             }
         }
 
-        public string ToCSharpSource()
+        public static string ToCSharpSource(CodeCompileUnit unit)
         {
             string code = string.Empty;
             var provider = CodeDomProvider.CreateProvider("CSharp");
@@ -59,40 +49,11 @@ namespace Pickaxe.Emit
             using (StringWriter writer = new StringWriter())
             {
                 provider.GenerateCodeFromCompileUnit(
-                  _unit, writer, options);
+                  unit, writer, options);
                 code = writer.ToString();
             }
 
             return code;
-        }
-
-        public Assembly ToAssembly()
-        {
-            Assembly generatedAssembly = null;
-
-            String[] assemblyNames = { 
-                                         "System.dll",
-                                         "System.Core.dll",
-                                         "System.Xml.dll",
-                                         typeof(FileTable<>).Assembly.Location,
-                                         typeof(HtmlNode).Assembly.Location
-                                     };
-
-            CSharpCodeProvider provider = new CSharpCodeProvider();
-            CompilerParameters cp = new CompilerParameters(assemblyNames);
-           
-            cp.GenerateExecutable = false;
-            //cp.OutputAssembly = "test";
-            cp.GenerateInMemory = true;
-
-            CompilerResults cr = provider.CompileAssemblyFromDom(cp, _unit);
-            foreach (CompilerError compilerError in cr.Errors)
-                Errors.Add(compilerError +  Environment.NewLine);
-
-            if(!Errors.Any())
-                generatedAssembly = cr.CompiledAssembly;
-
-            return generatedAssembly;
         }
     }
 }
