@@ -39,7 +39,6 @@ Ankh.NoLoad
 *.VisualState.xml
 *.bat
 *.DotSettings
-Application/Crimson.CMR.Web/Content/build/template.js
 
 #Mercurial patching
 *.orig
