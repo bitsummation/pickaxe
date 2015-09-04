@@ -67,6 +67,7 @@ select
 
             var compiler = new Compiler(input);
             var sources = compiler.ToCode();
+            Assert.IsTrue(compiler.Errors.Count == 0);
         }
     }
 }

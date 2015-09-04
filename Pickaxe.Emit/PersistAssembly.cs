@@ -32,6 +32,7 @@ namespace Pickaxe.Emit
         public PersistAssembly(CodeCompileUnit[] units)
         {
             _units = units;
+            Errors = new List<string>();
         }
 
         public IList<string> Errors { get; private set; }

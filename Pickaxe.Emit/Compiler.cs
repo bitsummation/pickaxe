@@ -64,17 +64,20 @@ namespace Pickaxe.Emit
         public string[] ToCode() //generate source code.
         {
             var source = new List<string>();
-            var compileUnits = new List<CodeCompileUnit>();
-            foreach(var unit in compileUnits)
-                source.Add(Persist.ToCSharpSource(unit));
+            var compileUnits = GetCompileUnits();
+            if (!Errors.Any())
+            {
+                foreach (var unit in compileUnits)
+                    source.Add(Persist.ToCSharpSource(unit));
+            }
 
             return source.ToArray();
         }
 
         public Assembly ToAssembly()
         {
-            var compileUnits = GetCompileUnits();
-            Assembly generatedAssembly = null;
+            Assembly generatedAssembly = null; 
+            var compileUnits = GetCompileUnits();   
             if (!Errors.Any())
             {
                 var persist = new PersistAssembly(compileUnits);
