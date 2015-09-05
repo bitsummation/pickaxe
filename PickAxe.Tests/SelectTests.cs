@@ -60,16 +60,6 @@ namespace PickAxe.Tests
             _requestFactory = requestFactory.Object;
         }
 
-        private Runable Compile(string code)
-        {
-            var compiler = new Compiler(code);
-            var assembly = compiler.ToAssembly();
-            Assert.IsTrue(compiler.Errors.Count == 0);
-            var runable = new Runable(assembly);
-            runable.SetRequestFactory(_requestFactory);
-            return runable;
-        }
-
         [Test]
         public void TestReplace()
         {
@@ -81,7 +71,7 @@ namespace PickAxe.Tests
 
 ";
 
-            var runable = Compile(code);
+            var runable = TestHelper.Compile(code, _requestFactory);
 
             int called = 0;
             runable.Select += (table) =>
@@ -108,7 +98,7 @@ namespace PickAxe.Tests
 
 ";
 
-            var runable = Compile(code);
+            var runable = TestHelper.Compile(code, _requestFactory);
 
             int called = 0;
             runable.Select += (table) =>
@@ -136,7 +126,7 @@ namespace PickAxe.Tests
  
 ";
 
-            var runable = Compile(code);
+            var runable = TestHelper.Compile(code, _requestFactory);
            
             int called = 0;
             runable.Select += (table) =>
@@ -163,7 +153,7 @@ namespace PickAxe.Tests
  
 ";
 
-            var runable = Compile(code);
+            var runable = TestHelper.Compile(code, _requestFactory);
 
             int called = 0;
             runable.Select += (table) =>

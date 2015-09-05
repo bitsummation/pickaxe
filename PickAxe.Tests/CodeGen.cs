@@ -26,7 +26,7 @@ namespace PickAxe.Tests
     public class CodeGen
     {
         [Test]
-        public void BasicTest()
+        public void BasicCodeGenTest()
         {
               var input = @"
 

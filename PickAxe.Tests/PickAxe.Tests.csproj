@@ -49,6 +49,8 @@
     <Compile Include="CodeGen.cs" />
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="SelectTests.cs" />
+    <Compile Include="TestExpand.cs" />
+    <Compile Include="TestHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
