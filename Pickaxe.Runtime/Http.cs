@@ -26,12 +26,12 @@ namespace Pickaxe.Runtime
 {
     public static class Http
     {
-        private static HttpRequest CreateRequest(HttpRequestFactory factory, string url)
+        private static IHttpRequest CreateRequest(IHttpRequestFactory factory, string url)
         {
             return factory.Create(url);
         }
 
-        private static DownloadImage GetImage(HttpRequestFactory factory, string url)
+        private static DownloadImage GetImage(IHttpRequestFactory factory, string url)
         {
             var request = CreateRequest(factory, url);
             var bytes = request.Download();
@@ -44,7 +44,7 @@ namespace Pickaxe.Runtime
             return new DownloadImage() { date = DateTime.Now, image = bytes, size = bytes.Length, url = url, filename = fileName };
         }
 
-        private static HtmlDocument GetDocument(HttpRequestFactory factory, string url, out int length)
+        private static HtmlDocument GetDocument(IHttpRequestFactory factory, string url, out int length)
         {
             var request = CreateRequest(factory, url);
             var bytes = request.Download();
@@ -58,12 +58,12 @@ namespace Pickaxe.Runtime
             return doc;
         }
 
-        public static Table<DownloadPage> DownloadPage(HttpRequestFactory factory, string url)
+        public static Table<DownloadPage> DownloadPage(IHttpRequestFactory factory, string url)
         {
             return DownloadPage(factory, new string[] { url });
         }
 
-        public static Table<DownloadPage> DownloadPage(HttpRequestFactory factory, string[] urls)
+        public static Table<DownloadPage> DownloadPage(IHttpRequestFactory factory, string[] urls)
         {
             var table = new RuntimeTable<DownloadPage>();
             foreach(var url in urls)
@@ -76,7 +76,7 @@ namespace Pickaxe.Runtime
             return table;
         }
 
-        public static Table<DownloadImage> DownloadImage(HttpRequestFactory factory, string url)
+        public static Table<DownloadImage> DownloadImage(IHttpRequestFactory factory, string url)
         {
             var table = new RuntimeTable<DownloadImage>();
 

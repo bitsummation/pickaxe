@@ -64,8 +64,10 @@
     <Compile Include="FileTable.cs" />
     <Compile Include="Http.cs" />
     <Compile Include="DownloadError.cs" />
+    <Compile Include="Internal\IHttpRequestFactory.cs" />
     <Compile Include="Internal\HttpRequest.cs" />
     <Compile Include="Internal\HttpRequestFactory.cs" />
+    <Compile Include="Internal\IHttpRequest.cs" />
     <Compile Include="Internal\ProxyHttpRequest.cs" />
     <Compile Include="Proxy.cs" />
     <Compile Include="Internal\ProxyHttpRequestSelector.cs" />

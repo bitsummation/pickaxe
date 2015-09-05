@@ -12,7 +12,10 @@
  * limitations under the License.
  */
 
+using Moq;
 using NUnit.Framework;
+using Pickaxe.Emit;
+using Pickaxe.Runtime;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,11 +28,47 @@ namespace PickAxe.Tests
     {
 
         [Test]
-        public void Test()
+        public void PickTakeText()
         {
-            var input = @"
+            var html = @"
+
+<div>
+    <span class=""center"">here</span>
+</div>
 
 ";
+
+            var code = @"
+        
+ select
+    pick '.center' take text
+    from download page 'http://mock.com'
+ 
+";
+
+            var httpRequest = new Mock<IHttpRequest>();
+            httpRequest.Setup(x => x.Download()).Returns(System.Text.Encoding.UTF8.GetBytes(html));
+
+            var requestFactory = new Mock<IHttpRequestFactory>();
+            requestFactory.Setup(x => x.Create("http://mock.com")).Returns(httpRequest.Object);
+
+            var compiler = new Compiler(code);
+            var assembly = compiler.ToAssembly();
+            Assert.IsTrue(compiler.Errors.Count == 0);
+            var runable = new Runable(assembly);
+            runable.SetRequestFactory(requestFactory.Object);
+
+            bool raised = false;
+            runable.Select += (table) =>
+            {
+                raised = true;
+                Assert.IsTrue(table.Columns().Length == 1);
+                Assert.IsTrue(table.RowCount == 1);
+                Assert.IsTrue(table[0][0].ToString() == "here");
+            };
+
+            runable.Run();
+            Assert.True(raised);
         }
     }
 }

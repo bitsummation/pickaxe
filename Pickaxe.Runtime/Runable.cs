@@ -40,6 +40,11 @@ namespace Pickaxe.Runtime
             _runType = assembly.GetType("Code");
         }
 
+        public void SetRequestFactory(IHttpRequestFactory requestFactory)
+        {
+            _instance.RequestFactory = requestFactory;
+        }
+
         public void Stop()
         {
             _instance.Stop();

@@ -32,7 +32,6 @@ namespace Pickaxe.Runtime
         private bool _isRunning;
         private BreakProcesser _processor;
 
-
         protected RuntimeBase()
         {
             TotalOperations = 0;
@@ -47,9 +46,9 @@ namespace Pickaxe.Runtime
         public event Action<RuntimeTable<ResultRow>> Select;
         public event Action<int> Highlight;
 
+        public IHttpRequestFactory RequestFactory { get; set; }
         protected int TotalOperations { get; set; }
         protected int CompletedOperations { get; set; }
-        protected HttpRequestFactory RequestFactory { get; private set; }
 
         protected void InitProxies()
         {

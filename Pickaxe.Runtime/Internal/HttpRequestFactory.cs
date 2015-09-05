@@ -19,25 +19,25 @@ using System.Text;
 
 namespace Pickaxe.Runtime.Internal
 {
-    public abstract class HttpRequestFactory
+    public abstract class HttpRequestFactory : IHttpRequestFactory
     {
-        public static HttpRequestFactory NoProxy = new NoProxyFactoryImpl();
+        public static IHttpRequestFactory NoProxy = new NoProxyFactoryImpl();
 
-        public abstract HttpRequest Create(string url);
+        public abstract IHttpRequest Create(string url);
 
-        public static HttpRequestFactory CreateProxyFactory(Proxy proxy)
+        public static IHttpRequestFactory CreateProxyFactory(Proxy proxy)
         {
             return new ProxyFactoryImpl(proxy);
         }
 
-        public static HttpRequestFactory CreateProxySelector(ProxySelector selector)
+        public static IHttpRequestFactory CreateProxySelector(ProxySelector selector)
         {
             return new ProxySelectorImpl(selector);
         }
 
         private class NoProxyFactoryImpl : HttpRequestFactory
         {
-            public override HttpRequest Create(string url)
+            public override IHttpRequest Create(string url)
             {
                 return new HttpRequest(url);
             }
@@ -52,7 +52,7 @@ namespace Pickaxe.Runtime.Internal
                 _selector = selector;
             }
 
-            public override HttpRequest Create(string url)
+            public override IHttpRequest Create(string url)
             {
                 return new ProxyHttpRequestSelector(_selector, url);
             }
@@ -67,7 +67,7 @@ namespace Pickaxe.Runtime.Internal
                 _proxy = proxy;
             }
 
-            public override HttpRequest Create(string url)
+            public override IHttpRequest Create(string url)
             {
                 return new ProxyHttpRequest(_proxy, url);
             }
