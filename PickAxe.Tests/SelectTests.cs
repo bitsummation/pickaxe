@@ -26,18 +26,73 @@ namespace PickAxe.Tests
     [TestFixture]
     public class SelectTests
     {
+        private IHttpRequestFactory _requestFactory;
 
-        [Test]
-        public void PickTakeText()
+        public SelectTests()
         {
             var html = @"
 
 <div>
     <span class=""center"">here</span>
+    <a href=""http://google.com"">link</a>
+    <div id=""match-tests"">
+        <li>6,566.00</li>
+        <li>6.00</li>
+        <li>8,975.00</li>
+        <li>6,566,888.00</li>
+    </div>
 </div>
 
 ";
+            var httpRequest = new Mock<IHttpRequest>();
+            httpRequest.Setup(x => x.Download()).Returns(System.Text.Encoding.UTF8.GetBytes(html));
 
+            var requestFactory = new Mock<IHttpRequestFactory>();
+            requestFactory.Setup(x => x.Create("http://mock.com")).Returns(httpRequest.Object);
+            _requestFactory = requestFactory.Object;
+        }
+
+        private Runable Compile(string code)
+        {
+            var compiler = new Compiler(code);
+            var assembly = compiler.ToAssembly();
+            Assert.IsTrue(compiler.Errors.Count == 0);
+            var runable = new Runable(assembly);
+            runable.SetRequestFactory(_requestFactory);
+            return runable;
+        }
+
+
+        [Test]
+        public void PickTakeAttribute()
+        {
+            var code = @"
+        
+ select
+    pick 'a' take attribute 'href'
+    from download page 'http://mock.com'
+ 
+";
+
+            var runable = Compile(code);
+           
+            int called = 0;
+            runable.Select += (table) =>
+            {
+                called++;
+                Assert.IsTrue(table.Columns().Length == 1);
+                Assert.IsTrue(table.RowCount == 1);
+                Assert.IsTrue(table[0][0].ToString() == "http://google.com");
+            };
+
+            runable.Run();
+            Assert.True(called == 1);
+
+        }
+
+        [Test]
+        public void PickTakeText()
+        {
             var code = @"
         
  select
@@ -46,29 +101,19 @@ namespace PickAxe.Tests
  
 ";
 
-            var httpRequest = new Mock<IHttpRequest>();
-            httpRequest.Setup(x => x.Download()).Returns(System.Text.Encoding.UTF8.GetBytes(html));
+            var runable = Compile(code);
 
-            var requestFactory = new Mock<IHttpRequestFactory>();
-            requestFactory.Setup(x => x.Create("http://mock.com")).Returns(httpRequest.Object);
-
-            var compiler = new Compiler(code);
-            var assembly = compiler.ToAssembly();
-            Assert.IsTrue(compiler.Errors.Count == 0);
-            var runable = new Runable(assembly);
-            runable.SetRequestFactory(requestFactory.Object);
-
-            bool raised = false;
+            int called = 0;
             runable.Select += (table) =>
             {
-                raised = true;
+                called++;
                 Assert.IsTrue(table.Columns().Length == 1);
                 Assert.IsTrue(table.RowCount == 1);
                 Assert.IsTrue(table[0][0].ToString() == "here");
             };
 
             runable.Run();
-            Assert.True(raised);
+            Assert.True(called == 1);
         }
     }
 }
