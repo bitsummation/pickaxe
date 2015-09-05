@@ -35,6 +35,14 @@ namespace PickAxe.Tests
 <div>
     <span class=""center"">here</span>
     <a href=""http://google.com"">link</a>
+    <div class=""dollar"">$6,566.00</div>
+    <span class=""address"">4332 Forest Hill Blvd<br>West Palm Beach, FL 33406</span>
+    <div id=""match-tests"">
+        <li>6,566.00</li>
+        <li>6.00</li>
+        <li>8,975.00</li>
+        <li>6,566,888.00</li>
+    </div>
     <div id=""match-tests"">
         <li>6,566.00</li>
         <li>6.00</li>
@@ -62,9 +70,63 @@ namespace PickAxe.Tests
             return runable;
         }
 
+        [Test]
+        public void TestReplace()
+        {
+            var code = @"
+        
+ select
+    pick '.address' take html match '(.*)<br>(.*)' replace '$1'
+    from download page 'http://mock.com'
+
+";
+
+            var runable = Compile(code);
+
+            int called = 0;
+            runable.Select += (table) =>
+            {
+                called++;
+                Assert.IsTrue(table.Columns().Length == 1);
+                Assert.IsTrue(table.Columns()[0] == ".address");
+                Assert.IsTrue(table.RowCount == 1);
+                Assert.IsTrue(table[0][0].ToString() == "4332 Forest Hill Blvd");
+            };
+
+            runable.Run();
+            Assert.True(called == 1);
+        }
 
         [Test]
-        public void PickTakeAttribute()
+        public void TestMatch()
+        {
+            var code = @"
+        
+ select
+    pick 'div.dollar' take text match '[\d\.]+'
+    from download page 'http://mock.com'
+
+";
+
+            var runable = Compile(code);
+
+            int called = 0;
+            runable.Select += (table) =>
+            {
+                called++;
+                Assert.IsTrue(table.Columns().Length == 1);
+                Assert.IsTrue(table.Columns()[0] == "div.dollar");
+                Assert.IsTrue(table.RowCount == 1);
+                Assert.IsTrue(table[0][0].ToString() == "6566.00");
+            };
+
+            runable.Run();
+            Assert.True(called == 1);
+
+        }
+
+        [Test]
+        public void TestPickTakeAttribute()
         {
             var code = @"
         
@@ -91,7 +153,7 @@ namespace PickAxe.Tests
         }
 
         [Test]
-        public void PickTakeText()
+        public void TestPickTakeText()
         {
             var code = @"
         
