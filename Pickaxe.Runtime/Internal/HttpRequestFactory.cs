@@ -19,7 +19,7 @@ using System.Text;
 
 namespace Pickaxe.Runtime.Internal
 {
-    public abstract class HttpRequestFactory : IHttpRequestFactory
+    internal abstract class HttpRequestFactory : IHttpRequestFactory
     {
         public static IHttpRequestFactory NoProxy = new NoProxyFactoryImpl();
 

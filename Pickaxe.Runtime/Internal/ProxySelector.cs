@@ -19,7 +19,7 @@ using System.Text;
 
 namespace Pickaxe.Runtime.Internal
 {
-    public class ProxySelector
+    internal class ProxySelector
     {
         private Queue<Proxy> _proxies { get; set;}
 

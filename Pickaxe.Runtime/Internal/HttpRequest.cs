@@ -23,7 +23,7 @@ using System.Text;
 
 namespace Pickaxe.Runtime.Internal
 {
-    public class HttpRequest : IHttpRequest
+    internal class HttpRequest : IHttpRequest
     {
         private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
