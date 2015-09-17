@@ -31,9 +31,9 @@ from download page 'http://whatismyipaddress.com/'
 #### In Memory Buffer
 Store results in memory
 ```sql
-create buffer results(type string, folder string, message string, date string)
+create buffer results(type string, folder string, message string, changeDate string)
 
-insert into results
+insert overwrite results
 select
     case pick '.icon span.octicon-file-text' take text
         when null then 'Folder'
@@ -51,7 +51,7 @@ from results
 ####File Buffer
 Store results into a file
 ``` sql
-create file results(type string, folder string, message string, date string)
+create file results(type string, folder string, message string, changeDate string)
 with (
     fieldterminator = '|',
     rowterminator = '\r\n'
