@@ -28,8 +28,53 @@ select
 	pick '#section_left div:nth-child(2) a' take text
 from download page 'http://whatismyipaddress.com/'
 ```
+#### In Memory Buffer
+Store results in memory
+```sql
+create buffer results(type string, folder string, message string, date string)
+
+insert into results
+select
+    case pick '.icon span.octicon-file-text' take text
+        when null then 'Folder'
+        else 'File'
+    end, --folder/file
+    pick '.content a' take text, --name
+    pick '.message a' take text, --comment
+    pick '.age span' take text --date
+from download page 'https://github.com/bitsummation/pickaxe'
+where nodes = 'table.files tr.js-navigation-item'
+
+select *
+from results
+```
+####File Buffer
+Store results into a file
+``` sql
+create file results(type string, folder string, message string, date string)
+with (
+    fieldterminator = '|',
+    rowterminator = '\r\n'
+)
+location 'C:\windows\temp\results.txt'
+
+insert into results
+select
+    case pick '.icon span.octicon-file-text' take text
+        when null then 'Folder'
+        else 'File'
+    end, --folder/file
+    pick '.content a' take text, --name
+    pick '.message a' take text, --comment
+    pick '.age span' take text --date
+from download page 'https://github.com/bitsummation/pickaxe'
+where nodes = 'table.files tr.js-navigation-item'
+
+```
+
 More in-depth tutorials are listed in the tutorials section. Features include.
 * You can insert into memory tables or tables that wrap a file.
+* Easily use proxies
 * Loop through tables
 * Download images
 * Expand statement to generate urls that page
