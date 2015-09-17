@@ -58,7 +58,7 @@ with (
 )
 location 'C:\windows\temp\results.txt'
 
-insert into results
+insert overwrite results
 select
     case pick '.icon span.octicon-file-text' take text
         when null then 'Folder'
