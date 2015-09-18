@@ -33,7 +33,7 @@ namespace PickAxe.Tests
             };
 
             runable.Run();
-
+            Assert.IsTrue(called == 1);
         }
 
         [Test]
@@ -60,6 +60,7 @@ namespace PickAxe.Tests
             };
 
             runable.Run();
+            Assert.IsTrue(called == 1);
         }
     }
 }

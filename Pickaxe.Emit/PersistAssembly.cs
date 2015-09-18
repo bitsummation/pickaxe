@@ -59,7 +59,10 @@ namespace Pickaxe.Emit
 
             CompilerResults cr = provider.CompileAssemblyFromDom(cp, _units);
             foreach (CompilerError compilerError in cr.Errors)
-                Errors.Add(compilerError + Environment.NewLine);
+            {
+                if(!compilerError.IsWarning)
+                    Errors.Add(compilerError + Environment.NewLine);
+            }
 
             if (!Errors.Any())
                 generatedAssembly = cr.CompiledAssembly;
