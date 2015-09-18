@@ -61,8 +61,13 @@ tokens {
 public program
 	: statement+ EOF -> ^(PROGRAM statement+)
 	| proxyStatement statement* EOF -> ^(PROGRAM proxyStatement statement*)
+	| procedureDefinition -> ^(PROGRAM procedureDefinition)
 	;
-	
+
+procedureDefinition
+	: PROCEDURE ID OPENPAREN tableColumnArgs* CLOSEPAREN block -> ^(PROCEDURE ID block tableColumnArgs* ) 	 
+	;
+
 statement
 	: createTableStatement
 	| sqlStatement
@@ -291,6 +296,7 @@ dataType
  * Lexer Rules
  */
 
+PROCEDURE: 'procedure';
 CASE: 'case';
 WHEN: 'when';
 THEN: 'then';

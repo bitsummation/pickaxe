@@ -12,27 +12,30 @@
  * limitations under the License.
  */
 
-using NUnit.Framework;
-using Pickaxe.Emit;
-using Pickaxe.Runtime;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace PickAxe.Tests
+namespace Pickaxe.Sdk
 {
-    public static class TestHelper
+    public class ProcedureDefinition : AstNode
     {
-        public static Runable Compile(string code, IHttpRequestFactory requestFactory)
+        public string Name { get; set; }
+
+        public TableColumnArg[] Args
         {
-            var compiler = new Compiler(code);
-            var assembly = compiler.ToAssembly();
-            Assert.IsTrue(compiler.Errors.Count == 0);
-            var runable = new Runable(assembly);
-            if(requestFactory != null)
-                runable.SetRequestFactory(requestFactory);
-            return runable;
+            get { return Children.Where(x => x.GetType() == typeof(TableColumnArg)).Cast<TableColumnArg>().ToArray(); }
+        }
+
+        public Block Block
+        {
+            get { return Children.Where(x => x.GetType() == typeof(Block)).Cast<Block>().SingleOrDefault(); }
+        }
+
+        public override void Accept(IAstVisitor visitor)
+        {
+            visitor.Visit(this);
         }
     }
 }

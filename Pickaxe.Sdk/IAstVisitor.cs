@@ -76,5 +76,7 @@ namespace Pickaxe.Sdk
         void Visit(GreaterThanEqualExpression expression);
         void Visit(NotEqualExpression expression);
         void Visit(EqualsExpression expression);
+
+        void Visit(ProcedureDefinition definition);
     }
 }

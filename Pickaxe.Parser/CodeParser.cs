@@ -170,6 +170,9 @@ namespace Pickaxe.Parser
                         return new AntlrBridgeTree<SubtrationOperator>(payload, (node, tree, visitor) => visitor.Visit(node, tree));
                     if (payload.Type == ScrapeParser.DIV)
                         return new AntlrBridgeTree<DivisionOperator>(payload, (node, tree, visitor) => visitor.Visit(node, tree));
+
+                    if(payload.Type == ScrapeParser.PROCEDURE)
+                        return new AntlrBridgeTree<ProcedureDefinition>(payload, (node, tree, visitor) => visitor.Visit(node, tree));
                 }
 
                 return new CommonTree(payload);
