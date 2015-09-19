@@ -70,7 +70,7 @@ namespace Pickaxe
             {
                 var runable = new Runable(generatedAssembly);
                 runable.Select += OnSelectResults;
-                //runable.Progress += OnProgress;
+                runable.Progress += OnProgress;
 
                 try
                 {
@@ -181,6 +181,33 @@ namespace Pickaxe
             middle.Append("|");
 
             return middle.ToString();
+        }
+
+        private static string RenderProgress(ProgressArgs e)
+        {
+            float value = 0;
+            if (e.TotalOperations > 0)
+                value = (e.CompletedOperations / (float)e.TotalOperations);
+
+            //[###-----------------] 35/100  35%
+            var builder = new StringBuilder();
+            int map = (int)(Math.Round(value * 20));
+            builder.Append("[");
+            for (int x = 0; x < 20; x++)
+            {
+                if(x < map)
+                    builder.Append("#");
+                else
+                    builder.Append("-");
+            }
+            builder.Append("]");
+
+            return string.Format("{0} {1}/{2} {3}%", builder.ToString(), e.CompletedOperations, e.TotalOperations, (int)Math.Round(value*100));
+        }
+
+        private static void OnProgress(ProgressArgs e)
+        {
+            Console.WriteLine(RenderProgress(e));
         }
 
         private static void OnSelectResults(RuntimeTable<ResultRow> result)
