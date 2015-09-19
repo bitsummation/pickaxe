@@ -317,12 +317,6 @@ namespace Pickaxe.Studio
             foreach (var column in result.Columns()) //headers
                 columns.Add(new ColumnHeader() { Text = column });
 
-            if (result.RowCount > 0) //fill in columns that have no name.
-            {
-                while (columns.Count - 1 < result[0].ColumnCount)
-                    columns.Add(new ColumnHeader() { Text = "(No column name)" });
-            }
-
             for (int x = 0; x < result.RowCount; x++)
             {
                 var rowItem = new ListViewItem((x + 1).ToString());
