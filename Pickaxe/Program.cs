@@ -116,20 +116,32 @@ namespace Pickaxe
             }
         }
 
+        private static string Truncate(string text)
+        {
+            if (text.Length > 50)
+                text = text.Substring(0, 50);
+
+            return text;
+        }
+
         private static List<int> Measure(RuntimeTable<ResultRow> result)
         {
             var lengths = new List<int>();
+            lengths.Add(1);
 
             foreach (var column in result.Columns()) //headers
-                lengths.Add(column.Length + 2);
+                lengths.Add(Truncate(column).Length + 2);
 
             for (int row = 0; row < result.RowCount; row++)
             {
-                for (int col = 0; col < lengths.Count; col++)
+                if ((row+1).ToString().Length+2 > lengths[0])
+                    lengths[0] = (row+1).ToString().Length+2;
+
+                for (int col = 0; col < lengths.Count - 1; col++)
                 {
-                    int len = result[row][col].ToString().Length + 2;
-                    if (len > lengths[col])
-                        lengths[col] = len;
+                    int len = Truncate(result[row][col].ToString()).Length + 2;
+                    if (len > lengths[col+1])
+                        lengths[col+1] = len;
                 }
             }
 
@@ -162,7 +174,7 @@ namespace Pickaxe
                 for (int pad = 0; pad < leftPadding; pad++)
                     middle.Append(" ");
 
-                middle.Append(string.Format("{0}", columns[x]));
+                middle.Append(string.Format("{0}", Truncate(columns[x])));
                 for (int pad = 0; pad < righPaddding; pad++)
                     middle.Append(" ");
             }
@@ -181,16 +193,18 @@ namespace Pickaxe
 
             var border = Border(lengths);
             Console.WriteLine(border);
-            var values = Values(lengths, result.Columns());
-            Console.WriteLine(values.ToString());
+            var values = result.Columns().ToList();
+            values.Insert(0, "");
+            Console.WriteLine(Values(lengths, values.ToArray()));
             Console.WriteLine(border.ToString());
 
             for (int row = 0; row < result.RowCount; row++)
             {
                 var valueList = new List<string>();
-                for (int col = 0; col < lengths.Count; col++)
+                for (int col = 0; col < lengths.Count - 1; col++)
                     valueList.Add(result[row][col].ToString());
 
+                valueList.Insert(0, (row + 1).ToString());
                 Console.WriteLine(Values(lengths, valueList.ToArray()));
             }
             Console.WriteLine(border.ToString());
