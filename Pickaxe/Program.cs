@@ -58,8 +58,6 @@ namespace Pickaxe
 
         private static void Compile(string source)
         {
-            Log.Info("Compiling...");
-
             var compiler = new Compiler(source);
             var generatedAssembly = compiler.ToAssembly();
 
