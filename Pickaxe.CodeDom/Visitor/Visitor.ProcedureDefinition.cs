@@ -24,6 +24,7 @@ namespace Pickaxe.CodeDom.Visitor
     {
         public void Visit(ProcedureDefinition statement)
         {
+            _mainType.Type.Name = statement.Name;
         }
     }
 }

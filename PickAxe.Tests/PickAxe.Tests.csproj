@@ -52,6 +52,7 @@
     <Compile Include="TestExpand.cs" />
     <Compile Include="TestHelper.cs" />
     <Compile Include="TestProcedure.cs" />
+    <Compile Include="TestProcedureCall.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />

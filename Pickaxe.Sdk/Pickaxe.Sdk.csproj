@@ -63,6 +63,7 @@
     <Compile Include="MultiplicatonOperator.cs" />
     <Compile Include="NotEqualExpression.cs" />
     <Compile Include="NullLiteral.cs" />
+    <Compile Include="ProcedureCall.cs" />
     <Compile Include="ProcedureDefinition.cs" />
     <Compile Include="ProxyList.cs" />
     <Compile Include="ProxyStatement.cs" />

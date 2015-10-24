@@ -78,5 +78,6 @@ namespace Pickaxe.Sdk
         void Visit(EqualsExpression expression);
 
         void Visit(ProcedureDefinition definition);
+        void Visit(ProcedureCall call);
     }
 }

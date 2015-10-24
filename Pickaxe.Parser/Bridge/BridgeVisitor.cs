@@ -465,5 +465,14 @@ namespace Pickaxe.Parser.Bridge
                     definition.Children.Add(new TableColumnArg() { Variable = arg.GetChild(0).Text, Type = arg.GetChild(1).Text });
             }
         }
+
+        public void Visit(ProcedureCall call, CommonTree tree)
+        {
+            Parent(tree).Children.Add(call);
+            SetLine(call, tree);
+
+            call.Name = tree.Children[0].Text;
+            Visit(tree.Children[1]);
+        }
     }
 }

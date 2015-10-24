@@ -78,5 +78,6 @@ namespace Pickaxe.Parser.Bridge
         void Visit(EqualsExpression expression, CommonTree tree);
 
         void Visit(ProcedureDefinition definition, CommonTree tree);
+        void Visit(ProcedureCall call, CommonTree tree);
     }
 }

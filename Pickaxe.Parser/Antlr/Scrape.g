@@ -74,6 +74,20 @@ statement
 	| variableDeclarationStatement
 	| insertStatement
 	| eachStatement
+	| procedureCall
+	;
+
+procedureCall
+	:  EXEC ID OPENPAREN procedureCallList* CLOSEPAREN -> ^(EXEC ID procedureCallList*)
+	;
+
+procedureCallList
+	: (callArgs COMMA)* callArgs -> callArgs*
+	;
+
+callArgs
+	: expandVar
+	| STRING_LITERAL
 	;
 
 proxyStatement
@@ -297,6 +311,7 @@ dataType
  */
 
 PROCEDURE: 'procedure';
+EXEC: 'exec';
 CASE: 'case';
 WHEN: 'when';
 THEN: 'then';
