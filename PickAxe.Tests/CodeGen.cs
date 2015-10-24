@@ -30,37 +30,21 @@ namespace PickAxe.Tests
         {
               var input = @"
 
+proxies ('50.207.44.25:8080', '69.89.107.3:8088', '50.232.240.6:8080', '104.197.107.186:3128'
+,'104.197.39.26:3128', '128.114.232.28:80')
+with test {	
+	select
+		pick 'div#atcui-navigation-container li.cars-for-sale a' take text
+	from download page 'http://www.autotrader.com/'
+}
+
 select
-		case size
-        when 5 then 200
-        when 661023 then 200
-        else 20
-        end,
-        
-        /*
-		case pick '.listing-media a img' take attribute 'src' match '^http.*'
-		when null then pick '.listing-media a img' take attribute 'data-original' match 'scaler/\d+/\d+/' replace 'scaler/'
-		else pick '.listing-media a img' take attribute 'src' match 'scaler/\d+/\d+/' replace 'scaler/'
-		end,*/
+	pick '.pageof' take text match '\D+(\d+)\D+(\d+)' replace '$1',
+	pick '.pageof' take text match '\D+(\d+)\D+(\d+)' replace '$2'
+from download page 'http://www.autotrader.com/car-dealers/Los+Angeles+CA-90005?filterName=pagination&firstRecord=1&numRecords=10&searchRadius=50&sortBy=distanceASC&vehicleInventory=used'
 
-        case
-        when pick '.listing-mileage' take text match '\d+' = 10000 then 'low mileage'
-        else 100
-        end,
-		
-		/*
-        case
-        when size < 5 then 200
-        else 100
-        end,*/
+exec dealer('http://www.autotrader.com/car-dealers/Los+Angeles+CA-90005?filterName=pagination&firstRecord=','&numRecords=10&searchRadius=50&sortBy=distanceASC&vehicleInventory=used')
 
-		pick '.listing-title span.atcui-truncate span' take text,
-		pick '.price-offer-wrapper .primary-price span' take text match '\d+',
-		pick '.listing-mileage' take text match '\d+',
-		size + ' test',
-		size
-	from download page 'http://www.autotrader.com/car-dealers/Austin+TX-78717/64661397/Nyle+Maxwell+Chrysler+Dodge+Jeep+of+Austin?listingTypes=used'
-	where nodes = 'div.listing-findcar'
 ";
 
             var compiler = new Compiler(input);

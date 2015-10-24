@@ -472,7 +472,8 @@ namespace Pickaxe.Parser.Bridge
             SetLine(call, tree);
 
             call.Name = tree.Children[0].Text;
-            Visit(tree.Children[1]);
+            for(int x = 1; x < tree.ChildCount; x++)
+                Visit(tree.Children[x]);
         }
     }
 }

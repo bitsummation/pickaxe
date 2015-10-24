@@ -60,6 +60,7 @@
       
       <KeyWords name="SQL" bold="true" italic="false" color="Blue">
         <Key word = "procedure"/>
+        <Key word = "exec"/>
         <Key word = "select" />
         <Key word = "from" />
         <Key word = "overwrite" />
