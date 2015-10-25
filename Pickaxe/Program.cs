@@ -37,7 +37,7 @@ namespace Pickaxe
                 Console.WriteLine(error);
         }
 
-        private static void Compile(string source)
+        private static void Compile(string[] source)
         {
             Log.Info("Compiling...");
 
@@ -76,11 +76,15 @@ namespace Pickaxe
             string log4netPath = Path.Combine(Path.GetDirectoryName(location), "Log4net.config");
             log4net.Config.XmlConfigurator.Configure(new FileInfo(log4netPath));
 
-            //read the files
-            var reader = new StreamReader(args[0]);
-            string source = reader.ReadToEnd();
+            var sources = new List<string>();
+            foreach (var arg in args)
+            {
+                //read the files
+                var reader = new StreamReader(arg);
+                sources.Add(reader.ReadToEnd());
+            }
 
-            Thread thread = new Thread(() => Compile(source));
+            Thread thread = new Thread(() => Compile(sources.ToArray()));
             thread.Start();
             thread.Join();
         }
