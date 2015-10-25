@@ -12,8 +12,10 @@
  * limitations under the License.
  */
 
+using Pickaxe.Runtime;
 using Pickaxe.Sdk;
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,7 +26,22 @@ namespace Pickaxe.CodeDom.Visitor
     {
         public void Visit(ProcedureDefinition statement)
         {
+            var argList = new List<CodeParameterDeclarationExpression>();
+            foreach (var arg in statement.Args)
+            {
+                var variableType = TablePrimitive.FromString(arg.Type).Type;
+                var codeParam = new CodeParameterDeclarationExpression(variableType, arg.Variable);
+                Scope.Current.RegisterPrimitive(codeParam.Name, variableType, codeParam.Type);
+                Scope.Current.Type.Type.Members.Add(new CodeMemberField() { Name = codeParam.Name, Type = codeParam.Type, Attributes = MemberAttributes.Public | MemberAttributes.Final });
+
+                var assignment = new CodeAssignStatement(new CodeVariableReferenceExpression("_" + Scope.Current.ScopeIdentifier + "." + codeParam.Name), new CodeVariableReferenceExpression(codeParam.Name));
+                _mainType.Constructor.Statements.Add(assignment);
+
+                argList.Add(codeParam);
+            }
+
             _mainType.Type.Name = statement.Name;
+            _mainType.Constructor.Parameters.AddRange(argList.ToArray());
         }
     }
 }

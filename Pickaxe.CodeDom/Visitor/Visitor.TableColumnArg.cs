@@ -34,6 +34,5 @@ namespace Pickaxe.CodeDom.Visitor
 
             _codeStack.Peek().ParentMemberDefinitions.Add(field);
         }
-
     }
 }
