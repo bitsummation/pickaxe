@@ -46,6 +46,13 @@ namespace Pickaxe.CodeDom.Visitor
                 new CodeVariableDeclarationStatement(call.Name, "r",
                     new CodeObjectCreateExpression(call.Name, argList.ToArray()))
                     );
+
+            methodStatements.Add(
+            new CodeAssignStatement(
+                new CodePropertyReferenceExpression(new CodeVariableReferenceExpression("r"), "RequestFactory"),
+                new CodePropertyReferenceExpression(null, "RequestFactory"))
+                );
+
             methodStatements.Add(
                 new CodeMethodInvokeExpression(new CodeVariableReferenceExpression("r"), "Run")
             );

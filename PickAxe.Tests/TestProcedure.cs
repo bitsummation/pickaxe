@@ -29,7 +29,12 @@ namespace PickAxe.Tests
         {
             var input = @"
 
-  procedure temp (a string, b string){}
+  procedure temp (a string, b string) {
+    
+    select *
+    from download page 'http://test.com'
+
+}
 
 ";
 

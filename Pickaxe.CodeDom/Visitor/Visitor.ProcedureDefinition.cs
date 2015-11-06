@@ -42,6 +42,10 @@ namespace Pickaxe.CodeDom.Visitor
 
             _mainType.Type.Name = statement.Name;
             _mainType.Constructor.Parameters.AddRange(argList.ToArray());
+
+            //visit block
+            var blockArgs = VisitChild(statement.Block);
+            _codeStack.Peek().ParentStatements.AddRange(blockArgs.ParentStatements);
         }
     }
 }
