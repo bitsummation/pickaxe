@@ -31,6 +31,30 @@ namespace Pickaxe
     {
         private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
+        public static void Main(string[] args)
+        {
+            string location = System.Reflection.Assembly.GetExecutingAssembly().Location;
+            string log4netPath = Path.Combine(Path.GetDirectoryName(location), "Log4net.config");
+            log4net.Config.XmlConfigurator.Configure(new FileInfo(log4netPath));
+
+            if (args.Length == 0) //interactive prompt
+                Interactive();
+            else
+            { //run the file
+                var sources = new List<string>();
+                foreach (var arg in args)
+                {
+                    //read the files
+                    var reader = new StreamReader(arg);
+                    sources.Add(reader.ReadToEnd());
+                }
+
+                Thread thread = new Thread(() => Compile(sources.ToArray()));
+                thread.Start();
+                thread.Join();
+            }
+        }
+
         private static void ListErrors(string[] errors)
         {
             foreach (var error in errors)
@@ -39,8 +63,6 @@ namespace Pickaxe
 
         private static void Compile(string[] source)
         {
-            Log.Info("Compiling...");
-
             var compiler = new Compiler(source);
             var generatedAssembly = compiler.ToAssembly();
 
@@ -50,9 +72,8 @@ namespace Pickaxe
             if (!compiler.Errors.Any())
             {
                 var runable = new Runable(generatedAssembly);
-                //runable.Select += OnSelectResults;
-                //runable.Progress += OnProgress;
-                //runable.Highlight += OnHighlight;
+                runable.Select += OnSelectResults;
+                runable.Progress += OnProgress;
 
                 try
                 {
@@ -70,23 +91,153 @@ namespace Pickaxe
             }
         }
 
-        public static void Main(string[] args)
+        private static void Interactive()
         {
-            string location = System.Reflection.Assembly.GetExecutingAssembly().Location;
-            string log4netPath = Path.Combine(Path.GetDirectoryName(location), "Log4net.config");
-            log4net.Config.XmlConfigurator.Configure(new FileInfo(log4netPath));
-
-            var sources = new List<string>();
-            foreach (var arg in args)
+            //interactive prompt ; delimited.
+            var builder = new StringBuilder();
+            Console.Write("pickaxe> ");
+            while (true)
             {
-                //read the files
-                var reader = new StreamReader(arg);
-                sources.Add(reader.ReadToEnd());
+                char character = Convert.ToChar(Console.Read());
+
+                if (character == '\n')
+                    Console.Write("      -> ");
+                if (character == ';') //run it. 
+                {
+                    while (Convert.ToChar(Console.Read()) != '\n') {} //clear buf
+
+                    Thread thread = new Thread(() => Compile(new[]{builder.ToString()}));
+                    thread.Start();
+                    thread.Join();
+
+                    builder.Clear();
+                    Console.Write("pickaxe> ");
+                    continue;
+                }
+
+                builder.Append(character);
+            }
+        }
+
+        private static string Truncate(string text)
+        {
+            if (text.Length > 50)
+                text = text.Substring(0, 50);
+
+            return text;
+        }
+
+        private static List<int> Measure(RuntimeTable<ResultRow> result)
+        {
+            var lengths = new List<int>();
+            lengths.Add(1);
+
+            foreach (var column in result.Columns()) //headers
+                lengths.Add(Truncate(column).Length + 2);
+
+            for (int row = 0; row < result.RowCount; row++)
+            {
+                if ((row+1).ToString().Length+2 > lengths[0])
+                    lengths[0] = (row+1).ToString().Length+2;
+
+                for (int col = 0; col < lengths.Count - 1; col++)
+                {
+                    int len = Truncate(result[row][col].ToString()).Length + 2;
+                    if (len > lengths[col+1])
+                        lengths[col+1] = len;
+                }
             }
 
-            Thread thread = new Thread(() => Compile(sources.ToArray()));
-            thread.Start();
-            thread.Join();
+            return lengths;
+        }
+
+        private static string Border(List<int> lengths)
+        {
+            var topBottom = new StringBuilder();
+            for (int x = 0; x < lengths.Count; x++)
+            {
+                topBottom.Append("+");
+                for (int len = 0; len < lengths[x]; len++)
+                    topBottom.Append("-");
+            }
+            topBottom.Append("+");
+            return topBottom.ToString();
+        }
+
+        private static string Values(List<int> lengths, string[] values)
+        {
+            var middle = new StringBuilder();
+            var columns = values;
+            for (int x = 0; x < lengths.Count; x++)
+            {
+                middle.Append("|");
+                int totalPadding = (lengths[x] - columns[x].Length);
+                int leftPadding = 1;
+                int righPaddding = totalPadding - leftPadding;
+                for (int pad = 0; pad < leftPadding; pad++)
+                    middle.Append(" ");
+
+                middle.Append(string.Format("{0}", Truncate(columns[x])));
+                for (int pad = 0; pad < righPaddding; pad++)
+                    middle.Append(" ");
+            }
+            middle.Append("|");
+
+            return middle.ToString();
+        }
+
+        private static string RenderProgress(ProgressArgs e)
+        {
+            float value = 0;
+            if (e.TotalOperations > 0)
+                value = (e.CompletedOperations / (float)e.TotalOperations);
+
+            //[###-----------------] 35/100  35%
+            var builder = new StringBuilder();
+            int map = (int)(Math.Round(value * 20));
+            builder.Append("[");
+            for (int x = 0; x < 20; x++)
+            {
+                if(x < map)
+                    builder.Append("#");
+                else
+                    builder.Append("-");
+            }
+            builder.Append("]");
+
+            return string.Format("{0} {1}/{2} {3}%", builder.ToString(), e.CompletedOperations, e.TotalOperations, (int)Math.Round(value*100));
+        }
+
+        private static void OnProgress(ProgressArgs e)
+        {
+            Console.WriteLine(RenderProgress(e));
+        }
+
+        private static void OnSelectResults(RuntimeTable<ResultRow> result)
+        {
+            var lengths = Measure(result);
+            
+            //+--+-------------------+------------+               
+            //|  |  (No column name) | .content a |
+            //+--+-------------------+------------+
+
+            var border = Border(lengths);
+            Console.WriteLine(border);
+            var values = result.Columns().ToList();
+            values.Insert(0, "");
+            Console.WriteLine(Values(lengths, values.ToArray()));
+            Console.WriteLine(border.ToString());
+
+            for (int row = 0; row < result.RowCount; row++)
+            {
+                var valueList = new List<string>();
+                for (int col = 0; col < lengths.Count - 1; col++)
+                    valueList.Add(result[row][col].ToString());
+
+                valueList.Insert(0, (row + 1).ToString());
+                Console.WriteLine(Values(lengths, valueList.ToArray()));
+            }
+            Console.WriteLine(border.ToString());
         }
     }
 }
