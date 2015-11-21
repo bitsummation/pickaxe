@@ -25,21 +25,17 @@ namespace Pickaxe.Runtime
     public class FileTable<TRow> : CodeTable<TRow> where TRow : IRowWriter, IRowReader, new()
     {
         private StreamWriter _writer;
+        private string _rowTerminator;
 
-        public FileTable(string location, string fieldTerminator, string rowTerminator)
-        {
-            Location = location;
-            FieldTerminator = fieldTerminator;
-            RowTerminator = CleanUpTerminator(rowTerminator);
-            
-            Load();
+        public string FieldTerminator { get; set; }
+        public string Location { get; set; }
+
+        public string RowTerminator {
+            get {return _rowTerminator;}
+            set { _rowTerminator = CleanUpTerminator(value); }
         }
 
-        protected string FieldTerminator { get; private set; }
-        protected string RowTerminator { get; private set; }
-        protected string Location { get; private set; }
-        
-        private void Load()
+        public void Load()
         {
             if(File.Exists(Location))
             {

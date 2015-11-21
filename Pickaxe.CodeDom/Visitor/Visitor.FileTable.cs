@@ -77,43 +77,36 @@ namespace Pickaxe.CodeDom.Visitor
                 Errors.Add(new NoDirectory(new Semantic.LineInfo(line.Line, line.CharacterPosition)));
         }
 
-        private void CheckDirectoryExistsFromFile(string file, Sdk.LineInfo line)
-        {
-            try
-            {
-                var directory = Path.GetDirectoryName(file);
-                if (!Directory.Exists(directory))
-                    Errors.Add(new NoDirectory(new Semantic.LineInfo(line.Line, line.CharacterPosition)));
-            }
-            catch (Exception)
-            {
-                Errors.Add(new NoDirectory(new Semantic.LineInfo(line.Line, line.CharacterPosition)));
-            }
-        }
-
         public void Visit(FileTable table)
         {
-            CheckDirectoryExistsFromFile(table.Location, table.Line);
-
             var descriptor = new TableDescriptor();
             var fileTable = new CodeTypeDeclaration(table.Variable) { TypeAttributes = TypeAttributes.NestedPrivate };
             fileTable.BaseTypes.Add(new CodeTypeReference("IRowWriter"));
             fileTable.BaseTypes.Add(new CodeTypeReference("IRowReader"));
 
             //field
-            var fileTableCodeDomType = new CodeTypeReference("CodeTable", new CodeTypeReference(table.Variable));
+            var fileTableCodeDomType = new CodeTypeReference("FileTable", new CodeTypeReference(table.Variable));
             Scope.Current.Type.Type.Members.Add(
                 new CodeMemberField(fileTableCodeDomType, table.Variable) { Attributes = MemberAttributes.Public | MemberAttributes.Final });
+
+            var locationArg = VisitChild(table.Location);
+
+            var assignment = new CodeAssignStatement(new CodeVariableReferenceExpression("_" + Scope.Current.ScopeIdentifier + "." + table.Variable + ".Location"), locationArg.CodeExpression);
+            _mainType.Constructor.Statements.Add(assignment);
+
+            assignment = new CodeAssignStatement(new CodeVariableReferenceExpression("_" + Scope.Current.ScopeIdentifier + "." + table.Variable + ".FieldTerminator"), new CodePrimitiveExpression(table.FieldTerminator));
+            _mainType.Constructor.Statements.Add(assignment);
+
+            assignment = new CodeAssignStatement(new CodeVariableReferenceExpression("_" + Scope.Current.ScopeIdentifier + "." + table.Variable + ".RowTerminator"), new CodePrimitiveExpression(table.RowTerminator));
+            _mainType.Constructor.Statements.Add(assignment);
+
+            _mainType.Constructor.Statements.Add(new CodeMethodInvokeExpression(new CodeVariableReferenceExpression("_" + Scope.Current.ScopeIdentifier + "." + table.Variable), "Load"));
 
             //constructor
             Scope.Current.Type.Constructor.Statements.Add(new CodeAssignStatement(
                 new CodeSnippetExpression(table.Variable),
                 new CodeObjectCreateExpression(
-                    new CodeTypeReference("FileTable", new CodeTypeReference(table.Variable)),
-                    new CodePrimitiveExpression(table.Location),
-                    new CodePrimitiveExpression(table.FieldTerminator),
-                    new CodePrimitiveExpression(table.RowTerminator)
-                    )));
+                    new CodeTypeReference("FileTable", new CodeTypeReference(table.Variable)))));
 
             BuildIRowWriterImplementation(fileTable, table.Args);
             BuildIRowReaderImplementation(fileTable, table.Args);

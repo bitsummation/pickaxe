@@ -280,7 +280,7 @@ createTableStatement
 	;
 
 fileTableLocation
-	: LOCATION^ STRING_LITERAL
+	: LOCATION^ mathExpression 
 	;
 
 fileTableWithStatement

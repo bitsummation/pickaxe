@@ -110,7 +110,7 @@ namespace Pickaxe.Parser.Bridge
             table.FieldTerminator = ParseLiteral(tree.Children[2].GetChild(0).GetChild(0).Text);
             table.RowTerminator = ParseLiteral(tree.Children[2].GetChild(1).GetChild(0).Text);
 
-            table.Location = ParseLiteral(tree.Children[3].GetChild(0).Text);
+            Visit(tree.Children[3].GetChild(0));
         }
 
         public void Visit(BufferTable table, CommonTree tree)

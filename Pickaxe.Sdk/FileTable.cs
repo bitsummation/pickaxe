@@ -22,12 +22,15 @@ namespace Pickaxe.Sdk
 
         public TableColumnArg[] Args
         {
-            get { return Children.Cast<TableColumnArg>().ToArray(); }
+            get { return Children.Where(x => x.GetType() == typeof(TableColumnArg)).Cast<TableColumnArg>().ToArray(); }
         }
 
         public string FieldTerminator { get; set; }
         public string RowTerminator { get; set; }
-        public string Location { get; set; }
+        public AstNode Location
+        {
+            get { return Children.Where(x => x.GetType() != typeof(TableColumnArg)).Single(); }
+        }
 
         public override void Accept(IAstVisitor visitor)
         {
