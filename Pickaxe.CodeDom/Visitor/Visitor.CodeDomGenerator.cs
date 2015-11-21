@@ -30,15 +30,10 @@ namespace Pickaxe.CodeDom.Visitor
         private CodeDomTypeDefinition _mainType;
 
         private int _totalOperations;
-        private int _currentStep; 
-        private CodeStatementCollection _runMethodStatements;
-        private CodeStatementCollection _stepMethodStatements;
-
         private Stack<CodeDomArg> _codeStack;
 
         public CodeDomGenerator(AstNode program)
         {
-            _currentStep = 1;
             _totalOperations = 0;
 
             Errors = new List<SemanticException>();
@@ -114,26 +109,26 @@ namespace Pickaxe.CodeDom.Visitor
         }
 
 
-        private void CreateStepMethod()
+        private CodeMemberMethod CreateStepMethod()
         {
             var method = new CodeMemberMethod();
 
             method.Name = "Step_" + Guid.NewGuid().ToString("N");
             method.Attributes = MemberAttributes.Public | MemberAttributes.Final;
 
-            _stepMethodStatements = method.Statements;
-
-            _runMethodStatements.Add(new CodeMethodInvokeExpression(
-                 new CodeMethodReferenceExpression(null, method.Name)));
-
             _mainType.Type.Members.Add(method);
-
-            CodeAttributeArgument codeAttr =
-                 new CodeAttributeArgument(
-                     new CodePrimitiveExpression(_currentStep));
-
-            _currentStep++;
+            return method;
         }
 
+        private CodeMemberMethod CreateBlockMethod()
+        {
+            var method = new CodeMemberMethod();
+
+            method.Name = "Block_" + Guid.NewGuid().ToString("N");
+            method.Attributes = MemberAttributes.Public | MemberAttributes.Final;
+
+            _mainType.Type.Members.Add(method);
+            return method;
+        }
     }
 }

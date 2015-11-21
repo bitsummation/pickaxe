@@ -59,8 +59,8 @@ tokens {
  */
  
 public program
-	: statement+ EOF -> ^(PROGRAM statement+)
-	| proxyStatement statement* EOF -> ^(PROGRAM proxyStatement statement*)
+	: noBraceBlock EOF -> ^(PROGRAM noBraceBlock)
+	| proxyStatement noBraceBlock EOF -> ^(PROGRAM proxyStatement noBraceBlock)
 	| procedureDefinition -> ^(PROGRAM procedureDefinition)
 	;
 
@@ -104,6 +104,10 @@ proxyTest
 
 eachStatement
 	: EACH OPENPAREN v=ID IN t=ID CLOSEPAREN block -> ^(EACH VARIABLE_DECLARATION[$v] TABLE_VARIABLE_REFERENCE[$t] block)
+	;
+
+noBraceBlock
+	: statement* -> ^(BLOCK statement*)
 	;
 
 block

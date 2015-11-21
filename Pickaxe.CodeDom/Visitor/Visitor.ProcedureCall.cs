@@ -12,6 +12,7 @@
  * limitations under the License.
  */
 
+using Pickaxe.Runtime;
 using Pickaxe.Sdk;
 using System;
 using System.CodeDom;
@@ -53,9 +54,16 @@ namespace Pickaxe.CodeDom.Visitor
                 new CodePropertyReferenceExpression(null, "RequestFactory"))
                 );
 
+
+            var delegateGen = new CodeDelegateCreateExpression(new CodeTypeReference(typeof(Action<ProgressArgs>)),
+                new CodeThisReferenceExpression(), "OnProgress");
+            methodStatements.Add(new CodeAttachEventStatement(new CodeVariableReferenceExpression("r"), "Progress", delegateGen));
+
             methodStatements.Add(
                 new CodeMethodInvokeExpression(new CodeVariableReferenceExpression("r"), "Run")
             );
+
+            methodStatements.Add(new CodeRemoveEventStatement(new CodeVariableReferenceExpression("r"), "Progress", delegateGen));
 
             method.Statements.AddRange(methodStatements);
 

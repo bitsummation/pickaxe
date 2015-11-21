@@ -36,11 +36,10 @@ namespace Pickaxe.CodeDom.Visitor
             mainNamespace.Types.Add(_mainType.Type);
 
             CodeMemberMethod method = new CodeMemberMethod();
-            _runMethodStatements = method.Statements;
             method.Name = "Run";
             method.Attributes = MemberAttributes.Public | MemberAttributes.Final;
 
-            _runMethodStatements.Add(new CodeMethodInvokeExpression(new CodeMethodReferenceExpression(null, "InitProxies")));
+            method.Statements.Add(new CodeMethodInvokeExpression(new CodeMethodReferenceExpression(null, "InitProxies")));
             
             _mainType.Type.Members.Add(method);
             _unit.Namespaces.Add(mainNamespace);
@@ -48,17 +47,13 @@ namespace Pickaxe.CodeDom.Visitor
             foreach (var child in program.Children)
             {
                 var arg = VisitChild(child);
-                if (arg.ParentStatements.Count > 0)
-                {
-                    CreateStepMethod();
-                    _stepMethodStatements.AddRange(arg.ParentStatements);
-                    CallOnProgress(_stepMethodStatements);
-
-                }
+                method.Statements.AddRange(arg.ParentStatements);
             }
 
-            CreateStepMethod();
-            CallOnProgressComplete(_stepMethodStatements);
+            var stepMethod = CreateStepMethod();
+            method.Statements.Add(new CodeMethodInvokeExpression(
+                new CodeMethodReferenceExpression(null, stepMethod.Name)));
+            CallOnProgressComplete(stepMethod.Statements);
 
             _mainType.Constructor.Statements.Add(new CodeAssignStatement(new CodePropertyReferenceExpression(null, "TotalOperations"),
                     new CodeBinaryOperatorExpression(new CodePropertyReferenceExpression(null, "TotalOperations"),

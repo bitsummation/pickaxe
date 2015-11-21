@@ -14,6 +14,7 @@
 
 using Pickaxe.Sdk;
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,14 +26,24 @@ namespace Pickaxe.CodeDom.Visitor
     {
         public void Visit(Block block)
         {
+            var method = CreateBlockMethod();
+
             using (Scope.Push(_mainType))
             {
                 foreach (var child in block.Children)
                 {
                     var arg = VisitChild(child);
-                    _codeStack.Peek().ParentStatements.AddRange(arg.ParentStatements);
+                    if (arg.ParentStatements.Count > 0)
+                    {
+                        var stepMethod = CreateStepMethod();
+                        stepMethod.Statements.AddRange(arg.ParentStatements);
+                        CallOnProgress(stepMethod.Statements);
+                        method.Statements.Add(new CodeMethodInvokeExpression(new CodeMethodReferenceExpression(null, stepMethod.Name)));
+                    }
                 }
             }
+
+            _codeStack.Peek().ParentStatements.Add(new CodeMethodInvokeExpression(new CodeMethodReferenceExpression(null, method.Name)));
         }
     }
 }
