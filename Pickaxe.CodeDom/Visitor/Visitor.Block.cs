@@ -37,7 +37,9 @@ namespace Pickaxe.CodeDom.Visitor
                     {
                         var stepMethod = CreateStepMethod();
                         stepMethod.Statements.AddRange(arg.ParentStatements);
-                        CallOnProgress(stepMethod.Statements);
+                        if (_codeStack.Peek().Tag == null)
+                            CallOnProgress(stepMethod.Statements);
+                        
                         method.Statements.Add(new CodeMethodInvokeExpression(new CodeMethodReferenceExpression(null, stepMethod.Name)));
                     }
                 }

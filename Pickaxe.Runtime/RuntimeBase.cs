@@ -63,7 +63,12 @@ namespace Pickaxe.Runtime
                     var proxy = Proxy.FromString(proxyString);
                     RequestFactory = HttpRequestFactory.CreateProxyFactory(proxy);
                     if (TestProxy())
+                    {
+                        Log.InfoFormat("Proxy added, Proxy={0}", proxy);
                         selector.Add(proxy);
+                    }
+                    else
+                        Log.InfoFormat("Proxy failed, Proxy={0}", proxy);
 
                     OnProgress();
                 }

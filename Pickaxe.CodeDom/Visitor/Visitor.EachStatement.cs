@@ -62,7 +62,7 @@ namespace Pickaxe.CodeDom.Visitor
                 var rowReference = VisitChild(new TableVariableRowReference() { Id = eachStatement.IterationVariable.Variable });
                 loop.Statements.Add(new CodeAssignStatement(rowReference.CodeExpression, new CodePropertyReferenceExpression(new CodeTypeReferenceExpression("x"), "Current")));
 
-                var blockArgs = VisitChild(eachStatement.Block);
+                var blockArgs = VisitChild(eachStatement.Block, new CodeDomArg() { Tag = true });
                 loop.Statements.AddRange(blockArgs.ParentStatements);
                 CallOnProgress(loop.Statements, false);
 

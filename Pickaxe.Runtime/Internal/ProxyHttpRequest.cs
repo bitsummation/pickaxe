@@ -34,14 +34,9 @@ namespace Pickaxe.Runtime.Internal
             _proxy = proxy;
         }
 
-        protected override void OnSuccess()
-        {
-            log.InfoFormat("Succesful proxy test, Proxy={0}, Url = {1}", _proxy, Url);
-        }
-
         protected override bool OnError(DownloadError error)
         {
-            log.InfoFormat("Failed proxy test, Proxy={0}, Url = {1}, Message = {2}", _proxy, Url, error.Message);
+            log.InfoFormat("Failed proxy download, Proxy={0}, Url = {1}, Message = {2}", _proxy, Url, error.Message);
             return false;
         }
 
