@@ -37,7 +37,7 @@ namespace Pickaxe.CodeDom.Visitor
             var domArg = VisitChild(statement.Select);
 
             CodeMemberMethod method = new CodeMemberMethod();
-            method.Name = "Insert_" + domArg.MethodIdentifier;
+            method.Name = "InsertIntoDir_" + domArg.MethodIdentifier;
             method.Attributes = MemberAttributes.Private;
 
             ((Action)domArg.Tag)();
