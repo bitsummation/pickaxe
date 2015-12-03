@@ -331,7 +331,7 @@ NOTEQUAL: '!=';
 
 INSERT_INTO : 'insert into';
 INSERT_OVERWRITE : 'insert overwrite';
-INSERT_DIRECTORY : 'insert image into';
+INSERT_DIRECTORY : 'insert file into';
 EACH : 'each';
 IN : 'in';
 SELECT : 'select';
