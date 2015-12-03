@@ -22,7 +22,10 @@ namespace Pickaxe.Sdk
 {
     public class InsertIntoDirectoryStatement : AstNode
     {
-        public string Directory { get; set; }
+        public AstNode Directory
+        {
+            get { return Children.Where(x => x.GetType() != typeof(SelectStatement)).Cast<AstNode>().Single(); }
+        }
 
         public SelectStatement Select
         {

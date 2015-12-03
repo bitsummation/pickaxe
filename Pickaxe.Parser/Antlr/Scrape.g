@@ -188,7 +188,7 @@ literal
 
 insertStatement
 	: INSERT_INTO ID sqlStatement-> ^(INSERT_INTO TABLE_VARIABLE_REFERENCE[$ID] sqlStatement)
-	| INSERT_INTO STRING_LITERAL sqlStatement-> ^(INSERT_INTO_DIRECTORY STRING_LITERAL sqlStatement)
+	| INSERT_DIRECTORY mathExpression sqlStatement-> ^(INSERT_INTO_DIRECTORY mathExpression sqlStatement)
 	| INSERT_OVERWRITE ID sqlStatement-> ^(INSERT_OVERWRITE TABLE_VARIABLE_REFERENCE[$ID] sqlStatement)
 	;
 
@@ -331,6 +331,7 @@ NOTEQUAL: '!=';
 
 INSERT_INTO : 'insert into';
 INSERT_OVERWRITE : 'insert overwrite';
+INSERT_DIRECTORY : 'insert image into';
 EACH : 'each';
 IN : 'in';
 SELECT : 'select';

@@ -28,8 +28,6 @@ namespace Pickaxe.CodeDom.Visitor
     {
         public void Visit(InsertIntoDirectoryStatement statement)
         {
-            CheckDirectoryExists(statement.Directory, statement.Line);
-
             if (statement.Select.Args.Length != 2) //can only select one thing into a directory
             {
                 Errors.Add(new OnlyTwoSelectParamForDirectory(new Semantic.LineInfo(statement.Line.Line, statement.Line.CharacterPosition)));
@@ -62,9 +60,10 @@ namespace Pickaxe.CodeDom.Visitor
 
             method.Statements.Add(new CodeVariableDeclarationStatement(typeof(byte[]), "bytes", cast));
 
-            method.Statements.Add(new CodeMethodInvokeExpression(new CodeVariableReferenceExpression("bytes"), "WriteFile",
-                new CodePrimitiveExpression(statement.Directory), new CodeVariableReferenceExpression("filename")));
+            var directoryArgs = VisitChild(statement.Directory);
 
+            method.Statements.Add(new CodeMethodInvokeExpression(new CodeVariableReferenceExpression("bytes"), "WriteFile",
+                directoryArgs.CodeExpression, new CodeVariableReferenceExpression("filename")));
 
             _mainType.Type.Members.Add(method);
 

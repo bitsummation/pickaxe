@@ -291,8 +291,7 @@ namespace Pickaxe.Parser.Bridge
         {
             Parent(tree).Children.Add(statement);
             SetLine(statement, tree);
-            statement.Directory = ParseLiteral(tree.GetChild(0).Text);
-            Visit(tree.GetChild(1));
+            VisitChildren(tree);
         }
 
         public void Visit(SelectId id, CommonTree tree)

@@ -71,12 +71,6 @@ namespace Pickaxe.CodeDom.Visitor
             type.Members.Add(method);
         }
 
-        private void CheckDirectoryExists(string dir, Sdk.LineInfo line)
-        {
-            if (!Directory.Exists(dir))
-                Errors.Add(new NoDirectory(new Semantic.LineInfo(line.Line, line.CharacterPosition)));
-        }
-
         public void Visit(FileTable table)
         {
             var descriptor = new TableDescriptor();
