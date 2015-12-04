@@ -85,17 +85,6 @@ namespace Pickaxe.CodeDom.Visitor
 
             var locationArg = VisitChild(table.Location);
 
-            var assignment = new CodeAssignStatement(new CodeVariableReferenceExpression("_" + Scope.Current.ScopeIdentifier + "." + table.Variable + ".Location"), locationArg.CodeExpression);
-            _mainType.Constructor.Statements.Add(assignment);
-
-            assignment = new CodeAssignStatement(new CodeVariableReferenceExpression("_" + Scope.Current.ScopeIdentifier + "." + table.Variable + ".FieldTerminator"), new CodePrimitiveExpression(table.FieldTerminator));
-            _mainType.Constructor.Statements.Add(assignment);
-
-            assignment = new CodeAssignStatement(new CodeVariableReferenceExpression("_" + Scope.Current.ScopeIdentifier + "." + table.Variable + ".RowTerminator"), new CodePrimitiveExpression(table.RowTerminator));
-            _mainType.Constructor.Statements.Add(assignment);
-
-            _mainType.Constructor.Statements.Add(new CodeMethodInvokeExpression(new CodeVariableReferenceExpression("_" + Scope.Current.ScopeIdentifier + "." + table.Variable), "Load"));
-
             //constructor
             Scope.Current.Type.Constructor.Statements.Add(new CodeAssignStatement(
                 new CodeSnippetExpression(table.Variable),
@@ -118,6 +107,29 @@ namespace Pickaxe.CodeDom.Visitor
                 Errors.Add(new VariableAlreadyExists(new Semantic.LineInfo(table.Line.Line, table.Line.CharacterPosition), table.Variable));
 
             Scope.Current.RegisterTable(table.Variable, descriptor, fileTableCodeDomType);
+
+            //Init Code
+            CodeMemberMethod method = new CodeMemberMethod();
+            method.Name = "Init_" + fileTable.Name;
+            method.Attributes = MemberAttributes.Private;
+
+            _mainType.Type.Members.Add(method);
+            var assignment = new CodeAssignStatement(new CodeVariableReferenceExpression("_" + Scope.Current.ScopeIdentifier + "." + table.Variable + ".Location"), locationArg.CodeExpression);
+            method.Statements.Add(assignment);
+
+            assignment = new CodeAssignStatement(new CodeVariableReferenceExpression("_" + Scope.Current.ScopeIdentifier + "." + table.Variable + ".FieldTerminator"), new CodePrimitiveExpression(table.FieldTerminator));
+            method.Statements.Add(assignment);
+
+            assignment = new CodeAssignStatement(new CodeVariableReferenceExpression("_" + Scope.Current.ScopeIdentifier + "." + table.Variable + ".RowTerminator"), new CodePrimitiveExpression(table.RowTerminator));
+            method.Statements.Add(assignment);
+
+            method.Statements.Add(new CodeMethodInvokeExpression(new CodeVariableReferenceExpression("_" + Scope.Current.ScopeIdentifier + "." + table.Variable), "Load"));
+
+            var methodcall = new CodeMethodInvokeExpression(
+               new CodeMethodReferenceExpression(null, method.Name));
+
+            _codeStack.Peek().ParentStatements.Add(methodcall);
+            _codeStack.Peek().CodeExpression = methodcall;
         }
 
     }
