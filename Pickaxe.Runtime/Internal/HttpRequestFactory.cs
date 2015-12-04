@@ -39,7 +39,7 @@ namespace Pickaxe.Runtime.Internal
         {
             public override IHttpRequest Create(string url)
             {
-                return new HttpRequest(url);
+                return new RetryHttpRequest(url);
             }
         }
 

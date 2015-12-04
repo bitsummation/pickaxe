@@ -23,22 +23,18 @@ using System.Text;
 
 namespace Pickaxe.Runtime.Internal
 {
-    internal class HttpRequest : IHttpRequest
+    internal abstract class HttpRequest : IHttpRequest
     {
         private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
-        public HttpRequest(string url)
+        protected HttpRequest(string url)
         {
             Url = url;
         }
 
         protected string Url { get; private set; }
-       
-        protected virtual bool OnError(DownloadError error)
-        {
-            Log.InfoFormat("Failed downoad, Url = {0}, Message = {1}", Url, error.Message);
-            return false;
-        }
+
+        protected abstract bool OnError(DownloadError error);
 
         protected virtual void OnSuccess()
         {
