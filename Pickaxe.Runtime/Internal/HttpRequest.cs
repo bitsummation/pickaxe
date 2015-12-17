@@ -45,7 +45,7 @@ namespace Pickaxe.Runtime.Internal
         {
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(Url);
             request.Timeout = 30000; //30 seconds
-            request.UserAgent = "Mozilla/5.0 (Windows NT 6.3; WOW64; rv:39.0) Gecko/20100101 Firefox/39.0";
+            request.UserAgent = "pickaxe";
 
             request.Method = "GET";
             return request;
