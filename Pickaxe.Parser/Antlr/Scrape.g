@@ -19,7 +19,8 @@ options {
   output=AST;
   ASTLabelType=CommonTree;
   TokenLabelType=CommonToken;
-}
+  backtrack=true; 
+  }
 
   
 tokens { 
@@ -240,12 +241,25 @@ whenBoolStatement
 	;
 
 boolExpression
-	: selectArg EQUALS^ selectArg
-	| selectArg LESSTHAN^ selectArg
-	| selectArg LESSTHANEQUAL^ selectArg
-	| selectArg GREATERTHAN^ selectArg
-	| selectArg GREATERTHANEQUAL^ selectArg
-	| selectArg NOTEQUAL^ selectArg
+	: andExpression (OR^ andExpression)*
+	;
+
+andExpression
+	:  boolTerm (AND^ boolTerm)* 
+	;
+	
+boolTerm
+	: selectArg (boolOperator^ selectArg)? 
+	| OPENPAREN boolExpression CLOSEPAREN
+	;
+
+boolOperator
+	: EQUALS
+	| LESSTHAN
+	| LESSTHANEQUAL
+	| GREATERTHAN
+	| GREATERTHANEQUAL
+	| NOTEQUAL
 	;
 
 selectArg
@@ -321,6 +335,9 @@ WHEN: 'when';
 THEN: 'then';
 END: 'end';
 ELSE: 'else';
+
+AND : 'and';
+OR : 'or';
 
 EQUALS : '=';
 LESSTHAN : '<';
