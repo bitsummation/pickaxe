@@ -9,6 +9,7 @@ namespace Pickaxe.Runtime
     {
         IHttpRequestFactory RequestFactory { get; }
         int TotalOperations { get; set; }
+        void Call(int line);
         void OnProgress();
         bool IsRunning { get; }
     }

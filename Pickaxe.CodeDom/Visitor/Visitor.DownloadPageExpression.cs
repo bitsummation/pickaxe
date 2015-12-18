@@ -40,7 +40,7 @@ namespace Pickaxe.CodeDom.Visitor
             method.Statements.Add(new CodeMethodReturnStatement(
              new CodeMethodInvokeExpression(
                  new CodeMethodReferenceExpression(new CodeTypeReferenceExpression("Http"), methodName), new CodeThisReferenceExpression(),
-                 statementDomArg.CodeExpression)));
+                 statementDomArg.CodeExpression, new CodePrimitiveExpression(line))));
 
             _mainType.Type.Members.Add(method);
 

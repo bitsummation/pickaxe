@@ -69,7 +69,7 @@ namespace Pickaxe.Runtime
             return table;
         }
 
-        public static Table<DownloadPage> DownloadPage(IRuntime runtime, Table<ResultRow> table)
+        public static Table<DownloadPage> DownloadPage(IRuntime runtime, Table<ResultRow> table, int line)
         {
             runtime.TotalOperations += table.RowCount;
             var urlList = new List<string>();
@@ -77,15 +77,18 @@ namespace Pickaxe.Runtime
             foreach (var row in table)
                 urlList.Add(row[0].ToString());
 
-            return DownloadPage(runtime, urlList.ToArray(), () => runtime.OnProgress());
+            return DownloadPage(runtime, urlList.ToArray(), () => {
+                runtime.Call(line);
+                runtime.OnProgress();
+            });
         }
 
-        public static Table<DownloadPage> DownloadPage(IRuntime runtime, string url)
+        public static Table<DownloadPage> DownloadPage(IRuntime runtime, string url, int line)
         {
             return DownloadPage(runtime, new string[] { url }, null);
         }
 
-        public static Table<DownloadImage> DownloadImage(IRuntime runtime, string url)
+        public static Table<DownloadImage> DownloadImage(IRuntime runtime, string url, int line)
         {
             var table = new RuntimeTable<DownloadImage>();
 
