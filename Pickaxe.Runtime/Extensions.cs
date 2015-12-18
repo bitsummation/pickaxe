@@ -12,15 +12,13 @@
  * limitations under the License.
  */
 
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using Fizzler.Systems.HtmlAgilityPack;
 using HtmlAgilityPack;
 using System.Text.RegularExpressions;
 using System.IO;
+using System.Net;
 
 namespace Pickaxe.Runtime
 {
@@ -73,7 +71,7 @@ namespace Pickaxe.Runtime
         {
             string text = null;
             if (node != null)
-                text = node.InnerText;
+                text = WebUtility.HtmlDecode(node.InnerText);
 
             return text;
         }

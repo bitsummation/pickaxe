@@ -49,11 +49,12 @@ each(row in postpages){
 	from expand (row.startPage to row.endPage)
 }
 
-create buffer detailurls (url string)
+create buffer detailurls (url string, original string)
 
 insert into detailurls
 select
-	'http://vtss.brockreeve.com' + pick 'h3 a' take attribute 'href'
+	'http://vtss.brockreeve.com' + pick 'h3 a' take attribute 'href',
+    url
 from download page (select url from pageurls)
 where nodes = 'div.topic'
 
