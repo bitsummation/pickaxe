@@ -13,14 +13,10 @@
  */
 
 using HtmlAgilityPack;
-using Pickaxe.Runtime.Internal;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Net;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Pickaxe.Runtime
 {
@@ -58,39 +54,42 @@ namespace Pickaxe.Runtime
             return doc;
         }
 
-        public static Table<DownloadPage> DownloadPage(IHttpRequestFactory factory, Table<ResultRow> table)
-        {
-            var urlList = new List<string>();
-
-            foreach (var row in table)
-                urlList.Add(row[0].ToString());
-
-            return DownloadPage(factory, urlList.ToArray());
-        }
-
-        public static Table<DownloadPage> DownloadPage(IHttpRequestFactory factory, string url)
-        {
-            return DownloadPage(factory, new string[] { url });
-        }
-
-        public static Table<DownloadPage> DownloadPage(IHttpRequestFactory factory, string[] urls)
+        private static Table<DownloadPage> DownloadPage(IRuntime runtime, string[] urls, Action afterDownload)
         {
             var table = new RuntimeTable<DownloadPage>();
-            foreach(var url in urls)
+            foreach (var url in urls)
             {
                 int contentlength;
-                var doc = GetDocument(factory, url, out contentlength);
-                table.Add(new DownloadPage(){url = url, nodes = new[]{doc.DocumentNode}, date = DateTime.Now, size = contentlength});
+                var doc = GetDocument(runtime.RequestFactory, url, out contentlength);
+                table.Add(new DownloadPage() { url = url, nodes = new[] { doc.DocumentNode }, date = DateTime.Now, size = contentlength });
+                if(afterDownload != null)
+                    afterDownload();
             }
 
             return table;
         }
 
-        public static Table<DownloadImage> DownloadImage(IHttpRequestFactory factory, string url)
+        public static Table<DownloadPage> DownloadPage(IRuntime runtime, Table<ResultRow> table)
+        {
+            runtime.TotalOperations += table.RowCount;
+            var urlList = new List<string>();
+
+            foreach (var row in table)
+                urlList.Add(row[0].ToString());
+
+            return DownloadPage(runtime, urlList.ToArray(), () => runtime.OnProgress());
+        }
+
+        public static Table<DownloadPage> DownloadPage(IRuntime runtime, string url)
+        {
+            return DownloadPage(runtime, new string[] { url }, null);
+        }
+
+        public static Table<DownloadImage> DownloadImage(IRuntime runtime, string url)
         {
             var table = new RuntimeTable<DownloadImage>();
 
-            var image = GetImage(factory, url);
+            var image = GetImage(runtime.RequestFactory, url);
             
             table.Add(image);
             return table;

@@ -17,10 +17,6 @@ using Pickaxe.CodeDom.Semantic;
 using Pickaxe.Sdk;
 using System;
 using System.CodeDom;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Pickaxe.CodeDom.Visitor
 {
@@ -43,7 +39,7 @@ namespace Pickaxe.CodeDom.Visitor
 
             method.Statements.Add(new CodeMethodReturnStatement(
              new CodeMethodInvokeExpression(
-                 new CodeMethodReferenceExpression(new CodeTypeReferenceExpression("Http"), methodName), new CodePropertyReferenceExpression(null, "RequestFactory"),
+                 new CodeMethodReferenceExpression(new CodeTypeReferenceExpression("Http"), methodName), new CodeThisReferenceExpression(),
                  statementDomArg.CodeExpression)));
 
             _mainType.Type.Members.Add(method);
