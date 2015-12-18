@@ -58,6 +58,16 @@ namespace Pickaxe.Runtime
             return doc;
         }
 
+        public static Table<DownloadPage> DownloadPage(IHttpRequestFactory factory, Table<ResultRow> table)
+        {
+            var urlList = new List<string>();
+
+            foreach (var row in table)
+                urlList.Add(row[0].ToString());
+
+            return DownloadPage(factory, urlList.ToArray());
+        }
+
         public static Table<DownloadPage> DownloadPage(IHttpRequestFactory factory, string url)
         {
             return DownloadPage(factory, new string[] { url });

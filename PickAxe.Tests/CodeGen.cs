@@ -30,20 +30,32 @@ namespace PickAxe.Tests
         {
               var input = @"
 
-proxies ('50.207.44.25:8080', '69.89.107.3:8088', '50.232.240.6:8080', '104.197.107.186:3128'
-,'104.197.39.26:3128', '128.114.232.28:80')
-with test {	
+create buffer postpages (startPage int, endPage int)
+
+insert into postpages
+select
+	pick 'li.current a' take text,
+	pick 'li:nth-child(7) a' take text
+from download page 'http://vtss.brockreeve.com/?t=All'
+where nodes = 'ol.page-nav'
+
+create buffer pageurls (url string)
+
+each(row in postpages){
+	
+	insert into pageurls
 	select
-		pick 'div#atcui-navigation-container li.cars-for-sale a' take text
-	from download page 'http://www.autotrader.com/'
+		'http://vtss.brockreeve.com/Home/Index/' + value + '?t=All'
+	from expand (row.startPage to row.endPage)
 }
 
-select
-	pick '.pageof' take text match '\D+(\d+)\D+(\d+)' replace '$1',
-	pick '.pageof' take text match '\D+(\d+)\D+(\d+)' replace '$2'
-from download page 'http://www.autotrader.com/car-dealers/Los+Angeles+CA-90005?filterName=pagination&firstRecord=1&numRecords=10&searchRadius=50&sortBy=distanceASC&vehicleInventory=used'
+create buffer detailurls (url string)
 
-exec dealer('http://www.autotrader.com/car-dealers/Los+Angeles+CA-90005?filterName=pagination&firstRecord=','&numRecords=10&searchRadius=50&sortBy=distanceASC&vehicleInventory=used')
+insert into detailurls
+select
+	'http://vtss.brockreeve.com' + pick 'h3 a' take attribute 'href'
+from download page (select url from pageurls)
+where nodes = 'div.topic'
 
 ";
 
