@@ -12,24 +12,25 @@
  * limitations under the License.
  */
 
+using Pickaxe.Sdk;
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace Pickaxe.Runtime
+namespace Pickaxe.CodeDom.Visitor
 {
-    public class CodeTable<TRow> : Table<TRow> where TRow : IRow
+    public partial class CodeDomGenerator : IAstVisitor
     {
-        public virtual void BeforeInsert(bool overwrite)
+        public void Visit(TruncateTableStatement statement)
         {
-            if (overwrite)
-                Truncate();
-        }
+            var variableArgs = VisitChild(statement.Variable);
 
-        public virtual void AfterInsert()
-        {
+            var expression = new CodeMethodInvokeExpression(new CodeMethodReferenceExpression(variableArgs.CodeExpression, "Truncate"));
+
+            _codeStack.Peek().ParentStatements.Add(expression);
+            _codeStack.Peek().CodeExpression = expression;
         }
     }
 }

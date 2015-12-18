@@ -271,6 +271,13 @@ namespace Pickaxe.Parser.Bridge
             Visit(tree.GetChild(1));
         }
 
+        public void Visit(TruncateTableStatement statement, CommonTree tree)
+        {
+            Parent(tree).Children.Add(statement);
+            SetLine(statement, tree);
+            VisitChildren(tree);
+        }
+
         public void Visit(InsertIntoStatement statement, CommonTree tree)
         {
             Parent(tree).Children.Add(statement);

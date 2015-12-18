@@ -21,6 +21,7 @@ namespace Pickaxe.Sdk
         void Visit(BufferTable table);
         void Visit(TableColumnArg arg);
 
+        void Visit(TruncateTableStatement statement);
         void Visit(InsertIntoStatement statement);
         void Visit(InsertOverwriteStatement statement);
         void Visit(InsertIntoDirectoryStatement statement);

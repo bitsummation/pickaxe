@@ -75,7 +75,13 @@ statement
 	| insertStatement
 	| eachStatement
 	| procedureCall
+	| truncateTable
 	;
+
+truncateTable
+	: TRUNCATE ID -> ^(TRUNCATE TABLE_VARIABLE_REFERENCE[$ID])
+	;
+
 
 procedureCall
 	:  EXEC ID OPENPAREN procedureCallList* CLOSEPAREN -> ^(EXEC ID procedureCallList*)
@@ -332,6 +338,7 @@ NOTEQUAL: '!=';
 INSERT_INTO : 'insert into';
 INSERT_OVERWRITE : 'insert overwrite';
 INSERT_DIRECTORY : 'insert file into';
+TRUNCATE : 'truncate';
 EACH : 'each';
 IN : 'in';
 SELECT : 'select';

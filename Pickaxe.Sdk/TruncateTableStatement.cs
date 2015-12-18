@@ -16,20 +16,19 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace Pickaxe.Runtime
+namespace Pickaxe.Sdk
 {
-    public class CodeTable<TRow> : Table<TRow> where TRow : IRow
+    public class TruncateTableStatement : AstNode
     {
-        public virtual void BeforeInsert(bool overwrite)
+        public VariableReferance Variable
         {
-            if (overwrite)
-                Truncate();
+            get { return Children.Where(x => typeof(VariableReferance).IsInstanceOfType(x)).Cast<VariableReferance>().Single(); }
         }
 
-        public virtual void AfterInsert()
+        public override void Accept(IAstVisitor visitor)
         {
+            visitor.Visit(this);
         }
     }
 }

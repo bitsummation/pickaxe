@@ -23,6 +23,7 @@ namespace Pickaxe.Parser.Bridge
         void Visit(FileTable table, CommonTree tree);
         void Visit(BufferTable table, CommonTree tree);
 
+        void Visit(TruncateTableStatement statement, CommonTree tree);
         void Visit(InsertIntoStatement statement, CommonTree tree);
         void Visit(InsertOverwriteStatement statement, CommonTree tree);
         void Visit(InsertIntoDirectoryStatement statement, CommonTree tree);

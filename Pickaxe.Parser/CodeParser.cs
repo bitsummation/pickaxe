@@ -72,6 +72,8 @@ namespace Pickaxe.Parser
                     if(payload.Type == ScrapeParser.BUFFER_TABLE)
                         return new AntlrBridgeTree<BufferTable>(payload, (node, tree, visitor) => visitor.Visit(node, tree));
 
+                    if(payload.Type == ScrapeParser.TRUNCATE)
+                        return new AntlrBridgeTree<TruncateTableStatement>(payload, (node, tree, visitor) => visitor.Visit(node, tree));
                     if (payload.Type == ScrapeParser.INSERT_INTO)
                         return new AntlrBridgeTree<InsertIntoStatement>(payload, (node, tree, visitor) => visitor.Visit(node, tree));
                     if(payload.Type == ScrapeParser.INSERT_OVERWRITE)

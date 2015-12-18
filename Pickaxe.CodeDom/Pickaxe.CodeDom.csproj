@@ -114,6 +114,7 @@
     <Compile Include="Visitor\Visitor.TableVariableRowReference.cs" />
     <Compile Include="Visitor\Visitor.TakeAtrributeStatement.cs" />
     <Compile Include="Visitor\Visitor.CaseExpression.cs" />
+    <Compile Include="Visitor\Visitor.TruncateTableStatement.cs" />
     <Compile Include="Visitor\Visitor.VariableDeclarationStatement.cs" />
     <Compile Include="Visitor\Visitor.VariableReference.cs" />
     <Compile Include="Visitor\Visitor.WhenBooleanStatement.cs" />

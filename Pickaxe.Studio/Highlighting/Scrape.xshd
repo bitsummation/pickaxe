@@ -59,6 +59,7 @@
       </KeyWords>
       
       <KeyWords name="SQL" bold="true" italic="false" color="Blue">
+        <Key word = "truncate"/>
         <Key word = "procedure"/>
         <Key word = "exec"/>
         <Key word = "select" />

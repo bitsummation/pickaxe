@@ -35,7 +35,7 @@ namespace Pickaxe.Runtime
             Rows.Add(row);
         }
 
-        protected void Clear()
+        public void Truncate()
         {
             Rows.Clear();
         }
