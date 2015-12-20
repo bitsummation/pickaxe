@@ -30,11 +30,13 @@ namespace PickAxe.Tests
         {
               var input = @"
 
-    select
-		pick 'td:nth-child(1) p.bold' take text,
-		pick 'td:nth-child(2) p' take text match '\d{3}\.\d{2}'
-	from download page 'http://brockreeve.com'
-	where nodes = 'table[width=""600""] tr'
+   create buffer temp(id int)
+   
+    select 
+        case when (id > 10 and id < 400) or id = 10 then 5
+        when id = 5 then 10
+        end
+    from temp
 
 ";
 

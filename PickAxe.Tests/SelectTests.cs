@@ -38,16 +38,16 @@ namespace PickAxe.Tests
     <div class=""dollar"">$6,566.00</div>
     <span class=""address"">4332 Forest Hill Blvd<br>West Palm Beach, FL 33406</span>
     <div id=""match-tests"">
-        <li>6,566.00</li>
-        <li>6.00</li>
-        <li>8,975.00</li>
-        <li>6,566,888.00</li>
+        <li>6,566</li>
+        <li>6</li>
+        <li>8,975</li>
+        <li>6,566,888</li>
     </div>
     <div id=""match-tests"">
-        <li>6,566.00</li>
-        <li>6.00</li>
-        <li>8,975.00</li>
-        <li>6,566,888.00</li>
+        <li>10,566</li>
+        <li>3</li>
+        <li>1,975</li>
+        <li>2,566,888</li>
     </div>
 </div>
 
@@ -162,6 +162,72 @@ namespace PickAxe.Tests
                 Assert.IsTrue(table.Columns().Length == 1);
                 Assert.IsTrue(table.RowCount == 1);
                 Assert.IsTrue(table[0][0].ToString() == "here");
+            };
+
+            runable.Run();
+            Assert.True(called == 1);
+        }
+
+        [Test]
+        public void TestCaseBooleanMultiple()
+        {
+            var code = @"
+  
+create buffer temp(id int)
+      
+insert into temp
+select 3
+
+insert into temp
+select 2
+
+insert into temp
+select 5
+
+ select
+    id,
+    case when id < 5 and id > 2 then 'hit' end
+    from temp
+ 
+";
+
+            var runable = TestHelper.Compile(code, _requestFactory);
+
+            int called = 0;
+            runable.Select += (table) =>
+            {
+                called++;
+                Assert.IsTrue(table.Columns().Length == 2);
+                Assert.IsTrue(table.RowCount == 1);
+                Assert.IsTrue(table[0][0].ToString() == "3");
+                Assert.IsTrue(table[0][1].ToString() == "hit");
+            };
+
+            runable.Run();
+            Assert.True(called == 1);
+        }
+
+        [Test]
+        public void TestCaseBoolean()
+        {
+            var code = @"
+        
+ select
+    case when pick 'li:first-child' take text match '[\d\.]+' < 9000 then 2 end
+    from download page 'http://mock.com'
+    where nodes = '#match-tests'
+ 
+";
+
+            var runable = TestHelper.Compile(code, _requestFactory);
+
+            int called = 0;
+            runable.Select += (table) =>
+            {
+                called++;
+                Assert.IsTrue(table.Columns().Length == 1);
+                Assert.IsTrue(table.RowCount == 1);
+                Assert.IsTrue(table[0][0].ToString() == "2");
             };
 
             runable.Run();

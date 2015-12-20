@@ -250,7 +250,7 @@ andExpression
 	
 boolTerm
 	: selectArg (boolOperator^ selectArg)? 
-	| OPENPAREN boolExpression CLOSEPAREN
+	| OPENPAREN! boolExpression CLOSEPAREN!
 	;
 
 boolOperator

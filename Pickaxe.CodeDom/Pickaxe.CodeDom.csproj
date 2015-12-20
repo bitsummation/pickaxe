@@ -60,6 +60,7 @@
     <Compile Include="Semantic\OnlyTwoSelectParamForDirectory.cs" />
     <Compile Include="Semantic\VariableAlreadyExists.cs" />
     <Compile Include="Visitor\Visitor.AdditionOperator.cs" />
+    <Compile Include="Visitor\Visitor.AndExpression.cs" />
     <Compile Include="Visitor\Visitor.Block.cs" />
     <Compile Include="Visitor\Visitor.CaseBooleanStatement.cs" />
     <Compile Include="Visitor\Visitor.CaseVariableStatement.cs" />
@@ -77,6 +78,7 @@
     <Compile Include="Visitor\Visitor.MultiplicatonOperator.cs" />
     <Compile Include="Visitor\Visitor.NotEqualExpression.cs" />
     <Compile Include="Visitor\Visitor.NullLiteral.cs" />
+    <Compile Include="Visitor\Visitor.OrExpression.cs" />
     <Compile Include="Visitor\Visitor.ProcedureCall.cs" />
     <Compile Include="Visitor\Visitor.ProcedureDefinition.cs" />
     <Compile Include="Visitor\Visitor.ProxyList.cs" />
