@@ -30,20 +30,13 @@ namespace PickAxe.Tests
         {
               var input = @"
 
-proxies ('50.207.44.25:8080', '69.89.107.3:8088', '50.232.240.6:8080', '104.197.107.186:3128'
-,'104.197.39.26:3128', '128.114.232.28:80')
-with test {	
-	select
-		pick 'div#atcui-navigation-container li.cars-for-sale a' take text
-	from download page 'http://www.autotrader.com/'
-}
-
-select
-	pick '.pageof' take text match '\D+(\d+)\D+(\d+)' replace '$1',
-	pick '.pageof' take text match '\D+(\d+)\D+(\d+)' replace '$2'
-from download page 'http://www.autotrader.com/car-dealers/Los+Angeles+CA-90005?filterName=pagination&firstRecord=1&numRecords=10&searchRadius=50&sortBy=distanceASC&vehicleInventory=used'
-
-exec dealer('http://www.autotrader.com/car-dealers/Los+Angeles+CA-90005?filterName=pagination&firstRecord=','&numRecords=10&searchRadius=50&sortBy=distanceASC&vehicleInventory=used')
+   create buffer temp(id int)
+   
+    select 
+        case when (id > 10 and id < 400) or id = 10 then 5
+        when id = 5 then 10
+        end
+    from temp
 
 ";
 

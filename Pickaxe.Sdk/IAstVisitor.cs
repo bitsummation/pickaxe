@@ -71,6 +71,8 @@ namespace Pickaxe.Sdk
         void Visit(CaseBooleanStatement statement);
         void Visit(WhenBooleanStatement statement);
 
+        void Visit(OrExpression expression);
+        void Visit(AndExpression expression);
         void Visit(LessThanExpression expression);
         void Visit(LessThanEqualExpression expression);
         void Visit(GreaterThanExpression expression);
