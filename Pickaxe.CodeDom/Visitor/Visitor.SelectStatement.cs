@@ -142,8 +142,8 @@ namespace Pickaxe.CodeDom.Visitor
 
             if (statement.Where != null)
             {
-                var domWhereArgs = VisitChild(statement.Where);
-                methodStatements.AddRange(domWhereArgs.ParentStatements);
+                var domWhereArgs = VisitChild(statement.Where, new CodeDomArg() { Scope = fromDomArg.Scope });
+                methodStatements.Add(domWhereArgs.CodeExpression);
             }
 
             //outside iterator

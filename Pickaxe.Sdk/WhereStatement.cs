@@ -12,12 +12,22 @@
  * limitations under the License.
  */
 
+using System.Linq;
+
 namespace Pickaxe.Sdk
 {
     public class WhereStatement : AstNode
     {
-        public string Id { get; set;}
-        public string Selector { get; set; }
+        public BooleanExpression BooleanExpression
+        {
+            get
+            {
+                return Children.Where(x => x.GetType().IsSubclassOf(typeof(BooleanExpression))).Cast<BooleanExpression>().Single();
+            }
+        }
+
+        //public 
+
 
         public override void Accept(IAstVisitor visitor)
         {

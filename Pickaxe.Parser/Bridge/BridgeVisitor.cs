@@ -175,9 +175,7 @@ namespace Pickaxe.Parser.Bridge
         {
             Parent(tree).Children.Add(statement);
             SetLine(statement, tree);
-
-            statement.Id = tree.GetChild(0).Text;
-            statement.Selector = ParseLiteral(tree.GetChild(1).Text);
+            VisitChildren(tree);
         }
 
         public void Visit(StringLiteral literal, CommonTree tree)
@@ -411,6 +409,13 @@ namespace Pickaxe.Parser.Bridge
         {
             SetLine(statement, tree);
             Parent(tree).Children.Add(statement);
+            VisitChildren(tree);
+        }
+
+        public void Visit(NodesBooleanExpressionStub expression, CommonTree tree)
+        {
+            SetLine(expression, tree);
+            Parent(tree).Children.Add(expression);
             VisitChildren(tree);
         }
 

@@ -38,7 +38,7 @@ namespace Pickaxe.Runtime
             }
         }
 
-        public static Table<DownloadPage> Where(this Table<DownloadPage> table, string selector)
+        public static Table<DownloadPage> CssWhere(this Table<DownloadPage> table, string selector)
         {
             var returnTable = new RuntimeTable<DownloadPage>();
             foreach(var row in table)

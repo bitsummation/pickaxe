@@ -206,7 +206,7 @@ sqlStatement
 	;
 
 whereStatement
-	: WHERE^ ID EQUALS! STRING_LITERAL
+	:  WHERE boolExpression -> ^(WHERE boolExpression) 
 	;
 
 fromStatement
@@ -255,7 +255,8 @@ andExpression
 	;
 	
 boolTerm
-	: selectArg (boolOperator^ selectArg)? 
+	: NODES EQUALS STRING_LITERAL -> ^(NODES STRING_LITERAL)
+	| selectArg (boolOperator^ selectArg)? 
 	| OPENPAREN! boolExpression CLOSEPAREN!
 	;
 
@@ -360,6 +361,7 @@ EACH : 'each';
 IN : 'in';
 SELECT : 'select';
 FROM : 'from';
+NODES: 'nodes';
 WHERE : 'where';
 PICK : 'pick';
 TAKE : 'take';

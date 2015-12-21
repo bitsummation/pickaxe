@@ -12,41 +12,18 @@
  * limitations under the License.
  */
 
-using NUnit.Framework;
-using Pickaxe.Emit;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace PickAxe.Tests
+namespace Pickaxe.Sdk
 {
-    [TestFixture]
-    public class CodeGen
+    public class NodesBooleanExpressionStub : BooleanExpression
     {
-       
-        [Test]
-        public void BasicCodeGenTest()
+        public override void Accept(IAstVisitor visitor)
         {
-              var input = @"
-
-  create buffer temp(id int)
-   
-    select 
-        case when (id > 10 and id < 400) or id = 10 then 5
-        when id = 5 then 10
-        end
-    from temp
-    where nodes = '' and id < 20 --(id > 10 and id < 400) or id = 10
-
-
---nodes
-";
-
-            var compiler = new Compiler(input);
-            var sources = compiler.ToCode();
-            Assert.IsTrue(compiler.Errors.Count == 0);
+            visitor.Visit(this);
         }
     }
 }
