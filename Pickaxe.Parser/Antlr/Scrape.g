@@ -141,7 +141,7 @@ downloadExpression
 	;
 
 downloadPageExpresssion
-	: DOWNLOAD_PAGE^ (STRING_LITERAL | sqlStatement)
+	: DOWNLOAD_PAGE^ (STRING_LITERAL | OPENPAREN sqlStatement CLOSEPAREN)
 	| DOWNLOAD_PAGE ID -> ^(DOWNLOAD_PAGE VARIABLE_REFERENCE[$ID])
 	| DOWNLOAD_PAGE tableMemberReference -> ^(DOWNLOAD_PAGE tableMemberReference)
 	;

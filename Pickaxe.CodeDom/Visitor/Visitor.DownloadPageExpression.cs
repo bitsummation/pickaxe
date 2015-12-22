@@ -17,10 +17,6 @@ using Pickaxe.CodeDom.Semantic;
 using Pickaxe.Sdk;
 using System;
 using System.CodeDom;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Pickaxe.CodeDom.Visitor
 {
@@ -30,7 +26,9 @@ namespace Pickaxe.CodeDom.Visitor
         {
             var statementDomArg = VisitChild(statement);
 
-            if (statementDomArg.Scope.CodeDomReference.BaseType != typeof(string).FullName)
+            if(statementDomArg.Scope.CodeDomReference.BaseType == typeof(Table<>).Name)
+                ((Action)statementDomArg.Tag)(); //remove call to OnSelect
+            else if( statementDomArg.Scope.CodeDomReference.BaseType != typeof(string).FullName)
                 Errors.Add(new DownloadRequireString(new Semantic.LineInfo(statement.Line.Line, statement.Line.CharacterPosition)));
 
             CodeMemberMethod method = new CodeMemberMethod();
@@ -41,8 +39,8 @@ namespace Pickaxe.CodeDom.Visitor
 
             method.Statements.Add(new CodeMethodReturnStatement(
              new CodeMethodInvokeExpression(
-                 new CodeMethodReferenceExpression(new CodeTypeReferenceExpression("Http"), methodName), new CodePropertyReferenceExpression(null, "RequestFactory"),
-                 statementDomArg.CodeExpression)));
+                 new CodeMethodReferenceExpression(new CodeTypeReferenceExpression("Http"), methodName), new CodeThisReferenceExpression(),
+                 statementDomArg.CodeExpression, new CodePrimitiveExpression(line))));
 
             _mainType.Type.Members.Add(method);
 
