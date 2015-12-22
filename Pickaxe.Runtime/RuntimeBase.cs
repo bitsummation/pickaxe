@@ -13,10 +13,6 @@
  */
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Pickaxe.Runtime.Debug;
 using Pickaxe.Runtime.Internal;
 using System.Threading;
@@ -25,11 +21,10 @@ using System.Reflection;
 
 namespace Pickaxe.Runtime
 {
-    public abstract class RuntimeBase : IDebug, IBreak
+    public abstract class RuntimeBase : IDebug, IBreak, IRuntime
     {
         private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
-        private bool _isRunning;
         private BreakProcesser _processor;
 
         protected RuntimeBase()
@@ -37,7 +32,7 @@ namespace Pickaxe.Runtime
             TotalOperations = 0;
             CompletedOperations = 0;
             HighlightExecution = false;
-            _isRunning = true;
+            IsRunning = true;
             _processor = BreakProcesser.Continue;
             RequestFactory = HttpRequestFactory.NoProxy;
         }
@@ -47,7 +42,8 @@ namespace Pickaxe.Runtime
         public event Action<int> Highlight;
 
         public IHttpRequestFactory RequestFactory { get; set; }
-        protected int TotalOperations { get; set; }
+        public int TotalOperations { get; set; }
+        public bool  IsRunning { get; private set; }
         protected int CompletedOperations { get; set; }
 
         protected void InitProxies()
@@ -108,7 +104,7 @@ namespace Pickaxe.Runtime
                 Highlight(line);
         }
 
-        protected void OnProgress()
+        public void OnProgress()
         {
             CompletedOperations++;
             OnProgress(new ProgressArgs(CompletedOperations, TotalOperations));
@@ -122,7 +118,7 @@ namespace Pickaxe.Runtime
 
         public void Stop()
         {
-            _isRunning = false;
+            IsRunning = false;
             Log.Info("Program stopping......");
         }
 
@@ -130,7 +126,7 @@ namespace Pickaxe.Runtime
 
         public void Call(int line)
         {
-            if (!_isRunning)
+            if (!IsRunning)
             {
                 Log.Info("Program Stopped");
                 Thread.CurrentThread.Abort();

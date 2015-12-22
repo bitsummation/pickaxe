@@ -41,7 +41,7 @@ namespace Pickaxe.CodeDom.Visitor
             method.Attributes = MemberAttributes.Private;
             GenerateCallStatement(method.Statements, statement.Line.Line);
 
-            ((Action)domArg.Tag)();
+            ((Action)domArg.Tag)(); //remove call to OnSelect
 
             method.Statements.Add(new CodeVariableDeclarationStatement(domArg.Scope.CodeDomReference,
                 "resultRows",

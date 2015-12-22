@@ -70,6 +70,7 @@
     <Compile Include="Internal\IHttpRequest.cs" />
     <Compile Include="Internal\ProxyHttpRequest.cs" />
     <Compile Include="Internal\RetryHttpRequest.cs" />
+    <Compile Include="IRuntime.cs" />
     <Compile Include="Proxy.cs" />
     <Compile Include="Internal\ProxyHttpRequestSelector.cs" />
     <Compile Include="Internal\ProxySelector.cs" />
