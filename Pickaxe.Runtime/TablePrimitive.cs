@@ -33,9 +33,11 @@ namespace Pickaxe.Runtime
         {
             TablePrimitive primitive = null;
 
-            if (typeof(IList<HtmlNode>) == type) //nodes
+            if (typeof(byte[]) == type)
+                primitive = Integer;
+            else if (typeof(IList<HtmlNode>) == type) //nodes
                 primitive = String;
-            if (Integer.Type == type)
+            else if (Integer.Type == type)
                 primitive = Integer;
             else if (Float.Type == type)
                 primitive = Float;
