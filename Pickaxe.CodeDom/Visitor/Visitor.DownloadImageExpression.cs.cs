@@ -27,7 +27,7 @@ namespace Pickaxe.CodeDom.Visitor
     {
         public void Visit(DownloadImageExpression expression)
         {
-            var type = new CodeTypeReference("Table", new CodeTypeReference("DownloadImage"));
+            var type = new CodeTypeReference("RuntimeTable", new CodeTypeReference("DownloadImage"));
             DownloadImpl(expression.Statement, "DownloadImage", type, expression.Line.Line);
 
             _codeStack.Peek().Scope = new ScopeData<TableDescriptor> { Type = DownloadImage.Columns, CodeDomReference = type };

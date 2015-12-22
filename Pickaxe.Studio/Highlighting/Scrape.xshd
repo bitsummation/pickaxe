@@ -29,6 +29,13 @@
 
       <KeyWords name="Operators" color="DarkGray">
         <Key word = "=" />
+        <Key word = "&lt;=" />
+        <Key word = "&lt;" />
+        <Key word = "&gt;=" />
+        <Key word = "&gt;" />
+        <Key word = "!=" />
+        <Key word = "and" />
+        <Key word = "or" />
         <Key word = "null" />
       </KeyWords>
                 

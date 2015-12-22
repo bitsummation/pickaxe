@@ -30,7 +30,7 @@ namespace Pickaxe.Sdk
         {
             get
             {
-                return BooleanExpression.Descendants<NodesBooleanExpression>().First();
+                return BooleanExpression.Descendants<NodesBooleanExpression>().FirstOrDefault();
             }
         }
 

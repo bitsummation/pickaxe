@@ -143,7 +143,7 @@ namespace Pickaxe.CodeDom.Visitor
             if (statement.Where != null)
             {
                 var domWhereArgs = VisitChild(statement.Where, new CodeDomArg() { Scope = fromDomArg.Scope });
-                methodStatements.Add(domWhereArgs.CodeExpression);
+                methodStatements.Add(new CodeAssignStatement(new CodeVariableReferenceExpression("fromTable") ,domWhereArgs.CodeExpression));
             }
 
             //outside iterator

@@ -58,12 +58,12 @@ namespace Pickaxe.Runtime
             return doc;
         }
 
-        public static Table<DownloadPage> DownloadPage(IHttpRequestFactory factory, string url)
+        public static RuntimeTable<DownloadPage> DownloadPage(IHttpRequestFactory factory, string url)
         {
             return DownloadPage(factory, new string[] { url });
         }
 
-        public static Table<DownloadPage> DownloadPage(IHttpRequestFactory factory, string[] urls)
+        public static RuntimeTable<DownloadPage> DownloadPage(IHttpRequestFactory factory, string[] urls)
         {
             var table = new RuntimeTable<DownloadPage>();
             foreach(var url in urls)
@@ -76,7 +76,7 @@ namespace Pickaxe.Runtime
             return table;
         }
 
-        public static Table<DownloadImage> DownloadImage(IHttpRequestFactory factory, string url)
+        public static RuntimeTable<DownloadImage> DownloadImage(IHttpRequestFactory factory, string url)
         {
             var table = new RuntimeTable<DownloadImage>();
 

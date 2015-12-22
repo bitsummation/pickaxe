@@ -35,16 +35,15 @@ namespace PickAxe.Tests
    
     select 
         case
-        when (size > 10 and size < 400) or size = 10 then 5
-        when size = 5 then 10
+        when (id > 10 and id < 400) or id = 10 then 5
+        when id = 5 then 10
         end
-    from download page 'http://'
-    where nodes = '' and size < 20 --(id > 10 and id < 400) or id = 10
+    from temp--download page 'http://'
+    where /*nodes = '' and*/ id < 20 --(id > 10 and id < 400) or id = 10
 
 
 --nodes
 ";
-
             var compiler = new Compiler(input);
             var sources = compiler.ToCode();
             Assert.IsTrue(compiler.Errors.Count == 0);

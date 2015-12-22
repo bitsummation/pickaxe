@@ -34,11 +34,14 @@ namespace Pickaxe.CodeDom.Visitor
             CodeMemberMethod method = new CodeMemberMethod();
             method.Name = "Where_" + statementDomArg.MethodIdentifier;
             method.Attributes = MemberAttributes.Private;
+            method.ReturnType = _codeStack.Peek().Scope.CodeDomReference;
             method.Parameters.Add(new CodeParameterDeclarationExpression(_codeStack.Peek().Scope.CodeDomReference, "table"));
             GenerateCallStatement(method.Statements, statement.Line.Line);
 
             _mainType.Type.Members.Add(method);
 
+            method.Statements.Add(new CodeVariableDeclarationStatement(_codeStack.Peek().Scope.CodeDomReference, "newTable",
+                new CodeObjectCreateExpression(_codeStack.Peek().Scope.CodeDomReference)));
 
             //hack to get anonymous delegate to work. CodeDom doesn't not directly support this
             CSharpCodeProvider csc = new CSharpCodeProvider();
@@ -56,15 +59,17 @@ namespace Pickaxe.CodeDom.Visitor
                 );
 
             method.Statements.Add(new CodeMethodInvokeExpression(
-                new CodeVariableReferenceExpression("table"), "SetRows", new CodeVariableReferenceExpression("rows")));
+                new CodeVariableReferenceExpression("newTable"), "SetRows", new CodeVariableReferenceExpression("rows")));
 
 
             if(statement.NodesBooleanExpression != null)
             {
                 method.Statements.Add(new CodeMethodInvokeExpression(
-                         new CodeMethodReferenceExpression(new CodeTypeReferenceExpression("table"), "CssWhere"),
+                         new CodeMethodReferenceExpression(new CodeTypeReferenceExpression("newTable"), "CssWhere"),
                          new CodePrimitiveExpression(statement.NodesBooleanExpression.Selector)));
             }
+
+            method.Statements.Add(new CodeMethodReturnStatement(new CodeVariableReferenceExpression("newTable")));
 
             var methodcall = new CodeMethodInvokeExpression(
              new CodeMethodReferenceExpression(null, method.Name), new CodeArgumentReferenceExpression("fromTable"));
