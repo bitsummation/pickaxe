@@ -12,6 +12,7 @@
  * limitations under the License.
  */
 
+using HtmlAgilityPack;
 using System;
 using System.CodeDom;
 using System.Collections.Generic;
@@ -32,6 +33,8 @@ namespace Pickaxe.Runtime
         {
             TablePrimitive primitive = null;
 
+            if (typeof(IList<HtmlNode>) == type) //nodes
+                primitive = String;
             if (Integer.Type == type)
                 primitive = Integer;
             else if (Float.Type == type)

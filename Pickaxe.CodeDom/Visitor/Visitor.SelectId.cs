@@ -48,14 +48,23 @@ namespace Pickaxe.CodeDom.Visitor
             if (!descriptor.Type.Variables.Any(x => x.Variable == id.Id)) //variable is not in table
             {
                 //Need to check in the Scope to see if variable is defined there. If in select statmenet it is valid to put variables in it.
-                if(Scope.Current.IsRegistered(id.Id))
+                if (Scope.Current.IsRegistered(id.Id))
                 {
                     var variable = new VariableReferance() { Id = id.Id, Line = id.Line };
                     var variableArgs = VisitChild(variable);
                     _codeStack.Peek().CodeExpression = variableArgs.CodeExpression;
                 }
                 else
+                {
+                    //assign default type error condition
+                    _codeStack.Peek().Scope = new ScopeData<Type> { Type = typeof(int), CodeDomReference = new CodeTypeReference(typeof(int)) };
                     Errors.Add(new UnknownSelectVariableException(new Semantic.LineInfo(id.Line.Line, id.Line.CharacterPosition), id.Id));
+                }
+            }
+            else
+            {
+                var pair = descriptor.Type.Variables.Where(x => x.Variable == id.Id).Single();
+                _codeStack.Peek().Scope = new ScopeData<Type> { Type = pair.Type.Type, CodeDomReference = new CodeTypeReference(pair.Type.Type) };
             }
         }
     }

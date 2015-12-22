@@ -34,16 +34,21 @@ namespace PickAxe.Tests
   create buffer temp(id int)
    
     select 
-        case
-        when (id > 10 and id < 400) or id = 10 then 5
-        when id = 5 then 10
-        end
-    from temp--download page 'http://'
-    where /*nodes = '' and*/ id < 20 --(id > 10 and id < 400) or id = 10
+       id
+    from temp --download page 'http://'
+    where ids < '20' --(id > 10 and id < 400) or id = 10
 
 
 --nodes
 ";
+
+              var code = @"
+
+    select 
+        case when pick '' take text < 10 then 5 end            
+    from download page 'http://sldj'
+
+            ";
             var compiler = new Compiler(input);
             var sources = compiler.ToCode();
             Assert.IsTrue(compiler.Errors.Count == 0);
