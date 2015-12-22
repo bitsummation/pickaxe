@@ -62,7 +62,7 @@ namespace Pickaxe.CodeDom.Visitor
             if(statement.NodesBooleanExpression != null)
             {
                 method.Statements.Add(new CodeMethodInvokeExpression(
-                         new CodeMethodReferenceExpression(new CodeTypeReferenceExpression("fromTable"), "CssWhere"),
+                         new CodeMethodReferenceExpression(new CodeTypeReferenceExpression("table"), "CssWhere"),
                          new CodePrimitiveExpression(statement.NodesBooleanExpression.Selector)));
             }
 
