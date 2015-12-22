@@ -26,11 +26,11 @@ namespace Pickaxe.Sdk
             }
         }
 
-        public NodesBooleanExpressionStub NodesBooleanExpression
+        public NodesBooleanExpression NodesBooleanExpression
         {
             get
             {
-                return BooleanExpression.Descendants<NodesBooleanExpressionStub>().First();
+                return BooleanExpression.Descendants<NodesBooleanExpression>().First();
             }
         }
 

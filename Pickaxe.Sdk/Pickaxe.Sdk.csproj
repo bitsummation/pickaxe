@@ -47,7 +47,7 @@
     <Compile Include="CaseBooleanStatement.cs" />
     <Compile Include="CaseExpression.cs" />
     <Compile Include="CaseVariableStatement.cs" />
-    <Compile Include="NodesBooleanExpressionStub.cs" />
+    <Compile Include="NodesBooleanExpression.cs" />
     <Compile Include="DivisionOperator.cs" />
     <Compile Include="DownloadImageExpression.cs" />
     <Compile Include="EachStatement.cs" />

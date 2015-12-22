@@ -23,7 +23,7 @@ namespace Pickaxe.CodeDom.Visitor
 {
     public partial class CodeDomGenerator : IAstVisitor
     {
-        public void Visit(NodesBooleanExpressionStub expression)
+        public void Visit(NodesBooleanExpression expression)
         {
             VisitChild(expression.Left, new CodeDomArg() { Scope = _codeStack.Peek().Scope });
             VisitChild(expression.Right, new CodeDomArg() { Scope = _codeStack.Peek().Scope });

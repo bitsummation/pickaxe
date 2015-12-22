@@ -412,7 +412,7 @@ namespace Pickaxe.Parser.Bridge
             VisitChildren(tree);
         }
 
-        public void Visit(NodesBooleanExpressionStub expression, CommonTree tree)
+        public void Visit(NodesBooleanExpression expression, CommonTree tree)
         {
             SetLine(expression, tree);
             Parent(tree).Children.Add(expression);

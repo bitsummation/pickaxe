@@ -71,7 +71,7 @@ namespace Pickaxe.Parser.Bridge
         void Visit(CaseBooleanStatement statement, CommonTree tree);
         void Visit(WhenBooleanStatement statement, CommonTree tree);
 
-        void Visit(NodesBooleanExpressionStub expression, CommonTree tree);
+        void Visit(NodesBooleanExpression expression, CommonTree tree);
         void Visit(AndExpression expression, CommonTree tree);
         void Visit(OrExpression expression, CommonTree tree);
         void Visit(LessThanExpression expression, CommonTree tree);

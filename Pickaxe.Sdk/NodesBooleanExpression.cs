@@ -19,7 +19,7 @@ using System.Text;
 
 namespace Pickaxe.Sdk
 {
-    public class NodesBooleanExpressionStub : BooleanExpression
+    public class NodesBooleanExpression : BooleanExpression
     {
         public string Selector
         {
