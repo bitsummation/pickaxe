@@ -27,7 +27,7 @@ namespace Pickaxe.CodeDom.Visitor
         private void DoBoolean(BooleanExpression expression, CodeBinaryOperatorType operation)
         {
             var leftArgs = VisitChild(expression.Left, new CodeDomArg() { Scope = _codeStack.Peek().Scope });
-            var rightArgs = VisitChild(expression.Rigth, new CodeDomArg() { Scope = _codeStack.Peek().Scope });
+            var rightArgs = VisitChild(expression.Right, new CodeDomArg() { Scope = _codeStack.Peek().Scope });
 
             Type leftType = Type.GetType(leftArgs.Scope.CodeDomReference.BaseType);
             Type rightType = Type.GetType(rightArgs.Scope.CodeDomReference.BaseType);

@@ -26,8 +26,13 @@ namespace Pickaxe.Sdk
             }
         }
 
-        //public 
-
+        public NodesBooleanExpressionStub NodesBooleanExpression
+        {
+            get
+            {
+                return BooleanExpression.Descendants<NodesBooleanExpressionStub>().First();
+            }
+        }
 
         public override void Accept(IAstVisitor visitor)
         {

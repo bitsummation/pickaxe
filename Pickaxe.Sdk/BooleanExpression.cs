@@ -22,6 +22,6 @@ namespace Pickaxe.Sdk
     public abstract class BooleanExpression : AstNode
     {
         public AstNode Left { get { return Children.First(); } }
-        public AstNode Rigth { get { return Children.Last(); } }
+        public AstNode Right { get { return Children.Last(); } }
     }
 }

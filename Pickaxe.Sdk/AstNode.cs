@@ -12,6 +12,7 @@
  * limitations under the License.
  */
 
+using System.Collections.Generic;
 namespace Pickaxe.Sdk
 {
     public abstract class AstNode
@@ -25,5 +26,21 @@ namespace Pickaxe.Sdk
         public AstNode Parent { get; set; }
         public ChildCollection Children { get; private set; } 
         public abstract void Accept(IAstVisitor visitor);
+
+        public IList<TValue> Descendants<TValue>() where TValue : AstNode
+        {
+            var list = new List<TValue>();
+            Descendants(list);
+            return list;
+        }
+
+        private void Descendants<TValue>(IList<TValue> matches) where TValue : AstNode
+        {
+            if (typeof(TValue) == this.GetType())
+                matches.Add(this as TValue);
+
+            foreach (var child in Children)
+                child.Descendants(matches);
+        }
     }
 }

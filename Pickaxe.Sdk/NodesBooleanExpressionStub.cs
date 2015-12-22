@@ -21,6 +21,14 @@ namespace Pickaxe.Sdk
 {
     public class NodesBooleanExpressionStub : BooleanExpression
     {
+        public string Selector
+        {
+            get
+            {
+                return Children.Where(x => x.GetType() == typeof(StringLiteral)).Cast<StringLiteral>().Single().Value;
+            }
+        }
+
         public override void Accept(IAstVisitor visitor)
         {
             visitor.Visit(this);

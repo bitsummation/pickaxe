@@ -255,7 +255,7 @@ andExpression
 	;
 	
 boolTerm
-	: NODES EQUALS STRING_LITERAL -> ^(NODES STRING_LITERAL)
+	: NODES EQUALS STRING_LITERAL -> ^(NODES SELECT_ID[$NODES] STRING_LITERAL)
 	| selectArg (boolOperator^ selectArg)? 
 	| OPENPAREN! boolExpression CLOSEPAREN!
 	;

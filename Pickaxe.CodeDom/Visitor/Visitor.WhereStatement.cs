@@ -25,15 +25,6 @@ using System.Threading.Tasks;
 
 namespace Pickaxe.CodeDom.Visitor
 {
-    /*
-        * 
-        *   private CodeTable<temp> Where_37a99efb340440479119342f9a9481b2(CodeTable<temp> table)
-   {
-       var rows = table.Where(row => row.id == 2).ToArray();
-       return fromTable.Where(""); //nodes
-   }
-        */ 
-
     public partial class CodeDomGenerator : IAstVisitor
     {
         public void Visit(WhereStatement statement)
@@ -67,23 +58,18 @@ namespace Pickaxe.CodeDom.Visitor
             method.Statements.Add(new CodeMethodInvokeExpression(
                 new CodeVariableReferenceExpression("table"), "SetRows", new CodeVariableReferenceExpression("rows")));
 
+
+            if(statement.NodesBooleanExpression != null)
+            {
+                method.Statements.Add(new CodeMethodInvokeExpression(
+                         new CodeMethodReferenceExpression(new CodeTypeReferenceExpression("fromTable"), "CssWhere"),
+                         new CodePrimitiveExpression(statement.NodesBooleanExpression.Selector)));
+            }
+
             var methodcall = new CodeMethodInvokeExpression(
              new CodeMethodReferenceExpression(null, method.Name), new CodeArgumentReferenceExpression("fromTable"));
 
             _codeStack.Peek().CodeExpression = methodcall;
-
-
-
-
-            /*VerifyCssSelector(statement.Selector, new Semantic.LineInfo(statement.Line.Line, statement.Line.CharacterPosition));
-
-            var state = new CodeAssignStatement(
-                    new CodeSnippetExpression("fromTable"),
-                     new CodeMethodInvokeExpression(
-                         new CodeMethodReferenceExpression(new CodeTypeReferenceExpression("fromTable"), "Where"),
-                         new CodePrimitiveExpression(statement.Selector)));
-
-            _codeStack.Peek().ParentStatements.Add(state);*/
         }
     }
 }

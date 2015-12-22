@@ -25,6 +25,9 @@ namespace Pickaxe.CodeDom.Visitor
     {
         public void Visit(NodesBooleanExpressionStub expression)
         {
+            VisitChild(expression.Left, new CodeDomArg() { Scope = _codeStack.Peek().Scope });
+            VisitChild(expression.Right, new CodeDomArg() { Scope = _codeStack.Peek().Scope });
+
             _codeStack.Peek().CodeExpression = new CodePrimitiveExpression(true);
         }
     }

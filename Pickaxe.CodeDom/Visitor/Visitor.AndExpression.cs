@@ -12,7 +12,7 @@ namespace Pickaxe.CodeDom.Visitor
         private void DoBooleanAggregate(BooleanExpression expression, CodeBinaryOperatorType operation)
         {
             var leftArgs = VisitChild(expression.Left, new CodeDomArg() { Scope = _codeStack.Peek().Scope });
-            var rightArgs = VisitChild(expression.Rigth, new CodeDomArg() { Scope = _codeStack.Peek().Scope });
+            var rightArgs = VisitChild(expression.Right, new CodeDomArg() { Scope = _codeStack.Peek().Scope });
 
             if (leftArgs.Tag != null)
                 _codeStack.Peek().Tag = leftArgs.Tag;
