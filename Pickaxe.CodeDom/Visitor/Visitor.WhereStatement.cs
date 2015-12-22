@@ -64,6 +64,9 @@ namespace Pickaxe.CodeDom.Visitor
                         new CodeTypeReferenceExpression("table"), "Where"), boolean), "ToList"))
                 );
 
+            method.Statements.Add(new CodeMethodInvokeExpression(
+                new CodeVariableReferenceExpression("table"), "SetRows", new CodeVariableReferenceExpression("rows")));
+
             var methodcall = new CodeMethodInvokeExpression(
              new CodeMethodReferenceExpression(null, method.Name), new CodeArgumentReferenceExpression("fromTable"));
 

@@ -30,6 +30,11 @@ namespace Pickaxe.Runtime
 
         protected IList<TRow> Rows { get; private set; }
         
+        public void SetRows(IList<TRow> rows)
+        {
+            Rows = rows;
+        }
+
         public virtual void Add(TRow row)
         {
             Rows.Add(row);
