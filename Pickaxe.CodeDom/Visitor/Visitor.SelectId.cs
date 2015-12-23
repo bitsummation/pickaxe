@@ -53,6 +53,7 @@ namespace Pickaxe.CodeDom.Visitor
                     var variable = new VariableReferance() { Id = id.Id, Line = id.Line };
                     var variableArgs = VisitChild(variable);
                     _codeStack.Peek().CodeExpression = variableArgs.CodeExpression;
+                    _codeStack.Peek().Scope = variableArgs.Scope;
                 }
                 else
                 {

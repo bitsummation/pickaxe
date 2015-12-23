@@ -44,12 +44,22 @@ namespace PickAxe.Tests
 
               var code = @"
 
-    select 
-        case when pick '' take text < 10 then 5 end            
-    from download page 'http://sldj'
+   create file carFinal(dealerId int, imageId string, title string, price string, mileage string)
+with (
+    fieldterminator = '|',
+    rowterminator = '\r\n'
+)
+location 'C:\Data\BookCase\Pocatello-cars.txt'
+
+
+temp = 'test'
+
+select *
+from carFinal
+where imageId = temp
 
             ";
-            var compiler = new Compiler(input);
+            var compiler = new Compiler(code);
             var sources = compiler.ToCode();
             Assert.IsTrue(compiler.Errors.Count == 0);
         }
