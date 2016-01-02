@@ -34,32 +34,15 @@ namespace PickAxe.Tests
   create buffer temp(id int)
    
     select 
-       id
-    from temp --download page 'http://'
-    where ids < '20' --(id > 10 and id < 400) or id = 10
+       size
+    from download page 'http://'
+    where size < '20' and nodes = 'p.new' --(id > 10 and id < 400) or id = 10
 
 
 --nodes
 ";
 
-              var code = @"
-
-   create file carFinal(dealerId int, imageId string, title string, price string, mileage string)
-with (
-    fieldterminator = '|',
-    rowterminator = '\r\n'
-)
-location 'C:\Data\BookCase\Pocatello-cars.txt'
-
-
-temp = 'test'
-
-select *
-from carFinal
-where imageId = temp
-
-            ";
-            var compiler = new Compiler(code);
+            var compiler = new Compiler(input);
             var sources = compiler.ToCode();
             Assert.IsTrue(compiler.Errors.Count == 0);
         }
