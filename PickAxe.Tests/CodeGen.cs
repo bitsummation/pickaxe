@@ -38,11 +38,24 @@ namespace PickAxe.Tests
     from download page 'http://'
     where size < '20' and nodes = 'p.new' --(id > 10 and id < 400) or id = 10
 
+    select *
+    from temp
 
 --nodes
 ";
 
-            var compiler = new Compiler(input);
+              var join = @"
+
+    create buffer a (id int, name string)
+    create buffer b (id int, name string)
+
+    select *
+    from a
+    join b on a.id = b.id
+
+";
+
+            var compiler = new Compiler(join);
             var sources = compiler.ToCode();
             Assert.IsTrue(compiler.Errors.Count == 0);
         }

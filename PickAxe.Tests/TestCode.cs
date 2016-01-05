@@ -124,6 +124,11 @@ public class Code : RuntimeBase
         }
     }
 
+    private class Anonymous_4d0c9f05d4c74c7493f1a630792e1e71
+    {
+
+    }
+
     private class temp : IRow
     {
 

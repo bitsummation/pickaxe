@@ -12,13 +12,30 @@
  * limitations under the License.
  */
 
+using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace Pickaxe.Sdk
 {
-    public class FromStatement : AstNode
+    public class InnerJoinStatement : AstNode
     {
-        public AstNode Statement { get { return Children.Where(x => x.GetType() != typeof(InnerJoinStatement)).Single(); } }
+        public AstNode Statement
+        {
+            get { return Children.Where(x => x.GetType() != typeof(InnerJoinStatement)
+                && x.GetType() != typeof(TableMemberReference)).Single(); }
+        }
+
+        public TableMemberReference FirstMember
+        {
+            get {return  Children.Where(x => x.GetType() == typeof(TableMemberReference)).Cast<TableMemberReference>().First(); }
+        }
+
+        public TableMemberReference SecondMember
+        {
+            get { return Children.Where(x => x.GetType() == typeof(TableMemberReference)).Cast<TableMemberReference>().Last(); }
+        }
 
         public InnerJoinStatement Join
         {
@@ -27,7 +44,7 @@ namespace Pickaxe.Sdk
 
         public override void Accept(IAstVisitor visitor)
         {
-            visitor.Visit(this);
+            throw new NotImplementedException();
         }
     }
 }

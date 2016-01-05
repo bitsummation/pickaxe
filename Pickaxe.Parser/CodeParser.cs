@@ -88,6 +88,8 @@ namespace Pickaxe.Parser
                         return new AntlrBridgeTree<PickStatement>(payload, (node, tree, visitor) => visitor.Visit(node, tree));
                     if (payload.Type == ScrapeParser.FROM)
                         return new AntlrBridgeTree<FromStatement>(payload, (node, tree, visitor) => visitor.Visit(node, tree));
+                    if(payload.Type == ScrapeParser.INNER_JOIN)
+                        return new AntlrBridgeTree<InnerJoinStatement>(payload, (node, tree, visitor) => visitor.Visit(node, tree));
                     if (payload.Type == ScrapeParser.WHERE)
                         return new AntlrBridgeTree<WhereStatement>(payload, (node, tree, visitor) => visitor.Visit(node, tree));
                     

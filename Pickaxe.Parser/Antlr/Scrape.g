@@ -210,10 +210,17 @@ whereStatement
 	;
 
 fromStatement
-	: FROM ID -> ^(FROM TABLE_VARIABLE_REFERENCE[$ID])
-	| FROM^ downloadPageExpresssion
-	| FROM^ downloadImageExpression
-	| FROM^ expandExpression
+	: FROM ID innerJoinStatement? -> ^(FROM TABLE_VARIABLE_REFERENCE[$ID] innerJoinStatement?) 
+	| FROM^ (downloadPageExpresssion | downloadImageExpression | expandExpression) innerJoinStatement?
+	;
+
+innerJoinStatement
+	: innerJoin ID 'on' tableMemberReference EQUALS tableMemberReference innerJoinStatement? -> ^(INNER_JOIN TABLE_VARIABLE_REFERENCE[$ID] tableMemberReference tableMemberReference innerJoinStatement?)
+	;
+
+innerJoin
+	: JOIN
+	| INNER_JOIN
 	;
 
 selectStatement
@@ -361,6 +368,8 @@ EACH : 'each';
 IN : 'in';
 SELECT : 'select';
 FROM : 'from';
+INNER_JOIN : 'inner join';
+JOIN: 'join';
 NODES: 'nodes';
 WHERE : 'where';
 PICK : 'pick';

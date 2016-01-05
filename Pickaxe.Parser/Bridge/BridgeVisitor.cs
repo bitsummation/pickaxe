@@ -171,6 +171,13 @@ namespace Pickaxe.Parser.Bridge
             VisitChildren(tree);
         }
 
+        public void Visit(InnerJoinStatement statement, CommonTree tree)
+        {
+            Parent(tree).Children.Add(statement);
+            SetLine(statement, tree);
+            VisitChildren(tree);
+        }
+
         public void Visit(WhereStatement statement, CommonTree tree)
         {
             Parent(tree).Children.Add(statement);

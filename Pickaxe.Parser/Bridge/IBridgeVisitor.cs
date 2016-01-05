@@ -30,6 +30,7 @@ namespace Pickaxe.Parser.Bridge
         void Visit(SelectArg arg, CommonTree tree);
         void Visit(SelectStatement statement, CommonTree tree);
         void Visit(FromStatement statement, CommonTree tree);
+        void Visit(InnerJoinStatement statement, CommonTree tree);
         void Visit(WhereStatement statement, CommonTree tree);
         void Visit(PickStatement statement, CommonTree tree);
         void Visit(SelectId id, CommonTree tree);
