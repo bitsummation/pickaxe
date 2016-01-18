@@ -72,6 +72,7 @@
     <Compile Include="Visitor\Visitor.ExpandIterationVariable.cs" />
     <Compile Include="Visitor\Visitor.GreaterThanEqualExpression.cs" />
     <Compile Include="Visitor\Visitor.GreaterThanExpression.cs" />
+    <Compile Include="Visitor\Visitor.InnerJoinStatement.cs" />
     <Compile Include="Visitor\Visitor.InsertIntoDirectoryStatement.cs" />
     <Compile Include="Visitor\Visitor.LessThanEqualExpression.cs" />
     <Compile Include="Visitor\Visitor.LessThanExpression.cs" />

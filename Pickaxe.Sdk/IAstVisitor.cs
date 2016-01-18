@@ -28,6 +28,7 @@ namespace Pickaxe.Sdk
         void Visit(SelectStatement statement);
         void Visit(SelectArg arg);
         void Visit(FromStatement statement);
+        void Visit(InnerJoinStatement statement);
         void Visit(WhereStatement statement);
         void Visit(PickStatement statement);
         void Visit(SelectId id);

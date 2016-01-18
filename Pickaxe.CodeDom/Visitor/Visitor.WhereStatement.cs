@@ -27,6 +27,20 @@ namespace Pickaxe.CodeDom.Visitor
 {
     public partial class CodeDomGenerator : IAstVisitor
     {
+        //used for anonymous delegates. No codedom for those. Could change to actual delegates. Not idea but like anonymouse delagates
+        private string GenerateCode(CodeStatement statement)
+        {
+            string code = string.Empty;
+            using (CSharpCodeProvider csc = new CSharpCodeProvider())
+            using (StringWriter sw = new StringWriter())
+            {
+                csc.GenerateCodeFromStatement(statement, sw, new CodeGeneratorOptions());
+                code = sw.ToString();
+            }
+
+            return code;
+        }
+
         public void Visit(WhereStatement statement)
         {
             var statementDomArg = VisitChild(statement.BooleanExpression, new CodeDomArg() { Scope = _codeStack.Peek().Scope });
@@ -43,13 +57,7 @@ namespace Pickaxe.CodeDom.Visitor
             method.Statements.Add(new CodeVariableDeclarationStatement(_codeStack.Peek().Scope.CodeDomReference, "newTable",
                 new CodeObjectCreateExpression(_codeStack.Peek().Scope.CodeDomReference)));
 
-            //hack to get anonymous delegate to work. CodeDom doesn't not directly support this
-            CSharpCodeProvider csc = new CSharpCodeProvider();
-            StringWriter sw = new StringWriter();
-            csc.GenerateCodeFromStatement(new CodeMethodReturnStatement(statementDomArg.CodeExpression), sw, new CodeGeneratorOptions());
-
-            var boolean = new CodeSnippetExpression("row => {" + sw + "}");
-
+            var boolean = new CodeSnippetExpression("row => {" + GenerateCode(new CodeMethodReturnStatement(statementDomArg.CodeExpression)) + "}");
             var rowType = new CodeTypeReference("IList", new CodeTypeReference(_codeStack.Peek().Scope.CodeDomReference.TypeArguments[0].BaseType));
 
             method.Statements.Add(new CodeVariableDeclarationStatement(rowType, "rows",

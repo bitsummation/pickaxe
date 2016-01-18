@@ -55,6 +55,7 @@ namespace PickAxe.Tests
 
 ";
 
+
             var compiler = new Compiler(join);
             var sources = compiler.ToCode();
             Assert.IsTrue(compiler.Errors.Count == 0);

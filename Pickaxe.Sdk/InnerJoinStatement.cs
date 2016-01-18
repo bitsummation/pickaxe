@@ -44,7 +44,7 @@ namespace Pickaxe.Sdk
 
         public override void Accept(IAstVisitor visitor)
         {
-            throw new NotImplementedException();
+            visitor.Visit(this);
         }
     }
 }
