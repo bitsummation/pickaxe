@@ -14,8 +14,10 @@
 
 using Pickaxe.Sdk;
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 
 namespace Pickaxe.CodeDom.Visitor
@@ -24,6 +26,61 @@ namespace Pickaxe.CodeDom.Visitor
     {
         public void Visit(InnerJoinStatement statement)
         {
+            var statementDomArg = VisitChild(statement.Statement);
+
+            CodeMemberMethod method = new CodeMemberMethod();
+            method.Name = "Join_" + statementDomArg.MethodIdentifier;
+            method.Attributes = MemberAttributes.Private;
+            method.Parameters.Add(new CodeParameterDeclarationExpression(new CodeTypeReference("IEnumerable", _codeStack.Peek().Scope.CodeDomReference), "outer"));
+            GenerateCallStatement(method.Statements, statement.Line.Line);
+            _mainType.Type.Members.Add(method);
+
+            method.Statements.Add(new CodeVariableDeclarationStatement(statementDomArg.Scope.CodeDomReference, "table", statementDomArg.CodeExpression));
+
+            //create anon type
+
+            var anon = "anon_" + Guid.NewGuid().ToString("N");
+            var bufferTable = new CodeTypeDeclaration(anon) { TypeAttributes = TypeAttributes.NestedPrivate };
+            _mainType.Type.Members.Add(bufferTable);
+
+            var field = new CodeMemberField();
+            field.Name = statementDomArg.Scope.CodeDomReference.TypeArguments[0].BaseType;
+            field.Attributes = MemberAttributes.Public | MemberAttributes.Final;
+            field.Type = statementDomArg.Scope.CodeDomReference.TypeArguments[0];
+            _joinMembers.Add(field);
+            bufferTable.Members.AddRange(_joinMembers.ToArray());
+
+            //Do Join
+            var anonType = new CodeTypeReference(anon);
+
+            using (Scope.Push(_mainType)) //register row variables
+            {
+                //var scope = Scope.Current.GetTableDescriptor(statement.Join.Statement);
+                //Scope.Current.RegisterPrimitive(field.Name,  )
+            }
+
+            //outer
+
+            var outerArgs = VisitChild(statement.FirstMember/*, new CodeDomArg() { Scope = fromDomArg.Scope }*/);
+            method.Statements.Add(outerArgs.CodeExpression);
+
+            //inner
+
+            //copy
+
+
+            method.Statements.Add(new CodeVariableDeclarationStatement(new CodeTypeReference("IEnumerable", anonType), "join",
+                       new CodeMethodInvokeExpression(new CodeMethodReferenceExpression(
+                           new CodeTypeReferenceExpression("outer"), "Join"), new CodeVariableReferenceExpression("table"))));
+
+            
+            var methodcall = new CodeMethodInvokeExpression(
+              new CodeMethodReferenceExpression(null, method.Name), new CodeVariableReferenceExpression("join") );
+
+            _codeStack.Peek().CodeExpression = methodcall;
+
+            var anonTableType = new CodeTypeReference("CodeTable", new CodeTypeReference(anon));
+            _codeStack.Peek().Scope = new ScopeData<Type> { Type = typeof(int), CodeDomReference = anonTableType };
         }
     }
 }

@@ -31,6 +31,7 @@ namespace Pickaxe.CodeDom.Visitor
 
         private int _totalOperations;
         private Stack<CodeDomArg> _codeStack;
+        private IList<CodeMemberField> _joinMembers;
 
         public CodeDomGenerator(AstNode program)
         {
@@ -39,6 +40,7 @@ namespace Pickaxe.CodeDom.Visitor
             Errors = new List<SemanticException>();
             _program = program;
             _codeStack = new Stack<CodeDomArg>();
+            _joinMembers = new List<CodeMemberField>();
 
             _unit = new CodeCompileUnit();
             _mainType = new CodeDomTypeDefinition("Code");

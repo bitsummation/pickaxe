@@ -25,6 +25,18 @@ namespace Pickaxe.CodeDom.Visitor
 {
     public partial class CodeDomGenerator : IAstVisitor
     {
+        private CodeMemberMethod CreateCopyMethod(CodeParameterDeclarationExpressionCollection methodParams, CodeStatementCollection statements)
+        {
+            CodeMemberMethod method = new CodeMemberMethod();
+            method.Name = "Copy_" + Guid.NewGuid().ToString("N");
+            method.Parameters.AddRange(methodParams);
+            _mainType.Type.Members.Add(method);
+
+            method.Statements.AddRange(statements);
+
+            return method;
+        }
+
         public void Visit(FromStatement statement)
         {
             var statementDomArg = VisitChild(statement.Statement);
@@ -36,10 +48,14 @@ namespace Pickaxe.CodeDom.Visitor
             GenerateCallStatement(method.Statements, statement.Line.Line);
             _mainType.Type.Members.Add(method);
 
+            _codeStack.Peek().Scope = statementDomArg.Scope;
+
             method.Statements.Add(new CodeVariableDeclarationStatement(statementDomArg.Scope.CodeDomReference, "table", statementDomArg.CodeExpression));
 
             if(statement.Join != null)
             {
+                _joinMembers.Clear();
+
                 var anon = "anon_" + Guid.NewGuid().ToString("N");
                 var bufferTable = new CodeTypeDeclaration(anon) { TypeAttributes = TypeAttributes.NestedPrivate };
                 _mainType.Type.Members.Add(bufferTable);
@@ -48,14 +64,39 @@ namespace Pickaxe.CodeDom.Visitor
                 field.Name = statementDomArg.Scope.CodeDomReference.TypeArguments[0].BaseType;
                 field.Attributes = MemberAttributes.Public | MemberAttributes.Final;
                 field.Type = statementDomArg.Scope.CodeDomReference.TypeArguments[0];
-                bufferTable.Members.Add(field);
+                _joinMembers.Add(field);
+                bufferTable.Members.AddRange(_joinMembers.ToArray());
+                
+                var codeStatements = new CodeStatementCollection();
 
-                var boolean = new CodeSnippetExpression("O => {" + GenerateCode(new CodeMethodReturnStatement(statementDomArg.CodeExpression)) + "}");
+                var anonType = new CodeTypeReference(anon);
+                codeStatements.Add(new CodeVariableDeclarationStatement(anonType, "t",
+                   new CodeObjectCreateExpression(anonType)));
 
-                method.Statements.Add(new CodeVariableDeclarationStatement(new CodeTypeReference("IEnumerable", statementDomArg.Scope.CodeDomReference.TypeArguments[0]), "join",
-                    new CodeMethodInvokeExpression(
+                codeStatements.Add(new CodeAssignStatement(new CodePropertyReferenceExpression(new CodeVariableReferenceExpression("t"), field.Name),
+                    new CodeVariableReferenceExpression("o")));
+
+                codeStatements.Add(new CodeMethodReturnStatement(new CodeVariableReferenceExpression("t")));
+
+                var codeParams = new CodeParameterDeclarationExpressionCollection();
+                codeParams.Add(new CodeParameterDeclarationExpression(statementDomArg.Scope.CodeDomReference.TypeArguments[0], "o"));
+                var copyMethod = CreateCopyMethod(codeParams, codeStatements);
+                copyMethod.ReturnType = anonType;
+
+                var anonExpression = new CodeSnippetExpression("o => {" + GenerateCode(
+                    new CodeMethodReturnStatement(
+                        new CodeMethodInvokeExpression(new CodeMethodReferenceExpression(null, copyMethod.Name),
+                            new CodeVariableReferenceExpression("o")))) + "}");
+
+                method.Statements.Add(new CodeVariableDeclarationStatement(new CodeTypeReference("IEnumerable", anonType), "join",
                         new CodeMethodInvokeExpression(new CodeMethodReferenceExpression(
-                            new CodeTypeReferenceExpression("table"), "Where"), boolean), "ToList")));
+                            new CodeTypeReferenceExpression("table"), "Select"), anonExpression)));
+
+                var args = VisitChild(statement.Join, new CodeDomArg() {Scope = new ScopeData<Type> { Type = typeof(int), CodeDomReference = anonType} });
+
+                method.Statements.Add(new CodeMethodReturnStatement(args.CodeExpression));
+                method.ReturnType = args.Scope.CodeDomReference;
+                _codeStack.Peek().Scope = args.Scope;
 
                 /*using (Scope.Push(_mainType))
                 {
@@ -76,7 +117,6 @@ namespace Pickaxe.CodeDom.Visitor
               new CodeMethodReferenceExpression(null, method.Name));
 
             _codeStack.Peek().CodeExpression = methodcall;
-            _codeStack.Peek().Scope = statementDomArg.Scope;
         }
     }
 }
