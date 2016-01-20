@@ -48,7 +48,7 @@ namespace Pickaxe.CodeDom.Visitor
             }
 
             _codeStack.Peek().Scope = codeType;
-            _codeStack.Peek().CodeExpression = new CodeVariableReferenceExpression("_" + scope.ScopeIdentifier + "." + variable.Id);
+            _codeStack.Peek().CodeExpression = scope.CreateExpression(variable.Id);
         }
     }
 }

@@ -12,6 +12,7 @@
  * limitations under the License.
  */
 
+using Pickaxe.Runtime;
 using Pickaxe.Sdk;
 using System;
 using System.CodeDom;
@@ -40,6 +41,8 @@ namespace Pickaxe.CodeDom.Visitor
         public void Visit(FromStatement statement)
         {
             var statementDomArg = VisitChild(statement.Statement);
+            var scope = Scope.Current.GetTableDescriptor(statementDomArg.Scope.CodeDomReference.TypeArguments[0].BaseType);
+            Scope.Current.Register(statementDomArg.Scope.CodeDomReference.TypeArguments[0].BaseType, new ScopeData<TableDescriptor> { Type = scope.Type, CodeDomReference = scope.CodeDomReference.TypeArguments[0] });
 
             CodeMemberMethod method = new CodeMemberMethod();
             method.Name = "From_" + statementDomArg.MethodIdentifier;

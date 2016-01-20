@@ -211,7 +211,7 @@ whereStatement
 
 fromStatement
 	: FROM ID innerJoinStatement? -> ^(FROM TABLE_VARIABLE_REFERENCE[$ID] innerJoinStatement?) 
-	| FROM^ (downloadPageExpresssion | downloadImageExpression | expandExpression) innerJoinStatement?
+	| FROM^ (downloadPageExpresssion | downloadImageExpression | expandExpression)
 	;
 
 innerJoinStatement

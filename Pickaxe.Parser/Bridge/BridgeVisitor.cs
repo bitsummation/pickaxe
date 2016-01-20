@@ -340,7 +340,7 @@ namespace Pickaxe.Parser.Bridge
         public void Visit(TableMemberReference variable, CommonTree tree)
         {
             Parent(tree).Children.Add(variable);
-            variable.RowReference = new TableVariableRowReference() { Id = tree.GetChild(0).Text };
+            variable.RowReference = new TableVariableRowReference() { Id = tree.GetChild(0).Text, Parent = variable };
             SetLine(variable.RowReference, tree.GetChild(0));
             variable.Member = tree.GetChild(1).Text;
             SetLine(variable, tree.GetChild(1));

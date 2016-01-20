@@ -32,13 +32,15 @@ namespace PickAxe.Tests
               var input = @"
 
   create buffer temp(id int)
-   
+  insert into temp
+  select 2     
+
     select 
        size
     from download page 'http://'
     where size < '20' and nodes = 'p.new' --(id > 10 and id < 400) or id = 10
 
-    select *
+    select id
     from temp
 
 --nodes
@@ -56,7 +58,7 @@ namespace PickAxe.Tests
 ";
 
 
-            var compiler = new Compiler(join);
+            var compiler = new Compiler(input);
             var sources = compiler.ToCode();
             Assert.IsTrue(compiler.Errors.Count == 0);
         }

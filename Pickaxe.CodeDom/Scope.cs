@@ -23,16 +23,17 @@ namespace Pickaxe.CodeDom
 {
     internal class Scope : IDisposable
     {
-        private Dictionary<string, IScopeData> _scope;
+        protected Dictionary<string, IScopeData> _scope;
         private Scope _parent;
 
         public static Scope Current { get; private set; }
 
-        private Scope(CodeDomTypeDefinition mainType)
+        protected Scope(CodeDomTypeDefinition mainType)
         {
             _scope = new Dictionary<string, IScopeData>();
             ScopeIdentifier = "Scope_" +  Guid.NewGuid().ToString("N");
-            CreateType(mainType);
+            if(mainType != null)
+                CreateType(mainType);
         }
 
         private void CreateType(CodeDomTypeDefinition mainType)
@@ -62,6 +63,14 @@ namespace Pickaxe.CodeDom
         public static Scope Push(CodeDomTypeDefinition mainType)
         {
             var scope = new Scope(mainType);
+            scope._parent = Current;
+            Current = scope;
+            return scope;
+        }
+
+        public static Scope PushSelect()
+        {
+            var scope = new SelectScope();
             scope._parent = Current;
             Current = scope;
             return scope;
@@ -153,6 +162,11 @@ namespace Pickaxe.CodeDom
         {
             var scope = FindScope(variable);
             return scope._scope[variable] as ScopeData<TableDescriptor>;
+        }
+
+        public virtual CodeExpression CreateExpression(string variable)
+        {
+            return new CodeVariableReferenceExpression("_" + ScopeIdentifier + "." + variable);
         }
 
         public void Dispose()

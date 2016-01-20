@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="CodeDomArg.cs" />
+    <Compile Include="SelectScope.cs" />
     <Compile Include="Semantic\BadCssSelector.cs" />
     <Compile Include="Semantic\BadProxyFormat.cs" />
     <Compile Include="Semantic\InsertSelectArgsNotEqual.cs" />

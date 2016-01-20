@@ -43,7 +43,7 @@ namespace Pickaxe.CodeDom.Visitor
             }
 
             _codeStack.Peek().Scope = codeType;
-            _codeStack.Peek().CodeExpression = new CodeVariableReferenceExpression("_" + scope.ScopeIdentifier + "." + variable.Id.Replace("@@", "g_"));
+            _codeStack.Peek().CodeExpression = scope.CreateExpression(variable.Id.Replace("@@", "g_"));
         }
 
     }
