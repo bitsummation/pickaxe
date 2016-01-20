@@ -28,6 +28,7 @@ namespace Pickaxe.Runtime
         public static TablePrimitive Float = new FloatImpl();
         public static TablePrimitive String = new StringImpl();
         public static TablePrimitive Identity = new IdentityImpl();
+        public static TablePrimitive Date = new DateImpl();
 
         public static TablePrimitive FromType(Type type)
         {
@@ -43,6 +44,8 @@ namespace Pickaxe.Runtime
                 primitive = Float;
             else if (String.Type == type)
                 primitive = String;
+            else if (Date.Type == type)
+                primitive = Date;
 
             return primitive;
         }
@@ -59,6 +62,8 @@ namespace Pickaxe.Runtime
                 primitive = String;
             else if (Identity.TypeString == type)
                 primitive = Identity;
+            else if (Date.TypeString == type)
+                primitive = Date;
             else
                 throw new InvalidOperationException("Unexpected Type");
 
@@ -131,6 +136,24 @@ namespace Pickaxe.Runtime
             public override CodeExpression ToNative(CodeExpression expression)
             {
                 return new CodeMethodInvokeExpression(new CodeTypeReferenceExpression("Convert"), "ToString", expression);
+            }
+        }
+
+        private class DateImpl : TablePrimitive
+        {
+            public override string TypeString
+            {
+                get { return "datetime"; }
+            }
+
+            public override Type Type
+            {
+                get { return typeof(DateTime); }
+            }
+
+            public override CodeExpression ToNative(CodeExpression expression)
+            {
+                return new CodeMethodInvokeExpression(new CodeTypeReferenceExpression("Convert"), "ToDateTime", expression);
             }
         }
     }
