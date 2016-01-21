@@ -35,12 +35,10 @@ namespace PickAxe.Tests
   insert into temp
   select 2     
 
-    select 
-       size
-    from download page 'http://'
-    where size < '20' and nodes = 'p.new' --(id > 10 and id < 400) or id = 10
+    tvar = 'variable'
 
-    select id
+
+    select tvar, temp.id
     from temp
 
 --nodes

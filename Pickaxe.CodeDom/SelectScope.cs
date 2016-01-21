@@ -28,7 +28,7 @@ namespace Pickaxe.CodeDom
 
         public override CodeExpression CreateExpression(string variable)
         {
-            return new CodeVariableReferenceExpression(variable);
+            return new CodeFieldReferenceExpression(new CodeVariableReferenceExpression("row"), variable);
         }
     }
 }

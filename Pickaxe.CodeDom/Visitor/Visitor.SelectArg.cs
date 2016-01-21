@@ -37,7 +37,7 @@ namespace Pickaxe.CodeDom.Visitor
             for (int x = 1; x < childDomArgs.Count; x++)
                 expression = new CodeMethodInvokeExpression(new CodeTypeReferenceExpression(typeof(string)), "Concat", expression, childDomArgs[x].CodeExpression);
 
-            if(arg.Args.Length == 1) //only add column name if only one arg
+            if(arg.Args.Length == 1) //only add column name if only one arg. It could be arg + arg
                 _codeStack.Peek().ParentStatements.AddRange(childDomArgs[0].ParentStatements);
             else
             {

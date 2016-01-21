@@ -41,7 +41,12 @@ namespace Pickaxe.CodeDom.Visitor
                     _codeStack.Peek().Scope = new ScopeData<Type> { Type = member.Type.Type, CodeDomReference = new CodeTypeReference(member.Type.Type) };
                 }
             }
-            
+
+            _codeStack.Peek()
+                   .ParentStatements.Add(new CodeMethodInvokeExpression(new CodeTypeReferenceExpression("result"),
+                       "AddColumn",
+                       new CodePrimitiveExpression(variable.Member)));
+
             var expression = new CodeFieldReferenceExpression(rowArgs.CodeExpression, variable.Member);
             _codeStack.Peek().CodeExpression = expression;
         }
