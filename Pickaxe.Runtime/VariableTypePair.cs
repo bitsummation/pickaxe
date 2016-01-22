@@ -18,7 +18,7 @@ namespace Pickaxe.Runtime
 {
     public class VariableTypePair
     {
-        public TablePrimitive Type { get; set; }
+        public TablePrimitive Primitive { get; set; }
         public string Variable { get; set; }
     }
 }

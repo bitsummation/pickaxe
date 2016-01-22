@@ -12,30 +12,28 @@
  * limitations under the License.
  */
 
-using HtmlAgilityPack;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace Pickaxe.Runtime
+namespace Pickaxe.CodeDom.Semantic
 {
-    public class DownloadPage : IRow
+    internal class AmbiguousSelectVariable : SemanticException
     {
-        public string url { get; set; }
-        public IList<HtmlNode> nodes { get; set; }
-        public DateTime date { get; set; }
-        public int size { get; set; }
+        private SelectMatch[] _matches;
 
-        public static TableDescriptor Columns
+        public AmbiguousSelectVariable(SelectMatch[] matches, LineInfo line)
+            : base(line)
+        {
+            _matches = matches;
+        }
+
+        public override string Message
         {
             get
             {
-                var propertyInfos = typeof(DownloadPage).GetProperties(BindingFlags.Public | BindingFlags.Instance);
-                var variablePair = propertyInfos.Select(x => new VariableTypePair() { Variable = x.Name, Primitive = TablePrimitive.FromType(x.PropertyType) }).ToList();
-                return new TableDescriptor() { Variables = variablePair };
+                return string.Format("Ambiguous select variable: {0} {1}", _matches[0].TableVariable, base.Message);
             }
         }
     }

@@ -38,7 +38,7 @@ namespace PickAxe.Tests
     tvar = 'variable'
 
 
-    select tvar, temp.id
+    select tvar, id
     from temp
 
 --nodes

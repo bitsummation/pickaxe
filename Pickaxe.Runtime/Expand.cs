@@ -30,7 +30,7 @@ namespace Pickaxe.Runtime
             get
             {
                 var propertyInfos = typeof(Expand).GetProperties(BindingFlags.Public | BindingFlags.Instance);
-                var variablePair = propertyInfos.Select(x => new VariableTypePair() { Variable = x.Name, Type = TablePrimitive.FromType(x.PropertyType) }).ToList();
+                var variablePair = propertyInfos.Select(x => new VariableTypePair() { Variable = x.Name, Primitive = TablePrimitive.FromType(x.PropertyType) }).ToList();
                 return new TableDescriptor() { Variables = variablePair };
             }
         }

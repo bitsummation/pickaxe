@@ -91,7 +91,7 @@ namespace Pickaxe.CodeDom.Visitor
             if (Scope.Current.IsTableRegistered(statement.Variable.Id))
                 descriptor = Scope.Current.GetTableDescriptor(statement.Variable.Id);
 
-            int insertCount = descriptor.Type.Variables.Where(x => !x.Type.IsIdentity).Count();
+            int insertCount = descriptor.Type.Variables.Where(x => !x.Primitive.IsIdentity).Count();
             if (insertCount != statement.Select.Args.Length) //lengths don't match for insert. Need to remove identities
                 Errors.Add(new InsertSelectArgsNotEqual(new Semantic.LineInfo(statement.Line.Line, statement.Line.CharacterPosition)));
 
@@ -100,14 +100,14 @@ namespace Pickaxe.CodeDom.Visitor
             {
                 var left = new CodeFieldReferenceExpression(new CodeTypeReferenceExpression("tableRow"), descriptor.Type.Variables[x].Variable);
                 CodeExpression right = null;
-                if(descriptor.Type.Variables[x].Type.IsIdentity)
+                if(descriptor.Type.Variables[x].Primitive.IsIdentity)
                 {
                     right = identityArgs.CodeExpression;
                 }
                 else
                 {
                     right = new CodeIndexerExpression(new CodeTypeReferenceExpression("row"), new CodeSnippetExpression(indexer.ToString()));
-                    right = descriptor.Type.Variables[x].Type.ToNative(right);
+                    right = descriptor.Type.Variables[x].Primitive.ToNative(right);
                     indexer++;
                 }
 

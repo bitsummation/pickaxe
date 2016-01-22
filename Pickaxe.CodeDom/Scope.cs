@@ -164,6 +164,11 @@ namespace Pickaxe.CodeDom
             return scope._scope[variable] as ScopeData<TableDescriptor>;
         }
 
+        public virtual SelectMatch[] FindTableVariable(string variable)
+        {
+            return new SelectMatch[0];
+        }
+
         public virtual CodeExpression CreateExpression(string variable)
         {
             return new CodeVariableReferenceExpression("_" + ScopeIdentifier + "." + variable);

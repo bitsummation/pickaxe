@@ -12,6 +12,7 @@
  * limitations under the License.
  */
 
+using Pickaxe.Runtime;
 using System;
 using System.CodeDom;
 using System.Collections.Generic;
@@ -24,6 +25,22 @@ namespace Pickaxe.CodeDom
     {
         public SelectScope() : base(null)
         {
+        }
+
+        public override SelectMatch[] FindTableVariable(string variable)
+        {
+            var tableList = new List<SelectMatch>();
+            foreach(var t in _scope)
+            {
+                var descriptor = GetTableDescriptor(t.Key);
+                foreach(var var in descriptor.Type.Variables)
+                {
+                    if (var.Variable == variable) //we found the variable in a table
+                        tableList.Add(new SelectMatch{TableAlias = t.Key, TableVariable = var});
+                }
+            }
+
+            return tableList.ToArray();
         }
 
         public override CodeExpression CreateExpression(string variable)

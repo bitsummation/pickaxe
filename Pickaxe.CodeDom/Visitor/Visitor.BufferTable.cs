@@ -46,7 +46,7 @@ namespace Pickaxe.CodeDom.Visitor
             {
                 var domArg = VisitChild(arg);
                 bufferTable.Members.AddRange(domArg.ParentMemberDefinitions);
-                descriptor.Variables.Add(new VariableTypePair { Variable = arg.Variable, Type = TablePrimitive.FromString(arg.Type) });
+                descriptor.Variables.Add(new VariableTypePair { Variable = arg.Variable, Primitive = TablePrimitive.FromString(arg.Type) });
             }
 
             _mainType.Type.Members.Add(bufferTable);

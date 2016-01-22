@@ -38,7 +38,7 @@ namespace Pickaxe.CodeDom.Visitor
                 else
                 {
                     var member = descriptor.Type.Variables.Where(x => x.Variable == variable.Member).Single();
-                    _codeStack.Peek().Scope = new ScopeData<Type> { Type = member.Type.Type, CodeDomReference = new CodeTypeReference(member.Type.Type) };
+                    _codeStack.Peek().Scope = new ScopeData<Type> { Type = member.Primitive.Type, CodeDomReference = new CodeTypeReference(member.Primitive.Type) };
                 }
             }
 

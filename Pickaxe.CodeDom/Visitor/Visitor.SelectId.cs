@@ -28,24 +28,31 @@ namespace Pickaxe.CodeDom.Visitor
     {
         public void Visit(SelectId id)
         {
-            ScopeData<TableDescriptor> descriptor = Scope.EmptyTableDescriptor;
-
-            if(_codeStack.Peek().Scope != null)
-            {
-                var rowType = _codeStack.Peek().Scope.CodeDomReference.TypeArguments[0];
-
-                if (Scope.Current.IsRegistered(rowType.BaseType))
-                    descriptor = Scope.Current.GetTableDescriptor(rowType.BaseType);
-            }
-
-            _codeStack.Peek()
+            _codeStack.Peek().Scope = new ScopeData<Type> { Type = typeof(int), CodeDomReference = new CodeTypeReference(typeof(int)) };
+            _codeStack.Peek().CodeExpression = new CodeFieldReferenceExpression(new CodeTypeReferenceExpression("row"), id.Id);
+             _codeStack.Peek()
                    .ParentStatements.Add(new CodeMethodInvokeExpression(new CodeTypeReferenceExpression("result"),
                        "AddColumn",
-                       new CodePrimitiveExpression(id.Id)));
+                       new CodePrimitiveExpression(id.Id))); 
 
-            _codeStack.Peek().CodeExpression = new CodeFieldReferenceExpression(new CodeTypeReferenceExpression("row"), id.Id);
+            //1. Here we need to look through the select scope to get the variable.
+            //If there, put correct table prefix.
+            //if more than one we need to throw error
+            //if we can't find we need to dig up the scope
 
-            if (!descriptor.Type.Variables.Any(x => x.Variable == id.Id)) //variable is not in table
+            var tableMatches = Scope.Current.FindTableVariable(id.Id);
+
+            if(tableMatches.Length > 0)
+            {
+                if (tableMatches.Length == 1) //we only found one
+                {
+                    _codeStack.Peek().CodeExpression = new CodeFieldReferenceExpression(new CodeFieldReferenceExpression(new CodeVariableReferenceExpression("row"), tableMatches[0].TableAlias), id.Id);
+                    _codeStack.Peek().Scope = new ScopeData<Type> { Type = tableMatches[0].TableVariable.Primitive.Type, CodeDomReference = new CodeTypeReference(tableMatches[0].TableVariable.Primitive.Type) };
+                }
+                else //error we found more than 1
+                    Errors.Add(new AmbiguousSelectVariable(tableMatches, new Semantic.LineInfo(id.Line.Line, id.Line.CharacterPosition)));
+            }
+            else //not found in the table variable so look up scope
             {
                 //Need to check in the Scope to see if variable is defined there. If in select statmenet it is valid to put variables in it.
                 if (Scope.Current.IsRegistered(id.Id))
@@ -56,16 +63,7 @@ namespace Pickaxe.CodeDom.Visitor
                     _codeStack.Peek().Scope = variableArgs.Scope;
                 }
                 else
-                {
-                    //assign default type error condition
-                    _codeStack.Peek().Scope = new ScopeData<Type> { Type = typeof(int), CodeDomReference = new CodeTypeReference(typeof(int)) };
                     Errors.Add(new UnknownSelectVariableException(new Semantic.LineInfo(id.Line.Line, id.Line.CharacterPosition), id.Id));
-                }
-            }
-            else
-            {
-                var pair = descriptor.Type.Variables.Where(x => x.Variable == id.Id).Single();
-                _codeStack.Peek().Scope = new ScopeData<Type> { Type = pair.Type.Type, CodeDomReference = new CodeTypeReference(pair.Type.Type) };
             }
         }
     }
