@@ -41,7 +41,8 @@ namespace Pickaxe.CodeDom.Visitor
         public void Visit(FromStatement statement)
         {
             var statementDomArg = VisitChild(statement.Statement);
-            
+            _joinMembers.Clear();
+
             var scope = Scope.Current.GetTableDescriptor(statementDomArg.Scope.CodeDomReference.TypeArguments[0].BaseType);
             if(scope != null)
                 Scope.Current.Register(statementDomArg.Scope.CodeDomReference.TypeArguments[0].BaseType, new ScopeData<TableDescriptor> { Type = scope.Type, CodeDomReference = scope.CodeDomReference.TypeArguments[0] });
@@ -95,8 +96,6 @@ namespace Pickaxe.CodeDom.Visitor
 
             if(statement.Join != null)
             {
-                _joinMembers.Clear();
-
                 var args = VisitChild(statement.Join, new CodeDomArg() {Scope = new ScopeData<Type> { Type = typeof(int), CodeDomReference = anonType} });
 
                 method.Statements.Add(new CodeMethodReturnStatement(args.CodeExpression));
