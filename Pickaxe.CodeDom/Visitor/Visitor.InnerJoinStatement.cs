@@ -27,31 +27,25 @@ namespace Pickaxe.CodeDom.Visitor
     {
         public void Visit(InnerJoinStatement statement)
         {
-            var statementDomArg = VisitChild(statement.Statement);
-            var scope = Scope.Current.GetTableDescriptor(statementDomArg.Scope.CodeDomReference.TypeArguments[0].BaseType);
-            Scope.Current.Register(statementDomArg.Scope.CodeDomReference.TypeArguments[0].BaseType, new ScopeData<TableDescriptor> { Type = scope.Type, CodeDomReference = scope.CodeDomReference.TypeArguments[0] });
-
             CodeMemberMethod method = new CodeMemberMethod();
-            method.Name = "Join_" + statementDomArg.MethodIdentifier;
+            method.Name = "Join_" + Guid.NewGuid().ToString("N");
             method.Attributes = MemberAttributes.Private;
             method.Parameters.Add(new CodeParameterDeclarationExpression(new CodeTypeReference("IEnumerable", _codeStack.Peek().Scope.CodeDomReference), "outer"));
             GenerateCallStatement(method.Statements, statement.Line.Line);
             _mainType.Type.Members.Add(method);
 
-            method.Statements.Add(new CodeVariableDeclarationStatement(statementDomArg.Scope.CodeDomReference, "table", statementDomArg.CodeExpression));
 
-            //create anon type
+            CodeTypeReference fetchAnonType;
+            var fetchMethod = CreateFetch(statement.Statement, out fetchAnonType);
+            method.Statements.Add(new CodeVariableDeclarationStatement(new CodeTypeReference("IEnumerable", fetchAnonType), "table",
+                   new CodeMethodInvokeExpression(new CodeMethodReferenceExpression(null, fetchMethod.Name))));
 
+
+            //create combined anon type
             var anon = "anon_" + Guid.NewGuid().ToString("N");
             var bufferTable = new CodeTypeDeclaration(anon) { TypeAttributes = TypeAttributes.NestedPrivate };
             bufferTable.BaseTypes.Add(new CodeTypeReference("IRow"));
             _mainType.Type.Members.Add(bufferTable);
-
-            var field = new CodeMemberField();
-            field.Name = statementDomArg.Scope.CodeDomReference.TypeArguments[0].BaseType;
-            field.Attributes = MemberAttributes.Public | MemberAttributes.Final;
-            field.Type = statementDomArg.Scope.CodeDomReference.TypeArguments[0];
-            _joinMembers.Add(field);
             bufferTable.Members.AddRange(_joinMembers.ToArray());
 
             //Do Join
@@ -75,7 +69,7 @@ namespace Pickaxe.CodeDom.Visitor
             outerLoop.Statements.Add(new CodeVariableDeclarationStatement(_codeStack.Peek().Scope.CodeDomReference, "oc",
                 new CodePropertyReferenceExpression(new CodeVariableReferenceExpression("o"), "Current")));
 
-            outerLoop.Statements.Add(new CodeVariableDeclarationStatement(new CodeTypeReference("IEnumerator", statementDomArg.Scope.CodeDomReference.TypeArguments[0]), "i",
+            outerLoop.Statements.Add(new CodeVariableDeclarationStatement(new CodeTypeReference("IEnumerator", fetchAnonType), "i",
                 new CodeMethodInvokeExpression(new CodeVariableReferenceExpression("table"), "GetEnumerator")));
 
 
@@ -85,7 +79,7 @@ namespace Pickaxe.CodeDom.Visitor
             innerLoop.IncrementStatement = new CodeSnippetStatement();
             innerLoop.TestExpression = new CodeMethodInvokeExpression(new CodeVariableReferenceExpression("i"), "MoveNext");
 
-            innerLoop.Statements.Add(new CodeVariableDeclarationStatement(statementDomArg.Scope.CodeDomReference.TypeArguments[0], "ic",
+            innerLoop.Statements.Add(new CodeVariableDeclarationStatement(fetchAnonType, "ic",
                 new CodePropertyReferenceExpression(new CodeVariableReferenceExpression("i"), "Current")));
 
             var booleanArgs = VisitChild(statement.Expression);
@@ -103,7 +97,7 @@ namespace Pickaxe.CodeDom.Visitor
             }
             else
             {
-                var tableType = new CodeTypeReference(statementDomArg.Scope.CodeDomReference.BaseType, anonType);
+                var tableType = new CodeTypeReference("CodeTable", anonType);
                 method.ReturnType = tableType;
                 _codeStack.Peek().Scope = new ScopeData<Type> { Type = typeof(int), CodeDomReference = tableType };
 

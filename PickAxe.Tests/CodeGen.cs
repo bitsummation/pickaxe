@@ -55,8 +55,15 @@ namespace PickAxe.Tests
 
 ";
 
+              var broken = @"
+ select value
+    from expand(0 to 10){1 + $*10}
 
-            var compiler = new Compiler(join);
+";
+
+
+
+            var compiler = new Compiler(broken);
             var sources = compiler.ToCode();
             Assert.IsTrue(compiler.Errors.Count == 0);
         }

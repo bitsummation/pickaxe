@@ -52,7 +52,6 @@
   <ItemGroup>
     <Compile Include="CodeGen.cs" />
     <Compile Include="AssemblyInfo.cs" />
-    <Compile Include="PrototypeCode.cs" />
     <Compile Include="SelectTests.cs" />
     <Compile Include="TestCode.cs" />
     <Compile Include="TestExpand.cs" />

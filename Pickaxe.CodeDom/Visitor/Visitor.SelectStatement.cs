@@ -172,6 +172,9 @@ namespace Pickaxe.CodeDom.Visitor
                 var codeLoop = outerLoop;
                 if (outerLoopNeeded)
                 {
+                    var reference = new TableMemberReference() { Member = "nodes", RowReference = new TableVariableRowReference() { Id = "DownloadPage" } };
+                    var args = VisitChild(reference);
+
                     //Needed only for DownloadRow
                     outerLoop.Statements.Add(
                         new CodeVariableDeclarationStatement(
@@ -179,8 +182,7 @@ namespace Pickaxe.CodeDom.Visitor
                             "y",
                             new CodeMethodInvokeExpression(
                                 new CodeMethodReferenceExpression(
-                                    new CodePropertyReferenceExpression(
-                                        new CodeTypeReferenceExpression("row"), "nodes"), "GetEnumerator", null))));
+                                        args.CodeExpression, "GetEnumerator", null))));
 
 
                     //Needed only for DownloadRow
