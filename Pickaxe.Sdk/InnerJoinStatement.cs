@@ -24,17 +24,12 @@ namespace Pickaxe.Sdk
         public AstNode Statement
         {
             get { return Children.Where(x => x.GetType() != typeof(InnerJoinStatement)
-                && x.GetType() != typeof(TableMemberReference)).Single(); }
+                && !x.GetType().IsSubclassOf(typeof(BooleanExpression))).Single(); }
         }
 
-        public TableMemberReference FirstMember
+        public BooleanExpression Expression
         {
-            get {return  Children.Where(x => x.GetType() == typeof(TableMemberReference)).Cast<TableMemberReference>().First(); }
-        }
-
-        public TableMemberReference SecondMember
-        {
-            get { return Children.Where(x => x.GetType() == typeof(TableMemberReference)).Cast<TableMemberReference>().Last(); }
+            get { return Children.Where(x => x.GetType().IsSubclassOf(typeof(BooleanExpression))).Cast<BooleanExpression>().Single(); }
         }
 
         public InnerJoinStatement Join

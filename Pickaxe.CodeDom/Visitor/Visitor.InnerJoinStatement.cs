@@ -57,27 +57,68 @@ namespace Pickaxe.CodeDom.Visitor
             //Do Join
             var anonType = new CodeTypeReference(anon);
 
-            var outerArgs = VisitChild(statement.FirstMember);
-            method.Statements.Add(outerArgs.CodeExpression);
-
             //inner
-
             //copy
 
 
             method.Statements.Add(new CodeVariableDeclarationStatement(new CodeTypeReference("IList", anonType), "join",
                 new CodeObjectCreateExpression(new CodeTypeReference("List", anonType)))); 
 
-            
-            var methodcall = new CodeMethodInvokeExpression(
-              new CodeMethodReferenceExpression(null, method.Name), new CodeVariableReferenceExpression("join") );
+            method.Statements.Add(new CodeVariableDeclarationStatement(new CodeTypeReference("IEnumerator", _codeStack.Peek().Scope.CodeDomReference), "o",
+                new CodeMethodInvokeExpression(new CodeVariableReferenceExpression("outer"), "GetEnumerator")));
 
-            _codeStack.Peek().CodeExpression = methodcall;
+            var outerLoop = new CodeIterationStatement();
+            outerLoop.InitStatement = new CodeSnippetStatement();
+            outerLoop.IncrementStatement = new CodeSnippetStatement();
+            outerLoop.TestExpression = new CodeMethodInvokeExpression(new CodeVariableReferenceExpression("o"), "MoveNext");
 
-            var anonTableType = new CodeTypeReference("CodeTable", new CodeTypeReference(anon));
-            method.ReturnType = anonTableType;
-            _codeStack.Peek().Scope = new ScopeData<Type> { Type = typeof(int), CodeDomReference = anonTableType };
+            outerLoop.Statements.Add(new CodeVariableDeclarationStatement(_codeStack.Peek().Scope.CodeDomReference, "oc",
+                new CodePropertyReferenceExpression(new CodeVariableReferenceExpression("o"), "Current")));
 
+            outerLoop.Statements.Add(new CodeVariableDeclarationStatement(new CodeTypeReference("IEnumerator", statementDomArg.Scope.CodeDomReference.TypeArguments[0]), "i",
+                new CodeMethodInvokeExpression(new CodeVariableReferenceExpression("table"), "GetEnumerator")));
+
+
+            var innerLoop = new CodeIterationStatement();
+            outerLoop.Statements.Add(innerLoop);
+            innerLoop.InitStatement = new CodeSnippetStatement();
+            innerLoop.IncrementStatement = new CodeSnippetStatement();
+            innerLoop.TestExpression = new CodeMethodInvokeExpression(new CodeVariableReferenceExpression("i"), "MoveNext");
+
+            innerLoop.Statements.Add(new CodeVariableDeclarationStatement(statementDomArg.Scope.CodeDomReference.TypeArguments[0], "ic",
+                new CodePropertyReferenceExpression(new CodeVariableReferenceExpression("i"), "Current")));
+
+            var booleanArgs = VisitChild(statement.Expression);
+            innerLoop.Statements.Add(new CodeConditionStatement(booleanArgs.CodeExpression));
+
+            method.Statements.Add(outerLoop);
+
+            if(statement.Join != null)
+            {
+                var args = VisitChild(statement.Join, new CodeDomArg() { Scope = new ScopeData<Type> { Type = typeof(int), CodeDomReference = anonType } });
+
+                method.Statements.Add(new CodeMethodReturnStatement(args.CodeExpression));
+                method.ReturnType = args.Scope.CodeDomReference;
+                _codeStack.Peek().Scope = args.Scope;
+            }
+            else
+            {
+                var tableType = new CodeTypeReference(statementDomArg.Scope.CodeDomReference.BaseType, anonType);
+                method.ReturnType = tableType;
+                _codeStack.Peek().Scope = new ScopeData<Type> { Type = typeof(int), CodeDomReference = tableType };
+
+                method.Statements.Add(new CodeVariableDeclarationStatement(tableType, "newTable",
+                    new CodeObjectCreateExpression(tableType)));
+
+                method.Statements.Add(new CodeMethodInvokeExpression(
+                    new CodeVariableReferenceExpression("newTable"), "SetRows",
+                    new CodeMethodInvokeExpression(new CodeVariableReferenceExpression("join"), "ToList")));
+
+                method.Statements.Add(new CodeMethodReturnStatement(new CodeVariableReferenceExpression("newTable")));
+            }
+
+            _codeStack.Peek().CodeExpression = new CodeMethodInvokeExpression(
+               new CodeMethodReferenceExpression(null, method.Name), new CodeVariableReferenceExpression("join"));
         }
     }
 }

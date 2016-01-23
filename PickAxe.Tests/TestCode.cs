@@ -88,7 +88,7 @@ public class Code : RuntimeBase
         }
 
         var newTable = new CodeTable<anon_ae6b0ecce7b34401ac62f539cc04608e>();
-        newTable.SetRows(newTable.ToList());
+        newTable.SetRows(join.ToList());
         return newTable;
     }
 

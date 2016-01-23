@@ -215,7 +215,7 @@ fromStatement
 	;
 
 innerJoinStatement
-	: innerJoin ID 'on' tableMemberReference EQUALS tableMemberReference innerJoinStatement? -> ^(INNER_JOIN TABLE_VARIABLE_REFERENCE[$ID] tableMemberReference tableMemberReference innerJoinStatement?)
+	: innerJoin ID 'on' boolExpression innerJoinStatement? -> ^(INNER_JOIN TABLE_VARIABLE_REFERENCE[$ID] boolExpression innerJoinStatement?)
 	;
 
 innerJoin

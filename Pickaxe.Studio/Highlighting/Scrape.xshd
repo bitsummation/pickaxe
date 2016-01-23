@@ -37,6 +37,8 @@
         <Key word = "and" />
         <Key word = "or" />
         <Key word = "null" />
+        <Key word = "join" />
+        <Key word = "inner" />
       </KeyWords>
                 
       
