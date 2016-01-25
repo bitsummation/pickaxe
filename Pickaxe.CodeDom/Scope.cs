@@ -169,6 +169,11 @@ namespace Pickaxe.CodeDom
             return new SelectMatch[0];
         }
 
+        public virtual SelectMatch[] FindAll()
+        {
+            return new SelectMatch[0];
+        }
+
         public virtual CodeExpression CreateExpression(string variable)
         {
             return new CodeVariableReferenceExpression("_" + ScopeIdentifier + "." + variable);

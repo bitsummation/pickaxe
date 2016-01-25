@@ -26,17 +26,19 @@ namespace Pickaxe.CodeDom.Visitor
     {
         public void Visit(SelectAll all)
         {
-            var rowType = _codeStack.Peek().Scope.CodeDomReference.TypeArguments[0];
-
-            ScopeData<TableDescriptor> descriptor = Scope.EmptyTableDescriptor;
-            if (Scope.Current.IsRegistered(rowType.BaseType))
-                descriptor = Scope.Current.GetTableDescriptor(rowType.BaseType);
-
             all.Parent.Parent.Children.Remove(all.Parent);
-            foreach (var var in descriptor.Type.Variables)
+
+            var tableMatches = Scope.Current.FindAll();
+
+            foreach(var match in tableMatches)
             {
+                var tableReferance = new TableMemberReference {
+                    Member = match.TableVariable.Variable,
+                    RowReference = new TableVariableRowReference { Id = match.TableAlias }
+                };
+
                 var arg = new SelectArg();
-                arg.Children.Add(new SelectId() { Id = var.Variable });
+                arg.Children.Add(tableReferance);
                 all.Parent.Parent.Children.Add(arg);
             }
         }

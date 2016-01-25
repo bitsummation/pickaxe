@@ -72,6 +72,25 @@ namespace Pickaxe.CodeDom.Visitor
 
             if(statement.NodesBooleanExpression != null)
             {
+                method.Statements.Add(new CodeVariableDeclarationStatement(
+                    new CodeTypeReference("IEnumerator",
+                        new CodeTypeReference(_codeStack.Peek().Scope.CodeDomReference.TypeArguments[0].BaseType)), "i",
+                        new CodeMethodInvokeExpression(new CodeVariableReferenceExpression("outer"), "GetEnumerator")));
+
+                var loop = new CodeIterationStatement();
+                loop.InitStatement = new CodeSnippetStatement();
+                loop.IncrementStatement = new CodeSnippetStatement();
+                loop.TestExpression = new CodeMethodInvokeExpression(new CodeVariableReferenceExpression("i"), "MoveNext");
+
+                loop.Statements.Add(new CodeVariableDeclarationStatement(new CodeTypeReference(_codeStack.Peek().Scope.CodeDomReference.TypeArguments[0].BaseType), "row",
+                    new CodePropertyReferenceExpression(new CodeVariableReferenceExpression("i"), "Current")));
+
+
+                //find the download rowo alias
+
+                //row.DownloadPage.CssWhere("#match-tests");
+
+
                 method.Statements.Add(new CodeMethodInvokeExpression(
                          new CodeMethodReferenceExpression(new CodeTypeReferenceExpression("newTable"), "CssWhere"),
                          new CodePrimitiveExpression(statement.NodesBooleanExpression.Selector)));

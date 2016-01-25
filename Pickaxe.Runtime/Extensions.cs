@@ -37,17 +37,11 @@ namespace Pickaxe.Runtime
             }
         }
 
-        public static void CssWhere(this Table<DownloadPage> table, string selector)
+        public static void CssWhere(this DownloadPage p, string selector)
         {
-            var newRows = new List<DownloadPage>();
-            foreach(var row in table)
-            {
-                var nodes = row.nodes[0].QuerySelectorAll(selector).ToArray();
-                if (nodes.Length > 0)
-                    newRows.Add(new DownloadPage() { date = row.date, nodes = nodes.ToArray(), size = row.size, url = row.url });
-            }
-
-            table.SetRows(newRows);
+            var nodes = p.nodes[0].QuerySelectorAll(selector).ToArray();
+            if (nodes.Length > 0)
+                p.nodes = nodes;
         }
 
         public static HtmlNode Pick(this HtmlNode node, string selector)

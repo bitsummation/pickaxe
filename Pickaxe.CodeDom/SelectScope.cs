@@ -43,6 +43,19 @@ namespace Pickaxe.CodeDom
             return tableList.ToArray();
         }
 
+        public override SelectMatch[] FindAll()
+        {
+            var tableList = new List<SelectMatch>();
+            foreach (var t in _scope)
+            {
+                var descriptor = GetTableDescriptor(t.Key);
+                foreach(var var in descriptor.Type.Variables)
+                    tableList.Add(new SelectMatch { TableAlias = t.Key, TableVariable = var });
+            }
+
+            return tableList.ToArray();
+        }
+
         public override CodeExpression CreateExpression(string variable)
         {
             return new CodeFieldReferenceExpression(new CodeVariableReferenceExpression("row"), variable);

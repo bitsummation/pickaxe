@@ -56,11 +56,13 @@ namespace PickAxe.Tests
 ";
 
               var broken = @"
- select *
-    from expand(0 to 10){1 + $*10}
-
+        
+ select
+    case when pick 'li:first-child' take text match '[\d\.]+' < 9000 then 2 end
+    from download page 'http://mock.com'
+    where nodes = '#match-tests' and size < 10
+ 
 ";
-
 
 
             var compiler = new Compiler(broken);
