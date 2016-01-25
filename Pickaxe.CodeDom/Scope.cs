@@ -81,7 +81,7 @@ namespace Pickaxe.CodeDom
             Current = Current._parent;
         }
 
-        public static ScopeData<TableDescriptor> EmptyTableDescriptor = new ScopeData<TableDescriptor>() {Type = new TableDescriptor() };
+        public static ScopeData<TableDescriptor> EmptyTableDescriptor = new ScopeData<TableDescriptor>() {Type = new TableDescriptor(null) };
 
         public void Register(string variable, IScopeData data)
         {
@@ -172,6 +172,11 @@ namespace Pickaxe.CodeDom
         public virtual SelectMatch[] FindAll()
         {
             return new SelectMatch[0];
+        }
+
+        public virtual string[] AliasType<TType>()
+        {
+            return new string[0];
         }
 
         public virtual CodeExpression CreateExpression(string variable)

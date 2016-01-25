@@ -56,6 +56,21 @@ namespace Pickaxe.CodeDom
             return tableList.ToArray();
         }
 
+        public override string[] AliasType<TType>()
+        {
+            var aliases = new List<string>();
+            foreach(var t in _scope)
+            {
+                var descriptor = GetTableDescriptor(t.Key);
+                if(descriptor.Type.RunTimeType != null && descriptor.Type.RunTimeType == typeof(TType))
+                {
+                    aliases.Add(t.Key);
+                }
+            }
+
+            return aliases.ToArray();
+        }
+
         public override CodeExpression CreateExpression(string variable)
         {
             return new CodeFieldReferenceExpression(new CodeVariableReferenceExpression("row"), variable);

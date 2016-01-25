@@ -12,17 +12,20 @@
  * limitations under the License.
  */
 
+using System;
 using System.Collections.Generic;
 
 namespace Pickaxe.Runtime
 {
     public class TableDescriptor
     {
-        public TableDescriptor()
+        public TableDescriptor(Type runtimeType)
         {
             Variables = new List<VariableTypePair>();
+            RunTimeType = runtimeType;
         }
 
+        public Type RunTimeType { get; private set; }
         public IList<VariableTypePair> Variables { get; set; }
     }
 }

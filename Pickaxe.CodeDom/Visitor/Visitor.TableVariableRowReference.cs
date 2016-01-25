@@ -34,12 +34,12 @@ namespace Pickaxe.CodeDom.Visitor
             if (!Scope.Current.IsRegistered(variable.Id)) //If variable doesn't exist we need to register Sematic error
             {
                 Errors.Add(new UnknownVariableReferenceException(new Semantic.LineInfo(variable.Line.Line, variable.Line.CharacterPosition), variable.Id));
-                codeType = new ScopeData<TableDescriptor> { Type = new TableDescriptor(), CodeDomReference = new CodeTypeReference("Table", new CodeTypeReference("3ab508bc-31b8-486f-a10a-4f5714f80a3b")) };
+                codeType = new ScopeData<TableDescriptor> { Type = new TableDescriptor(null), CodeDomReference = new CodeTypeReference("Table", new CodeTypeReference("3ab508bc-31b8-486f-a10a-4f5714f80a3b")) };
             }
             else if (!Scope.Current.IsTableRowRegistered(variable.Id)) //has to be a row
             {
                 Errors.Add(new NotTableRowVariableException(new Semantic.LineInfo(variable.Line.Line, variable.Line.CharacterPosition), variable.Id));
-                codeType = new ScopeData<TableDescriptor> { Type = new TableDescriptor(), CodeDomReference = new CodeTypeReference("Table", new CodeTypeReference("3ab508bc-31b8-486f-a10a-4f5714f80a3b")) };
+                codeType = new ScopeData<TableDescriptor> { Type = new TableDescriptor(null), CodeDomReference = new CodeTypeReference("Table", new CodeTypeReference("3ab508bc-31b8-486f-a10a-4f5714f80a3b")) };
             }
             else
             {

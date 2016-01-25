@@ -13,6 +13,7 @@
  */
 
 using Microsoft.CSharp;
+using Pickaxe.Runtime;
 using Pickaxe.Sdk;
 using System;
 using System.CodeDom;
@@ -75,25 +76,29 @@ namespace Pickaxe.CodeDom.Visitor
                 method.Statements.Add(new CodeVariableDeclarationStatement(
                     new CodeTypeReference("IEnumerator",
                         new CodeTypeReference(_codeStack.Peek().Scope.CodeDomReference.TypeArguments[0].BaseType)), "i",
-                        new CodeMethodInvokeExpression(new CodeVariableReferenceExpression("outer"), "GetEnumerator")));
+                        new CodeMethodInvokeExpression(new CodeVariableReferenceExpression("newTable"), "GetEnumerator")));
 
                 var loop = new CodeIterationStatement();
+                method.Statements.Add(loop);
                 loop.InitStatement = new CodeSnippetStatement();
                 loop.IncrementStatement = new CodeSnippetStatement();
                 loop.TestExpression = new CodeMethodInvokeExpression(new CodeVariableReferenceExpression("i"), "MoveNext");
-
+                
                 loop.Statements.Add(new CodeVariableDeclarationStatement(new CodeTypeReference(_codeStack.Peek().Scope.CodeDomReference.TypeArguments[0].BaseType), "row",
                     new CodePropertyReferenceExpression(new CodeVariableReferenceExpression("i"), "Current")));
 
-
-                //find the download rowo alias
-
-                //row.DownloadPage.CssWhere("#match-tests");
-
-
-                method.Statements.Add(new CodeMethodInvokeExpression(
-                         new CodeMethodReferenceExpression(new CodeTypeReferenceExpression("newTable"), "CssWhere"),
-                         new CodePrimitiveExpression(statement.NodesBooleanExpression.Selector)));
+                var aliases = Scope.Current.AliasType<DownloadPage>();
+                if(aliases.Length == 1)
+                {
+                    loop.Statements.Add(new CodeMethodInvokeExpression(
+                        new CodePropertyReferenceExpression(new CodeVariableReferenceExpression("row"), aliases[0]), "CssWhere",
+                        new CodePrimitiveExpression(statement.NodesBooleanExpression.Selector)));
+                }
+                else
+                {
+                    //here we need to match the exact alias
+                    throw new InvalidOperationException("more than one alias");
+                }
             }
 
             method.Statements.Add(new CodeMethodReturnStatement(new CodeVariableReferenceExpression("newTable")));
