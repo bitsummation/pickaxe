@@ -55,17 +55,7 @@ namespace PickAxe.Tests
 
 ";
 
-              var broken = @"
-        
- select
-    case when pick 'li:first-child' take text match '[\d\.]+' < 9000 then 2 end
-    from download page 'http://mock.com'
-    where nodes = '#match-tests' and size < 10
- 
-";
-
-
-            var compiler = new Compiler(broken);
+            var compiler = new Compiler(join);
             var sources = compiler.ToCode();
             Assert.IsTrue(compiler.Errors.Count == 0);
         }

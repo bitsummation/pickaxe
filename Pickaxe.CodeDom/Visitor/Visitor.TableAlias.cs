@@ -12,31 +12,18 @@
  * limitations under the License.
  */
 
+using Pickaxe.Sdk;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Pickaxe.Sdk
+namespace Pickaxe.CodeDom.Visitor
 {
-    public class InnerJoinStatement : AliasBase
+    public partial class CodeDomGenerator : IAstVisitor
     {
-        public override AstNode Statement
+        public void Visit(TableAlias alias)
         {
-            get { return Children.Where(x => x.GetType() != typeof(InnerJoinStatement)
-                && !x.GetType().IsSubclassOf(typeof(BooleanExpression))
-                && x.GetType() != typeof(TableAlias)).Single();
-            }
-        }
-
-        public BooleanExpression Expression
-        {
-            get { return Children.Where(x => x.GetType().IsSubclassOf(typeof(BooleanExpression))).Cast<BooleanExpression>().Single(); }
-        }
-
-        public override void Accept(IAstVisitor visitor)
-        {
-            visitor.Visit(this);
         }
     }
 }

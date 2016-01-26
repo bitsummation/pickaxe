@@ -16,13 +16,14 @@ using System.Linq;
 
 namespace Pickaxe.Sdk
 {
-    public class FromStatement : AstNode
+    public class FromStatement : AliasBase
     {
-        public AstNode Statement { get { return Children.Where(x => x.GetType() != typeof(InnerJoinStatement)).Single(); } }
-
-        public InnerJoinStatement Join
-        {
-            get { return Children.Where(x => x.GetType() == typeof(InnerJoinStatement)).Cast<InnerJoinStatement>().SingleOrDefault(); }
+        public override AstNode Statement {
+            get
+            {
+                return Children.Where(x => x.GetType() != typeof(InnerJoinStatement)
+                    && x.GetType() != typeof(TableAlias)).Single();
+            }
         }
 
         public override void Accept(IAstVisitor visitor)

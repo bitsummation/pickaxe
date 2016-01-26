@@ -19,24 +19,19 @@ using System.Text;
 
 namespace Pickaxe.Sdk
 {
-    public class InnerJoinStatement : AliasBase
+    public abstract class AliasBase : AstNode
     {
-        public override AstNode Statement
+        public abstract AstNode Statement { get; }
+
+        public TableAlias Alias
         {
-            get { return Children.Where(x => x.GetType() != typeof(InnerJoinStatement)
-                && !x.GetType().IsSubclassOf(typeof(BooleanExpression))
-                && x.GetType() != typeof(TableAlias)).Single();
-            }
+            get { return Children.Where(x => x.GetType() == typeof(TableAlias)).Cast<TableAlias>().SingleOrDefault(); }
         }
 
-        public BooleanExpression Expression
+        public InnerJoinStatement Join
         {
-            get { return Children.Where(x => x.GetType().IsSubclassOf(typeof(BooleanExpression))).Cast<BooleanExpression>().Single(); }
+            get { return Children.Where(x => x.GetType() == typeof(InnerJoinStatement)).Cast<InnerJoinStatement>().SingleOrDefault(); }
         }
 
-        public override void Accept(IAstVisitor visitor)
-        {
-            visitor.Visit(this);
-        }
     }
 }

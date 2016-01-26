@@ -90,6 +90,7 @@
     <Compile Include="Visitor\Visitor.ProxyStatement.cs" />
     <Compile Include="Visitor\Visitor.SelectArg.cs" />
     <Compile Include="Visitor\Visitor.SubtrationOperator.cs" />
+    <Compile Include="Visitor\Visitor.TableAlias.cs" />
     <Compile Include="Visitor\Visitor.TableMemberReference.cs" />
     <Compile Include="Visitor\Visitor.TableVariableReference.cs" />
     <Compile Include="Visitor\Visitor.InsertIntoStatement.cs" />

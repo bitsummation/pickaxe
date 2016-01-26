@@ -26,12 +26,17 @@ namespace Pickaxe.CodeDom.Visitor
 {
     public partial class CodeDomGenerator : IAstVisitor
     {
-        private CodeMemberMethod CreateFetch(AstNode statement, out CodeTypeReference anonType)
+        private CodeMemberMethod CreateFetch(AliasBase aliasBase, out CodeTypeReference anonType)
         {
-            var statementDomArg = VisitChild(statement);
+            var statementDomArg = VisitChild(aliasBase.Statement);
             var scope = Scope.Current.GetTableDescriptor(statementDomArg.Scope.CodeDomReference.TypeArguments[0].BaseType);
             if (scope != null)
-                Scope.Current.Register(statementDomArg.Scope.CodeDomReference.TypeArguments[0].BaseType, new ScopeData<TableDescriptor> { Type = scope.Type, CodeDomReference = scope.CodeDomReference.TypeArguments[0] });
+            {
+                if (aliasBase.Alias == null)
+                    aliasBase.Children.Add(new TableAlias { Id = statementDomArg.Scope.CodeDomReference.TypeArguments[0].BaseType });
+
+                Scope.Current.Register(aliasBase.Alias.Id, new ScopeData<TableDescriptor> { Type = scope.Type, CodeDomReference = scope.CodeDomReference.TypeArguments[0] });
+            }
 
             CodeMemberMethod method = new CodeMemberMethod();
             method.Name = "Fetch_" + Guid.NewGuid().ToString("N");
@@ -43,7 +48,7 @@ namespace Pickaxe.CodeDom.Visitor
             _mainType.Type.Members.Add(bufferTable);
 
             var field = new CodeMemberField();
-            field.Name = statementDomArg.Scope.CodeDomReference.TypeArguments[0].BaseType;
+            field.Name = aliasBase.Alias.Id;
             field.Attributes = MemberAttributes.Public | MemberAttributes.Final;
             field.Type = statementDomArg.Scope.CodeDomReference.TypeArguments[0];
             _joinMembers.Add(field);
@@ -66,7 +71,7 @@ namespace Pickaxe.CodeDom.Visitor
             codeParams.Add(new CodeParameterDeclarationExpression(statementDomArg.Scope.CodeDomReference.TypeArguments[0], "o"));
             var copyMethod = CreateCopyMethod(codeParams, copyStatments);
 
-            var anonExpression = new CodeSnippetExpression("o => {" + GenerateCode(
+            var anonExpression = new CodeSnippetExpression("o => {" + GenerateCodeFromStatement(
                 new CodeMethodReturnStatement(
                     new CodeMethodInvokeExpression(new CodeMethodReferenceExpression(null, copyMethod.Name),
                         new CodeVariableReferenceExpression("o")))) + "}");
@@ -103,7 +108,7 @@ namespace Pickaxe.CodeDom.Visitor
 
             _joinMembers.Clear();
             CodeTypeReference anonType;
-            var fetchMethod = CreateFetch(statement.Statement, out anonType);
+            var fetchMethod = CreateFetch(statement, out anonType);
             method.Statements.Add(new CodeVariableDeclarationStatement(new CodeTypeReference("IEnumerable", anonType), "join",
                     new CodeMethodInvokeExpression(new CodeMethodReferenceExpression(null, fetchMethod.Name))));
 

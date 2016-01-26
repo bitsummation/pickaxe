@@ -25,6 +25,17 @@ namespace Pickaxe.CodeDom.Visitor
 {
     public partial class CodeDomGenerator : IAstVisitor
     {
+
+        private string ReplaceBooleanStatement(string statement/*, string joinAlias*/)
+        {
+            //the inner is the new join (ic). Everything else is outer (oc)
+
+            //row.a.id == row.b.id
+
+            var vars = Scope.Current.FindAll();
+            return statement;
+        }
+
         public void Visit(InnerJoinStatement statement)
         {
             CodeMemberMethod method = new CodeMemberMethod();
@@ -36,7 +47,7 @@ namespace Pickaxe.CodeDom.Visitor
 
 
             CodeTypeReference fetchAnonType;
-            var fetchMethod = CreateFetch(statement.Statement, out fetchAnonType);
+            var fetchMethod = CreateFetch(statement, out fetchAnonType);
             method.Statements.Add(new CodeVariableDeclarationStatement(new CodeTypeReference("IEnumerable", fetchAnonType), "table",
                    new CodeMethodInvokeExpression(new CodeMethodReferenceExpression(null, fetchMethod.Name))));
 
@@ -83,7 +94,9 @@ namespace Pickaxe.CodeDom.Visitor
                 new CodePropertyReferenceExpression(new CodeVariableReferenceExpression("i"), "Current")));
 
             var booleanArgs = VisitChild(statement.Expression);
-            innerLoop.Statements.Add(new CodeConditionStatement(booleanArgs.CodeExpression));
+            string booleanString = ReplaceBooleanStatement(GenerateCodeFromExpression(booleanArgs.CodeExpression));
+            
+            innerLoop.Statements.Add(new CodeConditionStatement(new CodeSnippetExpression(booleanString)));
 
             method.Statements.Add(outerLoop);
 

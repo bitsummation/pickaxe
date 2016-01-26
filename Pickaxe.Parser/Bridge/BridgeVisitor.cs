@@ -220,6 +220,14 @@ namespace Pickaxe.Parser.Bridge
             variable.Id = tree.Text;
         }
 
+        public void Visit(TableAlias alias, CommonTree tree)
+        {
+            Parent(tree).Children.Add(alias);
+            SetLine(alias, tree);
+
+            alias.Id = tree.GetChild(0).Text;
+        }
+
         public void Visit(ExpandExpression expression, CommonTree tree)
         {
             Parent(tree).Children.Add(expression);

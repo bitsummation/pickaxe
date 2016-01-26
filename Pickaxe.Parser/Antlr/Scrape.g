@@ -31,6 +31,7 @@ tokens {
   TABLE_COLUMN_ARG;
   TABLE_VARIABLE_REFERENCE;
   TABLE_MEMBER_REFERENCE;
+  TABLE_ALIAS;
   ROW_REFERENCE;
   MEMBER_REFERENCE;
   BLOCK;
@@ -210,12 +211,12 @@ whereStatement
 	;
 
 fromStatement
-	: FROM ID innerJoinStatement? -> ^(FROM TABLE_VARIABLE_REFERENCE[$ID] innerJoinStatement?) 
+	: FROM t=ID a=ID? innerJoinStatement? -> ^(FROM TABLE_VARIABLE_REFERENCE[$t] ^(TABLE_ALIAS $a)? innerJoinStatement?) 
 	| FROM^ (downloadPageExpresssion | downloadImageExpression | expandExpression)
 	;
 
 innerJoinStatement
-	: innerJoin ID 'on' boolExpression innerJoinStatement? -> ^(INNER_JOIN TABLE_VARIABLE_REFERENCE[$ID] boolExpression innerJoinStatement?)
+	: innerJoin t=ID a=ID? 'on' boolExpression innerJoinStatement? -> ^(INNER_JOIN TABLE_VARIABLE_REFERENCE[$t] ^(TABLE_ALIAS $a)? boolExpression innerJoinStatement?)
 	;
 
 innerJoin
