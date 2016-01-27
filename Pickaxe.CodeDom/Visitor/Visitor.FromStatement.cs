@@ -29,9 +29,9 @@ namespace Pickaxe.CodeDom.Visitor
         private CodeMemberMethod CreateFetch(AliasBase aliasBase, out CodeTypeReference anonType)
         {
             var statementDomArg = VisitChild(aliasBase.Statement);
-            var scope = Scope.Current.GetTableDescriptor(statementDomArg.Scope.CodeDomReference.TypeArguments[0].BaseType);
-            if (scope != null)
+            if (Scope.Current.IsTableRegistered(statementDomArg.Scope.CodeDomReference.TypeArguments[0].BaseType))
             {
+                var scope = Scope.Current.GetTableDescriptor(statementDomArg.Scope.CodeDomReference.TypeArguments[0].BaseType);
                 if (aliasBase.Alias == null)
                     aliasBase.Children.Add(new TableAlias { Id = statementDomArg.Scope.CodeDomReference.TypeArguments[0].BaseType });
 
@@ -48,7 +48,7 @@ namespace Pickaxe.CodeDom.Visitor
             _mainType.Type.Members.Add(bufferTable);
 
             var field = new CodeMemberField();
-            field.Name = aliasBase.Alias.Id;
+            field.Name = aliasBase.Alias == null ? string.Empty : aliasBase.Alias.Id;
             field.Attributes = MemberAttributes.Public | MemberAttributes.Final;
             field.Type = statementDomArg.Scope.CodeDomReference.TypeArguments[0];
             _joinMembers.Add(field);

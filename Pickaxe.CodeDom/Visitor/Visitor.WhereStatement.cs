@@ -13,6 +13,7 @@
  */
 
 using Microsoft.CSharp;
+using Pickaxe.CodeDom.Semantic;
 using Pickaxe.Runtime;
 using Pickaxe.Sdk;
 using System;
@@ -107,10 +108,10 @@ namespace Pickaxe.CodeDom.Visitor
                         new CodePropertyReferenceExpression(new CodeVariableReferenceExpression("row"), aliases[0]), "CssWhere",
                         new CodePrimitiveExpression(statement.NodesBooleanExpression.Selector)));
                 }
-                else
+                else if(aliases.Length > 0) //more than one 
                 {
-                    //here we need to match the exact alias
-                    throw new InvalidOperationException("more than one alias");
+                    throw new InvalidOperationException("AmbiguousSelectVariable");
+                    //Errors.Add(new AmbiguousSelectVariable(new Semantic.LineInfo(statement.NodesBooleanExpression.Line.Line, statement.NodesBooleanExpression.Line.CharacterPosition), "nodes"));
                 }
             }
 

@@ -31,23 +31,10 @@ namespace Pickaxe.CodeDom.Visitor
         {
             //the inner is the new join (ic). Everything else is outer (oc)
 
-            //row.a.id == row.b.id
-            
-            //aliasBAse.Alias.Id
-
             string innerMatch = @"row\.(" + aliasBAse.Alias.Id + @")\.(\w+)";
             string outerMatch = @"row\.([^" + aliasBAse.Alias.Id + @"])\.(\w+)";
-
-            var vars = Scope.Current.FindAll();
-            var ids = new List<string>();
-            foreach (var v in vars)
-            {
-                var row = "row" + "." + v.TableAlias + "." + v.TableVariable.Variable;
-                if(Regex.IsMatch(row, innerMatch))
-                    statement = Regex.Replace(statement, innerMatch, "ic.$1.$2");
-                else if(Regex.IsMatch(row, outerMatch))
-                    statement = Regex.Replace(statement, outerMatch, "oc.$1.$2");
-            }
+            statement = Regex.Replace(statement, innerMatch, "ic.$1.$2");
+            statement = Regex.Replace(statement, outerMatch, "oc.$1.$2");
 
             return statement;
         }
@@ -77,10 +64,6 @@ namespace Pickaxe.CodeDom.Visitor
 
             //Do Join
             var anonType = new CodeTypeReference(anon);
-
-            //inner
-            //copy
-
 
             method.Statements.Add(new CodeVariableDeclarationStatement(new CodeTypeReference("IList", anonType), "join",
                 new CodeObjectCreateExpression(new CodeTypeReference("List", anonType)))); 
