@@ -20,19 +20,35 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Pickaxe.CodeDom.Visitor
 {
     public partial class CodeDomGenerator : IAstVisitor
     {
 
-        private string ReplaceBooleanStatement(string statement/*, string joinAlias*/)
+        private string ReplaceBooleanStatement(AliasBase aliasBAse, string statement)
         {
             //the inner is the new join (ic). Everything else is outer (oc)
 
             //row.a.id == row.b.id
+            
+            //aliasBAse.Alias.Id
+
+            string innerMatch = @"row\.(" + aliasBAse.Alias.Id + @")\.(\w+)";
+            string outerMatch = @"row\.([^" + aliasBAse.Alias.Id + @"])\.(\w+)";
 
             var vars = Scope.Current.FindAll();
+            var ids = new List<string>();
+            foreach (var v in vars)
+            {
+                var row = "row" + "." + v.TableAlias + "." + v.TableVariable.Variable;
+                if(Regex.IsMatch(row, innerMatch))
+                    statement = Regex.Replace(statement, innerMatch, "ic.$1.$2");
+                else if(Regex.IsMatch(row, outerMatch))
+                    statement = Regex.Replace(statement, outerMatch, "oc.$1.$2");
+            }
+
             return statement;
         }
 
@@ -94,10 +110,30 @@ namespace Pickaxe.CodeDom.Visitor
                 new CodePropertyReferenceExpression(new CodeVariableReferenceExpression("i"), "Current")));
 
             var booleanArgs = VisitChild(statement.Expression);
-            string booleanString = ReplaceBooleanStatement(GenerateCodeFromExpression(booleanArgs.CodeExpression));
-            
-            innerLoop.Statements.Add(new CodeConditionStatement(new CodeSnippetExpression(booleanString)));
+            string booleanString = ReplaceBooleanStatement(statement, GenerateCodeFromExpression(booleanArgs.CodeExpression));
 
+            var joinIf = new CodeConditionStatement(new CodeSnippetExpression(booleanString));
+            innerLoop.Statements.Add(joinIf);
+
+            joinIf.TrueStatements.Add(new CodeVariableDeclarationStatement(anonType, "t", new CodeObjectCreateExpression(anonType)));
+            
+            for(int x = 0; x <_joinMembers.Count - 1; x++)
+            {
+                joinIf.TrueStatements.Add(new CodeAssignStatement(
+                    new CodePropertyReferenceExpression(
+                        new CodeVariableReferenceExpression("t"), _joinMembers[x].Name),
+                    new CodePropertyReferenceExpression(
+                        new CodeVariableReferenceExpression("oc"), _joinMembers[x].Name)));
+            }
+
+            joinIf.TrueStatements.Add(new CodeAssignStatement(
+                    new CodePropertyReferenceExpression(
+                        new CodeVariableReferenceExpression("t"), _joinMembers[_joinMembers.Count-1].Name),
+                    new CodePropertyReferenceExpression(
+                        new CodeVariableReferenceExpression("ic"), _joinMembers[_joinMembers.Count - 1].Name)));
+
+
+            joinIf.TrueStatements.Add(new CodeMethodInvokeExpression(new CodeVariableReferenceExpression("join"), "Add", new CodeVariableReferenceExpression("t")));
             method.Statements.Add(outerLoop);
 
             if(statement.Join != null)
