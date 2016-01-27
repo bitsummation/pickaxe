@@ -8,10 +8,10 @@ using System.Text;
 namespace PickAxe.Tests
 {
     [TestFixture]
-    public class TestProcedureCall
+    public class ProcedureCallTests
     {
         [Test]
-        public void TestBasic()
+        public void ProcedureCall_TestBasic()
         {
             var input = @"
 

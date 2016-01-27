@@ -61,7 +61,7 @@ namespace PickAxe.Tests
         }
 
         [Test]
-        public void TestReplace()
+        public void Select_TestReplace()
         {
             var code = @"
         
@@ -88,7 +88,7 @@ namespace PickAxe.Tests
         }
 
         [Test]
-        public void TestMatch()
+        public void Select_TestMatch()
         {
             var code = @"
         
@@ -116,7 +116,7 @@ namespace PickAxe.Tests
         }
 
         [Test]
-        public void TestPickTakeAttribute()
+        public void Select_TestPickTakeAttribute()
         {
             var code = @"
         
@@ -143,7 +143,7 @@ namespace PickAxe.Tests
         }
 
         [Test]
-        public void TestPickTakeText()
+        public void Select_TestPickTakeText()
         {
             var code = @"
         
@@ -169,7 +169,7 @@ namespace PickAxe.Tests
         }
 
         [Test]
-        public void TestCaseBooleanMultiple()
+        public void Select_TestCaseBoolean()
         {
             var code = @"
   
@@ -208,7 +208,7 @@ select 5
         }
 
         [Test]
-        public void TestCaseBoolean()
+        public void Select_TestCaseBooleanPick()
         {
             var code = @"
         

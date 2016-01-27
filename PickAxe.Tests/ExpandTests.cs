@@ -21,10 +21,10 @@ using System.Text;
 namespace PickAxe.Tests
 {
     [TestFixture]
-    public class TestExpand
+    public class ExpandTests
     {
         [Test]
-        public void TestExpandExpression()
+        public void Expand_TestExpandExpression()
         {
             var code = @"      
  select *
@@ -51,7 +51,7 @@ namespace PickAxe.Tests
         }
 
         [Test]
-        public void TestExpandBasic()
+        public void Expand_TestExpandBasic()
         {
             var code = @"      
  select *

@@ -54,10 +54,11 @@
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="SelectTests.cs" />
     <Compile Include="TestCode.cs" />
-    <Compile Include="TestExpand.cs" />
+    <Compile Include="ExpandTests.cs" />
     <Compile Include="TestHelper.cs" />
-    <Compile Include="TestProcedure.cs" />
-    <Compile Include="TestProcedureCall.cs" />
+    <Compile Include="ProcedureTests.cs" />
+    <Compile Include="ProcedureCallTests.cs" />
+    <Compile Include="WhereTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />

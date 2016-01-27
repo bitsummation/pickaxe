@@ -22,10 +22,10 @@ using System.Text;
 namespace PickAxe.Tests
 {
     [TestFixture]
-    public class TestProcedure
+    public class ProcedureTests
     {
         [Test]
-        public void TestBasic()
+        public void Procedure_TestBasic()
         {
             var input = @"
 
