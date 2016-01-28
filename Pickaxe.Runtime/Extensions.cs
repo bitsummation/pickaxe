@@ -37,11 +37,14 @@ namespace Pickaxe.Runtime
             }
         }
 
-        public static void CssWhere(this DownloadPage p, string selector)
+        public static DownloadPage CssWhere(this DownloadPage p, string selector)
         {
+            DownloadPage newPage = p;
             var nodes = p.nodes[0].QuerySelectorAll(selector).ToArray();
-            if (nodes.Length > 0)
-                p.nodes = nodes;
+            if (nodes.Length > 0) //create a new page because the download page statement could be in stored in a variable
+                newPage = new DownloadPage() { date = p.date, nodes = nodes, size = p.size, url = p.url };
+
+            return newPage;
         }
 
         public static HtmlNode Pick(this HtmlNode node, string selector)

@@ -111,7 +111,7 @@ select *
 from urls
 ```
 #### Proxies
-Must be first statement in program. If the expression in the test block returns any rows, the proxy is considered good and all http requests will be routed through it. If more than one passes they are used in round robin fashion.
+Must be first statement in program. If the expression in the test block returns any rows, the proxy is considered good and all http requests will be routed through it. If more than one passes they are used in Round-robin fashion.
 ``` sql
 proxies ('104.156.252.188:8080', '75.64.204.199:8888', '107.191.49.249:8080')
 with test {	

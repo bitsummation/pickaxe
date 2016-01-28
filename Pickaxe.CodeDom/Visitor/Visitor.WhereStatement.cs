@@ -104,9 +104,12 @@ namespace Pickaxe.CodeDom.Visitor
                 var aliases = Scope.Current.AliasType<DownloadPage>();
                 if(aliases.Length == 1)
                 {
-                    loop.Statements.Add(new CodeMethodInvokeExpression(
+                    loop.Statements.Add(new CodeAssignStatement(
+                        new CodePropertyReferenceExpression(new CodeVariableReferenceExpression("row"), aliases[0]),
+                        new CodeMethodInvokeExpression(
                         new CodePropertyReferenceExpression(new CodeVariableReferenceExpression("row"), aliases[0]), "CssWhere",
-                        new CodePrimitiveExpression(statement.NodesBooleanExpression.Selector)));
+                        new CodePrimitiveExpression(statement.NodesBooleanExpression.Selector))));
+                    
                 }
                 else if(aliases.Length > 0) //more than one 
                 {

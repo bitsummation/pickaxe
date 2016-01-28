@@ -58,11 +58,3 @@ each(row in detailurls) {
 
 select *
 from topicreplies
-
-/*
-select
-		pick 'h3' take text, --title
-		pick 'p:nth-child(3)' take text, --post
-		pick 'p.author a' take text --user
-	from download page (select url from detailurls)
-	where nodes = 'div.topic'*/
