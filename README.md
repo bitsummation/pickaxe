@@ -6,7 +6,7 @@ An easy to use SQL based web scraper language. If you know SQL and a little abou
 Found [here](https://github.com/bitsummation/pickaxe/releases). It requires .NET framework 4.0. The Pickaxe-Console.zip is the command line version without the editor.
 ## Quickstart
 ---
-Pickaxe uses SQL statements combined with CSS selectors to pick out text from a web page. Download the tool from above and unzip the contents and double click on **Pickaxe.Studio.exe**. Below are some simple examples.
+Pickaxe uses SQL statements combined with CSS selectors to pick out text from a web page. Download the tool from above and unzip the contents and double click on **Pickaxe.Studio.exe**. Below are some example snippets. A full runnable example that scrapes a forum I host is found [here](https://raw.githubusercontent.com/bitsummation/pickaxe/master/Examples/vtss.s).
 #### Example 1
 Capture the commit information from this page.
 ```sql
