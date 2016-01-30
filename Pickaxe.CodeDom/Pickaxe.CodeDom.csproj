@@ -68,7 +68,7 @@
     <Compile Include="Visitor\Visitor.CaseBooleanStatement.cs" />
     <Compile Include="Visitor\Visitor.CaseVariableStatement.cs" />
     <Compile Include="Visitor\Visitor.DivisionOperator.cs" />
-    <Compile Include="Visitor\Visitor.DownloadImageExpression.cs.cs" />
+    <Compile Include="Visitor\Visitor.DownloadImageExpression.cs" />
     <Compile Include="Visitor\Visitor.EachStatement.cs" />
     <Compile Include="Visitor\Visitor.EqualsExpression.cs" />
     <Compile Include="Visitor\Visitor.ExpandExpression.cs" />

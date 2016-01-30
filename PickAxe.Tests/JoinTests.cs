@@ -23,6 +23,54 @@ namespace PickAxe.Tests
     [TestFixture]
     public class JoinTests
     {
+
+        [Test]
+        public void Join_Three_SelectArgs()
+        {
+
+            var code = @"
+
+   create buffer a (id int, name string)
+create buffer b (id int, name string)
+create buffer c (id int, name string)
+
+insert into a
+select 1, 'a'
+
+insert into a
+select 2, 'first'
+
+insert into b
+select 1, 'b'
+
+insert into c
+select 1, 'c'
+
+select a.name, b.name, c.name
+from a
+join b on a.id = b.id
+join c on c.id = b.id
+
+";
+
+            var runable = TestHelper.Compile(code, null);
+
+            int called = 0;
+            runable.Select += (table) =>
+            {
+                called++;
+                Assert.IsTrue(table.Columns().Length == 3);
+                Assert.IsTrue(table.RowCount == 1);
+
+                Assert.IsTrue(table[0][0].ToString() == "a");
+                Assert.IsTrue(table[0][1].ToString() == "b");
+                Assert.IsTrue(table[0][2].ToString() == "c");
+            };
+
+            runable.Run();
+            Assert.IsTrue(called == 1);
+        }
+
         [Test]
         public void Join_Two_SelectArgs()
         {
