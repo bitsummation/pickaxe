@@ -42,7 +42,7 @@ select 2, 'first'
 
 insert into b
 select 1, 'b'
-
+ 
 insert into c
 select 1, 'c'
 

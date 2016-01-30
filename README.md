@@ -86,6 +86,16 @@ select
     'http://example.com/p=' + value + '?t=All'
 from expand (startPage to endPage){($*2) + 10}
 ```
+### Case
+Case statement in select.
+``` sql
+select
+    case when value < 20
+    	then 'small' else 'large'
+    end
+from expand (1 to 10){($*2) + 10}
+```
+
 #### Loops
 Allows looping through tables.
 ``` sql
@@ -120,11 +130,6 @@ with test {
 	from download page 'http://vtss.brockreeve.com/'
 }
 ```
-
-More in-depth tutorials are listed in the tutorials section. Features include.
-* You can insert into memory tables or tables that wrap a file.
-* Download images
-
 ## Tutorials
 ---
 * [Pickaxe Tutorial #1](http://brockreeve.com/post/2015/07/23/SQL-based-web-scraper-language-Tutorial-1.aspx)
