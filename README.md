@@ -86,6 +86,25 @@ select
     'http://example.com/p=' + value + '?t=All'
 from expand (startPage to endPage){($*2) + 10}
 ```
+### Join
+Inner join tables.
+``` sql
+create buffer a (id int, name string)
+create buffer b (id int, name string)
+
+insert into a
+select 1, 'first'
+
+insert into a
+select 2, 'first'
+
+insert into b
+select 1, 'second'
+
+select a.name, b.name
+from a
+join b on a.id = b.id
+```
 ### Case
 Case statement in select.
 ``` sql
