@@ -18,6 +18,7 @@ using Pickaxe.Runtime.Internal;
 using System.Threading;
 using log4net;
 using System.Reflection;
+using System.Collections.Generic;
 
 namespace Pickaxe.Runtime
 {
@@ -26,6 +27,7 @@ namespace Pickaxe.Runtime
         private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         private BreakProcesser _processor;
+        private Dictionary<string, string> _args;
 
         protected RuntimeBase()
         {
@@ -34,6 +36,7 @@ namespace Pickaxe.Runtime
             HighlightExecution = false;
             IsRunning = true;
             _processor = BreakProcesser.Continue;
+            _args = new Dictionary<string, string>();
             RequestFactory = HttpRequestFactory.NoProxy;
         }
 
@@ -76,6 +79,15 @@ namespace Pickaxe.Runtime
                 }
 
                 RequestFactory = HttpRequestFactory.CreateProxySelector(selector);
+            }
+        }
+
+        public void RegisterArgs(string[] args)
+        {
+            for(int x = 0; x < args.Length; x++)
+            {
+                var key = string.Format("@{0}", x + 1);
+                _args.Add(key, args[0]);
             }
         }
 

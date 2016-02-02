@@ -46,18 +46,9 @@ namespace PickAxe.Tests
 
               var join = @"
 
-   create buffer a (id int, name string)
-create buffer b (id int, name string)
+    first = @1 ?? 'first'
+    second = @2 ?? 'second'  
 
-insert into a
-select 1, 'a'
-
-insert into b
-select 1, 'a'
-
-select *
-from a
-join b on a.id = b.id
 
 ";
 

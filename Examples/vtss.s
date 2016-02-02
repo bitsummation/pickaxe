@@ -7,25 +7,17 @@ select
 from download page 'http://vtss.brockreeve.com/?t=All'
 where nodes = 'ol.page-nav'
 
-create buffer pageurls (url string)
-
-each(row in postpages){
-	
-	insert into pageurls
-	select
-		'http://vtss.brockreeve.com/Home/Index/' + value + '?t=All'
-	from expand (row.startPage to row.endPage)
-}
-
-
 create buffer detailurls (url string)
 
-each(row in pageurls){
+each(row in postpages){
 	
 	insert into detailurls
 	select
 	'http://vtss.brockreeve.com' + pick 'h3 a' take attribute 'href'
-	from download page row.url
+	from download page (select
+							'http://vtss.brockreeve.com/Home/Index/' + value + '?t=All'
+						from expand (row.startPage to row.endPage)
+	)
 	where nodes = 'div.topic'
 
 }

@@ -49,7 +49,7 @@ namespace Pickaxe
                     sources.Add(reader.ReadToEnd());
                 }
 
-                Thread thread = new Thread(() => Compile(sources.ToArray()));
+                Thread thread = new Thread(() => Compile(sources.ToArray(), args));
                 thread.Start();
                 thread.Join();
             }
@@ -61,7 +61,7 @@ namespace Pickaxe
                 Console.WriteLine(error);
         }
 
-        private static void Compile(string[] source)
+        private static void Compile(string[] source, string[] args)
         {
             var compiler = new Compiler(source);
             var generatedAssembly = compiler.ToAssembly();
@@ -72,6 +72,7 @@ namespace Pickaxe
             if (!compiler.Errors.Any())
             {
                 var runable = new Runable(generatedAssembly);
+                runable.RegisterArgs(args);
                 runable.Select += OnSelectResults;
                 runable.Progress += OnProgress;
 
@@ -106,7 +107,7 @@ namespace Pickaxe
                 {
                     while (Convert.ToChar(Console.Read()) != '\n') {} //clear buf
 
-                    Thread thread = new Thread(() => Compile(new[]{builder.ToString()}));
+                    Thread thread = new Thread(() => Compile(new[]{builder.ToString()}, new string[0]));
                     thread.Start();
                     thread.Join();
 

@@ -151,8 +151,9 @@ downloadImageExpression
 	: DOWNLOAD_IMAGE^ (STRING_LITERAL | sqlStatement)
 	| DOWNLOAD_IMAGE ID -> ^(DOWNLOAD_IMAGE VARIABLE_REFERENCE[$ID])
 	| DOWNLOAD_IMAGE tableMemberReference -> ^(DOWNLOAD_IMAGE tableMemberReference)
-	; 
-
+	
+variableReference
+	: 
 
 tableMemberReference
 	: t=ID DOT m=ID -> ^(TABLE_MEMBER_REFERENCE ROW_REFERENCE[$t] MEMBER_REFERENCE[$m])

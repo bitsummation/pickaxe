@@ -45,6 +45,11 @@ namespace Pickaxe.Runtime
             _instance.RequestFactory = requestFactory;
         }
 
+        public void RegisterArgs(string[] args)
+        {
+            _instance.RegisterArgs(args);
+        }
+
         public void Stop()
         {
             _instance.Stop();
