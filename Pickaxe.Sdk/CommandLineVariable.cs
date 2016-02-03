@@ -12,49 +12,18 @@
  * limitations under the License.
  */
 
-using NUnit.Framework;
-using Pickaxe.Emit;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace PickAxe.Tests
+namespace Pickaxe.Sdk
 {
-    [TestFixture]
-    public class CodeGen
+    public class CommandLineVariable : VariableReferance
     {
-       
-        [Test]
-        public void BasicCodeGenTest()
+        public override void Accept(IAstVisitor visitor)
         {
-              var input = @"
-
-  create buffer temp(id int)
-  insert into temp
-  select 2     
-
-    tvar = 'variable'
-
-
-    select tvar, id
-    from temp
-
---nodes
-";
-
-              var join = @"
-
-    first = @1 //?? 'first'
-    second = @2 //?? 'second'  
-
-
-";
-
-            var compiler = new Compiler(join);
-            var sources = compiler.ToCode();
-            Assert.IsTrue(compiler.Errors.Count == 0);
+            visitor.Visit(this);
         }
     }
 }

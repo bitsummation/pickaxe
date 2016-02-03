@@ -91,6 +91,14 @@ namespace Pickaxe.Runtime
             }
         }
 
+        protected string GetArgValue(string arg)
+        {
+            if(_args.ContainsKey(arg))
+                return _args[arg];
+
+            return null;
+        }
+
         protected virtual string[] Proxies
         {
             get

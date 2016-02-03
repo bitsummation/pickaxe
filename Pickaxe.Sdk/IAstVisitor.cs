@@ -51,6 +51,8 @@ namespace Pickaxe.Sdk
 
         void Visit(VariableReferance variable);
         void Visit(TableAlias alias);
+        void Visit(IdentityVariable identity);
+        void Visit(CommandLineVariable variable);
         void Visit(TableMemberReference variable);
         void Visit(TableVariableReference variable);
         void Visit(TableVariableRowReference variable);

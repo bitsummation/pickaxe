@@ -48,6 +48,8 @@ namespace Pickaxe.Parser.Bridge
         void Visit(Block block, CommonTree tree);
 
         void Visit(TableAlias alias, CommonTree tree);
+        void Visit(IdentityVariable identity, CommonTree tree);
+        void Visit(CommandLineVariable variable, CommonTree tree);
         void Visit(TableMemberReference variable, CommonTree tree);
         void Visit(VariableReferance variable, CommonTree tree);
         void Visit(TableVariableReference variable, CommonTree tree);

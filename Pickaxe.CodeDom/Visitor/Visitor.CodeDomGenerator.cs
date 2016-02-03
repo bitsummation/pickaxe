@@ -59,7 +59,6 @@ namespace Pickaxe.CodeDom.Visitor
             Scope.Current.RegisterTable("Expand", Expand.Columns, new CodeTypeReference("Table", new CodeTypeReference("Expand")));
 
             //Register @@identity
-
             Scope.Current.RegisterPrimitive("@@identity", typeof(int), new CodeTypeReference(typeof(int)));
             Scope.Current.Type.Type.Members.Add(
                new CodeMemberField() { Name = "g_identity", Type =  new CodeTypeReference(typeof(int)), Attributes = MemberAttributes.Public | MemberAttributes.Final });

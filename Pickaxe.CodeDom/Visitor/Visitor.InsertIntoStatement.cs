@@ -50,7 +50,7 @@ namespace Pickaxe.CodeDom.Visitor
             method.Statements.Add(new CodeMethodInvokeExpression(
                 new CodeMethodReferenceExpression(variableArgs.CodeExpression, "BeforeInsert"), new CodePrimitiveExpression(statement.Overwrite)));
 
-            var identityArgs = VisitChild(new VariableReferance() { Id = "@@identity" });
+            var identityArgs = VisitChild(new IdentityVariable() { Id = "@@identity" });
 
             method.Statements.Add(new CodeAssignStatement(identityArgs.CodeExpression,
                     new CodePropertyReferenceExpression(variableArgs.CodeExpression, "RowCount")

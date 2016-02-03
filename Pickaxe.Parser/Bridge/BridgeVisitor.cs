@@ -204,6 +204,23 @@ namespace Pickaxe.Parser.Bridge
             literal.Value = int.Parse(tree.Text);
         }
 
+        public void Visit(IdentityVariable identity, CommonTree tree)
+        {
+            Parent(tree).Children.Add(identity);
+            SetLine(identity, tree);
+
+            identity.Id = tree.Text;
+        }
+
+
+        public void Visit(CommandLineVariable variable, CommonTree tree)
+        {
+            Parent(tree).Children.Add(variable);
+            SetLine(variable, tree);
+
+            variable.Id = tree.Text;
+        }
+
         public void Visit(VariableReferance variable, CommonTree tree)
         {
             Parent(tree).Children.Add(variable);

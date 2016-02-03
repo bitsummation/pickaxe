@@ -48,6 +48,8 @@
     <Compile Include="CaseBooleanStatement.cs" />
     <Compile Include="CaseExpression.cs" />
     <Compile Include="CaseVariableStatement.cs" />
+    <Compile Include="CommandLineVariable.cs" />
+    <Compile Include="IdentityVariable.cs" />
     <Compile Include="InnerJoinStatement.cs" />
     <Compile Include="NodesBooleanExpression.cs" />
     <Compile Include="DivisionOperator.cs" />

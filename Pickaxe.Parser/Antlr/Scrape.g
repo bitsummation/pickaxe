@@ -132,8 +132,7 @@ expandBlock
 
 expandVar
 	: INT
-	| tableMemberReference
-	| ID -> ^(VARIABLE_REFERENCE[$ID])
+	| variableReference
 	;
 
 downloadExpression
@@ -143,17 +142,20 @@ downloadExpression
 
 downloadPageExpresssion
 	: DOWNLOAD_PAGE^ (STRING_LITERAL | OPENPAREN sqlStatement CLOSEPAREN)
-	| DOWNLOAD_PAGE ID -> ^(DOWNLOAD_PAGE VARIABLE_REFERENCE[$ID])
-	| DOWNLOAD_PAGE tableMemberReference -> ^(DOWNLOAD_PAGE tableMemberReference)
+	| DOWNLOAD_PAGE variableReference -> ^(DOWNLOAD_PAGE variableReference)
 	;
 
 downloadImageExpression
-	: DOWNLOAD_IMAGE^ (STRING_LITERAL | sqlStatement)
-	| DOWNLOAD_IMAGE ID -> ^(DOWNLOAD_IMAGE VARIABLE_REFERENCE[$ID])
-	| DOWNLOAD_IMAGE tableMemberReference -> ^(DOWNLOAD_IMAGE tableMemberReference)
+	: DOWNLOAD_IMAGE^ (STRING_LITERAL | OPENPAREN sqlStatement CLOSEPAREN)
+	| DOWNLOAD_IMAGE variableReference -> ^(DOWNLOAD_IMAGE variableReference)
+	;
 	
 variableReference
-	: 
+	: ID -> VARIABLE_REFERENCE[$ID]
+	| COMMAND_VAR
+	| IDENTITY_VAR
+	| tableMemberReference
+	;	
 
 tableMemberReference
 	: t=ID DOT m=ID -> ^(TABLE_MEMBER_REFERENCE ROW_REFERENCE[$t] MEMBER_REFERENCE[$m])
@@ -179,9 +181,8 @@ mathExpressionGroup
   	;
   
 atom
-    	: ID -> ^(VARIABLE_REFERENCE[$ID])
+    	: variableReference
 		| '$' -> ^(EXPAND_INTERATION_VARIABLE)
-		| tableMemberReference
 		| literal
     	| OPENPAREN! mathExpression CLOSEPAREN!
     	;
@@ -281,7 +282,13 @@ boolOperator
 selectArg
 	: pickStatement
 	| literal
-	| ID -> ^(SELECT_ID[$ID])
+	| selectVariable
+	;
+
+selectVariable
+	: ID -> ^(SELECT_ID[$ID])
+	| COMMAND_VAR
+	| IDENTITY_VAR
 	| tableMemberReference
 	;
 	
@@ -402,7 +409,9 @@ ROW_TERMINATOR : 'rowterminator';
 LOCATION : 'location';
 
 STRING_LITERAL: APOSTRAPHE ~(APOSTRAPHE)* APOSTRAPHE;
-ID : VARIABLE+;
+IDENTITY_VAR : '@@identity';
+COMMAND_VAR : '@' DIGIT+;
+ID : LETTER+;
 ASTERISK : '*';
 DOT : '.';
 OPENPAREN : '(';
@@ -418,7 +427,6 @@ APOSTRAPHE : '\'';
 INT : DIGIT+;
 fragment NEWLINE : ('\n'|'\r');
 fragment DIGIT: '0'..'9';
-fragment VARIABLE: ('@' | LETTER);
 fragment LETTER :('a'..'z' | 'A'..'Z'); 
 fragment OTHERCHARS : ('.' | '|' | '-' | '&' | ',' | '\\' | ':'); 
 WS :  (' '|'\t'|NEWLINE)+ {$channel = Hidden;};

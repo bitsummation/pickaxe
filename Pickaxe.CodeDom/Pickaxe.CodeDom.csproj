@@ -67,6 +67,7 @@
     <Compile Include="Visitor\Visitor.Block.cs" />
     <Compile Include="Visitor\Visitor.CaseBooleanStatement.cs" />
     <Compile Include="Visitor\Visitor.CaseVariableStatement.cs" />
+    <Compile Include="Visitor\Visitor.CommandLineVariable.cs" />
     <Compile Include="Visitor\Visitor.DivisionOperator.cs" />
     <Compile Include="Visitor\Visitor.DownloadImageExpression.cs" />
     <Compile Include="Visitor\Visitor.EachStatement.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="Visitor\Visitor.ExpandIterationVariable.cs" />
     <Compile Include="Visitor\Visitor.GreaterThanEqualExpression.cs" />
     <Compile Include="Visitor\Visitor.GreaterThanExpression.cs" />
+    <Compile Include="Visitor\Visitor.IdentityVariable.cs.cs" />
     <Compile Include="Visitor\Visitor.InnerJoinStatement.cs" />
     <Compile Include="Visitor\Visitor.InsertIntoDirectoryStatement.cs" />
     <Compile Include="Visitor\Visitor.LessThanEqualExpression.cs" />
