@@ -46,9 +46,8 @@ namespace PickAxe.Tests
 
               var join = @"
 
-    first = @1 //?? 'first'
-    second = @2 //?? 'second'  
-
+    select @1
+    //second = @2 ?? 'second'  
 
 ";
 
