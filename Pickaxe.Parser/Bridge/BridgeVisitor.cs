@@ -332,9 +332,14 @@ namespace Pickaxe.Parser.Bridge
             SetLine(eachStatement, tree);
 
             eachStatement.IterationVariable = new VariableDeclarationStatement() { Variable = tree.GetChild(0).Text };
-            eachStatement.IterationVariable.Children.Add(new TableVariableRowGetter() { Id = tree.GetChild(1).Text });
+            SetLine(eachStatement.IterationVariable, tree.GetChild(0));
 
+            var rowGetter = new TableVariableRowGetter() { Id = tree.GetChild(1).Text };
+            SetLine(rowGetter, tree.GetChild(1));
+            eachStatement.IterationVariable.Children.Add(rowGetter);
+            
             eachStatement.TableReference = new TableVariableReference() { Id = tree.GetChild(1).Text };
+            SetLine(eachStatement.TableReference, tree.GetChild(1));
 
             Visit(tree.GetChild(2));
         }
