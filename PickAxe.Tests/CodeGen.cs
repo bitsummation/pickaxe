@@ -48,11 +48,11 @@ namespace PickAxe.Tests
 
     //temp = 'sadf'
     //temps = @1
-    second = @2 ?? 'second'  
+    @2 = @2 ?? 'second'  
 
 ";
 
-            var compiler = new Compiler(join);
+              var compiler = new Compiler(join);
             var sources = compiler.ToCode();
             Assert.IsTrue(compiler.Errors.Count == 0);
         }

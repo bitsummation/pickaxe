@@ -45,6 +45,9 @@ namespace Pickaxe.CodeDom.Visitor
             _mainType.Type.Members.Add(method);
             _unit.Namespaces.Add(mainNamespace);
 
+            _mainType.Constructor.Parameters.Add(new CodeParameterDeclarationExpression(new CodeTypeReference(typeof(string[])), "args"));
+            _mainType.Constructor.BaseConstructorArgs.Add(new CodeVariableReferenceExpression("args"));
+
             foreach (var child in program.Children)
             {
                 var arg = VisitChild(child);

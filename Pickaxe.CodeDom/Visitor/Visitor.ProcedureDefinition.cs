@@ -41,7 +41,10 @@ namespace Pickaxe.CodeDom.Visitor
             }
 
             _mainType.Type.Name = statement.Name;
+            _mainType.Constructor.Parameters.Clear();
+            _mainType.Constructor.BaseConstructorArgs.Clear();
             _mainType.Constructor.Parameters.AddRange(argList.ToArray());
+            _mainType.Constructor.BaseConstructorArgs.Add(new CodeArrayCreateExpression(new CodeTypeReference(typeof(string[])), 0));
 
             //visit block
             var blockArgs = VisitChild(statement.Block);

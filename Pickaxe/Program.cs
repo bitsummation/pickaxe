@@ -71,8 +71,7 @@ namespace Pickaxe
 
             if (!compiler.Errors.Any())
             {
-                var runable = new Runable(generatedAssembly);
-                runable.RegisterArgs(args);
+                var runable = new Runable(generatedAssembly, args);
                 runable.Select += OnSelectResults;
                 runable.Progress += OnProgress;
 

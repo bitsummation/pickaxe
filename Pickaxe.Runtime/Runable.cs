@@ -30,9 +30,13 @@ namespace Pickaxe.Runtime
         public event Action<ProgressArgs> Progress;
         public event Action<int> Highlight;
 
-        public Runable(Assembly assembly)
+        public Runable(Assembly assembly) : this(assembly, new string[0])
+        { }
+
+        public Runable(Assembly assembly, string[] args)
         {
-            _instance = assembly.CreateInstance("Code") as RuntimeBase;
+            var constructor = assembly.GetType("Code").GetConstructor(new Type[] { typeof(string[]) });
+            _instance = constructor.Invoke(new object[] { args }) as RuntimeBase;
             _instance.Progress += OnProgress;
             _instance.Select += OnSelect;
             _instance.Highlight += OnHighlight;
@@ -43,11 +47,6 @@ namespace Pickaxe.Runtime
         public void SetRequestFactory(IHttpRequestFactory requestFactory)
         {
             _instance.RequestFactory = requestFactory;
-        }
-
-        public void RegisterArgs(string[] args)
-        {
-            _instance.RegisterArgs(args);
         }
 
         public void Stop()

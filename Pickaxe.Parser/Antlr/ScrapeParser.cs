@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// $ANTLR 3.5.2 Scrape.g 2016-02-03 21:52:50
+// $ANTLR 3.5.2 Scrape.g 2016-02-04 19:48:52
 
 // The variable 'variable' is assigned but its value is never used.
 #pragma warning disable 219
@@ -556,7 +556,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: ID, block, PROCEDURE, tableColumnArgs
+			// elements: PROCEDURE, tableColumnArgs, ID, block
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -1046,7 +1046,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: EXEC, procedureCallList, ID
+			// elements: procedureCallList, ID, EXEC
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -1504,7 +1504,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: proxyTest, PROXIES, proxyList
+			// elements: proxyList, proxyTest, PROXIES
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -1918,7 +1918,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: block, EACH
+			// elements: EACH, block
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -2392,7 +2392,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: expandVar, EXPAND, expandBlock, expandVar
+			// elements: expandBlock, EXPAND, expandVar, expandVar
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -3218,7 +3218,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 				{
 				// AST REWRITE
-				// elements: variableReference, DOWNLOAD_IMAGE
+				// elements: DOWNLOAD_IMAGE, variableReference
 				// token labels: 
 				// rule labels: retval
 				// token list labels: 
@@ -3628,7 +3628,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: assignmentExpression, ID
+			// elements: ID, assignmentExpression
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -4717,7 +4717,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 				{
 				// AST REWRITE
-				// elements: sqlStatement, INSERT_INTO
+				// elements: INSERT_INTO, sqlStatement
 				// token labels: 
 				// rule labels: retval
 				// token list labels: 
@@ -4835,7 +4835,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 				{
 				// AST REWRITE
-				// elements: sqlStatement, INSERT_OVERWRITE
+				// elements: INSERT_OVERWRITE, sqlStatement
 				// token labels: 
 				// rule labels: retval
 				// token list labels: 
@@ -5002,7 +5002,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: selectStatement, fromStatement, whereStatement
+			// elements: whereStatement, selectStatement, fromStatement
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -5124,7 +5124,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: WHERE, boolExpression
+			// elements: boolExpression, WHERE
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -5336,7 +5336,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 				{
 				// AST REWRITE
-				// elements: FROM, innerJoinStatement, a
+				// elements: a, FROM, innerJoinStatement
 				// token labels: a
 				// rule labels: retval
 				// token list labels: 
@@ -5642,7 +5642,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: a, innerJoinStatement, boolExpression
+			// elements: boolExpression, a, innerJoinStatement
 			// token labels: a
 			// rule labels: retval
 			// token list labels: 
@@ -6012,7 +6012,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 				{
 				// AST REWRITE
-				// elements: SELECT, selectArgs
+				// elements: selectArgs, SELECT
 				// token labels: 
 				// rule labels: retval
 				// token list labels: 
@@ -6787,7 +6787,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 				{
 				// AST REWRITE
-				// elements: caseExpression, whenBoolStatement
+				// elements: whenBoolStatement, caseExpression
 				// token labels: 
 				// rule labels: retval
 				// token list labels: 
@@ -6946,7 +6946,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 				{
 				// AST REWRITE
-				// elements: selectArg, whenLiteralStatement, caseExpression
+				// elements: caseExpression, selectArg, whenLiteralStatement
 				// token labels: 
 				// rule labels: retval
 				// token list labels: 
@@ -7185,7 +7185,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: caseExpression, literal
+			// elements: literal, caseExpression
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -7306,7 +7306,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: boolExpression, caseExpression
+			// elements: caseExpression, boolExpression
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -7692,7 +7692,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 				{
 				// AST REWRITE
-				// elements: NODES, STRING_LITERAL
+				// elements: STRING_LITERAL, NODES
 				// token labels: 
 				// rule labels: retval
 				// token list labels: 
@@ -8312,7 +8312,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: PICK, STRING_LITERAL, matchStatement, takeStatement
+			// elements: PICK, takeStatement, matchStatement, STRING_LITERAL
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -8719,7 +8719,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: replaceStatement, MATCH, STRING_LITERAL
+			// elements: STRING_LITERAL, MATCH, replaceStatement
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -9211,7 +9211,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 				{
 				// AST REWRITE
-				// elements: tableColumnArgs, ID
+				// elements: ID, tableColumnArgs
 				// token labels: 
 				// rule labels: retval
 				// token list labels: 
@@ -9447,7 +9447,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: fileTableWithVariablesStatement, WITH
+			// elements: WITH, fileTableWithVariablesStatement
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -9979,7 +9979,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: ID, dataType
+			// elements: dataType, ID
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 

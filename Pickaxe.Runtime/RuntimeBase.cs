@@ -27,16 +27,15 @@ namespace Pickaxe.Runtime
         private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         private BreakProcesser _processor;
-        private Dictionary<string, string> _args;
 
-        protected RuntimeBase()
+        protected RuntimeBase(string[] args)
         {
             TotalOperations = 0;
             CompletedOperations = 0;
             HighlightExecution = false;
             IsRunning = true;
             _processor = BreakProcesser.Continue;
-            _args = new Dictionary<string, string>();
+            RegisterArgs(args);
             RequestFactory = HttpRequestFactory.NoProxy;
         }
 
@@ -82,21 +81,16 @@ namespace Pickaxe.Runtime
             }
         }
 
-        public void RegisterArgs(string[] args)
+        public Dictionary<string, string> Args {get; private set;}
+
+        private void RegisterArgs(string[] args)
         {
+            Args = new Dictionary<string, string>();
             for(int x = 0; x < args.Length; x++)
             {
                 var key = string.Format("@{0}", x + 1);
-                _args.Add(key, args[0]);
+                Args.Add(key, args[0]);
             }
-        }
-
-        protected string GetArgValue(string arg)
-        {
-            if(_args.ContainsKey(arg))
-                return _args[arg];
-
-            return null;
         }
 
         protected virtual string[] Proxies
