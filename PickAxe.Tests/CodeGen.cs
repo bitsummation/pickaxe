@@ -46,8 +46,9 @@ namespace PickAxe.Tests
 
               var join = @"
 
-    select @1
-    //second = @2 ?? 'second'  
+    //temp = 'sadf'
+    //temps = @1
+    second = @2 ?? 'second'  
 
 ";
 

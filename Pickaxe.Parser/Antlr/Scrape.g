@@ -165,11 +165,16 @@ variableDeclarationStatement
 	: ID EQUALS assignmentExpression -> ^(VARIABLE_DECLARATION ID assignmentExpression)
 	;
 
+nullOperator
+	: variableReference NULL_OPERATOR^ (variableReference|literal)
+	;
+
 assignmentExpression
 	: mathExpression
 	| downloadExpression
 	| expandExpression
 	| sqlStatement
+	| nullOperator
 	;
 
 mathExpression
@@ -368,6 +373,8 @@ LESSTHANEQUAL: '<=';
 GREATERTHAN: '>';
 GREATERTHANEQUAL: '>=';
 NOTEQUAL: '!=';
+
+NULL_OPERATOR: '??';
 
 INSERT_INTO : 'insert into';
 INSERT_OVERWRITE : 'insert overwrite';
