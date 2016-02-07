@@ -67,6 +67,12 @@ namespace Pickaxe.Runtime
             return Rows.GetEnumerator();
         }
 
+        //used in each statment so items can be added in loop
+        public IEnumerator<TRow> GetCopyEnumerator()
+        {
+            return Rows.ToList().GetEnumerator();
+        }
+
         IEnumerator IEnumerable.GetEnumerator()
         {
             throw new NotImplementedException();

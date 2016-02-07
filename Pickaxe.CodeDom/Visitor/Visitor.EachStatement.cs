@@ -48,7 +48,7 @@ namespace Pickaxe.CodeDom.Visitor
                 new CodeVariableDeclarationStatement(new CodeTypeReference("IEnumerator", rowType),
                     "x",
                 new CodeMethodInvokeExpression(
-                        new CodeMethodReferenceExpression(tableArg.CodeExpression, "GetEnumerator",
+                        new CodeMethodReferenceExpression(tableArg.CodeExpression, "GetCopyEnumerator",
                         null)))
                         );
 
@@ -59,7 +59,7 @@ namespace Pickaxe.CodeDom.Visitor
                     new CodeMethodReferenceExpression(new CodeTypeReferenceExpression("x"), "MoveNext",
                     null));
 
-                var rowReference = VisitChild(new TableVariableRowReference() { Id = eachStatement.IterationVariable.Variable });
+                var rowReference = VisitChild(new TableVariableRowReference() { Id = eachStatement.IterationVariable.Variable, Line = eachStatement.IterationVariable.Line });
                 loop.Statements.Add(new CodeAssignStatement(rowReference.CodeExpression, new CodePropertyReferenceExpression(new CodeTypeReferenceExpression("x"), "Current")));
 
                 var blockArgs = VisitChild(eachStatement.Block, new CodeDomArg() { Tag = true });

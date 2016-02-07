@@ -27,7 +27,7 @@
         <End>*/</End>
       </Span>
 
-      <KeyWords name="Operators" color="DarkGray">
+      <KeyWords name="Operators" color="SlateGray">
         <Key word = "=" />
         <Key word = "&lt;=" />
         <Key word = "&lt;" />
@@ -90,6 +90,7 @@
         <Key word = "then" />
         <Key word = "else" />
         <Key word = "end" />
+        <Key word = "on" />
       </KeyWords>
     </RuleSet>
   </RuleSets>

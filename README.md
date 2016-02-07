@@ -3,10 +3,10 @@
 An easy to use SQL based web scraper language. If you know SQL and a little about CSS selectors and want to capture data from the web, this is the tool for you.
 ## Downloads
 ---
-Found [here](https://github.com/bitsummation/pickaxe/releases). It requires .NET framework 4.0. The Pickaxe-Console.zip is the command line version without the editor.
+Found [here](https://github.com/bitsummation/pickaxe/releases). It requires .NET framework 4.0. The **Pickaxe-Console.zip** is the command line version. The command line can run on non-windows platforms using mono.
 ## Quickstart
 ---
-Pickaxe uses SQL statements combined with CSS selectors to pick out text from a web page. Download the tool from above and unzip the contents and double click on **Pickaxe.Studio.exe**. Below are some example snippets. A full runnable example that scrapes a forum I host is found [here](https://raw.githubusercontent.com/bitsummation/pickaxe/master/Examples/vtss.s).
+Pickaxe uses SQL statements combined with CSS selectors to pick out text from a web page. Download **Pickaxe.zip** from above and unzip the contents and double click on **Pickaxe.Studio.exe** to run the GUI editor. Below are some example snippets. A full runnable example that scrapes a forum I host is found [here](https://raw.githubusercontent.com/bitsummation/pickaxe/master/Examples/vtss.s).
 #### Example 1
 Capture the commit information from this page.
 ```sql
@@ -22,7 +22,7 @@ from download page 'https://github.com/bitsummation/pickaxe'
 where nodes = 'table.files tr.js-navigation-item'
 ```
 #### Example 2
-What's your ip address?
+What's your WAN ip address?
 ```sql
 select
 	pick '#section_left div:nth-child(2) a' take text
@@ -85,6 +85,25 @@ endPage = 10
 select
     'http://example.com/p=' + value + '?t=All'
 from expand (startPage to endPage){($*2) + 10}
+```
+### Join
+Inner join tables.
+``` sql
+create buffer a (id int, name string)
+create buffer b (id int, name string)
+
+insert into a
+select 1, 'first'
+
+insert into a
+select 2, 'first'
+
+insert into b
+select 1, 'second'
+
+select a.name, b.name
+from a
+join b on a.id = b.id
 ```
 ### Case
 Case statement in select.
