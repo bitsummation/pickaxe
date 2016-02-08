@@ -12,49 +12,27 @@
  * limitations under the License.
  */
 
-using NUnit.Framework;
-using Pickaxe.Emit;
+using Pickaxe.Sdk;
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace PickAxe.Tests
+namespace Pickaxe.CodeDom.Visitor
 {
-    [TestFixture]
-    public class CodeGen
+    public partial class CodeDomGenerator : IAstVisitor
     {
-       
-        [Test]
-        public void BasicCodeGenTest()
+        public void Visit(VariableAssignmentStatement statement)
         {
-              var input = @"
+            var leftArgs = VisitChild(statement.Left);
+            var rightArgs = VisitChild(statement.Right);
 
-  create buffer temp(id int)
-  insert into temp
-  select 2     
+            var assignment = new CodeAssignStatement(leftArgs.CodeExpression, rightArgs.CodeExpression);
 
-    tvar = 'variable'
-
-
-    select tvar, id
-    from temp
-
---nodes
-";
-
-              var join = @"
-
-    var temp = 'sadf'
-    temp = @1
-    //@2 = @2 ?? 'second'  
-
-";
-
-            var compiler = new Compiler(join);
-            var sources = compiler.ToCode();
-            Assert.IsTrue(compiler.Errors.Count == 0);
+            _codeStack.Peek().Scope = rightArgs.Scope;
+            _codeStack.Peek().ParentStatements.Add(assignment);
         }
     }
+    
 }

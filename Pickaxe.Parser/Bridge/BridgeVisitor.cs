@@ -293,6 +293,13 @@ namespace Pickaxe.Parser.Bridge
             statement.Attriute = ParseLiteral(tree.GetChild(0).Text);
         }
 
+        public void Visit(VariableAssignmentStatement statement, CommonTree tree)
+        {
+            Parent(tree).Children.Add(statement);
+            SetLine(statement, tree);
+            VisitChildren(tree);
+        }
+
         public void Visit(VariableDeclarationStatement statement, CommonTree tree)
         {
             Parent(tree).Children.Add(statement);
@@ -537,5 +544,8 @@ namespace Pickaxe.Parser.Bridge
             for(int x = 1; x < tree.ChildCount; x++)
                 Visit(tree.Children[x]);
         }
+
+
+      
     }
 }

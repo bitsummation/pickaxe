@@ -143,6 +143,8 @@ namespace Pickaxe.Parser
                     if(payload.Type == ScrapeParser.TAKE_HTML)
                         return new AntlrBridgeTree<TakeHtmlStatement>(payload, (node, tree, visitor) => visitor.Visit(node, tree));
 
+                    if (payload.Type == ScrapeParser.VARIABLE_ASSIGNMENT)
+                        return new AntlrBridgeTree<VariableAssignmentStatement>(payload, (node, tree, visitor) => visitor.Visit(node, tree));
                     if(payload.Type == ScrapeParser.VARIABLE_DECLARATION)
                         return new AntlrBridgeTree<VariableDeclarationStatement>(payload, (node, tree, visitor) => visitor.Visit(node, tree));
 

@@ -85,6 +85,7 @@
     <Compile Include="TableVariableRowReference.cs" />
     <Compile Include="TakeHtmlStatement.cs" />
     <Compile Include="TruncateTableStatement.cs" />
+    <Compile Include="VariableAssignmentStatement.cs" />
     <Compile Include="VariableDeclarationStatement.cs" />
     <Compile Include="AstNode.cs" />
     <Compile Include="BufferTable.cs" />

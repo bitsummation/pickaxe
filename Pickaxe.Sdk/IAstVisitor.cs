@@ -61,6 +61,7 @@ namespace Pickaxe.Sdk
         void Visit(IntegerLiteral literal);
         void Visit(NullLiteral literal);
 
+        void Visit(VariableAssignmentStatement statement);
         void Visit(VariableDeclarationStatement statement);
         
         void Visit(AdditionOperator op);

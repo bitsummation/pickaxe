@@ -61,6 +61,7 @@ namespace Pickaxe.Parser.Bridge
         void Visit(TakeHtmlStatement statement, CommonTree tree);
         void Visit(TakeAttributeStatement statement, CommonTree tree);
 
+        void Visit(VariableAssignmentStatement statement, CommonTree tree);
         void Visit(VariableDeclarationStatement statement, CommonTree tree);
 
         void Visit(AdditionOperator op, CommonTree tree);

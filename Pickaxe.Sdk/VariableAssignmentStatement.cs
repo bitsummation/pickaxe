@@ -12,49 +12,31 @@
  * limitations under the License.
  */
 
-using NUnit.Framework;
-using Pickaxe.Emit;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace PickAxe.Tests
+namespace Pickaxe.Sdk
 {
-    [TestFixture]
-    public class CodeGen
+    public class VariableAssignmentStatement : AstNode
     {
-       
-        [Test]
-        public void BasicCodeGenTest()
+        public AstNode Left
         {
-              var input = @"
+            get { return Children.First(); }
+        }
 
-  create buffer temp(id int)
-  insert into temp
-  select 2     
+        public AstNode Right
+        {
+            get
+            {
+                return Children.Last();
+            }
+        }
 
-    tvar = 'variable'
-
-
-    select tvar, id
-    from temp
-
---nodes
-";
-
-              var join = @"
-
-    var temp = 'sadf'
-    temp = @1
-    //@2 = @2 ?? 'second'  
-
-";
-
-            var compiler = new Compiler(join);
-            var sources = compiler.ToCode();
-            Assert.IsTrue(compiler.Errors.Count == 0);
+        public override void Accept(IAstVisitor visitor)
+        {
+            visitor.Visit(this);
         }
     }
 }

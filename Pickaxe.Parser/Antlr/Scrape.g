@@ -39,6 +39,7 @@ tokens {
   SELECT_ALL;
   VARIABLE_REFERENCE;
   VARIABLE_DECLARATION;
+  VARIABLE_ASSIGNMENT;
   SELECT_STATEMENT;
   SELECT_ARG;
   TAKE_ATTRIBUTE;
@@ -74,6 +75,7 @@ statement
 	: createTableStatement
 	| sqlStatement
 	| variableDeclarationStatement
+	| variableAssignmentStatement
 	| insertStatement
 	| eachStatement
 	| procedureCall
@@ -162,7 +164,12 @@ tableMemberReference
 	;
 
 variableDeclarationStatement 
-	: ID EQUALS assignmentExpression -> ^(VARIABLE_DECLARATION ID assignmentExpression)
+	: VAR ID EQUALS assignmentExpression -> ^(VARIABLE_DECLARATION ID assignmentExpression)
+	| VAR ID
+	;
+
+variableAssignmentStatement
+	: variableReference EQUALS assignmentExpression -> ^(VARIABLE_ASSIGNMENT variableReference assignmentExpression)
 	;
 
 nullOperator
@@ -175,6 +182,7 @@ assignmentExpression
 	| expandExpression
 	| sqlStatement
 	| nullOperator
+	| variableReference
 	;
 
 mathExpression
@@ -363,6 +371,8 @@ WHEN: 'when';
 THEN: 'then';
 END: 'end';
 ELSE: 'else';
+
+VAR: 'var';
 
 AND : 'and';
 OR : 'or';
