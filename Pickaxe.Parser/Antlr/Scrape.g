@@ -173,7 +173,7 @@ variableAssignmentStatement
 	;
 
 nullOperator
-	: variableReference NULL_OPERATOR^ (variableReference|literal)
+	: COMMAND_VAR NULL_OPERATOR^ (COMMAND_VAR|literal)
 	;
 
 assignmentExpression

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// $ANTLR 3.5.2 Scrape.g 2016-02-07 20:44:09
+// $ANTLR 3.5.2 Scrape.g 2016-02-08 20:39:25
 
 // The variable 'variable' is assigned but its value is never used.
 #pragma warning disable 219
@@ -561,7 +561,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: block, ID, tableColumnArgs, PROCEDURE
+			// elements: PROCEDURE, ID, tableColumnArgs, block
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -1074,7 +1074,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: ID, procedureCallList, EXEC
+			// elements: EXEC, ID, procedureCallList
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -1532,7 +1532,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: proxyList, proxyTest, PROXIES
+			// elements: PROXIES, proxyTest, proxyList
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -1946,7 +1946,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: EACH, block
+			// elements: block, EACH
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -2420,7 +2420,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: expandBlock, expandVar, expandVar, EXPAND
+			// elements: expandVar, EXPAND, expandBlock, expandVar
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -3014,7 +3014,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 				{
 				// AST REWRITE
-				// elements: variableReference, DOWNLOAD_PAGE
+				// elements: DOWNLOAD_PAGE, variableReference
 				// token labels: 
 				// rule labels: retval
 				// token list labels: 
@@ -3246,7 +3246,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 				{
 				// AST REWRITE
-				// elements: DOWNLOAD_IMAGE, variableReference
+				// elements: variableReference, DOWNLOAD_IMAGE
 				// token labels: 
 				// rule labels: retval
 				// token list labels: 
@@ -3350,7 +3350,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 				{
 					alt18 = 4;
 				}
-				else if ((LA18_2==EOF||LA18_2==ASTERISK||(LA18_2>=CLOSEBRACE && LA18_2<=COMMAND_VAR)||LA18_2==CREATE||LA18_2==DIV||LA18_2==EACH||(LA18_2>=EQUALS && LA18_2<=EXEC)||LA18_2==ID||LA18_2==IDENTITY_VAR||(LA18_2>=INSERT_DIRECTORY && LA18_2<=INSERT_INTO)||(LA18_2>=INSERT_OVERWRITE && LA18_2<=INT)||LA18_2==MINIS||(LA18_2>=NULL && LA18_2<=NULL_OPERATOR)||LA18_2==OPENPAREN||LA18_2==PLUS||LA18_2==SELECT||LA18_2==STRING_LITERAL||(LA18_2>=TO && LA18_2<=VAR)||LA18_2==WHERE||LA18_2==114))
+				else if ((LA18_2==EOF||LA18_2==ASTERISK||(LA18_2>=CLOSEBRACE && LA18_2<=COMMAND_VAR)||LA18_2==CREATE||LA18_2==DIV||LA18_2==EACH||(LA18_2>=EQUALS && LA18_2<=EXEC)||LA18_2==ID||LA18_2==IDENTITY_VAR||(LA18_2>=INSERT_DIRECTORY && LA18_2<=INSERT_INTO)||(LA18_2>=INSERT_OVERWRITE && LA18_2<=INT)||LA18_2==MINIS||LA18_2==NULL||LA18_2==OPENPAREN||LA18_2==PLUS||LA18_2==SELECT||LA18_2==STRING_LITERAL||(LA18_2>=TO && LA18_2<=VAR)||LA18_2==WHERE||LA18_2==114))
 				{
 					alt18 = 1;
 				}
@@ -3714,7 +3714,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 				{
 				// AST REWRITE
-				// elements: assignmentExpression, ID
+				// elements: ID, assignmentExpression
 				// token labels: 
 				// rule labels: retval
 				// token list labels: 
@@ -3917,7 +3917,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 	partial void EnterRule_nullOperator();
 	partial void LeaveRule_nullOperator();
 	// $ANTLR start "nullOperator"
-	// Scrape.g:175:1: nullOperator : variableReference NULL_OPERATOR ^ ( variableReference | literal ) ;
+	// Scrape.g:175:1: nullOperator : COMMAND_VAR NULL_OPERATOR ^ ( COMMAND_VAR | literal ) ;
 	[GrammarRule("nullOperator")]
 	private AstParserRuleReturnScope<CommonTree, CommonToken> nullOperator()
 	{
@@ -3929,42 +3929,44 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 		CommonTree root_0 = default(CommonTree);
 
+		CommonToken COMMAND_VAR97 = default(CommonToken);
 		CommonToken NULL_OPERATOR98 = default(CommonToken);
-		AstParserRuleReturnScope<CommonTree, CommonToken> variableReference97 = default(AstParserRuleReturnScope<CommonTree, CommonToken>);
-		AstParserRuleReturnScope<CommonTree, CommonToken> variableReference99 = default(AstParserRuleReturnScope<CommonTree, CommonToken>);
+		CommonToken COMMAND_VAR99 = default(CommonToken);
 		AstParserRuleReturnScope<CommonTree, CommonToken> literal100 = default(AstParserRuleReturnScope<CommonTree, CommonToken>);
 
+		CommonTree COMMAND_VAR97_tree = default(CommonTree);
 		CommonTree NULL_OPERATOR98_tree = default(CommonTree);
+		CommonTree COMMAND_VAR99_tree = default(CommonTree);
 		try { DebugEnterRule(GrammarFileName, "nullOperator");
 		DebugLocation(175, 1);
 		try
 		{
-			// Scrape.g:176:2: ( variableReference NULL_OPERATOR ^ ( variableReference | literal ) )
+			// Scrape.g:176:2: ( COMMAND_VAR NULL_OPERATOR ^ ( COMMAND_VAR | literal ) )
 			DebugEnterAlt(1);
-			// Scrape.g:176:4: variableReference NULL_OPERATOR ^ ( variableReference | literal )
+			// Scrape.g:176:4: COMMAND_VAR NULL_OPERATOR ^ ( COMMAND_VAR | literal )
 			{
 			root_0 = (CommonTree)adaptor.Nil();
 
 			DebugLocation(176, 4);
-			PushFollow(Follow._variableReference_in_nullOperator917);
-			variableReference97=variableReference();
-			PopFollow();
-			if (state.failed) return retval;
-			if (state.backtracking == 0) adaptor.AddChild(root_0, variableReference97.Tree);
-			DebugLocation(176, 35);
+			COMMAND_VAR97=(CommonToken)Match(input,COMMAND_VAR,Follow._COMMAND_VAR_in_nullOperator917); if (state.failed) return retval;
+			if (state.backtracking == 0) {
+			COMMAND_VAR97_tree = (CommonTree)adaptor.Create(COMMAND_VAR97);
+			adaptor.AddChild(root_0, COMMAND_VAR97_tree);
+			}
+			DebugLocation(176, 29);
 			NULL_OPERATOR98=(CommonToken)Match(input,NULL_OPERATOR,Follow._NULL_OPERATOR_in_nullOperator919); if (state.failed) return retval;
 			if (state.backtracking == 0) {
 			NULL_OPERATOR98_tree = (CommonTree)adaptor.Create(NULL_OPERATOR98);
 			root_0 = (CommonTree)adaptor.BecomeRoot(NULL_OPERATOR98_tree, root_0);
 			}
-			DebugLocation(176, 37);
-			// Scrape.g:176:37: ( variableReference | literal )
+			DebugLocation(176, 31);
+			// Scrape.g:176:31: ( COMMAND_VAR | literal )
 			int alt20=2;
 			try { DebugEnterSubRule(20);
 			try { DebugEnterDecision(20, false);
 			int LA20_1 = input.LA(1);
 
-			if ((LA20_1==COMMAND_VAR||LA20_1==ID||LA20_1==IDENTITY_VAR))
+			if ((LA20_1==COMMAND_VAR))
 			{
 				alt20 = 1;
 			}
@@ -3984,22 +3986,22 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 			{
 			case 1:
 				DebugEnterAlt(1);
-				// Scrape.g:176:38: variableReference
+				// Scrape.g:176:32: COMMAND_VAR
 				{
-				DebugLocation(176, 38);
-				PushFollow(Follow._variableReference_in_nullOperator923);
-				variableReference99=variableReference();
-				PopFollow();
-				if (state.failed) return retval;
-				if (state.backtracking == 0) adaptor.AddChild(root_0, variableReference99.Tree);
+				DebugLocation(176, 32);
+				COMMAND_VAR99=(CommonToken)Match(input,COMMAND_VAR,Follow._COMMAND_VAR_in_nullOperator923); if (state.failed) return retval;
+				if (state.backtracking == 0) {
+				COMMAND_VAR99_tree = (CommonTree)adaptor.Create(COMMAND_VAR99);
+				adaptor.AddChild(root_0, COMMAND_VAR99_tree);
+				}
 
 				}
 				break;
 			case 2:
 				DebugEnterAlt(2);
-				// Scrape.g:176:56: literal
+				// Scrape.g:176:44: literal
 				{
-				DebugLocation(176, 56);
+				DebugLocation(176, 44);
 				PushFollow(Follow._literal_in_nullOperator925);
 				literal100=literal();
 				PopFollow();
@@ -4077,11 +4079,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 				{
 				int LA21_2 = input.LA(2);
 
-				if ((LA21_2==DOT||LA21_2==NULL_OPERATOR))
-				{
-					alt21 = 5;
-				}
-				else if ((EvaluatePredicate(synpred30_Scrape_fragment)))
+				if ((EvaluatePredicate(synpred30_Scrape_fragment)))
 				{
 					alt21 = 1;
 				}
@@ -4127,11 +4125,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 				{
 				int LA21_2 = input.LA(2);
 
-				if ((LA21_2==NULL_OPERATOR))
-				{
-					alt21 = 5;
-				}
-				else if ((EvaluatePredicate(synpred30_Scrape_fragment)))
+				if ((EvaluatePredicate(synpred30_Scrape_fragment)))
 				{
 					alt21 = 1;
 				}
@@ -4917,7 +4911,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 				{
 				// AST REWRITE
-				// elements: INSERT_INTO, sqlStatement
+				// elements: sqlStatement, INSERT_INTO
 				// token labels: 
 				// rule labels: retval
 				// token list labels: 
@@ -4977,7 +4971,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 				{
 				// AST REWRITE
-				// elements: sqlStatement, mathExpression
+				// elements: mathExpression, sqlStatement
 				// token labels: 
 				// rule labels: retval
 				// token list labels: 
@@ -5202,7 +5196,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: fromStatement, whereStatement, selectStatement
+			// elements: whereStatement, selectStatement, fromStatement
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -5324,7 +5318,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: boolExpression, WHERE
+			// elements: WHERE, boolExpression
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -5536,7 +5530,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 				{
 				// AST REWRITE
-				// elements: innerJoinStatement, FROM, a
+				// elements: a, FROM, innerJoinStatement
 				// token labels: a
 				// rule labels: retval
 				// token list labels: 
@@ -5842,7 +5836,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: a, boolExpression, innerJoinStatement
+			// elements: boolExpression, innerJoinStatement, a
 			// token labels: a
 			// rule labels: retval
 			// token list labels: 
@@ -6212,7 +6206,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 				{
 				// AST REWRITE
-				// elements: SELECT, selectArgs
+				// elements: selectArgs, SELECT
 				// token labels: 
 				// rule labels: retval
 				// token list labels: 
@@ -6987,7 +6981,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 				{
 				// AST REWRITE
-				// elements: caseExpression, whenBoolStatement
+				// elements: whenBoolStatement, caseExpression
 				// token labels: 
 				// rule labels: retval
 				// token list labels: 
@@ -7146,7 +7140,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 				{
 				// AST REWRITE
-				// elements: whenLiteralStatement, selectArg, caseExpression
+				// elements: caseExpression, whenLiteralStatement, selectArg
 				// token labels: 
 				// rule labels: retval
 				// token list labels: 
@@ -7506,7 +7500,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: boolExpression, caseExpression
+			// elements: caseExpression, boolExpression
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -7892,7 +7886,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 				{
 				// AST REWRITE
-				// elements: STRING_LITERAL, NODES
+				// elements: NODES, STRING_LITERAL
 				// token labels: 
 				// rule labels: retval
 				// token list labels: 
@@ -8512,7 +8506,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: matchStatement, STRING_LITERAL, takeStatement, PICK
+			// elements: takeStatement, matchStatement, PICK, STRING_LITERAL
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -8919,7 +8913,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: MATCH, replaceStatement, STRING_LITERAL
+			// elements: STRING_LITERAL, MATCH, replaceStatement
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -9031,7 +9025,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: REPLACE, STRING_LITERAL
+			// elements: STRING_LITERAL, REPLACE
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -9287,7 +9281,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 				{
 				// AST REWRITE
-				// elements: ID, fileTableWithStatement, tableColumnArgs, fileTableLocation
+				// elements: tableColumnArgs, fileTableLocation, fileTableWithStatement, ID
 				// token labels: 
 				// rule labels: retval
 				// token list labels: 
@@ -9647,7 +9641,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: WITH, fileTableWithVariablesStatement
+			// elements: fileTableWithVariablesStatement, WITH
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -10514,9 +10508,9 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 		public static readonly BitSet _variableReference_in_variableAssignmentStatement892 = new BitSet(new ulong[]{0x20000000UL});
 		public static readonly BitSet _EQUALS_in_variableAssignmentStatement894 = new BitSet(new ulong[]{0x40A0083040000UL,0x4000002080012UL});
 		public static readonly BitSet _assignmentExpression_in_variableAssignmentStatement896 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _variableReference_in_nullOperator917 = new BitSet(new ulong[]{0x0UL,0x4UL});
-		public static readonly BitSet _NULL_OPERATOR_in_nullOperator919 = new BitSet(new ulong[]{0x40A0000040000UL,0x2000002UL});
-		public static readonly BitSet _variableReference_in_nullOperator923 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _COMMAND_VAR_in_nullOperator917 = new BitSet(new ulong[]{0x0UL,0x4UL});
+		public static readonly BitSet _NULL_OPERATOR_in_nullOperator919 = new BitSet(new ulong[]{0x4000000040000UL,0x2000002UL});
+		public static readonly BitSet _COMMAND_VAR_in_nullOperator923 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _literal_in_nullOperator925 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _mathExpression_in_assignmentExpression937 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _downloadExpression_in_assignmentExpression942 = new BitSet(new ulong[]{0x2UL});

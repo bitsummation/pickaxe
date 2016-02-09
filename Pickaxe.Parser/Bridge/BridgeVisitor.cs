@@ -449,6 +449,13 @@ namespace Pickaxe.Parser.Bridge
             VisitChildren(tree);
         }
 
+        public void Visit(NullOperator op, CommonTree tree)
+        {
+            SetLine(op, tree);
+            Parent(tree).Children.Add(op);
+            VisitChildren(tree);
+        }
+
         public void Visit(WhenBooleanStatement statement, CommonTree tree)
         {
             SetLine(statement, tree);
@@ -545,7 +552,5 @@ namespace Pickaxe.Parser.Bridge
                 Visit(tree.Children[x]);
         }
 
-
-      
     }
 }

@@ -160,6 +160,9 @@ namespace Pickaxe.Parser
                     if(payload.Type == ScrapeParser.WHEN_BOOL_STATEMENT)
                         return new AntlrBridgeTree<WhenBooleanStatement>(payload, (node, tree, visitor) => visitor.Visit(node, tree));
                     
+                    if(payload.Type == ScrapeLexer.NULL_OPERATOR)
+                        return new AntlrBridgeTree<NullOperator>(payload, (node, tree, visitor) => visitor.Visit(node, tree));
+
                     if(payload.Type == ScrapeParser.NODES)
                         return new AntlrBridgeTree<NodesBooleanExpression>(payload, (node, tree, visitor) => visitor.Visit(node, tree));
                     if(payload.Type == ScrapeParser.AND)

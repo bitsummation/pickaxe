@@ -85,6 +85,7 @@
     <Compile Include="Visitor\Visitor.NodesBooleanExpressionStub.cs" />
     <Compile Include="Visitor\Visitor.NotEqualExpression.cs" />
     <Compile Include="Visitor\Visitor.NullLiteral.cs" />
+    <Compile Include="Visitor\Visitor.NullOperator.cs" />
     <Compile Include="Visitor\Visitor.OrExpression.cs" />
     <Compile Include="Visitor\Visitor.ProcedureCall.cs" />
     <Compile Include="Visitor\Visitor.ProcedureDefinition.cs" />

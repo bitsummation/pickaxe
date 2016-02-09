@@ -63,7 +63,9 @@ namespace Pickaxe.Sdk
 
         void Visit(VariableAssignmentStatement statement);
         void Visit(VariableDeclarationStatement statement);
-        
+
+        void Visit(NullOperator op);
+
         void Visit(AdditionOperator op);
         void Visit(SubtrationOperator op);
         void Visit(MultiplicatonOperator op);

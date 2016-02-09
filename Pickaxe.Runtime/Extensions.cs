@@ -25,6 +25,11 @@ namespace Pickaxe.Runtime
 {
     public static class Extensions
     {
+        public static TValue NullOperator<TValue>(this TValue a, TValue b) where TValue: class
+        {
+            return a ?? b;
+        }
+
         public static void WriteFile(this byte[] bytes, string directory, string filename)
         {
             if (bytes.Length != 0)

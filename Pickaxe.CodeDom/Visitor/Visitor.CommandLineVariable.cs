@@ -26,7 +26,7 @@ namespace Pickaxe.CodeDom.Visitor
         public void Visit(CommandLineVariable variable)
         {
             _codeStack.Peek().Scope = new ScopeData<Type> { Type = typeof(string), CodeDomReference = new CodeTypeReference(typeof(string)) };
-            _codeStack.Peek().CodeExpression = new CodeMethodInvokeExpression(null, "GetArgValue", new CodePrimitiveExpression(variable.Id));
+            _codeStack.Peek().CodeExpression = new CodeIndexerExpression(new CodeThisReferenceExpression(), new CodePrimitiveExpression(variable.Id));
         }
     }
 }

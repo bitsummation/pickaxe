@@ -27,6 +27,7 @@ namespace Pickaxe.Runtime
         private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         private BreakProcesser _processor;
+        private Dictionary<string, string> _args;
 
         protected RuntimeBase(string[] args)
         {
@@ -81,15 +82,28 @@ namespace Pickaxe.Runtime
             }
         }
 
-        public Dictionary<string, string> Args {get; private set;}
+        public string this[string key]
+        {
+            get
+            {
+                if (!_args.ContainsKey(key))
+                    return null;
+
+                return _args[key];
+            }
+            set
+            {
+                _args[key] = value;
+            }
+        }
 
         private void RegisterArgs(string[] args)
         {
-            Args = new Dictionary<string, string>();
+            _args = new Dictionary<string, string>();
             for(int x = 0; x < args.Length; x++)
             {
                 var key = string.Format("@{0}", x + 1);
-                Args.Add(key, args[0]);
+                _args.Add(key, args[0]);
             }
         }
 
