@@ -65,6 +65,7 @@
         <Key word = "float" />
         <Key word = "string" />
         <Key word = "identity" />
+        <Key word = "var" />
       </KeyWords>
       
       <KeyWords name="SQL" bold="true" italic="false" color="Blue">

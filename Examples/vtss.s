@@ -27,7 +27,7 @@ create buffer topicreplies (id int, url string, post string, user string)
 
 each(row in detailurls) {
 	
-	downloadPage = download page row.url
+	var downloadPage = download page row.url
 
 	insert into topicdetails
 	select
