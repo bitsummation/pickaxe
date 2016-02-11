@@ -36,7 +36,7 @@ select 1
 insert into temp
 select 2
 
-each(t in temp){
+each(var t in temp){
 	
 	insert into temp
 	select t.id

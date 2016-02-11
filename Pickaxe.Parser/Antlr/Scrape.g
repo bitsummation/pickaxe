@@ -113,7 +113,7 @@ proxyTest
 	;
 
 eachStatement
-	: EACH OPENPAREN v=ID IN t=ID CLOSEPAREN block -> ^(EACH VARIABLE_DECLARATION[$v] TABLE_VARIABLE_REFERENCE[$t] block)
+	: EACH OPENPAREN VAR v=ID IN t=ID CLOSEPAREN block -> ^(EACH VARIABLE_DECLARATION[$v] TABLE_VARIABLE_REFERENCE[$t] block)
 	;
 
 noBraceBlock
@@ -165,7 +165,6 @@ tableMemberReference
 
 variableDeclarationStatement 
 	: VAR ID EQUALS assignmentExpression -> ^(VARIABLE_DECLARATION ID assignmentExpression)
-	| VAR ID
 	;
 
 variableAssignmentStatement

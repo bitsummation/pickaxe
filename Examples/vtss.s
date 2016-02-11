@@ -9,7 +9,7 @@ where nodes = 'ol.page-nav'
 
 create buffer detailurls (url string)
 
-each(row in postpages){
+each(var row in postpages){
 	
 	insert into detailurls
 	select
@@ -25,7 +25,7 @@ each(row in postpages){
 create buffer topicdetails (id identity, title string, post string, user string)
 create buffer topicreplies (id int, url string, post string, user string)
 
-each(row in detailurls) {
+each(var row in detailurls) {
 	
 	var downloadPage = download page row.url
 
