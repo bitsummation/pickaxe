@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="CodeGen.cs" />
     <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="CommandArgTests.cs" />
     <Compile Include="EachTests.cs" />
     <Compile Include="JoinTests.cs" />
     <Compile Include="SelectTests.cs" />

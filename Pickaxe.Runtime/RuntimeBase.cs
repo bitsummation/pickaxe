@@ -103,7 +103,7 @@ namespace Pickaxe.Runtime
             for(int x = 0; x < args.Length; x++)
             {
                 var key = string.Format("@{0}", x + 1);
-                _args.Add(key, args[0]);
+                _args.Add(key, args[x]);
             }
         }
 

@@ -40,16 +40,15 @@ namespace Pickaxe
             if (args.Length == 0) //interactive prompt
                 Interactive();
             else
-            { //run the file
+            { 
+                //run the file
                 var sources = new List<string>();
-                foreach (var arg in args)
-                {
-                    //read the files
-                    var reader = new StreamReader(arg);
-                    sources.Add(reader.ReadToEnd());
-                }
 
-                Thread thread = new Thread(() => Compile(sources.ToArray(), args));
+                //read the files
+                var reader = new StreamReader(args[0]);
+                sources.Add(reader.ReadToEnd());
+
+                Thread thread = new Thread(() => Compile(sources.ToArray(), args.Skip(1).ToArray()));
                 thread.Start();
                 thread.Join();
             }
