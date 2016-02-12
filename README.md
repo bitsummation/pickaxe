@@ -69,18 +69,26 @@ select
     pick '.age span' take text --date
 from download page 'https://github.com/bitsummation/pickaxe'
 where nodes = 'table.files tr.js-navigation-item'
-
+```
+### Download Images
+``` sql
+insert file into 'C:\Windows\temp'
+select
+    filename,
+    image
+from download image 'http://brockreeve.com/image.axd?picture=2015%2f6%2fheadShot.jpg'
 ```
 #### Variables
+Use var to declare variable.
 ``` sql
-startPage = 1
-endPage = 10
+var startPage = 1
+var endPage = 10
 ```
 #### Expand
 Used mostly to generate urls.
 ``` sql
-startPage = 1
-endPage = 10
+var startPage = 1
+var endPage = 10
 
 select
     'http://example.com/p=' + value + '?t=All'
@@ -128,7 +136,7 @@ insert into temp
 
 create buffer urls(url string)
 
-each(t in temp){
+each(var t in temp){
 	
 	insert into urls
     	select t.baseUrl + value + '?t=All'
@@ -149,6 +157,21 @@ with test {
 	from download page 'http://vtss.brockreeve.com/'
 }
 ```
+## Command Line
+---
+The **Pickaxe-Console.zip** contains the command line version. Run pickaxe.exe without any arguments to run in interactive mode. Type in statements and run them by ending statement with a semicolon. Pass the file path to run the program. Command line arguments can be passed to the script.
+
+### Run Program
+```
+pickaxe c:\test.s arg1 arg2
+```
+Get command line values in program. The ?? is used to assign a default value if args are not passed on command line.
+``` sql
+@1 = @1 ?? 'first'
+@2 = @2 ?? 'second'
+```
+### Interactive Mode
+
 ## Tutorials
 ---
 * [Pickaxe Tutorial #1](http://brockreeve.com/post/2015/07/23/SQL-based-web-scraper-language-Tutorial-1.aspx)
