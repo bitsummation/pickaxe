@@ -27,7 +27,10 @@ namespace Pickaxe.CodeDom.Visitor
             var statementDomArg = VisitChild(statement);
 
             if(statementDomArg.Scope.CodeDomReference.BaseType == typeof(Table<>).Name)
-                ((Action)statementDomArg.Tag)(); //remove call to OnSelect
+            {
+                if (statementDomArg.Tag != null)
+                    ((Action)statementDomArg.Tag)(); //remove call to OnSelect
+            }
             else if( statementDomArg.Scope.CodeDomReference.BaseType != typeof(string).FullName)
                 Errors.Add(new DownloadRequireString(new Semantic.LineInfo(statement.Line.Line, statement.Line.CharacterPosition)));
 
