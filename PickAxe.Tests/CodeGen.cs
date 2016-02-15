@@ -31,28 +31,14 @@ namespace PickAxe.Tests
         {
               var input = @"
 
-  create buffer temp(id int)
-  insert into temp
-  select 2     
+ select
+    pick '.address' take html match '(.*)<br>(.*)' replace '$1'
+    from (download page 'http://mock.com') p
+    where p.url = ''
 
-    tvar = 'variable'
-
-
-    select tvar, id
-    from temp
-
---nodes
 ";
 
-              var join = @"
-
-   @1 = @1 ?? 'sadf'
-    //temp = @1
-    //@2 = @2 ?? 'second'  
-   
-";
-
-            var compiler = new Compiler(join);
+            var compiler = new Compiler(input);
             var sources = compiler.ToCode();
             Assert.IsTrue(compiler.Errors.Count == 0);
         }

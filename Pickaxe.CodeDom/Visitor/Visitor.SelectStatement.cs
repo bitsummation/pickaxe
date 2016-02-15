@@ -172,7 +172,8 @@ namespace Pickaxe.CodeDom.Visitor
                 var codeLoop = outerLoop;
                 if (outerLoopNeeded)
                 {
-                    var reference = new TableMemberReference() { Member = "nodes", RowReference = new TableVariableRowReference() { Id = "DownloadPage" } };
+                    var aliases = Scope.Current.AliasType<DownloadPage>();
+                    var reference = new TableMemberReference() { Member = "nodes", RowReference = new TableVariableRowReference() { Id = aliases[0] } };
                     var args = VisitChild(reference);
 
                     //Needed only for DownloadRow

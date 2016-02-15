@@ -143,13 +143,17 @@ downloadExpression
 	;
 
 downloadPageExpresssion
-	: DOWNLOAD_PAGE^ (STRING_LITERAL | OPENPAREN sqlStatement CLOSEPAREN)
-	| DOWNLOAD_PAGE variableReference -> ^(DOWNLOAD_PAGE variableReference)
+	: DOWNLOAD_PAGE^ downloadExpressionArg
 	;
 
 downloadImageExpression
-	: DOWNLOAD_IMAGE^ (STRING_LITERAL | OPENPAREN sqlStatement CLOSEPAREN)
-	| DOWNLOAD_IMAGE variableReference -> ^(DOWNLOAD_IMAGE variableReference)
+	: DOWNLOAD_IMAGE^ downloadExpressionArg
+	;
+
+downloadExpressionArg
+	: STRING_LITERAL
+	| OPENPAREN! sqlStatement CLOSEPAREN!
+	| variableReference
 	;
 	
 variableReference
@@ -226,11 +230,18 @@ whereStatement
 
 fromStatement
 	: FROM t=ID a=ID? innerJoinStatement? -> ^(FROM TABLE_VARIABLE_REFERENCE[$t] ^(TABLE_ALIAS $a)? innerJoinStatement?) 
-	| FROM^ (downloadPageExpresssion | downloadImageExpression | expandExpression)
+	| FROM^ tableGenerationClause
+	| FROM OPENPAREN tableGenerationClause CLOSEPAREN ID -> ^(FROM tableGenerationClause ^(TABLE_ALIAS ID))
 	;
 
 innerJoinStatement
 	: innerJoin t=ID a=ID? 'on' boolExpression innerJoinStatement? -> ^(INNER_JOIN TABLE_VARIABLE_REFERENCE[$t] ^(TABLE_ALIAS $a)? boolExpression innerJoinStatement?)
+	;
+
+tableGenerationClause
+	: downloadPageExpresssion
+	| downloadImageExpression
+	| expandExpression
 	;
 
 innerJoin
