@@ -48,5 +48,6 @@ each(var row in detailurls) {
 
 }
 
-select *
-from topicreplies
+select title, d.user, r.post, r.user
+from topicdetails d
+join topicreplies r on r.id = d.id

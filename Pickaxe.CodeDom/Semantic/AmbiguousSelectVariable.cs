@@ -33,7 +33,7 @@ namespace Pickaxe.CodeDom.Semantic
         {
             get
             {
-                return string.Format("Ambiguous select variable: {0} {1}", _matches[0].TableVariable, base.Message);
+                return string.Format("Ambiguous select variable {0}: {1}", _matches[0].TableVariable.Variable, base.Message);
             }
         }
     }
