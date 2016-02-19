@@ -12,40 +12,33 @@
  * limitations under the License.
  */
 
-using NUnit.Framework;
-using Pickaxe.Emit;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace PickAxe.Tests
+namespace Pickaxe.Sdk
 {
-    [TestFixture]
-    public class CodeGen
+    public class UpdateStatement : AstNode
     {
-       
-        [Test]
-        public void BasicCodeGenTest()
+        public TableAlias Alias
         {
-              var input = @"
+            get { return Children.Where(x => x.GetType() == typeof(TableAlias)).Cast<TableAlias>().SingleOrDefault(); }
+        }
 
-    create buffer videos(video string, link string, title string, processed int)
+        public FromStatement From
+        {
+            get { return Children.Where(x => x.GetType() == typeof(FromStatement)).Cast<FromStatement>().SingleOrDefault(); }
+        }
 
-    update videos
-    set processed = 1
+        public WhereStatement Where
+        {
+            get { return Children.Where(x => x.GetType() == typeof(WhereStatement)).Cast<WhereStatement>().SingleOrDefault(); }
+        }
 
-    /*update v
-	set v.processed = 1
-	from videos v*/
-
-
-";
-
-            var compiler = new Compiler(input);
-            var sources = compiler.ToCode();
-            Assert.IsTrue(compiler.Errors.Count == 0);
+        public override void Accept(IAstVisitor visitor)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -74,6 +74,7 @@ procedureDefinition
 statement
 	: createTableStatement
 	| sqlStatement
+	| updateStatment
 	| variableDeclarationStatement
 	| variableAssignmentStatement
 	| insertStatement
@@ -210,12 +211,27 @@ literal
 	;
 	
 
-/*************INSERT ****************/
+/************* INSERT ****************/
 
 insertStatement
 	: INSERT_INTO ID sqlStatement-> ^(INSERT_INTO TABLE_VARIABLE_REFERENCE[$ID] sqlStatement)
 	| INSERT_DIRECTORY mathExpression sqlStatement-> ^(INSERT_INTO_DIRECTORY mathExpression sqlStatement)
 	| INSERT_OVERWRITE ID sqlStatement-> ^(INSERT_OVERWRITE TABLE_VARIABLE_REFERENCE[$ID] sqlStatement)
+	;
+
+
+/*************** UPDATE ******************/
+
+updateStatment
+	: UPDATE ID setArgs fromStatement? whereStatement? -> ^(UPDATE ^(TABLE_ALIAS ID) setArgs fromStatement? whereStatement?)
+	;
+
+setArgs
+	: SET (setArg COMMA)* setArg -> ^(SET setArg*)
+	;
+
+setArg
+	: selectArg EQUALS^ selectArg
 	;
 
 /************* SELECTS *******************/
@@ -396,6 +412,8 @@ NOTEQUAL: '!=';
 
 NULL_OPERATOR: '??';
 
+UPDATE : 'update';
+SET : 'set';
 INSERT_INTO : 'insert into';
 INSERT_OVERWRITE : 'insert overwrite';
 INSERT_DIRECTORY : 'insert file into';
