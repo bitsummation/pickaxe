@@ -28,8 +28,22 @@ select
 	pick '#section_left div:nth-child(2) a' take text
 from download page 'http://whatismyipaddress.com/'
 ```
+#### Match
+The match expression uses regular expressions to match text. In this case, it is just taking the numbers of the ip address.
+```sql
+select
+    pick '#section_left div:nth-child(2) a' take text match '\d'
+from download page 'http://whatismyipaddress.com'
+```
+#### Match/Replace
+A match expression can be followed by a replace. In this case, we replace the dots with dashes.
+```sql
+select
+    pick '#section_left div:nth-child(2) a' take text match '\.' replace '---'
+from download page 'http://whatismyipaddress.com'
+```
 #### In Memory Buffer
-Store results in memory.
+Store results in memory. The insert overwrite statement overwrites existing data in the buffer--if any--while insert into just appends to existing data.
 ```sql
 create buffer results(type string, folder string, message string, changeDate string)
 
@@ -58,7 +72,7 @@ with (
 )
 location 'C:\windows\temp\results.txt'
 
-insert overwrite results
+insert into results
 select
     case pick '.icon span.octicon-file-text' take text
         when null then 'Folder'
