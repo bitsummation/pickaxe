@@ -78,6 +78,7 @@
     <Compile Include="SelectAll.cs" />
     <Compile Include="SelectArg.cs" />
     <Compile Include="SelectId.cs" />
+    <Compile Include="UpdateSetArgs.cs" />
     <Compile Include="SubtrationOperator.cs" />
     <Compile Include="TableAlias.cs" />
     <Compile Include="TableMemberReference.cs" />
@@ -86,6 +87,7 @@
     <Compile Include="TableVariableRowReference.cs" />
     <Compile Include="TakeHtmlStatement.cs" />
     <Compile Include="TruncateTableStatement.cs" />
+    <Compile Include="UpdateStatement.cs" />
     <Compile Include="VariableAssignmentStatement.cs" />
     <Compile Include="VariableDeclarationStatement.cs" />
     <Compile Include="AstNode.cs" />
