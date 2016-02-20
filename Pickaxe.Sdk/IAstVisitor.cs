@@ -25,6 +25,7 @@ namespace Pickaxe.Sdk
         void Visit(InsertIntoStatement statement);
         void Visit(InsertOverwriteStatement statement);
         void Visit(InsertIntoDirectoryStatement statement);
+        void Visit(UpdateStatement statement);
         void Visit(SelectStatement statement);
         void Visit(SelectArg arg);
         void Visit(FromStatement statement);

@@ -126,6 +126,7 @@
     <Compile Include="Visitor\Visitor.TakeAtrributeStatement.cs" />
     <Compile Include="Visitor\Visitor.CaseExpression.cs" />
     <Compile Include="Visitor\Visitor.TruncateTableStatement.cs" />
+    <Compile Include="Visitor\Visitor.UpdateStatement.cs" />
     <Compile Include="Visitor\Visitor.VariableAssignmentStatement.cs" />
     <Compile Include="Visitor\Visitor.VariableDeclarationStatement.cs" />
     <Compile Include="Visitor\Visitor.VariableReference.cs" />

@@ -21,6 +21,11 @@ namespace Pickaxe.Sdk
 {
     public class UpdateStatement : AstNode
     {
+        public UpdateSetArgs SetArgs
+        {
+            get { return Children.Where(x => x.GetType() == typeof(UpdateSetArgs)).Cast<UpdateSetArgs>().SingleOrDefault(); }
+        }
+
         public TableAlias Alias
         {
             get { return Children.Where(x => x.GetType() == typeof(TableAlias)).Cast<TableAlias>().SingleOrDefault(); }
@@ -38,7 +43,7 @@ namespace Pickaxe.Sdk
 
         public override void Accept(IAstVisitor visitor)
         {
-            throw new NotImplementedException();
+            visitor.Visit(this);
         }
     }
 }

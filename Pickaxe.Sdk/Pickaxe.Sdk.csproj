@@ -78,6 +78,7 @@
     <Compile Include="SelectAll.cs" />
     <Compile Include="SelectArg.cs" />
     <Compile Include="SelectId.cs" />
+    <Compile Include="UpdateSetArgs.cs" />
     <Compile Include="SubtrationOperator.cs" />
     <Compile Include="TableAlias.cs" />
     <Compile Include="TableMemberReference.cs" />

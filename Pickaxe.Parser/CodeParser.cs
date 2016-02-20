@@ -82,6 +82,8 @@ namespace Pickaxe.Parser
                         return new AntlrBridgeTree<InsertIntoDirectoryStatement>(payload, (node, tree, visitor) => visitor.Visit(node, tree));
                     if (payload.Type == ScrapeParser.SELECT_ARG)
                         return new AntlrBridgeTree<SelectArg>(payload, (node, tree, visitor) => visitor.Visit(node, tree));
+                    if (payload.Type == ScrapeParser.SET)
+                        return new AntlrBridgeTree<UpdateSetArgs>(payload, (node, tree, visitor) => visitor.Visit(node, tree));
                     if (payload.Type == ScrapeParser.UPDATE)
                         return new AntlrBridgeTree<UpdateStatement>(payload, (node, tree, visitor) => visitor.Visit(node, tree));
                     if(payload.Type == ScrapeParser.SELECT_STATEMENT)

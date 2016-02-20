@@ -231,7 +231,7 @@ setArgs
 	;
 
 setArg
-	: selectArg EQUALS^ selectArg
+	: selectArg EQUALS selectArg -> ^(VARIABLE_ASSIGNMENT selectArg selectArg)
 	;
 
 /************* SELECTS *******************/

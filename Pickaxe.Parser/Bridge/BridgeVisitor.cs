@@ -129,6 +129,13 @@ namespace Pickaxe.Parser.Bridge
             }
         }
 
+        public void Visit(UpdateSetArgs arg, CommonTree tree)
+        {
+            Parent(tree).Children.Add(arg);
+            SetLine(arg, tree);
+            VisitChildren(tree);
+        }
+
         public void Visit(UpdateStatement statement, CommonTree tree)
         {
             Parent(tree).Children.Add(statement);
@@ -208,6 +215,7 @@ namespace Pickaxe.Parser.Bridge
         public void Visit(IntegerLiteral literal, CommonTree tree)
         {
             Parent(tree).Children.Add(literal);
+            SetLine(literal, tree);
             literal.Value = int.Parse(tree.Text);
         }
 
@@ -559,8 +567,5 @@ namespace Pickaxe.Parser.Bridge
                 Visit(tree.Children[x]);
         }
 
-
-
-       
     }
 }
