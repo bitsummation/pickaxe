@@ -31,16 +31,17 @@ namespace PickAxe.Tests
         {
               var input = @"
 
-    create buffer videos(video string, link string, title string, processed int)
+ create buffer videos(video string, processed int)
+
+    insert into videos
+    select '1', 0
+
+    insert into videos
+    select '2', 0
 
     update videos
     set processed = 1
-
-   
-    /*update v
-	set v.processed = 1
-	from videos v*/
-
+    where video = '2'
 
 ";
 

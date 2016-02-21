@@ -61,6 +61,7 @@
     <Compile Include="TestHelper.cs" />
     <Compile Include="ProcedureTests.cs" />
     <Compile Include="ProcedureCallTests.cs" />
+    <Compile Include="UpdateTests.cs" />
     <Compile Include="WhereTests.cs" />
   </ItemGroup>
   <ItemGroup>
