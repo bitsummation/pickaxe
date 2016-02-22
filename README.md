@@ -49,7 +49,7 @@ create buffer results(type string, folder string, message string, changeDate str
 
 insert overwrite results
 select
-    case pick '.icon span.octicon-file-text' take text
+    case pick '.icon .octicon-file-text' take text
         when null then 'Folder'
         else 'File'
     end, --folder/file
@@ -74,7 +74,7 @@ location 'C:\windows\temp\results.txt'
 
 insert into results
 select
-    case pick '.icon span.octicon-file-text' take text
+    case pick '.icon .octicon-file-text' take text
         when null then 'Folder'
         else 'File'
     end, --folder/file
@@ -83,6 +83,27 @@ select
     pick '.age span' take text --date
 from download page 'https://github.com/bitsummation/pickaxe'
 where nodes = 'table.files tr.js-navigation-item'
+```
+### Update
+Update table.
+``` sql
+create buffer videos(video string, link string, title string, processed int)
+
+insert into videos
+select
+	url,
+	'https://www.youtube.com' + pick '.content-wrapper a' take attribute 'href',
+	pick '.content-wrapper a' take attribute 'title',
+	0
+from download page 'https://www.youtube.com/watch?v=7NJqUN9TClM'
+where nodes = '#watch-related li.video-list-item'
+
+update videos
+set processed = 1
+where link = 'https://www.youtube.com/watch?v=JYZMT8otKdI'
+
+select *
+from videos
 ```
 ### Download Images
 ``` sql

@@ -44,7 +44,6 @@ namespace PickAxe.Tests
     from videos
 ";
 
-
             var runable = TestHelper.Compile(code, null);
 
             int called = 0;
