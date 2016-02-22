@@ -12,6 +12,7 @@
  * limitations under the License.
  */
 
+using Pickaxe.Runtime;
 using Pickaxe.Sdk;
 using System;
 using System.CodeDom;
@@ -27,6 +28,14 @@ namespace Pickaxe.CodeDom.Visitor
         {
             var leftArgs = VisitChild(statement.Left);
             var rightArgs = VisitChild(statement.Right);
+
+            Type leftType = Type.GetType(leftArgs.Scope.CodeDomReference.BaseType);
+            Type rightType = Type.GetType(rightArgs.Scope.CodeDomReference.BaseType);
+            if (leftType != rightType)
+            {
+                var leftPrimitive = TablePrimitive.FromType(leftType);
+                rightArgs.CodeExpression = leftPrimitive.ToNative(rightArgs.CodeExpression);
+            }
 
             var assignment = new CodeAssignStatement(leftArgs.CodeExpression, rightArgs.CodeExpression);
 
