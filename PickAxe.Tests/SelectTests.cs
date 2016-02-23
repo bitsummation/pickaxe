@@ -61,6 +61,33 @@ namespace PickAxe.Tests
         }
 
         [Test]
+        public void Select_StringConcat()
+        {
+             var code = @"
+        
+ select
+    pick '#match-tests li:nth-child(2)' take text + 'concat'
+    from download page 'http://mock.com'
+
+";
+
+             var runable = TestHelper.Compile(code, _requestFactory);
+
+             int called = 0;
+             runable.Select += (table) =>
+             {
+                 called++;
+                 Assert.IsTrue(table.Columns().Length == 1);
+                 Assert.IsTrue(table.RowCount == 1);
+                 Assert.IsTrue(table[0][0].ToString() == "6concat");
+             };
+
+             runable.Run();
+             Assert.True(called == 1);
+
+        }
+
+        [Test]
         public void Select_TestReplace()
         {
             var code = @"
