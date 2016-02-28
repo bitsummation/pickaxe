@@ -71,6 +71,20 @@ namespace Pickaxe.CodeDom
             return aliases.ToArray();
         }
 
+        public override Type FindTypeWithAlias(string alias)
+        {
+            foreach (var t in _scope)
+            {
+                if(t.Key == alias)
+                {
+                    var descriptor = GetTableDescriptor(t.Key);
+                    return descriptor.Type.RunTimeType;
+                }
+            }
+
+            return null;
+        }
+
         public override CodeExpression CreateExpression(string variable)
         {
             return new CodeFieldReferenceExpression(new CodeVariableReferenceExpression("row"), variable);

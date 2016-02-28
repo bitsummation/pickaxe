@@ -73,7 +73,7 @@ namespace Pickaxe.CodeDom.Visitor
 
         public void Visit(FileTable table)
         {
-            var descriptor = new TableDescriptor(null);
+            var descriptor = new TableDescriptor(typeof(FileTable<>));
             var fileTable = new CodeTypeDeclaration(table.Variable) { TypeAttributes = TypeAttributes.NestedPrivate };
             fileTable.BaseTypes.Add(new CodeTypeReference("IRowWriter"));
             fileTable.BaseTypes.Add(new CodeTypeReference("IRowReader"));

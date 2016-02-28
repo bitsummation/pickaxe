@@ -24,6 +24,15 @@ namespace PickAxe.Tests
 {
     public static class TestHelper
     {
+
+        public static void CompileExpectError(Type errorType, string code, IHttpRequestFactory requestFactory)
+        {
+            var compiler = new Compiler(code);
+            var assembly = compiler.ToAssembly();
+            Assert.IsTrue(compiler.Errors.Count == 1);
+            Assert.IsTrue(compiler.Errors[0].GetType() == errorType);
+        }
+
         public static Runable Compile(string code, IHttpRequestFactory requestFactory)
         {
             var compiler = new Compiler(code);

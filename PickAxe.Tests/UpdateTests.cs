@@ -13,6 +13,7 @@
  */
 
 using NUnit.Framework;
+using Pickaxe.CodeDom.Semantic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,26 @@ namespace PickAxe.Tests
     [TestFixture]
     public class UpdateTests
     {
+
+        [Test]
+        public void Update_FileTableImmutable()
+        {
+            var code = @"
+
+create file videos(video string, processed int)
+with (
+    fieldterminator = '|',
+    rowterminator = '\r\n'
+)
+location ''
+
+update videos
+set processed = '1'
+
+";
+
+            TestHelper.CompileExpectError(typeof(FileTableImmutable), code, null);
+        }
 
         [Test]
         public void Update_TestCast()

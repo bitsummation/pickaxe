@@ -179,6 +179,11 @@ namespace Pickaxe.CodeDom
             return new string[0];
         }
 
+        public virtual Type FindTypeWithAlias(string alias)
+        {
+            return null;
+        }
+
         public virtual CodeExpression CreateExpression(string variable)
         {
             return new CodeVariableReferenceExpression("_" + ScopeIdentifier + "." + variable);

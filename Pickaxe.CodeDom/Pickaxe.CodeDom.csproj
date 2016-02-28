@@ -55,6 +55,7 @@
     <Compile Include="Semantic\AmbiguousSelectVariable.cs" />
     <Compile Include="Semantic\BadCssSelector.cs" />
     <Compile Include="Semantic\BadProxyFormat.cs" />
+    <Compile Include="Semantic\FileTableImmutable.cs" />
     <Compile Include="Semantic\InsertSelectArgsNotEqual.cs" />
     <Compile Include="Semantic\NoDirectory.cs" />
     <Compile Include="Semantic\NoTableMember.cs" />

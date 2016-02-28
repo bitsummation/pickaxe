@@ -29,7 +29,7 @@ namespace Pickaxe.CodeDom.Visitor
     {
         public void Visit(BufferTable table)
         {
-            var descriptor = new TableDescriptor(null);
+            var descriptor = new TableDescriptor(typeof(BufferTable<>));
             var bufferTable = new CodeTypeDeclaration(table.Variable) { TypeAttributes = TypeAttributes.NestedPrivate };
             bufferTable.BaseTypes.Add(new CodeTypeReference("IRow"));
 

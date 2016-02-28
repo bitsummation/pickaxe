@@ -12,47 +12,14 @@
  * limitations under the License.
  */
 
+using Pickaxe.CodeDom.Semantic;
+using Pickaxe.Runtime;
 using Pickaxe.Sdk;
 using System;
 using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
-/*
- *  private Table<ResultRow> Select_0ae5ca8202dd40f7851f8403512e901e()
-    {
-        Call(15);
-        RuntimeTable<ResultRow> result = new RuntimeTable<ResultRow>();
-        result.AddColumn("video");
-        result.AddColumn("link");
-        result.AddColumn("title");
-        result.AddColumn("processed");
-        CodeTable<anon_0d0c5f775d4f4103a5dbec37fd679db0> fromTable = From_6784c5a98b024a119a124c471a8b5ad1();
-        fromTable = Where_f7d2dc7858b04dfcb427c5d85dc9c35a(fromTable);
-        IEnumerator<anon_0d0c5f775d4f4103a5dbec37fd679db0> x = fromTable.GetEnumerator();
-        for (
-        ; x.MoveNext(); 
-        )
-        {
-            anon_0d0c5f775d4f4103a5dbec37fd679db0 row = x.Current;
-            ResultRow resultRow = new ResultRow(4);
-            resultRow[0] = row.videos.video;
-            resultRow[1] = row.videos.link;
-            resultRow[2] = row.videos.title;
-            resultRow[3] = row.videos.processed;
-            if (((((resultRow[0] != null) 
-                        && (resultRow[1] != null)) 
-                        && (resultRow[2] != null)) 
-                        && (resultRow[3] != null)))
-            {
-                result.Add(resultRow);
-            }
-        }
-        OnSelect(result);
-        return result;
-    }
- * */
 
 namespace Pickaxe.CodeDom.Visitor
 {
@@ -83,6 +50,10 @@ namespace Pickaxe.CodeDom.Visitor
 
                 var fromDomArg = VisitChild(fromStatement);
                 var rowType = fromDomArg.Scope.CodeDomReference.TypeArguments[0];
+
+                var type = Scope.Current.FindTypeWithAlias(statement.Alias.Id);
+                if (type != null && type == typeof(FileTable<>)) //filetables cannot be updated only inserted into
+                    Errors.Add(new FileTableImmutable(new Semantic.LineInfo(statement.Line.Line, statement.Line.CharacterPosition)));
 
                 method.Statements.Add(new CodeVariableDeclarationStatement(fromDomArg.Scope.CodeDomReference,
                    "fromTable",
