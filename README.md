@@ -205,7 +205,7 @@ Get command line values in program. The ?? is used to assign a default value if 
 @1 = @1 ?? 'first'
 @2 = @2 ?? 'second'
 ```
-### Interactive Mode
+### REPL Interactive Mode
 To run in interactive mode, run pickaxe.exe without any arguments. Now type in statements. When you want the statement to run, end with a semicolon. The statement will then be executed. See screen shot below:
 ![](https://cloud.githubusercontent.com/assets/13210937/13126421/f66b240a-d58f-11e5-875c-40344f44b3fe.png)
 
