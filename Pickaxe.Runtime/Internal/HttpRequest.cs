@@ -44,6 +44,7 @@ namespace Pickaxe.Runtime.Internal
         protected virtual HttpWebRequest CreateHttpWebRequest()
         {
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(Url);
+            request.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
             request.Timeout = 30000; //30 seconds
             request.UserAgent = "pickaxe/1.0";
 
