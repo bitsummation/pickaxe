@@ -1,6 +1,6 @@
 # Pickaxe
 ---
-An easy to use SQL based web scraper language. If you know SQL and a little about CSS selectors and want to capture data from the web, this is the tool for you.
+An easy to use SQL based web scraper language. If you know SQL and a little about CSS selectors and want to capture data from the web, this is the tool for you. [Contact me](http://brockreeve.com/contact.aspx) with feedback/questions.
 ## Downloads
 ---
 Found [here](https://github.com/bitsummation/pickaxe/releases). It requires .NET framework 4.0. The **Pickaxe-Console.zip** is the command line version. The command line can run on non-windows platforms using mono.
