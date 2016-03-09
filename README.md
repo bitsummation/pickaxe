@@ -7,6 +7,8 @@ Found [here](https://github.com/bitsummation/pickaxe/releases). It requires .NET
 ## Quickstart
 ---
 Pickaxe uses SQL statements combined with CSS selectors to pick out text from a web page. Download **Pickaxe.zip** from above and unzip the contents and double click on **Pickaxe.Studio.exe** to run the GUI editor. Below are some example snippets. A full runnable example that scrapes a forum I host is found [here](https://raw.githubusercontent.com/bitsummation/pickaxe/master/Examples/vtss.s).
+
+![](https://cloud.githubusercontent.com/assets/13210937/13622972/c0a112ba-e568-11e5-97b6-8f579abb2ae7.png)
 #### Example 1
 Capture the commit information from this page.
 ```sql
