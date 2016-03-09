@@ -11,7 +11,7 @@ Pickaxe uses SQL statements combined with CSS selectors to pick out text from a 
 Capture the commit information from this page.
 ```sql
 select
-	case pick '.icon octicon-file-text' take text
+	case pick '.icon .octicon-file-text' take text
 		when null then 'Folder'
 		else 'File'
 	end, --folder/file
