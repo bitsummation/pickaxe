@@ -36,7 +36,7 @@ namespace Pickaxe.Runtime
 
             if (typeof(byte[]) == type)
                 primitive = Integer;
-            else if (typeof(IList<HtmlNode>) == type) //nodes
+            else if (typeof(IEnumerable<HtmlNode>) == type) //nodes
                 primitive = String;
             else if (Integer.Type == type)
                 primitive = Integer;

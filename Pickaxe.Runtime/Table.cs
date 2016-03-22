@@ -62,7 +62,7 @@ namespace Pickaxe.Runtime
             }
         }
 
-        public IEnumerator<TRow> GetEnumerator()
+        public virtual IEnumerator<TRow> GetEnumerator()
         {
             return Rows.GetEnumerator();
         }

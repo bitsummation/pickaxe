@@ -31,18 +31,10 @@ namespace PickAxe.Tests
         {
               var input = @"
 
- create buffer videos(video string, processed int)
-
-    insert into videos
-    select '1', 0
-
-    insert into videos
-    select '2', 0
-
-    update videos
-    set processed = 1
-    where video = '2'
-
+ select 
+    pick '.one' take text
+    from download page 'http://brockreeve.com'
+    where nodes = 'ol .temp' and nodes = '.blah'
 ";
 
             var compiler = new Compiler(input);

@@ -24,10 +24,11 @@ namespace Pickaxe.Runtime
 {
     public class DownloadPage : IRow
     {
-        public string url { get; set; }
-        public IList<HtmlNode> nodes { get; set; }
-        public DateTime date { get; set; }
-        public int size { get; set; }
+        public virtual string url { get; set; }
+
+        public virtual IEnumerable<HtmlNode> nodes { get; set; }
+        public virtual DateTime date { get; set; }
+        public virtual int size { get; set; }
 
         public static TableDescriptor Columns
         {
