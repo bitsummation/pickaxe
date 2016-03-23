@@ -26,12 +26,14 @@ namespace Pickaxe.Runtime
         private object UrlLock = new object();
 
         private Queue<string> _urls;
+        private Queue<DownloadPage> _results;
+
         private IRuntime _runtime;
         private int _line;
-        private Queue<DownloadPage> _results;
+        private int _threadCount;
         private bool _running;
 
-        private ThreadedDownloadPageTable(IRuntime runtime, int line)
+        private ThreadedDownloadPageTable(IRuntime runtime, int line, int threadCount)
             : base()
         {
             _urls = new Queue<string>();
@@ -40,17 +42,18 @@ namespace Pickaxe.Runtime
             _runtime = runtime;
             _urls = new Queue<string>();
             _line = line;
+            _threadCount = threadCount;
             _running = false;
         }
 
-        public ThreadedDownloadPageTable(IRuntime runtime, int line, string url)
-            : this(runtime, line)
+        public ThreadedDownloadPageTable(IRuntime runtime, int line, int threadCount, string url)
+            : this(runtime, line, threadCount)
         {
             _urls.Enqueue(url);
         }
 
-        public ThreadedDownloadPageTable(IRuntime runtime, int line, Table<ResultRow> table)
-            : this(runtime, line)
+        public ThreadedDownloadPageTable(IRuntime runtime, int line, int threadCount, Table<ResultRow> table)
+            : this(runtime, line, threadCount)
         {
             foreach (var row in table)
                 _urls.Enqueue(row[0].ToString());
@@ -93,7 +96,7 @@ namespace Pickaxe.Runtime
         private void ProcesImpl()
         {
             var threads = new List<Thread>();
-            for (int x = 0; x < 4; x++)
+            for (int x = 0; x < _threadCount; x++)
                 threads.Add(new Thread(Work));
 
             foreach (var thread in threads)

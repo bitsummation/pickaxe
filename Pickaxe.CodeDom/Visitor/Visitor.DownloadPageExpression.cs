@@ -22,6 +22,29 @@ namespace Pickaxe.CodeDom.Visitor
 {
     public partial class CodeDomGenerator : IAstVisitor
     {
+        private void GenerateDownloadDeffered(DownloadPageExpression expression, CodeTypeReference returnType)
+        {
+            var statementDomArg = VisitChild(expression.Statement);
+
+            CodeMemberMethod method = new CodeMemberMethod();
+            method.Name = "Download_" + statementDomArg.MethodIdentifier;
+            method.ReturnType = returnType;
+
+            _mainType.Type.Members.Add(method);
+            GenerateCallStatement(method.Statements, expression.Line.Line);
+
+            method.Statements.Add(new CodeMethodReturnStatement(new CodeObjectCreateExpression(new CodeTypeReference("ThreadedDownloadPageTable"),
+                new CodeThisReferenceExpression(),
+                new CodePrimitiveExpression(expression.Line.Line),
+                new CodePrimitiveExpression(2),
+                statementDomArg.CodeExpression)));
+
+            var methodcall = new CodeMethodInvokeExpression(
+               new CodeMethodReferenceExpression(null, method.Name));
+
+            _codeStack.Peek().CodeExpression = methodcall;
+        }
+
         private CodeMemberMethod DownloadImpl(AstNode statement, string methodName, CodeTypeReference returnType, int line)
         {
             var statementDomArg = VisitChild(statement);
@@ -57,7 +80,7 @@ namespace Pickaxe.CodeDom.Visitor
         public void Visit(DownloadPageExpression expression)
         {
             var type = new CodeTypeReference("RuntimeTable", new CodeTypeReference("DownloadPage"));
-            DownloadImpl(expression.Statement, "DownloadPage", type, expression.Line.Line);
+            GenerateDownloadDeffered(expression, type);
 
             _codeStack.Peek().Scope = new ScopeData<TableDescriptor> { Type = DownloadPage.Columns, CodeDomReference = type};
         }

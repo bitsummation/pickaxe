@@ -25,6 +25,12 @@ namespace PickAxe.Tests
     [TestFixture]
     public class CodeGen
     {
+        [Test]
+        public void TestCodeRunner()
+        {
+            Code code = new Code(new string[0]);
+            code.Run();
+        }
        
         [Test]
         public void BasicCodeGenTest()

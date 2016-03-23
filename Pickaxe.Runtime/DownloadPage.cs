@@ -19,6 +19,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using Fizzler.Systems.HtmlAgilityPack;
 
 namespace Pickaxe.Runtime
 {
@@ -29,6 +30,16 @@ namespace Pickaxe.Runtime
         public virtual IEnumerable<HtmlNode> nodes { get; set; }
         public virtual DateTime date { get; set; }
         public virtual int size { get; set; }
+
+        public virtual DownloadPage CssWhere(string selector)
+        {
+            DownloadPage newPage = this;
+            var newNodes = nodes.First().QuerySelectorAll(selector).ToArray();
+            if (newNodes.Length > 0) //create a new page because the download page statement could be in stored in a variable
+                newPage = new DownloadPage() { date = date, nodes = newNodes, size = size, url = url };
+
+            return newPage;
+        }
 
         public static TableDescriptor Columns
         {
