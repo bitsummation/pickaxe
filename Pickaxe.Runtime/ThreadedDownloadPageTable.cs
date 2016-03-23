@@ -12,6 +12,7 @@
  * limitations under the License.
  */
 
+using log4net;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,9 @@ namespace Pickaxe.Runtime
 {
     public class ThreadedDownloadPageTable : RuntimeTable<DownloadPage>
     {
+        [ThreadStatic]
+        public static string LogValue;
+        
         private object ResultLock = new object();
         private object UrlLock = new object();
 
@@ -55,6 +59,8 @@ namespace Pickaxe.Runtime
         public ThreadedDownloadPageTable(IRuntime runtime, int line, int threadCount, Table<ResultRow> table)
             : this(runtime, line, threadCount)
         {
+            runtime.TotalOperations += table.RowCount;
+
             foreach (var row in table)
                 _urls.Enqueue(row[0].ToString());
         }
@@ -67,8 +73,10 @@ namespace Pickaxe.Runtime
             }
         }
 
-        private void Work() //multi threaded
+        private void Work(string logValue) //multi threaded
         {
+            ThreadContext.Properties[Config.LogKey] = logValue;
+
             string url = string.Empty;
             while (true)
             {
@@ -84,6 +92,8 @@ namespace Pickaxe.Runtime
                     break;
 
                 var downloadResult = Http.DownloadPage(_runtime, url, _line);
+                _runtime.Call(_line);
+                _runtime.OnProgress();
 
                 lock (ResultLock)
                 {
@@ -93,11 +103,11 @@ namespace Pickaxe.Runtime
             }
         }
 
-        private void ProcesImpl()
+        private void ProcesImpl(string logValue)
         {
             var threads = new List<Thread>();
             for (int x = 0; x < _threadCount; x++)
-                threads.Add(new Thread(Work));
+                threads.Add(new Thread(() => Work(logValue)));
 
             foreach (var thread in threads)
                 thread.Start();
@@ -132,7 +142,9 @@ namespace Pickaxe.Runtime
             if (!_running)
             {
                 _running = true;
-                Thread thread = new Thread(ProcesImpl);
+                var logValue = ThreadedDownloadPageTable.LogValue;
+                Thread thread = new Thread(() => ProcesImpl(logValue));
+
                 thread.Start();
             }
         }

@@ -22,20 +22,28 @@ namespace Pickaxe.CodeDom.Visitor
 {
     public partial class CodeDomGenerator : IAstVisitor
     {
-        private void GenerateDownloadDeffered(DownloadPageExpression expression, CodeTypeReference returnType)
+        private void GenerateDownloadDeffered(AstNode statement, CodeTypeReference returnType, int line)
         {
-            var statementDomArg = VisitChild(expression.Statement);
+            var statementDomArg = VisitChild(statement);
+
+            if (statementDomArg.Scope.CodeDomReference.BaseType == typeof(Table<>).Name)
+            {
+                if (statementDomArg.Tag != null)
+                    ((Action)statementDomArg.Tag)(); //remove call to OnSelect
+            }
+            else if (statementDomArg.Scope.CodeDomReference.BaseType != typeof(string).FullName)
+                Errors.Add(new DownloadRequireString(new Semantic.LineInfo(statement.Line.Line, statement.Line.CharacterPosition)));
 
             CodeMemberMethod method = new CodeMemberMethod();
             method.Name = "Download_" + statementDomArg.MethodIdentifier;
             method.ReturnType = returnType;
 
             _mainType.Type.Members.Add(method);
-            GenerateCallStatement(method.Statements, expression.Line.Line);
+            GenerateCallStatement(method.Statements, line);
 
             method.Statements.Add(new CodeMethodReturnStatement(new CodeObjectCreateExpression(new CodeTypeReference("ThreadedDownloadPageTable"),
                 new CodeThisReferenceExpression(),
-                new CodePrimitiveExpression(expression.Line.Line),
+                new CodePrimitiveExpression(line),
                 new CodePrimitiveExpression(2),
                 statementDomArg.CodeExpression)));
 
@@ -80,7 +88,7 @@ namespace Pickaxe.CodeDom.Visitor
         public void Visit(DownloadPageExpression expression)
         {
             var type = new CodeTypeReference("RuntimeTable", new CodeTypeReference("DownloadPage"));
-            GenerateDownloadDeffered(expression, type);
+            GenerateDownloadDeffered(expression.Statement, type, expression.Line.Line);
 
             _codeStack.Peek().Scope = new ScopeData<TableDescriptor> { Type = DownloadPage.Columns, CodeDomReference = type};
         }

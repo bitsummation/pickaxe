@@ -14,6 +14,7 @@
 
 using log4net.Appender;
 using log4net.Core;
+using Pickaxe.Runtime;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,8 +25,6 @@ namespace Pickaxe.Studio
 {
     public class TextBoxAppender : AppenderSkeleton
     {
-        public const string LogKey = "tabname";
-
         public string TextBoxName { get; set; }
         public string FormName { get; set; }
 
@@ -46,7 +45,7 @@ namespace Pickaxe.Studio
 
         protected override void Append(LoggingEvent loggingEvent)
         {
-            var property = loggingEvent.LookupProperty(LogKey) as string;
+            var property = loggingEvent.LookupProperty(Config.LogKey) as string;
             var form = Application.OpenForms[FormName];
             TextBox textBox = null;
             TabPage tabControl = null;

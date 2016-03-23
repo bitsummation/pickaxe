@@ -54,7 +54,7 @@ namespace Pickaxe.Runtime
             return doc;
         }
 
-        private static RuntimeTable<DownloadPage> DownloadPage(IRuntime runtime, string[] urls, Action afterDownload)
+        private static RuntimeTable<DownloadPage> DownloadPage(IRuntime runtime, string[] urls)
         {
             var table = new RuntimeTable<DownloadPage>();
             foreach (var url in urls)
@@ -62,30 +62,14 @@ namespace Pickaxe.Runtime
                 int contentlength;
                 var doc = GetDocument(runtime.RequestFactory, url, out contentlength);
                 table.Add(new DownloadPage() { url = url, nodes = new[] { doc.DocumentNode }, date = DateTime.Now, size = contentlength });
-                if(afterDownload != null)
-                    afterDownload();
             }
 
             return table;
         }
 
-        public static RuntimeTable<DownloadPage> DownloadPage(IRuntime runtime, Table<ResultRow> table, int line)
-        {
-            runtime.TotalOperations += table.RowCount;
-            var urlList = new List<string>();
-
-            foreach (var row in table)
-                urlList.Add(row[0].ToString());
-
-            return DownloadPage(runtime, urlList.ToArray(), () => {
-                runtime.Call(line);
-                runtime.OnProgress();
-            });
-        }
-
         public static RuntimeTable<DownloadPage> DownloadPage(IRuntime runtime, string url, int line)
         {
-            return DownloadPage(runtime, new string[] { url }, null);
+            return DownloadPage(runtime, new string[] { url });
         }
 
         public static RuntimeTable<DownloadImage> DownloadImage(IRuntime runtime, string url, int line)

@@ -54,6 +54,7 @@
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="BufferTable.cs" />
     <Compile Include="CodeTable.cs" />
+    <Compile Include="Config.cs" />
     <Compile Include="Debug\BreakProcesser.cs" />
     <Compile Include="Debug\IBreak.cs" />
     <Compile Include="Debug\IDebug.cs" />
