@@ -246,8 +246,17 @@ whereStatement
 
 fromStatement
 	: FROM t=ID a=ID? innerJoinStatement? -> ^(FROM TABLE_VARIABLE_REFERENCE[$t] ^(TABLE_ALIAS $a)? innerJoinStatement?) 
-	| FROM^ tableGenerationClause
+	| FROM^ tableGenerationClause tableHint?
 	| FROM OPENPAREN tableGenerationClause CLOSEPAREN ID -> ^(FROM tableGenerationClause ^(TABLE_ALIAS ID))
+	;
+
+/*with (thread(2))*/
+tableHint
+	: WITH! OPENPAREN! hint CLOSEPAREN!
+	;
+
+hint
+	: THREAD OPENPAREN INT CLOSEPAREN -> ^(THREAD INT)
 	;
 
 innerJoinStatement
@@ -418,6 +427,7 @@ INSERT_INTO : 'insert into';
 INSERT_OVERWRITE : 'insert overwrite';
 INSERT_DIRECTORY : 'insert file into';
 TRUNCATE : 'truncate';
+THREAD : 'thread';
 EACH : 'each';
 IN : 'in';
 SELECT : 'select';

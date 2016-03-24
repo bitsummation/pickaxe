@@ -20,6 +20,14 @@ namespace Pickaxe.Sdk
     {
         public AstNode Statement { get { return Children.Single(); } }
 
+        public ThreadTableHint ThreadHint
+        {
+            get
+            {
+                return Parent.Children.Where(x => x.GetType() == typeof(ThreadTableHint)).Cast<ThreadTableHint>().SingleOrDefault();
+            }
+        }
+
         public override void Accept(IAstVisitor visitor)
         {
             visitor.Visit(this);

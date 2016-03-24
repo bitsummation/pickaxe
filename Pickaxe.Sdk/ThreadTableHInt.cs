@@ -12,24 +12,20 @@
  * limitations under the License.
  */
 
+using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace Pickaxe.Sdk
 {
-    public class FromStatement : AliasBase
+    public class ThreadTableHint : AstNode
     {
-        public override AstNode Statement {
-            get
-            {
-                return Children.Where(x => x.GetType() != typeof(InnerJoinStatement)
-                    && x.GetType() != typeof(TableAlias)
-                    && x.GetType() != typeof(ThreadTableHint)).Single();
-            }
-        }
+        public int ThreadCount { get; set; }
 
         public override void Accept(IAstVisitor visitor)
         {
-            visitor.Visit(this);
+            throw new NotImplementedException();
         }
     }
 }
