@@ -94,6 +94,7 @@
         <Key word = "end" />
         <Key word = "on" />
         <Key word = "set" />
+        <Key word = "thread" />
       </KeyWords>
     </RuleSet>
   </RuleSets>
