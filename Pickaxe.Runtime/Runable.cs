@@ -15,6 +15,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
@@ -74,6 +75,7 @@ namespace Pickaxe.Runtime
 
         public void Run()
         {
+            ServicePointManager.DefaultConnectionLimit = int.MaxValue;
             var method = _runType.GetMethod("Run");
             method.Invoke(_instance, null);
         }
