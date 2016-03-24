@@ -89,6 +89,8 @@ namespace Pickaxe.Sdk
         void Visit(NotEqualExpression expression);
         void Visit(EqualsExpression expression);
 
+        void Visit(ThreadTableHint hint);
+
         void Visit(ProcedureDefinition definition);
         void Visit(ProcedureCall call);
     }

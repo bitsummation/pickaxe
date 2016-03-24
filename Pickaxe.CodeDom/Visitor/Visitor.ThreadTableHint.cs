@@ -12,20 +12,20 @@
  * limitations under the License.
  */
 
+using Pickaxe.Sdk;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.CodeDom;
 
-namespace Pickaxe.Sdk
+namespace Pickaxe.CodeDom.Visitor
 {
-    public class ThreadTableHint : AstNode
+    public partial class CodeDomGenerator : IAstVisitor
     {
-        public int ThreadCount { get; set; }
-
-        public override void Accept(IAstVisitor visitor)
+        public void Visit(ThreadTableHint hint)
         {
-            visitor.Visit(this);
+            _codeStack.Peek().CodeExpression = new CodePrimitiveExpression(hint.ThreadCount);
         }
     }
 }

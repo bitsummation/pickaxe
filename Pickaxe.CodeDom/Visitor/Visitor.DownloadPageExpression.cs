@@ -22,9 +22,9 @@ namespace Pickaxe.CodeDom.Visitor
 {
     public partial class CodeDomGenerator : IAstVisitor
     {
-        private void GenerateDownloadDeffered(AstNode statement, CodeTypeReference returnType, int line)
+        private void GenerateDownloadDeffered(DownloadPageExpression expression, CodeTypeReference returnType, int line)
         {
-            var statementDomArg = VisitChild(statement);
+            var statementDomArg = VisitChild(expression.Statement);
 
             if (statementDomArg.Scope.CodeDomReference.BaseType == typeof(Table<>).Name)
             {
@@ -32,7 +32,7 @@ namespace Pickaxe.CodeDom.Visitor
                     ((Action)statementDomArg.Tag)(); //remove call to OnSelect
             }
             else if (statementDomArg.Scope.CodeDomReference.BaseType != typeof(string).FullName)
-                Errors.Add(new DownloadRequireString(new Semantic.LineInfo(statement.Line.Line, statement.Line.CharacterPosition)));
+                Errors.Add(new DownloadRequireString(new Semantic.LineInfo(expression.Statement.Line.Line, expression.Statement.Line.CharacterPosition)));
 
             CodeMemberMethod method = new CodeMemberMethod();
             method.Name = "Download_" + statementDomArg.MethodIdentifier;
@@ -41,10 +41,14 @@ namespace Pickaxe.CodeDom.Visitor
             _mainType.Type.Members.Add(method);
             GenerateCallStatement(method.Statements, line);
 
+            int threadCount = 1;
+            if (expression.ThreadHint != null)
+                threadCount = expression.ThreadHint.ThreadCount;
+
             method.Statements.Add(new CodeMethodReturnStatement(new CodeObjectCreateExpression(new CodeTypeReference("ThreadedDownloadPageTable"),
                 new CodeThisReferenceExpression(),
                 new CodePrimitiveExpression(line),
-                new CodePrimitiveExpression(2),
+                new CodePrimitiveExpression(threadCount),
                 statementDomArg.CodeExpression)));
 
             var methodcall = new CodeMethodInvokeExpression(
@@ -88,7 +92,7 @@ namespace Pickaxe.CodeDom.Visitor
         public void Visit(DownloadPageExpression expression)
         {
             var type = new CodeTypeReference("RuntimeTable", new CodeTypeReference("DownloadPage"));
-            GenerateDownloadDeffered(expression.Statement, type, expression.Line.Line);
+            GenerateDownloadDeffered(expression, type, expression.Line.Line);
 
             _codeStack.Peek().Scope = new ScopeData<TableDescriptor> { Type = DownloadPage.Columns, CodeDomReference = type};
         }
