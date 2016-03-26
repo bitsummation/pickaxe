@@ -144,7 +144,7 @@ downloadExpression
 	;
 
 downloadPageExpresssion
-	: DOWNLOAD_PAGE^ downloadExpressionArg
+	: DOWNLOAD_PAGE^ downloadExpressionArg tableHint?
 	;
 
 downloadImageExpression
@@ -246,8 +246,8 @@ whereStatement
 
 fromStatement
 	: FROM t=ID a=ID? innerJoinStatement? -> ^(FROM TABLE_VARIABLE_REFERENCE[$t] ^(TABLE_ALIAS $a)? innerJoinStatement?) 
-	| FROM^ tableGenerationClause tableHint?
-	| FROM OPENPAREN tableGenerationClause CLOSEPAREN ID -> ^(FROM tableGenerationClause ^(TABLE_ALIAS ID))
+	| FROM^ tableGenerationClause
+	| FROM OPENPAREN tableGenerationClause CLOSEPAREN ID tableHint? -> ^(FROM tableGenerationClause ^(TABLE_ALIAS ID) tableHint?)
 	;
 
 /*with (thread(2))*/

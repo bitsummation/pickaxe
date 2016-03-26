@@ -18,13 +18,23 @@ namespace Pickaxe.Sdk
 {
     public class DownloadPageExpression : AstNode
     {
-        public AstNode Statement { get { return Children.Single(); } }
+        public AstNode Statement
+        {
+            get
+            {
+                return Children.Where(x => x.GetType() != typeof(ThreadTableHint)).Single();
+            }
+        }
 
         public ThreadTableHint ThreadHint
         {
             get
             {
-                return Parent.Children.Where(x => x.GetType() == typeof(ThreadTableHint)).Cast<ThreadTableHint>().SingleOrDefault();
+                var hint = Children.Where(x => x.GetType() == typeof(ThreadTableHint)).Cast<ThreadTableHint>().SingleOrDefault();
+                if(hint == null)
+                    hint = Parent.Children.Where(x => x.GetType() == typeof(ThreadTableHint)).Cast<ThreadTableHint>().SingleOrDefault();
+
+                return hint;
             }
         }
 
