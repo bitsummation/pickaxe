@@ -173,8 +173,18 @@ namespace Pickaxe.CodeDom.Visitor
                 if (outerLoopNeeded)
                 {
                     var aliases = Scope.Current.AliasType<DownloadPage>();
-                    var reference = new TableMemberReference() { Member = "nodes", RowReference = new TableVariableRowReference() { Id = aliases[0] } };
-                    var args = VisitChild(reference);
+                    CodeDomArg args = null;
+                    if (aliases.Length == 0)
+                    {
+                        //register error we could't find a download table and we are trying to access pick statements.
+                        //create fake codedomargs
+                        args = new CodeDomArg() { CodeExpression = new CodePrimitiveExpression("DownloadTable") };
+                    }
+                    else
+                    {
+                        var reference = new TableMemberReference() { Member = "nodes", RowReference = new TableVariableRowReference() { Id = aliases[0] } };
+                        args = VisitChild(reference);
+                    }
 
                     //Needed only for DownloadRow
                     outerLoop.Statements.Add(

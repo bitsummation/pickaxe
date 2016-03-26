@@ -17,6 +17,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Fizzler.Systems.HtmlAgilityPack;
 
 namespace Pickaxe.Runtime
 {
@@ -47,6 +48,12 @@ namespace Pickaxe.Runtime
         {
             Inner.Clear();
             _inner = null;
+        }
+
+        public override DownloadPage CssWhere(string selector)
+        {
+            Inner.nodes = nodes.First().QuerySelectorAll(selector);
+            return this;
         }
 
         public override string url
