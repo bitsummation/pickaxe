@@ -21,7 +21,7 @@ using System.Threading;
 
 namespace Pickaxe.Runtime
 {
-    public class ThreadedDownloadPageTable : RuntimeTable<DownloadPage>
+    public class ThreadedDownloadPage : RuntimeTable<DownloadPage>
     {
         [ThreadStatic]
         public static string LogValue;
@@ -38,7 +38,7 @@ namespace Pickaxe.Runtime
         private bool _running;
         private bool _callOnProgres;
 
-        private ThreadedDownloadPageTable(IRuntime runtime, int line, int threadCount)
+        private ThreadedDownloadPage(IRuntime runtime, int line, int threadCount)
             : base()
         {
             _urls = new Queue<string>();
@@ -51,7 +51,7 @@ namespace Pickaxe.Runtime
             _running = false;
         }
 
-        public ThreadedDownloadPageTable(IRuntime runtime, int line, int threadCount, string url)
+        public ThreadedDownloadPage(IRuntime runtime, int line, int threadCount, string url)
             : this(runtime, line, threadCount)
         {
             _urls.Enqueue(url);
@@ -59,7 +59,7 @@ namespace Pickaxe.Runtime
             _callOnProgres = false;
         }
 
-        public ThreadedDownloadPageTable(IRuntime runtime, int line, int threadCount, Table<ResultRow> table)
+        public ThreadedDownloadPage(IRuntime runtime, int line, int threadCount, Table<ResultRow> table)
             : this(runtime, line, threadCount)
         {
             runtime.TotalOperations += table.RowCount;
@@ -149,7 +149,7 @@ namespace Pickaxe.Runtime
             if (!_running)
             {
                 _running = true;
-                var logValue = ThreadedDownloadPageTable.LogValue;
+                var logValue = ThreadedDownloadPage.LogValue;
                 Thread thread = new Thread(() => ProcesImpl(logValue));
 
                 thread.Start();

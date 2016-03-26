@@ -61,7 +61,7 @@
     <Compile Include="DownloadImage.cs" />
     <Compile Include="DownloadPage.cs" />
     <Compile Include="LazyDownloadPage.cs" />
-    <Compile Include="ThreadedDownloadPageTable.cs" />
+    <Compile Include="ThreadedDownloadPage.cs" />
     <Compile Include="Expand.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="FileTable.cs" />

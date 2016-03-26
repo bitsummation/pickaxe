@@ -65,7 +65,7 @@ public class Code : RuntimeBase
     private RuntimeTable<DownloadPage> Download_f3f16462130f471fa37e2ade69d8ac7b()
     {
         Call(14);
-        return new ThreadedDownloadPageTable(this, 14, 1, "http://www.golaketravis.com/waterlevel/");
+        return new ThreadedDownloadPage(this, 14, 1, "http://www.golaketravis.com/waterlevel/");
     }
 
     private IEnumerable<anon_edd51654b47f410985cf2baf5b85e9d6> Fetch_761bf8611b0240cd8c4441abc73075b9()
@@ -137,7 +137,7 @@ public class Code : RuntimeBase
     private RuntimeTable<DownloadPage> Download_efe1007320864e1c98fbacf013f1f606()
     {
         Call(11);
-        return new ThreadedDownloadPageTable(this, 11, 20, Select_3e8bda574c1c4b55b23deba5fb651127());
+        return new ThreadedDownloadPage(this, 11, 20, Select_3e8bda574c1c4b55b23deba5fb651127());
     }
 
     private IEnumerable<anon_17443964c37b48a89e7caddd31e22c90> Fetch_5a915c0d72d346b0bd5ce6b986d43367()
