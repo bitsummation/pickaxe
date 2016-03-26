@@ -36,6 +36,7 @@ namespace Pickaxe.Runtime
         private int _line;
         private int _threadCount;
         private bool _running;
+        private bool _callOnProgres;
 
         private ThreadedDownloadPageTable(IRuntime runtime, int line, int threadCount)
             : base()
@@ -54,6 +55,8 @@ namespace Pickaxe.Runtime
             : this(runtime, line, threadCount)
         {
             _urls.Enqueue(url);
+
+            _callOnProgres = false;
         }
 
         public ThreadedDownloadPageTable(IRuntime runtime, int line, int threadCount, Table<ResultRow> table)
@@ -63,6 +66,8 @@ namespace Pickaxe.Runtime
 
             foreach (var row in table)
                 _urls.Enqueue(row[0].ToString());
+
+            _callOnProgres = true;
         }
 
         public override IEnumerator<DownloadPage> GetEnumerator() //Give out empty lazy wrappers
@@ -93,7 +98,9 @@ namespace Pickaxe.Runtime
 
                 var downloadResult = Http.DownloadPage(_runtime, url, _line);
                 _runtime.Call(_line);
-                _runtime.OnProgress();
+                
+                if(_callOnProgres)
+                    _runtime.OnProgress();
 
                 lock (ResultLock)
                 {

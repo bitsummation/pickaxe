@@ -231,6 +231,9 @@ namespace Pickaxe.CodeDom.Visitor
 
                 methodStatements.Add(outerLoop);
 
+                if (outerLoopNeeded)
+                    outerLoop.Statements.Add(new CodeMethodInvokeExpression(new CodePropertyReferenceExpression(new CodeVariableReferenceExpression("row"), "DownloadPage"), "Clear"));
+
                 var callSelect = new CodeExpressionStatement(new CodeMethodInvokeExpression(null, "OnSelect", new CodeVariableReferenceExpression("result")));
                 methodStatements.Add(callSelect);
                 methodStatements.Add(new CodeMethodReturnStatement(new CodeTypeReferenceExpression("result")));

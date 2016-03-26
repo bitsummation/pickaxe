@@ -26,6 +26,8 @@ namespace Pickaxe.Runtime
     {
         private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
+        private object ProgressLock = new object();
+
         private BreakProcesser _processor;
         private Dictionary<string, string> _args;
 
@@ -134,7 +136,11 @@ namespace Pickaxe.Runtime
 
         public void OnProgress()
         {
-            CompletedOperations++;
+            lock (ProgressLock)
+            {
+                CompletedOperations++;
+            }
+
             OnProgress(new ProgressArgs(CompletedOperations, TotalOperations));
         }
 

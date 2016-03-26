@@ -43,9 +43,10 @@ namespace Pickaxe.Runtime
             }
         }
 
-        public void ClearNodes()
+        public override void Clear()
         {
-            Inner.nodes = null;
+            Inner.Clear();
+            _inner = null;
         }
 
         public override string url

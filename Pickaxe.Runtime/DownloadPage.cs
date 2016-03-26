@@ -31,6 +31,11 @@ namespace Pickaxe.Runtime
         public virtual DateTime date { get; set; }
         public virtual int size { get; set; }
 
+        public virtual void Clear()
+        {
+            nodes = null;
+        }
+
         public virtual DownloadPage CssWhere(string selector)
         {
             DownloadPage newPage = this;
