@@ -38,12 +38,8 @@ namespace Pickaxe.Runtime
 
         public virtual DownloadPage CssWhere(string selector)
         {
-            DownloadPage newPage = this;
             var newNodes = nodes.First().QuerySelectorAll(selector).ToArray();
-            if (newNodes.Length > 0) //create a new page because the download page statement could be in stored in a variable
-                newPage = new DownloadPage() { date = date, nodes = newNodes, size = size, url = url };
-
-            return newPage;
+            return new DownloadPage() { date = date, nodes = newNodes, size = size, url = url };
         }
 
         public static TableDescriptor Columns
