@@ -45,7 +45,7 @@ namespace Pickaxe.CodeDom.Visitor
             if (expression.ThreadHint != null)
                 threadCount = expression.ThreadHint.ThreadCount;
 
-            method.Statements.Add(new CodeMethodReturnStatement(new CodeObjectCreateExpression(new CodeTypeReference("ThreadedDownloadPageTable"),
+            method.Statements.Add(new CodeMethodReturnStatement(new CodeObjectCreateExpression(new CodeTypeReference("ThreadedDownloadPage"),
                 new CodeThisReferenceExpression(),
                 new CodePrimitiveExpression(line),
                 new CodePrimitiveExpression(threadCount),
