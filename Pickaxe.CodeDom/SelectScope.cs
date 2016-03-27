@@ -27,6 +27,14 @@ namespace Pickaxe.CodeDom
         {
         }
 
+        public override bool IsSelect
+        {
+            get
+            {
+                return true;
+            }
+        }
+
         public override SelectMatch[] FindTableVariable(string variable)
         {
             var tableList = new List<SelectMatch>();

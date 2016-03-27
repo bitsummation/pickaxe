@@ -45,7 +45,10 @@ namespace Pickaxe.CodeDom.Visitor
             if (expression.ThreadHint != null)
                 threadCount = expression.ThreadHint.ThreadCount;
 
-            method.Statements.Add(new CodeMethodReturnStatement(new CodeObjectCreateExpression(new CodeTypeReference("ThreadedDownloadPage"),
+            //if in select context pick the lazy download type
+            var downloadType = Scope.Current.IsSelect ? "SelectDownloadTable" : "VariableDownloadTable";
+
+            method.Statements.Add(new CodeMethodReturnStatement(new CodeObjectCreateExpression(new CodeTypeReference(downloadType),
                 new CodeThisReferenceExpression(),
                 new CodePrimitiveExpression(line),
                 new CodePrimitiveExpression(threadCount),

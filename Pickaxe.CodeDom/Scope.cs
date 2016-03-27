@@ -164,6 +164,14 @@ namespace Pickaxe.CodeDom
             return scope._scope[variable] as ScopeData<TableDescriptor>;
         }
 
+        public virtual bool IsSelect
+        {
+            get
+            {
+                return false;
+            }
+        }
+
         public virtual SelectMatch[] FindTableVariable(string variable)
         {
             return new SelectMatch[0];

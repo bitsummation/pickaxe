@@ -21,15 +21,13 @@ using System.Threading;
 
 namespace Pickaxe.Runtime
 {
-    public class ThreadedDownloadPage : RuntimeTable<DownloadPage>
+    public abstract class ThreadedDownloadTable : RuntimeTable<DownloadPage>
     {
         [ThreadStatic]
         public static string LogValue;
         
         private object ResultLock = new object();
         private object UrlLock = new object();
-
-        private Queue<string> _urls;
         private Queue<DownloadPage> _results;
 
         private IRuntime _runtime;
@@ -38,45 +36,39 @@ namespace Pickaxe.Runtime
         private bool _running;
         private bool _callOnProgres;
 
-        private ThreadedDownloadPage(IRuntime runtime, int line, int threadCount)
+        private ThreadedDownloadTable(IRuntime runtime, int line, int threadCount)
             : base()
         {
-            _urls = new Queue<string>();
+            Urls = new Queue<string>();
             _results = new Queue<DownloadPage>();
 
             _runtime = runtime;
-            _urls = new Queue<string>();
+            Urls = new Queue<string>();
             _line = line;
             _threadCount = threadCount;
             _running = false;
         }
 
-        public ThreadedDownloadPage(IRuntime runtime, int line, int threadCount, string url)
+        public ThreadedDownloadTable(IRuntime runtime, int line, int threadCount, string url)
             : this(runtime, line, threadCount)
         {
-            _urls.Enqueue(url);
+            Urls.Enqueue(url);
 
             _callOnProgres = false;
         }
 
-        public ThreadedDownloadPage(IRuntime runtime, int line, int threadCount, Table<ResultRow> table)
+        public ThreadedDownloadTable(IRuntime runtime, int line, int threadCount, Table<ResultRow> table)
             : this(runtime, line, threadCount)
         {
             runtime.TotalOperations += table.RowCount;
 
             foreach (var row in table)
-                _urls.Enqueue(row[0].ToString());
+                Urls.Enqueue(row[0].ToString());
 
             _callOnProgres = true;
         }
 
-        public override IEnumerator<DownloadPage> GetEnumerator() //Give out empty lazy wrappers
-        {
-            foreach(string url in _urls)
-            {
-                yield return new LazyDownloadPage(this);
-            }
-        }
+        protected Queue<string> Urls {get; private set;}
 
         private void Work(string logValue) //multi threaded
         {
@@ -87,8 +79,8 @@ namespace Pickaxe.Runtime
             {
                 lock (UrlLock)
                 {
-                    if (_urls.Count > 0)
-                        url = _urls.Dequeue();
+                    if (Urls.Count > 0)
+                        url = Urls.Dequeue();
                     else
                         url = null;
                 }
@@ -149,7 +141,7 @@ namespace Pickaxe.Runtime
             if (!_running)
             {
                 _running = true;
-                var logValue = ThreadedDownloadPage.LogValue;
+                var logValue = ThreadedDownloadTable.LogValue;
                 Thread thread = new Thread(() => ProcesImpl(logValue));
 
                 thread.Start();

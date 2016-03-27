@@ -17,21 +17,20 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Fizzler.Systems.HtmlAgilityPack;
 
 namespace Pickaxe.Runtime
 {
-    public class LazyDownloadPage : DownloadPage
+    public abstract class LazyDownloadPage : DownloadPage
     {
-        private ThreadedDownloadPage _parent;
+        private ThreadedDownloadTable _parent;
         private DownloadPage _inner;
 
-        public LazyDownloadPage(ThreadedDownloadPage parent)
+        protected LazyDownloadPage(ThreadedDownloadTable parent)
         {
             _parent = parent;
         }
 
-        private DownloadPage Inner
+        protected DownloadPage Inner
         {
             get
             {
@@ -42,18 +41,10 @@ namespace Pickaxe.Runtime
 
                 return _inner;
             }
-        }
-
-        public override void Clear()
-        {
-            Inner.Clear();
-            _inner = null;
-        }
-
-        public override DownloadPage CssWhere(string selector)
-        {
-            Inner.nodes = nodes.First().QuerySelectorAll(selector);
-            return this;
+            set
+            {
+                _inner = null;
+            }
         }
 
         public override string url

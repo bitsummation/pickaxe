@@ -61,7 +61,9 @@
     <Compile Include="DownloadImage.cs" />
     <Compile Include="DownloadPage.cs" />
     <Compile Include="LazyDownloadPage.cs" />
-    <Compile Include="ThreadedDownloadPage.cs" />
+    <Compile Include="SelectDownloadPage.cs" />
+    <Compile Include="SelectDownloadTable.cs" />
+    <Compile Include="ThreadedDownloadTable.cs" />
     <Compile Include="Expand.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="FileTable.cs" />
@@ -88,6 +90,8 @@
     <Compile Include="Table.cs" />
     <Compile Include="TableDescriptor.cs" />
     <Compile Include="TablePrimitive.cs" />
+    <Compile Include="VariableDownloadPage.cs" />
+    <Compile Include="VariableDownloadTable.cs" />
     <Compile Include="VariableTypePair.cs" />
   </ItemGroup>
   <ItemGroup>
