@@ -35,6 +35,9 @@ namespace Pickaxe.Parser.Bridge
         void Visit(InnerJoinStatement statement, CommonTree tree);
         void Visit(WhereStatement statement, CommonTree tree);
         void Visit(PickStatement statement, CommonTree tree);
+        void Visit(ReplaceExpression expression, CommonTree tree);
+        void Visit(MatchExpression expression, CommonTree tree);
+        
         void Visit(SelectId id, CommonTree tree);
         void Visit(SelectAll all, CommonTree tree);
 

@@ -36,21 +36,11 @@ namespace PickAxe.Tests
         public void BasicCodeGenTest()
         {
               var input = @"
-
-var downloadPage = download page 'http://vtss.brockreeve.com/Topic/Index/20'
-
 select
-		pick 'h3' take text, --title
-		pick 'p:nth-child(3)' take text, --post
-		pick 'p.author a' take text --user
-from downloadPage
-where nodes = 'div.topic'
-
-select
-	pick 'p:nth-child(2)' take text,
-	pick 'p.author a' take text
-from downloadPage
-where nodes = 'div.reply'
+	pick 'td:nth-child(1) p.bold' match '(\d+)-(\w+)' replace '$2',
+	pick 'td:nth-child(1) p.bold' match '(\d+)-(\w+)' replace '$1',
+	pick 'td:nth-child(2) p' match '\d{3}\.\d{2}'
+from download page 'http://www.golaketravis.com/waterlevel/index.php?year=1963'
 
 ";
 

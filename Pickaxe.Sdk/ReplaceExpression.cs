@@ -12,14 +12,16 @@
  * limitations under the License.
  */
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace Pickaxe.Sdk
 {
-    public class PickStatement : AstNode
+    public class ReplaceExpression : AstNode
     {
-        public string Selector
+        public string Value
         {
             get
             {
@@ -27,32 +29,9 @@ namespace Pickaxe.Sdk
             }
         }
 
-        public MatchExpression Match
-        {
-            get
-            {
-                return Children.Where(x => x.GetType() == typeof(MatchExpression)).Cast<MatchExpression>().SingleOrDefault();
-            }
-        }
-
-        public AstNode TakeStatement
-        {
-            get
-            {
-                var takeCount = Children.Where(x => x.GetType() != typeof(MatchExpression)
-                    && x.GetType() != typeof(StringLiteral)).Count();
-
-                if (takeCount == 0) //we default to taking text if nothing specified
-                    Children.Add(new TakeTextStatement());
-
-                return Children.Where(x => x.GetType() != typeof(MatchExpression)
-                    && x.GetType() != typeof(StringLiteral)).Single();
-            }
-        }
-
         public override void Accept(IAstVisitor visitor)
         {
-            visitor.Visit(this);
+            throw new NotImplementedException();
         }
     }
 }

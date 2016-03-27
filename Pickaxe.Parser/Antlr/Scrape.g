@@ -341,7 +341,7 @@ selectVariable
 	;
 	
 pickStatement
-	: PICK STRING_LITERAL takeStatement matchStatement? -> ^(PICK STRING_LITERAL takeStatement matchStatement? )
+	: PICK STRING_LITERAL takeStatement? matchStatement? -> ^(PICK STRING_LITERAL takeStatement? matchStatement? )
 	;
 
 takeStatement

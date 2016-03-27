@@ -51,6 +51,7 @@
     <Compile Include="CommandLineVariable.cs" />
     <Compile Include="IdentityVariable.cs" />
     <Compile Include="InnerJoinStatement.cs" />
+    <Compile Include="MatchExpression.cs" />
     <Compile Include="NodesBooleanExpression.cs" />
     <Compile Include="DivisionOperator.cs" />
     <Compile Include="DownloadImageExpression.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="ProcedureDefinition.cs" />
     <Compile Include="ProxyList.cs" />
     <Compile Include="ProxyStatement.cs" />
+    <Compile Include="ReplaceExpression.cs" />
     <Compile Include="SelectAll.cs" />
     <Compile Include="SelectArg.cs" />
     <Compile Include="SelectId.cs" />

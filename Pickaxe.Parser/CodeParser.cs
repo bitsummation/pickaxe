@@ -90,6 +90,11 @@ namespace Pickaxe.Parser
                         return new AntlrBridgeTree<SelectStatement>(payload, (node, tree, visitor) => visitor.Visit(node, tree));
                     if(payload.Type == ScrapeParser.PICK)
                         return new AntlrBridgeTree<PickStatement>(payload, (node, tree, visitor) => visitor.Visit(node, tree));
+                    if(payload.Type == ScrapeParser.REPLACE)
+                        return new AntlrBridgeTree<ReplaceExpression>(payload, (node, tree, visitor) => visitor.Visit(node, tree));
+                    if(payload.Type == ScrapeParser.MATCH)
+                        return new AntlrBridgeTree<MatchExpression>(payload, (node, tree, visitor) => visitor.Visit(node, tree));
+
                     if (payload.Type == ScrapeParser.FROM)
                         return new AntlrBridgeTree<FromStatement>(payload, (node, tree, visitor) => visitor.Visit(node, tree));
                     if(payload.Type == ScrapeParser.INNER_JOIN)

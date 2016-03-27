@@ -164,18 +164,21 @@ namespace Pickaxe.Parser.Bridge
         {
             Parent(tree).Children.Add(statement);
             SetLine(statement, tree);
+            VisitChildren(tree);
+        }
 
-            Debug.Assert(tree.Children[0].Type == AntlrParser.STRING_LITERAL);
-            Visit(tree.Children[1]);
+        public void Visit(ReplaceExpression expression, CommonTree tree)
+        {
+            Parent(tree).Children.Add(expression);
+            SetLine(expression, tree);
+            VisitChildren(tree);
+        }
 
-            if(tree.Children.Count > 2) //match
-            {
-                statement.Match = ParseLiteral(tree.Children[2].GetChild(0).Text);
-                if(tree.Children[2].ChildCount > 1)
-                    statement.Replace = ParseLiteral(tree.Children[2].GetChild(1).GetChild(0).Text);
-            }
-
-            statement.Selector = ParseLiteral(tree.GetChild(0).Text);
+        public void Visit(MatchExpression expression, CommonTree tree)
+        {
+            Parent(tree).Children.Add(expression);
+            SetLine(expression, tree);
+            VisitChildren(tree);
         }
 
         public void Visit(FromStatement statement, CommonTree tree)

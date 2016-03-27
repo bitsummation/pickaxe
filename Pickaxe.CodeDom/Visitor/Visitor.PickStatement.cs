@@ -64,13 +64,13 @@ namespace Pickaxe.CodeDom.Visitor
             var takeExpression = takeDomArg.CodeExpression as CodeMethodInvokeExpression;
             takeExpression.Method.TargetObject = expression;
 
-            if (statement.Replace != null)
+            if (statement.Match != null && statement.Match.Replace != null)
             {
-                takeExpression = new CodeMethodInvokeExpression(takeExpression, "MatchReplace", new CodePrimitiveExpression(statement.Match), new CodePrimitiveExpression(statement.Replace));
+                takeExpression = new CodeMethodInvokeExpression(takeExpression, "MatchReplace", new CodePrimitiveExpression(statement.Match.Value), new CodePrimitiveExpression(statement.Match.Replace.Value));
             }
-            else if (!string.IsNullOrEmpty(statement.Match))
+            else if (statement.Match != null)
             {
-                takeExpression = new CodeMethodInvokeExpression(takeExpression, "Match", new CodePrimitiveExpression(statement.Match));
+                takeExpression = new CodeMethodInvokeExpression(takeExpression, "Match", new CodePrimitiveExpression(statement.Match.Value));
             }
 
             _codeStack.Peek().Tag = true;
