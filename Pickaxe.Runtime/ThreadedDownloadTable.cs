@@ -88,6 +88,7 @@ namespace Pickaxe.Runtime
                 if (url == null) //nothing left in queue
                     break;
 
+                _runtime.Call(_line);
                 var downloadResult = Http.DownloadPage(_runtime, url, _line);
                 _runtime.Call(_line);
                 
@@ -131,7 +132,11 @@ namespace Pickaxe.Runtime
         {
             DownloadPage result = null;
             while (result == null)
+            {
                 result = FetchResult();
+                if (!_runtime.IsRunning)
+                    result = DownloadPage.CreateEmpty();
+            }
 
             return result;
         }

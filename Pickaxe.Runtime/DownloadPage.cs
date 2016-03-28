@@ -25,6 +25,13 @@ namespace Pickaxe.Runtime
 {
     public class DownloadPage : IRow
     {
+        public static DownloadPage CreateEmpty()
+        {
+            var doc = new HtmlDocument();
+            doc.LoadHtml("");
+            return new DownloadPage() { url = string.Empty, nodes = new[] { doc.DocumentNode }, date = DateTime.MinValue, size = 0 };
+        }
+
         public virtual string url { get; set; }
 
         public virtual IEnumerable<HtmlNode> nodes { get; set; }
