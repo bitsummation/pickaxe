@@ -28,8 +28,13 @@ namespace Pickaxe.Runtime
 
         public override DownloadPage CssWhere(string selector)
         {
-            Inner.nodes = nodes.First().QuerySelectorAll(selector);
+            CssSelector = selector;
             return this;
+        }
+
+        protected override void ApplyCssSelector()
+        {
+            Inner.nodes = nodes.First().QuerySelectorAll(CssSelector);
         }
 
         public override void Clear()

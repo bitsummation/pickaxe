@@ -24,11 +24,13 @@ namespace Pickaxe.Runtime
     {
         private ThreadedDownloadTable _parent;
         private DownloadPage _inner;
-
+        
         protected LazyDownloadPage(ThreadedDownloadTable parent)
         {
             _parent = parent;
         }
+
+        protected string CssSelector { get; set; }
 
         protected DownloadPage Inner
         {
@@ -37,7 +39,11 @@ namespace Pickaxe.Runtime
                 _parent.Process();
 
                 if (_inner == null)
+                {
                     _inner = _parent.GetResult();
+                    if (CssSelector != null)
+                        ApplyCssSelector();
+                }
 
                 return _inner;
             }
@@ -46,6 +52,8 @@ namespace Pickaxe.Runtime
                 _inner = null;
             }
         }
+
+        protected abstract void ApplyCssSelector();
 
         public override string url
         {

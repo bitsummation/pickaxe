@@ -32,5 +32,9 @@ namespace Pickaxe.Runtime
             var newNodes = nodes.First().QuerySelectorAll(selector).ToArray();
             return new DownloadPage() { date = date, nodes = newNodes, size = size, url = url };
         }
+
+        protected override void ApplyCssSelector()
+        {
+        }
     }
 }
