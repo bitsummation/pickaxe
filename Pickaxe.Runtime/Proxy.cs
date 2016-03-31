@@ -23,6 +23,8 @@ namespace Pickaxe.Runtime
 {
     public class Proxy
     {
+        private object Lock = new object();
+
         private Proxy(string proxyUrl, int port)
         {
             ProxyUrl = proxyUrl;
@@ -51,7 +53,17 @@ namespace Pickaxe.Runtime
 
         public string ProxyUrl { get; private set; }
         public int Port { get; private set; }
-        public int ErrorCount { get; set; }
+
+        public void IncrementErrorCount()
+        {
+            lock(Lock)
+            {
+                ErrorCount++;
+            }
+
+        }
+
+        public int ErrorCount { get; private set; }
 
         public override string ToString()
         {

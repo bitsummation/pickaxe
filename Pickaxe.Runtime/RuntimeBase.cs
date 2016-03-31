@@ -162,7 +162,7 @@ namespace Pickaxe.Runtime
         {
             if (!IsRunning)
             {
-                Log.Info("Program Stopped");
+                Log.Info("Thread Stopped");
                 Thread.CurrentThread.Abort();
             }
 

@@ -21,50 +21,47 @@ namespace Pickaxe.Runtime.Internal
 {
     internal class ProxySelector
     {
-        private Queue<Proxy> _proxies { get; set;}
+        private object Lock = new object();
 
         public ProxySelector()
         {
-            _proxies = new Queue<Proxy>();
+            Proxies = new Queue<Proxy>();
+        }
+
+        protected ProxySelector(IEnumerable<Proxy> proxies)
+        {
+            Proxies = new Queue<Proxy>(proxies);
+        }
+
+        protected Queue<Proxy> Proxies {get; private set; }
+
+        public Proxy[] GetProxyArray()
+        {
+            return Proxies.ToArray();
         }
 
         public int ProxyCount
         {
             get
             {
-                return _proxies.Count;
+                return Proxies.Count;
             }
         }
 
         public void Add(Proxy proxy)
         {
-            _proxies.Enqueue(proxy);
+            Proxies.Enqueue(proxy);
         }
 
         public void Remove(Proxy proxy)
         {
-            var list = _proxies.ToList();
-            list.Remove(proxy);
-            _proxies.Clear();
-            foreach (var p in list)
-                _proxies.Enqueue(p);
-        }
-
-        public Proxy Current
-        {
-            get
+            lock (Lock)
             {
-                return _proxies.Last();
-            }
-        }
-
-        public Proxy Next
-        {
-            get
-            {
-                var proxy = _proxies.Dequeue();
-                _proxies.Enqueue(proxy);
-                return proxy;
+                var list = Proxies.ToList();
+                list.Remove(proxy);
+                Proxies.Clear();
+                foreach (var p in list)
+                    Proxies.Enqueue(p);
             }
         }
 

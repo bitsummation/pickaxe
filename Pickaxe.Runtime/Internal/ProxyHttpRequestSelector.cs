@@ -28,24 +28,25 @@ namespace Pickaxe.Runtime.Internal
 
         private const int RemoveProxyCount = 10;
 
+        private HttpProxySelector _selectorCopy;
         private ProxySelector _selector;
         private Stack<AttemptPair> _error;
 
         public ProxyHttpRequestSelector(ProxySelector selector, string url)
             : base(url)
         {
-            _selector = selector;
+            _selectorCopy = new HttpProxySelector(selector.GetProxyArray());
             _error = new Stack<AttemptPair>();
         }
 
         protected override bool OnError(DownloadError error)
         {
-            Log.InfoFormat("Download error, Proxy={0}, Url = {1}, Message = {2}", _selector.Current, Url, error.Message);
+            Log.InfoFormat("Download error, Proxy={0}, Url = {1}, Message = {2}", _selectorCopy.Current, Url, error.Message);
 
             bool tryAgain = true;
-            _error.Push(new AttemptPair() {Proxy = _selector.Current, Error = error });
+            _error.Push(new AttemptPair() { Proxy = _selectorCopy.Current, Error = error });
 
-            if (_error.Count >= _selector.ProxyCount) //We went through all the proxies and they all had an error. We give up.
+            if (_error.Count >= _selectorCopy.ProxyCount) //We went through all the proxies and they all had an error. We give up.
             {
                 _error.Clear();
                 tryAgain = false;
@@ -56,14 +57,14 @@ namespace Pickaxe.Runtime.Internal
 
         protected override void OnSuccess()
         {
-            Log.InfoFormat("Download success, Proxy={0}, Url = {1}", _selector.Current, Url);
+            Log.InfoFormat("Download success, Proxy={0}, Url = {1}", _selectorCopy.Current, Url);
 
             if (_error.Count > 0)
             {
                 //If there are errors and this one is successful then we remove those errors and proxies
                 foreach (var attempt in _error)
                 {
-                    attempt.Proxy.ErrorCount++;
+                    attempt.Proxy.IncrementErrorCount();
                     Log.InfoFormat("Proxy Error Incremeneted, Proxy={0}, ErrorCount = {1}", attempt.Proxy, attempt.Proxy.ErrorCount);
                     if (attempt.Proxy.ErrorCount >= RemoveProxyCount)
                     {
@@ -81,8 +82,7 @@ namespace Pickaxe.Runtime.Internal
         protected override HttpWebRequest CreateHttpWebRequest()
         {
             var request = base.CreateHttpWebRequest();
-            var url = request.RequestUri.AbsoluteUri;
-            var proxy = _selector.Next;
+            var proxy = _selectorCopy.Next;
 
             request.Proxy = new WebProxy(proxy.ProxyUrl, proxy.Port);
             return request;

@@ -60,6 +60,7 @@
     <Compile Include="Debug\IDebug.cs" />
     <Compile Include="DownloadImage.cs" />
     <Compile Include="DownloadPage.cs" />
+    <Compile Include="Internal\HttpProxySelector.cs" />
     <Compile Include="LazyDownloadPage.cs" />
     <Compile Include="SelectDownloadPage.cs" />
     <Compile Include="SelectDownloadTable.cs" />
