@@ -31,7 +31,7 @@ namespace Pickaxe.CodeDom.Visitor
 
             Type leftType = Type.GetType(leftArgs.Scope.CodeDomReference.BaseType);
             Type rightType = Type.GetType(rightArgs.Scope.CodeDomReference.BaseType);
-            if (leftType != rightType)
+            if (leftType != rightType && leftType != null)
             {
                 var leftPrimitive = TablePrimitive.FromType(leftType);
                 rightArgs.CodeExpression = leftPrimitive.ToNative(rightArgs.CodeExpression);

@@ -23,9 +23,12 @@ namespace Pickaxe.Runtime.Internal
     {
         private object Lock = new object();
 
+        private int _fetchedProxyArrayCount;
+
         public ProxySelector()
         {
             Proxies = new Queue<Proxy>();
+            _fetchedProxyArrayCount = 0;
         }
 
         protected ProxySelector(IEnumerable<Proxy> proxies)
@@ -35,9 +38,24 @@ namespace Pickaxe.Runtime.Internal
 
         protected Queue<Proxy> Proxies {get; private set; }
 
-        public Proxy[] GetProxyArray()
+        //Copy of the array for each url request
+        public IEnumerable<Proxy> FetchProxies()
         {
-            return Proxies.ToArray();
+            lock (Lock)
+            {
+                _fetchedProxyArrayCount++;
+                int startIndex = _fetchedProxyArrayCount % ProxyCount;
+                var list = Proxies.ToList();
+                while(startIndex > 0)
+                {
+                    var element = list[0];
+                    list.RemoveAt(0);
+                    list.Add(element);
+                    startIndex--;
+                }
+                //Need to change up the order
+                return list;
+            }
         }
 
         public int ProxyCount
