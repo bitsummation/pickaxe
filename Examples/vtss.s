@@ -2,8 +2,8 @@ create buffer postpages (startPage int, endPage int)
 
 insert into postpages
 select
-	pick 'li.current a' take text,
-	pick 'li:nth-child(7) a' take text
+	pick 'li.current a',
+	pick 'li:nth-child(7) a'
 from download page 'http://vtss.brockreeve.com/?t=All'
 where nodes = 'ol.page-nav'
 
@@ -31,9 +31,9 @@ each(var row in detailurls) {
 
 	insert into topicdetails
 	select
-		pick 'h3' take text, --title
-		pick 'p:nth-child(3)' take text, --post
-		pick 'p.author a' take text --user
+		pick 'h3', --title
+		pick 'p:nth-child(3)', --post
+		pick 'p.author a' --user
 	from downloadPage
 	where nodes = 'div.topic'
 	
@@ -41,8 +41,8 @@ each(var row in detailurls) {
 	select
 	@@identity,
 	row.url,
-	pick 'p:nth-child(2)' take text,
-	pick 'p.author a' take text
+	pick 'p:nth-child(2)',
+	pick 'p.author a'
 	from downloadPage
 	where nodes = 'div.reply'
 

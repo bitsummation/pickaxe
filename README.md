@@ -1,25 +1,97 @@
 # Pickaxe
 ---
-An easy to use SQL based web scraper language. If you know SQL and a little about CSS selectors and want to capture data from the web, this is the tool for you. [Contact me](http://brockreeve.com/contact.aspx) with feedback/questions.
+Pickaxe uses SQL statements combined with CSS selectors to pick out text from a web page. If you know SQL and a little about CSS selectors and want to capture data from the web, this is the tool for you.
 ## Downloads
 ---
-Found [here](https://github.com/bitsummation/pickaxe/releases). It requires .NET framework 4.0. The **Pickaxe-Console.zip** is the command line version. The command line can run on non-windows platforms using mono.
+Found [here](https://github.com/bitsummation/pickaxe/releases). It requires .NET framework 4.0. **Pickaxe.zip** contains the GUI editor and only runs on windows. The **Pickaxe-Console.zip** is the command line version that runs on non-windows platforms using mono as well as windows. See Command Line section below.
 ## Quickstart
 ---
-Pickaxe uses SQL statements combined with CSS selectors to pick out text from a web page. Download **Pickaxe.zip** from above and unzip the contents and double click on **Pickaxe.Studio.exe** to run the GUI editor. Below are some example snippets. A full runnable example that scrapes a forum I host is found [here](https://raw.githubusercontent.com/bitsummation/pickaxe/master/Examples/vtss.s).
+Download **Pickaxe.zip** from above and unzip the contents and double click on **Pickaxe.Studio.exe** to run the GUI editor. Below is a screen shot of the editor. A full runnable example that scrapes a forum I host is found [here](https://raw.githubusercontent.com/bitsummation/pickaxe/master/Examples/vtss.s).
 
 ![](https://cloud.githubusercontent.com/assets/13210937/13622972/c0a112ba-e568-11e5-97b6-8f579abb2ae7.png)
+
+### Download Page
+Download page returns a table with columns url, nodes, date, size. The statement below downloads aviation weather information for airports in Texas.
+```sql
+select *
+from download page 'https://www.faa.gov/air_traffic/weather/asos/?state=TX'
+```
+### Where
+Select the nodes we are interested in. To accomplish, set the nodes equal to a css expression. The css selector below gets all tr nodes that are under the table with class asos.
+```
+select *
+from download page 'https://www.faa.gov/air_traffic/weather/asos/?state=TX'
+where nodes = 'table.asos tbody tr'
+```
+### Pick
+The pick expression picks out nodes under each node specified in the where clause. Pick takes a css selector. In this case, we are getting data in the td elements under each tr element. After the pick css selector, a part of the element can be specified.
+* take attribute 'attribute' - takes the attribute value of the node. 
+* take text - takes the text of the node (default value and doesn't have to be specified)
+* take html - takes the html of the node
+```
+select
+	pick 'td:nth-child(1) a' take attribute 'href', --link to details
+	pick 'td:nth-child(1) a', --station
+	pick 'td:nth-child(2)', --city
+	pick 'td:nth-child(4)' --state
+from download page 'https://www.faa.gov/air_traffic/weather/asos/?state=TX'	
+where nodes = 'table.asos tbody tr'
+```
+### Nested selects
+We create a memory table to store state strings then we insert states into it. The nested select statement allows the download page statement to download multiple pages at once. 
+```
+create buffer states(state string)
+
+insert into states
+select 'TX'
+
+insert into states
+select 'OR'
+
+select
+	pick 'td:nth-child(1) a' take attribute 'href', --link to details
+	pick 'td:nth-child(1) a', --station
+	pick 'td:nth-child(2)', --city
+	pick 'td:nth-child(4)' --state
+from download page (select
+	'https://www.faa.gov/air_traffic/weather/asos/?state=' + state
+	from states)
+where nodes = 'table.asos tbody tr'
+```
+### Download Threads (make it faster)
+A download page statement can use with (thread(2)) hint. The download page statement will then use the number of threads specified to download the pages resulting in much better performance. 
+```
+create buffer states(state string)
+
+insert into states
+select 'TX'
+
+insert into states
+select 'OR'
+
+select
+	pick 'td:nth-child(1) a' take attribute 'href', --link to details
+	pick 'td:nth-child(1) a', --station
+	pick 'td:nth-child(2)', --city
+	pick 'td:nth-child(4)' --state
+from download page (select
+	'https://www.faa.gov/air_traffic/weather/asos/?state=' + state
+	from states) with (thread(2))
+where nodes = 'table.asos tbody tr'
+```
+## More Examples
+---
 #### Example 1
 Capture the commit information from this page.
 ```sql
 select
-	case pick '.icon .octicon-file-text' take text
+	case pick '.icon .octicon-file-text'
 		when null then 'Folder'
 		else 'File'
 	end, --folder/file
-	pick '.content a' take text, --name
-	pick '.message a' take text, --comment
-	pick '.age span' take text --date
+	pick '.content a', --name
+	pick '.message a', --comment
+	pick '.age span' --date
 from download page 'https://github.com/bitsummation/pickaxe'
 where nodes = 'table.files tr.js-navigation-item'
 ```
@@ -27,21 +99,21 @@ where nodes = 'table.files tr.js-navigation-item'
 What's your WAN ip address?
 ```sql
 select
-	pick '#section_left div:nth-child(2) a' take text
+	pick '#section_left div:nth-child(2) a'
 from download page 'http://whatismyipaddress.com/'
 ```
 #### Match
 The match expression uses regular expressions to match text. In this case, it is just taking the numbers of the ip address.
 ```sql
 select
-    pick '#section_left div:nth-child(2) a' take text match '\d'
+    pick '#section_left div:nth-child(2) a' match '\d'
 from download page 'http://whatismyipaddress.com'
 ```
 #### Match/Replace
 A match expression can be followed by a replace. In this case, we replace the dots with dashes.
 ```sql
 select
-    pick '#section_left div:nth-child(2) a' take text match '\.' replace '---'
+    pick '#section_left div:nth-child(2) a' match '\.' replace '---'
 from download page 'http://whatismyipaddress.com'
 ```
 #### In Memory Buffer
@@ -51,13 +123,13 @@ create buffer results(type string, folder string, message string, changeDate str
 
 insert overwrite results
 select
-    case pick '.icon .octicon-file-text' take text
+    case pick '.icon .octicon-file-text'
         when null then 'Folder'
         else 'File'
     end, --folder/file
-    pick '.content a' take text, --name
-    pick '.message a' take text, --comment
-    pick '.age span' take text --date
+    pick '.content a', --name
+    pick '.message a', --comment
+    pick '.age span' --date
 from download page 'https://github.com/bitsummation/pickaxe'
 where nodes = 'table.files tr.js-navigation-item'
 
@@ -76,13 +148,13 @@ location 'C:\windows\temp\results.txt'
 
 insert into results
 select
-    case pick '.icon .octicon-file-text' take text
+    case pick '.icon .octicon-file-text'
         when null then 'Folder'
         else 'File'
     end, --folder/file
-    pick '.content a' take text, --name
-    pick '.message a' take text, --comment
-    pick '.age span' take text --date
+    pick '.content a', --name
+    pick '.message a', --comment
+    pick '.age span' --date
 from download page 'https://github.com/bitsummation/pickaxe'
 where nodes = 'table.files tr.js-navigation-item'
 ```
