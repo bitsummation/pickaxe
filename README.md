@@ -6,9 +6,9 @@ Pickaxe uses SQL statements combined with CSS selectors to pick out text from a 
 Found [here](https://github.com/bitsummation/pickaxe/releases). It requires .NET framework 4.0. **Pickaxe.zip** contains the GUI editor and only runs on windows. The **Pickaxe-Console.zip** is the command line version that runs on non-windows platforms using mono as well as windows. See Command Line section below.
 ## Quickstart
 ---
-Download **Pickaxe.zip** from above and unzip the contents and double click on **Pickaxe.Studio.exe** to run the GUI editor. Below is a screen shot of the editor. A full runnable example that scrapes a forum I host is found [here](https://raw.githubusercontent.com/bitsummation/pickaxe/master/Examples/vtss.s).
+Download **Pickaxe.zip** from above and unzip the contents and double click on **Pickaxe.Studio.exe** to run the GUI editor. Below is a screen shot of the editor. A full runnable example that scrapes a forum I host is found [here](https://raw.githubusercontent.com/bitsummation/pickaxe/master/Examples/vtss.s). Others can be found [here](https://github.com/bitsummation/pickaxe/tree/threads2/Examples).
 
-![](https://cloud.githubusercontent.com/assets/13210937/13622972/c0a112ba-e568-11e5-97b6-8f579abb2ae7.png)
+![](https://cloud.githubusercontent.com/assets/13210937/14195656/810cb08e-f781-11e5-9638-960a1659477d.png)
 
 ### Download Page
 Download page returns a table with columns url, nodes, date, size. The statement below downloads aviation weather information for airports in Texas.
