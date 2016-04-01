@@ -79,6 +79,16 @@ from download page (select
 	from states) with (thread(2))
 where nodes = 'table.asos tbody tr'
 ```
+#### Proxies
+Must be first statement in program. If the expression in the test block returns any rows, the proxy is considered good and all http requests will be routed through it. If more than one passes they are used in Round-robin fashion.
+``` sql
+proxies ('104.156.252.188:8080', '75.64.204.199:8888', '107.191.49.249:8080')
+with test {	
+	select
+		pick '#tagline' take text
+	from download page 'http://vtss.brockreeve.com/'
+}
+```
 ## More Examples
 ---
 #### Example 1
@@ -255,16 +265,6 @@ each(var t in temp){
 
 select *
 from urls
-```
-#### Proxies
-Must be first statement in program. If the expression in the test block returns any rows, the proxy is considered good and all http requests will be routed through it. If more than one passes they are used in Round-robin fashion.
-``` sql
-proxies ('104.156.252.188:8080', '75.64.204.199:8888', '107.191.49.249:8080')
-with test {	
-	select
-		pick '#tagline' take text
-	from download page 'http://vtss.brockreeve.com/'
-}
 ```
 ## Command Line
 ---
