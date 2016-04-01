@@ -18,7 +18,7 @@ from download page 'https://www.faa.gov/air_traffic/weather/asos/?state=TX'
 ```
 ### Where
 Select the nodes we are interested in. To accomplish, set the nodes equal to a css expression. The css selector below gets all tr nodes that are under the table with class asos.
-```
+```sql
 select *
 from download page 'https://www.faa.gov/air_traffic/weather/asos/?state=TX'
 where nodes = 'table.asos tbody tr'
@@ -28,7 +28,7 @@ The pick expression picks out nodes under each node specified in the where claus
 * take attribute 'attribute' - takes the attribute value of the node. 
 * take text - takes the text of the node (default value and doesn't have to be specified)
 * take html - takes the html of the node
-```
+```sql
 select
 	pick 'td:nth-child(1) a' take attribute 'href', --link to details
 	pick 'td:nth-child(1) a', --station
@@ -39,7 +39,7 @@ where nodes = 'table.asos tbody tr'
 ```
 ### Nested selects
 We create a memory table to store state strings then we insert states into it. The nested select statement allows the download page statement to download multiple pages at once. 
-```
+```sql
 create buffer states(state string)
 
 insert into states
@@ -60,7 +60,7 @@ where nodes = 'table.asos tbody tr'
 ```
 ### Download Threads (make it faster)
 A download page statement can use with (thread(2)) hint. The download page statement will then use the number of threads specified to download the pages resulting in much better performance. 
-```
+```sql
 create buffer states(state string)
 
 insert into states
