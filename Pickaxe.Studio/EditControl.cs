@@ -56,6 +56,15 @@ namespace Pickaxe.Studio
             _logValue = logValue;
         }
 
+        private void DoInvoke(Action action)
+        {
+            var form = this.FindForm();
+            if (form.InvokeRequired)
+                form.BeginInvoke(action);
+            else
+                action();
+        }
+
         private void OnDocumentChanged(object sender, DocumentEventArgs e) //mark dirty
         {
             IsDirty = true;
@@ -213,7 +222,7 @@ namespace Pickaxe.Studio
 
         private void ListErrors(string[] errors)
         {
-            Invoke(new Action(() =>
+            DoInvoke(new Action(() =>
             {
                 foreach (var error in errors)
                     messagesTextBox.AppendText(error + Environment.NewLine);
@@ -226,7 +235,7 @@ namespace Pickaxe.Studio
             ThreadContext.Properties[Config.LogKey] = _logValue;
             ThreadedDownloadTable.LogValue = _logValue;
 
-            Invoke(new Action(() =>
+            DoInvoke(new Action(() =>
             {
                 messagesTextBox.Clear();
                 statusLabel.Text = "Running...";
@@ -281,7 +290,7 @@ namespace Pickaxe.Studio
 
         private void OnHighlight(int line)
         {
-            Invoke(new Action(() =>
+            DoInvoke(new Action(() =>
             {
                 var start = new TextLocation(0, line - 1);
                 var end = new TextLocation(1000, line - 1);
@@ -294,7 +303,7 @@ namespace Pickaxe.Studio
 
         private void OnProgress(ProgressArgs e)
         {
-            Invoke(new Action(() =>
+            DoInvoke(new Action(() =>
             {
                 progressText.Text = string.Format("{0}/{1}", e.CompletedOperations, e.TotalOperations);
                 int value = 0;
@@ -328,7 +337,7 @@ namespace Pickaxe.Studio
                 items.Add(rowItem);
             }
 
-            Invoke(new Action(() =>
+            DoInvoke(new Action(() =>
             {
                 resultsListView.BeginUpdate();
                 resultsListView.Columns.Clear();

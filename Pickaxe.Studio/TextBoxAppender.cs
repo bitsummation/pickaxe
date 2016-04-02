@@ -62,14 +62,23 @@ namespace Pickaxe.Studio
             if (textBox == null)
                 return;
 
-            textBox.Invoke(new Action(() =>
+            var action = new Action(() =>
             {
                 if (textBox.Lines.Count() > 300)
                     textBox.Clear();
 
                 textBox.AppendText(RenderLoggingEvent(loggingEvent));
                 textBox.ScrollToCaret();
-            }));          
+            });
+
+            if (form.InvokeRequired)
+            {
+                form.BeginInvoke(action);
+            }
+            else
+            {
+                action();
+            }
         }
     }
 }
