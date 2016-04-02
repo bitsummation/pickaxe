@@ -6,7 +6,7 @@ Pickaxe uses SQL statements combined with CSS selectors to pick out text from a 
 Found [here](https://github.com/bitsummation/pickaxe/releases). It requires .NET framework 4.0. **Pickaxe.zip** contains the GUI editor and only runs on windows. The **Pickaxe-Console.zip** is the command line version that runs on non-windows platforms using mono as well as windows. See Command Line section below.
 ## Quickstart
 ---
-Download **Pickaxe.zip** from above and unzip the contents and double click on **Pickaxe.Studio.exe** to run the GUI editor. Below is a screen shot of the editor. A full runnable example that scrapes a forum I host is found [here](https://raw.githubusercontent.com/bitsummation/pickaxe/master/Examples/vtss.s). Others can be found [here](https://github.com/bitsummation/pickaxe/tree/threads2/Examples).
+Download **Pickaxe.zip** from above and unzip the contents and double click on **Pickaxe.Studio.exe** to run the GUI editor. Below is a screen shot of the editor. A full runnable example that scrapes a forum I host is found [here](https://raw.githubusercontent.com/bitsummation/pickaxe/master/Examples/vtss.s). Others can be found [here](https://github.com/bitsummation/pickaxe/tree/master/Examples).
 
 ![](https://cloud.githubusercontent.com/assets/13210937/14195656/810cb08e-f781-11e5-9638-960a1659477d.png)
 
@@ -79,7 +79,7 @@ from download page (select
 	from states) with (thread(2))
 where nodes = 'table.asos tbody tr'
 ```
-#### Proxies
+### Proxies
 Must be first statement in program. If the expression in the test block returns any rows, the proxy is considered good and all http requests will be routed through it. If more than one passes they are used in Round-robin fashion.
 ``` sql
 proxies ('104.156.252.188:8080', '75.64.204.199:8888', '107.191.49.249:8080')
@@ -88,6 +88,20 @@ with test {
 		pick '#tagline' take text
 	from download page 'http://vtss.brockreeve.com/'
 }
+```
+### Identity Column
+Specify type as identity and it will auto increment.
+```sql
+create buffer temp(id identity, name string)
+
+insert into temp
+select 'test'
+
+insert into temp
+select 'test2'
+
+select *
+from temp
 ```
 ## More Examples
 ---
