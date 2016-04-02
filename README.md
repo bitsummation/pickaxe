@@ -303,6 +303,7 @@ To run in interactive mode, run pickaxe.exe without any arguments. Now type in s
 * [Pickaxe Tutorial #2](http://brockreeve.com/post/2015/07/31/SQL-based-web-scraper-language-Tutorial-2.aspx)
 * [Pickaxe Tutorial #3](http://brockreeve.com/post/2015/08/06/Pickaxe-August-2015-release-notes.aspx)
 
+[Contact me](http://brockreeve.com/contact.aspx) with feedback/questions.
 ## Video
 ---
 30 minute in depth video of language features. [Pickaxe Video Tutorial](https://www.youtube.com/watch?v=-F-FftxaXOs)
