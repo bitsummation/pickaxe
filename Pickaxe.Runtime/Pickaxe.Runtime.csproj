@@ -62,6 +62,7 @@
     <Compile Include="DownloadPage.cs" />
     <Compile Include="Internal\HttpProxySelector.cs" />
     <Compile Include="LazyDownloadPage.cs" />
+    <Compile Include="MsSqlTable.cs" />
     <Compile Include="SelectDownloadPage.cs" />
     <Compile Include="SelectDownloadTable.cs" />
     <Compile Include="ThreadedDownloadTable.cs" />

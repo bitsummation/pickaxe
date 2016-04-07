@@ -36,11 +36,19 @@ namespace PickAxe.Tests
         public void BasicCodeGenTest()
         {
               var input = @"
-select
-	pick 'td:nth-child(1) p.bold' match '(\d+)-(\w+)' replace '$2',
-	pick 'td:nth-child(1) p.bold' match '(\d+)-(\w+)' replace '$1',
-	pick 'td:nth-child(2) p' match '\d{3}\.\d{2}'
-from download page 'http://www.golaketravis.com/waterlevel/index.php?year=1963'
+
+create file prices(
+	rentalId int,
+	season string
+)
+with (
+    fieldterminator = '|',
+    rowterminator = '\r\n'
+)
+location 'C:\Data\BookCase\prices.txt'
+
+insert into prices
+select 1, 'two'
 
 ";
 
