@@ -84,7 +84,7 @@ statement
 	;
 
 truncateTable
-	: TRUNCATE ID -> ^(TRUNCATE TABLE_VARIABLE_REFERENCE[$ID])
+	: TRUNCATE TABLE ID -> ^(TRUNCATE TABLE_VARIABLE_REFERENCE[$ID])
 	;
 
 
@@ -362,10 +362,23 @@ replaceStatement
 createTableStatement
 	: CREATE FILE ID OPENPAREN tableColumnArgs* CLOSEPAREN fileTableWithStatement? fileTableLocation -> ^(FILE_TABLE ID tableColumnArgs* fileTableWithStatement? fileTableLocation)
 	| CREATE BUFFER ID OPENPAREN tableColumnArgs* CLOSEPAREN -> ^(BUFFER_TABLE ID tableColumnArgs*)
+	| CREATE MSSQL ID OPENPAREN tableColumnArgs* CLOSEPAREN sqlTableWithStatement
 	;
 
 fileTableLocation
 	: LOCATION^ mathExpression 
+	;
+
+sqlTableWithStatement
+	: WITH OPENPAREN sqlTableWithVariablesStatement CLOSEPAREN
+	;
+
+sqlTableWithVariablesStatement 
+	: (sqlTableWithVariableStatement COMMA)* sqlTableWithVariableStatement
+	;
+
+sqlTableWithVariableStatement 
+	: (CONNETIONSTRING | TABLE)^ EQUALS! STRING_LITERAL
 	;
 
 fileTableWithStatement
@@ -455,6 +468,7 @@ NULL : 'null';
 CREATE : 'create';
 FILE : 'file';
 BUFFER : 'buffer';
+MSSQL : 'mssql';
 WITH : 'with';
 STRING : 'string';
 INTEGER: 'int';
@@ -462,6 +476,8 @@ FLOAT: 'float';
 FIELD_TERMINATOR : 'fieldterminator';
 ROW_TERMINATOR : 'rowterminator';
 LOCATION : 'location';
+CONNETIONSTRING: 'connectionstring';
+TABLE : 'table';
 
 STRING_LITERAL: APOSTRAPHE ~(APOSTRAPHE)* APOSTRAPHE;
 IDENTITY_VAR : '@@identity';
