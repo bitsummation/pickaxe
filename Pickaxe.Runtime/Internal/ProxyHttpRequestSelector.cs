@@ -35,6 +35,7 @@ namespace Pickaxe.Runtime.Internal
         public ProxyHttpRequestSelector(ProxySelector selector, string url)
             : base(url)
         {
+            _selector = selector;
             _selectorCopy = new HttpProxySelector(selector.FetchProxies());
             _error = new Stack<AttemptPair>();
         }

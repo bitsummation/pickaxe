@@ -209,6 +209,9 @@ namespace Pickaxe
 
         private static void OnProgress(ProgressArgs e)
         {
+            Console.SetCursorPosition(0, 1);
+            ConsoleAppender.ClearConsoleLine(Console.CursorTop);
+
             Console.WriteLine(RenderProgress(e));
         }
 
