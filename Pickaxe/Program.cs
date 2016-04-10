@@ -44,6 +44,12 @@ namespace Pickaxe
                 //run the file
                 var sources = new List<string>();
 
+                if (!File.Exists(args[0]))
+                {
+                    Console.WriteLine("File {0} not found.", args[0]);
+                    return;
+                }
+
                 //read the files
                 var reader = new StreamReader(args[0]);
                 sources.Add(reader.ReadToEnd());
@@ -60,8 +66,18 @@ namespace Pickaxe
                 Console.WriteLine(error);
         }
 
+        private static void PrintRunning()
+        {
+            Console.SetCursorPosition(0, ConsoleAppender.StartCursorTop + 2);
+            ConsoleAppender.ClearConsoleLine(Console.CursorTop);
+            Console.WriteLine("Running...");
+        }
+
         private static void Compile(string[] source, string[] args)
         {
+            ConsoleAppender.StartCursorTop = Console.CursorTop+1;
+            Console.SetCursorPosition(0, ConsoleAppender.StartCursorTop);
+
             var compiler = new Compiler(source);
             var generatedAssembly = compiler.ToAssembly();
 
@@ -76,8 +92,10 @@ namespace Pickaxe
 
                 try
                 {
-                    Log.Info("Running...");
+                    PrintRunning();
                     runable.Run();
+                    Console.WriteLine("Finished.");
+                    ConsoleAppender.StartCursorTop = Console.CursorTop;
                 }
                 catch (ThreadAbortException)
                 {
@@ -209,14 +227,17 @@ namespace Pickaxe
 
         private static void OnProgress(ProgressArgs e)
         {
-            Console.SetCursorPosition(0, 1);
+            Console.SetCursorPosition(0, ConsoleAppender.StartCursorTop + 1);
             ConsoleAppender.ClearConsoleLine(Console.CursorTop);
 
             Console.WriteLine(RenderProgress(e));
+            PrintRunning();
         }
 
         private static void OnSelectResults(RuntimeTable<ResultRow> result)
         {
+            Console.SetCursorPosition(0, ConsoleAppender.StartCursorTop + 3);
+
             var lengths = Measure(result);
             
             //+--+-------------------+------------+               
@@ -240,6 +261,8 @@ namespace Pickaxe
                 Console.WriteLine(Values(lengths, valueList.ToArray()));
             }
             Console.WriteLine(border.ToString());
+
+            ConsoleAppender.StartCursorTop = Console.CursorTop;
         }
     }
 }

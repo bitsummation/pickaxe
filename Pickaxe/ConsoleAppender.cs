@@ -8,9 +8,11 @@ namespace Pickaxe
 {
     public class ConsoleAppender : AppenderSkeleton
     {
+        public static int StartCursorTop = 0;
+
         protected override void Append(log4net.Core.LoggingEvent loggingEvent)
         {
-            Console.SetCursorPosition(0, 0);
+            Console.SetCursorPosition(0, StartCursorTop);
             ClearConsoleLine(Console.CursorTop);
             Console.WriteLine(RenderLoggingEvent(loggingEvent));
         }
