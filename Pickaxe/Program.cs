@@ -215,54 +215,60 @@ namespace Pickaxe
             builder.Append("[");
             for (int x = 0; x < 20; x++)
             {
-                if(x < map)
+                if (x < map)
                     builder.Append("#");
                 else
                     builder.Append("-");
             }
             builder.Append("]");
 
-            return string.Format("{0} {1}/{2} {3}%", builder.ToString(), e.CompletedOperations, e.TotalOperations, (int)Math.Round(value*100));
+            return string.Format("{0} {1}/{2} {3}%", builder.ToString(), e.CompletedOperations, e.TotalOperations, (int)Math.Round(value * 100));
         }
 
         private static void OnProgress(ProgressArgs e)
         {
-            Console.SetCursorPosition(0, ConsoleAppender.StartCursorTop + 1);
-            ConsoleAppender.ClearConsoleLine(Console.CursorTop);
+            lock (ConsoleAppender.ConsoleWriteLock)
+            {
+                Console.SetCursorPosition(0, ConsoleAppender.StartCursorTop + 1);
+                ConsoleAppender.ClearConsoleLine(Console.CursorTop);
 
-            Console.WriteLine(RenderProgress(e));
-            PrintRunning();
+                Console.WriteLine(RenderProgress(e));
+                PrintRunning();
+            }
         }
 
         private static void OnSelectResults(RuntimeTable<ResultRow> result)
         {
-            Console.SetCursorPosition(0, ConsoleAppender.StartCursorTop + 3);
-
-            var lengths = Measure(result);
-            
-            //+--+-------------------+------------+               
-            //|  |  (No column name) | .content a |
-            //+--+-------------------+------------+
-
-            var border = Border(lengths);
-            Console.WriteLine(border);
-            var values = result.Columns().ToList();
-            values.Insert(0, "");
-            Console.WriteLine(Values(lengths, values.ToArray()));
-            Console.WriteLine(border.ToString());
-
-            for (int row = 0; row < result.RowCount; row++)
+            lock (ConsoleAppender.ConsoleWriteLock)
             {
-                var valueList = new List<string>();
-                for (int col = 0; col < lengths.Count - 1; col++)
-                    valueList.Add(result[row][col].ToString());
+                Console.SetCursorPosition(0, ConsoleAppender.StartCursorTop + 3);
 
-                valueList.Insert(0, (row + 1).ToString());
-                Console.WriteLine(Values(lengths, valueList.ToArray()));
+                var lengths = Measure(result);
+
+                //+--+-------------------+------------+               
+                //|  |  (No column name) | .content a |
+                //+--+-------------------+------------+
+
+                var border = Border(lengths);
+                Console.WriteLine(border);
+                var values = result.Columns().ToList();
+                values.Insert(0, "");
+                Console.WriteLine(Values(lengths, values.ToArray()));
+                Console.WriteLine(border.ToString());
+
+                for (int row = 0; row < result.RowCount; row++)
+                {
+                    var valueList = new List<string>();
+                    for (int col = 0; col < lengths.Count - 1; col++)
+                        valueList.Add(result[row][col].ToString());
+
+                    valueList.Insert(0, (row + 1).ToString());
+                    Console.WriteLine(Values(lengths, valueList.ToArray()));
+                }
+                Console.WriteLine(border.ToString());
+
+                ConsoleAppender.StartCursorTop = Console.CursorTop;
             }
-            Console.WriteLine(border.ToString());
-
-            ConsoleAppender.StartCursorTop = Console.CursorTop;
         }
     }
 }
