@@ -33,6 +33,7 @@ namespace Pickaxe
 
         public static void Main(string[] args)
         {
+            Console.BufferHeight = Int16.MaxValue - 1;
             string location = System.Reflection.Assembly.GetExecutingAssembly().Location;
             string log4netPath = Path.Combine(Path.GetDirectoryName(location), "Log4net.config");
             log4net.Config.XmlConfigurator.Configure(new FileInfo(log4netPath));
@@ -68,7 +69,7 @@ namespace Pickaxe
 
         private static void PrintRunning()
         {
-            Console.SetCursorPosition(0, ConsoleAppender.StartCursorTop + 2);
+            ConsoleAppender.SetCursor(ConsoleAppender.StartCursorTop + 2);
             ConsoleAppender.ClearConsoleLine(Console.CursorTop);
             Console.WriteLine("Running...");
         }
@@ -76,7 +77,7 @@ namespace Pickaxe
         private static void Compile(string[] source, string[] args)
         {
             ConsoleAppender.StartCursorTop = Console.CursorTop+1;
-            Console.SetCursorPosition(0, ConsoleAppender.StartCursorTop);
+            ConsoleAppender.SetCursor(ConsoleAppender.StartCursorTop);
 
             var compiler = new Compiler(source);
             var generatedAssembly = compiler.ToAssembly();
@@ -229,7 +230,7 @@ namespace Pickaxe
         {
             lock (ConsoleAppender.ConsoleWriteLock)
             {
-                Console.SetCursorPosition(0, ConsoleAppender.StartCursorTop + 1);
+                ConsoleAppender.SetCursor(ConsoleAppender.StartCursorTop + 1);
                 ConsoleAppender.ClearConsoleLine(Console.CursorTop);
 
                 Console.WriteLine(RenderProgress(e));
@@ -241,7 +242,7 @@ namespace Pickaxe
         {
             lock (ConsoleAppender.ConsoleWriteLock)
             {
-                Console.SetCursorPosition(0, ConsoleAppender.StartCursorTop + 3);
+                ConsoleAppender.SetCursor(ConsoleAppender.StartCursorTop + 3);
 
                 var lengths = Measure(result);
 

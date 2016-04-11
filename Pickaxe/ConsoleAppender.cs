@@ -21,6 +21,11 @@ namespace Pickaxe
             }
         }
 
+        public static void SetCursor(int position)
+        {
+            Console.SetCursorPosition(0, position);
+        }
+
         public static void ClearConsoleLine(int line)
         {
             Console.SetCursorPosition(0, line);
