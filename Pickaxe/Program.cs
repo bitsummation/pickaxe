@@ -33,6 +33,7 @@ namespace Pickaxe
 
         public static void Main(string[] args)
         {
+            Console.BufferHeight = Int16.MaxValue - 1;
             string location = System.Reflection.Assembly.GetExecutingAssembly().Location;
             string log4netPath = Path.Combine(Path.GetDirectoryName(location), "Log4net.config");
             log4net.Config.XmlConfigurator.Configure(new FileInfo(log4netPath));
@@ -43,6 +44,12 @@ namespace Pickaxe
             { 
                 //run the file
                 var sources = new List<string>();
+
+                if (!File.Exists(args[0]))
+                {
+                    Console.WriteLine("File {0} not found.", args[0]);
+                    return;
+                }
 
                 //read the files
                 var reader = new StreamReader(args[0]);
@@ -60,8 +67,18 @@ namespace Pickaxe
                 Console.WriteLine(error);
         }
 
+        private static void PrintRunning()
+        {
+            ConsoleAppender.SetCursor(ConsoleAppender.StartCursorTop + 2);
+            ConsoleAppender.ClearConsoleLine(Console.CursorTop);
+            Console.WriteLine("Running...");
+        }
+
         private static void Compile(string[] source, string[] args)
         {
+            ConsoleAppender.StartCursorTop = Console.CursorTop+1;
+            ConsoleAppender.SetCursor(ConsoleAppender.StartCursorTop);
+
             var compiler = new Compiler(source);
             var generatedAssembly = compiler.ToAssembly();
 
@@ -76,8 +93,10 @@ namespace Pickaxe
 
                 try
                 {
-                    Log.Info("Running...");
+                    PrintRunning();
                     runable.Run();
+                    Console.WriteLine("Finished.");
+                    ConsoleAppender.StartCursorTop = Console.CursorTop;
                 }
                 catch (ThreadAbortException)
                 {
@@ -197,46 +216,60 @@ namespace Pickaxe
             builder.Append("[");
             for (int x = 0; x < 20; x++)
             {
-                if(x < map)
+                if (x < map)
                     builder.Append("#");
                 else
                     builder.Append("-");
             }
             builder.Append("]");
 
-            return string.Format("{0} {1}/{2} {3}%", builder.ToString(), e.CompletedOperations, e.TotalOperations, (int)Math.Round(value*100));
+            return string.Format("{0} {1}/{2} {3}%", builder.ToString(), e.CompletedOperations, e.TotalOperations, (int)Math.Round(value * 100));
         }
 
         private static void OnProgress(ProgressArgs e)
         {
-            Console.WriteLine(RenderProgress(e));
+            lock (ConsoleAppender.ConsoleWriteLock)
+            {
+                ConsoleAppender.SetCursor(ConsoleAppender.StartCursorTop + 1);
+                ConsoleAppender.ClearConsoleLine(Console.CursorTop);
+
+                Console.WriteLine(RenderProgress(e));
+                PrintRunning();
+            }
         }
 
         private static void OnSelectResults(RuntimeTable<ResultRow> result)
         {
-            var lengths = Measure(result);
-            
-            //+--+-------------------+------------+               
-            //|  |  (No column name) | .content a |
-            //+--+-------------------+------------+
-
-            var border = Border(lengths);
-            Console.WriteLine(border);
-            var values = result.Columns().ToList();
-            values.Insert(0, "");
-            Console.WriteLine(Values(lengths, values.ToArray()));
-            Console.WriteLine(border.ToString());
-
-            for (int row = 0; row < result.RowCount; row++)
+            lock (ConsoleAppender.ConsoleWriteLock)
             {
-                var valueList = new List<string>();
-                for (int col = 0; col < lengths.Count - 1; col++)
-                    valueList.Add(result[row][col].ToString());
+                ConsoleAppender.SetCursor(ConsoleAppender.StartCursorTop + 3);
 
-                valueList.Insert(0, (row + 1).ToString());
-                Console.WriteLine(Values(lengths, valueList.ToArray()));
+                var lengths = Measure(result);
+
+                //+--+-------------------+------------+               
+                //|  |  (No column name) | .content a |
+                //+--+-------------------+------------+
+
+                var border = Border(lengths);
+                Console.WriteLine(border);
+                var values = result.Columns().ToList();
+                values.Insert(0, "");
+                Console.WriteLine(Values(lengths, values.ToArray()));
+                Console.WriteLine(border.ToString());
+
+                for (int row = 0; row < result.RowCount; row++)
+                {
+                    var valueList = new List<string>();
+                    for (int col = 0; col < lengths.Count - 1; col++)
+                        valueList.Add(result[row][col].ToString());
+
+                    valueList.Insert(0, (row + 1).ToString());
+                    Console.WriteLine(Values(lengths, valueList.ToArray()));
+                }
+                Console.WriteLine(border.ToString());
+
+                ConsoleAppender.StartCursorTop = Console.CursorTop;
             }
-            Console.WriteLine(border.ToString());
         }
     }
 }
