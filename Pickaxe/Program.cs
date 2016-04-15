@@ -33,7 +33,9 @@ namespace Pickaxe
 
         public static void Main(string[] args)
         {
-            Console.BufferHeight = Int16.MaxValue - 1;
+            ConsoleAppender.PlatConsole.Init();
+            //Console.BufferHeight = Int16.MaxValue - 1;
+
             string location = System.Reflection.Assembly.GetExecutingAssembly().Location;
             string log4netPath = Path.Combine(Path.GetDirectoryName(location), "Log4net.config");
             log4net.Config.XmlConfigurator.Configure(new FileInfo(log4netPath));
@@ -76,10 +78,10 @@ namespace Pickaxe
 
         private static void Compile(string[] source, string[] args)
         {
-            ConsoleAppender.StartCursorTop = Console.CursorTop+1;
-            ConsoleAppender.SetCursor(ConsoleAppender.StartCursorTop);
+            ConsoleAppender.PlatConsole.StartLine = Console.CursorTop+1;
+            ConsoleAppender.PlatConsole.MoveCursor(ConsoleAppender.PlatConsole.StartLine);
 
-            var compiler = new Compiler(source);
+            /*var compiler = new Compiler(source);
             var generatedAssembly = compiler.ToAssembly();
 
             if (compiler.Errors.Any())
@@ -106,7 +108,7 @@ namespace Pickaxe
                 {
                     Log.Fatal("Unexpected Exception", e);
                 }
-            }
+            }*/
         }
 
         private static void Interactive()
@@ -230,6 +232,7 @@ namespace Pickaxe
         {
             lock (ConsoleAppender.ConsoleWriteLock)
             {
+                Console.WriteLine(Console.CursorTop);
                 ConsoleAppender.SetCursor(ConsoleAppender.StartCursorTop + 1);
                 ConsoleAppender.ClearConsoleLine(Console.CursorTop);
 

@@ -1,4 +1,5 @@
 ﻿using log4net.Appender;
+using Pickaxe.PlatConsole;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,18 +9,34 @@ namespace Pickaxe
 {
     public class ConsoleAppender : AppenderSkeleton
     {
-        public static int StartCursorTop = 0;
         public static object ConsoleWriteLock = new object();
+        internal static IConsole PlatConsole;
+
+        static ConsoleAppender()
+        {
+            PlatConsole = CreateConsole();
+        }
+
+        private static IConsole CreateConsole()
+        {
+            if (IsWindows)
+                return new WindowsConsole();
+
+            return new UnixConsole();
+        }
 
         protected override void Append(log4net.Core.LoggingEvent loggingEvent)
         {
             lock (ConsoleWriteLock)
             {
-                SetCursor(StartCursorTop);
-                ClearConsoleLine(Console.CursorTop);
-                Console.WriteLine(RenderLoggingEvent(loggingEvent));
+                PlatConsole.MoveCursor(PlatConsole.StartLine);
+                PlatConsole.ClearLine(PlatConsole.StartLine);
+                PlatConsole.Print(RenderLoggingEvent(loggingEvent));
             }
         }
+
+        //public static int StartCursorTop { get; set; }
+        //public static int CurrentLine { get; set; }
 
         public static bool IsWindows
         {
@@ -30,19 +47,33 @@ namespace Pickaxe
             }
         }
 
-        public static void SetCursor(int position)
+        /*public static void SetCursor(int position)
         {
             if (IsWindows)
                 Console.SetCursorPosition(0, position);
             else
-                Console.WriteLine("\033[{0};{1}H", position, 0);
-        }
+            {
+                Console.Write("\u001b[2J");
+                Console.Write("\u001b[{0};{1}H", 1, 0); //set line
+                Console.WriteLine("Print this line");
+                Console.Write("\u001b[{0};{1}H", 1, 0); //set line
+                Console.Write("\u001b[K"); //erase line
+                Console.WriteLine("Erase");
+                Console.WriteLine("Another");
+                Console.Write("\u001b[K"); //erase line
 
-        public static void ClearConsoleLine(int line)
+
+                Console.Write("\u001b[{0};{1}H", 5, 0); //set line
+                Console.WriteLine("Down");
+                Console.WriteLine("Down again");
+            }
+        }*/
+
+        /*public static void ClearConsoleLine(int line)
         {
             Console.SetCursorPosition(0, line);
             Console.Write(new string(' ', Console.WindowWidth));
             Console.SetCursorPosition(0, line);
-        }
+        }*/
     }
 }

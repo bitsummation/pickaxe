@@ -48,6 +48,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConsoleAppender.cs" />
+    <Compile Include="PlatConsole\IConsole.cs" />
+    <Compile Include="PlatConsole\UnixConsole.cs" />
+    <Compile Include="PlatConsole\WindowsConsole.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="AssemblyInfo.cs" />
   </ItemGroup>
