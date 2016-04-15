@@ -15,15 +15,27 @@ namespace Pickaxe
         {
             lock (ConsoleWriteLock)
             {
-                Console.SetCursorPosition(0, StartCursorTop);
+                SetCursor(StartCursorTop);
                 ClearConsoleLine(Console.CursorTop);
                 Console.WriteLine(RenderLoggingEvent(loggingEvent));
             }
         }
 
+        public static bool IsWindows
+        {
+            get
+            {
+                return !(Environment.OSVersion.Platform == PlatformID.MacOSX
+                    || Environment.OSVersion.Platform == PlatformID.Unix);
+            }
+        }
+
         public static void SetCursor(int position)
         {
-            Console.SetCursorPosition(0, position);
+            if (IsWindows)
+                Console.SetCursorPosition(0, position);
+            else
+                Console.WriteLine("\033[{0};{1}H", position, 0);
         }
 
         public static void ClearConsoleLine(int line)
