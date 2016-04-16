@@ -35,9 +35,6 @@ namespace Pickaxe
             }
         }
 
-        //public static int StartCursorTop { get; set; }
-        //public static int CurrentLine { get; set; }
-
         public static bool IsWindows
         {
             get
@@ -46,34 +43,5 @@ namespace Pickaxe
                     || Environment.OSVersion.Platform == PlatformID.Unix);
             }
         }
-
-        /*public static void SetCursor(int position)
-        {
-            if (IsWindows)
-                Console.SetCursorPosition(0, position);
-            else
-            {
-                Console.Write("\u001b[2J");
-                Console.Write("\u001b[{0};{1}H", 1, 0); //set line
-                Console.WriteLine("Print this line");
-                Console.Write("\u001b[{0};{1}H", 1, 0); //set line
-                Console.Write("\u001b[K"); //erase line
-                Console.WriteLine("Erase");
-                Console.WriteLine("Another");
-                Console.Write("\u001b[K"); //erase line
-
-
-                Console.Write("\u001b[{0};{1}H", 5, 0); //set line
-                Console.WriteLine("Down");
-                Console.WriteLine("Down again");
-            }
-        }*/
-
-        /*public static void ClearConsoleLine(int line)
-        {
-            Console.SetCursorPosition(0, line);
-            Console.Write(new string(' ', Console.WindowWidth));
-            Console.SetCursorPosition(0, line);
-        }*/
     }
 }
