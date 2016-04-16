@@ -29,6 +29,8 @@ namespace Pickaxe
 {
     class Program
     {
+        private const int MaxColumnWidth = 75;
+
         private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         public static void Main(string[] args)
@@ -113,6 +115,7 @@ namespace Pickaxe
         private static void Interactive()
         {
             //interactive prompt ; delimited.
+
             var builder = new StringBuilder();
             Console.Write("pickaxe> ");
             while (true)
@@ -120,9 +123,13 @@ namespace Pickaxe
                 char character = Convert.ToChar(Console.Read());
 
                 if (character == '\n')
+                {
+                    ConsoleAppender.PlatConsole.CurrentLine++;
                     Console.Write("      -> ");
+                }
                 if (character == ';') //run it. 
                 {
+                    ConsoleAppender.PlatConsole.CurrentLine++;
                     while (Convert.ToChar(Console.Read()) != '\n') {} //clear buf
 
                     Thread thread = new Thread(() => Compile(new[]{builder.ToString()}, new string[0]));
@@ -140,8 +147,8 @@ namespace Pickaxe
 
         private static string Truncate(string text)
         {
-            if (text.Length > 50)
-                text = text.Substring(0, 50);
+            if (text.Length > MaxColumnWidth)
+                text = text.Substring(0, MaxColumnWidth);
 
             return text;
         }
@@ -269,7 +276,7 @@ namespace Pickaxe
                 }
                 ConsoleAppender.PlatConsole.Print(border.ToString());
 
-                ConsoleAppender.PlatConsole.StartLine = ConsoleAppender.PlatConsole.CurrentLine;
+                ConsoleAppender.PlatConsole.StartLine = ConsoleAppender.PlatConsole.CurrentLine+1;
             }
         }
     }

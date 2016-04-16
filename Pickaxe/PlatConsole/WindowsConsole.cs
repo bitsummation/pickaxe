@@ -16,6 +16,7 @@ namespace Pickaxe.PlatConsole
         public void Init()
         {
             Console.BufferHeight = Int16.MaxValue - 1;
+            Console.BufferWidth = Int16.MaxValue - 1;
         }
 
         public int StartLine {get; set;}
