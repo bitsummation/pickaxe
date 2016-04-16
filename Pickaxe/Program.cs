@@ -34,7 +34,6 @@ namespace Pickaxe
         public static void Main(string[] args)
         {
             ConsoleAppender.PlatConsole.Init();
-            //Console.BufferHeight = Int16.MaxValue - 1;
 
             string location = System.Reflection.Assembly.GetExecutingAssembly().Location;
             string log4netPath = Path.Combine(Path.GetDirectoryName(location), "Log4net.config");
@@ -49,7 +48,7 @@ namespace Pickaxe
 
                 if (!File.Exists(args[0]))
                 {
-                    Console.WriteLine("File {0} not found.", args[0]);
+                    ConsoleAppender.PlatConsole.Print(string.Format("File {0} not found.", args[0]));
                     return;
                 }
 
@@ -66,22 +65,22 @@ namespace Pickaxe
         private static void ListErrors(string[] errors)
         {
             foreach (var error in errors)
-                Console.WriteLine(error);
+                ConsoleAppender.PlatConsole.Print(error);
         }
 
         private static void PrintRunning()
         {
-            ConsoleAppender.SetCursor(ConsoleAppender.StartCursorTop + 2);
-            ConsoleAppender.ClearConsoleLine(Console.CursorTop);
-            Console.WriteLine("Running...");
+            ConsoleAppender.PlatConsole.MoveCursor(ConsoleAppender.PlatConsole.StartLine + 2);
+            ConsoleAppender.PlatConsole.ClearLine(ConsoleAppender.PlatConsole.StartLine + 2);
+            ConsoleAppender.PlatConsole.Print("Running...");
         }
 
         private static void Compile(string[] source, string[] args)
         {
-            ConsoleAppender.PlatConsole.StartLine = Console.CursorTop+1;
+            ConsoleAppender.PlatConsole.StartLine = ConsoleAppender.PlatConsole.CurrentLine + 1;
             ConsoleAppender.PlatConsole.MoveCursor(ConsoleAppender.PlatConsole.StartLine);
 
-            /*var compiler = new Compiler(source);
+            var compiler = new Compiler(source);
             var generatedAssembly = compiler.ToAssembly();
 
             if (compiler.Errors.Any())
@@ -97,8 +96,8 @@ namespace Pickaxe
                 {
                     PrintRunning();
                     runable.Run();
-                    Console.WriteLine("Finished.");
-                    ConsoleAppender.StartCursorTop = Console.CursorTop;
+                    ConsoleAppender.PlatConsole.Print("Finished.");
+                    ConsoleAppender.PlatConsole.StartLine = ConsoleAppender.PlatConsole.CurrentLine;
                 }
                 catch (ThreadAbortException)
                 {
@@ -108,7 +107,7 @@ namespace Pickaxe
                 {
                     Log.Fatal("Unexpected Exception", e);
                 }
-            }*/
+            }
         }
 
         private static void Interactive()
@@ -232,11 +231,10 @@ namespace Pickaxe
         {
             lock (ConsoleAppender.ConsoleWriteLock)
             {
-                Console.WriteLine(Console.CursorTop);
-                ConsoleAppender.SetCursor(ConsoleAppender.StartCursorTop + 1);
-                ConsoleAppender.ClearConsoleLine(Console.CursorTop);
+                ConsoleAppender.PlatConsole.MoveCursor(ConsoleAppender.PlatConsole.StartLine + 1);
+                ConsoleAppender.PlatConsole.ClearLine(ConsoleAppender.PlatConsole.StartLine + 1);
 
-                Console.WriteLine(RenderProgress(e));
+                ConsoleAppender.PlatConsole.Print(RenderProgress(e));
                 PrintRunning();
             }
         }
@@ -245,7 +243,7 @@ namespace Pickaxe
         {
             lock (ConsoleAppender.ConsoleWriteLock)
             {
-                ConsoleAppender.SetCursor(ConsoleAppender.StartCursorTop + 3);
+                ConsoleAppender.PlatConsole.MoveCursor(ConsoleAppender.PlatConsole.StartLine + 3);
 
                 var lengths = Measure(result);
 
@@ -254,11 +252,11 @@ namespace Pickaxe
                 //+--+-------------------+------------+
 
                 var border = Border(lengths);
-                Console.WriteLine(border);
+                ConsoleAppender.PlatConsole.Print(border);
                 var values = result.Columns().ToList();
                 values.Insert(0, "");
-                Console.WriteLine(Values(lengths, values.ToArray()));
-                Console.WriteLine(border.ToString());
+                ConsoleAppender.PlatConsole.Print(Values(lengths, values.ToArray()));
+                ConsoleAppender.PlatConsole.Print(border.ToString());
 
                 for (int row = 0; row < result.RowCount; row++)
                 {
@@ -267,11 +265,11 @@ namespace Pickaxe
                         valueList.Add(result[row][col].ToString());
 
                     valueList.Insert(0, (row + 1).ToString());
-                    Console.WriteLine(Values(lengths, valueList.ToArray()));
+                    ConsoleAppender.PlatConsole.Print(Values(lengths, valueList.ToArray()));
                 }
-                Console.WriteLine(border.ToString());
+                ConsoleAppender.PlatConsole.Print(border.ToString());
 
-                ConsoleAppender.StartCursorTop = Console.CursorTop;
+                ConsoleAppender.PlatConsole.StartLine = ConsoleAppender.PlatConsole.CurrentLine;
             }
         }
     }

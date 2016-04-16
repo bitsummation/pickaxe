@@ -7,50 +7,33 @@ namespace Pickaxe.PlatConsole
 {
     internal class UnixConsole : IConsole
     {
-        public int CurrentLine
+        public void Init()
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
-
-            set
-            {
-                throw new NotImplementedException();
-            }
+            Console.Write("\u001b[2J");
+            StartLine = 1;
+            CurrentLine = 1;
         }
 
-        public int StartLine
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
+        public int StartLine { get; set; }
+        public int CurrentLine { get; set; }
 
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public void ClearConsole()
+        public void MoveCursor(int line)
         {
-            throw new NotImplementedException();
+            Console.Write("\u001b[{0};{1}H", line, 0);
+            CurrentLine = line;
         }
 
         public void ClearLine(int line)
         {
-            throw new NotImplementedException();
-        }
-
-        public void MoveCursor(int line)
-        {
-            throw new NotImplementedException();
+            MoveCursor(line);
+            Console.Write("\u001b[K");
+            MoveCursor(line);
         }
 
         public void Print(string value)
         {
-            throw new NotImplementedException();
+            Console.WriteLine(value);
+            CurrentLine++;
         }
     }
 }

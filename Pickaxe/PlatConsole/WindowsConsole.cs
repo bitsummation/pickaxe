@@ -7,50 +7,37 @@ namespace Pickaxe.PlatConsole
 {
     internal class WindowsConsole : IConsole
     {
-        public int CurrentLine
+        public WindowsConsole()
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
-
-            set
-            {
-                throw new NotImplementedException();
-            }
+            StartLine = Console.CursorTop;
+            CurrentLine = Console.CursorTop;
         }
 
-        public int StartLine
+        public void Init()
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
-
-            set
-            {
-                throw new NotImplementedException();
-            }
+            Console.BufferHeight = Int16.MaxValue - 1;
         }
 
-        public void ClearConsole()
+        public int StartLine {get; set;}
+        public int CurrentLine { get; set; }
+
+        public void MoveCursor(int line)
         {
-            throw new NotImplementedException();
+            Console.SetCursorPosition(0, line);
+            CurrentLine = line;
         }
 
         public void ClearLine(int line)
         {
-            throw new NotImplementedException();
-        }
-
-        public void MoveCursor(int line)
-        {
-            throw new NotImplementedException();
+            MoveCursor(line);
+            Console.Write(new string(' ', Console.WindowWidth));
+            MoveCursor(line);
         }
 
         public void Print(string value)
         {
-            throw new NotImplementedException();
+            Console.WriteLine(value);
+            CurrentLine++;
         }
     }
 }
