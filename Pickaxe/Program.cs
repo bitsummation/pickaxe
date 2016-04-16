@@ -24,6 +24,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Pickaxe.Emit;
+using System.Diagnostics;
 
 namespace Pickaxe
 {
@@ -36,6 +37,7 @@ namespace Pickaxe
         public static void Main(string[] args)
         {
             ConsoleAppender.PlatConsole.Init();
+            PrintHeader();
 
             string location = System.Reflection.Assembly.GetExecutingAssembly().Location;
             string log4netPath = Path.Combine(Path.GetDirectoryName(location), "Log4net.config");
@@ -64,6 +66,16 @@ namespace Pickaxe
             }
         }
 
+        private static void PrintHeader()
+        {
+            ConsoleAppender.PlatConsole.Print("");
+            ConsoleAppender.PlatConsole.Print("*****  *****  *****  *  *      *      *   *  ****");
+            ConsoleAppender.PlatConsole.Print("*   *    *    *      * *      * *      * *   *");
+            ConsoleAppender.PlatConsole.Print("*****    *    *      **      *****      *    ****");
+            ConsoleAppender.PlatConsole.Print("*        *    *      * *    *     *    * *   *");
+            ConsoleAppender.PlatConsole.Print("*      *****  *****  *  *  *       *  *   *  ****");
+        }
+
         private static void ListErrors(string[] errors)
         {
             foreach (var error in errors)
@@ -82,6 +94,9 @@ namespace Pickaxe
             ConsoleAppender.PlatConsole.StartLine = ConsoleAppender.PlatConsole.CurrentLine + 1;
             ConsoleAppender.PlatConsole.MoveCursor(ConsoleAppender.PlatConsole.StartLine);
 
+            var watch = new Stopwatch();
+            watch.Start();
+
             var compiler = new Compiler(source);
             var generatedAssembly = compiler.ToAssembly();
 
@@ -98,8 +113,6 @@ namespace Pickaxe
                 {
                     PrintRunning();
                     runable.Run();
-                    ConsoleAppender.PlatConsole.Print("Finished.");
-                    ConsoleAppender.PlatConsole.StartLine = ConsoleAppender.PlatConsole.CurrentLine;
                 }
                 catch (ThreadAbortException)
                 {
@@ -110,11 +123,16 @@ namespace Pickaxe
                     Log.Fatal("Unexpected Exception", e);
                 }
             }
+
+            watch.Stop();
+            ConsoleAppender.PlatConsole.Print("");
+            ConsoleAppender.PlatConsole.Print(string.Format("Finished in {0} seconds", watch.Elapsed.TotalSeconds));
         }
 
         private static void Interactive()
         {
             //interactive prompt ; delimited.
+            ConsoleAppender.PlatConsole.MoveCursor(ConsoleAppender.PlatConsole.CurrentLine + 1);
 
             var builder = new StringBuilder();
             Console.Write("pickaxe> ");
@@ -137,6 +155,8 @@ namespace Pickaxe
                     thread.Join();
 
                     builder.Clear();
+
+                    ConsoleAppender.PlatConsole.MoveCursor(ConsoleAppender.PlatConsole.CurrentLine + 1);
                     Console.Write("pickaxe> ");
                     continue;
                 }
