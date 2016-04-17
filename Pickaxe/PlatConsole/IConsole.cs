@@ -28,6 +28,7 @@ namespace Pickaxe.PlatConsole
 
         void MoveCursor(int line);
         void ClearLine(int line);
+        void PrintError(string value);
         void Print(string value);
     }
 }

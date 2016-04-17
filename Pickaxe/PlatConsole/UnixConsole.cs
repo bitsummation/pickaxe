@@ -44,6 +44,11 @@ namespace Pickaxe.PlatConsole
             MoveCursor(line);
         }
 
+        public void PrintError(string value)
+        {
+            Print(value);
+        }
+
         public void Print(string value)
         {
             Console.WriteLine(value);

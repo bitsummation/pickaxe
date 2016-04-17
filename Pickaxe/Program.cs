@@ -79,7 +79,7 @@ namespace Pickaxe
         private static void ListErrors(string[] errors)
         {
             foreach (var error in errors)
-                ConsoleAppender.PlatConsole.Print(error);
+                ConsoleAppender.PlatConsole.PrintError(error);
         }
 
         private static void PrintRunning()

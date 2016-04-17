@@ -49,6 +49,13 @@ namespace Pickaxe.PlatConsole
             MoveCursor(line);
         }
 
+        public void PrintError(string value)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Print(value);
+            Console.ResetColor();
+        }
+
         public void Print(string value)
         {
             Console.WriteLine(value);
