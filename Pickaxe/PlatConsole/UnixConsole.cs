@@ -46,11 +46,14 @@ namespace Pickaxe.PlatConsole
 
         public void PrintError(string value)
         {
+            Console.Write("\u001b[0;31m"); //red
             Print(value);
+            Console.Write("\u001b[0m"); //reset
         }
 
         public void Print(string value)
         {
+            MoveCursor(CurrentLine);
             Console.WriteLine(value);
             CurrentLine++;
         }
