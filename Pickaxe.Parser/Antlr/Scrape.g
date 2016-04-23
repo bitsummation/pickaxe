@@ -27,6 +27,7 @@ tokens {
   PROGRAM;
   FILE_TABLE;
   BUFFER_TABLE;
+  MSSQL_TABLE;
   TABLE_COLUMN_ARGS;
   TABLE_COLUMN_ARG;
   TABLE_VARIABLE_REFERENCE;
@@ -362,7 +363,7 @@ replaceStatement
 createTableStatement
 	: CREATE FILE ID OPENPAREN tableColumnArgs* CLOSEPAREN fileTableWithStatement? fileTableLocation -> ^(FILE_TABLE ID tableColumnArgs* fileTableWithStatement? fileTableLocation)
 	| CREATE BUFFER ID OPENPAREN tableColumnArgs* CLOSEPAREN -> ^(BUFFER_TABLE ID tableColumnArgs*)
-	| CREATE MSSQL ID OPENPAREN tableColumnArgs* CLOSEPAREN sqlTableWithStatement
+	| CREATE MSSQL ID OPENPAREN tableColumnArgs* CLOSEPAREN sqlTableWithStatement -> ^(MSSQL_TABLE ID tableColumnArgs* sqlTableWithStatement)
 	;
 
 fileTableLocation
@@ -370,15 +371,15 @@ fileTableLocation
 	;
 
 sqlTableWithStatement
-	: WITH OPENPAREN sqlTableWithVariablesStatement CLOSEPAREN
+	: WITH OPENPAREN sqlTableWithVariablesStatement CLOSEPAREN -> ^(WITH sqlTableWithVariablesStatement)
 	;
 
 sqlTableWithVariablesStatement 
-	: (sqlTableWithVariableStatement COMMA)* sqlTableWithVariableStatement
+	: (sqlTableWithVariableStatement COMMA)* sqlTableWithVariableStatement -> sqlTableWithVariableStatement*
 	;
 
 sqlTableWithVariableStatement 
-	: (CONNETIONSTRING | TABLE)^ EQUALS! STRING_LITERAL
+	: (CONNECTIONSTRING | TABLE)^ EQUALS! STRING_LITERAL
 	;
 
 fileTableWithStatement
@@ -476,7 +477,7 @@ FLOAT: 'float';
 FIELD_TERMINATOR : 'fieldterminator';
 ROW_TERMINATOR : 'rowterminator';
 LOCATION : 'location';
-CONNETIONSTRING: 'connectionstring';
+CONNECTIONSTRING : 'connectionstring';
 TABLE : 'table';
 
 STRING_LITERAL: APOSTRAPHE ~(APOSTRAPHE)* APOSTRAPHE;

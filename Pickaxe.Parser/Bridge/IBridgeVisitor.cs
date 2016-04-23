@@ -20,6 +20,7 @@ namespace Pickaxe.Parser.Bridge
     internal interface IBridgeVisitor
     {
         void Visit(Program node, CommonTree tree);
+        void Visit(MsSqlTable table, CommonTree tree);
         void Visit(FileTable table, CommonTree tree);
         void Visit(BufferTable table, CommonTree tree);
 

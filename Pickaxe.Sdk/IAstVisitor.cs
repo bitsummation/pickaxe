@@ -17,6 +17,7 @@ namespace Pickaxe.Sdk
     public interface IAstVisitor
     {
         void Visit(Program program);
+        void Visit(MsSqlTable table);
         void Visit(FileTable table);
         void Visit(BufferTable table);
         void Visit(TableColumnArg arg);

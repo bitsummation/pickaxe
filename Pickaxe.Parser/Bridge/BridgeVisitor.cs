@@ -90,6 +90,20 @@ namespace Pickaxe.Parser.Bridge
             return Regex.Replace(literal, "'", "");
         }
 
+        public void Visit(MsSqlTable table, CommonTree tree)
+        {
+            Parent(tree).Children.Add(table);
+            SetLine(table, tree);
+
+            table.Variable = tree.Children[0].Text;
+            var args = tree.Children[1] as CommonTree;
+            foreach (var arg in args.Children)
+                table.Children.Add(new TableColumnArg() { Variable = arg.GetChild(0).Text, Type = arg.GetChild(1).Text });
+
+            table.ConnectionString = ParseLiteral(tree.Children[2].GetChild(0).GetChild(0).Text);
+            table.Table = ParseLiteral(tree.Children[2].GetChild(1).GetChild(0).Text);
+        }
+
         public void Visit(FileTable table, CommonTree tree)
         {
             Parent(tree).Children.Add(table);

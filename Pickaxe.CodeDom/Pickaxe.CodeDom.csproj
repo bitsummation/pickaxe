@@ -82,6 +82,7 @@
     <Compile Include="Visitor\Visitor.InsertIntoDirectoryStatement.cs" />
     <Compile Include="Visitor\Visitor.LessThanEqualExpression.cs" />
     <Compile Include="Visitor\Visitor.LessThanExpression.cs" />
+    <Compile Include="Visitor\Visitor.MsSqlTable.cs" />
     <Compile Include="Visitor\Visitor.MultiplicatonOperator.cs" />
     <Compile Include="Visitor\Visitor.NodesBooleanExpressionStub.cs" />
     <Compile Include="Visitor\Visitor.NotEqualExpression.cs" />

@@ -12,45 +12,19 @@
  * limitations under the License.
  */
 
-using NUnit.Framework;
-using Pickaxe.Emit;
+using Pickaxe.Sdk;
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace PickAxe.Tests
+namespace Pickaxe.CodeDom.Visitor
 {
-    [TestFixture]
-    public class CodeGen
+    public partial class CodeDomGenerator : IAstVisitor
     {
-        [Test]
-        public void TestCodeRunner()
+        public void Visit(MsSqlTable literal)
         {
-            Code code = new Code(new string[0]);
-            code.Run();
-        }
-       
-        [Test]
-        public void BasicCodeGenTest()
-        {
-              var input = @"
-
-create mssql prices(
-	rentalId int,
-	season string	
-)
-with (
-    connectionstring = 'Server=sandbagger;Database=scrape;Trusted_Connection=True;',
-    table = 'prices'
-)
-
-";
-
-            var compiler = new Compiler(input);
-            var sources = compiler.ToCode();
-            Assert.IsTrue(compiler.Errors.Count == 0);
         }
     }
 }
