@@ -67,6 +67,8 @@ namespace Pickaxe.Parser
                 {
                     if (payload.Type == ScrapeParser.PROGRAM)
                         return new AntlrBridgeTree<Program>(payload, (node, tree, visitor) => visitor.Visit(node, tree));
+                    if (payload.Type == ScrapeParser.MSSQL_TABLE)
+                        return new AntlrBridgeTree<MsSqlTable>(payload, (node, tree, visitor) => visitor.Visit(node, tree));
                     if (payload.Type == ScrapeParser.FILE_TABLE)
                         return new AntlrBridgeTree<FileTable>(payload, (node, tree, visitor) => visitor.Visit(node, tree));
                     if(payload.Type == ScrapeParser.BUFFER_TABLE)

@@ -40,7 +40,7 @@ namespace Pickaxe.Runtime
             Rows.Add(row);
         }
 
-        public void Truncate()
+        public virtual void Truncate()
         {
             Rows.Clear();
         }

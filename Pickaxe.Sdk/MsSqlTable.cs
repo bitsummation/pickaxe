@@ -12,45 +12,28 @@
  * limitations under the License.
  */
 
-using NUnit.Framework;
-using Pickaxe.Emit;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace PickAxe.Tests
+namespace Pickaxe.Sdk
 {
-    [TestFixture]
-    public class CodeGen
+    public class MsSqlTable : AstNode
     {
-        [Test]
-        public void TestCodeRunner()
+        public string Variable { get; set; }
+
+        public TableColumnArg[] Args
         {
-            Code code = new Code(new string[0]);
-            code.Run();
+            get { return Children.Where(x => x.GetType() == typeof(TableColumnArg)).Cast<TableColumnArg>().ToArray(); }
         }
-       
-        [Test]
-        public void BasicCodeGenTest()
+
+        public string ConnectionString { get; set; }
+        public string Table { get; set; }
+
+        public override void Accept(IAstVisitor visitor)
         {
-              var input = @"
-
-create mssql prices(
-	rentalId int,
-	season string	
-)
-with (
-    connectionstring = 'Server=sandbagger;Database=scrape;Trusted_Connection=True;',
-    table = 'prices'
-)
-
-";
-
-            var compiler = new Compiler(input);
-            var sources = compiler.ToCode();
-            Assert.IsTrue(compiler.Errors.Count == 0);
+            visitor.Visit(this);
         }
     }
 }

@@ -52,6 +52,7 @@
     <Compile Include="IdentityVariable.cs" />
     <Compile Include="InnerJoinStatement.cs" />
     <Compile Include="MatchExpression.cs" />
+    <Compile Include="MsSqlTable.cs" />
     <Compile Include="NodesBooleanExpression.cs" />
     <Compile Include="DivisionOperator.cs" />
     <Compile Include="DownloadImageExpression.cs" />
