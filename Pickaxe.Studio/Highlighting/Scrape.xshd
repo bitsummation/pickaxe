@@ -82,6 +82,7 @@
         <Key word = "create" />
         <Key word = "file" />
         <Key word = "mssql" />
+        <Key word = "table" />
         <Key word = "buffer" />
         <Key word = "each" />
         <Key word = "location" />
