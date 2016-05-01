@@ -379,7 +379,7 @@ sqlTableWithVariablesStatement
 	;
 
 sqlTableWithVariableStatement 
-	: (CONNECTIONSTRING | TABLE)^ EQUALS! STRING_LITERAL
+	: (CONNECTIONSTRING | DBTABLE)^ EQUALS! STRING_LITERAL
 	;
 
 fileTableWithStatement
@@ -479,6 +479,7 @@ ROW_TERMINATOR : 'rowterminator';
 LOCATION : 'location';
 CONNECTIONSTRING : 'connectionstring';
 TABLE : 'table';
+DBTABLE : 'dbtable';
 
 STRING_LITERAL: APOSTRAPHE ~(APOSTRAPHE)* APOSTRAPHE;
 IDENTITY_VAR : '@@identity';

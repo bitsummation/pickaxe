@@ -43,7 +43,7 @@ create mssql prices(
 )
 with (
     connectionstring = 'Server=sandbagger;Database=scrape;Trusted_Connection=True;',
-    table = 'prices'
+    dbtable = 'prices'
 )
 
 ";
