@@ -27,7 +27,7 @@ each(var i in t)
 	insert overwrite urls
 	select link
 	from videos v
-	join urls on v.url = urls.url
+	join urls u on v.url = u.url
 }
 
 select *
