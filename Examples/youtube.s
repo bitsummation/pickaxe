@@ -2,7 +2,7 @@ create buffer t(value int)
 
 insert into t
 select *
-from expand (1 to 3)
+from expand (1 to 2)
 
 create buffer videos(url string, link string, title string, views string, duration string, processed int)
 insert into videos
