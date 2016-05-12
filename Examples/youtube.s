@@ -42,6 +42,5 @@ each(var i in t)
 	join urls on v.url = urls.url
 }
 
-
 select *
 from videos
