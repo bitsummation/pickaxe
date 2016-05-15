@@ -103,43 +103,8 @@ select 'test2'
 select *
 from temp
 ```
-## More Examples
----
-#### Example 1
-Capture the commit information from this page.
-```sql
-select
-	case pick '.icon .octicon-file-text'
-		when null then 'Folder'
-		else 'File'
-	end, --folder/file
-	pick '.content a', --name
-	pick '.message a', --comment
-	pick '.age span' --date
-from download page 'https://github.com/bitsummation/pickaxe'
-where nodes = 'table.files tr.js-navigation-item'
-```
-#### Example 2
-What's your WAN ip address?
-```sql
-select
-	pick '#section_left div:nth-child(2) a'
-from download page 'http://whatismyipaddress.com/'
-```
-#### Match
-The match expression uses regular expressions to match text. In this case, it is just taking the numbers of the ip address.
-```sql
-select
-    pick '#section_left div:nth-child(2) a' match '\d'
-from download page 'http://whatismyipaddress.com'
-```
-#### Match/Replace
-A match expression can be followed by a replace. In this case, we replace the dots with dashes.
-```sql
-select
-    pick '#section_left div:nth-child(2) a' match '\.' replace '---'
-from download page 'http://whatismyipaddress.com'
-```
+### Storage Buffers
+There are three different ways to store results. In memory, files, and sql databases. An example of each is listed below.
 #### In Memory Buffer
 Store results in memory. The insert overwrite statement overwrites existing data in the buffer--if any--while insert into just appends to existing data.
 ```sql
@@ -181,6 +146,64 @@ select
     pick '.age span' --date
 from download page 'https://github.com/bitsummation/pickaxe'
 where nodes = 'table.files tr.js-navigation-item'
+```
+#### SQL Buffer
+Store results in Microsoft SQL Server.
+``` sql
+create mssql results(type string, folder string, message string, changeDate string)
+with (
+   connectionstring = 'Server=localhost;Database=scrape;Trusted_Connection=True;',
+   dbtable = 'Results'
+)
+
+insert into results
+select
+    case pick '.icon .octicon-file-text'
+        when null then 'Folder'
+        else 'File'
+    end, --folder/file
+    pick '.content a', --name
+    pick '.message a', --comment
+    pick '.age span' --date
+from download page 'https://github.com/bitsummation/pickaxe'
+where nodes = 'table.files tr.js-navigation-item'
+```
+## More Examples
+---
+#### Example 1
+Capture the commit information from this page.
+```sql
+select
+	case pick '.icon .octicon-file-text'
+		when null then 'Folder'
+		else 'File'
+	end, --folder/file
+	pick '.content a', --name
+	pick '.message a', --comment
+	pick '.age span' --date
+from download page 'https://github.com/bitsummation/pickaxe'
+where nodes = 'table.files tr.js-navigation-item'
+```
+#### Example 2
+What's your WAN ip address?
+```sql
+select
+	pick '#section_left div:nth-child(2) a'
+from download page 'http://whatismyipaddress.com/'
+```
+#### Match
+The match expression uses regular expressions to match text. In this case, it is just taking the numbers of the ip address.
+```sql
+select
+    pick '#section_left div:nth-child(2) a' match '\d'
+from download page 'http://whatismyipaddress.com'
+```
+#### Match/Replace
+A match expression can be followed by a replace. In this case, we replace the dots with dashes.
+```sql
+select
+    pick '#section_left div:nth-child(2) a' match '\.' replace '---'
+from download page 'http://whatismyipaddress.com'
 ```
 ### Update
 Update table.
