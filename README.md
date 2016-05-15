@@ -148,7 +148,7 @@ from download page 'https://github.com/bitsummation/pickaxe'
 where nodes = 'table.files tr.js-navigation-item'
 ```
 #### SQL Buffer
-Store results in Microsoft SQL Server.
+Store results in Microsoft SQL Server. The mssql buffer definition must match the sql table structure.
 ``` sql
 create mssql results(type string, folder string, message string, changeDate string)
 with (
