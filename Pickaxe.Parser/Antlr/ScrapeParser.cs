@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// $ANTLR 3.5.2 Scrape.g 2016-04-30 20:40:16
+// $ANTLR 3.5.2 Scrape.g 2016-05-20 13:23:55
 
 // The variable 'variable' is assigned but its value is never used.
 #pragma warning disable 219
@@ -33,11 +33,11 @@ using RewriteRuleITokenStream = Antlr.Runtime.Tree.RewriteRuleTokenStream;
 public partial class ScrapeParser : Antlr.Runtime.Parser
 {
 	internal static readonly string[] tokenNames = new string[] {
-		"<invalid>", "<EOR>", "<DOWN>", "<UP>", "AND", "APOSTRAPHE", "ASTERISK", "ATTRIBUTE", "BLOCK", "BUFFER", "BUFFER_TABLE", "CASE", "CASE_BOOL", "CASE_EXPRESSION", "CASE_VAR", "CLOSEBRACE", "CLOSEPAREN", "COMMA", "COMMAND_VAR", "COMMENT", "CONNECTIONSTRING", "CREATE", "DBTABLE", "DIGIT", "DIV", "DOT", "DOWNLOAD_IMAGE", "DOWNLOAD_PAGE", "EACH", "ELSE", "END", "EQUALS", "EXEC", "EXPAND", "EXPAND_INTERATION_VARIABLE", "FIELD_TERMINATOR", "FILE", "FILE_TABLE", "FLOAT", "FROM", "GREATERTHAN", "GREATERTHANEQUAL", "HTML", "ID", "IDENTITY", "IDENTITY_VAR", "IN", "INNER_JOIN", "INSERT_DIRECTORY", "INSERT_INTO", "INSERT_INTO_DIRECTORY", "INSERT_OVERWRITE", "INT", "INTEGER", "JOIN", "LESSTHAN", "LESSTHANEQUAL", "LETTER", "LINE_COMMENT_DASH", "LINE_COMMENT_SLASH", "LOCATION", "MATCH", "MEMBER_REFERENCE", "MINIS", "MSSQL", "MSSQL_TABLE", "NEWLINE", "NODES", "NOTEQUAL", "NULL", "NULL_OPERATOR", "OPENBRACE", "OPENPAREN", "OR", "OTHERCHARS", "PICK", "PLUS", "POST_PICK", "PRE_PICK", "PROCEDURE", "PROGRAM", "PROXIES", "PROXY_LIST", "QUOTE", "REPLACE", "ROW_REFERENCE", "ROW_TERMINATOR", "SELECT", "SELECT_ALL", "SELECT_ARG", "SELECT_ID", "SELECT_STATEMENT", "SET", "STRING", "STRING_LITERAL", "TABLE", "TABLE_ALIAS", "TABLE_COLUMN_ARG", "TABLE_COLUMN_ARGS", "TABLE_MEMBER_REFERENCE", "TABLE_VARIABLE_REFERENCE", "TAKE", "TAKE_ATTRIBUTE", "TAKE_HTML", "TAKE_TEXT", "TEST", "TEXT", "THEN", "THREAD", "TO", "TRUNCATE", "UPDATE", "VAR", "VARIABLE_ASSIGNMENT", "VARIABLE_DECLARATION", "VARIABLE_REFERENCE", "WHEN", "WHEN_BOOL_STATEMENT", "WHEN_LITERAL_STATEMENT", "WHERE", "WITH", "WS", "'$'", "'on'"
+		"<invalid>", "<EOR>", "<DOWN>", "<UP>", "AND", "APOSTRAPHE", "ASTERISK", "ATTRIBUTE", "BLOCK", "BUFFER", "BUFFER_TABLE", "CASE", "CASE_BOOL", "CASE_EXPRESSION", "CASE_VAR", "CLOSEBRACE", "CLOSEPAREN", "COMMA", "COMMAND_VAR", "COMMENT", "CONNECTIONSTRING", "CREATE", "DBTABLE", "DIGIT", "DIV", "DOT", "DOWNLOAD_IMAGE", "DOWNLOAD_PAGE", "EACH", "ELSE", "END", "EQUALS", "EXEC", "EXPAND", "EXPAND_INTERATION_VARIABLE", "FIELD_TERMINATOR", "FILE", "FILE_TABLE", "FLOAT", "FROM", "GREATERTHAN", "GREATERTHANEQUAL", "HTML", "ID", "IDENTITY", "IDENTITY_VAR", "IN", "INNER_JOIN", "INSERT_DIRECTORY", "INSERT_INTO", "INSERT_INTO_DIRECTORY", "INSERT_OVERWRITE", "INT", "INTEGER", "JOIN", "LESSTHAN", "LESSTHANEQUAL", "LETTER", "LIKE", "LINE_COMMENT_DASH", "LINE_COMMENT_SLASH", "LOCATION", "MATCH", "MEMBER_REFERENCE", "MINIS", "MSSQL", "MSSQL_TABLE", "NEWLINE", "NODES", "NOTEQUAL", "NOTLIKE", "NULL", "NULL_OPERATOR", "OPENBRACE", "OPENPAREN", "OR", "OTHERCHARS", "PICK", "PLUS", "POST_PICK", "PRE_PICK", "PROCEDURE", "PROGRAM", "PROXIES", "PROXY_LIST", "QUOTE", "REPLACE", "ROW_REFERENCE", "ROW_TERMINATOR", "SELECT", "SELECT_ALL", "SELECT_ARG", "SELECT_ID", "SELECT_STATEMENT", "SET", "STRING", "STRING_LITERAL", "TABLE", "TABLE_ALIAS", "TABLE_COLUMN_ARG", "TABLE_COLUMN_ARGS", "TABLE_MEMBER_REFERENCE", "TABLE_VARIABLE_REFERENCE", "TAKE", "TAKE_ATTRIBUTE", "TAKE_HTML", "TAKE_TEXT", "TEST", "TEXT", "THEN", "THREAD", "TO", "TRUNCATE", "UPDATE", "VAR", "VARIABLE_ASSIGNMENT", "VARIABLE_DECLARATION", "VARIABLE_REFERENCE", "WHEN", "WHEN_BOOL_STATEMENT", "WHEN_LITERAL_STATEMENT", "WHERE", "WITH", "WS", "'$'", "'on'"
 	};
 	public const int EOF=-1;
-	public const int T__122=122;
-	public const int T__123=123;
+	public const int T__124=124;
+	public const int T__125=125;
 	public const int AND=4;
 	public const int APOSTRAPHE=5;
 	public const int ASTERISK=6;
@@ -92,70 +92,72 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 	public const int LESSTHAN=55;
 	public const int LESSTHANEQUAL=56;
 	public const int LETTER=57;
-	public const int LINE_COMMENT_DASH=58;
-	public const int LINE_COMMENT_SLASH=59;
-	public const int LOCATION=60;
-	public const int MATCH=61;
-	public const int MEMBER_REFERENCE=62;
-	public const int MINIS=63;
-	public const int MSSQL=64;
-	public const int MSSQL_TABLE=65;
-	public const int NEWLINE=66;
-	public const int NODES=67;
-	public const int NOTEQUAL=68;
-	public const int NULL=69;
-	public const int NULL_OPERATOR=70;
-	public const int OPENBRACE=71;
-	public const int OPENPAREN=72;
-	public const int OR=73;
-	public const int OTHERCHARS=74;
-	public const int PICK=75;
-	public const int PLUS=76;
-	public const int POST_PICK=77;
-	public const int PRE_PICK=78;
-	public const int PROCEDURE=79;
-	public const int PROGRAM=80;
-	public const int PROXIES=81;
-	public const int PROXY_LIST=82;
-	public const int QUOTE=83;
-	public const int REPLACE=84;
-	public const int ROW_REFERENCE=85;
-	public const int ROW_TERMINATOR=86;
-	public const int SELECT=87;
-	public const int SELECT_ALL=88;
-	public const int SELECT_ARG=89;
-	public const int SELECT_ID=90;
-	public const int SELECT_STATEMENT=91;
-	public const int SET=92;
-	public const int STRING=93;
-	public const int STRING_LITERAL=94;
-	public const int TABLE=95;
-	public const int TABLE_ALIAS=96;
-	public const int TABLE_COLUMN_ARG=97;
-	public const int TABLE_COLUMN_ARGS=98;
-	public const int TABLE_MEMBER_REFERENCE=99;
-	public const int TABLE_VARIABLE_REFERENCE=100;
-	public const int TAKE=101;
-	public const int TAKE_ATTRIBUTE=102;
-	public const int TAKE_HTML=103;
-	public const int TAKE_TEXT=104;
-	public const int TEST=105;
-	public const int TEXT=106;
-	public const int THEN=107;
-	public const int THREAD=108;
-	public const int TO=109;
-	public const int TRUNCATE=110;
-	public const int UPDATE=111;
-	public const int VAR=112;
-	public const int VARIABLE_ASSIGNMENT=113;
-	public const int VARIABLE_DECLARATION=114;
-	public const int VARIABLE_REFERENCE=115;
-	public const int WHEN=116;
-	public const int WHEN_BOOL_STATEMENT=117;
-	public const int WHEN_LITERAL_STATEMENT=118;
-	public const int WHERE=119;
-	public const int WITH=120;
-	public const int WS=121;
+	public const int LIKE=58;
+	public const int LINE_COMMENT_DASH=59;
+	public const int LINE_COMMENT_SLASH=60;
+	public const int LOCATION=61;
+	public const int MATCH=62;
+	public const int MEMBER_REFERENCE=63;
+	public const int MINIS=64;
+	public const int MSSQL=65;
+	public const int MSSQL_TABLE=66;
+	public const int NEWLINE=67;
+	public const int NODES=68;
+	public const int NOTEQUAL=69;
+	public const int NOTLIKE=70;
+	public const int NULL=71;
+	public const int NULL_OPERATOR=72;
+	public const int OPENBRACE=73;
+	public const int OPENPAREN=74;
+	public const int OR=75;
+	public const int OTHERCHARS=76;
+	public const int PICK=77;
+	public const int PLUS=78;
+	public const int POST_PICK=79;
+	public const int PRE_PICK=80;
+	public const int PROCEDURE=81;
+	public const int PROGRAM=82;
+	public const int PROXIES=83;
+	public const int PROXY_LIST=84;
+	public const int QUOTE=85;
+	public const int REPLACE=86;
+	public const int ROW_REFERENCE=87;
+	public const int ROW_TERMINATOR=88;
+	public const int SELECT=89;
+	public const int SELECT_ALL=90;
+	public const int SELECT_ARG=91;
+	public const int SELECT_ID=92;
+	public const int SELECT_STATEMENT=93;
+	public const int SET=94;
+	public const int STRING=95;
+	public const int STRING_LITERAL=96;
+	public const int TABLE=97;
+	public const int TABLE_ALIAS=98;
+	public const int TABLE_COLUMN_ARG=99;
+	public const int TABLE_COLUMN_ARGS=100;
+	public const int TABLE_MEMBER_REFERENCE=101;
+	public const int TABLE_VARIABLE_REFERENCE=102;
+	public const int TAKE=103;
+	public const int TAKE_ATTRIBUTE=104;
+	public const int TAKE_HTML=105;
+	public const int TAKE_TEXT=106;
+	public const int TEST=107;
+	public const int TEXT=108;
+	public const int THEN=109;
+	public const int THREAD=110;
+	public const int TO=111;
+	public const int TRUNCATE=112;
+	public const int UPDATE=113;
+	public const int VAR=114;
+	public const int VARIABLE_ASSIGNMENT=115;
+	public const int VARIABLE_DECLARATION=116;
+	public const int VARIABLE_REFERENCE=117;
+	public const int WHEN=118;
+	public const int WHEN_BOOL_STATEMENT=119;
+	public const int WHEN_LITERAL_STATEMENT=120;
+	public const int WHERE=121;
+	public const int WITH=122;
+	public const int WS=123;
 
 	public ScrapeParser(ITokenStream input)
 		: this(input, new RecognizerSharedState())
@@ -349,7 +351,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 				{
 				// AST REWRITE
-				// elements: noBraceBlock, proxyStatement
+				// elements: proxyStatement, noBraceBlock
 				// token labels: 
 				// rule labels: retval
 				// token list labels: 
@@ -570,7 +572,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: PROCEDURE, tableColumnArgs, block, ID
+			// elements: tableColumnArgs, PROCEDURE, ID, block
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -1111,7 +1113,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: ID, procedureCallList, EXEC
+			// elements: procedureCallList, ID, EXEC
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -2464,7 +2466,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: expandBlock, EXPAND, expandVar, expandVar
+			// elements: expandVar, expandVar, EXPAND, expandBlock
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -2581,7 +2583,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 				try { DebugEnterDecision(11, false);
 				int LA11_1 = input.LA(1);
 
-				if ((LA11_1==COMMAND_VAR||LA11_1==ID||LA11_1==IDENTITY_VAR||LA11_1==INT||LA11_1==NULL||LA11_1==OPENPAREN||LA11_1==STRING_LITERAL||LA11_1==122))
+				if ((LA11_1==COMMAND_VAR||LA11_1==ID||LA11_1==IDENTITY_VAR||LA11_1==INT||LA11_1==NULL||LA11_1==OPENPAREN||LA11_1==STRING_LITERAL||LA11_1==124))
 				{
 					alt11 = 1;
 				}
@@ -3244,7 +3246,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 				{
 					alt16 = 4;
 				}
-				else if ((LA16_2==EOF||LA16_2==ASTERISK||(LA16_2>=CLOSEBRACE && LA16_2<=COMMAND_VAR)||LA16_2==CREATE||LA16_2==DIV||LA16_2==EACH||(LA16_2>=EQUALS && LA16_2<=EXEC)||LA16_2==ID||LA16_2==IDENTITY_VAR||(LA16_2>=INSERT_DIRECTORY && LA16_2<=INSERT_INTO)||(LA16_2>=INSERT_OVERWRITE && LA16_2<=INT)||LA16_2==MINIS||LA16_2==NULL||LA16_2==OPENPAREN||LA16_2==PLUS||LA16_2==SELECT||LA16_2==STRING_LITERAL||(LA16_2>=TO && LA16_2<=VAR)||(LA16_2>=WHERE && LA16_2<=WITH)||LA16_2==122))
+				else if ((LA16_2==EOF||LA16_2==ASTERISK||(LA16_2>=CLOSEBRACE && LA16_2<=COMMAND_VAR)||LA16_2==CREATE||LA16_2==DIV||LA16_2==EACH||(LA16_2>=EQUALS && LA16_2<=EXEC)||LA16_2==ID||LA16_2==IDENTITY_VAR||(LA16_2>=INSERT_DIRECTORY && LA16_2<=INSERT_INTO)||(LA16_2>=INSERT_OVERWRITE && LA16_2<=INT)||LA16_2==MINIS||LA16_2==NULL||LA16_2==OPENPAREN||LA16_2==PLUS||LA16_2==SELECT||LA16_2==STRING_LITERAL||(LA16_2>=TO && LA16_2<=VAR)||(LA16_2>=WHERE && LA16_2<=WITH)||LA16_2==124))
 				{
 					alt16 = 1;
 				}
@@ -3966,7 +3968,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 			case NULL:
 			case OPENPAREN:
 			case STRING_LITERAL:
-			case 122:
+			case 124:
 				{
 				alt18 = 1;
 				}
@@ -4395,7 +4397,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 		CommonTree char_literal111_tree = default(CommonTree);
 		CommonTree OPENPAREN113_tree = default(CommonTree);
 		CommonTree CLOSEPAREN115_tree = default(CommonTree);
-		RewriteRuleITokenStream stream_122=new RewriteRuleITokenStream(adaptor,"token 122");
+		RewriteRuleITokenStream stream_124=new RewriteRuleITokenStream(adaptor,"token 124");
 		try { DebugEnterRule(GrammarFileName, "atom");
 		DebugLocation(201, 5);
 		try
@@ -4412,7 +4414,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 				alt21 = 1;
 				}
 				break;
-			case 122:
+			case 124:
 				{
 				alt21 = 2;
 				}
@@ -4461,8 +4463,8 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 				// Scrape.g:203:5: '$'
 				{
 				DebugLocation(203, 5);
-				char_literal111=(CommonToken)Match(input,122,Follow._122_in_atom1038); if (state.failed) return retval; 
-				if (state.backtracking == 0) stream_122.Add(char_literal111);
+				char_literal111=(CommonToken)Match(input,124,Follow._124_in_atom1038); if (state.failed) return retval; 
+				if (state.backtracking == 0) stream_124.Add(char_literal111);
 
 
 
@@ -4731,7 +4733,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 				{
 				// AST REWRITE
-				// elements: sqlStatement, INSERT_INTO
+				// elements: INSERT_INTO, sqlStatement
 				// token labels: 
 				// rule labels: retval
 				// token list labels: 
@@ -4791,7 +4793,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 				{
 				// AST REWRITE
-				// elements: mathExpression, sqlStatement
+				// elements: sqlStatement, mathExpression
 				// token labels: 
 				// rule labels: retval
 				// token list labels: 
@@ -5030,7 +5032,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: UPDATE, whereStatement, setArgs, ID, fromStatement
+			// elements: setArgs, fromStatement, ID, whereStatement, UPDATE
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -10373,7 +10375,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: SET, setArg
+			// elements: setArg, SET
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -10656,7 +10658,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: whereStatement, fromStatement, selectStatement
+			// elements: fromStatement, selectStatement, whereStatement
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -10778,7 +10780,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: WHERE, boolExpression
+			// elements: boolExpression, WHERE
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -11013,7 +11015,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 				{
 				// AST REWRITE
-				// elements: innerJoinStatement, a, FROM
+				// elements: innerJoinStatement, FROM, a
 				// token labels: a
 				// rule labels: retval
 				// token list labels: 
@@ -11158,7 +11160,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 				{
 				// AST REWRITE
-				// elements: tableGenerationClause, FROM, ID, tableHint
+				// elements: tableGenerationClause, ID, FROM, tableHint
 				// token labels: 
 				// rule labels: retval
 				// token list labels: 
@@ -11459,7 +11461,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 		CommonTree t_tree = default(CommonTree);
 		CommonTree a_tree = default(CommonTree);
 		CommonTree string_literal162_tree = default(CommonTree);
-		RewriteRuleITokenStream stream_123=new RewriteRuleITokenStream(adaptor,"token 123");
+		RewriteRuleITokenStream stream_125=new RewriteRuleITokenStream(adaptor,"token 125");
 		RewriteRuleITokenStream stream_ID=new RewriteRuleITokenStream(adaptor,"token ID");
 		RewriteRuleSubtreeStream stream_boolExpression=new RewriteRuleSubtreeStream(adaptor,"rule boolExpression");
 		RewriteRuleSubtreeStream stream_innerJoin=new RewriteRuleSubtreeStream(adaptor,"rule innerJoin");
@@ -11512,8 +11514,8 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 			} finally { DebugExitSubRule(32); }
 
 			DebugLocation(264, 25);
-			string_literal162=(CommonToken)Match(input,123,Follow._123_in_innerJoinStatement1467); if (state.failed) return retval; 
-			if (state.backtracking == 0) stream_123.Add(string_literal162);
+			string_literal162=(CommonToken)Match(input,125,Follow._125_in_innerJoinStatement1467); if (state.failed) return retval; 
+			if (state.backtracking == 0) stream_125.Add(string_literal162);
 
 			DebugLocation(264, 30);
 			PushFollow(Follow._boolExpression_in_innerJoinStatement1469);
@@ -11556,7 +11558,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: innerJoinStatement, a, boolExpression
+			// elements: boolExpression, innerJoinStatement, a
 			// token labels: a
 			// rule labels: retval
 			// token list labels: 
@@ -12873,7 +12875,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 				{
 				// AST REWRITE
-				// elements: whenBoolStatement, caseExpression
+				// elements: caseExpression, whenBoolStatement
 				// token labels: 
 				// rule labels: retval
 				// token list labels: 
@@ -13032,7 +13034,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 				{
 				// AST REWRITE
-				// elements: selectArg, whenLiteralStatement, caseExpression
+				// elements: whenLiteralStatement, caseExpression, selectArg
 				// token labels: 
 				// rule labels: retval
 				// token list labels: 
@@ -13271,7 +13273,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: literal, caseExpression
+			// elements: caseExpression, literal
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -13392,7 +13394,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: boolExpression, caseExpression
+			// elements: caseExpression, boolExpression
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -13778,7 +13780,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 				{
 				// AST REWRITE
-				// elements: NODES, STRING_LITERAL
+				// elements: STRING_LITERAL, NODES
 				// token labels: 
 				// rule labels: retval
 				// token list labels: 
@@ -13833,7 +13835,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 				try { DebugEnterDecision(46, false);
 				int LA46_1 = input.LA(1);
 
-				if ((LA46_1==EQUALS||(LA46_1>=GREATERTHAN && LA46_1<=GREATERTHANEQUAL)||(LA46_1>=LESSTHAN && LA46_1<=LESSTHANEQUAL)||LA46_1==NOTEQUAL))
+				if ((LA46_1==EQUALS||(LA46_1>=GREATERTHAN && LA46_1<=GREATERTHANEQUAL)||(LA46_1>=LESSTHAN && LA46_1<=LESSTHANEQUAL)||LA46_1==LIKE||(LA46_1>=NOTEQUAL && LA46_1<=NOTLIKE)))
 				{
 					alt46 = 1;
 				}
@@ -13917,7 +13919,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 	partial void EnterRule_boolOperator();
 	partial void LeaveRule_boolOperator();
 	// $ANTLR start "boolOperator"
-	// Scrape.g:322:1: boolOperator : ( EQUALS | LESSTHAN | LESSTHANEQUAL | GREATERTHAN | GREATERTHANEQUAL | NOTEQUAL );
+	// Scrape.g:322:1: boolOperator : ( EQUALS | LESSTHAN | LESSTHANEQUAL | GREATERTHAN | GREATERTHANEQUAL | NOTEQUAL | LIKE | NOTLIKE );
 	[GrammarRule("boolOperator")]
 	private AstParserRuleReturnScope<CommonTree, CommonToken> boolOperator()
 	{
@@ -13936,7 +13938,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 		DebugLocation(322, 1);
 		try
 		{
-			// Scrape.g:323:2: ( EQUALS | LESSTHAN | LESSTHANEQUAL | GREATERTHAN | GREATERTHANEQUAL | NOTEQUAL )
+			// Scrape.g:323:2: ( EQUALS | LESSTHAN | LESSTHANEQUAL | GREATERTHAN | GREATERTHANEQUAL | NOTEQUAL | LIKE | NOTLIKE )
 			DebugEnterAlt(1);
 			// Scrape.g:
 			{
@@ -13945,7 +13947,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 			DebugLocation(323, 2);
 
 			set214=(CommonToken)input.LT(1);
-			if (input.LA(1)==EQUALS||(input.LA(1)>=GREATERTHAN && input.LA(1)<=GREATERTHANEQUAL)||(input.LA(1)>=LESSTHAN && input.LA(1)<=LESSTHANEQUAL)||input.LA(1)==NOTEQUAL)
+			if (input.LA(1)==EQUALS||(input.LA(1)>=GREATERTHAN && input.LA(1)<=GREATERTHANEQUAL)||(input.LA(1)>=LESSTHAN && input.LA(1)<=LESSTHANEQUAL)||input.LA(1)==LIKE||(input.LA(1)>=NOTEQUAL && input.LA(1)<=NOTLIKE))
 			{
 				input.Consume();
 				if (state.backtracking == 0) adaptor.AddChild(root_0, (CommonTree)adaptor.Create(set214));
@@ -13982,7 +13984,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 			LeaveRule("boolOperator", 52);
 			LeaveRule_boolOperator();
 		}
-		DebugLocation(329, 1);
+		DebugLocation(331, 1);
 		} finally { DebugExitRule(GrammarFileName, "boolOperator"); }
 		return retval;
 
@@ -13992,7 +13994,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 	partial void EnterRule_selectArg();
 	partial void LeaveRule_selectArg();
 	// $ANTLR start "selectArg"
-	// Scrape.g:331:1: selectArg : ( pickStatement | literal | selectVariable );
+	// Scrape.g:333:1: selectArg : ( pickStatement | literal | selectVariable );
 	[GrammarRule("selectArg")]
 	private AstParserRuleReturnScope<CommonTree, CommonToken> selectArg()
 	{
@@ -14009,10 +14011,10 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 		AstParserRuleReturnScope<CommonTree, CommonToken> selectVariable217 = default(AstParserRuleReturnScope<CommonTree, CommonToken>);
 
 		try { DebugEnterRule(GrammarFileName, "selectArg");
-		DebugLocation(331, 1);
+		DebugLocation(333, 1);
 		try
 		{
-			// Scrape.g:332:2: ( pickStatement | literal | selectVariable )
+			// Scrape.g:334:2: ( pickStatement | literal | selectVariable )
 			int alt48=3;
 			try { DebugEnterDecision(48, false);
 			switch (input.LA(1))
@@ -14050,12 +14052,12 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 			{
 			case 1:
 				DebugEnterAlt(1);
-				// Scrape.g:332:4: pickStatement
+				// Scrape.g:334:4: pickStatement
 				{
 				root_0 = (CommonTree)adaptor.Nil();
 
-				DebugLocation(332, 4);
-				PushFollow(Follow._pickStatement_in_selectArg1904);
+				DebugLocation(334, 4);
+				PushFollow(Follow._pickStatement_in_selectArg1914);
 				pickStatement215=pickStatement();
 				PopFollow();
 				if (state.failed) return retval;
@@ -14065,12 +14067,12 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 				break;
 			case 2:
 				DebugEnterAlt(2);
-				// Scrape.g:333:4: literal
+				// Scrape.g:335:4: literal
 				{
 				root_0 = (CommonTree)adaptor.Nil();
 
-				DebugLocation(333, 4);
-				PushFollow(Follow._literal_in_selectArg1909);
+				DebugLocation(335, 4);
+				PushFollow(Follow._literal_in_selectArg1919);
 				literal216=literal();
 				PopFollow();
 				if (state.failed) return retval;
@@ -14080,12 +14082,12 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 				break;
 			case 3:
 				DebugEnterAlt(3);
-				// Scrape.g:334:4: selectVariable
+				// Scrape.g:336:4: selectVariable
 				{
 				root_0 = (CommonTree)adaptor.Nil();
 
-				DebugLocation(334, 4);
-				PushFollow(Follow._selectVariable_in_selectArg1914);
+				DebugLocation(336, 4);
+				PushFollow(Follow._selectVariable_in_selectArg1924);
 				selectVariable217=selectVariable();
 				PopFollow();
 				if (state.failed) return retval;
@@ -14115,7 +14117,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 			LeaveRule("selectArg", 53);
 			LeaveRule_selectArg();
 		}
-		DebugLocation(335, 1);
+		DebugLocation(337, 1);
 		} finally { DebugExitRule(GrammarFileName, "selectArg"); }
 		return retval;
 
@@ -14125,7 +14127,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 	partial void EnterRule_selectVariable();
 	partial void LeaveRule_selectVariable();
 	// $ANTLR start "selectVariable"
-	// Scrape.g:337:1: selectVariable : ( ID -> ^( SELECT_ID[$ID] ) | COMMAND_VAR | IDENTITY_VAR | tableMemberReference );
+	// Scrape.g:339:1: selectVariable : ( ID -> ^( SELECT_ID[$ID] ) | COMMAND_VAR | IDENTITY_VAR | tableMemberReference );
 	[GrammarRule("selectVariable")]
 	private AstParserRuleReturnScope<CommonTree, CommonToken> selectVariable()
 	{
@@ -14147,10 +14149,10 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 		CommonTree IDENTITY_VAR220_tree = default(CommonTree);
 		RewriteRuleITokenStream stream_ID=new RewriteRuleITokenStream(adaptor,"token ID");
 		try { DebugEnterRule(GrammarFileName, "selectVariable");
-		DebugLocation(337, 1);
+		DebugLocation(339, 1);
 		try
 		{
-			// Scrape.g:338:2: ( ID -> ^( SELECT_ID[$ID] ) | COMMAND_VAR | IDENTITY_VAR | tableMemberReference )
+			// Scrape.g:340:2: ( ID -> ^( SELECT_ID[$ID] ) | COMMAND_VAR | IDENTITY_VAR | tableMemberReference )
 			int alt49=4;
 			try { DebugEnterDecision(49, false);
 			switch (input.LA(1))
@@ -14163,7 +14165,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 				{
 					alt49 = 4;
 				}
-				else if ((LA49_2==EOF||LA49_2==AND||(LA49_2>=CLOSEBRACE && LA49_2<=COMMAND_VAR)||LA49_2==CREATE||(LA49_2>=EACH && LA49_2<=EXEC)||(LA49_2>=FROM && LA49_2<=GREATERTHANEQUAL)||LA49_2==ID||LA49_2==IDENTITY_VAR||(LA49_2>=INNER_JOIN && LA49_2<=INSERT_INTO)||LA49_2==INSERT_OVERWRITE||(LA49_2>=JOIN && LA49_2<=LESSTHANEQUAL)||LA49_2==NOTEQUAL||LA49_2==OR||LA49_2==PLUS||LA49_2==SELECT||LA49_2==THEN||(LA49_2>=TRUNCATE && LA49_2<=VAR)||LA49_2==WHEN||LA49_2==WHERE))
+				else if ((LA49_2==EOF||LA49_2==AND||(LA49_2>=CLOSEBRACE && LA49_2<=COMMAND_VAR)||LA49_2==CREATE||(LA49_2>=EACH && LA49_2<=EXEC)||(LA49_2>=FROM && LA49_2<=GREATERTHANEQUAL)||LA49_2==ID||LA49_2==IDENTITY_VAR||(LA49_2>=INNER_JOIN && LA49_2<=INSERT_INTO)||LA49_2==INSERT_OVERWRITE||(LA49_2>=JOIN && LA49_2<=LESSTHANEQUAL)||LA49_2==LIKE||(LA49_2>=NOTEQUAL && LA49_2<=NOTLIKE)||LA49_2==OR||LA49_2==PLUS||LA49_2==SELECT||LA49_2==THEN||(LA49_2>=TRUNCATE && LA49_2<=VAR)||LA49_2==WHEN||LA49_2==WHERE))
 				{
 					alt49 = 1;
 				}
@@ -14200,10 +14202,10 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 			{
 			case 1:
 				DebugEnterAlt(1);
-				// Scrape.g:338:4: ID
+				// Scrape.g:340:4: ID
 				{
-				DebugLocation(338, 4);
-				ID218=(CommonToken)Match(input,ID,Follow._ID_in_selectVariable1925); if (state.failed) return retval; 
+				DebugLocation(340, 4);
+				ID218=(CommonToken)Match(input,ID,Follow._ID_in_selectVariable1935); if (state.failed) return retval; 
 				if (state.backtracking == 0) stream_ID.Add(ID218);
 
 
@@ -14221,13 +14223,13 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 				RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.Tree:null);
 
 				root_0 = (CommonTree)adaptor.Nil();
-				// 338:7: -> ^( SELECT_ID[$ID] )
+				// 340:7: -> ^( SELECT_ID[$ID] )
 				{
-					DebugLocation(338, 10);
-					// Scrape.g:338:10: ^( SELECT_ID[$ID] )
+					DebugLocation(340, 10);
+					// Scrape.g:340:10: ^( SELECT_ID[$ID] )
 					{
 					CommonTree root_1 = (CommonTree)adaptor.Nil();
-					DebugLocation(338, 12);
+					DebugLocation(340, 12);
 					root_1 = (CommonTree)adaptor.BecomeRoot((CommonTree)adaptor.Create(SELECT_ID, ID218), root_1);
 
 					adaptor.AddChild(root_0, root_1);
@@ -14243,12 +14245,12 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 				break;
 			case 2:
 				DebugEnterAlt(2);
-				// Scrape.g:339:4: COMMAND_VAR
+				// Scrape.g:341:4: COMMAND_VAR
 				{
 				root_0 = (CommonTree)adaptor.Nil();
 
-				DebugLocation(339, 4);
-				COMMAND_VAR219=(CommonToken)Match(input,COMMAND_VAR,Follow._COMMAND_VAR_in_selectVariable1937); if (state.failed) return retval;
+				DebugLocation(341, 4);
+				COMMAND_VAR219=(CommonToken)Match(input,COMMAND_VAR,Follow._COMMAND_VAR_in_selectVariable1947); if (state.failed) return retval;
 				if (state.backtracking == 0) {
 				COMMAND_VAR219_tree = (CommonTree)adaptor.Create(COMMAND_VAR219);
 				adaptor.AddChild(root_0, COMMAND_VAR219_tree);
@@ -14258,12 +14260,12 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 				break;
 			case 3:
 				DebugEnterAlt(3);
-				// Scrape.g:340:4: IDENTITY_VAR
+				// Scrape.g:342:4: IDENTITY_VAR
 				{
 				root_0 = (CommonTree)adaptor.Nil();
 
-				DebugLocation(340, 4);
-				IDENTITY_VAR220=(CommonToken)Match(input,IDENTITY_VAR,Follow._IDENTITY_VAR_in_selectVariable1942); if (state.failed) return retval;
+				DebugLocation(342, 4);
+				IDENTITY_VAR220=(CommonToken)Match(input,IDENTITY_VAR,Follow._IDENTITY_VAR_in_selectVariable1952); if (state.failed) return retval;
 				if (state.backtracking == 0) {
 				IDENTITY_VAR220_tree = (CommonTree)adaptor.Create(IDENTITY_VAR220);
 				adaptor.AddChild(root_0, IDENTITY_VAR220_tree);
@@ -14273,12 +14275,12 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 				break;
 			case 4:
 				DebugEnterAlt(4);
-				// Scrape.g:341:4: tableMemberReference
+				// Scrape.g:343:4: tableMemberReference
 				{
 				root_0 = (CommonTree)adaptor.Nil();
 
-				DebugLocation(341, 4);
-				PushFollow(Follow._tableMemberReference_in_selectVariable1947);
+				DebugLocation(343, 4);
+				PushFollow(Follow._tableMemberReference_in_selectVariable1957);
 				tableMemberReference221=tableMemberReference();
 				PopFollow();
 				if (state.failed) return retval;
@@ -14308,7 +14310,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 			LeaveRule("selectVariable", 54);
 			LeaveRule_selectVariable();
 		}
-		DebugLocation(342, 1);
+		DebugLocation(344, 1);
 		} finally { DebugExitRule(GrammarFileName, "selectVariable"); }
 		return retval;
 
@@ -14318,7 +14320,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 	partial void EnterRule_pickStatement();
 	partial void LeaveRule_pickStatement();
 	// $ANTLR start "pickStatement"
-	// Scrape.g:344:1: pickStatement : PICK STRING_LITERAL ( takeStatement )? ( matchStatement )? -> ^( PICK STRING_LITERAL ( takeStatement )? ( matchStatement )? ) ;
+	// Scrape.g:346:1: pickStatement : PICK STRING_LITERAL ( takeStatement )? ( matchStatement )? -> ^( PICK STRING_LITERAL ( takeStatement )? ( matchStatement )? ) ;
 	[GrammarRule("pickStatement")]
 	private AstParserRuleReturnScope<CommonTree, CommonToken> pickStatement()
 	{
@@ -14342,23 +14344,23 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 		RewriteRuleSubtreeStream stream_matchStatement=new RewriteRuleSubtreeStream(adaptor,"rule matchStatement");
 		RewriteRuleSubtreeStream stream_takeStatement=new RewriteRuleSubtreeStream(adaptor,"rule takeStatement");
 		try { DebugEnterRule(GrammarFileName, "pickStatement");
-		DebugLocation(344, 1);
+		DebugLocation(346, 1);
 		try
 		{
-			// Scrape.g:345:2: ( PICK STRING_LITERAL ( takeStatement )? ( matchStatement )? -> ^( PICK STRING_LITERAL ( takeStatement )? ( matchStatement )? ) )
+			// Scrape.g:347:2: ( PICK STRING_LITERAL ( takeStatement )? ( matchStatement )? -> ^( PICK STRING_LITERAL ( takeStatement )? ( matchStatement )? ) )
 			DebugEnterAlt(1);
-			// Scrape.g:345:4: PICK STRING_LITERAL ( takeStatement )? ( matchStatement )?
+			// Scrape.g:347:4: PICK STRING_LITERAL ( takeStatement )? ( matchStatement )?
 			{
-			DebugLocation(345, 4);
-			PICK222=(CommonToken)Match(input,PICK,Follow._PICK_in_pickStatement1959); if (state.failed) return retval; 
+			DebugLocation(347, 4);
+			PICK222=(CommonToken)Match(input,PICK,Follow._PICK_in_pickStatement1969); if (state.failed) return retval; 
 			if (state.backtracking == 0) stream_PICK.Add(PICK222);
 
-			DebugLocation(345, 9);
-			STRING_LITERAL223=(CommonToken)Match(input,STRING_LITERAL,Follow._STRING_LITERAL_in_pickStatement1961); if (state.failed) return retval; 
+			DebugLocation(347, 9);
+			STRING_LITERAL223=(CommonToken)Match(input,STRING_LITERAL,Follow._STRING_LITERAL_in_pickStatement1971); if (state.failed) return retval; 
 			if (state.backtracking == 0) stream_STRING_LITERAL.Add(STRING_LITERAL223);
 
-			DebugLocation(345, 24);
-			// Scrape.g:345:24: ( takeStatement )?
+			DebugLocation(347, 24);
+			// Scrape.g:347:24: ( takeStatement )?
 			int alt50=2;
 			try { DebugEnterSubRule(50);
 			try { DebugEnterDecision(50, false);
@@ -14373,10 +14375,10 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 			{
 			case 1:
 				DebugEnterAlt(1);
-				// Scrape.g:345:24: takeStatement
+				// Scrape.g:347:24: takeStatement
 				{
-				DebugLocation(345, 24);
-				PushFollow(Follow._takeStatement_in_pickStatement1963);
+				DebugLocation(347, 24);
+				PushFollow(Follow._takeStatement_in_pickStatement1973);
 				takeStatement224=takeStatement();
 				PopFollow();
 				if (state.failed) return retval;
@@ -14388,8 +14390,8 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 			}
 			} finally { DebugExitSubRule(50); }
 
-			DebugLocation(345, 39);
-			// Scrape.g:345:39: ( matchStatement )?
+			DebugLocation(347, 39);
+			// Scrape.g:347:39: ( matchStatement )?
 			int alt51=2;
 			try { DebugEnterSubRule(51);
 			try { DebugEnterDecision(51, false);
@@ -14404,10 +14406,10 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 			{
 			case 1:
 				DebugEnterAlt(1);
-				// Scrape.g:345:39: matchStatement
+				// Scrape.g:347:39: matchStatement
 				{
-				DebugLocation(345, 39);
-				PushFollow(Follow._matchStatement_in_pickStatement1966);
+				DebugLocation(347, 39);
+				PushFollow(Follow._matchStatement_in_pickStatement1976);
 				matchStatement225=matchStatement();
 				PopFollow();
 				if (state.failed) return retval;
@@ -14423,7 +14425,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: PICK, takeStatement, STRING_LITERAL, matchStatement
+			// elements: matchStatement, takeStatement, STRING_LITERAL, PICK
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -14434,31 +14436,31 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.Tree:null);
 
 			root_0 = (CommonTree)adaptor.Nil();
-			// 345:55: -> ^( PICK STRING_LITERAL ( takeStatement )? ( matchStatement )? )
+			// 347:55: -> ^( PICK STRING_LITERAL ( takeStatement )? ( matchStatement )? )
 			{
-				DebugLocation(345, 58);
-				// Scrape.g:345:58: ^( PICK STRING_LITERAL ( takeStatement )? ( matchStatement )? )
+				DebugLocation(347, 58);
+				// Scrape.g:347:58: ^( PICK STRING_LITERAL ( takeStatement )? ( matchStatement )? )
 				{
 				CommonTree root_1 = (CommonTree)adaptor.Nil();
-				DebugLocation(345, 60);
+				DebugLocation(347, 60);
 				root_1 = (CommonTree)adaptor.BecomeRoot(stream_PICK.NextNode(), root_1);
 
-				DebugLocation(345, 65);
+				DebugLocation(347, 65);
 				adaptor.AddChild(root_1, stream_STRING_LITERAL.NextNode());
-				DebugLocation(345, 80);
-				// Scrape.g:345:80: ( takeStatement )?
+				DebugLocation(347, 80);
+				// Scrape.g:347:80: ( takeStatement )?
 				if (stream_takeStatement.HasNext)
 				{
-					DebugLocation(345, 80);
+					DebugLocation(347, 80);
 					adaptor.AddChild(root_1, stream_takeStatement.NextTree());
 
 				}
 				stream_takeStatement.Reset();
-				DebugLocation(345, 95);
-				// Scrape.g:345:95: ( matchStatement )?
+				DebugLocation(347, 95);
+				// Scrape.g:347:95: ( matchStatement )?
 				if (stream_matchStatement.HasNext)
 				{
-					DebugLocation(345, 95);
+					DebugLocation(347, 95);
 					adaptor.AddChild(root_1, stream_matchStatement.NextTree());
 
 				}
@@ -14495,7 +14497,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 			LeaveRule("pickStatement", 55);
 			LeaveRule_pickStatement();
 		}
-		DebugLocation(346, 1);
+		DebugLocation(348, 1);
 		} finally { DebugExitRule(GrammarFileName, "pickStatement"); }
 		return retval;
 
@@ -14505,7 +14507,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 	partial void EnterRule_takeStatement();
 	partial void LeaveRule_takeStatement();
 	// $ANTLR start "takeStatement"
-	// Scrape.g:348:1: takeStatement : ( TAKE ATTRIBUTE STRING_LITERAL -> ^( TAKE_ATTRIBUTE STRING_LITERAL ) | TAKE TEXT -> ^( TAKE_TEXT ) | TAKE HTML -> ^( TAKE_HTML ) );
+	// Scrape.g:350:1: takeStatement : ( TAKE ATTRIBUTE STRING_LITERAL -> ^( TAKE_ATTRIBUTE STRING_LITERAL ) | TAKE TEXT -> ^( TAKE_TEXT ) | TAKE HTML -> ^( TAKE_HTML ) );
 	[GrammarRule("takeStatement")]
 	private AstParserRuleReturnScope<CommonTree, CommonToken> takeStatement()
 	{
@@ -14538,10 +14540,10 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 		RewriteRuleITokenStream stream_TEXT=new RewriteRuleITokenStream(adaptor,"token TEXT");
 		RewriteRuleITokenStream stream_ATTRIBUTE=new RewriteRuleITokenStream(adaptor,"token ATTRIBUTE");
 		try { DebugEnterRule(GrammarFileName, "takeStatement");
-		DebugLocation(348, 1);
+		DebugLocation(350, 1);
 		try
 		{
-			// Scrape.g:349:2: ( TAKE ATTRIBUTE STRING_LITERAL -> ^( TAKE_ATTRIBUTE STRING_LITERAL ) | TAKE TEXT -> ^( TAKE_TEXT ) | TAKE HTML -> ^( TAKE_HTML ) )
+			// Scrape.g:351:2: ( TAKE ATTRIBUTE STRING_LITERAL -> ^( TAKE_ATTRIBUTE STRING_LITERAL ) | TAKE TEXT -> ^( TAKE_TEXT ) | TAKE HTML -> ^( TAKE_HTML ) )
 			int alt52=3;
 			try { DebugEnterDecision(52, false);
 			int LA52_1 = input.LA(1);
@@ -14587,18 +14589,18 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 			{
 			case 1:
 				DebugEnterAlt(1);
-				// Scrape.g:349:4: TAKE ATTRIBUTE STRING_LITERAL
+				// Scrape.g:351:4: TAKE ATTRIBUTE STRING_LITERAL
 				{
-				DebugLocation(349, 4);
-				TAKE226=(CommonToken)Match(input,TAKE,Follow._TAKE_in_takeStatement1993); if (state.failed) return retval; 
+				DebugLocation(351, 4);
+				TAKE226=(CommonToken)Match(input,TAKE,Follow._TAKE_in_takeStatement2003); if (state.failed) return retval; 
 				if (state.backtracking == 0) stream_TAKE.Add(TAKE226);
 
-				DebugLocation(349, 9);
-				ATTRIBUTE227=(CommonToken)Match(input,ATTRIBUTE,Follow._ATTRIBUTE_in_takeStatement1995); if (state.failed) return retval; 
+				DebugLocation(351, 9);
+				ATTRIBUTE227=(CommonToken)Match(input,ATTRIBUTE,Follow._ATTRIBUTE_in_takeStatement2005); if (state.failed) return retval; 
 				if (state.backtracking == 0) stream_ATTRIBUTE.Add(ATTRIBUTE227);
 
-				DebugLocation(349, 19);
-				STRING_LITERAL228=(CommonToken)Match(input,STRING_LITERAL,Follow._STRING_LITERAL_in_takeStatement1997); if (state.failed) return retval; 
+				DebugLocation(351, 19);
+				STRING_LITERAL228=(CommonToken)Match(input,STRING_LITERAL,Follow._STRING_LITERAL_in_takeStatement2007); if (state.failed) return retval; 
 				if (state.backtracking == 0) stream_STRING_LITERAL.Add(STRING_LITERAL228);
 
 
@@ -14616,16 +14618,16 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 				RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.Tree:null);
 
 				root_0 = (CommonTree)adaptor.Nil();
-				// 349:34: -> ^( TAKE_ATTRIBUTE STRING_LITERAL )
+				// 351:34: -> ^( TAKE_ATTRIBUTE STRING_LITERAL )
 				{
-					DebugLocation(349, 37);
-					// Scrape.g:349:37: ^( TAKE_ATTRIBUTE STRING_LITERAL )
+					DebugLocation(351, 37);
+					// Scrape.g:351:37: ^( TAKE_ATTRIBUTE STRING_LITERAL )
 					{
 					CommonTree root_1 = (CommonTree)adaptor.Nil();
-					DebugLocation(349, 39);
+					DebugLocation(351, 39);
 					root_1 = (CommonTree)adaptor.BecomeRoot((CommonTree)adaptor.Create(TAKE_ATTRIBUTE, "TAKE_ATTRIBUTE"), root_1);
 
-					DebugLocation(349, 54);
+					DebugLocation(351, 54);
 					adaptor.AddChild(root_1, stream_STRING_LITERAL.NextNode());
 
 					adaptor.AddChild(root_0, root_1);
@@ -14641,14 +14643,14 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 				break;
 			case 2:
 				DebugEnterAlt(2);
-				// Scrape.g:350:4: TAKE TEXT
+				// Scrape.g:352:4: TAKE TEXT
 				{
-				DebugLocation(350, 4);
-				TAKE229=(CommonToken)Match(input,TAKE,Follow._TAKE_in_takeStatement2010); if (state.failed) return retval; 
+				DebugLocation(352, 4);
+				TAKE229=(CommonToken)Match(input,TAKE,Follow._TAKE_in_takeStatement2020); if (state.failed) return retval; 
 				if (state.backtracking == 0) stream_TAKE.Add(TAKE229);
 
-				DebugLocation(350, 9);
-				TEXT230=(CommonToken)Match(input,TEXT,Follow._TEXT_in_takeStatement2012); if (state.failed) return retval; 
+				DebugLocation(352, 9);
+				TEXT230=(CommonToken)Match(input,TEXT,Follow._TEXT_in_takeStatement2022); if (state.failed) return retval; 
 				if (state.backtracking == 0) stream_TEXT.Add(TEXT230);
 
 
@@ -14666,13 +14668,13 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 				RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.Tree:null);
 
 				root_0 = (CommonTree)adaptor.Nil();
-				// 350:14: -> ^( TAKE_TEXT )
+				// 352:14: -> ^( TAKE_TEXT )
 				{
-					DebugLocation(350, 17);
-					// Scrape.g:350:17: ^( TAKE_TEXT )
+					DebugLocation(352, 17);
+					// Scrape.g:352:17: ^( TAKE_TEXT )
 					{
 					CommonTree root_1 = (CommonTree)adaptor.Nil();
-					DebugLocation(350, 19);
+					DebugLocation(352, 19);
 					root_1 = (CommonTree)adaptor.BecomeRoot((CommonTree)adaptor.Create(TAKE_TEXT, "TAKE_TEXT"), root_1);
 
 					adaptor.AddChild(root_0, root_1);
@@ -14688,14 +14690,14 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 				break;
 			case 3:
 				DebugEnterAlt(3);
-				// Scrape.g:351:4: TAKE HTML
+				// Scrape.g:353:4: TAKE HTML
 				{
-				DebugLocation(351, 4);
-				TAKE231=(CommonToken)Match(input,TAKE,Follow._TAKE_in_takeStatement2023); if (state.failed) return retval; 
+				DebugLocation(353, 4);
+				TAKE231=(CommonToken)Match(input,TAKE,Follow._TAKE_in_takeStatement2033); if (state.failed) return retval; 
 				if (state.backtracking == 0) stream_TAKE.Add(TAKE231);
 
-				DebugLocation(351, 9);
-				HTML232=(CommonToken)Match(input,HTML,Follow._HTML_in_takeStatement2025); if (state.failed) return retval; 
+				DebugLocation(353, 9);
+				HTML232=(CommonToken)Match(input,HTML,Follow._HTML_in_takeStatement2035); if (state.failed) return retval; 
 				if (state.backtracking == 0) stream_HTML.Add(HTML232);
 
 
@@ -14713,13 +14715,13 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 				RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.Tree:null);
 
 				root_0 = (CommonTree)adaptor.Nil();
-				// 351:14: -> ^( TAKE_HTML )
+				// 353:14: -> ^( TAKE_HTML )
 				{
-					DebugLocation(351, 17);
-					// Scrape.g:351:17: ^( TAKE_HTML )
+					DebugLocation(353, 17);
+					// Scrape.g:353:17: ^( TAKE_HTML )
 					{
 					CommonTree root_1 = (CommonTree)adaptor.Nil();
-					DebugLocation(351, 19);
+					DebugLocation(353, 19);
 					root_1 = (CommonTree)adaptor.BecomeRoot((CommonTree)adaptor.Create(TAKE_HTML, "TAKE_HTML"), root_1);
 
 					adaptor.AddChild(root_0, root_1);
@@ -14755,7 +14757,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 			LeaveRule("takeStatement", 56);
 			LeaveRule_takeStatement();
 		}
-		DebugLocation(352, 1);
+		DebugLocation(354, 1);
 		} finally { DebugExitRule(GrammarFileName, "takeStatement"); }
 		return retval;
 
@@ -14765,7 +14767,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 	partial void EnterRule_matchStatement();
 	partial void LeaveRule_matchStatement();
 	// $ANTLR start "matchStatement"
-	// Scrape.g:354:1: matchStatement : MATCH STRING_LITERAL ( replaceStatement )? -> ^( MATCH STRING_LITERAL ( replaceStatement )? ) ;
+	// Scrape.g:356:1: matchStatement : MATCH STRING_LITERAL ( replaceStatement )? -> ^( MATCH STRING_LITERAL ( replaceStatement )? ) ;
 	[GrammarRule("matchStatement")]
 	private AstParserRuleReturnScope<CommonTree, CommonToken> matchStatement()
 	{
@@ -14787,23 +14789,23 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 		RewriteRuleITokenStream stream_STRING_LITERAL=new RewriteRuleITokenStream(adaptor,"token STRING_LITERAL");
 		RewriteRuleSubtreeStream stream_replaceStatement=new RewriteRuleSubtreeStream(adaptor,"rule replaceStatement");
 		try { DebugEnterRule(GrammarFileName, "matchStatement");
-		DebugLocation(354, 1);
+		DebugLocation(356, 1);
 		try
 		{
-			// Scrape.g:355:2: ( MATCH STRING_LITERAL ( replaceStatement )? -> ^( MATCH STRING_LITERAL ( replaceStatement )? ) )
+			// Scrape.g:357:2: ( MATCH STRING_LITERAL ( replaceStatement )? -> ^( MATCH STRING_LITERAL ( replaceStatement )? ) )
 			DebugEnterAlt(1);
-			// Scrape.g:355:4: MATCH STRING_LITERAL ( replaceStatement )?
+			// Scrape.g:357:4: MATCH STRING_LITERAL ( replaceStatement )?
 			{
-			DebugLocation(355, 4);
-			MATCH233=(CommonToken)Match(input,MATCH,Follow._MATCH_in_matchStatement2043); if (state.failed) return retval; 
+			DebugLocation(357, 4);
+			MATCH233=(CommonToken)Match(input,MATCH,Follow._MATCH_in_matchStatement2053); if (state.failed) return retval; 
 			if (state.backtracking == 0) stream_MATCH.Add(MATCH233);
 
-			DebugLocation(355, 10);
-			STRING_LITERAL234=(CommonToken)Match(input,STRING_LITERAL,Follow._STRING_LITERAL_in_matchStatement2045); if (state.failed) return retval; 
+			DebugLocation(357, 10);
+			STRING_LITERAL234=(CommonToken)Match(input,STRING_LITERAL,Follow._STRING_LITERAL_in_matchStatement2055); if (state.failed) return retval; 
 			if (state.backtracking == 0) stream_STRING_LITERAL.Add(STRING_LITERAL234);
 
-			DebugLocation(355, 25);
-			// Scrape.g:355:25: ( replaceStatement )?
+			DebugLocation(357, 25);
+			// Scrape.g:357:25: ( replaceStatement )?
 			int alt53=2;
 			try { DebugEnterSubRule(53);
 			try { DebugEnterDecision(53, false);
@@ -14818,10 +14820,10 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 			{
 			case 1:
 				DebugEnterAlt(1);
-				// Scrape.g:355:25: replaceStatement
+				// Scrape.g:357:25: replaceStatement
 				{
-				DebugLocation(355, 25);
-				PushFollow(Follow._replaceStatement_in_matchStatement2047);
+				DebugLocation(357, 25);
+				PushFollow(Follow._replaceStatement_in_matchStatement2057);
 				replaceStatement235=replaceStatement();
 				PopFollow();
 				if (state.failed) return retval;
@@ -14848,22 +14850,22 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.Tree:null);
 
 			root_0 = (CommonTree)adaptor.Nil();
-			// 355:43: -> ^( MATCH STRING_LITERAL ( replaceStatement )? )
+			// 357:43: -> ^( MATCH STRING_LITERAL ( replaceStatement )? )
 			{
-				DebugLocation(355, 46);
-				// Scrape.g:355:46: ^( MATCH STRING_LITERAL ( replaceStatement )? )
+				DebugLocation(357, 46);
+				// Scrape.g:357:46: ^( MATCH STRING_LITERAL ( replaceStatement )? )
 				{
 				CommonTree root_1 = (CommonTree)adaptor.Nil();
-				DebugLocation(355, 48);
+				DebugLocation(357, 48);
 				root_1 = (CommonTree)adaptor.BecomeRoot(stream_MATCH.NextNode(), root_1);
 
-				DebugLocation(355, 54);
+				DebugLocation(357, 54);
 				adaptor.AddChild(root_1, stream_STRING_LITERAL.NextNode());
-				DebugLocation(355, 69);
-				// Scrape.g:355:69: ( replaceStatement )?
+				DebugLocation(357, 69);
+				// Scrape.g:357:69: ( replaceStatement )?
 				if (stream_replaceStatement.HasNext)
 				{
-					DebugLocation(355, 69);
+					DebugLocation(357, 69);
 					adaptor.AddChild(root_1, stream_replaceStatement.NextTree());
 
 				}
@@ -14900,7 +14902,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 			LeaveRule("matchStatement", 57);
 			LeaveRule_matchStatement();
 		}
-		DebugLocation(356, 1);
+		DebugLocation(358, 1);
 		} finally { DebugExitRule(GrammarFileName, "matchStatement"); }
 		return retval;
 
@@ -14910,7 +14912,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 	partial void EnterRule_replaceStatement();
 	partial void LeaveRule_replaceStatement();
 	// $ANTLR start "replaceStatement"
-	// Scrape.g:358:1: replaceStatement : REPLACE STRING_LITERAL -> ^( REPLACE STRING_LITERAL ) ;
+	// Scrape.g:360:1: replaceStatement : REPLACE STRING_LITERAL -> ^( REPLACE STRING_LITERAL ) ;
 	[GrammarRule("replaceStatement")]
 	private AstParserRuleReturnScope<CommonTree, CommonToken> replaceStatement()
 	{
@@ -14930,26 +14932,26 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 		RewriteRuleITokenStream stream_STRING_LITERAL=new RewriteRuleITokenStream(adaptor,"token STRING_LITERAL");
 		RewriteRuleITokenStream stream_REPLACE=new RewriteRuleITokenStream(adaptor,"token REPLACE");
 		try { DebugEnterRule(GrammarFileName, "replaceStatement");
-		DebugLocation(358, 1);
+		DebugLocation(360, 1);
 		try
 		{
-			// Scrape.g:359:2: ( REPLACE STRING_LITERAL -> ^( REPLACE STRING_LITERAL ) )
+			// Scrape.g:361:2: ( REPLACE STRING_LITERAL -> ^( REPLACE STRING_LITERAL ) )
 			DebugEnterAlt(1);
-			// Scrape.g:359:4: REPLACE STRING_LITERAL
+			// Scrape.g:361:4: REPLACE STRING_LITERAL
 			{
-			DebugLocation(359, 4);
-			REPLACE236=(CommonToken)Match(input,REPLACE,Follow._REPLACE_in_replaceStatement2070); if (state.failed) return retval; 
+			DebugLocation(361, 4);
+			REPLACE236=(CommonToken)Match(input,REPLACE,Follow._REPLACE_in_replaceStatement2080); if (state.failed) return retval; 
 			if (state.backtracking == 0) stream_REPLACE.Add(REPLACE236);
 
-			DebugLocation(359, 12);
-			STRING_LITERAL237=(CommonToken)Match(input,STRING_LITERAL,Follow._STRING_LITERAL_in_replaceStatement2072); if (state.failed) return retval; 
+			DebugLocation(361, 12);
+			STRING_LITERAL237=(CommonToken)Match(input,STRING_LITERAL,Follow._STRING_LITERAL_in_replaceStatement2082); if (state.failed) return retval; 
 			if (state.backtracking == 0) stream_STRING_LITERAL.Add(STRING_LITERAL237);
 
 
 
 			{
 			// AST REWRITE
-			// elements: REPLACE, STRING_LITERAL
+			// elements: STRING_LITERAL, REPLACE
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -14960,16 +14962,16 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.Tree:null);
 
 			root_0 = (CommonTree)adaptor.Nil();
-			// 359:27: -> ^( REPLACE STRING_LITERAL )
+			// 361:27: -> ^( REPLACE STRING_LITERAL )
 			{
-				DebugLocation(359, 30);
-				// Scrape.g:359:30: ^( REPLACE STRING_LITERAL )
+				DebugLocation(361, 30);
+				// Scrape.g:361:30: ^( REPLACE STRING_LITERAL )
 				{
 				CommonTree root_1 = (CommonTree)adaptor.Nil();
-				DebugLocation(359, 32);
+				DebugLocation(361, 32);
 				root_1 = (CommonTree)adaptor.BecomeRoot(stream_REPLACE.NextNode(), root_1);
 
-				DebugLocation(359, 40);
+				DebugLocation(361, 40);
 				adaptor.AddChild(root_1, stream_STRING_LITERAL.NextNode());
 
 				adaptor.AddChild(root_0, root_1);
@@ -15003,7 +15005,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 			LeaveRule("replaceStatement", 58);
 			LeaveRule_replaceStatement();
 		}
-		DebugLocation(360, 1);
+		DebugLocation(362, 1);
 		} finally { DebugExitRule(GrammarFileName, "replaceStatement"); }
 		return retval;
 
@@ -15013,7 +15015,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 	partial void EnterRule_createTableStatement();
 	partial void LeaveRule_createTableStatement();
 	// $ANTLR start "createTableStatement"
-	// Scrape.g:363:1: createTableStatement : ( CREATE FILE ID OPENPAREN ( tableColumnArgs )* CLOSEPAREN ( fileTableWithStatement )? fileTableLocation -> ^( FILE_TABLE ID ( tableColumnArgs )* ( fileTableWithStatement )? fileTableLocation ) | CREATE BUFFER ID OPENPAREN ( tableColumnArgs )* CLOSEPAREN -> ^( BUFFER_TABLE ID ( tableColumnArgs )* ) | CREATE MSSQL ID OPENPAREN ( tableColumnArgs )* CLOSEPAREN sqlTableWithStatement -> ^( MSSQL_TABLE ID ( tableColumnArgs )* sqlTableWithStatement ) );
+	// Scrape.g:365:1: createTableStatement : ( CREATE FILE ID OPENPAREN ( tableColumnArgs )* CLOSEPAREN ( fileTableWithStatement )? fileTableLocation -> ^( FILE_TABLE ID ( tableColumnArgs )* ( fileTableWithStatement )? fileTableLocation ) | CREATE BUFFER ID OPENPAREN ( tableColumnArgs )* CLOSEPAREN -> ^( BUFFER_TABLE ID ( tableColumnArgs )* ) | CREATE MSSQL ID OPENPAREN ( tableColumnArgs )* CLOSEPAREN sqlTableWithStatement -> ^( MSSQL_TABLE ID ( tableColumnArgs )* sqlTableWithStatement ) );
 	[GrammarRule("createTableStatement")]
 	private AstParserRuleReturnScope<CommonTree, CommonToken> createTableStatement()
 	{
@@ -15074,10 +15076,10 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 		RewriteRuleSubtreeStream stream_tableColumnArgs=new RewriteRuleSubtreeStream(adaptor,"rule tableColumnArgs");
 		RewriteRuleSubtreeStream stream_fileTableWithStatement=new RewriteRuleSubtreeStream(adaptor,"rule fileTableWithStatement");
 		try { DebugEnterRule(GrammarFileName, "createTableStatement");
-		DebugLocation(363, 1);
+		DebugLocation(365, 1);
 		try
 		{
-			// Scrape.g:364:2: ( CREATE FILE ID OPENPAREN ( tableColumnArgs )* CLOSEPAREN ( fileTableWithStatement )? fileTableLocation -> ^( FILE_TABLE ID ( tableColumnArgs )* ( fileTableWithStatement )? fileTableLocation ) | CREATE BUFFER ID OPENPAREN ( tableColumnArgs )* CLOSEPAREN -> ^( BUFFER_TABLE ID ( tableColumnArgs )* ) | CREATE MSSQL ID OPENPAREN ( tableColumnArgs )* CLOSEPAREN sqlTableWithStatement -> ^( MSSQL_TABLE ID ( tableColumnArgs )* sqlTableWithStatement ) )
+			// Scrape.g:366:2: ( CREATE FILE ID OPENPAREN ( tableColumnArgs )* CLOSEPAREN ( fileTableWithStatement )? fileTableLocation -> ^( FILE_TABLE ID ( tableColumnArgs )* ( fileTableWithStatement )? fileTableLocation ) | CREATE BUFFER ID OPENPAREN ( tableColumnArgs )* CLOSEPAREN -> ^( BUFFER_TABLE ID ( tableColumnArgs )* ) | CREATE MSSQL ID OPENPAREN ( tableColumnArgs )* CLOSEPAREN sqlTableWithStatement -> ^( MSSQL_TABLE ID ( tableColumnArgs )* sqlTableWithStatement ) )
 			int alt58=3;
 			try { DebugEnterDecision(58, false);
 			int LA58_1 = input.LA(1);
@@ -15123,26 +15125,26 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 			{
 			case 1:
 				DebugEnterAlt(1);
-				// Scrape.g:364:4: CREATE FILE ID OPENPAREN ( tableColumnArgs )* CLOSEPAREN ( fileTableWithStatement )? fileTableLocation
+				// Scrape.g:366:4: CREATE FILE ID OPENPAREN ( tableColumnArgs )* CLOSEPAREN ( fileTableWithStatement )? fileTableLocation
 				{
-				DebugLocation(364, 4);
-				CREATE238=(CommonToken)Match(input,CREATE,Follow._CREATE_in_createTableStatement2093); if (state.failed) return retval; 
+				DebugLocation(366, 4);
+				CREATE238=(CommonToken)Match(input,CREATE,Follow._CREATE_in_createTableStatement2103); if (state.failed) return retval; 
 				if (state.backtracking == 0) stream_CREATE.Add(CREATE238);
 
-				DebugLocation(364, 11);
-				FILE239=(CommonToken)Match(input,FILE,Follow._FILE_in_createTableStatement2095); if (state.failed) return retval; 
+				DebugLocation(366, 11);
+				FILE239=(CommonToken)Match(input,FILE,Follow._FILE_in_createTableStatement2105); if (state.failed) return retval; 
 				if (state.backtracking == 0) stream_FILE.Add(FILE239);
 
-				DebugLocation(364, 16);
-				ID240=(CommonToken)Match(input,ID,Follow._ID_in_createTableStatement2097); if (state.failed) return retval; 
+				DebugLocation(366, 16);
+				ID240=(CommonToken)Match(input,ID,Follow._ID_in_createTableStatement2107); if (state.failed) return retval; 
 				if (state.backtracking == 0) stream_ID.Add(ID240);
 
-				DebugLocation(364, 19);
-				OPENPAREN241=(CommonToken)Match(input,OPENPAREN,Follow._OPENPAREN_in_createTableStatement2099); if (state.failed) return retval; 
+				DebugLocation(366, 19);
+				OPENPAREN241=(CommonToken)Match(input,OPENPAREN,Follow._OPENPAREN_in_createTableStatement2109); if (state.failed) return retval; 
 				if (state.backtracking == 0) stream_OPENPAREN.Add(OPENPAREN241);
 
-				DebugLocation(364, 29);
-				// Scrape.g:364:29: ( tableColumnArgs )*
+				DebugLocation(366, 29);
+				// Scrape.g:366:29: ( tableColumnArgs )*
 				try { DebugEnterSubRule(54);
 				while (true)
 				{
@@ -15161,10 +15163,10 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 					{
 					case 1:
 						DebugEnterAlt(1);
-						// Scrape.g:364:29: tableColumnArgs
+						// Scrape.g:366:29: tableColumnArgs
 						{
-						DebugLocation(364, 29);
-						PushFollow(Follow._tableColumnArgs_in_createTableStatement2101);
+						DebugLocation(366, 29);
+						PushFollow(Follow._tableColumnArgs_in_createTableStatement2111);
 						tableColumnArgs242=tableColumnArgs();
 						PopFollow();
 						if (state.failed) return retval;
@@ -15183,12 +15185,12 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 				} finally { DebugExitSubRule(54); }
 
-				DebugLocation(364, 46);
-				CLOSEPAREN243=(CommonToken)Match(input,CLOSEPAREN,Follow._CLOSEPAREN_in_createTableStatement2104); if (state.failed) return retval; 
+				DebugLocation(366, 46);
+				CLOSEPAREN243=(CommonToken)Match(input,CLOSEPAREN,Follow._CLOSEPAREN_in_createTableStatement2114); if (state.failed) return retval; 
 				if (state.backtracking == 0) stream_CLOSEPAREN.Add(CLOSEPAREN243);
 
-				DebugLocation(364, 57);
-				// Scrape.g:364:57: ( fileTableWithStatement )?
+				DebugLocation(366, 57);
+				// Scrape.g:366:57: ( fileTableWithStatement )?
 				int alt55=2;
 				try { DebugEnterSubRule(55);
 				try { DebugEnterDecision(55, false);
@@ -15203,10 +15205,10 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 				{
 				case 1:
 					DebugEnterAlt(1);
-					// Scrape.g:364:57: fileTableWithStatement
+					// Scrape.g:366:57: fileTableWithStatement
 					{
-					DebugLocation(364, 57);
-					PushFollow(Follow._fileTableWithStatement_in_createTableStatement2106);
+					DebugLocation(366, 57);
+					PushFollow(Follow._fileTableWithStatement_in_createTableStatement2116);
 					fileTableWithStatement244=fileTableWithStatement();
 					PopFollow();
 					if (state.failed) return retval;
@@ -15218,8 +15220,8 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 				}
 				} finally { DebugExitSubRule(55); }
 
-				DebugLocation(364, 81);
-				PushFollow(Follow._fileTableLocation_in_createTableStatement2109);
+				DebugLocation(366, 81);
+				PushFollow(Follow._fileTableLocation_in_createTableStatement2119);
 				fileTableLocation245=fileTableLocation();
 				PopFollow();
 				if (state.failed) return retval;
@@ -15228,7 +15230,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 				{
 				// AST REWRITE
-				// elements: fileTableLocation, tableColumnArgs, ID, fileTableWithStatement
+				// elements: tableColumnArgs, fileTableLocation, fileTableWithStatement, ID
 				// token labels: 
 				// rule labels: retval
 				// token list labels: 
@@ -15239,36 +15241,36 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 				RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.Tree:null);
 
 				root_0 = (CommonTree)adaptor.Nil();
-				// 364:99: -> ^( FILE_TABLE ID ( tableColumnArgs )* ( fileTableWithStatement )? fileTableLocation )
+				// 366:99: -> ^( FILE_TABLE ID ( tableColumnArgs )* ( fileTableWithStatement )? fileTableLocation )
 				{
-					DebugLocation(364, 102);
-					// Scrape.g:364:102: ^( FILE_TABLE ID ( tableColumnArgs )* ( fileTableWithStatement )? fileTableLocation )
+					DebugLocation(366, 102);
+					// Scrape.g:366:102: ^( FILE_TABLE ID ( tableColumnArgs )* ( fileTableWithStatement )? fileTableLocation )
 					{
 					CommonTree root_1 = (CommonTree)adaptor.Nil();
-					DebugLocation(364, 104);
+					DebugLocation(366, 104);
 					root_1 = (CommonTree)adaptor.BecomeRoot((CommonTree)adaptor.Create(FILE_TABLE, "FILE_TABLE"), root_1);
 
-					DebugLocation(364, 115);
+					DebugLocation(366, 115);
 					adaptor.AddChild(root_1, stream_ID.NextNode());
-					DebugLocation(364, 118);
-					// Scrape.g:364:118: ( tableColumnArgs )*
+					DebugLocation(366, 118);
+					// Scrape.g:366:118: ( tableColumnArgs )*
 					while ( stream_tableColumnArgs.HasNext )
 					{
-						DebugLocation(364, 118);
+						DebugLocation(366, 118);
 						adaptor.AddChild(root_1, stream_tableColumnArgs.NextTree());
 
 					}
 					stream_tableColumnArgs.Reset();
-					DebugLocation(364, 135);
-					// Scrape.g:364:135: ( fileTableWithStatement )?
+					DebugLocation(366, 135);
+					// Scrape.g:366:135: ( fileTableWithStatement )?
 					if (stream_fileTableWithStatement.HasNext)
 					{
-						DebugLocation(364, 135);
+						DebugLocation(366, 135);
 						adaptor.AddChild(root_1, stream_fileTableWithStatement.NextTree());
 
 					}
 					stream_fileTableWithStatement.Reset();
-					DebugLocation(364, 159);
+					DebugLocation(366, 159);
 					adaptor.AddChild(root_1, stream_fileTableLocation.NextTree());
 
 					adaptor.AddChild(root_0, root_1);
@@ -15284,26 +15286,26 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 				break;
 			case 2:
 				DebugEnterAlt(2);
-				// Scrape.g:365:4: CREATE BUFFER ID OPENPAREN ( tableColumnArgs )* CLOSEPAREN
+				// Scrape.g:367:4: CREATE BUFFER ID OPENPAREN ( tableColumnArgs )* CLOSEPAREN
 				{
-				DebugLocation(365, 4);
-				CREATE246=(CommonToken)Match(input,CREATE,Follow._CREATE_in_createTableStatement2130); if (state.failed) return retval; 
+				DebugLocation(367, 4);
+				CREATE246=(CommonToken)Match(input,CREATE,Follow._CREATE_in_createTableStatement2140); if (state.failed) return retval; 
 				if (state.backtracking == 0) stream_CREATE.Add(CREATE246);
 
-				DebugLocation(365, 11);
-				BUFFER247=(CommonToken)Match(input,BUFFER,Follow._BUFFER_in_createTableStatement2132); if (state.failed) return retval; 
+				DebugLocation(367, 11);
+				BUFFER247=(CommonToken)Match(input,BUFFER,Follow._BUFFER_in_createTableStatement2142); if (state.failed) return retval; 
 				if (state.backtracking == 0) stream_BUFFER.Add(BUFFER247);
 
-				DebugLocation(365, 18);
-				ID248=(CommonToken)Match(input,ID,Follow._ID_in_createTableStatement2134); if (state.failed) return retval; 
+				DebugLocation(367, 18);
+				ID248=(CommonToken)Match(input,ID,Follow._ID_in_createTableStatement2144); if (state.failed) return retval; 
 				if (state.backtracking == 0) stream_ID.Add(ID248);
 
-				DebugLocation(365, 21);
-				OPENPAREN249=(CommonToken)Match(input,OPENPAREN,Follow._OPENPAREN_in_createTableStatement2136); if (state.failed) return retval; 
+				DebugLocation(367, 21);
+				OPENPAREN249=(CommonToken)Match(input,OPENPAREN,Follow._OPENPAREN_in_createTableStatement2146); if (state.failed) return retval; 
 				if (state.backtracking == 0) stream_OPENPAREN.Add(OPENPAREN249);
 
-				DebugLocation(365, 31);
-				// Scrape.g:365:31: ( tableColumnArgs )*
+				DebugLocation(367, 31);
+				// Scrape.g:367:31: ( tableColumnArgs )*
 				try { DebugEnterSubRule(56);
 				while (true)
 				{
@@ -15322,10 +15324,10 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 					{
 					case 1:
 						DebugEnterAlt(1);
-						// Scrape.g:365:31: tableColumnArgs
+						// Scrape.g:367:31: tableColumnArgs
 						{
-						DebugLocation(365, 31);
-						PushFollow(Follow._tableColumnArgs_in_createTableStatement2138);
+						DebugLocation(367, 31);
+						PushFollow(Follow._tableColumnArgs_in_createTableStatement2148);
 						tableColumnArgs250=tableColumnArgs();
 						PopFollow();
 						if (state.failed) return retval;
@@ -15344,15 +15346,15 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 				} finally { DebugExitSubRule(56); }
 
-				DebugLocation(365, 48);
-				CLOSEPAREN251=(CommonToken)Match(input,CLOSEPAREN,Follow._CLOSEPAREN_in_createTableStatement2141); if (state.failed) return retval; 
+				DebugLocation(367, 48);
+				CLOSEPAREN251=(CommonToken)Match(input,CLOSEPAREN,Follow._CLOSEPAREN_in_createTableStatement2151); if (state.failed) return retval; 
 				if (state.backtracking == 0) stream_CLOSEPAREN.Add(CLOSEPAREN251);
 
 
 
 				{
 				// AST REWRITE
-				// elements: tableColumnArgs, ID
+				// elements: ID, tableColumnArgs
 				// token labels: 
 				// rule labels: retval
 				// token list labels: 
@@ -15363,22 +15365,22 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 				RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.Tree:null);
 
 				root_0 = (CommonTree)adaptor.Nil();
-				// 365:59: -> ^( BUFFER_TABLE ID ( tableColumnArgs )* )
+				// 367:59: -> ^( BUFFER_TABLE ID ( tableColumnArgs )* )
 				{
-					DebugLocation(365, 62);
-					// Scrape.g:365:62: ^( BUFFER_TABLE ID ( tableColumnArgs )* )
+					DebugLocation(367, 62);
+					// Scrape.g:367:62: ^( BUFFER_TABLE ID ( tableColumnArgs )* )
 					{
 					CommonTree root_1 = (CommonTree)adaptor.Nil();
-					DebugLocation(365, 64);
+					DebugLocation(367, 64);
 					root_1 = (CommonTree)adaptor.BecomeRoot((CommonTree)adaptor.Create(BUFFER_TABLE, "BUFFER_TABLE"), root_1);
 
-					DebugLocation(365, 77);
+					DebugLocation(367, 77);
 					adaptor.AddChild(root_1, stream_ID.NextNode());
-					DebugLocation(365, 80);
-					// Scrape.g:365:80: ( tableColumnArgs )*
+					DebugLocation(367, 80);
+					// Scrape.g:367:80: ( tableColumnArgs )*
 					while ( stream_tableColumnArgs.HasNext )
 					{
-						DebugLocation(365, 80);
+						DebugLocation(367, 80);
 						adaptor.AddChild(root_1, stream_tableColumnArgs.NextTree());
 
 					}
@@ -15397,26 +15399,26 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 				break;
 			case 3:
 				DebugEnterAlt(3);
-				// Scrape.g:366:4: CREATE MSSQL ID OPENPAREN ( tableColumnArgs )* CLOSEPAREN sqlTableWithStatement
+				// Scrape.g:368:4: CREATE MSSQL ID OPENPAREN ( tableColumnArgs )* CLOSEPAREN sqlTableWithStatement
 				{
-				DebugLocation(366, 4);
-				CREATE252=(CommonToken)Match(input,CREATE,Follow._CREATE_in_createTableStatement2157); if (state.failed) return retval; 
+				DebugLocation(368, 4);
+				CREATE252=(CommonToken)Match(input,CREATE,Follow._CREATE_in_createTableStatement2167); if (state.failed) return retval; 
 				if (state.backtracking == 0) stream_CREATE.Add(CREATE252);
 
-				DebugLocation(366, 11);
-				MSSQL253=(CommonToken)Match(input,MSSQL,Follow._MSSQL_in_createTableStatement2159); if (state.failed) return retval; 
+				DebugLocation(368, 11);
+				MSSQL253=(CommonToken)Match(input,MSSQL,Follow._MSSQL_in_createTableStatement2169); if (state.failed) return retval; 
 				if (state.backtracking == 0) stream_MSSQL.Add(MSSQL253);
 
-				DebugLocation(366, 17);
-				ID254=(CommonToken)Match(input,ID,Follow._ID_in_createTableStatement2161); if (state.failed) return retval; 
+				DebugLocation(368, 17);
+				ID254=(CommonToken)Match(input,ID,Follow._ID_in_createTableStatement2171); if (state.failed) return retval; 
 				if (state.backtracking == 0) stream_ID.Add(ID254);
 
-				DebugLocation(366, 20);
-				OPENPAREN255=(CommonToken)Match(input,OPENPAREN,Follow._OPENPAREN_in_createTableStatement2163); if (state.failed) return retval; 
+				DebugLocation(368, 20);
+				OPENPAREN255=(CommonToken)Match(input,OPENPAREN,Follow._OPENPAREN_in_createTableStatement2173); if (state.failed) return retval; 
 				if (state.backtracking == 0) stream_OPENPAREN.Add(OPENPAREN255);
 
-				DebugLocation(366, 30);
-				// Scrape.g:366:30: ( tableColumnArgs )*
+				DebugLocation(368, 30);
+				// Scrape.g:368:30: ( tableColumnArgs )*
 				try { DebugEnterSubRule(57);
 				while (true)
 				{
@@ -15435,10 +15437,10 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 					{
 					case 1:
 						DebugEnterAlt(1);
-						// Scrape.g:366:30: tableColumnArgs
+						// Scrape.g:368:30: tableColumnArgs
 						{
-						DebugLocation(366, 30);
-						PushFollow(Follow._tableColumnArgs_in_createTableStatement2165);
+						DebugLocation(368, 30);
+						PushFollow(Follow._tableColumnArgs_in_createTableStatement2175);
 						tableColumnArgs256=tableColumnArgs();
 						PopFollow();
 						if (state.failed) return retval;
@@ -15457,12 +15459,12 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 				} finally { DebugExitSubRule(57); }
 
-				DebugLocation(366, 47);
-				CLOSEPAREN257=(CommonToken)Match(input,CLOSEPAREN,Follow._CLOSEPAREN_in_createTableStatement2168); if (state.failed) return retval; 
+				DebugLocation(368, 47);
+				CLOSEPAREN257=(CommonToken)Match(input,CLOSEPAREN,Follow._CLOSEPAREN_in_createTableStatement2178); if (state.failed) return retval; 
 				if (state.backtracking == 0) stream_CLOSEPAREN.Add(CLOSEPAREN257);
 
-				DebugLocation(366, 58);
-				PushFollow(Follow._sqlTableWithStatement_in_createTableStatement2170);
+				DebugLocation(368, 58);
+				PushFollow(Follow._sqlTableWithStatement_in_createTableStatement2180);
 				sqlTableWithStatement258=sqlTableWithStatement();
 				PopFollow();
 				if (state.failed) return retval;
@@ -15471,7 +15473,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 				{
 				// AST REWRITE
-				// elements: sqlTableWithStatement, tableColumnArgs, ID
+				// elements: ID, sqlTableWithStatement, tableColumnArgs
 				// token labels: 
 				// rule labels: retval
 				// token list labels: 
@@ -15482,27 +15484,27 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 				RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.Tree:null);
 
 				root_0 = (CommonTree)adaptor.Nil();
-				// 366:80: -> ^( MSSQL_TABLE ID ( tableColumnArgs )* sqlTableWithStatement )
+				// 368:80: -> ^( MSSQL_TABLE ID ( tableColumnArgs )* sqlTableWithStatement )
 				{
-					DebugLocation(366, 83);
-					// Scrape.g:366:83: ^( MSSQL_TABLE ID ( tableColumnArgs )* sqlTableWithStatement )
+					DebugLocation(368, 83);
+					// Scrape.g:368:83: ^( MSSQL_TABLE ID ( tableColumnArgs )* sqlTableWithStatement )
 					{
 					CommonTree root_1 = (CommonTree)adaptor.Nil();
-					DebugLocation(366, 85);
+					DebugLocation(368, 85);
 					root_1 = (CommonTree)adaptor.BecomeRoot((CommonTree)adaptor.Create(MSSQL_TABLE, "MSSQL_TABLE"), root_1);
 
-					DebugLocation(366, 97);
+					DebugLocation(368, 97);
 					adaptor.AddChild(root_1, stream_ID.NextNode());
-					DebugLocation(366, 100);
-					// Scrape.g:366:100: ( tableColumnArgs )*
+					DebugLocation(368, 100);
+					// Scrape.g:368:100: ( tableColumnArgs )*
 					while ( stream_tableColumnArgs.HasNext )
 					{
-						DebugLocation(366, 100);
+						DebugLocation(368, 100);
 						adaptor.AddChild(root_1, stream_tableColumnArgs.NextTree());
 
 					}
 					stream_tableColumnArgs.Reset();
-					DebugLocation(366, 117);
+					DebugLocation(368, 117);
 					adaptor.AddChild(root_1, stream_sqlTableWithStatement.NextTree());
 
 					adaptor.AddChild(root_0, root_1);
@@ -15538,7 +15540,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 			LeaveRule("createTableStatement", 59);
 			LeaveRule_createTableStatement();
 		}
-		DebugLocation(367, 1);
+		DebugLocation(369, 1);
 		} finally { DebugExitRule(GrammarFileName, "createTableStatement"); }
 		return retval;
 
@@ -15548,7 +15550,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 	partial void EnterRule_fileTableLocation();
 	partial void LeaveRule_fileTableLocation();
 	// $ANTLR start "fileTableLocation"
-	// Scrape.g:369:1: fileTableLocation : LOCATION ^ mathExpression ;
+	// Scrape.g:371:1: fileTableLocation : LOCATION ^ mathExpression ;
 	[GrammarRule("fileTableLocation")]
 	private AstParserRuleReturnScope<CommonTree, CommonToken> fileTableLocation()
 	{
@@ -15565,23 +15567,23 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 		CommonTree LOCATION259_tree = default(CommonTree);
 		try { DebugEnterRule(GrammarFileName, "fileTableLocation");
-		DebugLocation(369, 1);
+		DebugLocation(371, 1);
 		try
 		{
-			// Scrape.g:370:2: ( LOCATION ^ mathExpression )
+			// Scrape.g:372:2: ( LOCATION ^ mathExpression )
 			DebugEnterAlt(1);
-			// Scrape.g:370:4: LOCATION ^ mathExpression
+			// Scrape.g:372:4: LOCATION ^ mathExpression
 			{
 			root_0 = (CommonTree)adaptor.Nil();
 
-			DebugLocation(370, 12);
-			LOCATION259=(CommonToken)Match(input,LOCATION,Follow._LOCATION_in_fileTableLocation2194); if (state.failed) return retval;
+			DebugLocation(372, 12);
+			LOCATION259=(CommonToken)Match(input,LOCATION,Follow._LOCATION_in_fileTableLocation2204); if (state.failed) return retval;
 			if (state.backtracking == 0) {
 			LOCATION259_tree = (CommonTree)adaptor.Create(LOCATION259);
 			root_0 = (CommonTree)adaptor.BecomeRoot(LOCATION259_tree, root_0);
 			}
-			DebugLocation(370, 14);
-			PushFollow(Follow._mathExpression_in_fileTableLocation2197);
+			DebugLocation(372, 14);
+			PushFollow(Follow._mathExpression_in_fileTableLocation2207);
 			mathExpression260=mathExpression();
 			PopFollow();
 			if (state.failed) return retval;
@@ -15609,7 +15611,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 			LeaveRule("fileTableLocation", 60);
 			LeaveRule_fileTableLocation();
 		}
-		DebugLocation(371, 1);
+		DebugLocation(373, 1);
 		} finally { DebugExitRule(GrammarFileName, "fileTableLocation"); }
 		return retval;
 
@@ -15619,7 +15621,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 	partial void EnterRule_sqlTableWithStatement();
 	partial void LeaveRule_sqlTableWithStatement();
 	// $ANTLR start "sqlTableWithStatement"
-	// Scrape.g:373:1: sqlTableWithStatement : WITH OPENPAREN sqlTableWithVariablesStatement CLOSEPAREN -> ^( WITH sqlTableWithVariablesStatement ) ;
+	// Scrape.g:375:1: sqlTableWithStatement : WITH OPENPAREN sqlTableWithVariablesStatement CLOSEPAREN -> ^( WITH sqlTableWithVariablesStatement ) ;
 	[GrammarRule("sqlTableWithStatement")]
 	private AstParserRuleReturnScope<CommonTree, CommonToken> sqlTableWithStatement()
 	{
@@ -15644,29 +15646,29 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 		RewriteRuleITokenStream stream_WITH=new RewriteRuleITokenStream(adaptor,"token WITH");
 		RewriteRuleSubtreeStream stream_sqlTableWithVariablesStatement=new RewriteRuleSubtreeStream(adaptor,"rule sqlTableWithVariablesStatement");
 		try { DebugEnterRule(GrammarFileName, "sqlTableWithStatement");
-		DebugLocation(373, 1);
+		DebugLocation(375, 1);
 		try
 		{
-			// Scrape.g:374:2: ( WITH OPENPAREN sqlTableWithVariablesStatement CLOSEPAREN -> ^( WITH sqlTableWithVariablesStatement ) )
+			// Scrape.g:376:2: ( WITH OPENPAREN sqlTableWithVariablesStatement CLOSEPAREN -> ^( WITH sqlTableWithVariablesStatement ) )
 			DebugEnterAlt(1);
-			// Scrape.g:374:4: WITH OPENPAREN sqlTableWithVariablesStatement CLOSEPAREN
+			// Scrape.g:376:4: WITH OPENPAREN sqlTableWithVariablesStatement CLOSEPAREN
 			{
-			DebugLocation(374, 4);
-			WITH261=(CommonToken)Match(input,WITH,Follow._WITH_in_sqlTableWithStatement2209); if (state.failed) return retval; 
+			DebugLocation(376, 4);
+			WITH261=(CommonToken)Match(input,WITH,Follow._WITH_in_sqlTableWithStatement2219); if (state.failed) return retval; 
 			if (state.backtracking == 0) stream_WITH.Add(WITH261);
 
-			DebugLocation(374, 9);
-			OPENPAREN262=(CommonToken)Match(input,OPENPAREN,Follow._OPENPAREN_in_sqlTableWithStatement2211); if (state.failed) return retval; 
+			DebugLocation(376, 9);
+			OPENPAREN262=(CommonToken)Match(input,OPENPAREN,Follow._OPENPAREN_in_sqlTableWithStatement2221); if (state.failed) return retval; 
 			if (state.backtracking == 0) stream_OPENPAREN.Add(OPENPAREN262);
 
-			DebugLocation(374, 19);
-			PushFollow(Follow._sqlTableWithVariablesStatement_in_sqlTableWithStatement2213);
+			DebugLocation(376, 19);
+			PushFollow(Follow._sqlTableWithVariablesStatement_in_sqlTableWithStatement2223);
 			sqlTableWithVariablesStatement263=sqlTableWithVariablesStatement();
 			PopFollow();
 			if (state.failed) return retval;
 			if (state.backtracking == 0) stream_sqlTableWithVariablesStatement.Add(sqlTableWithVariablesStatement263.Tree);
-			DebugLocation(374, 50);
-			CLOSEPAREN264=(CommonToken)Match(input,CLOSEPAREN,Follow._CLOSEPAREN_in_sqlTableWithStatement2215); if (state.failed) return retval; 
+			DebugLocation(376, 50);
+			CLOSEPAREN264=(CommonToken)Match(input,CLOSEPAREN,Follow._CLOSEPAREN_in_sqlTableWithStatement2225); if (state.failed) return retval; 
 			if (state.backtracking == 0) stream_CLOSEPAREN.Add(CLOSEPAREN264);
 
 
@@ -15684,16 +15686,16 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.Tree:null);
 
 			root_0 = (CommonTree)adaptor.Nil();
-			// 374:61: -> ^( WITH sqlTableWithVariablesStatement )
+			// 376:61: -> ^( WITH sqlTableWithVariablesStatement )
 			{
-				DebugLocation(374, 64);
-				// Scrape.g:374:64: ^( WITH sqlTableWithVariablesStatement )
+				DebugLocation(376, 64);
+				// Scrape.g:376:64: ^( WITH sqlTableWithVariablesStatement )
 				{
 				CommonTree root_1 = (CommonTree)adaptor.Nil();
-				DebugLocation(374, 66);
+				DebugLocation(376, 66);
 				root_1 = (CommonTree)adaptor.BecomeRoot(stream_WITH.NextNode(), root_1);
 
-				DebugLocation(374, 71);
+				DebugLocation(376, 71);
 				adaptor.AddChild(root_1, stream_sqlTableWithVariablesStatement.NextTree());
 
 				adaptor.AddChild(root_0, root_1);
@@ -15727,7 +15729,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 			LeaveRule("sqlTableWithStatement", 61);
 			LeaveRule_sqlTableWithStatement();
 		}
-		DebugLocation(375, 1);
+		DebugLocation(377, 1);
 		} finally { DebugExitRule(GrammarFileName, "sqlTableWithStatement"); }
 		return retval;
 
@@ -15737,7 +15739,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 	partial void EnterRule_sqlTableWithVariablesStatement();
 	partial void LeaveRule_sqlTableWithVariablesStatement();
 	// $ANTLR start "sqlTableWithVariablesStatement"
-	// Scrape.g:377:1: sqlTableWithVariablesStatement : ( sqlTableWithVariableStatement COMMA )* sqlTableWithVariableStatement -> ( sqlTableWithVariableStatement )* ;
+	// Scrape.g:379:1: sqlTableWithVariablesStatement : ( sqlTableWithVariableStatement COMMA )* sqlTableWithVariableStatement -> ( sqlTableWithVariableStatement )* ;
 	[GrammarRule("sqlTableWithVariablesStatement")]
 	private AstParserRuleReturnScope<CommonTree, CommonToken> sqlTableWithVariablesStatement()
 	{
@@ -15757,15 +15759,15 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 		RewriteRuleITokenStream stream_COMMA=new RewriteRuleITokenStream(adaptor,"token COMMA");
 		RewriteRuleSubtreeStream stream_sqlTableWithVariableStatement=new RewriteRuleSubtreeStream(adaptor,"rule sqlTableWithVariableStatement");
 		try { DebugEnterRule(GrammarFileName, "sqlTableWithVariablesStatement");
-		DebugLocation(377, 1);
+		DebugLocation(379, 1);
 		try
 		{
-			// Scrape.g:378:2: ( ( sqlTableWithVariableStatement COMMA )* sqlTableWithVariableStatement -> ( sqlTableWithVariableStatement )* )
+			// Scrape.g:380:2: ( ( sqlTableWithVariableStatement COMMA )* sqlTableWithVariableStatement -> ( sqlTableWithVariableStatement )* )
 			DebugEnterAlt(1);
-			// Scrape.g:378:4: ( sqlTableWithVariableStatement COMMA )* sqlTableWithVariableStatement
+			// Scrape.g:380:4: ( sqlTableWithVariableStatement COMMA )* sqlTableWithVariableStatement
 			{
-			DebugLocation(378, 4);
-			// Scrape.g:378:4: ( sqlTableWithVariableStatement COMMA )*
+			DebugLocation(380, 4);
+			// Scrape.g:380:4: ( sqlTableWithVariableStatement COMMA )*
 			try { DebugEnterSubRule(59);
 			while (true)
 			{
@@ -15805,16 +15807,16 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 				{
 				case 1:
 					DebugEnterAlt(1);
-					// Scrape.g:378:5: sqlTableWithVariableStatement COMMA
+					// Scrape.g:380:5: sqlTableWithVariableStatement COMMA
 					{
-					DebugLocation(378, 5);
-					PushFollow(Follow._sqlTableWithVariableStatement_in_sqlTableWithVariablesStatement2236);
+					DebugLocation(380, 5);
+					PushFollow(Follow._sqlTableWithVariableStatement_in_sqlTableWithVariablesStatement2246);
 					sqlTableWithVariableStatement265=sqlTableWithVariableStatement();
 					PopFollow();
 					if (state.failed) return retval;
 					if (state.backtracking == 0) stream_sqlTableWithVariableStatement.Add(sqlTableWithVariableStatement265.Tree);
-					DebugLocation(378, 35);
-					COMMA266=(CommonToken)Match(input,COMMA,Follow._COMMA_in_sqlTableWithVariablesStatement2238); if (state.failed) return retval; 
+					DebugLocation(380, 35);
+					COMMA266=(CommonToken)Match(input,COMMA,Follow._COMMA_in_sqlTableWithVariablesStatement2248); if (state.failed) return retval; 
 					if (state.backtracking == 0) stream_COMMA.Add(COMMA266);
 
 
@@ -15831,8 +15833,8 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			} finally { DebugExitSubRule(59); }
 
-			DebugLocation(378, 43);
-			PushFollow(Follow._sqlTableWithVariableStatement_in_sqlTableWithVariablesStatement2242);
+			DebugLocation(380, 43);
+			PushFollow(Follow._sqlTableWithVariableStatement_in_sqlTableWithVariablesStatement2252);
 			sqlTableWithVariableStatement267=sqlTableWithVariableStatement();
 			PopFollow();
 			if (state.failed) return retval;
@@ -15852,13 +15854,13 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.Tree:null);
 
 			root_0 = (CommonTree)adaptor.Nil();
-			// 378:73: -> ( sqlTableWithVariableStatement )*
+			// 380:73: -> ( sqlTableWithVariableStatement )*
 			{
-				DebugLocation(378, 76);
-				// Scrape.g:378:76: ( sqlTableWithVariableStatement )*
+				DebugLocation(380, 76);
+				// Scrape.g:380:76: ( sqlTableWithVariableStatement )*
 				while ( stream_sqlTableWithVariableStatement.HasNext )
 				{
-					DebugLocation(378, 76);
+					DebugLocation(380, 76);
 					adaptor.AddChild(root_0, stream_sqlTableWithVariableStatement.NextTree());
 
 				}
@@ -15892,7 +15894,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 			LeaveRule("sqlTableWithVariablesStatement", 62);
 			LeaveRule_sqlTableWithVariablesStatement();
 		}
-		DebugLocation(379, 1);
+		DebugLocation(381, 1);
 		} finally { DebugExitRule(GrammarFileName, "sqlTableWithVariablesStatement"); }
 		return retval;
 
@@ -15902,7 +15904,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 	partial void EnterRule_sqlTableWithVariableStatement();
 	partial void LeaveRule_sqlTableWithVariableStatement();
 	// $ANTLR start "sqlTableWithVariableStatement"
-	// Scrape.g:381:1: sqlTableWithVariableStatement : ( CONNECTIONSTRING | DBTABLE ) ^ EQUALS ! STRING_LITERAL ;
+	// Scrape.g:383:1: sqlTableWithVariableStatement : ( CONNECTIONSTRING | DBTABLE ) ^ EQUALS ! STRING_LITERAL ;
 	[GrammarRule("sqlTableWithVariableStatement")]
 	private AstParserRuleReturnScope<CommonTree, CommonToken> sqlTableWithVariableStatement()
 	{
@@ -15922,16 +15924,16 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 		CommonTree EQUALS269_tree = default(CommonTree);
 		CommonTree STRING_LITERAL270_tree = default(CommonTree);
 		try { DebugEnterRule(GrammarFileName, "sqlTableWithVariableStatement");
-		DebugLocation(381, 1);
+		DebugLocation(383, 1);
 		try
 		{
-			// Scrape.g:382:2: ( ( CONNECTIONSTRING | DBTABLE ) ^ EQUALS ! STRING_LITERAL )
+			// Scrape.g:384:2: ( ( CONNECTIONSTRING | DBTABLE ) ^ EQUALS ! STRING_LITERAL )
 			DebugEnterAlt(1);
-			// Scrape.g:382:4: ( CONNECTIONSTRING | DBTABLE ) ^ EQUALS ! STRING_LITERAL
+			// Scrape.g:384:4: ( CONNECTIONSTRING | DBTABLE ) ^ EQUALS ! STRING_LITERAL
 			{
 			root_0 = (CommonTree)adaptor.Nil();
 
-			DebugLocation(382, 32);
+			DebugLocation(384, 32);
 
 			set268=(CommonToken)input.LT(1);
 			set268=(CommonToken)input.LT(1);
@@ -15949,10 +15951,10 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 				throw mse;
 			}
 
-			DebugLocation(382, 40);
-			EQUALS269=(CommonToken)Match(input,EQUALS,Follow._EQUALS_in_sqlTableWithVariableStatement2268); if (state.failed) return retval;
-			DebugLocation(382, 42);
-			STRING_LITERAL270=(CommonToken)Match(input,STRING_LITERAL,Follow._STRING_LITERAL_in_sqlTableWithVariableStatement2271); if (state.failed) return retval;
+			DebugLocation(384, 40);
+			EQUALS269=(CommonToken)Match(input,EQUALS,Follow._EQUALS_in_sqlTableWithVariableStatement2278); if (state.failed) return retval;
+			DebugLocation(384, 42);
+			STRING_LITERAL270=(CommonToken)Match(input,STRING_LITERAL,Follow._STRING_LITERAL_in_sqlTableWithVariableStatement2281); if (state.failed) return retval;
 			if (state.backtracking == 0) {
 			STRING_LITERAL270_tree = (CommonTree)adaptor.Create(STRING_LITERAL270);
 			adaptor.AddChild(root_0, STRING_LITERAL270_tree);
@@ -15980,7 +15982,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 			LeaveRule("sqlTableWithVariableStatement", 63);
 			LeaveRule_sqlTableWithVariableStatement();
 		}
-		DebugLocation(383, 1);
+		DebugLocation(385, 1);
 		} finally { DebugExitRule(GrammarFileName, "sqlTableWithVariableStatement"); }
 		return retval;
 
@@ -15990,7 +15992,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 	partial void EnterRule_fileTableWithStatement();
 	partial void LeaveRule_fileTableWithStatement();
 	// $ANTLR start "fileTableWithStatement"
-	// Scrape.g:385:1: fileTableWithStatement : WITH OPENPAREN ( fileTableWithVariablesStatement )* CLOSEPAREN -> ^( WITH ( fileTableWithVariablesStatement )* ) ;
+	// Scrape.g:387:1: fileTableWithStatement : WITH OPENPAREN ( fileTableWithVariablesStatement )* CLOSEPAREN -> ^( WITH ( fileTableWithVariablesStatement )* ) ;
 	[GrammarRule("fileTableWithStatement")]
 	private AstParserRuleReturnScope<CommonTree, CommonToken> fileTableWithStatement()
 	{
@@ -16015,23 +16017,23 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 		RewriteRuleITokenStream stream_WITH=new RewriteRuleITokenStream(adaptor,"token WITH");
 		RewriteRuleSubtreeStream stream_fileTableWithVariablesStatement=new RewriteRuleSubtreeStream(adaptor,"rule fileTableWithVariablesStatement");
 		try { DebugEnterRule(GrammarFileName, "fileTableWithStatement");
-		DebugLocation(385, 1);
+		DebugLocation(387, 1);
 		try
 		{
-			// Scrape.g:386:2: ( WITH OPENPAREN ( fileTableWithVariablesStatement )* CLOSEPAREN -> ^( WITH ( fileTableWithVariablesStatement )* ) )
+			// Scrape.g:388:2: ( WITH OPENPAREN ( fileTableWithVariablesStatement )* CLOSEPAREN -> ^( WITH ( fileTableWithVariablesStatement )* ) )
 			DebugEnterAlt(1);
-			// Scrape.g:386:4: WITH OPENPAREN ( fileTableWithVariablesStatement )* CLOSEPAREN
+			// Scrape.g:388:4: WITH OPENPAREN ( fileTableWithVariablesStatement )* CLOSEPAREN
 			{
-			DebugLocation(386, 4);
-			WITH271=(CommonToken)Match(input,WITH,Follow._WITH_in_fileTableWithStatement2282); if (state.failed) return retval; 
+			DebugLocation(388, 4);
+			WITH271=(CommonToken)Match(input,WITH,Follow._WITH_in_fileTableWithStatement2292); if (state.failed) return retval; 
 			if (state.backtracking == 0) stream_WITH.Add(WITH271);
 
-			DebugLocation(386, 9);
-			OPENPAREN272=(CommonToken)Match(input,OPENPAREN,Follow._OPENPAREN_in_fileTableWithStatement2284); if (state.failed) return retval; 
+			DebugLocation(388, 9);
+			OPENPAREN272=(CommonToken)Match(input,OPENPAREN,Follow._OPENPAREN_in_fileTableWithStatement2294); if (state.failed) return retval; 
 			if (state.backtracking == 0) stream_OPENPAREN.Add(OPENPAREN272);
 
-			DebugLocation(386, 19);
-			// Scrape.g:386:19: ( fileTableWithVariablesStatement )*
+			DebugLocation(388, 19);
+			// Scrape.g:388:19: ( fileTableWithVariablesStatement )*
 			try { DebugEnterSubRule(60);
 			while (true)
 			{
@@ -16050,10 +16052,10 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 				{
 				case 1:
 					DebugEnterAlt(1);
-					// Scrape.g:386:19: fileTableWithVariablesStatement
+					// Scrape.g:388:19: fileTableWithVariablesStatement
 					{
-					DebugLocation(386, 19);
-					PushFollow(Follow._fileTableWithVariablesStatement_in_fileTableWithStatement2286);
+					DebugLocation(388, 19);
+					PushFollow(Follow._fileTableWithVariablesStatement_in_fileTableWithStatement2296);
 					fileTableWithVariablesStatement273=fileTableWithVariablesStatement();
 					PopFollow();
 					if (state.failed) return retval;
@@ -16072,8 +16074,8 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			} finally { DebugExitSubRule(60); }
 
-			DebugLocation(386, 52);
-			CLOSEPAREN274=(CommonToken)Match(input,CLOSEPAREN,Follow._CLOSEPAREN_in_fileTableWithStatement2289); if (state.failed) return retval; 
+			DebugLocation(388, 52);
+			CLOSEPAREN274=(CommonToken)Match(input,CLOSEPAREN,Follow._CLOSEPAREN_in_fileTableWithStatement2299); if (state.failed) return retval; 
 			if (state.backtracking == 0) stream_CLOSEPAREN.Add(CLOSEPAREN274);
 
 
@@ -16091,20 +16093,20 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.Tree:null);
 
 			root_0 = (CommonTree)adaptor.Nil();
-			// 386:63: -> ^( WITH ( fileTableWithVariablesStatement )* )
+			// 388:63: -> ^( WITH ( fileTableWithVariablesStatement )* )
 			{
-				DebugLocation(386, 66);
-				// Scrape.g:386:66: ^( WITH ( fileTableWithVariablesStatement )* )
+				DebugLocation(388, 66);
+				// Scrape.g:388:66: ^( WITH ( fileTableWithVariablesStatement )* )
 				{
 				CommonTree root_1 = (CommonTree)adaptor.Nil();
-				DebugLocation(386, 68);
+				DebugLocation(388, 68);
 				root_1 = (CommonTree)adaptor.BecomeRoot(stream_WITH.NextNode(), root_1);
 
-				DebugLocation(386, 73);
-				// Scrape.g:386:73: ( fileTableWithVariablesStatement )*
+				DebugLocation(388, 73);
+				// Scrape.g:388:73: ( fileTableWithVariablesStatement )*
 				while ( stream_fileTableWithVariablesStatement.HasNext )
 				{
-					DebugLocation(386, 73);
+					DebugLocation(388, 73);
 					adaptor.AddChild(root_1, stream_fileTableWithVariablesStatement.NextTree());
 
 				}
@@ -16141,7 +16143,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 			LeaveRule("fileTableWithStatement", 64);
 			LeaveRule_fileTableWithStatement();
 		}
-		DebugLocation(387, 1);
+		DebugLocation(389, 1);
 		} finally { DebugExitRule(GrammarFileName, "fileTableWithStatement"); }
 		return retval;
 
@@ -16151,7 +16153,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 	partial void EnterRule_fileTableWithVariablesStatement();
 	partial void LeaveRule_fileTableWithVariablesStatement();
 	// $ANTLR start "fileTableWithVariablesStatement"
-	// Scrape.g:389:1: fileTableWithVariablesStatement : ( fileTableWithVariableStatement COMMA )* fileTableWithVariableStatement -> ( fileTableWithVariableStatement )* ;
+	// Scrape.g:391:1: fileTableWithVariablesStatement : ( fileTableWithVariableStatement COMMA )* fileTableWithVariableStatement -> ( fileTableWithVariableStatement )* ;
 	[GrammarRule("fileTableWithVariablesStatement")]
 	private AstParserRuleReturnScope<CommonTree, CommonToken> fileTableWithVariablesStatement()
 	{
@@ -16171,15 +16173,15 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 		RewriteRuleITokenStream stream_COMMA=new RewriteRuleITokenStream(adaptor,"token COMMA");
 		RewriteRuleSubtreeStream stream_fileTableWithVariableStatement=new RewriteRuleSubtreeStream(adaptor,"rule fileTableWithVariableStatement");
 		try { DebugEnterRule(GrammarFileName, "fileTableWithVariablesStatement");
-		DebugLocation(389, 1);
+		DebugLocation(391, 1);
 		try
 		{
-			// Scrape.g:390:2: ( ( fileTableWithVariableStatement COMMA )* fileTableWithVariableStatement -> ( fileTableWithVariableStatement )* )
+			// Scrape.g:392:2: ( ( fileTableWithVariableStatement COMMA )* fileTableWithVariableStatement -> ( fileTableWithVariableStatement )* )
 			DebugEnterAlt(1);
-			// Scrape.g:390:4: ( fileTableWithVariableStatement COMMA )* fileTableWithVariableStatement
+			// Scrape.g:392:4: ( fileTableWithVariableStatement COMMA )* fileTableWithVariableStatement
 			{
-			DebugLocation(390, 4);
-			// Scrape.g:390:4: ( fileTableWithVariableStatement COMMA )*
+			DebugLocation(392, 4);
+			// Scrape.g:392:4: ( fileTableWithVariableStatement COMMA )*
 			try { DebugEnterSubRule(61);
 			while (true)
 			{
@@ -16219,16 +16221,16 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 				{
 				case 1:
 					DebugEnterAlt(1);
-					// Scrape.g:390:5: fileTableWithVariableStatement COMMA
+					// Scrape.g:392:5: fileTableWithVariableStatement COMMA
 					{
-					DebugLocation(390, 5);
-					PushFollow(Follow._fileTableWithVariableStatement_in_fileTableWithVariablesStatement2312);
+					DebugLocation(392, 5);
+					PushFollow(Follow._fileTableWithVariableStatement_in_fileTableWithVariablesStatement2322);
 					fileTableWithVariableStatement275=fileTableWithVariableStatement();
 					PopFollow();
 					if (state.failed) return retval;
 					if (state.backtracking == 0) stream_fileTableWithVariableStatement.Add(fileTableWithVariableStatement275.Tree);
-					DebugLocation(390, 36);
-					COMMA276=(CommonToken)Match(input,COMMA,Follow._COMMA_in_fileTableWithVariablesStatement2314); if (state.failed) return retval; 
+					DebugLocation(392, 36);
+					COMMA276=(CommonToken)Match(input,COMMA,Follow._COMMA_in_fileTableWithVariablesStatement2324); if (state.failed) return retval; 
 					if (state.backtracking == 0) stream_COMMA.Add(COMMA276);
 
 
@@ -16245,8 +16247,8 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			} finally { DebugExitSubRule(61); }
 
-			DebugLocation(390, 44);
-			PushFollow(Follow._fileTableWithVariableStatement_in_fileTableWithVariablesStatement2318);
+			DebugLocation(392, 44);
+			PushFollow(Follow._fileTableWithVariableStatement_in_fileTableWithVariablesStatement2328);
 			fileTableWithVariableStatement277=fileTableWithVariableStatement();
 			PopFollow();
 			if (state.failed) return retval;
@@ -16266,13 +16268,13 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.Tree:null);
 
 			root_0 = (CommonTree)adaptor.Nil();
-			// 390:75: -> ( fileTableWithVariableStatement )*
+			// 392:75: -> ( fileTableWithVariableStatement )*
 			{
-				DebugLocation(390, 78);
-				// Scrape.g:390:78: ( fileTableWithVariableStatement )*
+				DebugLocation(392, 78);
+				// Scrape.g:392:78: ( fileTableWithVariableStatement )*
 				while ( stream_fileTableWithVariableStatement.HasNext )
 				{
-					DebugLocation(390, 78);
+					DebugLocation(392, 78);
 					adaptor.AddChild(root_0, stream_fileTableWithVariableStatement.NextTree());
 
 				}
@@ -16306,7 +16308,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 			LeaveRule("fileTableWithVariablesStatement", 65);
 			LeaveRule_fileTableWithVariablesStatement();
 		}
-		DebugLocation(391, 1);
+		DebugLocation(393, 1);
 		} finally { DebugExitRule(GrammarFileName, "fileTableWithVariablesStatement"); }
 		return retval;
 
@@ -16316,7 +16318,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 	partial void EnterRule_fileTableWithVariableStatement();
 	partial void LeaveRule_fileTableWithVariableStatement();
 	// $ANTLR start "fileTableWithVariableStatement"
-	// Scrape.g:393:1: fileTableWithVariableStatement : ( FIELD_TERMINATOR | ROW_TERMINATOR ) ^ EQUALS ! STRING_LITERAL ;
+	// Scrape.g:395:1: fileTableWithVariableStatement : ( FIELD_TERMINATOR | ROW_TERMINATOR ) ^ EQUALS ! STRING_LITERAL ;
 	[GrammarRule("fileTableWithVariableStatement")]
 	private AstParserRuleReturnScope<CommonTree, CommonToken> fileTableWithVariableStatement()
 	{
@@ -16336,16 +16338,16 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 		CommonTree EQUALS279_tree = default(CommonTree);
 		CommonTree STRING_LITERAL280_tree = default(CommonTree);
 		try { DebugEnterRule(GrammarFileName, "fileTableWithVariableStatement");
-		DebugLocation(393, 1);
+		DebugLocation(395, 1);
 		try
 		{
-			// Scrape.g:394:2: ( ( FIELD_TERMINATOR | ROW_TERMINATOR ) ^ EQUALS ! STRING_LITERAL )
+			// Scrape.g:396:2: ( ( FIELD_TERMINATOR | ROW_TERMINATOR ) ^ EQUALS ! STRING_LITERAL )
 			DebugEnterAlt(1);
-			// Scrape.g:394:4: ( FIELD_TERMINATOR | ROW_TERMINATOR ) ^ EQUALS ! STRING_LITERAL
+			// Scrape.g:396:4: ( FIELD_TERMINATOR | ROW_TERMINATOR ) ^ EQUALS ! STRING_LITERAL
 			{
 			root_0 = (CommonTree)adaptor.Nil();
 
-			DebugLocation(394, 39);
+			DebugLocation(396, 39);
 
 			set278=(CommonToken)input.LT(1);
 			set278=(CommonToken)input.LT(1);
@@ -16363,10 +16365,10 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 				throw mse;
 			}
 
-			DebugLocation(394, 47);
-			EQUALS279=(CommonToken)Match(input,EQUALS,Follow._EQUALS_in_fileTableWithVariableStatement2343); if (state.failed) return retval;
-			DebugLocation(394, 49);
-			STRING_LITERAL280=(CommonToken)Match(input,STRING_LITERAL,Follow._STRING_LITERAL_in_fileTableWithVariableStatement2346); if (state.failed) return retval;
+			DebugLocation(396, 47);
+			EQUALS279=(CommonToken)Match(input,EQUALS,Follow._EQUALS_in_fileTableWithVariableStatement2353); if (state.failed) return retval;
+			DebugLocation(396, 49);
+			STRING_LITERAL280=(CommonToken)Match(input,STRING_LITERAL,Follow._STRING_LITERAL_in_fileTableWithVariableStatement2356); if (state.failed) return retval;
 			if (state.backtracking == 0) {
 			STRING_LITERAL280_tree = (CommonTree)adaptor.Create(STRING_LITERAL280);
 			adaptor.AddChild(root_0, STRING_LITERAL280_tree);
@@ -16394,7 +16396,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 			LeaveRule("fileTableWithVariableStatement", 66);
 			LeaveRule_fileTableWithVariableStatement();
 		}
-		DebugLocation(395, 1);
+		DebugLocation(397, 1);
 		} finally { DebugExitRule(GrammarFileName, "fileTableWithVariableStatement"); }
 		return retval;
 
@@ -16404,7 +16406,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 	partial void EnterRule_tableColumnArgs();
 	partial void LeaveRule_tableColumnArgs();
 	// $ANTLR start "tableColumnArgs"
-	// Scrape.g:397:1: tableColumnArgs : ( tableColumnArg COMMA )* tableColumnArg -> ^( TABLE_COLUMN_ARGS ( tableColumnArg )* ) ;
+	// Scrape.g:399:1: tableColumnArgs : ( tableColumnArg COMMA )* tableColumnArg -> ^( TABLE_COLUMN_ARGS ( tableColumnArg )* ) ;
 	[GrammarRule("tableColumnArgs")]
 	private AstParserRuleReturnScope<CommonTree, CommonToken> tableColumnArgs()
 	{
@@ -16424,15 +16426,15 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 		RewriteRuleITokenStream stream_COMMA=new RewriteRuleITokenStream(adaptor,"token COMMA");
 		RewriteRuleSubtreeStream stream_tableColumnArg=new RewriteRuleSubtreeStream(adaptor,"rule tableColumnArg");
 		try { DebugEnterRule(GrammarFileName, "tableColumnArgs");
-		DebugLocation(397, 1);
+		DebugLocation(399, 1);
 		try
 		{
-			// Scrape.g:398:2: ( ( tableColumnArg COMMA )* tableColumnArg -> ^( TABLE_COLUMN_ARGS ( tableColumnArg )* ) )
+			// Scrape.g:400:2: ( ( tableColumnArg COMMA )* tableColumnArg -> ^( TABLE_COLUMN_ARGS ( tableColumnArg )* ) )
 			DebugEnterAlt(1);
-			// Scrape.g:398:4: ( tableColumnArg COMMA )* tableColumnArg
+			// Scrape.g:400:4: ( tableColumnArg COMMA )* tableColumnArg
 			{
-			DebugLocation(398, 4);
-			// Scrape.g:398:4: ( tableColumnArg COMMA )*
+			DebugLocation(400, 4);
+			// Scrape.g:400:4: ( tableColumnArg COMMA )*
 			try { DebugEnterSubRule(62);
 			while (true)
 			{
@@ -16465,16 +16467,16 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 				{
 				case 1:
 					DebugEnterAlt(1);
-					// Scrape.g:398:5: tableColumnArg COMMA
+					// Scrape.g:400:5: tableColumnArg COMMA
 					{
-					DebugLocation(398, 5);
-					PushFollow(Follow._tableColumnArg_in_tableColumnArgs2358);
+					DebugLocation(400, 5);
+					PushFollow(Follow._tableColumnArg_in_tableColumnArgs2368);
 					tableColumnArg281=tableColumnArg();
 					PopFollow();
 					if (state.failed) return retval;
 					if (state.backtracking == 0) stream_tableColumnArg.Add(tableColumnArg281.Tree);
-					DebugLocation(398, 20);
-					COMMA282=(CommonToken)Match(input,COMMA,Follow._COMMA_in_tableColumnArgs2360); if (state.failed) return retval; 
+					DebugLocation(400, 20);
+					COMMA282=(CommonToken)Match(input,COMMA,Follow._COMMA_in_tableColumnArgs2370); if (state.failed) return retval; 
 					if (state.backtracking == 0) stream_COMMA.Add(COMMA282);
 
 
@@ -16491,8 +16493,8 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			} finally { DebugExitSubRule(62); }
 
-			DebugLocation(398, 28);
-			PushFollow(Follow._tableColumnArg_in_tableColumnArgs2364);
+			DebugLocation(400, 28);
+			PushFollow(Follow._tableColumnArg_in_tableColumnArgs2374);
 			tableColumnArg283=tableColumnArg();
 			PopFollow();
 			if (state.failed) return retval;
@@ -16512,20 +16514,20 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.Tree:null);
 
 			root_0 = (CommonTree)adaptor.Nil();
-			// 398:43: -> ^( TABLE_COLUMN_ARGS ( tableColumnArg )* )
+			// 400:43: -> ^( TABLE_COLUMN_ARGS ( tableColumnArg )* )
 			{
-				DebugLocation(398, 46);
-				// Scrape.g:398:46: ^( TABLE_COLUMN_ARGS ( tableColumnArg )* )
+				DebugLocation(400, 46);
+				// Scrape.g:400:46: ^( TABLE_COLUMN_ARGS ( tableColumnArg )* )
 				{
 				CommonTree root_1 = (CommonTree)adaptor.Nil();
-				DebugLocation(398, 48);
+				DebugLocation(400, 48);
 				root_1 = (CommonTree)adaptor.BecomeRoot((CommonTree)adaptor.Create(TABLE_COLUMN_ARGS, "TABLE_COLUMN_ARGS"), root_1);
 
-				DebugLocation(398, 66);
-				// Scrape.g:398:66: ( tableColumnArg )*
+				DebugLocation(400, 66);
+				// Scrape.g:400:66: ( tableColumnArg )*
 				while ( stream_tableColumnArg.HasNext )
 				{
-					DebugLocation(398, 66);
+					DebugLocation(400, 66);
 					adaptor.AddChild(root_1, stream_tableColumnArg.NextTree());
 
 				}
@@ -16562,7 +16564,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 			LeaveRule("tableColumnArgs", 67);
 			LeaveRule_tableColumnArgs();
 		}
-		DebugLocation(399, 1);
+		DebugLocation(401, 1);
 		} finally { DebugExitRule(GrammarFileName, "tableColumnArgs"); }
 		return retval;
 
@@ -16572,7 +16574,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 	partial void EnterRule_tableColumnArg();
 	partial void LeaveRule_tableColumnArg();
 	// $ANTLR start "tableColumnArg"
-	// Scrape.g:401:1: tableColumnArg : ID dataType -> ^( TABLE_COLUMN_ARG ID dataType ) ;
+	// Scrape.g:403:1: tableColumnArg : ID dataType -> ^( TABLE_COLUMN_ARG ID dataType ) ;
 	[GrammarRule("tableColumnArg")]
 	private AstParserRuleReturnScope<CommonTree, CommonToken> tableColumnArg()
 	{
@@ -16591,19 +16593,19 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 		RewriteRuleITokenStream stream_ID=new RewriteRuleITokenStream(adaptor,"token ID");
 		RewriteRuleSubtreeStream stream_dataType=new RewriteRuleSubtreeStream(adaptor,"rule dataType");
 		try { DebugEnterRule(GrammarFileName, "tableColumnArg");
-		DebugLocation(401, 1);
+		DebugLocation(403, 1);
 		try
 		{
-			// Scrape.g:402:2: ( ID dataType -> ^( TABLE_COLUMN_ARG ID dataType ) )
+			// Scrape.g:404:2: ( ID dataType -> ^( TABLE_COLUMN_ARG ID dataType ) )
 			DebugEnterAlt(1);
-			// Scrape.g:402:4: ID dataType
+			// Scrape.g:404:4: ID dataType
 			{
-			DebugLocation(402, 4);
-			ID284=(CommonToken)Match(input,ID,Follow._ID_in_tableColumnArg2385); if (state.failed) return retval; 
+			DebugLocation(404, 4);
+			ID284=(CommonToken)Match(input,ID,Follow._ID_in_tableColumnArg2395); if (state.failed) return retval; 
 			if (state.backtracking == 0) stream_ID.Add(ID284);
 
-			DebugLocation(402, 7);
-			PushFollow(Follow._dataType_in_tableColumnArg2387);
+			DebugLocation(404, 7);
+			PushFollow(Follow._dataType_in_tableColumnArg2397);
 			dataType285=dataType();
 			PopFollow();
 			if (state.failed) return retval;
@@ -16612,7 +16614,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: dataType, ID
+			// elements: ID, dataType
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -16623,18 +16625,18 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.Tree:null);
 
 			root_0 = (CommonTree)adaptor.Nil();
-			// 402:16: -> ^( TABLE_COLUMN_ARG ID dataType )
+			// 404:16: -> ^( TABLE_COLUMN_ARG ID dataType )
 			{
-				DebugLocation(402, 19);
-				// Scrape.g:402:19: ^( TABLE_COLUMN_ARG ID dataType )
+				DebugLocation(404, 19);
+				// Scrape.g:404:19: ^( TABLE_COLUMN_ARG ID dataType )
 				{
 				CommonTree root_1 = (CommonTree)adaptor.Nil();
-				DebugLocation(402, 21);
+				DebugLocation(404, 21);
 				root_1 = (CommonTree)adaptor.BecomeRoot((CommonTree)adaptor.Create(TABLE_COLUMN_ARG, "TABLE_COLUMN_ARG"), root_1);
 
-				DebugLocation(402, 38);
+				DebugLocation(404, 38);
 				adaptor.AddChild(root_1, stream_ID.NextNode());
-				DebugLocation(402, 41);
+				DebugLocation(404, 41);
 				adaptor.AddChild(root_1, stream_dataType.NextTree());
 
 				adaptor.AddChild(root_0, root_1);
@@ -16668,7 +16670,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 			LeaveRule("tableColumnArg", 68);
 			LeaveRule_tableColumnArg();
 		}
-		DebugLocation(403, 1);
+		DebugLocation(405, 1);
 		} finally { DebugExitRule(GrammarFileName, "tableColumnArg"); }
 		return retval;
 
@@ -16678,7 +16680,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 	partial void EnterRule_dataType();
 	partial void LeaveRule_dataType();
 	// $ANTLR start "dataType"
-	// Scrape.g:405:1: dataType : ( STRING | INTEGER | FLOAT | IDENTITY );
+	// Scrape.g:407:1: dataType : ( STRING | INTEGER | FLOAT | IDENTITY );
 	[GrammarRule("dataType")]
 	private AstParserRuleReturnScope<CommonTree, CommonToken> dataType()
 	{
@@ -16694,16 +16696,16 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 		CommonTree set286_tree = default(CommonTree);
 		try { DebugEnterRule(GrammarFileName, "dataType");
-		DebugLocation(405, 1);
+		DebugLocation(407, 1);
 		try
 		{
-			// Scrape.g:406:2: ( STRING | INTEGER | FLOAT | IDENTITY )
+			// Scrape.g:408:2: ( STRING | INTEGER | FLOAT | IDENTITY )
 			DebugEnterAlt(1);
 			// Scrape.g:
 			{
 			root_0 = (CommonTree)adaptor.Nil();
 
-			DebugLocation(406, 2);
+			DebugLocation(408, 2);
 
 			set286=(CommonToken)input.LT(1);
 			if (input.LA(1)==FLOAT||input.LA(1)==IDENTITY||input.LA(1)==INTEGER||input.LA(1)==STRING)
@@ -16743,7 +16745,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 			LeaveRule("dataType", 69);
 			LeaveRule_dataType();
 		}
-		DebugLocation(410, 1);
+		DebugLocation(412, 1);
 		} finally { DebugExitRule(GrammarFileName, "dataType"); }
 		return retval;
 
@@ -16849,15 +16851,15 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 	{
 		public static readonly BitSet _noBraceBlock_in_program232 = new BitSet(new ulong[]{0x0UL});
 		public static readonly BitSet _EOF_in_program234 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _proxyStatement_in_program247 = new BitSet(new ulong[]{0xB280110240000UL,0x1C00000800000UL});
+		public static readonly BitSet _proxyStatement_in_program247 = new BitSet(new ulong[]{0xB280110240000UL,0x7000002000000UL});
 		public static readonly BitSet _noBraceBlock_in_program249 = new BitSet(new ulong[]{0x0UL});
 		public static readonly BitSet _EOF_in_program251 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _procedureDefinition_in_program266 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _PROCEDURE_in_procedureDefinition285 = new BitSet(new ulong[]{0x80000000000UL});
-		public static readonly BitSet _ID_in_procedureDefinition287 = new BitSet(new ulong[]{0x0UL,0x100UL});
+		public static readonly BitSet _ID_in_procedureDefinition287 = new BitSet(new ulong[]{0x0UL,0x400UL});
 		public static readonly BitSet _OPENPAREN_in_procedureDefinition289 = new BitSet(new ulong[]{0x80000010000UL});
 		public static readonly BitSet _tableColumnArgs_in_procedureDefinition291 = new BitSet(new ulong[]{0x80000010000UL});
-		public static readonly BitSet _CLOSEPAREN_in_procedureDefinition294 = new BitSet(new ulong[]{0x0UL,0x80UL});
+		public static readonly BitSet _CLOSEPAREN_in_procedureDefinition294 = new BitSet(new ulong[]{0x0UL,0x200UL});
 		public static readonly BitSet _block_in_procedureDefinition296 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _createTableStatement_in_statement324 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _sqlStatement_in_statement329 = new BitSet(new ulong[]{0x2UL});
@@ -16868,65 +16870,65 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 		public static readonly BitSet _eachStatement_in_statement354 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _procedureCall_in_statement359 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _truncateTable_in_statement364 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _TRUNCATE_in_truncateTable375 = new BitSet(new ulong[]{0x0UL,0x80000000UL});
+		public static readonly BitSet _TRUNCATE_in_truncateTable375 = new BitSet(new ulong[]{0x0UL,0x200000000UL});
 		public static readonly BitSet _TABLE_in_truncateTable377 = new BitSet(new ulong[]{0x80000000000UL});
 		public static readonly BitSet _ID_in_truncateTable379 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _EXEC_in_procedureCall401 = new BitSet(new ulong[]{0x80000000000UL});
-		public static readonly BitSet _ID_in_procedureCall403 = new BitSet(new ulong[]{0x0UL,0x100UL});
-		public static readonly BitSet _OPENPAREN_in_procedureCall405 = new BitSet(new ulong[]{0x10280000050000UL,0x40000000UL});
-		public static readonly BitSet _procedureCallList_in_procedureCall407 = new BitSet(new ulong[]{0x10280000050000UL,0x40000000UL});
+		public static readonly BitSet _ID_in_procedureCall403 = new BitSet(new ulong[]{0x0UL,0x400UL});
+		public static readonly BitSet _OPENPAREN_in_procedureCall405 = new BitSet(new ulong[]{0x10280000050000UL,0x100000000UL});
+		public static readonly BitSet _procedureCallList_in_procedureCall407 = new BitSet(new ulong[]{0x10280000050000UL,0x100000000UL});
 		public static readonly BitSet _CLOSEPAREN_in_procedureCall410 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _callArgs_in_procedureCallList433 = new BitSet(new ulong[]{0x20000UL});
-		public static readonly BitSet _COMMA_in_procedureCallList435 = new BitSet(new ulong[]{0x10280000040000UL,0x40000000UL});
+		public static readonly BitSet _COMMA_in_procedureCallList435 = new BitSet(new ulong[]{0x10280000040000UL,0x100000000UL});
 		public static readonly BitSet _callArgs_in_procedureCallList439 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _expandVar_in_callArgs455 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _STRING_LITERAL_in_callArgs460 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _PROXIES_in_proxyStatement471 = new BitSet(new ulong[]{0x0UL,0x100UL});
-		public static readonly BitSet _OPENPAREN_in_proxyStatement473 = new BitSet(new ulong[]{0x0UL,0x40000000UL});
+		public static readonly BitSet _PROXIES_in_proxyStatement471 = new BitSet(new ulong[]{0x0UL,0x400UL});
+		public static readonly BitSet _OPENPAREN_in_proxyStatement473 = new BitSet(new ulong[]{0x0UL,0x100000000UL});
 		public static readonly BitSet _proxyList_in_proxyStatement475 = new BitSet(new ulong[]{0x10000UL});
-		public static readonly BitSet _CLOSEPAREN_in_proxyStatement477 = new BitSet(new ulong[]{0x0UL,0x100000000000000UL});
+		public static readonly BitSet _CLOSEPAREN_in_proxyStatement477 = new BitSet(new ulong[]{0x0UL,0x400000000000000UL});
 		public static readonly BitSet _proxyTest_in_proxyStatement479 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _STRING_LITERAL_in_proxyList501 = new BitSet(new ulong[]{0x20000UL});
-		public static readonly BitSet _COMMA_in_proxyList503 = new BitSet(new ulong[]{0x0UL,0x40000000UL});
+		public static readonly BitSet _COMMA_in_proxyList503 = new BitSet(new ulong[]{0x0UL,0x100000000UL});
 		public static readonly BitSet _STRING_LITERAL_in_proxyList507 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _WITH_in_proxyTest527 = new BitSet(new ulong[]{0x0UL,0x20000000000UL});
-		public static readonly BitSet _TEST_in_proxyTest529 = new BitSet(new ulong[]{0x0UL,0x80UL});
-		public static readonly BitSet _OPENBRACE_in_proxyTest531 = new BitSet(new ulong[]{0x0UL,0x800000UL});
+		public static readonly BitSet _WITH_in_proxyTest527 = new BitSet(new ulong[]{0x0UL,0x80000000000UL});
+		public static readonly BitSet _TEST_in_proxyTest529 = new BitSet(new ulong[]{0x0UL,0x200UL});
+		public static readonly BitSet _OPENBRACE_in_proxyTest531 = new BitSet(new ulong[]{0x0UL,0x2000000UL});
 		public static readonly BitSet _sqlStatement_in_proxyTest533 = new BitSet(new ulong[]{0x8000UL});
 		public static readonly BitSet _CLOSEBRACE_in_proxyTest535 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _EACH_in_eachStatement550 = new BitSet(new ulong[]{0x0UL,0x100UL});
-		public static readonly BitSet _OPENPAREN_in_eachStatement552 = new BitSet(new ulong[]{0x0UL,0x1000000000000UL});
+		public static readonly BitSet _EACH_in_eachStatement550 = new BitSet(new ulong[]{0x0UL,0x400UL});
+		public static readonly BitSet _OPENPAREN_in_eachStatement552 = new BitSet(new ulong[]{0x0UL,0x4000000000000UL});
 		public static readonly BitSet _VAR_in_eachStatement554 = new BitSet(new ulong[]{0x80000000000UL});
 		public static readonly BitSet _ID_in_eachStatement558 = new BitSet(new ulong[]{0x400000000000UL});
 		public static readonly BitSet _IN_in_eachStatement560 = new BitSet(new ulong[]{0x80000000000UL});
 		public static readonly BitSet _ID_in_eachStatement564 = new BitSet(new ulong[]{0x10000UL});
-		public static readonly BitSet _CLOSEPAREN_in_eachStatement566 = new BitSet(new ulong[]{0x0UL,0x80UL});
+		public static readonly BitSet _CLOSEPAREN_in_eachStatement566 = new BitSet(new ulong[]{0x0UL,0x200UL});
 		public static readonly BitSet _block_in_eachStatement568 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _statement_in_noBraceBlock593 = new BitSet(new ulong[]{0xB280110240002UL,0x1C00000800000UL});
-		public static readonly BitSet _OPENBRACE_in_block614 = new BitSet(new ulong[]{0xB280110248000UL,0x1C00000800000UL});
-		public static readonly BitSet _statement_in_block616 = new BitSet(new ulong[]{0xB280110248000UL,0x1C00000800000UL});
+		public static readonly BitSet _statement_in_noBraceBlock593 = new BitSet(new ulong[]{0xB280110240002UL,0x7000002000000UL});
+		public static readonly BitSet _OPENBRACE_in_block614 = new BitSet(new ulong[]{0xB280110248000UL,0x7000002000000UL});
+		public static readonly BitSet _statement_in_block616 = new BitSet(new ulong[]{0xB280110248000UL,0x7000002000000UL});
 		public static readonly BitSet _CLOSEBRACE_in_block619 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _EXPAND_in_expandExpression639 = new BitSet(new ulong[]{0x0UL,0x100UL});
+		public static readonly BitSet _EXPAND_in_expandExpression639 = new BitSet(new ulong[]{0x0UL,0x400UL});
 		public static readonly BitSet _OPENPAREN_in_expandExpression641 = new BitSet(new ulong[]{0x10280000040000UL});
-		public static readonly BitSet _expandVar_in_expandExpression643 = new BitSet(new ulong[]{0x0UL,0x200000000000UL});
+		public static readonly BitSet _expandVar_in_expandExpression643 = new BitSet(new ulong[]{0x0UL,0x800000000000UL});
 		public static readonly BitSet _TO_in_expandExpression645 = new BitSet(new ulong[]{0x10280000040000UL});
 		public static readonly BitSet _expandVar_in_expandExpression647 = new BitSet(new ulong[]{0x10000UL});
-		public static readonly BitSet _CLOSEPAREN_in_expandExpression649 = new BitSet(new ulong[]{0x2UL,0x80UL});
-		public static readonly BitSet _expandBlock_in_expandExpression651 = new BitSet(new ulong[]{0x2UL,0x80UL});
-		public static readonly BitSet _OPENBRACE_in_expandBlock676 = new BitSet(new ulong[]{0x10280000048000UL,0x400000040000120UL});
-		public static readonly BitSet _mathExpression_in_expandBlock678 = new BitSet(new ulong[]{0x10280000048000UL,0x400000040000120UL});
+		public static readonly BitSet _CLOSEPAREN_in_expandExpression649 = new BitSet(new ulong[]{0x2UL,0x200UL});
+		public static readonly BitSet _expandBlock_in_expandExpression651 = new BitSet(new ulong[]{0x2UL,0x200UL});
+		public static readonly BitSet _OPENBRACE_in_expandBlock676 = new BitSet(new ulong[]{0x10280000048000UL,0x1000000100000480UL});
+		public static readonly BitSet _mathExpression_in_expandBlock678 = new BitSet(new ulong[]{0x10280000048000UL,0x1000000100000480UL});
 		public static readonly BitSet _CLOSEBRACE_in_expandBlock681 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _INT_in_expandVar697 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _variableReference_in_expandVar702 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _downloadPageExpresssion_in_downloadExpression713 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _downloadImageExpression_in_downloadExpression718 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _DOWNLOAD_PAGE_in_downloadPageExpresssion729 = new BitSet(new ulong[]{0x280000040000UL,0x40000100UL});
-		public static readonly BitSet _downloadExpressionArg_in_downloadPageExpresssion732 = new BitSet(new ulong[]{0x2UL,0x100000000000000UL});
+		public static readonly BitSet _DOWNLOAD_PAGE_in_downloadPageExpresssion729 = new BitSet(new ulong[]{0x280000040000UL,0x100000400UL});
+		public static readonly BitSet _downloadExpressionArg_in_downloadPageExpresssion732 = new BitSet(new ulong[]{0x2UL,0x400000000000000UL});
 		public static readonly BitSet _tableHint_in_downloadPageExpresssion734 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _DOWNLOAD_IMAGE_in_downloadImageExpression746 = new BitSet(new ulong[]{0x280000040000UL,0x40000100UL});
+		public static readonly BitSet _DOWNLOAD_IMAGE_in_downloadImageExpression746 = new BitSet(new ulong[]{0x280000040000UL,0x100000400UL});
 		public static readonly BitSet _downloadExpressionArg_in_downloadImageExpression749 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _STRING_LITERAL_in_downloadExpressionArg760 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _OPENPAREN_in_downloadExpressionArg765 = new BitSet(new ulong[]{0x0UL,0x800000UL});
+		public static readonly BitSet _OPENPAREN_in_downloadExpressionArg765 = new BitSet(new ulong[]{0x0UL,0x2000000UL});
 		public static readonly BitSet _sqlStatement_in_downloadExpressionArg768 = new BitSet(new ulong[]{0x10000UL});
 		public static readonly BitSet _CLOSEPAREN_in_downloadExpressionArg770 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _variableReference_in_downloadExpressionArg776 = new BitSet(new ulong[]{0x2UL});
@@ -16939,13 +16941,13 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 		public static readonly BitSet _ID_in_tableMemberReference828 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _VAR_in_variableDeclarationStatement852 = new BitSet(new ulong[]{0x80000000000UL});
 		public static readonly BitSet _ID_in_variableDeclarationStatement854 = new BitSet(new ulong[]{0x80000000UL});
-		public static readonly BitSet _EQUALS_in_variableDeclarationStatement856 = new BitSet(new ulong[]{0x1028020C040000UL,0x400000040800120UL});
+		public static readonly BitSet _EQUALS_in_variableDeclarationStatement856 = new BitSet(new ulong[]{0x1028020C040000UL,0x1000000102000480UL});
 		public static readonly BitSet _assignmentExpression_in_variableDeclarationStatement858 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _variableReference_in_variableAssignmentStatement879 = new BitSet(new ulong[]{0x80000000UL});
-		public static readonly BitSet _EQUALS_in_variableAssignmentStatement881 = new BitSet(new ulong[]{0x1028020C040000UL,0x400000040800120UL});
+		public static readonly BitSet _EQUALS_in_variableAssignmentStatement881 = new BitSet(new ulong[]{0x1028020C040000UL,0x1000000102000480UL});
 		public static readonly BitSet _assignmentExpression_in_variableAssignmentStatement883 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _COMMAND_VAR_in_nullOperator904 = new BitSet(new ulong[]{0x0UL,0x40UL});
-		public static readonly BitSet _NULL_OPERATOR_in_nullOperator906 = new BitSet(new ulong[]{0x10000000040000UL,0x40000020UL});
+		public static readonly BitSet _COMMAND_VAR_in_nullOperator904 = new BitSet(new ulong[]{0x0UL,0x100UL});
+		public static readonly BitSet _NULL_OPERATOR_in_nullOperator906 = new BitSet(new ulong[]{0x10000000040000UL,0x100000080UL});
 		public static readonly BitSet _COMMAND_VAR_in_nullOperator910 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _literal_in_nullOperator912 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _mathExpression_in_assignmentExpression924 = new BitSet(new ulong[]{0x2UL});
@@ -16954,43 +16956,43 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 		public static readonly BitSet _sqlStatement_in_assignmentExpression939 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _nullOperator_in_assignmentExpression944 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _variableReference_in_assignmentExpression949 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _mathExpressionGroup_in_mathExpression965 = new BitSet(new ulong[]{0x8000000000000002UL,0x1000UL});
-		public static readonly BitSet _set_in_mathExpression968 = new BitSet(new ulong[]{0x10280000040000UL,0x400000040000120UL});
-		public static readonly BitSet _mathExpressionGroup_in_mathExpression979 = new BitSet(new ulong[]{0x8000000000000002UL,0x1000UL});
+		public static readonly BitSet _mathExpressionGroup_in_mathExpression965 = new BitSet(new ulong[]{0x2UL,0x4001UL});
+		public static readonly BitSet _set_in_mathExpression968 = new BitSet(new ulong[]{0x10280000040000UL,0x1000000100000480UL});
+		public static readonly BitSet _mathExpressionGroup_in_mathExpression979 = new BitSet(new ulong[]{0x2UL,0x4001UL});
 		public static readonly BitSet _atom_in_mathExpressionGroup997 = new BitSet(new ulong[]{0x1000042UL});
-		public static readonly BitSet _set_in_mathExpressionGroup1000 = new BitSet(new ulong[]{0x10280000040000UL,0x400000040000120UL});
+		public static readonly BitSet _set_in_mathExpressionGroup1000 = new BitSet(new ulong[]{0x10280000040000UL,0x1000000100000480UL});
 		public static readonly BitSet _atom_in_mathExpressionGroup1011 = new BitSet(new ulong[]{0x1000042UL});
 		public static readonly BitSet _variableReference_in_atom1032 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _122_in_atom1038 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _124_in_atom1038 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _literal_in_atom1050 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _OPENPAREN_in_atom1059 = new BitSet(new ulong[]{0x10280000040000UL,0x400000040000120UL});
+		public static readonly BitSet _OPENPAREN_in_atom1059 = new BitSet(new ulong[]{0x10280000040000UL,0x1000000100000480UL});
 		public static readonly BitSet _mathExpression_in_atom1062 = new BitSet(new ulong[]{0x10000UL});
 		public static readonly BitSet _CLOSEPAREN_in_atom1064 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _INSERT_INTO_in_insertStatement1106 = new BitSet(new ulong[]{0x80000000000UL});
-		public static readonly BitSet _ID_in_insertStatement1108 = new BitSet(new ulong[]{0x0UL,0x800000UL});
+		public static readonly BitSet _ID_in_insertStatement1108 = new BitSet(new ulong[]{0x0UL,0x2000000UL});
 		public static readonly BitSet _sqlStatement_in_insertStatement1110 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _INSERT_DIRECTORY_in_insertStatement1125 = new BitSet(new ulong[]{0x10280000040000UL,0x400000040000120UL});
-		public static readonly BitSet _mathExpression_in_insertStatement1127 = new BitSet(new ulong[]{0x0UL,0x800000UL});
+		public static readonly BitSet _INSERT_DIRECTORY_in_insertStatement1125 = new BitSet(new ulong[]{0x10280000040000UL,0x1000000100000480UL});
+		public static readonly BitSet _mathExpression_in_insertStatement1127 = new BitSet(new ulong[]{0x0UL,0x2000000UL});
 		public static readonly BitSet _sqlStatement_in_insertStatement1129 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _INSERT_OVERWRITE_in_insertStatement1143 = new BitSet(new ulong[]{0x80000000000UL});
-		public static readonly BitSet _ID_in_insertStatement1145 = new BitSet(new ulong[]{0x0UL,0x800000UL});
+		public static readonly BitSet _ID_in_insertStatement1145 = new BitSet(new ulong[]{0x0UL,0x2000000UL});
 		public static readonly BitSet _sqlStatement_in_insertStatement1147 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _UPDATE_in_updateStatment1172 = new BitSet(new ulong[]{0x80000000000UL});
-		public static readonly BitSet _ID_in_updateStatment1174 = new BitSet(new ulong[]{0x0UL,0x10000000UL});
-		public static readonly BitSet _setArgs_in_updateStatment1176 = new BitSet(new ulong[]{0x8000000002UL,0x80000000000000UL});
-		public static readonly BitSet _fromStatement_in_updateStatment1178 = new BitSet(new ulong[]{0x2UL,0x80000000000000UL});
+		public static readonly BitSet _ID_in_updateStatment1174 = new BitSet(new ulong[]{0x0UL,0x40000000UL});
+		public static readonly BitSet _setArgs_in_updateStatment1176 = new BitSet(new ulong[]{0x8000000002UL,0x200000000000000UL});
+		public static readonly BitSet _fromStatement_in_updateStatment1178 = new BitSet(new ulong[]{0x2UL,0x200000000000000UL});
 		public static readonly BitSet _whereStatement_in_updateStatment1181 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _SET_in_setArgs1213 = new BitSet(new ulong[]{0x10280000040000UL,0x40000820UL});
+		public static readonly BitSet _SET_in_setArgs1213 = new BitSet(new ulong[]{0x10280000040000UL,0x100002080UL});
 		public static readonly BitSet _setArg_in_setArgs1216 = new BitSet(new ulong[]{0x20000UL});
-		public static readonly BitSet _COMMA_in_setArgs1218 = new BitSet(new ulong[]{0x10280000040000UL,0x40000820UL});
+		public static readonly BitSet _COMMA_in_setArgs1218 = new BitSet(new ulong[]{0x10280000040000UL,0x100002080UL});
 		public static readonly BitSet _setArg_in_setArgs1222 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _selectArg_in_setArg1242 = new BitSet(new ulong[]{0x80000000UL});
-		public static readonly BitSet _EQUALS_in_setArg1244 = new BitSet(new ulong[]{0x10280000040000UL,0x40000820UL});
+		public static readonly BitSet _EQUALS_in_setArg1244 = new BitSet(new ulong[]{0x10280000040000UL,0x100002080UL});
 		public static readonly BitSet _selectArg_in_setArg1246 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _selectStatement_in_sqlStatement1270 = new BitSet(new ulong[]{0x8000000002UL,0x80000000000000UL});
-		public static readonly BitSet _fromStatement_in_sqlStatement1272 = new BitSet(new ulong[]{0x2UL,0x80000000000000UL});
+		public static readonly BitSet _selectStatement_in_sqlStatement1270 = new BitSet(new ulong[]{0x8000000002UL,0x200000000000000UL});
+		public static readonly BitSet _fromStatement_in_sqlStatement1272 = new BitSet(new ulong[]{0x2UL,0x200000000000000UL});
 		public static readonly BitSet _whereStatement_in_sqlStatement1275 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _WHERE_in_whereStatement1302 = new BitSet(new ulong[]{0x10280000040000UL,0x40000928UL});
+		public static readonly BitSet _WHERE_in_whereStatement1302 = new BitSet(new ulong[]{0x10280000040000UL,0x100002490UL});
 		public static readonly BitSet _boolExpression_in_whereStatement1304 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _FROM_in_fromStatement1324 = new BitSet(new ulong[]{0x80000000000UL});
 		public static readonly BitSet _ID_in_fromStatement1328 = new BitSet(new ulong[]{0x40880000000002UL});
@@ -16998,145 +17000,145 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 		public static readonly BitSet _innerJoinStatement_in_fromStatement1335 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _FROM_in_fromStatement1362 = new BitSet(new ulong[]{0x20C000000UL});
 		public static readonly BitSet _tableGenerationClause_in_fromStatement1365 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _FROM_in_fromStatement1370 = new BitSet(new ulong[]{0x0UL,0x100UL});
+		public static readonly BitSet _FROM_in_fromStatement1370 = new BitSet(new ulong[]{0x0UL,0x400UL});
 		public static readonly BitSet _OPENPAREN_in_fromStatement1372 = new BitSet(new ulong[]{0x20C000000UL});
 		public static readonly BitSet _tableGenerationClause_in_fromStatement1374 = new BitSet(new ulong[]{0x10000UL});
 		public static readonly BitSet _CLOSEPAREN_in_fromStatement1376 = new BitSet(new ulong[]{0x80000000000UL});
-		public static readonly BitSet _ID_in_fromStatement1378 = new BitSet(new ulong[]{0x2UL,0x100000000000000UL});
+		public static readonly BitSet _ID_in_fromStatement1378 = new BitSet(new ulong[]{0x2UL,0x400000000000000UL});
 		public static readonly BitSet _tableHint_in_fromStatement1380 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _WITH_in_tableHint1411 = new BitSet(new ulong[]{0x0UL,0x100UL});
-		public static readonly BitSet _OPENPAREN_in_tableHint1414 = new BitSet(new ulong[]{0x0UL,0x100000000000UL});
+		public static readonly BitSet _WITH_in_tableHint1411 = new BitSet(new ulong[]{0x0UL,0x400UL});
+		public static readonly BitSet _OPENPAREN_in_tableHint1414 = new BitSet(new ulong[]{0x0UL,0x400000000000UL});
 		public static readonly BitSet _hint_in_tableHint1417 = new BitSet(new ulong[]{0x10000UL});
 		public static readonly BitSet _CLOSEPAREN_in_tableHint1419 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _THREAD_in_hint1431 = new BitSet(new ulong[]{0x0UL,0x100UL});
+		public static readonly BitSet _THREAD_in_hint1431 = new BitSet(new ulong[]{0x0UL,0x400UL});
 		public static readonly BitSet _OPENPAREN_in_hint1433 = new BitSet(new ulong[]{0x10000000000000UL});
 		public static readonly BitSet _INT_in_hint1435 = new BitSet(new ulong[]{0x10000UL});
 		public static readonly BitSet _CLOSEPAREN_in_hint1437 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _innerJoin_in_innerJoinStatement1456 = new BitSet(new ulong[]{0x80000000000UL});
-		public static readonly BitSet _ID_in_innerJoinStatement1460 = new BitSet(new ulong[]{0x80000000000UL,0x800000000000000UL});
-		public static readonly BitSet _ID_in_innerJoinStatement1464 = new BitSet(new ulong[]{0x0UL,0x800000000000000UL});
-		public static readonly BitSet _123_in_innerJoinStatement1467 = new BitSet(new ulong[]{0x10280000040000UL,0x40000928UL});
+		public static readonly BitSet _ID_in_innerJoinStatement1460 = new BitSet(new ulong[]{0x80000000000UL,0x2000000000000000UL});
+		public static readonly BitSet _ID_in_innerJoinStatement1464 = new BitSet(new ulong[]{0x0UL,0x2000000000000000UL});
+		public static readonly BitSet _125_in_innerJoinStatement1467 = new BitSet(new ulong[]{0x10280000040000UL,0x100002490UL});
 		public static readonly BitSet _boolExpression_in_innerJoinStatement1469 = new BitSet(new ulong[]{0x40800000000002UL});
 		public static readonly BitSet _innerJoinStatement_in_innerJoinStatement1471 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _downloadPageExpresssion_in_tableGenerationClause1505 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _downloadImageExpression_in_tableGenerationClause1510 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _expandExpression_in_tableGenerationClause1515 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _SELECT_in_selectStatement1542 = new BitSet(new ulong[]{0x10280000040800UL,0x40000820UL});
+		public static readonly BitSet _SELECT_in_selectStatement1542 = new BitSet(new ulong[]{0x10280000040800UL,0x100002080UL});
 		public static readonly BitSet _selectArgs_in_selectStatement1545 = new BitSet(new ulong[]{0x20000UL});
-		public static readonly BitSet _COMMA_in_selectStatement1547 = new BitSet(new ulong[]{0x10280000040800UL,0x40000820UL});
+		public static readonly BitSet _COMMA_in_selectStatement1547 = new BitSet(new ulong[]{0x10280000040800UL,0x100002080UL});
 		public static readonly BitSet _selectArgs_in_selectStatement1551 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _SELECT_in_selectStatement1565 = new BitSet(new ulong[]{0x40UL});
 		public static readonly BitSet _ASTERISK_in_selectStatement1567 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _selectArg_in_selectArgs1593 = new BitSet(new ulong[]{0x0UL,0x1000UL});
-		public static readonly BitSet _PLUS_in_selectArgs1595 = new BitSet(new ulong[]{0x10280000040000UL,0x40000820UL});
+		public static readonly BitSet _selectArg_in_selectArgs1593 = new BitSet(new ulong[]{0x0UL,0x4000UL});
+		public static readonly BitSet _PLUS_in_selectArgs1595 = new BitSet(new ulong[]{0x10280000040000UL,0x100002080UL});
 		public static readonly BitSet _selectArg_in_selectArgs1599 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _caseStatement_in_selectArgs1613 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _CASE_in_caseStatement1635 = new BitSet(new ulong[]{0x0UL,0x10000000000000UL});
-		public static readonly BitSet _whenBoolStatement_in_caseStatement1637 = new BitSet(new ulong[]{0x60000000UL,0x10000000000000UL});
-		public static readonly BitSet _ELSE_in_caseStatement1641 = new BitSet(new ulong[]{0x10280000040000UL,0x40000820UL});
+		public static readonly BitSet _CASE_in_caseStatement1635 = new BitSet(new ulong[]{0x0UL,0x40000000000000UL});
+		public static readonly BitSet _whenBoolStatement_in_caseStatement1637 = new BitSet(new ulong[]{0x60000000UL,0x40000000000000UL});
+		public static readonly BitSet _ELSE_in_caseStatement1641 = new BitSet(new ulong[]{0x10280000040000UL,0x100002080UL});
 		public static readonly BitSet _caseExpression_in_caseStatement1643 = new BitSet(new ulong[]{0x40000000UL});
 		public static readonly BitSet _END_in_caseStatement1647 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _CASE_in_caseStatement1664 = new BitSet(new ulong[]{0x10280000040000UL,0x40000820UL});
-		public static readonly BitSet _selectArg_in_caseStatement1666 = new BitSet(new ulong[]{0x0UL,0x10000000000000UL});
-		public static readonly BitSet _whenLiteralStatement_in_caseStatement1668 = new BitSet(new ulong[]{0x60000000UL,0x10000000000000UL});
-		public static readonly BitSet _ELSE_in_caseStatement1672 = new BitSet(new ulong[]{0x10280000040000UL,0x40000820UL});
+		public static readonly BitSet _CASE_in_caseStatement1664 = new BitSet(new ulong[]{0x10280000040000UL,0x100002080UL});
+		public static readonly BitSet _selectArg_in_caseStatement1666 = new BitSet(new ulong[]{0x0UL,0x40000000000000UL});
+		public static readonly BitSet _whenLiteralStatement_in_caseStatement1668 = new BitSet(new ulong[]{0x60000000UL,0x40000000000000UL});
+		public static readonly BitSet _ELSE_in_caseStatement1672 = new BitSet(new ulong[]{0x10280000040000UL,0x100002080UL});
 		public static readonly BitSet _caseExpression_in_caseStatement1674 = new BitSet(new ulong[]{0x40000000UL});
 		public static readonly BitSet _END_in_caseStatement1678 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _selectArg_in_caseExpression1703 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _WHEN_in_whenLiteralStatement1722 = new BitSet(new ulong[]{0x10000000000000UL,0x40000020UL});
-		public static readonly BitSet _literal_in_whenLiteralStatement1724 = new BitSet(new ulong[]{0x0UL,0x80000000000UL});
-		public static readonly BitSet _THEN_in_whenLiteralStatement1726 = new BitSet(new ulong[]{0x10280000040000UL,0x40000820UL});
+		public static readonly BitSet _WHEN_in_whenLiteralStatement1722 = new BitSet(new ulong[]{0x10000000000000UL,0x100000080UL});
+		public static readonly BitSet _literal_in_whenLiteralStatement1724 = new BitSet(new ulong[]{0x0UL,0x200000000000UL});
+		public static readonly BitSet _THEN_in_whenLiteralStatement1726 = new BitSet(new ulong[]{0x10280000040000UL,0x100002080UL});
 		public static readonly BitSet _caseExpression_in_whenLiteralStatement1728 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _WHEN_in_whenBoolStatement1749 = new BitSet(new ulong[]{0x10280000040000UL,0x40000928UL});
-		public static readonly BitSet _boolExpression_in_whenBoolStatement1751 = new BitSet(new ulong[]{0x0UL,0x80000000000UL});
-		public static readonly BitSet _THEN_in_whenBoolStatement1753 = new BitSet(new ulong[]{0x10280000040000UL,0x40000820UL});
+		public static readonly BitSet _WHEN_in_whenBoolStatement1749 = new BitSet(new ulong[]{0x10280000040000UL,0x100002490UL});
+		public static readonly BitSet _boolExpression_in_whenBoolStatement1751 = new BitSet(new ulong[]{0x0UL,0x200000000000UL});
+		public static readonly BitSet _THEN_in_whenBoolStatement1753 = new BitSet(new ulong[]{0x10280000040000UL,0x100002080UL});
 		public static readonly BitSet _caseExpression_in_whenBoolStatement1755 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _andExpression_in_boolExpression1776 = new BitSet(new ulong[]{0x2UL,0x200UL});
-		public static readonly BitSet _OR_in_boolExpression1779 = new BitSet(new ulong[]{0x10280000040000UL,0x40000928UL});
-		public static readonly BitSet _andExpression_in_boolExpression1782 = new BitSet(new ulong[]{0x2UL,0x200UL});
+		public static readonly BitSet _andExpression_in_boolExpression1776 = new BitSet(new ulong[]{0x2UL,0x800UL});
+		public static readonly BitSet _OR_in_boolExpression1779 = new BitSet(new ulong[]{0x10280000040000UL,0x100002490UL});
+		public static readonly BitSet _andExpression_in_boolExpression1782 = new BitSet(new ulong[]{0x2UL,0x800UL});
 		public static readonly BitSet _boolTerm_in_andExpression1796 = new BitSet(new ulong[]{0x12UL});
-		public static readonly BitSet _AND_in_andExpression1799 = new BitSet(new ulong[]{0x10280000040000UL,0x40000928UL});
+		public static readonly BitSet _AND_in_andExpression1799 = new BitSet(new ulong[]{0x10280000040000UL,0x100002490UL});
 		public static readonly BitSet _boolTerm_in_andExpression1802 = new BitSet(new ulong[]{0x12UL});
 		public static readonly BitSet _NODES_in_boolTerm1817 = new BitSet(new ulong[]{0x80000000UL});
-		public static readonly BitSet _EQUALS_in_boolTerm1819 = new BitSet(new ulong[]{0x0UL,0x40000000UL});
+		public static readonly BitSet _EQUALS_in_boolTerm1819 = new BitSet(new ulong[]{0x0UL,0x100000000UL});
 		public static readonly BitSet _STRING_LITERAL_in_boolTerm1821 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _selectArg_in_boolTerm1837 = new BitSet(new ulong[]{0x180030080000002UL,0x10UL});
-		public static readonly BitSet _boolOperator_in_boolTerm1840 = new BitSet(new ulong[]{0x10280000040000UL,0x40000820UL});
+		public static readonly BitSet _selectArg_in_boolTerm1837 = new BitSet(new ulong[]{0x580030080000002UL,0x60UL});
+		public static readonly BitSet _boolOperator_in_boolTerm1840 = new BitSet(new ulong[]{0x10280000040000UL,0x100002080UL});
 		public static readonly BitSet _selectArg_in_boolTerm1843 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _OPENPAREN_in_boolTerm1851 = new BitSet(new ulong[]{0x10280000040000UL,0x40000928UL});
+		public static readonly BitSet _OPENPAREN_in_boolTerm1851 = new BitSet(new ulong[]{0x10280000040000UL,0x100002490UL});
 		public static readonly BitSet _boolExpression_in_boolTerm1854 = new BitSet(new ulong[]{0x10000UL});
 		public static readonly BitSet _CLOSEPAREN_in_boolTerm1856 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _pickStatement_in_selectArg1904 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _literal_in_selectArg1909 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _selectVariable_in_selectArg1914 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _ID_in_selectVariable1925 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _COMMAND_VAR_in_selectVariable1937 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _IDENTITY_VAR_in_selectVariable1942 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _tableMemberReference_in_selectVariable1947 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _PICK_in_pickStatement1959 = new BitSet(new ulong[]{0x0UL,0x40000000UL});
-		public static readonly BitSet _STRING_LITERAL_in_pickStatement1961 = new BitSet(new ulong[]{0x2000000000000002UL,0x2000000000UL});
-		public static readonly BitSet _takeStatement_in_pickStatement1963 = new BitSet(new ulong[]{0x2000000000000002UL});
-		public static readonly BitSet _matchStatement_in_pickStatement1966 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _TAKE_in_takeStatement1993 = new BitSet(new ulong[]{0x80UL});
-		public static readonly BitSet _ATTRIBUTE_in_takeStatement1995 = new BitSet(new ulong[]{0x0UL,0x40000000UL});
-		public static readonly BitSet _STRING_LITERAL_in_takeStatement1997 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _TAKE_in_takeStatement2010 = new BitSet(new ulong[]{0x0UL,0x40000000000UL});
-		public static readonly BitSet _TEXT_in_takeStatement2012 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _TAKE_in_takeStatement2023 = new BitSet(new ulong[]{0x40000000000UL});
-		public static readonly BitSet _HTML_in_takeStatement2025 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _MATCH_in_matchStatement2043 = new BitSet(new ulong[]{0x0UL,0x40000000UL});
-		public static readonly BitSet _STRING_LITERAL_in_matchStatement2045 = new BitSet(new ulong[]{0x2UL,0x100000UL});
-		public static readonly BitSet _replaceStatement_in_matchStatement2047 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _REPLACE_in_replaceStatement2070 = new BitSet(new ulong[]{0x0UL,0x40000000UL});
-		public static readonly BitSet _STRING_LITERAL_in_replaceStatement2072 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _CREATE_in_createTableStatement2093 = new BitSet(new ulong[]{0x1000000000UL});
-		public static readonly BitSet _FILE_in_createTableStatement2095 = new BitSet(new ulong[]{0x80000000000UL});
-		public static readonly BitSet _ID_in_createTableStatement2097 = new BitSet(new ulong[]{0x0UL,0x100UL});
-		public static readonly BitSet _OPENPAREN_in_createTableStatement2099 = new BitSet(new ulong[]{0x80000010000UL});
-		public static readonly BitSet _tableColumnArgs_in_createTableStatement2101 = new BitSet(new ulong[]{0x80000010000UL});
-		public static readonly BitSet _CLOSEPAREN_in_createTableStatement2104 = new BitSet(new ulong[]{0x1000000000000000UL,0x100000000000000UL});
-		public static readonly BitSet _fileTableWithStatement_in_createTableStatement2106 = new BitSet(new ulong[]{0x1000000000000000UL});
-		public static readonly BitSet _fileTableLocation_in_createTableStatement2109 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _CREATE_in_createTableStatement2130 = new BitSet(new ulong[]{0x200UL});
-		public static readonly BitSet _BUFFER_in_createTableStatement2132 = new BitSet(new ulong[]{0x80000000000UL});
-		public static readonly BitSet _ID_in_createTableStatement2134 = new BitSet(new ulong[]{0x0UL,0x100UL});
-		public static readonly BitSet _OPENPAREN_in_createTableStatement2136 = new BitSet(new ulong[]{0x80000010000UL});
-		public static readonly BitSet _tableColumnArgs_in_createTableStatement2138 = new BitSet(new ulong[]{0x80000010000UL});
-		public static readonly BitSet _CLOSEPAREN_in_createTableStatement2141 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _CREATE_in_createTableStatement2157 = new BitSet(new ulong[]{0x0UL,0x1UL});
-		public static readonly BitSet _MSSQL_in_createTableStatement2159 = new BitSet(new ulong[]{0x80000000000UL});
-		public static readonly BitSet _ID_in_createTableStatement2161 = new BitSet(new ulong[]{0x0UL,0x100UL});
-		public static readonly BitSet _OPENPAREN_in_createTableStatement2163 = new BitSet(new ulong[]{0x80000010000UL});
-		public static readonly BitSet _tableColumnArgs_in_createTableStatement2165 = new BitSet(new ulong[]{0x80000010000UL});
-		public static readonly BitSet _CLOSEPAREN_in_createTableStatement2168 = new BitSet(new ulong[]{0x0UL,0x100000000000000UL});
-		public static readonly BitSet _sqlTableWithStatement_in_createTableStatement2170 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _LOCATION_in_fileTableLocation2194 = new BitSet(new ulong[]{0x10280000040000UL,0x400000040000120UL});
-		public static readonly BitSet _mathExpression_in_fileTableLocation2197 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _WITH_in_sqlTableWithStatement2209 = new BitSet(new ulong[]{0x0UL,0x100UL});
-		public static readonly BitSet _OPENPAREN_in_sqlTableWithStatement2211 = new BitSet(new ulong[]{0x500000UL});
-		public static readonly BitSet _sqlTableWithVariablesStatement_in_sqlTableWithStatement2213 = new BitSet(new ulong[]{0x10000UL});
-		public static readonly BitSet _CLOSEPAREN_in_sqlTableWithStatement2215 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _sqlTableWithVariableStatement_in_sqlTableWithVariablesStatement2236 = new BitSet(new ulong[]{0x20000UL});
-		public static readonly BitSet _COMMA_in_sqlTableWithVariablesStatement2238 = new BitSet(new ulong[]{0x500000UL});
-		public static readonly BitSet _sqlTableWithVariableStatement_in_sqlTableWithVariablesStatement2242 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _set_in_sqlTableWithVariableStatement2259 = new BitSet(new ulong[]{0x80000000UL});
-		public static readonly BitSet _EQUALS_in_sqlTableWithVariableStatement2268 = new BitSet(new ulong[]{0x0UL,0x40000000UL});
-		public static readonly BitSet _STRING_LITERAL_in_sqlTableWithVariableStatement2271 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _WITH_in_fileTableWithStatement2282 = new BitSet(new ulong[]{0x0UL,0x100UL});
-		public static readonly BitSet _OPENPAREN_in_fileTableWithStatement2284 = new BitSet(new ulong[]{0x800010000UL,0x400000UL});
-		public static readonly BitSet _fileTableWithVariablesStatement_in_fileTableWithStatement2286 = new BitSet(new ulong[]{0x800010000UL,0x400000UL});
-		public static readonly BitSet _CLOSEPAREN_in_fileTableWithStatement2289 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _fileTableWithVariableStatement_in_fileTableWithVariablesStatement2312 = new BitSet(new ulong[]{0x20000UL});
-		public static readonly BitSet _COMMA_in_fileTableWithVariablesStatement2314 = new BitSet(new ulong[]{0x800000000UL,0x400000UL});
-		public static readonly BitSet _fileTableWithVariableStatement_in_fileTableWithVariablesStatement2318 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _set_in_fileTableWithVariableStatement2334 = new BitSet(new ulong[]{0x80000000UL});
-		public static readonly BitSet _EQUALS_in_fileTableWithVariableStatement2343 = new BitSet(new ulong[]{0x0UL,0x40000000UL});
-		public static readonly BitSet _STRING_LITERAL_in_fileTableWithVariableStatement2346 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _tableColumnArg_in_tableColumnArgs2358 = new BitSet(new ulong[]{0x20000UL});
-		public static readonly BitSet _COMMA_in_tableColumnArgs2360 = new BitSet(new ulong[]{0x80000000000UL});
-		public static readonly BitSet _tableColumnArg_in_tableColumnArgs2364 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _ID_in_tableColumnArg2385 = new BitSet(new ulong[]{0x20104000000000UL,0x20000000UL});
-		public static readonly BitSet _dataType_in_tableColumnArg2387 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _pickStatement_in_selectArg1914 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _literal_in_selectArg1919 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _selectVariable_in_selectArg1924 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _ID_in_selectVariable1935 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _COMMAND_VAR_in_selectVariable1947 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _IDENTITY_VAR_in_selectVariable1952 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _tableMemberReference_in_selectVariable1957 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _PICK_in_pickStatement1969 = new BitSet(new ulong[]{0x0UL,0x100000000UL});
+		public static readonly BitSet _STRING_LITERAL_in_pickStatement1971 = new BitSet(new ulong[]{0x4000000000000002UL,0x8000000000UL});
+		public static readonly BitSet _takeStatement_in_pickStatement1973 = new BitSet(new ulong[]{0x4000000000000002UL});
+		public static readonly BitSet _matchStatement_in_pickStatement1976 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _TAKE_in_takeStatement2003 = new BitSet(new ulong[]{0x80UL});
+		public static readonly BitSet _ATTRIBUTE_in_takeStatement2005 = new BitSet(new ulong[]{0x0UL,0x100000000UL});
+		public static readonly BitSet _STRING_LITERAL_in_takeStatement2007 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _TAKE_in_takeStatement2020 = new BitSet(new ulong[]{0x0UL,0x100000000000UL});
+		public static readonly BitSet _TEXT_in_takeStatement2022 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _TAKE_in_takeStatement2033 = new BitSet(new ulong[]{0x40000000000UL});
+		public static readonly BitSet _HTML_in_takeStatement2035 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _MATCH_in_matchStatement2053 = new BitSet(new ulong[]{0x0UL,0x100000000UL});
+		public static readonly BitSet _STRING_LITERAL_in_matchStatement2055 = new BitSet(new ulong[]{0x2UL,0x400000UL});
+		public static readonly BitSet _replaceStatement_in_matchStatement2057 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _REPLACE_in_replaceStatement2080 = new BitSet(new ulong[]{0x0UL,0x100000000UL});
+		public static readonly BitSet _STRING_LITERAL_in_replaceStatement2082 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _CREATE_in_createTableStatement2103 = new BitSet(new ulong[]{0x1000000000UL});
+		public static readonly BitSet _FILE_in_createTableStatement2105 = new BitSet(new ulong[]{0x80000000000UL});
+		public static readonly BitSet _ID_in_createTableStatement2107 = new BitSet(new ulong[]{0x0UL,0x400UL});
+		public static readonly BitSet _OPENPAREN_in_createTableStatement2109 = new BitSet(new ulong[]{0x80000010000UL});
+		public static readonly BitSet _tableColumnArgs_in_createTableStatement2111 = new BitSet(new ulong[]{0x80000010000UL});
+		public static readonly BitSet _CLOSEPAREN_in_createTableStatement2114 = new BitSet(new ulong[]{0x2000000000000000UL,0x400000000000000UL});
+		public static readonly BitSet _fileTableWithStatement_in_createTableStatement2116 = new BitSet(new ulong[]{0x2000000000000000UL});
+		public static readonly BitSet _fileTableLocation_in_createTableStatement2119 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _CREATE_in_createTableStatement2140 = new BitSet(new ulong[]{0x200UL});
+		public static readonly BitSet _BUFFER_in_createTableStatement2142 = new BitSet(new ulong[]{0x80000000000UL});
+		public static readonly BitSet _ID_in_createTableStatement2144 = new BitSet(new ulong[]{0x0UL,0x400UL});
+		public static readonly BitSet _OPENPAREN_in_createTableStatement2146 = new BitSet(new ulong[]{0x80000010000UL});
+		public static readonly BitSet _tableColumnArgs_in_createTableStatement2148 = new BitSet(new ulong[]{0x80000010000UL});
+		public static readonly BitSet _CLOSEPAREN_in_createTableStatement2151 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _CREATE_in_createTableStatement2167 = new BitSet(new ulong[]{0x0UL,0x2UL});
+		public static readonly BitSet _MSSQL_in_createTableStatement2169 = new BitSet(new ulong[]{0x80000000000UL});
+		public static readonly BitSet _ID_in_createTableStatement2171 = new BitSet(new ulong[]{0x0UL,0x400UL});
+		public static readonly BitSet _OPENPAREN_in_createTableStatement2173 = new BitSet(new ulong[]{0x80000010000UL});
+		public static readonly BitSet _tableColumnArgs_in_createTableStatement2175 = new BitSet(new ulong[]{0x80000010000UL});
+		public static readonly BitSet _CLOSEPAREN_in_createTableStatement2178 = new BitSet(new ulong[]{0x0UL,0x400000000000000UL});
+		public static readonly BitSet _sqlTableWithStatement_in_createTableStatement2180 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _LOCATION_in_fileTableLocation2204 = new BitSet(new ulong[]{0x10280000040000UL,0x1000000100000480UL});
+		public static readonly BitSet _mathExpression_in_fileTableLocation2207 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _WITH_in_sqlTableWithStatement2219 = new BitSet(new ulong[]{0x0UL,0x400UL});
+		public static readonly BitSet _OPENPAREN_in_sqlTableWithStatement2221 = new BitSet(new ulong[]{0x500000UL});
+		public static readonly BitSet _sqlTableWithVariablesStatement_in_sqlTableWithStatement2223 = new BitSet(new ulong[]{0x10000UL});
+		public static readonly BitSet _CLOSEPAREN_in_sqlTableWithStatement2225 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _sqlTableWithVariableStatement_in_sqlTableWithVariablesStatement2246 = new BitSet(new ulong[]{0x20000UL});
+		public static readonly BitSet _COMMA_in_sqlTableWithVariablesStatement2248 = new BitSet(new ulong[]{0x500000UL});
+		public static readonly BitSet _sqlTableWithVariableStatement_in_sqlTableWithVariablesStatement2252 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _set_in_sqlTableWithVariableStatement2269 = new BitSet(new ulong[]{0x80000000UL});
+		public static readonly BitSet _EQUALS_in_sqlTableWithVariableStatement2278 = new BitSet(new ulong[]{0x0UL,0x100000000UL});
+		public static readonly BitSet _STRING_LITERAL_in_sqlTableWithVariableStatement2281 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _WITH_in_fileTableWithStatement2292 = new BitSet(new ulong[]{0x0UL,0x400UL});
+		public static readonly BitSet _OPENPAREN_in_fileTableWithStatement2294 = new BitSet(new ulong[]{0x800010000UL,0x1000000UL});
+		public static readonly BitSet _fileTableWithVariablesStatement_in_fileTableWithStatement2296 = new BitSet(new ulong[]{0x800010000UL,0x1000000UL});
+		public static readonly BitSet _CLOSEPAREN_in_fileTableWithStatement2299 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _fileTableWithVariableStatement_in_fileTableWithVariablesStatement2322 = new BitSet(new ulong[]{0x20000UL});
+		public static readonly BitSet _COMMA_in_fileTableWithVariablesStatement2324 = new BitSet(new ulong[]{0x800000000UL,0x1000000UL});
+		public static readonly BitSet _fileTableWithVariableStatement_in_fileTableWithVariablesStatement2328 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _set_in_fileTableWithVariableStatement2344 = new BitSet(new ulong[]{0x80000000UL});
+		public static readonly BitSet _EQUALS_in_fileTableWithVariableStatement2353 = new BitSet(new ulong[]{0x0UL,0x100000000UL});
+		public static readonly BitSet _STRING_LITERAL_in_fileTableWithVariableStatement2356 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _tableColumnArg_in_tableColumnArgs2368 = new BitSet(new ulong[]{0x20000UL});
+		public static readonly BitSet _COMMA_in_tableColumnArgs2370 = new BitSet(new ulong[]{0x80000000000UL});
+		public static readonly BitSet _tableColumnArg_in_tableColumnArgs2374 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _ID_in_tableColumnArg2395 = new BitSet(new ulong[]{0x20104000000000UL,0x80000000UL});
+		public static readonly BitSet _dataType_in_tableColumnArg2397 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _mathExpression_in_synpred29_Scrape924 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _selectArgs_in_synpred60_Scrape1545 = new BitSet(new ulong[]{0x20000UL});
 		public static readonly BitSet _COMMA_in_synpred60_Scrape1547 = new BitSet(new ulong[]{0x2UL});

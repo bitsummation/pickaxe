@@ -509,6 +509,20 @@ namespace Pickaxe.Parser.Bridge
             VisitChildren(tree);
         }
 
+        public void Visit(NotLikeExpression expression, CommonTree tree)
+        {
+            SetLine(expression, tree);
+            Parent(tree).Children.Add(expression);
+            VisitChildren(tree);
+        }
+
+        public void Visit(LikeExpression expression, CommonTree tree)
+        {
+            SetLine(expression, tree);
+            Parent(tree).Children.Add(expression);
+            VisitChildren(tree);
+        }
+
         public void Visit(AndExpression expression, CommonTree tree)
         {
             SetLine(expression, tree);

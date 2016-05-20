@@ -179,7 +179,11 @@ namespace Pickaxe.Parser
 
                     if(payload.Type == ScrapeParser.NODES)
                         return new AntlrBridgeTree<NodesBooleanExpression>(payload, (node, tree, visitor) => visitor.Visit(node, tree));
-                    if(payload.Type == ScrapeParser.AND)
+                    if (payload.Type == ScrapeParser.NOTLIKE)
+                        return new AntlrBridgeTree<NotLikeExpression>(payload, (node, tree, visitor) => visitor.Visit(node, tree));
+                    if (payload.Type == ScrapeParser.LIKE)
+                        return new AntlrBridgeTree<LikeExpression>(payload, (node, tree, visitor) => visitor.Visit(node, tree));
+                    if (payload.Type == ScrapeParser.AND)
                         return new AntlrBridgeTree<AndExpression>(payload, (node, tree, visitor) => visitor.Visit(node, tree));
                     if (payload.Type == ScrapeParser.OR)
                         return new AntlrBridgeTree<OrExpression>(payload, (node, tree, visitor) => visitor.Visit(node, tree));
