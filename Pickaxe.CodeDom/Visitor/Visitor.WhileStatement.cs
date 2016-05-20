@@ -23,8 +23,34 @@ namespace Pickaxe.CodeDom.Visitor
 {
     public partial class CodeDomGenerator : IAstVisitor
     {
-        public void Visit(WhileStatement literal)
+        public void Visit(WhileStatement whileStatement)
         {
+            using (Scope.Push(_mainType))
+            {
+                var tableArg = VisitChild(whileStatement.TableReference);
+
+                CodeMemberMethod method = new CodeMemberMethod();
+                method.Name = "While_" + tableArg.MethodIdentifier;
+                method.Attributes = MemberAttributes.Private;
+                GenerateCallStatement(method.Statements, whileStatement.Line.Line);
+
+                var loop = new CodeIterationStatement();
+                loop.InitStatement = new CodeSnippetStatement();
+                loop.IncrementStatement = new CodeSnippetStatement();
+                loop.TestExpression = new CodeBinaryOperatorExpression(new CodePropertyReferenceExpression(tableArg.CodeExpression, "RowCount"), CodeBinaryOperatorType.IdentityInequality, new CodePrimitiveExpression(0));
+
+                method.Statements.Add(loop);
+
+                var blockArgs = VisitChild(whileStatement.Block, new CodeDomArg() { Tag = true });
+                loop.Statements.AddRange(blockArgs.ParentStatements);
+
+                var methodcall = new CodeMethodInvokeExpression(
+                    new CodeMethodReferenceExpression(null, method.Name));
+
+                _mainType.Type.Members.Add(method);
+                _codeStack.Peek().ParentStatements.Add(methodcall);
+                _codeStack.Peek().CodeExpression = methodcall;
+            }
         }
     }
 }
