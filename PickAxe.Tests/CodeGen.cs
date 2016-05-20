@@ -36,15 +36,22 @@ namespace PickAxe.Tests
         public void BasicCodeGenTest()
         {
               var input = @"
+    
+    create buffer a(t string)
 
-create mssql prices(
-	rentalId int,
-	season string	
-)
-with (
-    connectionstring = 'Server=sandbagger;Database=scrape;Trusted_Connection=True;',
-    dbtable = 'prices'
-)
+insert into a
+select 'http://www.walmart.com/browse/food/canned-powdered-milk/976759_976780_1044149'
+
+insert into a
+select 'sadfas'
+
+update a
+set t = 'http://www.walmart.com/' + t
+where t not like 'http://www.walmart.com/'
+
+select *
+from a
+
 
 ";
 

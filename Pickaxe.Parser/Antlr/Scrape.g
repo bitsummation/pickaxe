@@ -232,7 +232,7 @@ setArgs
 	;
 
 setArg
-	: selectArg EQUALS selectArg -> ^(VARIABLE_ASSIGNMENT selectArg selectArg)
+	: selectArg EQUALS selectArgs -> ^(VARIABLE_ASSIGNMENT selectArg selectArgs)
 	;
 
 /************* SELECTS *******************/
