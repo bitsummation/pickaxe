@@ -28,8 +28,6 @@ namespace PickAxe.Tests
         [Test]
         public void TestCodeRunner()
         {
-            Code code = new Code(new string[0]);
-            code.Run();
         }
        
         [Test]
