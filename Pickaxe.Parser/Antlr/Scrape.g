@@ -80,6 +80,7 @@ statement
 	| variableAssignmentStatement
 	| insertStatement
 	| eachStatement
+	| whileStatement
 	| procedureCall
 	| truncateTable
 	;
@@ -112,6 +113,10 @@ proxyList
 
 proxyTest
 	: WITH TEST OPENBRACE sqlStatement CLOSEBRACE -> sqlStatement
+	;
+
+whileStatement
+	: WHILE OPENPAREN ID CLOSEPAREN block -> ^(WHILE TABLE_VARIABLE_REFERENCE[$ID] block)
 	;
 
 eachStatement
@@ -442,6 +447,7 @@ INSERT_OVERWRITE : 'insert overwrite';
 INSERT_DIRECTORY : 'insert file into';
 TRUNCATE : 'truncate';
 THREAD : 'thread';
+WHILE : 'while';
 EACH : 'each';
 IN : 'in';
 SELECT : 'select';

@@ -48,6 +48,7 @@ namespace Pickaxe.Sdk
         void Visit(DownloadPageExpression expression);
         void Visit(DownloadImageExpression expression);
 
+        void Visit(WhileStatement whileStatement);
         void Visit(EachStatement eachStatement);
         void Visit(Block block);
 

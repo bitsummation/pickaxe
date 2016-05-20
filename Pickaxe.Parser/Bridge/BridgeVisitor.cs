@@ -382,6 +382,14 @@ namespace Pickaxe.Parser.Bridge
             Parent(tree).Children.Add(all);
         }
 
+        public void Visit(WhileStatement whileStatement, CommonTree tree)
+        {
+            Parent(tree).Children.Add(whileStatement);
+            SetLine(whileStatement, tree);
+
+            VisitChildren(tree);
+        }
+
         public void Visit(EachStatement eachStatement, CommonTree tree)
         {
             Parent(tree).Children.Add(eachStatement);

@@ -114,6 +114,7 @@
     <Compile Include="WhenBooleanStatement.cs" />
     <Compile Include="WhenLiteralStatement.cs" />
     <Compile Include="WhereStatement.cs" />
+    <Compile Include="WhileStatement.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />

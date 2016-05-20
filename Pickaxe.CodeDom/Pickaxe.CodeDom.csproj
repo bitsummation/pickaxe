@@ -136,6 +136,7 @@
     <Compile Include="Visitor\Visitor.WhenBooleanStatement.cs" />
     <Compile Include="Visitor\Visitor.WhenLiteralStatement.cs" />
     <Compile Include="Visitor\Visitor.WhereStatement.cs" />
+    <Compile Include="Visitor\Visitor.WhileStatement.cs" />
     <Compile Include="Visitor\VisitorTakeHtmlStatement.cs" />
     <Compile Include="Visitor\VisitorTakeTextStatement.cs" />
   </ItemGroup>

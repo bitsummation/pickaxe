@@ -118,6 +118,8 @@ namespace Pickaxe.Parser
                     if (payload.Type == ScrapeParser.DOWNLOAD_IMAGE)
                         return new AntlrBridgeTree<DownloadImageExpression>(payload, (node, tree, visitor) => visitor.Visit(node, tree));
 
+                    if(payload.Type == ScrapeParser.WHILE)
+                        return new AntlrBridgeTree<WhileStatement>(payload, (node, tree, visitor) => visitor.Visit(node, tree));
                     if(payload.Type == ScrapeParser.EACH)
                         return new AntlrBridgeTree<EachStatement>(payload, (node, tree, visitor) => visitor.Visit(node, tree));
                     if(payload.Type == ScrapeParser.BLOCK)

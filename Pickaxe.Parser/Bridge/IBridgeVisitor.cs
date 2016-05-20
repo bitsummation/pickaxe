@@ -50,6 +50,7 @@ namespace Pickaxe.Parser.Bridge
         void Visit(DownloadPageExpression expression, CommonTree tree);
         void Visit(DownloadImageExpression expression, CommonTree tree);
 
+        void Visit(WhileStatement whileStatement, CommonTree tree);
         void Visit(EachStatement eachStatement, CommonTree tree);
         void Visit(Block block, CommonTree tree);
 
