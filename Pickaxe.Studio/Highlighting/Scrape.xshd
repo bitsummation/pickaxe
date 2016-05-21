@@ -74,6 +74,8 @@
         <Key word = "procedure"/>
         <Key word = "while"/>
         <Key word = "exec"/>
+        <Key word = "not"/>
+        <Key word = "like"/>
         <Key word = "select" />
         <Key word = "from" />
         <Key word = "overwrite" />

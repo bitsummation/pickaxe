@@ -51,6 +51,7 @@
     <Compile Include="CommandLineVariable.cs" />
     <Compile Include="IdentityVariable.cs" />
     <Compile Include="InnerJoinStatement.cs" />
+    <Compile Include="LikeExpression.cs" />
     <Compile Include="MatchExpression.cs" />
     <Compile Include="MsSqlTable.cs" />
     <Compile Include="NodesBooleanExpression.cs" />
@@ -70,6 +71,7 @@
     <Compile Include="AdditionOperator.cs" />
     <Compile Include="MultiplicatonOperator.cs" />
     <Compile Include="NotEqualExpression.cs" />
+    <Compile Include="NotLikeExpression.cs" />
     <Compile Include="NullLiteral.cs" />
     <Compile Include="NullOperator.cs" />
     <Compile Include="OrExpression.cs" />

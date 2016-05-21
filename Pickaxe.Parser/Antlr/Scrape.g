@@ -237,7 +237,7 @@ setArgs
 	;
 
 setArg
-	: selectArg EQUALS selectArg -> ^(VARIABLE_ASSIGNMENT selectArg selectArg)
+	: selectArg EQUALS selectArgs -> ^(VARIABLE_ASSIGNMENT selectArg selectArgs)
 	;
 
 /************* SELECTS *******************/
@@ -331,6 +331,8 @@ boolOperator
 	| GREATERTHAN
 	| GREATERTHANEQUAL
 	| NOTEQUAL
+	| LIKE
+	| NOTLIKE
 	;
 
 selectArg
@@ -437,6 +439,8 @@ LESSTHANEQUAL: '<=';
 GREATERTHAN: '>';
 GREATERTHANEQUAL: '>=';
 NOTEQUAL: '!=';
+LIKE: 'like';
+NOTLIKE: 'not like';
 
 NULL_OPERATOR: '??';
 

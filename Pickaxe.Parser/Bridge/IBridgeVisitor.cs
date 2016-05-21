@@ -88,6 +88,8 @@ namespace Pickaxe.Parser.Bridge
         void Visit(NullOperator op, CommonTree tree);
 
         void Visit(NodesBooleanExpression expression, CommonTree tree);
+        void Visit(NotLikeExpression expression, CommonTree tree);
+        void Visit(LikeExpression expression, CommonTree tree);
         void Visit(AndExpression expression, CommonTree tree);
         void Visit(OrExpression expression, CommonTree tree);
         void Visit(LessThanExpression expression, CommonTree tree);
