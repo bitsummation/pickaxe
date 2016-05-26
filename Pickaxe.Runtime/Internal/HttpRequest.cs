@@ -13,6 +13,7 @@
  */
 
 using log4net;
+using OpenQA.Selenium.PhantomJS;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -82,8 +83,19 @@ namespace Pickaxe.Runtime.Internal
             {
                 try
                 {
-                    HttpWebRequest request = CreateHttpWebRequest();
-                    bytes = TryDownload(request);
+                    //HttpWebRequest request = CreateHttpWebRequest();
+                    //bytes = TryDownload(request);
+
+                    var driverService = PhantomJSDriverService.CreateDefaultService();
+                    driverService.HideCommandPromptWindow = true;
+                    PhantomJSDriver phantom = new PhantomJSDriver(driverService);
+                    phantom.Navigate().GoToUrl(Url);
+                    string html = phantom.PageSource;
+                    
+                    bytes = Encoding.UTF8.GetBytes(html);
+                    phantom.Dispose();
+                    
+
                     OnSuccess();
                     break;
                 }
