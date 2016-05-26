@@ -13,7 +13,9 @@
  */
 
 using log4net;
+using OpenQA.Selenium;
 using OpenQA.Selenium.PhantomJS;
+using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -21,6 +23,7 @@ using System.Linq;
 using System.Net;
 using System.Reflection;
 using System.Text;
+using System.Threading;
 
 namespace Pickaxe.Runtime.Internal
 {
@@ -88,14 +91,23 @@ namespace Pickaxe.Runtime.Internal
 
                     var driverService = PhantomJSDriverService.CreateDefaultService();
                     driverService.HideCommandPromptWindow = true;
-                    PhantomJSDriver phantom = new PhantomJSDriver(driverService);
-                    phantom.Navigate().GoToUrl(Url);
-                    string html = phantom.PageSource;
-                    
-                    bytes = Encoding.UTF8.GetBytes(html);
-                    phantom.Dispose();
-                    
+                    using (PhantomJSDriver phantom = new PhantomJSDriver(driverService))
+                    {
+                        phantom.Navigate().GoToUrl(Url);
 
+                        var wait = new WebDriverWait(phantom, TimeSpan.FromSeconds(15));
+                        wait.Message = "DOM didn't load";
+                        wait.Until(driver1 => ((IJavaScriptExecutor)phantom).ExecuteScript("return document.readyState").Equals("complete"));
+
+                        wait = new WebDriverWait(phantom, TimeSpan.FromSeconds(15));
+                        wait.Message = "Couldn't find element in page";
+                        wait.Until(drv => drv.FindElement(By.CssSelector(".pricecontainer")));
+
+                        string html = phantom.PageSource;
+
+                        bytes = Encoding.UTF8.GetBytes(html);
+                    }
+                    
                     OnSuccess();
                     break;
                 }
