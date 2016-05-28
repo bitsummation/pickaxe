@@ -500,7 +500,7 @@ namespace Pickaxe.Parser.Bridge
         {
             SetLine(hint, tree);
             Parent(tree).Children.Add(hint);
-            hint.CssWaitElement = ParseLiteral(tree.GetChild(0).Text);
+            VisitChildren(tree);
         }
 
         public void Visit(ThreadTableHint hint, CommonTree tree)

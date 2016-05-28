@@ -21,7 +21,18 @@ namespace Pickaxe.Sdk
 {
     public class JSTableHint : AstNode
     {
-        public string CssWaitElement { get; set; }
+        public string CssWaitElement
+        {
+            get
+            {
+                string cssWaitElement = null;
+                var literal = Children.Where(x => x.GetType() == typeof(StringLiteral)).Cast<StringLiteral>().SingleOrDefault();
+                if (literal != null)
+                    cssWaitElement = literal.Value;
+
+                return cssWaitElement;
+            }
+        }
 
         public override void Accept(IAstVisitor visitor)
         {
