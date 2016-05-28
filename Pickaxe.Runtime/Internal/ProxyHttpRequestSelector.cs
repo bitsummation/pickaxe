@@ -32,8 +32,8 @@ namespace Pickaxe.Runtime.Internal
         private ProxySelector _selector;
         private Stack<AttemptPair> _error;
 
-        public ProxyHttpRequestSelector(ProxySelector selector, string url)
-            : base(url)
+        public ProxyHttpRequestSelector(ProxySelector selector, IHttpWire wire)
+            : base(wire)
         {
             _selector = selector;
             _selectorCopy = new HttpProxySelector(selector.FetchProxies());
@@ -42,7 +42,7 @@ namespace Pickaxe.Runtime.Internal
 
         protected override bool OnError(DownloadError error)
         {
-            Log.InfoFormat("Download error, Proxy={0}, Url = {1}, Message = {2}", _selectorCopy.Current, Url, error.Message);
+            Log.InfoFormat("Download error, Proxy={0}, Url = {1}, Message = {2}", _selectorCopy.Current, Wire.Url, error.Message);
 
             bool tryAgain = true;
             _error.Push(new AttemptPair() { Proxy = _selectorCopy.Current, Error = error });
@@ -58,7 +58,7 @@ namespace Pickaxe.Runtime.Internal
 
         protected override void OnSuccess()
         {
-            Log.InfoFormat("Download success, Proxy={0}, Url = {1}", _selectorCopy.Current, Url);
+            Log.InfoFormat("Download success, Proxy={0}, Url = {1}", _selectorCopy.Current, Wire.Url);
 
             if (_error.Count > 0)
             {
@@ -80,13 +80,10 @@ namespace Pickaxe.Runtime.Internal
             _error.Clear();
         }
 
-        protected override HttpWebRequest CreateHttpWebRequest()
+        protected override void OnBeforeDownload()
         {
-            var request = base.CreateHttpWebRequest();
             var proxy = _selectorCopy.Next;
-
-            request.Proxy = new WebProxy(proxy.ProxyUrl, proxy.Port);
-            return request;
+            Wire.Proxy = proxy;
         }
 
         private class AttemptPair

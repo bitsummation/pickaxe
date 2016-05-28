@@ -13,17 +13,10 @@
  */
 
 using log4net;
-using OpenQA.Selenium;
-using OpenQA.Selenium.PhantomJS;
-using OpenQA.Selenium.Support.UI;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using System.Net;
 using System.Reflection;
 using System.Text;
-using System.Threading;
 
 namespace Pickaxe.Runtime.Internal
 {
@@ -31,51 +24,20 @@ namespace Pickaxe.Runtime.Internal
     {
         private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
-        protected HttpRequest(string url)
+        protected HttpRequest(IHttpWire wire)
         {
-            Url = url;
+            Wire = wire as HttpWire;
         }
 
-        protected string Url { get; private set; }
+        protected HttpWire Wire { get; private set; }
 
         protected abstract bool OnError(DownloadError error);
 
+        protected virtual void OnBeforeDownload() { }
+        
         protected virtual void OnSuccess()
         {
-            Log.InfoFormat("Download success, Url = {0}", Url);
-        }
-
-        protected virtual HttpWebRequest CreateHttpWebRequest()
-        {
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(Url);
-            request.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
-            request.Timeout = 30000; //30 seconds
-            request.UserAgent = "pickaxe/1.0";
-
-            request.Method = "GET";
-            return request;
-        }
-
-        private byte[] TryDownload(HttpWebRequest request)
-        {
-            byte[] bytes = new byte[0];
-
-            using (var response = (HttpWebResponse)request.GetResponse())
-            using (var reader = response.GetResponseStream())
-            using (var memoryStream = new MemoryStream())
-            {
-                byte[] buffer = new byte[4096];
-                int bytesRead;
-                do
-                {
-                    bytesRead = reader.Read(buffer, 0, buffer.Length);
-                    memoryStream.Write(buffer, 0, bytesRead);
-                } while (bytesRead != 0);
-
-                bytes = memoryStream.ToArray();
-            }
-
-            return bytes;
+            Log.InfoFormat("Download success, Url = {0}", Wire.Url);
         }
 
         public byte[] Download()
@@ -86,27 +48,8 @@ namespace Pickaxe.Runtime.Internal
             {
                 try
                 {
-                    //HttpWebRequest request = CreateHttpWebRequest();
-                    //bytes = TryDownload(request);
-
-                    var driverService = PhantomJSDriverService.CreateDefaultService();
-                    driverService.HideCommandPromptWindow = true;
-                    using (PhantomJSDriver phantom = new PhantomJSDriver(driverService))
-                    {
-                        phantom.Navigate().GoToUrl(Url);
-
-                        var wait = new WebDriverWait(phantom, TimeSpan.FromSeconds(15));
-                        wait.Message = "DOM didn't load";
-                        wait.Until(driver1 => ((IJavaScriptExecutor)phantom).ExecuteScript("return document.readyState").Equals("complete"));
-
-                        wait = new WebDriverWait(phantom, TimeSpan.FromSeconds(15));
-                        wait.Message = "Couldn't find element in page";
-                        wait.Until(drv => drv.FindElement(By.CssSelector(".pricecontainer")));
-
-                        string html = phantom.PageSource;
-
-                        bytes = Encoding.UTF8.GetBytes(html);
-                    }
+                    OnBeforeDownload();
+                    bytes = Wire.Download();
                     
                     OnSuccess();
                     break;

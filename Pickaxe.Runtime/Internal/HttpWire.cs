@@ -12,16 +12,23 @@
  * limitations under the License.
  */
 
-using Pickaxe.Runtime.Internal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Pickaxe.Runtime
+namespace Pickaxe.Runtime.Internal
 {
-    public interface IHttpRequestFactory
+    internal abstract class HttpWire : IHttpWire
     {
-        IHttpRequest Create(string url);
+        protected HttpWire(string url)
+        {
+            Url = url;
+        }
+
+        public Proxy Proxy { get; set; }
+        public string Url {get; private set;}
+
+        public abstract byte[] Download();
     }
 }

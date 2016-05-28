@@ -23,7 +23,12 @@ namespace Pickaxe.Runtime.Internal
     {
         public static IHttpRequestFactory NoProxy = new NoProxyFactoryImpl();
 
-        public abstract IHttpRequest Create(string url);
+        public IHttpRequest Create(string url)
+        {
+            return Create(new WebRequestHttpWire(url));
+        }
+
+        public abstract IHttpRequest Create(IHttpWire url);
 
         public static IHttpRequestFactory CreateProxyFactory(Proxy proxy)
         {
@@ -37,9 +42,9 @@ namespace Pickaxe.Runtime.Internal
 
         private class NoProxyFactoryImpl : HttpRequestFactory
         {
-            public override IHttpRequest Create(string url)
+            public override IHttpRequest Create(IHttpWire wire)
             {
-                return new RetryHttpRequest(url);
+                return new RetryHttpRequest(wire);
             }
         }
 
@@ -52,9 +57,9 @@ namespace Pickaxe.Runtime.Internal
                 _selector = selector;
             }
 
-            public override IHttpRequest Create(string url)
+            public override IHttpRequest Create(IHttpWire wire)
             {
-                return new ProxyHttpRequestSelector(_selector, url);
+                return new ProxyHttpRequestSelector(_selector, wire);
             }
         }
 
@@ -67,7 +72,7 @@ namespace Pickaxe.Runtime.Internal
                 _proxy = proxy;
             }
 
-            public override IHttpRequest Create(string url)
+            public override IHttpRequest Create(IHttpWire url)
             {
                 return new ProxyHttpRequest(_proxy, url);
             }

@@ -13,6 +13,7 @@
  */
 
 using HtmlAgilityPack;
+using Pickaxe.Runtime.Internal;
 using System;
 using System.Collections.Generic;
 using System.IO;

@@ -14,8 +14,8 @@ namespace Pickaxe.Runtime.Internal
 
         private int _errorCount;
 
-        public RetryHttpRequest(string url)
-            : base(url)
+        public RetryHttpRequest(IHttpWire wire)
+            : base(wire)
         {
             _errorCount = 0;
         }
@@ -23,9 +23,9 @@ namespace Pickaxe.Runtime.Internal
         protected override bool OnError(DownloadError error)
         {
             if (_errorCount == 0)
-                Log.InfoFormat("Failed download, Url = {0}, Message = {1}", Url, error.Message);
+                Log.InfoFormat("Failed download, Url = {0}, Message = {1}", Wire.Url, error.Message);
             else
-                Log.InfoFormat("Retry failed download, Url = {0}, Message = {1}", Url, error.Message);
+                Log.InfoFormat("Retry failed download, Url = {0}, Message = {1}", Wire.Url, error.Message);
             
             _errorCount++;
             return (_errorCount < RetryCount);

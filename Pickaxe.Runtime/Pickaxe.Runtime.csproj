@@ -66,7 +66,11 @@
     <Compile Include="Debug\IDebug.cs" />
     <Compile Include="DownloadImage.cs" />
     <Compile Include="DownloadPage.cs" />
+    <Compile Include="IHttpWire.cs" />
     <Compile Include="Internal\HttpProxySelector.cs" />
+    <Compile Include="Internal\HttpWire.cs" />
+    <Compile Include="Internal\SeleniumHttpWire.cs" />
+    <Compile Include="Internal\WebRequestHttpWire.cs" />
     <Compile Include="LazyDownloadPage.cs" />
     <Compile Include="MsSqlTable.cs" />
     <Compile Include="SelectDownloadPage.cs" />
@@ -77,10 +81,10 @@
     <Compile Include="FileTable.cs" />
     <Compile Include="Http.cs" />
     <Compile Include="DownloadError.cs" />
-    <Compile Include="Internal\IHttpRequestFactory.cs" />
+    <Compile Include="IHttpRequestFactory.cs" />
     <Compile Include="Internal\HttpRequest.cs" />
     <Compile Include="Internal\HttpRequestFactory.cs" />
-    <Compile Include="Internal\IHttpRequest.cs" />
+    <Compile Include="IHttpRequest.cs" />
     <Compile Include="Internal\ProxyHttpRequest.cs" />
     <Compile Include="Internal\RetryHttpRequest.cs" />
     <Compile Include="IRuntime.cs" />

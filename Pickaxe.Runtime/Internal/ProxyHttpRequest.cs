@@ -28,24 +28,22 @@ namespace Pickaxe.Runtime.Internal
 
         private Proxy _proxy;
 
-        public ProxyHttpRequest(Proxy proxy, string url)
-            : base(url)
+        public ProxyHttpRequest(Proxy proxy, IHttpWire wire)
+            : base(wire)
         {
             _proxy = proxy;
         }
 
         protected override bool OnError(DownloadError error)
         {
-            log.InfoFormat("Failed proxy download, Proxy={0}, Url = {1}, Message = {2}", _proxy, Url, error.Message);
+            log.InfoFormat("Failed proxy download, Proxy={0}, Url = {1}, Message = {2}", _proxy, Wire.Url, error.Message);
             return false;
         }
 
-        protected override HttpWebRequest CreateHttpWebRequest()
+        protected override void OnBeforeDownload()
         {
-            var request = base.CreateHttpWebRequest();
-
-            request.Proxy = new WebProxy(_proxy.ProxyUrl, _proxy.Port);
-            return request;
+            Wire.Proxy = _proxy;
         }
+
     }
 }
