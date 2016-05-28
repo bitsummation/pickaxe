@@ -34,6 +34,7 @@
         <Key word = "&gt;=" />
         <Key word = "&gt;" />
         <Key word = "!=" />
+        <Key word = "|" />
         <Key word = "and" />
         <Key word = "or" />
         <Key word = "null" />
@@ -100,6 +101,7 @@
         <Key word = "on" />
         <Key word = "set" />
         <Key word = "thread" />
+        <Key word = "js" />
       </KeyWords>
     </RuleSet>
   </RuleSets>
