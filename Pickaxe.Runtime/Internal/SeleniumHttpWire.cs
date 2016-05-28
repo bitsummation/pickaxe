@@ -24,18 +24,26 @@ namespace Pickaxe.Runtime.Internal
 {
     internal class SeleniumHttpWire : HttpWire
     {
-        public SeleniumHttpWire(string url)
+        private string _cssElement;
+
+        public SeleniumHttpWire(string url, string cssElement)
             : base(url)
         {
+            _cssElement = cssElement;
         }
 
         public override byte[] Download()
         {
             byte[] bytes = new byte[0];
 
-            //http://stackoverflow.com/questions/18921099/add-proxy-to-phantomjsdriver-selenium-c
             var driverService = PhantomJSDriverService.CreateDefaultService();
             driverService.HideCommandPromptWindow = true;
+
+            if(Proxy != null)
+            {
+                driverService.ProxyType = "http";
+                driverService.Proxy = Proxy.ToString();
+            }
 
             using (PhantomJSDriver phantom = new PhantomJSDriver(driverService))
             {
@@ -45,12 +53,14 @@ namespace Pickaxe.Runtime.Internal
                 wait.Message = "DOM didn't load";
                 wait.Until(driver1 => ((IJavaScriptExecutor)phantom).ExecuteScript("return document.readyState").Equals("complete"));
 
-                wait = new WebDriverWait(phantom, TimeSpan.FromSeconds(15));
-                wait.Message = "Couldn't find element in page";
-                wait.Until(drv => drv.FindElement(By.CssSelector(".pricecontainer")));
+                if (!String.IsNullOrEmpty(_cssElement))
+                {
+                    wait = new WebDriverWait(phantom, TimeSpan.FromSeconds(15));
+                    wait.Message = "Couldn't find element in page";
+                    wait.Until(drv => drv.FindElement(By.CssSelector(_cssElement)));
+                }
 
                 string html = phantom.PageSource;
-
                 bytes = Encoding.UTF8.GetBytes(html);
             }
 
