@@ -93,6 +93,7 @@ namespace Pickaxe.Sdk
         void Visit(NotEqualExpression expression);
         void Visit(EqualsExpression expression);
 
+        void Visit(JSTableHint hint);
         void Visit(ThreadTableHint hint);
 
         void Visit(ProcedureDefinition definition);

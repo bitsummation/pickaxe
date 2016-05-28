@@ -17,10 +17,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Pickaxe.Runtime
+namespace Pickaxe.Sdk
 {
-    public interface IHttpWire
+    public class JSTableHint : AstNode
     {
-        string Url { get; } 
+        public string CssWaitElement { get; set; }
+
+        public override void Accept(IAstVisitor visitor)
+        {
+            visitor.Visit(this);
+        }
     }
 }

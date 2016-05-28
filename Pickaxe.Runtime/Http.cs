@@ -23,27 +23,27 @@ namespace Pickaxe.Runtime
 {
     public static class Http
     {
-        private static IHttpRequest CreateRequest(IHttpRequestFactory factory, string url)
+        private static IHttpRequest CreateRequest(IHttpRequestFactory factory, IHttpWire wire)
         {
-            return factory.Create(url);
+            return factory.Create(wire);
         }
 
-        private static DownloadImage GetImage(IHttpRequestFactory factory, string url)
+        private static DownloadImage GetImage(IHttpRequestFactory factory, IHttpWire wire)
         {
-            var request = CreateRequest(factory, url);
+            var request = CreateRequest(factory, wire);
             var bytes = request.Download();
 
-            string extension = Path.GetExtension(url);
+            string extension = Path.GetExtension(wire.Url);
             string fileName = Guid.NewGuid().ToString("N") + extension;
             if (bytes.Length == 0)
                 fileName = "";
 
-            return new DownloadImage() { date = DateTime.Now, image = bytes, size = bytes.Length, url = url, filename = fileName };
+            return new DownloadImage() { date = DateTime.Now, image = bytes, size = bytes.Length, url = wire.Url, filename = fileName };
         }
 
-        private static HtmlDocument GetDocument(IHttpRequestFactory factory, string url, out int length)
+        private static HtmlDocument GetDocument(IHttpRequestFactory factory, IHttpWire wire, out int length)
         {
-            var request = CreateRequest(factory, url);
+            var request = CreateRequest(factory, wire);
             var bytes = request.Download();
 
             string html = string.Empty;
@@ -55,29 +55,29 @@ namespace Pickaxe.Runtime
             return doc;
         }
 
-        private static RuntimeTable<DownloadPage> DownloadPage(IRuntime runtime, string[] urls)
+        private static RuntimeTable<DownloadPage> DownloadPage(IRuntime runtime, IHttpWire[] wires)
         {
             var table = new RuntimeTable<DownloadPage>();
-            foreach (var url in urls)
+            foreach (var wire in wires)
             {
                 int contentlength;
-                var doc = GetDocument(runtime.RequestFactory, url, out contentlength);
-                table.Add(new DownloadPage() { url = url, nodes = new[] { doc.DocumentNode }, date = DateTime.Now, size = contentlength });
+                var doc = GetDocument(runtime.RequestFactory, wire, out contentlength);
+                table.Add(new DownloadPage() { url = wire.Url, nodes = new[] { doc.DocumentNode }, date = DateTime.Now, size = contentlength });
             }
 
             return table;
         }
 
-        public static RuntimeTable<DownloadPage> DownloadPage(IRuntime runtime, string url, int line)
+        public static RuntimeTable<DownloadPage> DownloadPage(IRuntime runtime, IHttpWire wire, int line)
         {
-            return DownloadPage(runtime, new string[] { url });
+            return DownloadPage(runtime, new IHttpWire[] { wire });
         }
 
         public static RuntimeTable<DownloadImage> DownloadImage(IRuntime runtime, string url, int line)
         {
             var table = new RuntimeTable<DownloadImage>();
 
-            var image = GetImage(runtime.RequestFactory, url);
+            var image = GetImage(runtime.RequestFactory, new WebRequestHttpWire(url));
             
             table.Add(image);
             return table;

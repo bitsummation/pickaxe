@@ -80,6 +80,7 @@
     <Compile Include="Visitor\Visitor.IdentityVariable.cs.cs" />
     <Compile Include="Visitor\Visitor.InnerJoinStatement.cs" />
     <Compile Include="Visitor\Visitor.InsertIntoDirectoryStatement.cs" />
+    <Compile Include="Visitor\Visitor.JSTableHint.cs" />
     <Compile Include="Visitor\Visitor.LessThanEqualExpression.cs" />
     <Compile Include="Visitor\Visitor.LessThanExpression.cs" />
     <Compile Include="Visitor\Visitor.MsSqlTable.cs" />

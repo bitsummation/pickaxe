@@ -41,18 +41,41 @@ namespace Pickaxe.CodeDom.Visitor
             _mainType.Type.Members.Add(method);
             GenerateCallStatement(method.Statements, line);
 
+            CodeExpression argsExpression = null;
+
             int threadCount = 1;
+            argsExpression = new CodeMethodInvokeExpression(new CodeTypeReferenceExpression(typeof(LazyDownloadArgs)), "CreateWebRequestArgs",
+                    new CodeThisReferenceExpression(),
+                    new CodePrimitiveExpression(line),
+                    new CodePrimitiveExpression(threadCount),
+                    statementDomArg.CodeExpression);
+
             if (expression.ThreadHint != null)
+            {
                 threadCount = expression.ThreadHint.ThreadCount;
 
-            //if in select context pick the lazy download type
+                argsExpression = new CodeMethodInvokeExpression(new CodeTypeReferenceExpression(typeof(LazyDownloadArgs)), "CreateWebRequestArgs",
+                    new CodeThisReferenceExpression(),
+                    new CodePrimitiveExpression(line),
+                    new CodePrimitiveExpression(threadCount),
+                    statementDomArg.CodeExpression);
+            }
+
+            if(expression.JSTableHint != null)
+            {
+                argsExpression = new CodeMethodInvokeExpression(new CodeTypeReferenceExpression(typeof(LazyDownloadArgs)), "CreateSeleniumArgs",
+                    new CodeThisReferenceExpression(),
+                    new CodePrimitiveExpression(line),
+                    new CodePrimitiveExpression(threadCount),
+                    new CodePrimitiveExpression(expression.JSTableHint.CssWaitElement),
+                    statementDomArg.CodeExpression);
+            }
+
+            //if in select context pick the lazy download type~
             var downloadType = Scope.Current.IsSelect ? "SelectDownloadTable" : "VariableDownloadTable";
 
             method.Statements.Add(new CodeMethodReturnStatement(new CodeObjectCreateExpression(new CodeTypeReference(downloadType),
-                new CodeThisReferenceExpression(),
-                new CodePrimitiveExpression(line),
-                new CodePrimitiveExpression(threadCount),
-                statementDomArg.CodeExpression)));
+                argsExpression)));
 
             var methodcall = new CodeMethodInvokeExpression(
                new CodeMethodReferenceExpression(null, method.Name));

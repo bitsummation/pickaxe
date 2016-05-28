@@ -496,6 +496,13 @@ namespace Pickaxe.Parser.Bridge
             VisitChildren(tree);
         }
 
+        public void Visit(JSTableHint hint, CommonTree tree)
+        {
+            SetLine(hint, tree);
+            Parent(tree).Children.Add(hint);
+            hint.CssWaitElement = tree.GetChild(0).Text;
+        }
+
         public void Visit(ThreadTableHint hint, CommonTree tree)
         {
             SetLine(hint, tree);

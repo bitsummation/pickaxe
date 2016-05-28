@@ -21,15 +21,12 @@ namespace Pickaxe.Runtime
 {
     public class SelectDownloadTable : ThreadedDownloadTable
     {
-        public SelectDownloadTable(IRuntime runtime, int line, int threadCount, string url)
-            : base(runtime, line, threadCount, url) { }
-
-        public SelectDownloadTable(IRuntime runtime, int line, int threadCount, Table<ResultRow> table)
-            : base(runtime, line, threadCount, table) { }
+        public SelectDownloadTable(LazyDownloadArgs args)
+            : base(args) { }
 
         public sealed override IEnumerator<DownloadPage> GetEnumerator() //Give out empty lazy wrappers
         {
-            foreach (string url in Urls)
+            foreach (IHttpWire url in Wires)
             {
                 yield return new SelectDownloadPage(this);
             }

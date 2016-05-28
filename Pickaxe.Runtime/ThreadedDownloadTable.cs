@@ -30,70 +30,53 @@ namespace Pickaxe.Runtime
         private object UrlLock = new object();
         private Queue<DownloadPage> _results;
 
-        private IRuntime _runtime;
-        private int _line;
-        private int _threadCount;
+        private LazyDownloadArgs _args;
+
         private bool _running;
         private bool _callOnProgres;
 
-        private ThreadedDownloadTable(IRuntime runtime, int line, int threadCount)
+        protected ThreadedDownloadTable(LazyDownloadArgs args)
             : base()
         {
-            Urls = new Queue<string>();
+            Wires = new Queue<IHttpWire>();
             _results = new Queue<DownloadPage>();
 
-            _runtime = runtime;
-            Urls = new Queue<string>();
-            _line = line;
-            _threadCount = threadCount;
+            _args = args;
             _running = false;
+
+            foreach (var wire in args.Wires)
+                Wires.Enqueue(wire);
+
+            _args.Runtime.TotalOperations += args.Wires.Count;
+            _callOnProgres = true;            
         }
 
-        public ThreadedDownloadTable(IRuntime runtime, int line, int threadCount, string url)
-            : this(runtime, line, threadCount)
-        {
-            Urls.Enqueue(url);
-
-            _callOnProgres = false;
-        }
-
-        public ThreadedDownloadTable(IRuntime runtime, int line, int threadCount, Table<ResultRow> table)
-            : this(runtime, line, threadCount)
-        {
-            runtime.TotalOperations += table.RowCount;
-
-            foreach (var row in table)
-                Urls.Enqueue(row[0].ToString());
-
-            _callOnProgres = true;
-        }
-
-        protected Queue<string> Urls {get; private set;}
+        protected Queue<IHttpWire> Wires {get; private set;}
 
         private void Work(string logValue) //multi threaded
         {
             ThreadContext.Properties[Config.LogKey] = logValue;
 
-            string url = string.Empty;
+            IHttpWire wire = null;
             while (true)
             {
                 lock (UrlLock)
                 {
-                    if (Urls.Count > 0)
-                        url = Urls.Dequeue();
+                    if (Wires.Count > 0)
+                        wire = Wires.Dequeue();
                     else
-                        url = null;
+                        wire = null;
                 }
 
-                if (url == null) //nothing left in queue
+                if (wire == null) //nothing left in queue
                     break;
 
-                _runtime.Call(_line);
-                var downloadResult = Http.DownloadPage(_runtime, url, _line);
-                _runtime.Call(_line);
+                _args.Runtime.Call(_args.Line);
+                var downloadResult = Http.DownloadPage(_args.Runtime, wire, _args.Line);
+                _args.Runtime.Call(_args.Line);
                 
                 if(_callOnProgres)
-                    _runtime.OnProgress();
+                    _args.Runtime.OnProgress();
 
                 lock (ResultLock)
                 {
@@ -106,7 +89,7 @@ namespace Pickaxe.Runtime
         private void ProcesImpl(string logValue)
         {
             var threads = new List<Thread>();
-            for (int x = 0; x < _threadCount; x++)
+            for (int x = 0; x < _args.ThreadCount; x++)
                 threads.Add(new Thread(() => Work(logValue)));
 
             foreach (var thread in threads)
@@ -134,7 +117,7 @@ namespace Pickaxe.Runtime
             while (result == null)
             {
                 result = FetchResult();
-                if (!_runtime.IsRunning)
+                if (!_args.Runtime.IsRunning)
                     result = DownloadPage.CreateEmpty();
             }
 

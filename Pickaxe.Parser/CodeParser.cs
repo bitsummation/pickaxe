@@ -144,6 +144,8 @@ namespace Pickaxe.Parser
                     if (payload.Type == ScrapeParser.NULL)
                         return new AntlrBridgeTree<NullLiteral>(payload, (node, tree, visitor) => visitor.Visit(node, tree));
 
+                    if(payload.Type ==ScrapeParser.JS)
+                        return new AntlrBridgeTree<JSTableHint>(payload, (node, tree, visitor) => visitor.Visit(node, tree));
                     if(payload.Type == ScrapeParser.THREAD)
                         return new AntlrBridgeTree<ThreadTableHint>(payload, (node, tree, visitor) => visitor.Visit(node, tree));
 

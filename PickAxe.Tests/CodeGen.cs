@@ -34,21 +34,13 @@ namespace PickAxe.Tests
         public void BasicCodeGenTest()
         {
               var input = @"
-    
-    create buffer a(t string)
 
-insert into a
-select 'http://www.walmart.com/browse/food/canned-powdered-milk/976759_976780_1044149'
-
-insert into a
-select 'sadfas'
-
-update a
-set t = 'http://www.walmart.com/' + t
-where t not like 'http://www.walmart.com/'
-
-select *
-from a
+select
+	pick 'td:nth-child(1) p.bold' match '(\d+)-(\w+)' replace '$2',
+	pick 'td:nth-child(1) p.bold' match '(\d+)-(\w+)' replace '$1',
+	pick 'td:nth-child(2) p' match '\d{3}\.\d{2}'
+from download page '' with (thread(10)|js('table[width=""600""] tr'))
+where nodes = 'table[width=""600""] tr'
 
 
 ";

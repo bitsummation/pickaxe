@@ -23,23 +23,16 @@ namespace Pickaxe.Runtime
     {
         private IList<LazyDownloadPage> _pages;
 
-        public VariableDownloadTable(IRuntime runtime, int line, int threadCount, string url)
-            : base(runtime, line, threadCount, url)
+        public VariableDownloadTable(LazyDownloadArgs args)
+            : base(args)
         {
              _pages = new List<LazyDownloadPage>();
              InitPages();
         }
 
-        public VariableDownloadTable(IRuntime runtime, int line, int threadCount, Table<ResultRow> table)
-            : base(runtime, line, threadCount, table)
-        {
-            _pages = new List<LazyDownloadPage>();
-            InitPages();
-        }
-
         private void InitPages()
         {
-            foreach (string url in Urls)
+            foreach (IHttpWire wire in Wires)
             {
                 _pages.Add(new VariableDownloadPage(this));
             }

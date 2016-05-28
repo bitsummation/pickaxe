@@ -12,15 +12,20 @@
  * limitations under the License.
  */
 
+using Pickaxe.Sdk;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.CodeDom;
 
-namespace Pickaxe.Runtime
+namespace Pickaxe.CodeDom.Visitor
 {
-    public interface IHttpWire
+    public partial class CodeDomGenerator : IAstVisitor
     {
-        string Url { get; } 
+        public void Visit(JSTableHint hint)
+        {
+            _codeStack.Peek().CodeExpression = new CodePrimitiveExpression(hint.CssWaitElement);
+        }
     }
 }

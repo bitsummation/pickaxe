@@ -256,13 +256,13 @@ fromStatement
 	| FROM OPENPAREN tableGenerationClause CLOSEPAREN ID tableHint? -> ^(FROM tableGenerationClause ^(TABLE_ALIAS ID) tableHint?)
 	;
 
-/*with (thread(2))*/
 tableHint
-	: WITH! OPENPAREN! hint CLOSEPAREN!
+	: WITH OPENPAREN (hint PIPE)* hint CLOSEPAREN -> hint*
 	;
 
 hint
 	: THREAD OPENPAREN INT CLOSEPAREN -> ^(THREAD INT)
+	| JS OPENPAREN STRING_LITERAL CLOSEPAREN -> ^(JS STRING_LITERAL)
 	;
 
 innerJoinStatement
@@ -451,6 +451,7 @@ INSERT_OVERWRITE : 'insert overwrite';
 INSERT_DIRECTORY : 'insert file into';
 TRUNCATE : 'truncate';
 THREAD : 'thread';
+JS : 'js';
 WHILE : 'while';
 EACH : 'each';
 IN : 'in';
@@ -501,6 +502,7 @@ OPENPAREN : '(';
 CLOSEPAREN : ')';
 OPENBRACE : '{';
 CLOSEBRACE : '}';
+PIPE : '|';
 PLUS	: '+';
 MINIS 	: '-';
 DIV 	: '/'; 

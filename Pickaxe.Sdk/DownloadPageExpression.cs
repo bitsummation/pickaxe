@@ -22,7 +22,8 @@ namespace Pickaxe.Sdk
         {
             get
             {
-                return Children.Where(x => x.GetType() != typeof(ThreadTableHint)).Single();
+                return Children.Where(x => x.GetType() != typeof(ThreadTableHint) &&
+                    x.GetType() != typeof(JSTableHint)).Single();
             }
         }
 
@@ -33,6 +34,18 @@ namespace Pickaxe.Sdk
                 var hint = Children.Where(x => x.GetType() == typeof(ThreadTableHint)).Cast<ThreadTableHint>().SingleOrDefault();
                 if(hint == null)
                     hint = Parent.Children.Where(x => x.GetType() == typeof(ThreadTableHint)).Cast<ThreadTableHint>().SingleOrDefault();
+
+                return hint;
+            }
+        }
+
+        public JSTableHint JSTableHint
+        {
+            get
+            {
+                var hint = Children.Where(x => x.GetType() == typeof(JSTableHint)).Cast<JSTableHint>().SingleOrDefault();
+                if (hint == null)
+                    hint = Parent.Children.Where(x => x.GetType() == typeof(JSTableHint)).Cast<JSTableHint>().SingleOrDefault();
 
                 return hint;
             }
