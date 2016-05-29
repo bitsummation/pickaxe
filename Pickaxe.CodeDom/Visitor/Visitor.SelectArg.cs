@@ -12,6 +12,7 @@
  * limitations under the License.
  */
 
+using Pickaxe.Runtime;
 using Pickaxe.Sdk;
 using System;
 using System.CodeDom;
@@ -37,7 +38,7 @@ namespace Pickaxe.CodeDom.Visitor
             var scope = childDomArgs[0].Scope;
             for (int x = 1; x < childDomArgs.Count; x++)
             {
-                expression = new CodeMethodInvokeExpression(new CodeTypeReferenceExpression(typeof(string)), "Concat", expression, childDomArgs[x].CodeExpression);
+                expression = new CodeMethodInvokeExpression(new CodeTypeReferenceExpression(typeof(Helper)), "NullConcat", expression, childDomArgs[x].CodeExpression);
                 scope = childDomArgs[x].Scope;
             }
 

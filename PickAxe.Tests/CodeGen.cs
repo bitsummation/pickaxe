@@ -35,13 +35,23 @@ namespace PickAxe.Tests
         {
               var input = @"
 
-select
-	pick 'td:nth-child(1) p.bold' match '(\d+)-(\w+)' replace '$2',
-	pick 'td:nth-child(1) p.bold' match '(\d+)-(\w+)' replace '$1',
-	pick 'td:nth-child(2) p' match '\d{3}\.\d{2}'
-from download page '' with (thread(10)|js('table[width=""600""] tr'))
-where nodes = 'table[width=""600""] tr'
 
+create buffer temp(t int)
+
+insert into temp
+select 1
+
+select
+	'test ' + t
+from temp
+
+/*
+select
+	url,
+	'http://www.target.com' + pick 'a:first-child' take attribute 'href'
+from download page 'http://www.target.com/c/deli-grocery-essentials/-/N-5hp74#?lnk=lnav_shop categories_13&intc=2776003|null'
+where nodes = 'ul.brandlist li'
+*/
 
 ";
 

@@ -64,6 +64,7 @@
     <Compile Include="Debug\BreakProcesser.cs" />
     <Compile Include="Debug\IBreak.cs" />
     <Compile Include="Debug\IDebug.cs" />
+    <Compile Include="Helper.cs" />
     <Compile Include="LazyDownloadArgs.cs" />
     <Compile Include="DownloadImage.cs" />
     <Compile Include="DownloadPage.cs" />
