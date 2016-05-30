@@ -34,6 +34,19 @@ namespace Pickaxe.Sdk
             }
         }
 
+        public int CssTimeoutSeconds
+        {
+            get
+            {
+                int cssTimeout = 5;
+                var literal = Children.Where(x => x.GetType() == typeof(IntegerLiteral)).Cast<IntegerLiteral>().SingleOrDefault();
+                if (literal != null)
+                    cssTimeout = literal.Value;
+
+                return cssTimeout;
+            }
+        }
+
         public override void Accept(IAstVisitor visitor)
         {
             visitor.Visit(this);

@@ -25,11 +25,13 @@ namespace Pickaxe.Runtime.Internal
     internal class SeleniumHttpWire : HttpWire
     {
         private string _cssElement;
+        private int _cssTimeout;
 
-        public SeleniumHttpWire(string url, string cssElement)
+        public SeleniumHttpWire(string url, string cssElement, int cssTimeout)
             : base(url)
         {
             _cssElement = cssElement;
+            _cssTimeout = cssTimeout;
         }
 
         public override byte[] Download()
@@ -55,7 +57,7 @@ namespace Pickaxe.Runtime.Internal
 
                 if (!String.IsNullOrEmpty(_cssElement))
                 {
-                    wait = new WebDriverWait(phantom, TimeSpan.FromSeconds(15));
+                    wait = new WebDriverWait(phantom, TimeSpan.FromSeconds(_cssTimeout));
                     wait.Message = "Couldn't find element in page";
                     wait.Until(drv => drv.FindElement(By.CssSelector(_cssElement)));
                 }

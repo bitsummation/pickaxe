@@ -38,18 +38,18 @@ namespace Pickaxe.Runtime
             return args;
         }
 
-        public static LazyDownloadArgs CreateSeleniumArgs(IRuntime runtime, int line, int threadCount, string cssElement, string url)
+        public static LazyDownloadArgs CreateSeleniumArgs(IRuntime runtime, int line, int threadCount, string cssElement, int cssTimeout, string url)
         {
             var args = new LazyDownloadArgs(runtime, line, threadCount);
-            args.Wires.Add(new SeleniumHttpWire(url, cssElement));
+            args.Wires.Add(new SeleniumHttpWire(url, cssElement, cssTimeout));
             return args;
         }
 
-        public static LazyDownloadArgs CreateSeleniumArgs(IRuntime runtime, int line, int threadCount, string cssElement, Table<ResultRow> table)
+        public static LazyDownloadArgs CreateSeleniumArgs(IRuntime runtime, int line, int threadCount, string cssElement, int cssTimeout, Table<ResultRow> table)
         {
             var args = new LazyDownloadArgs(runtime, line, threadCount);
             foreach (var row in table)
-                args.Wires.Add(new SeleniumHttpWire(row[0].ToString(), cssElement));
+                args.Wires.Add(new SeleniumHttpWire(row[0].ToString(), cssElement, cssTimeout));
 
             return args;
         }

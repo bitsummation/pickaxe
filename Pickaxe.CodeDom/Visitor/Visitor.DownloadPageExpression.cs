@@ -68,6 +68,7 @@ namespace Pickaxe.CodeDom.Visitor
                     new CodePrimitiveExpression(line),
                     new CodePrimitiveExpression(threadCount),
                     new CodePrimitiveExpression(expression.JSTableHint.CssWaitElement),
+                    new CodePrimitiveExpression(expression.JSTableHint.CssTimeoutSeconds),
                     statementDomArg.CodeExpression);
             }
 

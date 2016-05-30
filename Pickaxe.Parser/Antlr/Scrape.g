@@ -262,8 +262,14 @@ tableHint
 
 hint
 	: THREAD OPENPAREN INT CLOSEPAREN -> ^(THREAD INT)
-	| JS (OPENPAREN STRING_LITERAL CLOSEPAREN)? -> ^(JS STRING_LITERAL?)
+	| JS (OPENPAREN (jsArg COMMA)* jsArg CLOSEPAREN)? -> ^(JS jsArg*)
 	;
+
+jsArg
+	: STRING_LITERAL
+	| INT
+	;
+
 
 innerJoinStatement
 	: innerJoin t=ID a=ID? 'on' boolExpression innerJoinStatement? -> ^(INNER_JOIN TABLE_VARIABLE_REFERENCE[$t] ^(TABLE_ALIAS $a)? boolExpression innerJoinStatement?)
