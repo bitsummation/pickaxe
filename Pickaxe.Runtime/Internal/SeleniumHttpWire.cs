@@ -47,8 +47,10 @@ namespace Pickaxe.Runtime.Internal
                 driverService.Proxy = Proxy.ToString();
             }
 
-            using (PhantomJSDriver phantom = new PhantomJSDriver(driverService))
+            PhantomJSDriver phantom = null;
+            try
             {
+                phantom = new PhantomJSDriver(driverService);
                 phantom.Navigate().GoToUrl(Url);
 
                 var wait = new WebDriverWait(phantom, TimeSpan.FromSeconds(15));
@@ -64,6 +66,11 @@ namespace Pickaxe.Runtime.Internal
 
                 string html = phantom.PageSource;
                 bytes = Encoding.UTF8.GetBytes(html);
+            }
+            finally
+            {
+                if (phantom != null)
+                    phantom.Dispose();
             }
 
             return bytes;

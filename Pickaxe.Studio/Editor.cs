@@ -162,6 +162,7 @@ namespace Pickaxe.Studio
 
         private void OnStop(object sender, EventArgs e)
         {
+            stopButton.Enabled = false;
             if(ActiveEditControl != null)
                 ActiveEditControl.Stop();
         }

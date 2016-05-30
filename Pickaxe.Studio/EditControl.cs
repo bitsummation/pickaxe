@@ -215,7 +215,7 @@ namespace Pickaxe.Studio
         public void Stop()
         {
             if (_runable != null)
-                _runable.Stop();
+                _runable.Stop(() => ProgramFinished());
 
             statusLabel.Text = "Stopping...";
         }
@@ -264,7 +264,6 @@ namespace Pickaxe.Studio
                 catch (ThreadAbortException)
                 {
                     Log.Info("Program aborted");
-                    ProgramFinished();
                 }
                 catch (Exception e)
                 {

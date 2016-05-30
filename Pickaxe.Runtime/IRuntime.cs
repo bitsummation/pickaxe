@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 
 namespace Pickaxe.Runtime
 {
@@ -11,6 +12,8 @@ namespace Pickaxe.Runtime
         int TotalOperations { get; set; }
         void Call(int line);
         void OnProgress();
-        bool IsRunning { get; }
+
+        Thread ExecutingThread { get; set; }
+        IList<Thread> DownloadThreads { get; set;}
     }
 }

@@ -36,11 +36,15 @@ namespace Pickaxe.Runtime
             TotalOperations = 0;
             CompletedOperations = 0;
             HighlightExecution = false;
-            IsRunning = true;
             _processor = BreakProcesser.Continue;
             RegisterArgs(args);
             RequestFactory = HttpRequestFactory.NoProxy;
+
+            DownloadThreads = new List<Thread>();
         }
+
+        public Thread ExecutingThread { get; set; }
+        public IList<Thread> DownloadThreads { get; set;}
 
         public event Action<ProgressArgs> Progress;
         public event Action<RuntimeTable<ResultRow>> Select;
@@ -48,7 +52,6 @@ namespace Pickaxe.Runtime
 
         public IHttpRequestFactory RequestFactory { get; set; }
         public int TotalOperations { get; set; }
-        public bool  IsRunning { get; private set; }
         protected int CompletedOperations { get; set; }
 
         protected void InitProxies()
@@ -150,22 +153,38 @@ namespace Pickaxe.Runtime
                 Progress(args);
         }
 
-        public void Stop()
+        private void StopImpl(Action action)
         {
-            IsRunning = false;
             Log.Info("Program stopping......");
+
+            ExecutingThread.Abort();
+
+            foreach (var thread in DownloadThreads)
+                thread.Abort();
+
+            //We need to wait here until all download threads are fully killed.
+            foreach (var thread in DownloadThreads)
+                thread.Join(); //wait for all workers to stop
+
+            if (action != null)
+                action();
+        }
+
+        public void Stop(Action action)
+        {
+            if (action != null)
+            {
+                var thread = new Thread(() => StopImpl(action));
+                thread.Start();
+            }
+            else
+                StopImpl(action);
         }
 
         public bool HighlightExecution { get; set; }
 
         public void Call(int line)
         {
-            if (!IsRunning)
-            {
-                Log.Info("Thread Stopped");
-                Thread.CurrentThread.Abort();
-            }
-
             if(HighlightExecution)
                 OnHighlight(line);
 
@@ -176,5 +195,6 @@ namespace Pickaxe.Runtime
         {
             OnHighlight(line);
         }
+
     }
 }

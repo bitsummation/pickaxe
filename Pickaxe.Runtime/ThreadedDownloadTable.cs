@@ -92,11 +92,12 @@ namespace Pickaxe.Runtime
             for (int x = 0; x < _args.ThreadCount; x++)
                 threads.Add(new Thread(() => Work(logValue)));
 
+            _args.Runtime.DownloadThreads.Clear();
             foreach (var thread in threads)
+            {
+                _args.Runtime.DownloadThreads.Add(thread);
                 thread.Start();
-
-            foreach (var thread in threads)
-                thread.Join(); //wait for all workers to stop
+            }
         }
 
         private DownloadPage FetchResult()
@@ -115,12 +116,8 @@ namespace Pickaxe.Runtime
         {
             DownloadPage result = null;
             while (result == null)
-            {
                 result = FetchResult();
-                if (!_args.Runtime.IsRunning)
-                    result = DownloadPage.CreateEmpty();
-            }
-
+         
             return result;
         }
 

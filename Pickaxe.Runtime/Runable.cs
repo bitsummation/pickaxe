@@ -18,6 +18,7 @@ using System.Linq;
 using System.Net;
 using System.Reflection;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Pickaxe.Runtime
@@ -50,9 +51,9 @@ namespace Pickaxe.Runtime
             _instance.RequestFactory = requestFactory;
         }
 
-        public void Stop()
+        public void Stop(Action action)
         {
-            _instance.Stop();
+            _instance.Stop(action);
         }
 
         private void OnSelect(RuntimeTable<ResultRow> results)
@@ -76,6 +77,8 @@ namespace Pickaxe.Runtime
         public void Run()
         {
             ServicePointManager.DefaultConnectionLimit = int.MaxValue;
+
+            _instance.ExecutingThread = Thread.CurrentThread;
             var method = _runType.GetMethod("Run");
             method.Invoke(_instance, null);
         }
