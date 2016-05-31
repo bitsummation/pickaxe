@@ -30,16 +30,18 @@ namespace Pickaxe.Studio
 
         private Control FindControl(string controlName, Control control)
         {
-            if (control.Name == controlName)
-                return control;
-
-            foreach (Control child in control.Controls)
+            if (control != null)
             {
-                var t = FindControl(controlName, child);
-                if (t != null)
-                    return t;
-            }
+                if (control.Name == controlName)
+                    return control;
 
+                foreach (Control child in control.Controls)
+                {
+                    var t = FindControl(controlName, child);
+                    if (t != null)
+                        return t;
+                }
+            }
             return null;
         }
 

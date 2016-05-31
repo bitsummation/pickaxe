@@ -28,6 +28,7 @@ namespace Pickaxe.Studio
         {
             InitializeComponent();
             editors.Close += OnClose;
+            Application.ApplicationExit += OnApplicationExit;
         }
 
         private TabPage CreateEditTab()
@@ -42,6 +43,16 @@ namespace Pickaxe.Studio
             tabPage.Tag = editor;
             tabPage.Controls.Add(editor);
             return tabPage;
+        }
+
+        private void OnApplicationExit(object sender, EventArgs e)
+        {
+            foreach(TabPage tabPage in editors.TabPages)
+            {
+                var editControl = tabPage.Tag as EditControl;
+                if (editControl != null)
+                    editControl.StopApplication();
+            }
         }
 
         private void OnSaveAs(object sender, EventArgs e)

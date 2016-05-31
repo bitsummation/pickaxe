@@ -53,13 +53,9 @@ namespace Pickaxe.Runtime.Internal
                 phantom = new PhantomJSDriver(driverService);
                 phantom.Navigate().GoToUrl(Url);
 
-                var wait = new WebDriverWait(phantom, TimeSpan.FromSeconds(15));
-                wait.Message = "DOM didn't load";
-                wait.Until(driver1 => ((IJavaScriptExecutor)phantom).ExecuteScript("return document.readyState").Equals("complete"));
-
                 if (!String.IsNullOrEmpty(_cssElement))
                 {
-                    wait = new WebDriverWait(phantom, TimeSpan.FromSeconds(_cssTimeout));
+                    var wait = new WebDriverWait(phantom, TimeSpan.FromSeconds(_cssTimeout));
                     wait.Message = "Couldn't find element in page";
                     wait.Until(drv => drv.FindElement(By.CssSelector(_cssElement)));
                 }

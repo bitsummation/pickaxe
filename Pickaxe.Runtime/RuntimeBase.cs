@@ -36,6 +36,7 @@ namespace Pickaxe.Runtime
             TotalOperations = 0;
             CompletedOperations = 0;
             HighlightExecution = false;
+            IsRunning = true;
             _processor = BreakProcesser.Continue;
             RegisterArgs(args);
             RequestFactory = HttpRequestFactory.NoProxy;
@@ -52,6 +53,7 @@ namespace Pickaxe.Runtime
 
         public IHttpRequestFactory RequestFactory { get; set; }
         public int TotalOperations { get; set; }
+        public bool IsRunning { get; private set; }
         protected int CompletedOperations { get; set; }
 
         protected void InitProxies()
@@ -158,9 +160,7 @@ namespace Pickaxe.Runtime
             Log.Info("Program stopping......");
 
             ExecutingThread.Abort();
-
-            foreach (var thread in DownloadThreads)
-                thread.Abort();
+            IsRunning = false;
 
             //We need to wait here until all download threads are fully killed.
             foreach (var thread in DownloadThreads)
@@ -185,6 +185,9 @@ namespace Pickaxe.Runtime
 
         public void Call(int line)
         {
+            if (!IsRunning)
+                Thread.CurrentThread.Abort();
+
             if(HighlightExecution)
                 OnHighlight(line);
 

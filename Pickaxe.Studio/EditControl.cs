@@ -212,6 +212,12 @@ namespace Pickaxe.Studio
             ThreadPool.QueueUserWorkItem((state) => Compile(source), source); //compile on seperate thread so we don't block UI,
         }
 
+        public void StopApplication()
+        {
+            if (_runable != null)
+                _runable.Stop(null);
+        }
+
         public void Stop()
         {
             if (_runable != null)
@@ -276,15 +282,18 @@ namespace Pickaxe.Studio
 
         private void ProgramFinished()
         {
-            Invoke(new Action(() =>
+            if (IsHandleCreated)
             {
-                statusLabel.Text = "Ready.";
-                progressBar.Visible = false;
-                progressText.Visible = false;
-                IsRunning = false;
-                //var highlightingStrategy = textEditorControl1.Document.HighlightingStrategy as DefaultHighlightingStrategy;
-                //highlightingStrategy.SetColorFor("Selection", _defaultHighlight);
-            }));
+                Invoke(new Action(() =>
+                {
+                    statusLabel.Text = "Ready.";
+                    progressBar.Visible = false;
+                    progressText.Visible = false;
+                    IsRunning = false;
+                    //var highlightingStrategy = textEditorControl1.Document.HighlightingStrategy as DefaultHighlightingStrategy;
+                    //highlightingStrategy.SetColorFor("Selection", _defaultHighlight);
+                }));
+            }
         }
 
         private void OnHighlight(int line)
