@@ -23,8 +23,8 @@ namespace Pickaxe.Runtime.Internal
 {
     internal class WebRequestHttpWire : HttpWire
     {
-        public WebRequestHttpWire(string url)
-            : base(url)
+        public WebRequestHttpWire(string url, IRuntime runtime, int line)
+            : base(url, runtime, line)
         {
         }
 
@@ -42,7 +42,7 @@ namespace Pickaxe.Runtime.Internal
             return request;
         }
 
-        public override byte[] Download()
+        protected override byte[] DownloadImpl()
         {
             var request = CreateHttpWebRequest();
             byte[] bytes = new byte[0];

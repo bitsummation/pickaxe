@@ -24,47 +24,45 @@ namespace Pickaxe.Runtime
     {
         public static LazyDownloadArgs CreateWebRequestArgs(IRuntime runtime, int line, int threadCount, string url)
         {
-            var args = new LazyDownloadArgs(runtime, line, threadCount);
-            args.Wires.Add(new WebRequestHttpWire(url));
+            var args = new LazyDownloadArgs(runtime, threadCount);
+            args.Wires.Add(new WebRequestHttpWire(url, runtime, line));
             return args;
         }
 
         public static LazyDownloadArgs CreateWebRequestArgs(IRuntime runtime, int line, int threadCount, Table<ResultRow> table)
         {
-            var args = new LazyDownloadArgs(runtime, line, threadCount);
+            var args = new LazyDownloadArgs(runtime, threadCount);
             foreach (var row in table)
-                args.Wires.Add(new WebRequestHttpWire(row[0].ToString()));
+                args.Wires.Add(new WebRequestHttpWire(row[0].ToString(), runtime, line));
 
             return args;
         }
 
         public static LazyDownloadArgs CreateSeleniumArgs(IRuntime runtime, int line, int threadCount, string cssElement, int cssTimeout, string url)
         {
-            var args = new LazyDownloadArgs(runtime, line, threadCount);
-            args.Wires.Add(new SeleniumHttpWire(url, cssElement, cssTimeout));
+            var args = new LazyDownloadArgs(runtime, threadCount);
+            args.Wires.Add(new SeleniumHttpWire(url, cssElement, cssTimeout, runtime, line));
             return args;
         }
 
         public static LazyDownloadArgs CreateSeleniumArgs(IRuntime runtime, int line, int threadCount, string cssElement, int cssTimeout, Table<ResultRow> table)
         {
-            var args = new LazyDownloadArgs(runtime, line, threadCount);
+            var args = new LazyDownloadArgs(runtime, threadCount);
             foreach (var row in table)
-                args.Wires.Add(new SeleniumHttpWire(row[0].ToString(), cssElement, cssTimeout));
+                args.Wires.Add(new SeleniumHttpWire(row[0].ToString(), cssElement, cssTimeout, runtime, line));
 
             return args;
         }
 
-        private LazyDownloadArgs(IRuntime runtime, int line, int threadCount)
+        private LazyDownloadArgs(IRuntime runtime, int threadCount)
         {
             Runtime = runtime;
             Wires = new List<IHttpWire>();
             ThreadCount = threadCount;
-            Line = line;
         }
 
         public IRuntime Runtime { get; private set; }
         public IList<IHttpWire> Wires { get; private set; }
         public int ThreadCount { get; private set; }
-        public int Line { get; private set; }
     }
 }

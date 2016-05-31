@@ -21,14 +21,25 @@ namespace Pickaxe.Runtime.Internal
 {
     internal abstract class HttpWire : IHttpWire
     {
-        protected HttpWire(string url)
+        private IRuntime _runtime;
+        private int _line;
+
+        protected HttpWire(string url, IRuntime runtime, int line)
         {
             Url = url;
+            _runtime = runtime;
+            _line = line;
         }
 
         public Proxy Proxy { get; set; }
         public string Url {get; private set;}
 
-        public abstract byte[] Download();
+        public byte[] Download()
+        {
+            _runtime.Call(_line);
+            return DownloadImpl();
+        }
+
+        protected abstract byte[] DownloadImpl();
     }
 }

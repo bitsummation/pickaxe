@@ -71,9 +71,7 @@ namespace Pickaxe.Runtime
                 if (wire == null) //nothing left in queue
                     break;
 
-                _args.Runtime.Call(_args.Line);
-                var downloadResult = Http.DownloadPage(_args.Runtime, wire, _args.Line);
-                _args.Runtime.Call(_args.Line);
+                var downloadResult = Http.DownloadPage(_args.Runtime, wire);
                 
                 if(_callOnProgres)
                     _args.Runtime.OnProgress();

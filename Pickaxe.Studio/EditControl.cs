@@ -58,11 +58,14 @@ namespace Pickaxe.Studio
 
         private void DoInvoke(Action action)
         {
-            var form = this.FindForm();
-            if (form.InvokeRequired)
-                form.BeginInvoke(action);
-            else
-                action();
+            if (IsHandleCreated)
+            {
+                var form = this.FindForm();
+                if (form.InvokeRequired)
+                    form.BeginInvoke(action);
+                else
+                    action();
+            }
         }
 
         private void OnDocumentChanged(object sender, DocumentEventArgs e) //mark dirty
@@ -282,18 +285,15 @@ namespace Pickaxe.Studio
 
         private void ProgramFinished()
         {
-            if (IsHandleCreated)
+            DoInvoke(new Action(() =>
             {
-                Invoke(new Action(() =>
-                {
-                    statusLabel.Text = "Ready.";
-                    progressBar.Visible = false;
-                    progressText.Visible = false;
-                    IsRunning = false;
-                    //var highlightingStrategy = textEditorControl1.Document.HighlightingStrategy as DefaultHighlightingStrategy;
-                    //highlightingStrategy.SetColorFor("Selection", _defaultHighlight);
-                }));
-            }
+                statusLabel.Text = "Ready.";
+                progressBar.Visible = false;
+                progressText.Visible = false;
+                IsRunning = false;
+                //var highlightingStrategy = textEditorControl1.Document.HighlightingStrategy as DefaultHighlightingStrategy;
+                //highlightingStrategy.SetColorFor("Selection", _defaultHighlight);
+            }));   
         }
 
         private void OnHighlight(int line)

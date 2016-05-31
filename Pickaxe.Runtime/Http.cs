@@ -68,7 +68,7 @@ namespace Pickaxe.Runtime
             return table;
         }
 
-        public static RuntimeTable<DownloadPage> DownloadPage(IRuntime runtime, IHttpWire wire, int line)
+        public static RuntimeTable<DownloadPage> DownloadPage(IRuntime runtime, IHttpWire wire)
         {
             return DownloadPage(runtime, new IHttpWire[] { wire });
         }
@@ -77,7 +77,7 @@ namespace Pickaxe.Runtime
         {
             var table = new RuntimeTable<DownloadImage>();
 
-            var image = GetImage(runtime.RequestFactory, new WebRequestHttpWire(url));
+            var image = GetImage(runtime.RequestFactory, new WebRequestHttpWire(url, runtime, line));
             
             table.Add(image);
             return table;

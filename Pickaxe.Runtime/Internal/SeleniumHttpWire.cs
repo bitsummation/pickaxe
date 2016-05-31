@@ -27,14 +27,14 @@ namespace Pickaxe.Runtime.Internal
         private string _cssElement;
         private int _cssTimeout;
 
-        public SeleniumHttpWire(string url, string cssElement, int cssTimeout)
-            : base(url)
+        public SeleniumHttpWire(string url, string cssElement, int cssTimeout, IRuntime runtime, int line)
+            : base(url, runtime, line)
         {
             _cssElement = cssElement;
             _cssTimeout = cssTimeout;
         }
 
-        public override byte[] Download()
+        protected override byte[] DownloadImpl()
         {
             byte[] bytes = new byte[0];
 

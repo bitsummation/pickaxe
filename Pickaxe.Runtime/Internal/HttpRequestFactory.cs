@@ -23,11 +23,6 @@ namespace Pickaxe.Runtime.Internal
     {
         public static IHttpRequestFactory NoProxy = new NoProxyFactoryImpl();
 
-        public IHttpRequest Create(string url)
-        {
-            return Create(new WebRequestHttpWire(url));
-        }
-
         public abstract IHttpRequest Create(IHttpWire url);
 
         public static IHttpRequestFactory CreateProxyFactory(Proxy proxy)

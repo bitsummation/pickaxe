@@ -22,7 +22,6 @@ namespace Pickaxe.Runtime
 {
     public interface IHttpRequestFactory
     {
-        IHttpRequest Create(string url);
         IHttpRequest Create(IHttpWire wire);
     }
 }

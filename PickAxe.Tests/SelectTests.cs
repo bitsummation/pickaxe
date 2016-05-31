@@ -56,7 +56,7 @@ namespace PickAxe.Tests
             httpRequest.Setup(x => x.Download()).Returns(System.Text.Encoding.UTF8.GetBytes(html));
 
             var requestFactory = new Mock<IHttpRequestFactory>();
-            requestFactory.Setup(x => x.Create("http://mock.com")).Returns(httpRequest.Object);
+            requestFactory.Setup(x => x.Create(It.IsAny<IHttpWire>())).Returns(httpRequest.Object);
             _requestFactory = requestFactory.Object;
         }
 
