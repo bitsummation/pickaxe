@@ -15,6 +15,7 @@
 
 using System.CodeDom;
 using Pickaxe.Sdk;
+using Pickaxe.Runtime;
 
 namespace Pickaxe.CodeDom.Visitor
 {
@@ -25,7 +26,7 @@ namespace Pickaxe.CodeDom.Visitor
             var leftArgs = VisitChild(op.Left);
             var rightArgs = VisitChild(op.Right);
 
-            _codeStack.Peek().CodeExpression = new CodeMethodInvokeExpression(leftArgs.CodeExpression, "Contains", rightArgs.CodeExpression);
+            _codeStack.Peek().CodeExpression = new CodeMethodInvokeExpression(new CodeTypeReferenceExpression(typeof(Helper)), "Like",  leftArgs.CodeExpression, rightArgs.CodeExpression);
         }
     }
 }

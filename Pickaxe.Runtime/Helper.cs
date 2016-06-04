@@ -28,5 +28,28 @@ namespace Pickaxe.Runtime
 
             return string.Concat(arg0, arg1);
         }
+
+        public static bool Like(string expression, string likeString)
+        {
+            const string Percent = "%";
+            if (likeString.StartsWith(Percent) && likeString.EndsWith(Percent))
+            {
+                likeString = likeString.Replace(Percent, "");
+                return expression.Contains(likeString);
+            }
+            else if (likeString.StartsWith(Percent))
+            {
+                likeString = likeString.Replace(Percent, "");
+                return expression.StartsWith(likeString);
+            }
+            else if (likeString.EndsWith(Percent))
+            {
+                likeString = likeString.Replace(Percent, "");
+                return expression.EndsWith(likeString);
+            }
+
+            likeString = likeString.Replace(Percent, "");
+            return expression == likeString;
+        }
     }
 }

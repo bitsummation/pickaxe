@@ -88,7 +88,7 @@ namespace PickAxe.Tests
 
         select *
         from a
-        where t not like 'browse'
+        where t not like '%browse%'
 ";
 
             var runable = TestHelper.Compile(code, _requestFactory);
@@ -108,7 +108,7 @@ namespace PickAxe.Tests
 
 
         [Test]
-        public void Where_Like()
+        public void Where_ExactLike()
         {
             var code = @"
 
@@ -122,7 +122,111 @@ namespace PickAxe.Tests
 
     select *
     from a
-    where t like 'browse'
+    where t like 'http://test.com'
+
+";
+
+            var runable = TestHelper.Compile(code, _requestFactory);
+
+            int called = 0;
+            runable.Select += (table) =>
+            {
+                called++;
+                Assert.IsTrue(table.Columns().Length == 1);
+                Assert.IsTrue(table.RowCount == 1);
+                Assert.IsTrue(table[0][0].ToString() == "http://test.com");
+            };
+
+            runable.Run();
+            Assert.True(called == 1);
+        }
+
+
+        [Test]
+        public void Where_EndingLike()
+        {
+            var code = @"
+
+    create buffer a(t string)
+
+    insert into a
+    select 'http://www.walmart.com/browse/food/'
+
+    insert into a
+    select 'http://test.com'
+
+    select *
+    from a
+    where t like 'food/%'
+
+";
+
+            var runable = TestHelper.Compile(code, _requestFactory);
+
+            int called = 0;
+            runable.Select += (table) =>
+            {
+                called++;
+                Assert.IsTrue(table.Columns().Length == 1);
+                Assert.IsTrue(table.RowCount == 1);
+                Assert.IsTrue(table[0][0].ToString() == "http://www.walmart.com/browse/food/");
+            };
+
+            runable.Run();
+            Assert.True(called == 1);
+        }
+
+        [Test]
+        public void Where_BeginningLike()
+        {
+            var code = @"
+
+    create buffer a(t string)
+
+    insert into a
+    select 'http://www.walmart.com/browse/food/'
+
+    insert into a
+    select 'http://test.com'
+
+    select *
+    from a
+    where t like '%http://www.walmart.com'
+
+";
+
+            var runable = TestHelper.Compile(code, _requestFactory);
+
+            int called = 0;
+            runable.Select += (table) =>
+            {
+                called++;
+                Assert.IsTrue(table.Columns().Length == 1);
+                Assert.IsTrue(table.RowCount == 1);
+                Assert.IsTrue(table[0][0].ToString() == "http://www.walmart.com/browse/food/");
+            };
+
+            runable.Run();
+            Assert.True(called == 1);
+        }
+
+
+        [Test]
+        public void Where_MiddleLike()
+        {
+            var code = @"
+
+    create buffer a(t string)
+
+    insert into a
+    select 'http://www.walmart.com/browse/food/'
+
+    insert into a
+    select 'http://test.com'
+
+    select *
+    from a
+    where t like '%browse%'
 
 ";
 
