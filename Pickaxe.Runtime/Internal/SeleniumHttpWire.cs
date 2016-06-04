@@ -40,6 +40,8 @@ namespace Pickaxe.Runtime.Internal
 
             var driverService = PhantomJSDriverService.CreateDefaultService();
             driverService.HideCommandPromptWindow = true;
+            driverService.LoadImages = false;
+            driverService.IgnoreSslErrors = true;
 
             if(Proxy != null)
             {
