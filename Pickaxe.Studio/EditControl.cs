@@ -61,10 +61,13 @@ namespace Pickaxe.Studio
             if (IsHandleCreated)
             {
                 var form = this.FindForm();
-                if (form.InvokeRequired)
-                    form.BeginInvoke(action);
-                else
-                    action();
+                if (form != null)
+                {
+                    if (form.InvokeRequired)
+                        form.BeginInvoke(action);
+                    else
+                        action();
+                }
             }
         }
 

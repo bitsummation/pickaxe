@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// $ANTLR 3.5.2 Scrape.g 2016-06-03 20:53:48
+// $ANTLR 3.5.2 Scrape.g 2016-06-09 20:04:31
 
 // The variable 'variable' is assigned but its value is never used.
 #pragma warning disable 219
@@ -10874,7 +10874,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 				{
 				// AST REWRITE
-				// elements: sqlTableWithStatement, tableColumnArgs, ID
+				// elements: tableColumnArgs, ID, sqlTableWithStatement
 				// token labels: 
 				// rule labels: retval
 				// token list labels: 
@@ -11076,7 +11076,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: WITH, sqlTableWithVariablesStatement
+			// elements: sqlTableWithVariablesStatement, WITH
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -11483,7 +11483,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: WITH, fileTableWithVariablesStatement
+			// elements: fileTableWithVariablesStatement, WITH
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
