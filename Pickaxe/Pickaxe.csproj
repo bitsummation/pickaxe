@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>scraper.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -73,6 +76,9 @@
       <Project>{2f7623e0-3b2b-4242-8113-636a74f82d09}</Project>
       <Name>Pickaxe.Runtime</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="scraper.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
