@@ -2,19 +2,7 @@
 create buffer superCategories(url string)
 
 insert into superCategories
-select 'http://www.walmart.com/cp/Household-Essentials/1115193'
-
-insert into superCategories
 select 'http://www.walmart.com/cp/food/976759'
-
-insert into superCategories
-select 'http://www.walmart.com/cp/Beauty/1085666'
-
-insert into superCategories
-select 'http://www.walmart.com/cp/Health/976760'
-
-insert into superCategories
-select 'http://www.walmart.com/cp/Baby-Products/5427'
 
 create buffer categories(relativeUrl string)
 
@@ -65,5 +53,5 @@ select
     url,
     pick '.tile-heading',
     pick '.price-display' match '[\d.]+'
-from download page (select url from urls) with (thread(20))
+from download page (select url from urls) with (thread(5))
 where nodes = '.tile-grid-unit-wrapper'
