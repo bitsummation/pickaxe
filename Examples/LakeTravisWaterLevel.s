@@ -9,9 +9,10 @@ from download page (
 	select
 		'http://www.golaketravis.com/waterlevel/' + pick '' take attribute 'href'
 	from download page 'http://www.golaketravis.com/waterlevel/'
-	where nodes = 'table[width="600"] td[style="background-color: #62ABCC;"] p.white a'
+	where nodes = 'table[width="100%"] td[style="background-color: #62ABCC;"] p.white a'
 	) with (thread(10))
 where nodes = 'table[width="600"] tr'
 
 select *
 from levels
+
