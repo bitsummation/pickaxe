@@ -168,6 +168,28 @@ select
 from download page 'https://github.com/bitsummation/pickaxe'
 where nodes = 'table.files tr.js-navigation-item'
 ```
+## Javscript Rendered Pages
+---
+If a page renders the HTML client side with javascript a simple js hint is all that is needed. Only use if needed as performance is slower.
+```sql
+select
+	pick '.main-link a' take attribute 'href',
+	pick '.main-link a',
+	pick '.posts span', --replies
+	pick '.views span' --views
+from download page 'https://try.discourse.org/' with (js)
+where nodes = 'tr.topic-list-item'
+```
+For more control, specify the HTML element to wait for -- will wait until javscript renders the element -- and the time to wait before timing out (in seconds).
+```sql
+select
+	pick '.main-link a' take attribute 'href',
+	pick '.main-link a',
+	pick '.posts span', --replies
+	pick '.views span' --views
+from download page 'https://try.discourse.org/' with (js('tr.topic-list-item', 5))
+where nodes = 'tr.topic-list-item'
+```
 ## More Examples
 ---
 #### Example 1
