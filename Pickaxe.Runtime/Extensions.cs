@@ -55,7 +55,7 @@ namespace Pickaxe.Runtime
         {
             string text = null;
             if (node != null && node.Attributes[attribute] != null)
-                text = node.Attributes[attribute].Value;
+                text = WebUtility.HtmlDecode(node.Attributes[attribute].Value);
 
             return text;
         }
