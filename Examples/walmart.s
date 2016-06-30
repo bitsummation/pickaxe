@@ -1,8 +1,19 @@
-
 create buffer superCategories(url string)
 
 insert into superCategories
+select 'http://www.walmart.com/cp/Household-Essentials/1115193'
+
+insert into superCategories
 select 'http://www.walmart.com/cp/food/976759'
+
+insert into superCategories
+select 'http://www.walmart.com/cp/Beauty/1085666'
+
+insert into superCategories
+select 'http://www.walmart.com/cp/Health/976760'
+
+insert into superCategories
+select 'http://www.walmart.com/cp/Baby-Products/5427'
 
 create buffer categories(relativeUrl string)
 
@@ -22,7 +33,7 @@ where relativeUrl like '%/browse/%'
 insert into division
 select
     pick '' take attribute 'href'
-from download page (select 'http://walmart.com' + relativeUrl from categories where relativeUrl like '%/cp/%') with (thread(10))
+from download page (select 'http://walmart.com' + relativeUrl from categories where relativeUrl like '%/cp/%') with (thread(5))
 where nodes = '.tile-section-0,.tile-section-1'    
 
 update division
@@ -49,9 +60,15 @@ each(var p in fetchPage)
     from expand (p.first to p.last)
 }
 
+create buffer product(url string, description string, price string)
+
+insert overwrite product
 select
     url,
-    pick '.tile-heading',
+    pick '.tile-heading div',
     pick '.price-display' match '[\d.]+'
 from download page (select url from urls) with (thread(5))
 where nodes = '.tile-grid-unit-wrapper'
+
+select *
+from product
