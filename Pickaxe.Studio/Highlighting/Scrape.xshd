@@ -46,6 +46,7 @@
       <KeyWords name="System" color="Magenta">
         <Key word = "@@identity" />
         <Key word = "update" />
+        <Key word = "getdate" />
       </KeyWords>
       
       <KeyWords name="Custom" color="Teal">

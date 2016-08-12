@@ -78,6 +78,7 @@ namespace PickAxe.Tests
              {
                  called++;
                  Assert.IsTrue(table.Columns().Length == 1);
+                 Assert.IsTrue(table.Columns()[0] == "(No column name)");
                  Assert.IsTrue(table.RowCount == 1);
                  Assert.IsTrue(table[0][0].ToString() == "6concat");
              };

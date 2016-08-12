@@ -35,23 +35,9 @@ namespace PickAxe.Tests
         {
               var input = @"
 
+var temp = 1
 
-create buffer temp(t int)
-
-insert into temp
-select 1
-
-select
-	'test ' + t
-from temp
-
-/*
-select
-	url,
-	'http://www.target.com' + pick 'a:first-child' take attribute 'href'
-from download page 'http://www.target.com/c/deli-grocery-essentials/-/N-5hp74#?lnk=lnav_shop categories_13&intc=2776003|null'
-where nodes = 'ul.brandlist li'
-*/
+ select temp, getdate()
 
 ";
 

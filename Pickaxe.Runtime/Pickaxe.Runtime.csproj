@@ -75,6 +75,7 @@
     <Compile Include="Internal\WebRequestHttpWire.cs" />
     <Compile Include="LazyDownloadPage.cs" />
     <Compile Include="MsSqlTable.cs" />
+    <Compile Include="PrimitiveFunctions.cs" />
     <Compile Include="SelectDownloadPage.cs" />
     <Compile Include="SelectDownloadTable.cs" />
     <Compile Include="ThreadedDownloadTable.cs" />

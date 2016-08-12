@@ -620,5 +620,10 @@ namespace Pickaxe.Parser.Bridge
                 Visit(tree.Children[x]);
         }
 
+        public void Visit(GetDatePrimitive primitive, CommonTree tree)
+        {
+            Parent(tree).Children.Add(primitive);
+            SetLine(primitive, tree);
+        }
     }
 }

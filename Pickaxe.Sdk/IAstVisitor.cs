@@ -98,5 +98,7 @@ namespace Pickaxe.Sdk
 
         void Visit(ProcedureDefinition definition);
         void Visit(ProcedureCall call);
+
+        void Visit(GetDatePrimitive primitive);
     }
 }

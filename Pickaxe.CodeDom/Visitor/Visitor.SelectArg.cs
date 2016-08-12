@@ -42,16 +42,16 @@ namespace Pickaxe.CodeDom.Visitor
                 scope = childDomArgs[x].Scope;
             }
 
-            if(arg.Args.Length == 1) //only add column name if only one arg. It could be arg + arg
-                _codeStack.Peek().ParentStatements.AddRange(childDomArgs[0].ParentStatements);
-            else
+            if (childDomArgs[0].ParentStatements.Count == 0 || arg.Args.Length > 1) //if no statements or more than one statement (arg + arg)
             {
                 _codeStack.Peek()
-                 .ParentStatements.Add(new CodeMethodInvokeExpression(new CodeTypeReferenceExpression("result"),
-                     "AddColumn",
-                     new CodePrimitiveExpression("(No column name)")));
+                   .ParentStatements.Add(new CodeMethodInvokeExpression(new CodeTypeReferenceExpression("result"),
+                       "AddColumn",
+                       new CodePrimitiveExpression("(No column name)")));
             }
-
+            else if(arg.Args.Length == 1) //only add column name
+                _codeStack.Peek().ParentStatements.AddRange(childDomArgs[0].ParentStatements);
+          
             foreach(var childDomArg in childDomArgs)
             {
                 if (childDomArg.Tag != null)

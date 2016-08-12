@@ -75,6 +75,7 @@
     <Compile Include="Visitor\Visitor.EqualsExpression.cs" />
     <Compile Include="Visitor\Visitor.ExpandExpression.cs" />
     <Compile Include="Visitor\Visitor.ExpandIterationVariable.cs" />
+    <Compile Include="Visitor\Visitor.GetDatePrimitive.cs" />
     <Compile Include="Visitor\Visitor.GreaterThanEqualExpression.cs" />
     <Compile Include="Visitor\Visitor.GreaterThanExpression.cs" />
     <Compile Include="Visitor\Visitor.IdentityVariable.cs.cs" />

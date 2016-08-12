@@ -345,6 +345,11 @@ selectArg
 	: pickStatement
 	| literal
 	| selectVariable
+	| primitiveFunction
+	;
+
+primitiveFunction
+	: GETDATE^ OPENPAREN! CLOSEPAREN!
 	;
 
 selectVariable
@@ -427,6 +432,7 @@ dataType
  */
 
 PROCEDURE: 'procedure';
+GETDATE : 'getdate';
 EXEC: 'exec';
 CASE: 'case';
 WHEN: 'when';

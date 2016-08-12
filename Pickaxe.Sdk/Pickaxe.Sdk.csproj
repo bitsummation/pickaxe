@@ -49,6 +49,7 @@
     <Compile Include="CaseExpression.cs" />
     <Compile Include="CaseVariableStatement.cs" />
     <Compile Include="CommandLineVariable.cs" />
+    <Compile Include="GetDatePrimitive.cs" />
     <Compile Include="IdentityVariable.cs" />
     <Compile Include="InnerJoinStatement.cs" />
     <Compile Include="JSTableHint.cs" />

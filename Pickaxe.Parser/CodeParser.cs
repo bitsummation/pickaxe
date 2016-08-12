@@ -218,6 +218,9 @@ namespace Pickaxe.Parser
                         return new AntlrBridgeTree<ProcedureDefinition>(payload, (node, tree, visitor) => visitor.Visit(node, tree));
                     if(payload.Type == ScrapeLexer.EXEC)
                         return new AntlrBridgeTree<ProcedureCall>(payload, (node, tree, visitor) => visitor.Visit(node, tree));
+
+                    if(payload.Type == ScrapeLexer.GETDATE)
+                        return new AntlrBridgeTree<GetDatePrimitive>(payload, (node, tree, visitor) => visitor.Visit(node, tree));
                 }
 
                 return new CommonTree(payload);

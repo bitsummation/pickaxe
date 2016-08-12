@@ -102,5 +102,7 @@ namespace Pickaxe.Parser.Bridge
 
         void Visit(ProcedureDefinition definition, CommonTree tree);
         void Visit(ProcedureCall call, CommonTree tree);
+
+        void Visit(GetDatePrimitive primitive, CommonTree tree);
     }
 }
