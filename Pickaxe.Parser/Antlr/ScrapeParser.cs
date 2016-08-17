@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// $ANTLR 3.5.2 Scrape.g 2016-08-12 14:37:23
+// $ANTLR 3.5.2 Scrape.g 2016-08-12 22:19:22
 
 // The variable 'variable' is assigned but its value is never used.
 #pragma warning disable 219
@@ -33,11 +33,11 @@ using RewriteRuleITokenStream = Antlr.Runtime.Tree.RewriteRuleTokenStream;
 public partial class ScrapeParser : Antlr.Runtime.Parser
 {
 	internal static readonly string[] tokenNames = new string[] {
-		"<invalid>", "<EOR>", "<DOWN>", "<UP>", "AND", "APOSTRAPHE", "ASTERISK", "ATTRIBUTE", "BLOCK", "BUFFER", "BUFFER_TABLE", "CASE", "CASE_BOOL", "CASE_EXPRESSION", "CASE_VAR", "CLOSEBRACE", "CLOSEPAREN", "COMMA", "COMMAND_VAR", "COMMENT", "CONNECTIONSTRING", "CREATE", "DBTABLE", "DIGIT", "DIV", "DOT", "DOWNLOAD_IMAGE", "DOWNLOAD_PAGE", "EACH", "ELSE", "END", "EQUALS", "EXEC", "EXPAND", "EXPAND_INTERATION_VARIABLE", "FIELD_TERMINATOR", "FILE", "FILE_TABLE", "FLOAT", "FROM", "GETDATE", "GREATERTHAN", "GREATERTHANEQUAL", "HTML", "ID", "IDENTITY", "IDENTITY_VAR", "IN", "INNER_JOIN", "INSERT_DIRECTORY", "INSERT_INTO", "INSERT_INTO_DIRECTORY", "INSERT_OVERWRITE", "INT", "INTEGER", "JOIN", "JS", "LESSTHAN", "LESSTHANEQUAL", "LETTER", "LIKE", "LINE_COMMENT_DASH", "LINE_COMMENT_SLASH", "LOCATION", "MATCH", "MEMBER_REFERENCE", "MINIS", "MSSQL", "MSSQL_TABLE", "NEWLINE", "NODES", "NOTEQUAL", "NOTLIKE", "NULL", "NULL_OPERATOR", "OPENBRACE", "OPENPAREN", "OR", "OTHERCHARS", "PICK", "PIPE", "PLUS", "POST_PICK", "PRE_PICK", "PROCEDURE", "PROGRAM", "PROXIES", "PROXY_LIST", "QUOTE", "REPLACE", "ROW_REFERENCE", "ROW_TERMINATOR", "SELECT", "SELECT_ALL", "SELECT_ARG", "SELECT_ID", "SELECT_STATEMENT", "SET", "STRING", "STRING_LITERAL", "TABLE", "TABLE_ALIAS", "TABLE_COLUMN_ARG", "TABLE_COLUMN_ARGS", "TABLE_MEMBER_REFERENCE", "TABLE_VARIABLE_REFERENCE", "TAKE", "TAKE_ATTRIBUTE", "TAKE_HTML", "TAKE_TEXT", "TEST", "TEXT", "THEN", "THREAD", "TO", "TRUNCATE", "UPDATE", "VAR", "VARIABLE_ASSIGNMENT", "VARIABLE_DECLARATION", "VARIABLE_REFERENCE", "WHEN", "WHEN_BOOL_STATEMENT", "WHEN_LITERAL_STATEMENT", "WHERE", "WHILE", "WITH", "WS", "'$'", "'on'"
+		"<invalid>", "<EOR>", "<DOWN>", "<UP>", "AND", "APOSTRAPHE", "ASTERISK", "ATTRIBUTE", "BLOCK", "BUFFER", "BUFFER_TABLE", "CASE", "CASE_BOOL", "CASE_EXPRESSION", "CASE_VAR", "CLOSEBRACE", "CLOSEPAREN", "COMMA", "COMMAND_VAR", "COMMENT", "CONNECTIONSTRING", "CREATE", "DATETIME", "DBTABLE", "DIGIT", "DIV", "DOT", "DOWNLOAD_IMAGE", "DOWNLOAD_PAGE", "EACH", "ELSE", "END", "EQUALS", "EXEC", "EXPAND", "EXPAND_INTERATION_VARIABLE", "FIELD_TERMINATOR", "FILE", "FILE_TABLE", "FLOAT", "FROM", "GETDATE", "GREATERTHAN", "GREATERTHANEQUAL", "HTML", "ID", "IDENTITY", "IDENTITY_VAR", "IN", "INNER_JOIN", "INSERT_DIRECTORY", "INSERT_INTO", "INSERT_INTO_DIRECTORY", "INSERT_OVERWRITE", "INT", "INTEGER", "JOIN", "JS", "LESSTHAN", "LESSTHANEQUAL", "LETTER", "LIKE", "LINE_COMMENT_DASH", "LINE_COMMENT_SLASH", "LOCATION", "MATCH", "MEMBER_REFERENCE", "MINIS", "MSSQL", "MSSQL_TABLE", "NEWLINE", "NODES", "NOTEQUAL", "NOTLIKE", "NULL", "NULL_OPERATOR", "OPENBRACE", "OPENPAREN", "OR", "OTHERCHARS", "PICK", "PIPE", "PLUS", "POST_PICK", "PRE_PICK", "PROCEDURE", "PROGRAM", "PROXIES", "PROXY_LIST", "QUOTE", "REPLACE", "ROW_REFERENCE", "ROW_TERMINATOR", "SELECT", "SELECT_ALL", "SELECT_ARG", "SELECT_ID", "SELECT_STATEMENT", "SET", "STRING", "STRING_LITERAL", "TABLE", "TABLE_ALIAS", "TABLE_COLUMN_ARG", "TABLE_COLUMN_ARGS", "TABLE_MEMBER_REFERENCE", "TABLE_VARIABLE_REFERENCE", "TAKE", "TAKE_ATTRIBUTE", "TAKE_HTML", "TAKE_TEXT", "TEST", "TEXT", "THEN", "THREAD", "TO", "TRUNCATE", "UPDATE", "VAR", "VARIABLE_ASSIGNMENT", "VARIABLE_DECLARATION", "VARIABLE_REFERENCE", "WHEN", "WHEN_BOOL_STATEMENT", "WHEN_LITERAL_STATEMENT", "WHERE", "WHILE", "WITH", "WS", "'$'", "'on'"
 	};
 	public const int EOF=-1;
-	public const int T__128=128;
 	public const int T__129=129;
+	public const int T__130=130;
 	public const int AND=4;
 	public const int APOSTRAPHE=5;
 	public const int ASTERISK=6;
@@ -56,112 +56,113 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 	public const int COMMENT=19;
 	public const int CONNECTIONSTRING=20;
 	public const int CREATE=21;
-	public const int DBTABLE=22;
-	public const int DIGIT=23;
-	public const int DIV=24;
-	public const int DOT=25;
-	public const int DOWNLOAD_IMAGE=26;
-	public const int DOWNLOAD_PAGE=27;
-	public const int EACH=28;
-	public const int ELSE=29;
-	public const int END=30;
-	public const int EQUALS=31;
-	public const int EXEC=32;
-	public const int EXPAND=33;
-	public const int EXPAND_INTERATION_VARIABLE=34;
-	public const int FIELD_TERMINATOR=35;
-	public const int FILE=36;
-	public const int FILE_TABLE=37;
-	public const int FLOAT=38;
-	public const int FROM=39;
-	public const int GETDATE=40;
-	public const int GREATERTHAN=41;
-	public const int GREATERTHANEQUAL=42;
-	public const int HTML=43;
-	public const int ID=44;
-	public const int IDENTITY=45;
-	public const int IDENTITY_VAR=46;
-	public const int IN=47;
-	public const int INNER_JOIN=48;
-	public const int INSERT_DIRECTORY=49;
-	public const int INSERT_INTO=50;
-	public const int INSERT_INTO_DIRECTORY=51;
-	public const int INSERT_OVERWRITE=52;
-	public const int INT=53;
-	public const int INTEGER=54;
-	public const int JOIN=55;
-	public const int JS=56;
-	public const int LESSTHAN=57;
-	public const int LESSTHANEQUAL=58;
-	public const int LETTER=59;
-	public const int LIKE=60;
-	public const int LINE_COMMENT_DASH=61;
-	public const int LINE_COMMENT_SLASH=62;
-	public const int LOCATION=63;
-	public const int MATCH=64;
-	public const int MEMBER_REFERENCE=65;
-	public const int MINIS=66;
-	public const int MSSQL=67;
-	public const int MSSQL_TABLE=68;
-	public const int NEWLINE=69;
-	public const int NODES=70;
-	public const int NOTEQUAL=71;
-	public const int NOTLIKE=72;
-	public const int NULL=73;
-	public const int NULL_OPERATOR=74;
-	public const int OPENBRACE=75;
-	public const int OPENPAREN=76;
-	public const int OR=77;
-	public const int OTHERCHARS=78;
-	public const int PICK=79;
-	public const int PIPE=80;
-	public const int PLUS=81;
-	public const int POST_PICK=82;
-	public const int PRE_PICK=83;
-	public const int PROCEDURE=84;
-	public const int PROGRAM=85;
-	public const int PROXIES=86;
-	public const int PROXY_LIST=87;
-	public const int QUOTE=88;
-	public const int REPLACE=89;
-	public const int ROW_REFERENCE=90;
-	public const int ROW_TERMINATOR=91;
-	public const int SELECT=92;
-	public const int SELECT_ALL=93;
-	public const int SELECT_ARG=94;
-	public const int SELECT_ID=95;
-	public const int SELECT_STATEMENT=96;
-	public const int SET=97;
-	public const int STRING=98;
-	public const int STRING_LITERAL=99;
-	public const int TABLE=100;
-	public const int TABLE_ALIAS=101;
-	public const int TABLE_COLUMN_ARG=102;
-	public const int TABLE_COLUMN_ARGS=103;
-	public const int TABLE_MEMBER_REFERENCE=104;
-	public const int TABLE_VARIABLE_REFERENCE=105;
-	public const int TAKE=106;
-	public const int TAKE_ATTRIBUTE=107;
-	public const int TAKE_HTML=108;
-	public const int TAKE_TEXT=109;
-	public const int TEST=110;
-	public const int TEXT=111;
-	public const int THEN=112;
-	public const int THREAD=113;
-	public const int TO=114;
-	public const int TRUNCATE=115;
-	public const int UPDATE=116;
-	public const int VAR=117;
-	public const int VARIABLE_ASSIGNMENT=118;
-	public const int VARIABLE_DECLARATION=119;
-	public const int VARIABLE_REFERENCE=120;
-	public const int WHEN=121;
-	public const int WHEN_BOOL_STATEMENT=122;
-	public const int WHEN_LITERAL_STATEMENT=123;
-	public const int WHERE=124;
-	public const int WHILE=125;
-	public const int WITH=126;
-	public const int WS=127;
+	public const int DATETIME=22;
+	public const int DBTABLE=23;
+	public const int DIGIT=24;
+	public const int DIV=25;
+	public const int DOT=26;
+	public const int DOWNLOAD_IMAGE=27;
+	public const int DOWNLOAD_PAGE=28;
+	public const int EACH=29;
+	public const int ELSE=30;
+	public const int END=31;
+	public const int EQUALS=32;
+	public const int EXEC=33;
+	public const int EXPAND=34;
+	public const int EXPAND_INTERATION_VARIABLE=35;
+	public const int FIELD_TERMINATOR=36;
+	public const int FILE=37;
+	public const int FILE_TABLE=38;
+	public const int FLOAT=39;
+	public const int FROM=40;
+	public const int GETDATE=41;
+	public const int GREATERTHAN=42;
+	public const int GREATERTHANEQUAL=43;
+	public const int HTML=44;
+	public const int ID=45;
+	public const int IDENTITY=46;
+	public const int IDENTITY_VAR=47;
+	public const int IN=48;
+	public const int INNER_JOIN=49;
+	public const int INSERT_DIRECTORY=50;
+	public const int INSERT_INTO=51;
+	public const int INSERT_INTO_DIRECTORY=52;
+	public const int INSERT_OVERWRITE=53;
+	public const int INT=54;
+	public const int INTEGER=55;
+	public const int JOIN=56;
+	public const int JS=57;
+	public const int LESSTHAN=58;
+	public const int LESSTHANEQUAL=59;
+	public const int LETTER=60;
+	public const int LIKE=61;
+	public const int LINE_COMMENT_DASH=62;
+	public const int LINE_COMMENT_SLASH=63;
+	public const int LOCATION=64;
+	public const int MATCH=65;
+	public const int MEMBER_REFERENCE=66;
+	public const int MINIS=67;
+	public const int MSSQL=68;
+	public const int MSSQL_TABLE=69;
+	public const int NEWLINE=70;
+	public const int NODES=71;
+	public const int NOTEQUAL=72;
+	public const int NOTLIKE=73;
+	public const int NULL=74;
+	public const int NULL_OPERATOR=75;
+	public const int OPENBRACE=76;
+	public const int OPENPAREN=77;
+	public const int OR=78;
+	public const int OTHERCHARS=79;
+	public const int PICK=80;
+	public const int PIPE=81;
+	public const int PLUS=82;
+	public const int POST_PICK=83;
+	public const int PRE_PICK=84;
+	public const int PROCEDURE=85;
+	public const int PROGRAM=86;
+	public const int PROXIES=87;
+	public const int PROXY_LIST=88;
+	public const int QUOTE=89;
+	public const int REPLACE=90;
+	public const int ROW_REFERENCE=91;
+	public const int ROW_TERMINATOR=92;
+	public const int SELECT=93;
+	public const int SELECT_ALL=94;
+	public const int SELECT_ARG=95;
+	public const int SELECT_ID=96;
+	public const int SELECT_STATEMENT=97;
+	public const int SET=98;
+	public const int STRING=99;
+	public const int STRING_LITERAL=100;
+	public const int TABLE=101;
+	public const int TABLE_ALIAS=102;
+	public const int TABLE_COLUMN_ARG=103;
+	public const int TABLE_COLUMN_ARGS=104;
+	public const int TABLE_MEMBER_REFERENCE=105;
+	public const int TABLE_VARIABLE_REFERENCE=106;
+	public const int TAKE=107;
+	public const int TAKE_ATTRIBUTE=108;
+	public const int TAKE_HTML=109;
+	public const int TAKE_TEXT=110;
+	public const int TEST=111;
+	public const int TEXT=112;
+	public const int THEN=113;
+	public const int THREAD=114;
+	public const int TO=115;
+	public const int TRUNCATE=116;
+	public const int UPDATE=117;
+	public const int VAR=118;
+	public const int VARIABLE_ASSIGNMENT=119;
+	public const int VARIABLE_DECLARATION=120;
+	public const int VARIABLE_REFERENCE=121;
+	public const int WHEN=122;
+	public const int WHEN_BOOL_STATEMENT=123;
+	public const int WHEN_LITERAL_STATEMENT=124;
+	public const int WHERE=125;
+	public const int WHILE=126;
+	public const int WITH=127;
+	public const int WS=128;
 
 	public ScrapeParser(ITokenStream input)
 		: this(input, new RecognizerSharedState())
@@ -356,7 +357,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 				{
 				// AST REWRITE
-				// elements: noBraceBlock, proxyStatement
+				// elements: proxyStatement, noBraceBlock
 				// token labels: 
 				// rule labels: retval
 				// token list labels: 
@@ -577,7 +578,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: ID, PROCEDURE, block, tableColumnArgs
+			// elements: ID, PROCEDURE, tableColumnArgs, block
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -1139,7 +1140,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: procedureCallList, EXEC, ID
+			// elements: ID, procedureCallList, EXEC
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -1597,7 +1598,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: PROXIES, proxyList, proxyTest
+			// elements: proxyTest, proxyList, PROXIES
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -2145,7 +2146,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: block, EACH
+			// elements: EACH, block
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -2619,7 +2620,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: expandVar, EXPAND, expandBlock, expandVar
+			// elements: expandVar, expandVar, EXPAND, expandBlock
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -2736,7 +2737,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 				try { DebugEnterDecision(11, false);
 				int LA11_1 = input.LA(1);
 
-				if ((LA11_1==COMMAND_VAR||LA11_1==ID||LA11_1==IDENTITY_VAR||LA11_1==INT||LA11_1==NULL||LA11_1==OPENPAREN||LA11_1==STRING_LITERAL||LA11_1==128))
+				if ((LA11_1==COMMAND_VAR||LA11_1==ID||LA11_1==IDENTITY_VAR||LA11_1==INT||LA11_1==NULL||LA11_1==OPENPAREN||LA11_1==STRING_LITERAL||LA11_1==129))
 				{
 					alt11 = 1;
 				}
@@ -3399,7 +3400,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 				{
 					alt16 = 4;
 				}
-				else if ((LA16_2==EOF||LA16_2==ASTERISK||(LA16_2>=CLOSEBRACE && LA16_2<=COMMAND_VAR)||LA16_2==CREATE||LA16_2==DIV||LA16_2==EACH||(LA16_2>=EQUALS && LA16_2<=EXEC)||LA16_2==ID||LA16_2==IDENTITY_VAR||(LA16_2>=INSERT_DIRECTORY && LA16_2<=INSERT_INTO)||(LA16_2>=INSERT_OVERWRITE && LA16_2<=INT)||LA16_2==MINIS||LA16_2==NULL||LA16_2==OPENPAREN||LA16_2==PLUS||LA16_2==SELECT||LA16_2==STRING_LITERAL||(LA16_2>=TO && LA16_2<=VAR)||(LA16_2>=WHERE && LA16_2<=WITH)||LA16_2==128))
+				else if ((LA16_2==EOF||LA16_2==ASTERISK||(LA16_2>=CLOSEBRACE && LA16_2<=COMMAND_VAR)||LA16_2==CREATE||LA16_2==DIV||LA16_2==EACH||(LA16_2>=EQUALS && LA16_2<=EXEC)||LA16_2==ID||LA16_2==IDENTITY_VAR||(LA16_2>=INSERT_DIRECTORY && LA16_2<=INSERT_INTO)||(LA16_2>=INSERT_OVERWRITE && LA16_2<=INT)||LA16_2==MINIS||LA16_2==NULL||LA16_2==OPENPAREN||LA16_2==PLUS||LA16_2==SELECT||LA16_2==STRING_LITERAL||(LA16_2>=TO && LA16_2<=VAR)||(LA16_2>=WHERE && LA16_2<=WITH)||LA16_2==129))
 				{
 					alt16 = 1;
 				}
@@ -3712,7 +3713,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: assignmentExpression, ID
+			// elements: ID, assignmentExpression
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -4121,7 +4122,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 			case NULL:
 			case OPENPAREN:
 			case STRING_LITERAL:
-			case 128:
+			case 129:
 				{
 				alt18 = 1;
 				}
@@ -4550,7 +4551,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 		CommonTree char_literal117_tree = default(CommonTree);
 		CommonTree OPENPAREN119_tree = default(CommonTree);
 		CommonTree CLOSEPAREN121_tree = default(CommonTree);
-		RewriteRuleITokenStream stream_128=new RewriteRuleITokenStream(adaptor,"token 128");
+		RewriteRuleITokenStream stream_129=new RewriteRuleITokenStream(adaptor,"token 129");
 		try { DebugEnterRule(GrammarFileName, "atom");
 		DebugLocation(206, 5);
 		try
@@ -4567,7 +4568,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 				alt21 = 1;
 				}
 				break;
-			case 128:
+			case 129:
 				{
 				alt21 = 2;
 				}
@@ -4616,8 +4617,8 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 				// Scrape.g:208:5: '$'
 				{
 				DebugLocation(208, 5);
-				char_literal117=(CommonToken)Match(input,128,Follow._128_in_atom1073); if (state.failed) return retval; 
-				if (state.backtracking == 0) stream_128.Add(char_literal117);
+				char_literal117=(CommonToken)Match(input,129,Follow._129_in_atom1073); if (state.failed) return retval; 
+				if (state.backtracking == 0) stream_129.Add(char_literal117);
 
 
 
@@ -4886,7 +4887,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 				{
 				// AST REWRITE
-				// elements: sqlStatement, INSERT_INTO
+				// elements: INSERT_INTO, sqlStatement
 				// token labels: 
 				// rule labels: retval
 				// token list labels: 
@@ -5185,7 +5186,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: ID, UPDATE, fromStatement, whereStatement, setArgs
+			// elements: whereStatement, fromStatement, ID, UPDATE, setArgs
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -5723,7 +5724,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: fromStatement, whereStatement, selectStatement
+			// elements: selectStatement, fromStatement, whereStatement
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -5845,7 +5846,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: WHERE, boolExpression
+			// elements: boolExpression, WHERE
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -6080,7 +6081,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 				{
 				// AST REWRITE
-				// elements: FROM, a, innerJoinStatement
+				// elements: innerJoinStatement, FROM, a
 				// token labels: a
 				// rule labels: retval
 				// token list labels: 
@@ -6225,7 +6226,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 				{
 				// AST REWRITE
-				// elements: FROM, ID, tableHint, tableGenerationClause
+				// elements: tableHint, tableGenerationClause, ID, FROM
 				// token labels: 
 				// rule labels: retval
 				// token list labels: 
@@ -6567,7 +6568,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 				{
 				// AST REWRITE
-				// elements: INT, THREAD
+				// elements: THREAD, INT
 				// token labels: 
 				// rule labels: retval
 				// token list labels: 
@@ -6705,7 +6706,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 				{
 				// AST REWRITE
-				// elements: JS, jsArg
+				// elements: jsArg, JS
 				// token labels: 
 				// rule labels: retval
 				// token list labels: 
@@ -6876,7 +6877,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 		CommonTree a_tree = default(CommonTree);
 		CommonTree string_literal177_tree = default(CommonTree);
 		RewriteRuleITokenStream stream_ID=new RewriteRuleITokenStream(adaptor,"token ID");
-		RewriteRuleITokenStream stream_129=new RewriteRuleITokenStream(adaptor,"token 129");
+		RewriteRuleITokenStream stream_130=new RewriteRuleITokenStream(adaptor,"token 130");
 		RewriteRuleSubtreeStream stream_boolExpression=new RewriteRuleSubtreeStream(adaptor,"rule boolExpression");
 		RewriteRuleSubtreeStream stream_innerJoin=new RewriteRuleSubtreeStream(adaptor,"rule innerJoin");
 		RewriteRuleSubtreeStream stream_innerJoinStatement=new RewriteRuleSubtreeStream(adaptor,"rule innerJoinStatement");
@@ -6928,8 +6929,8 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 			} finally { DebugExitSubRule(36); }
 
 			DebugLocation(275, 25);
-			string_literal177=(CommonToken)Match(input,129,Follow._129_in_innerJoinStatement1556); if (state.failed) return retval; 
-			if (state.backtracking == 0) stream_129.Add(string_literal177);
+			string_literal177=(CommonToken)Match(input,130,Follow._130_in_innerJoinStatement1556); if (state.failed) return retval; 
+			if (state.backtracking == 0) stream_130.Add(string_literal177);
 
 			DebugLocation(275, 30);
 			PushFollow(Follow._boolExpression_in_innerJoinStatement1558);
@@ -6972,7 +6973,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: a, boolExpression, innerJoinStatement
+			// elements: innerJoinStatement, a, boolExpression
 			// token labels: a
 			// rule labels: retval
 			// token list labels: 
@@ -7483,7 +7484,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 				{
 				// AST REWRITE
-				// elements: SELECT, selectArgs
+				// elements: selectArgs, SELECT
 				// token labels: 
 				// rule labels: retval
 				// token list labels: 
@@ -8486,7 +8487,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 				{
 				// AST REWRITE
-				// elements: caseExpression, whenLiteralStatement, selectArg
+				// elements: selectArg, whenLiteralStatement, caseExpression
 				// token labels: 
 				// rule labels: retval
 				// token list labels: 
@@ -9971,7 +9972,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: takeStatement, PICK, matchStatement, STRING_LITERAL
+			// elements: STRING_LITERAL, matchStatement, takeStatement, PICK
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -10385,7 +10386,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: STRING_LITERAL, replaceStatement, MATCH
+			// elements: STRING_LITERAL, MATCH, replaceStatement
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -10497,7 +10498,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: REPLACE, STRING_LITERAL
+			// elements: STRING_LITERAL, REPLACE
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -10776,7 +10777,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 				{
 				// AST REWRITE
-				// elements: tableColumnArgs, fileTableLocation, fileTableWithStatement, ID
+				// elements: tableColumnArgs, fileTableLocation, ID, fileTableWithStatement
 				// token labels: 
 				// rule labels: retval
 				// token list labels: 
@@ -10900,7 +10901,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 				{
 				// AST REWRITE
-				// elements: tableColumnArgs, ID
+				// elements: ID, tableColumnArgs
 				// token labels: 
 				// rule labels: retval
 				// token list labels: 
@@ -11019,7 +11020,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 				{
 				// AST REWRITE
-				// elements: tableColumnArgs, ID, sqlTableWithStatement
+				// elements: tableColumnArgs, sqlTableWithStatement, ID
 				// token labels: 
 				// rule labels: retval
 				// token list labels: 
@@ -11221,7 +11222,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: WITH, sqlTableWithVariablesStatement
+			// elements: sqlTableWithVariablesStatement, WITH
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -11628,7 +11629,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: fileTableWithVariablesStatement, WITH
+			// elements: WITH, fileTableWithVariablesStatement
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -11992,7 +11993,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 				{
 					int LA66_2 = input.LA(2);
 
-					if ((LA66_2==FLOAT||LA66_2==IDENTITY||LA66_2==INTEGER||LA66_2==STRING))
+					if ((LA66_2==DATETIME||LA66_2==FLOAT||LA66_2==IDENTITY||LA66_2==INTEGER||LA66_2==STRING))
 					{
 						int LA66_3 = input.LA(3);
 
@@ -12226,7 +12227,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 	partial void EnterRule_dataType();
 	partial void LeaveRule_dataType();
 	// $ANTLR start "dataType"
-	// Scrape.g:423:1: dataType : ( STRING | INTEGER | FLOAT | IDENTITY );
+	// Scrape.g:423:1: dataType : ( STRING | INTEGER | FLOAT | IDENTITY | DATETIME );
 	[GrammarRule("dataType")]
 	private AstParserRuleReturnScope<CommonTree, CommonToken> dataType()
 	{
@@ -12245,7 +12246,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 		DebugLocation(423, 1);
 		try
 		{
-			// Scrape.g:424:2: ( STRING | INTEGER | FLOAT | IDENTITY )
+			// Scrape.g:424:2: ( STRING | INTEGER | FLOAT | IDENTITY | DATETIME )
 			DebugEnterAlt(1);
 			// Scrape.g:
 			{
@@ -12254,7 +12255,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 			DebugLocation(424, 2);
 
 			set305=(CommonToken)input.LT(1);
-			if (input.LA(1)==FLOAT||input.LA(1)==IDENTITY||input.LA(1)==INTEGER||input.LA(1)==STRING)
+			if (input.LA(1)==DATETIME||input.LA(1)==FLOAT||input.LA(1)==IDENTITY||input.LA(1)==INTEGER||input.LA(1)==STRING)
 			{
 				input.Consume();
 				if (state.backtracking == 0) adaptor.AddChild(root_0, (CommonTree)adaptor.Create(set305));
@@ -12291,7 +12292,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 			LeaveRule("dataType", 72);
 			LeaveRule_dataType();
 		}
-		DebugLocation(428, 1);
+		DebugLocation(429, 1);
 		} finally { DebugExitRule(GrammarFileName, "dataType"); }
 		return retval;
 
@@ -12443,10 +12444,10 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 		private const string DFA32_eofS =
 			"\xC\xFFFF";
 		private const string DFA32_minS =
-			"\x1\x38\x1\x4C\x1\x10\x2\x35\x2\xFFFF\x3\x10\x1\x35\x1\x10";
+			"\x1\x39\x1\x4D\x1\x10\x2\x36\x2\xFFFF\x3\x10\x1\x36\x1\x10";
 		private const string DFA32_maxS =
-			"\x1\x71\x1\x4C\x1\x50\x1\x35\x1\x63\x2\xFFFF\x1\x10\x1\x11\x1\x50\x1"+
-			"\x63\x1\x50";
+			"\x1\x72\x1\x4D\x1\x51\x1\x36\x1\x64\x2\xFFFF\x1\x10\x1\x11\x1\x51\x1"+
+			"\x64\x1\x51";
 		private const string DFA32_acceptS =
 			"\x5\xFFFF\x1\x2\x1\x1\x5\xFFFF";
 		private const string DFA32_specialS =
@@ -12455,16 +12456,16 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 			{
 				"\x1\x2\x38\xFFFF\x1\x1",
 				"\x1\x3",
-				"\x1\x5\x3B\xFFFF\x1\x4\x3\xFFFF\x1\x6",
+				"\x1\x5\x3C\xFFFF\x1\x4\x3\xFFFF\x1\x6",
 				"\x1\x7",
 				"\x1\x8\x2D\xFFFF\x1\x8",
 				"",
 				"",
 				"\x1\x9",
 				"\x1\xB\x1\xA",
-				"\x1\x5\x3F\xFFFF\x1\x6",
+				"\x1\x5\x40\xFFFF\x1\x6",
 				"\x1\x8\x2D\xFFFF\x1\x8",
-				"\x1\x5\x3F\xFFFF\x1\x6"
+				"\x1\x5\x40\xFFFF\x1\x6"
 			};
 
 		private static readonly short[] DFA32_eot = DFA.UnpackEncodedString(DFA32_eotS);
@@ -12514,15 +12515,15 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 	{
 		public static readonly BitSet _noBraceBlock_in_program232 = new BitSet(new ulong[]{0x0UL});
 		public static readonly BitSet _EOF_in_program234 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _proxyStatement_in_program247 = new BitSet(new ulong[]{0x16500110240000UL,0x2038000010000000UL});
+		public static readonly BitSet _proxyStatement_in_program247 = new BitSet(new ulong[]{0x2CA00220240000UL,0x4070000020000000UL});
 		public static readonly BitSet _noBraceBlock_in_program249 = new BitSet(new ulong[]{0x0UL});
 		public static readonly BitSet _EOF_in_program251 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _procedureDefinition_in_program266 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _PROCEDURE_in_procedureDefinition285 = new BitSet(new ulong[]{0x100000000000UL});
-		public static readonly BitSet _ID_in_procedureDefinition287 = new BitSet(new ulong[]{0x0UL,0x1000UL});
-		public static readonly BitSet _OPENPAREN_in_procedureDefinition289 = new BitSet(new ulong[]{0x100000010000UL});
-		public static readonly BitSet _tableColumnArgs_in_procedureDefinition291 = new BitSet(new ulong[]{0x100000010000UL});
-		public static readonly BitSet _CLOSEPAREN_in_procedureDefinition294 = new BitSet(new ulong[]{0x0UL,0x800UL});
+		public static readonly BitSet _PROCEDURE_in_procedureDefinition285 = new BitSet(new ulong[]{0x200000000000UL});
+		public static readonly BitSet _ID_in_procedureDefinition287 = new BitSet(new ulong[]{0x0UL,0x2000UL});
+		public static readonly BitSet _OPENPAREN_in_procedureDefinition289 = new BitSet(new ulong[]{0x200000010000UL});
+		public static readonly BitSet _tableColumnArgs_in_procedureDefinition291 = new BitSet(new ulong[]{0x200000010000UL});
+		public static readonly BitSet _CLOSEPAREN_in_procedureDefinition294 = new BitSet(new ulong[]{0x0UL,0x1000UL});
 		public static readonly BitSet _block_in_procedureDefinition296 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _createTableStatement_in_statement324 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _sqlStatement_in_statement329 = new BitSet(new ulong[]{0x2UL});
@@ -12534,70 +12535,70 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 		public static readonly BitSet _whileStatement_in_statement359 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _procedureCall_in_statement364 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _truncateTable_in_statement369 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _TRUNCATE_in_truncateTable380 = new BitSet(new ulong[]{0x0UL,0x1000000000UL});
-		public static readonly BitSet _TABLE_in_truncateTable382 = new BitSet(new ulong[]{0x100000000000UL});
+		public static readonly BitSet _TRUNCATE_in_truncateTable380 = new BitSet(new ulong[]{0x0UL,0x2000000000UL});
+		public static readonly BitSet _TABLE_in_truncateTable382 = new BitSet(new ulong[]{0x200000000000UL});
 		public static readonly BitSet _ID_in_truncateTable384 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _EXEC_in_procedureCall406 = new BitSet(new ulong[]{0x100000000000UL});
-		public static readonly BitSet _ID_in_procedureCall408 = new BitSet(new ulong[]{0x0UL,0x1000UL});
-		public static readonly BitSet _OPENPAREN_in_procedureCall410 = new BitSet(new ulong[]{0x20500000050000UL,0x800000000UL});
-		public static readonly BitSet _procedureCallList_in_procedureCall412 = new BitSet(new ulong[]{0x20500000050000UL,0x800000000UL});
+		public static readonly BitSet _EXEC_in_procedureCall406 = new BitSet(new ulong[]{0x200000000000UL});
+		public static readonly BitSet _ID_in_procedureCall408 = new BitSet(new ulong[]{0x0UL,0x2000UL});
+		public static readonly BitSet _OPENPAREN_in_procedureCall410 = new BitSet(new ulong[]{0x40A00000050000UL,0x1000000000UL});
+		public static readonly BitSet _procedureCallList_in_procedureCall412 = new BitSet(new ulong[]{0x40A00000050000UL,0x1000000000UL});
 		public static readonly BitSet _CLOSEPAREN_in_procedureCall415 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _callArgs_in_procedureCallList438 = new BitSet(new ulong[]{0x20000UL});
-		public static readonly BitSet _COMMA_in_procedureCallList440 = new BitSet(new ulong[]{0x20500000040000UL,0x800000000UL});
+		public static readonly BitSet _COMMA_in_procedureCallList440 = new BitSet(new ulong[]{0x40A00000040000UL,0x1000000000UL});
 		public static readonly BitSet _callArgs_in_procedureCallList444 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _expandVar_in_callArgs460 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _STRING_LITERAL_in_callArgs465 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _PROXIES_in_proxyStatement476 = new BitSet(new ulong[]{0x0UL,0x1000UL});
-		public static readonly BitSet _OPENPAREN_in_proxyStatement478 = new BitSet(new ulong[]{0x0UL,0x800000000UL});
+		public static readonly BitSet _PROXIES_in_proxyStatement476 = new BitSet(new ulong[]{0x0UL,0x2000UL});
+		public static readonly BitSet _OPENPAREN_in_proxyStatement478 = new BitSet(new ulong[]{0x0UL,0x1000000000UL});
 		public static readonly BitSet _proxyList_in_proxyStatement480 = new BitSet(new ulong[]{0x10000UL});
-		public static readonly BitSet _CLOSEPAREN_in_proxyStatement482 = new BitSet(new ulong[]{0x0UL,0x4000000000000000UL});
+		public static readonly BitSet _CLOSEPAREN_in_proxyStatement482 = new BitSet(new ulong[]{0x0UL,0x8000000000000000UL});
 		public static readonly BitSet _proxyTest_in_proxyStatement484 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _STRING_LITERAL_in_proxyList506 = new BitSet(new ulong[]{0x20000UL});
-		public static readonly BitSet _COMMA_in_proxyList508 = new BitSet(new ulong[]{0x0UL,0x800000000UL});
+		public static readonly BitSet _COMMA_in_proxyList508 = new BitSet(new ulong[]{0x0UL,0x1000000000UL});
 		public static readonly BitSet _STRING_LITERAL_in_proxyList512 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _WITH_in_proxyTest532 = new BitSet(new ulong[]{0x0UL,0x400000000000UL});
-		public static readonly BitSet _TEST_in_proxyTest534 = new BitSet(new ulong[]{0x0UL,0x800UL});
-		public static readonly BitSet _OPENBRACE_in_proxyTest536 = new BitSet(new ulong[]{0x0UL,0x10000000UL});
+		public static readonly BitSet _WITH_in_proxyTest532 = new BitSet(new ulong[]{0x0UL,0x800000000000UL});
+		public static readonly BitSet _TEST_in_proxyTest534 = new BitSet(new ulong[]{0x0UL,0x1000UL});
+		public static readonly BitSet _OPENBRACE_in_proxyTest536 = new BitSet(new ulong[]{0x0UL,0x20000000UL});
 		public static readonly BitSet _sqlStatement_in_proxyTest538 = new BitSet(new ulong[]{0x8000UL});
 		public static readonly BitSet _CLOSEBRACE_in_proxyTest540 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _WHILE_in_whileStatement555 = new BitSet(new ulong[]{0x0UL,0x1000UL});
-		public static readonly BitSet _OPENPAREN_in_whileStatement557 = new BitSet(new ulong[]{0x100000000000UL});
+		public static readonly BitSet _WHILE_in_whileStatement555 = new BitSet(new ulong[]{0x0UL,0x2000UL});
+		public static readonly BitSet _OPENPAREN_in_whileStatement557 = new BitSet(new ulong[]{0x200000000000UL});
 		public static readonly BitSet _ID_in_whileStatement559 = new BitSet(new ulong[]{0x10000UL});
-		public static readonly BitSet _CLOSEPAREN_in_whileStatement561 = new BitSet(new ulong[]{0x0UL,0x800UL});
+		public static readonly BitSet _CLOSEPAREN_in_whileStatement561 = new BitSet(new ulong[]{0x0UL,0x1000UL});
 		public static readonly BitSet _block_in_whileStatement563 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _EACH_in_eachStatement585 = new BitSet(new ulong[]{0x0UL,0x1000UL});
-		public static readonly BitSet _OPENPAREN_in_eachStatement587 = new BitSet(new ulong[]{0x0UL,0x20000000000000UL});
-		public static readonly BitSet _VAR_in_eachStatement589 = new BitSet(new ulong[]{0x100000000000UL});
-		public static readonly BitSet _ID_in_eachStatement593 = new BitSet(new ulong[]{0x800000000000UL});
-		public static readonly BitSet _IN_in_eachStatement595 = new BitSet(new ulong[]{0x100000000000UL});
+		public static readonly BitSet _EACH_in_eachStatement585 = new BitSet(new ulong[]{0x0UL,0x2000UL});
+		public static readonly BitSet _OPENPAREN_in_eachStatement587 = new BitSet(new ulong[]{0x0UL,0x40000000000000UL});
+		public static readonly BitSet _VAR_in_eachStatement589 = new BitSet(new ulong[]{0x200000000000UL});
+		public static readonly BitSet _ID_in_eachStatement593 = new BitSet(new ulong[]{0x1000000000000UL});
+		public static readonly BitSet _IN_in_eachStatement595 = new BitSet(new ulong[]{0x200000000000UL});
 		public static readonly BitSet _ID_in_eachStatement599 = new BitSet(new ulong[]{0x10000UL});
-		public static readonly BitSet _CLOSEPAREN_in_eachStatement601 = new BitSet(new ulong[]{0x0UL,0x800UL});
+		public static readonly BitSet _CLOSEPAREN_in_eachStatement601 = new BitSet(new ulong[]{0x0UL,0x1000UL});
 		public static readonly BitSet _block_in_eachStatement603 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _statement_in_noBraceBlock628 = new BitSet(new ulong[]{0x16500110240002UL,0x2038000010000000UL});
-		public static readonly BitSet _OPENBRACE_in_block649 = new BitSet(new ulong[]{0x16500110248000UL,0x2038000010000000UL});
-		public static readonly BitSet _statement_in_block651 = new BitSet(new ulong[]{0x16500110248000UL,0x2038000010000000UL});
+		public static readonly BitSet _statement_in_noBraceBlock628 = new BitSet(new ulong[]{0x2CA00220240002UL,0x4070000020000000UL});
+		public static readonly BitSet _OPENBRACE_in_block649 = new BitSet(new ulong[]{0x2CA00220248000UL,0x4070000020000000UL});
+		public static readonly BitSet _statement_in_block651 = new BitSet(new ulong[]{0x2CA00220248000UL,0x4070000020000000UL});
 		public static readonly BitSet _CLOSEBRACE_in_block654 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _EXPAND_in_expandExpression674 = new BitSet(new ulong[]{0x0UL,0x1000UL});
-		public static readonly BitSet _OPENPAREN_in_expandExpression676 = new BitSet(new ulong[]{0x20500000040000UL});
-		public static readonly BitSet _expandVar_in_expandExpression678 = new BitSet(new ulong[]{0x0UL,0x4000000000000UL});
-		public static readonly BitSet _TO_in_expandExpression680 = new BitSet(new ulong[]{0x20500000040000UL});
+		public static readonly BitSet _EXPAND_in_expandExpression674 = new BitSet(new ulong[]{0x0UL,0x2000UL});
+		public static readonly BitSet _OPENPAREN_in_expandExpression676 = new BitSet(new ulong[]{0x40A00000040000UL});
+		public static readonly BitSet _expandVar_in_expandExpression678 = new BitSet(new ulong[]{0x0UL,0x8000000000000UL});
+		public static readonly BitSet _TO_in_expandExpression680 = new BitSet(new ulong[]{0x40A00000040000UL});
 		public static readonly BitSet _expandVar_in_expandExpression682 = new BitSet(new ulong[]{0x10000UL});
-		public static readonly BitSet _CLOSEPAREN_in_expandExpression684 = new BitSet(new ulong[]{0x2UL,0x800UL});
-		public static readonly BitSet _expandBlock_in_expandExpression686 = new BitSet(new ulong[]{0x2UL,0x800UL});
-		public static readonly BitSet _OPENBRACE_in_expandBlock711 = new BitSet(new ulong[]{0x20500000048000UL,0x800001200UL,0x1UL});
-		public static readonly BitSet _mathExpression_in_expandBlock713 = new BitSet(new ulong[]{0x20500000048000UL,0x800001200UL,0x1UL});
+		public static readonly BitSet _CLOSEPAREN_in_expandExpression684 = new BitSet(new ulong[]{0x2UL,0x1000UL});
+		public static readonly BitSet _expandBlock_in_expandExpression686 = new BitSet(new ulong[]{0x2UL,0x1000UL});
+		public static readonly BitSet _OPENBRACE_in_expandBlock711 = new BitSet(new ulong[]{0x40A00000048000UL,0x1000002400UL,0x2UL});
+		public static readonly BitSet _mathExpression_in_expandBlock713 = new BitSet(new ulong[]{0x40A00000048000UL,0x1000002400UL,0x2UL});
 		public static readonly BitSet _CLOSEBRACE_in_expandBlock716 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _INT_in_expandVar732 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _variableReference_in_expandVar737 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _downloadPageExpresssion_in_downloadExpression748 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _downloadImageExpression_in_downloadExpression753 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _DOWNLOAD_PAGE_in_downloadPageExpresssion764 = new BitSet(new ulong[]{0x500000040000UL,0x800001000UL});
-		public static readonly BitSet _downloadExpressionArg_in_downloadPageExpresssion767 = new BitSet(new ulong[]{0x2UL,0x4000000000000000UL});
+		public static readonly BitSet _DOWNLOAD_PAGE_in_downloadPageExpresssion764 = new BitSet(new ulong[]{0xA00000040000UL,0x1000002000UL});
+		public static readonly BitSet _downloadExpressionArg_in_downloadPageExpresssion767 = new BitSet(new ulong[]{0x2UL,0x8000000000000000UL});
 		public static readonly BitSet _tableHint_in_downloadPageExpresssion769 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _DOWNLOAD_IMAGE_in_downloadImageExpression781 = new BitSet(new ulong[]{0x500000040000UL,0x800001000UL});
+		public static readonly BitSet _DOWNLOAD_IMAGE_in_downloadImageExpression781 = new BitSet(new ulong[]{0xA00000040000UL,0x1000002000UL});
 		public static readonly BitSet _downloadExpressionArg_in_downloadImageExpression784 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _STRING_LITERAL_in_downloadExpressionArg795 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _OPENPAREN_in_downloadExpressionArg800 = new BitSet(new ulong[]{0x0UL,0x10000000UL});
+		public static readonly BitSet _OPENPAREN_in_downloadExpressionArg800 = new BitSet(new ulong[]{0x0UL,0x20000000UL});
 		public static readonly BitSet _sqlStatement_in_downloadExpressionArg803 = new BitSet(new ulong[]{0x10000UL});
 		public static readonly BitSet _CLOSEPAREN_in_downloadExpressionArg805 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _variableReference_in_downloadExpressionArg811 = new BitSet(new ulong[]{0x2UL});
@@ -12605,18 +12606,18 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 		public static readonly BitSet _COMMAND_VAR_in_variableReference833 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _IDENTITY_VAR_in_variableReference838 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _tableMemberReference_in_variableReference843 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _ID_in_tableMemberReference857 = new BitSet(new ulong[]{0x2000000UL});
-		public static readonly BitSet _DOT_in_tableMemberReference859 = new BitSet(new ulong[]{0x100000000000UL});
+		public static readonly BitSet _ID_in_tableMemberReference857 = new BitSet(new ulong[]{0x4000000UL});
+		public static readonly BitSet _DOT_in_tableMemberReference859 = new BitSet(new ulong[]{0x200000000000UL});
 		public static readonly BitSet _ID_in_tableMemberReference863 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _VAR_in_variableDeclarationStatement887 = new BitSet(new ulong[]{0x100000000000UL});
-		public static readonly BitSet _ID_in_variableDeclarationStatement889 = new BitSet(new ulong[]{0x80000000UL});
-		public static readonly BitSet _EQUALS_in_variableDeclarationStatement891 = new BitSet(new ulong[]{0x2050020C040000UL,0x810001200UL,0x1UL});
+		public static readonly BitSet _VAR_in_variableDeclarationStatement887 = new BitSet(new ulong[]{0x200000000000UL});
+		public static readonly BitSet _ID_in_variableDeclarationStatement889 = new BitSet(new ulong[]{0x100000000UL});
+		public static readonly BitSet _EQUALS_in_variableDeclarationStatement891 = new BitSet(new ulong[]{0x40A00418040000UL,0x1020002400UL,0x2UL});
 		public static readonly BitSet _assignmentExpression_in_variableDeclarationStatement893 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _variableReference_in_variableAssignmentStatement914 = new BitSet(new ulong[]{0x80000000UL});
-		public static readonly BitSet _EQUALS_in_variableAssignmentStatement916 = new BitSet(new ulong[]{0x2050020C040000UL,0x810001200UL,0x1UL});
+		public static readonly BitSet _variableReference_in_variableAssignmentStatement914 = new BitSet(new ulong[]{0x100000000UL});
+		public static readonly BitSet _EQUALS_in_variableAssignmentStatement916 = new BitSet(new ulong[]{0x40A00418040000UL,0x1020002400UL,0x2UL});
 		public static readonly BitSet _assignmentExpression_in_variableAssignmentStatement918 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _COMMAND_VAR_in_nullOperator939 = new BitSet(new ulong[]{0x0UL,0x400UL});
-		public static readonly BitSet _NULL_OPERATOR_in_nullOperator941 = new BitSet(new ulong[]{0x20000000040000UL,0x800000200UL});
+		public static readonly BitSet _COMMAND_VAR_in_nullOperator939 = new BitSet(new ulong[]{0x0UL,0x800UL});
+		public static readonly BitSet _NULL_OPERATOR_in_nullOperator941 = new BitSet(new ulong[]{0x40000000040000UL,0x1000000400UL});
 		public static readonly BitSet _COMMAND_VAR_in_nullOperator945 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _literal_in_nullOperator947 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _mathExpression_in_assignmentExpression959 = new BitSet(new ulong[]{0x2UL});
@@ -12625,200 +12626,200 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 		public static readonly BitSet _sqlStatement_in_assignmentExpression974 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _nullOperator_in_assignmentExpression979 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _variableReference_in_assignmentExpression984 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _mathExpressionGroup_in_mathExpression1000 = new BitSet(new ulong[]{0x2UL,0x20004UL});
-		public static readonly BitSet _set_in_mathExpression1003 = new BitSet(new ulong[]{0x20500000040000UL,0x800001200UL,0x1UL});
-		public static readonly BitSet _mathExpressionGroup_in_mathExpression1014 = new BitSet(new ulong[]{0x2UL,0x20004UL});
-		public static readonly BitSet _atom_in_mathExpressionGroup1032 = new BitSet(new ulong[]{0x1000042UL});
-		public static readonly BitSet _set_in_mathExpressionGroup1035 = new BitSet(new ulong[]{0x20500000040000UL,0x800001200UL,0x1UL});
-		public static readonly BitSet _atom_in_mathExpressionGroup1046 = new BitSet(new ulong[]{0x1000042UL});
+		public static readonly BitSet _mathExpressionGroup_in_mathExpression1000 = new BitSet(new ulong[]{0x2UL,0x40008UL});
+		public static readonly BitSet _set_in_mathExpression1003 = new BitSet(new ulong[]{0x40A00000040000UL,0x1000002400UL,0x2UL});
+		public static readonly BitSet _mathExpressionGroup_in_mathExpression1014 = new BitSet(new ulong[]{0x2UL,0x40008UL});
+		public static readonly BitSet _atom_in_mathExpressionGroup1032 = new BitSet(new ulong[]{0x2000042UL});
+		public static readonly BitSet _set_in_mathExpressionGroup1035 = new BitSet(new ulong[]{0x40A00000040000UL,0x1000002400UL,0x2UL});
+		public static readonly BitSet _atom_in_mathExpressionGroup1046 = new BitSet(new ulong[]{0x2000042UL});
 		public static readonly BitSet _variableReference_in_atom1067 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _128_in_atom1073 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _129_in_atom1073 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _literal_in_atom1085 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _OPENPAREN_in_atom1094 = new BitSet(new ulong[]{0x20500000040000UL,0x800001200UL,0x1UL});
+		public static readonly BitSet _OPENPAREN_in_atom1094 = new BitSet(new ulong[]{0x40A00000040000UL,0x1000002400UL,0x2UL});
 		public static readonly BitSet _mathExpression_in_atom1097 = new BitSet(new ulong[]{0x10000UL});
 		public static readonly BitSet _CLOSEPAREN_in_atom1099 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _INSERT_INTO_in_insertStatement1141 = new BitSet(new ulong[]{0x100000000000UL});
-		public static readonly BitSet _ID_in_insertStatement1143 = new BitSet(new ulong[]{0x0UL,0x10000000UL});
+		public static readonly BitSet _INSERT_INTO_in_insertStatement1141 = new BitSet(new ulong[]{0x200000000000UL});
+		public static readonly BitSet _ID_in_insertStatement1143 = new BitSet(new ulong[]{0x0UL,0x20000000UL});
 		public static readonly BitSet _sqlStatement_in_insertStatement1145 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _INSERT_DIRECTORY_in_insertStatement1160 = new BitSet(new ulong[]{0x20500000040000UL,0x800001200UL,0x1UL});
-		public static readonly BitSet _mathExpression_in_insertStatement1162 = new BitSet(new ulong[]{0x0UL,0x10000000UL});
+		public static readonly BitSet _INSERT_DIRECTORY_in_insertStatement1160 = new BitSet(new ulong[]{0x40A00000040000UL,0x1000002400UL,0x2UL});
+		public static readonly BitSet _mathExpression_in_insertStatement1162 = new BitSet(new ulong[]{0x0UL,0x20000000UL});
 		public static readonly BitSet _sqlStatement_in_insertStatement1164 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _INSERT_OVERWRITE_in_insertStatement1178 = new BitSet(new ulong[]{0x100000000000UL});
-		public static readonly BitSet _ID_in_insertStatement1180 = new BitSet(new ulong[]{0x0UL,0x10000000UL});
+		public static readonly BitSet _INSERT_OVERWRITE_in_insertStatement1178 = new BitSet(new ulong[]{0x200000000000UL});
+		public static readonly BitSet _ID_in_insertStatement1180 = new BitSet(new ulong[]{0x0UL,0x20000000UL});
 		public static readonly BitSet _sqlStatement_in_insertStatement1182 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _UPDATE_in_updateStatment1207 = new BitSet(new ulong[]{0x100000000000UL});
-		public static readonly BitSet _ID_in_updateStatment1209 = new BitSet(new ulong[]{0x0UL,0x200000000UL});
-		public static readonly BitSet _setArgs_in_updateStatment1211 = new BitSet(new ulong[]{0x8000000002UL,0x1000000000000000UL});
-		public static readonly BitSet _fromStatement_in_updateStatment1213 = new BitSet(new ulong[]{0x2UL,0x1000000000000000UL});
+		public static readonly BitSet _UPDATE_in_updateStatment1207 = new BitSet(new ulong[]{0x200000000000UL});
+		public static readonly BitSet _ID_in_updateStatment1209 = new BitSet(new ulong[]{0x0UL,0x400000000UL});
+		public static readonly BitSet _setArgs_in_updateStatment1211 = new BitSet(new ulong[]{0x10000000002UL,0x2000000000000000UL});
+		public static readonly BitSet _fromStatement_in_updateStatment1213 = new BitSet(new ulong[]{0x2UL,0x2000000000000000UL});
 		public static readonly BitSet _whereStatement_in_updateStatment1216 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _SET_in_setArgs1248 = new BitSet(new ulong[]{0x20510000040000UL,0x800008200UL});
+		public static readonly BitSet _SET_in_setArgs1248 = new BitSet(new ulong[]{0x40A20000040000UL,0x1000010400UL});
 		public static readonly BitSet _setArg_in_setArgs1251 = new BitSet(new ulong[]{0x20000UL});
-		public static readonly BitSet _COMMA_in_setArgs1253 = new BitSet(new ulong[]{0x20510000040000UL,0x800008200UL});
+		public static readonly BitSet _COMMA_in_setArgs1253 = new BitSet(new ulong[]{0x40A20000040000UL,0x1000010400UL});
 		public static readonly BitSet _setArg_in_setArgs1257 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _selectArg_in_setArg1277 = new BitSet(new ulong[]{0x80000000UL});
-		public static readonly BitSet _EQUALS_in_setArg1279 = new BitSet(new ulong[]{0x20510000040800UL,0x800008200UL});
+		public static readonly BitSet _selectArg_in_setArg1277 = new BitSet(new ulong[]{0x100000000UL});
+		public static readonly BitSet _EQUALS_in_setArg1279 = new BitSet(new ulong[]{0x40A20000040800UL,0x1000010400UL});
 		public static readonly BitSet _selectArgs_in_setArg1281 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _selectStatement_in_sqlStatement1305 = new BitSet(new ulong[]{0x8000000002UL,0x1000000000000000UL});
-		public static readonly BitSet _fromStatement_in_sqlStatement1307 = new BitSet(new ulong[]{0x2UL,0x1000000000000000UL});
+		public static readonly BitSet _selectStatement_in_sqlStatement1305 = new BitSet(new ulong[]{0x10000000002UL,0x2000000000000000UL});
+		public static readonly BitSet _fromStatement_in_sqlStatement1307 = new BitSet(new ulong[]{0x2UL,0x2000000000000000UL});
 		public static readonly BitSet _whereStatement_in_sqlStatement1310 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _WHERE_in_whereStatement1337 = new BitSet(new ulong[]{0x20510000040000UL,0x800009240UL});
+		public static readonly BitSet _WHERE_in_whereStatement1337 = new BitSet(new ulong[]{0x40A20000040000UL,0x1000012480UL});
 		public static readonly BitSet _boolExpression_in_whereStatement1339 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _FROM_in_fromStatement1359 = new BitSet(new ulong[]{0x100000000000UL});
-		public static readonly BitSet _ID_in_fromStatement1363 = new BitSet(new ulong[]{0x81100000000002UL});
-		public static readonly BitSet _ID_in_fromStatement1367 = new BitSet(new ulong[]{0x81000000000002UL});
+		public static readonly BitSet _FROM_in_fromStatement1359 = new BitSet(new ulong[]{0x200000000000UL});
+		public static readonly BitSet _ID_in_fromStatement1363 = new BitSet(new ulong[]{0x102200000000002UL});
+		public static readonly BitSet _ID_in_fromStatement1367 = new BitSet(new ulong[]{0x102000000000002UL});
 		public static readonly BitSet _innerJoinStatement_in_fromStatement1370 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _FROM_in_fromStatement1397 = new BitSet(new ulong[]{0x20C000000UL});
+		public static readonly BitSet _FROM_in_fromStatement1397 = new BitSet(new ulong[]{0x418000000UL});
 		public static readonly BitSet _tableGenerationClause_in_fromStatement1400 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _FROM_in_fromStatement1405 = new BitSet(new ulong[]{0x0UL,0x1000UL});
-		public static readonly BitSet _OPENPAREN_in_fromStatement1407 = new BitSet(new ulong[]{0x20C000000UL});
+		public static readonly BitSet _FROM_in_fromStatement1405 = new BitSet(new ulong[]{0x0UL,0x2000UL});
+		public static readonly BitSet _OPENPAREN_in_fromStatement1407 = new BitSet(new ulong[]{0x418000000UL});
 		public static readonly BitSet _tableGenerationClause_in_fromStatement1409 = new BitSet(new ulong[]{0x10000UL});
-		public static readonly BitSet _CLOSEPAREN_in_fromStatement1411 = new BitSet(new ulong[]{0x100000000000UL});
-		public static readonly BitSet _ID_in_fromStatement1413 = new BitSet(new ulong[]{0x2UL,0x4000000000000000UL});
+		public static readonly BitSet _CLOSEPAREN_in_fromStatement1411 = new BitSet(new ulong[]{0x200000000000UL});
+		public static readonly BitSet _ID_in_fromStatement1413 = new BitSet(new ulong[]{0x2UL,0x8000000000000000UL});
 		public static readonly BitSet _tableHint_in_fromStatement1415 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _WITH_in_tableHint1444 = new BitSet(new ulong[]{0x0UL,0x1000UL});
-		public static readonly BitSet _OPENPAREN_in_tableHint1446 = new BitSet(new ulong[]{0x100000000000000UL,0x2000000000000UL});
-		public static readonly BitSet _hint_in_tableHint1449 = new BitSet(new ulong[]{0x0UL,0x10000UL});
-		public static readonly BitSet _PIPE_in_tableHint1451 = new BitSet(new ulong[]{0x100000000000000UL,0x2000000000000UL});
+		public static readonly BitSet _WITH_in_tableHint1444 = new BitSet(new ulong[]{0x0UL,0x2000UL});
+		public static readonly BitSet _OPENPAREN_in_tableHint1446 = new BitSet(new ulong[]{0x200000000000000UL,0x4000000000000UL});
+		public static readonly BitSet _hint_in_tableHint1449 = new BitSet(new ulong[]{0x0UL,0x20000UL});
+		public static readonly BitSet _PIPE_in_tableHint1451 = new BitSet(new ulong[]{0x200000000000000UL,0x4000000000000UL});
 		public static readonly BitSet _hint_in_tableHint1455 = new BitSet(new ulong[]{0x10000UL});
 		public static readonly BitSet _CLOSEPAREN_in_tableHint1457 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _THREAD_in_hint1473 = new BitSet(new ulong[]{0x0UL,0x1000UL});
-		public static readonly BitSet _OPENPAREN_in_hint1475 = new BitSet(new ulong[]{0x20000000000000UL});
+		public static readonly BitSet _THREAD_in_hint1473 = new BitSet(new ulong[]{0x0UL,0x2000UL});
+		public static readonly BitSet _OPENPAREN_in_hint1475 = new BitSet(new ulong[]{0x40000000000000UL});
 		public static readonly BitSet _INT_in_hint1477 = new BitSet(new ulong[]{0x10000UL});
 		public static readonly BitSet _CLOSEPAREN_in_hint1479 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _JS_in_hint1492 = new BitSet(new ulong[]{0x2UL,0x1000UL});
-		public static readonly BitSet _OPENPAREN_in_hint1495 = new BitSet(new ulong[]{0x20000000000000UL,0x800000000UL});
+		public static readonly BitSet _JS_in_hint1492 = new BitSet(new ulong[]{0x2UL,0x2000UL});
+		public static readonly BitSet _OPENPAREN_in_hint1495 = new BitSet(new ulong[]{0x40000000000000UL,0x1000000000UL});
 		public static readonly BitSet _jsArg_in_hint1498 = new BitSet(new ulong[]{0x20000UL});
-		public static readonly BitSet _COMMA_in_hint1500 = new BitSet(new ulong[]{0x20000000000000UL,0x800000000UL});
+		public static readonly BitSet _COMMA_in_hint1500 = new BitSet(new ulong[]{0x40000000000000UL,0x1000000000UL});
 		public static readonly BitSet _jsArg_in_hint1504 = new BitSet(new ulong[]{0x10000UL});
 		public static readonly BitSet _CLOSEPAREN_in_hint1506 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _innerJoin_in_innerJoinStatement1545 = new BitSet(new ulong[]{0x100000000000UL});
-		public static readonly BitSet _ID_in_innerJoinStatement1549 = new BitSet(new ulong[]{0x100000000000UL,0x0UL,0x2UL});
-		public static readonly BitSet _ID_in_innerJoinStatement1553 = new BitSet(new ulong[]{0x0UL,0x0UL,0x2UL});
-		public static readonly BitSet _129_in_innerJoinStatement1556 = new BitSet(new ulong[]{0x20510000040000UL,0x800009240UL});
-		public static readonly BitSet _boolExpression_in_innerJoinStatement1558 = new BitSet(new ulong[]{0x81000000000002UL});
+		public static readonly BitSet _innerJoin_in_innerJoinStatement1545 = new BitSet(new ulong[]{0x200000000000UL});
+		public static readonly BitSet _ID_in_innerJoinStatement1549 = new BitSet(new ulong[]{0x200000000000UL,0x0UL,0x4UL});
+		public static readonly BitSet _ID_in_innerJoinStatement1553 = new BitSet(new ulong[]{0x0UL,0x0UL,0x4UL});
+		public static readonly BitSet _130_in_innerJoinStatement1556 = new BitSet(new ulong[]{0x40A20000040000UL,0x1000012480UL});
+		public static readonly BitSet _boolExpression_in_innerJoinStatement1558 = new BitSet(new ulong[]{0x102000000000002UL});
 		public static readonly BitSet _innerJoinStatement_in_innerJoinStatement1560 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _downloadPageExpresssion_in_tableGenerationClause1594 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _downloadImageExpression_in_tableGenerationClause1599 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _expandExpression_in_tableGenerationClause1604 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _SELECT_in_selectStatement1631 = new BitSet(new ulong[]{0x20510000040800UL,0x800008200UL});
+		public static readonly BitSet _SELECT_in_selectStatement1631 = new BitSet(new ulong[]{0x40A20000040800UL,0x1000010400UL});
 		public static readonly BitSet _selectArgs_in_selectStatement1634 = new BitSet(new ulong[]{0x20000UL});
-		public static readonly BitSet _COMMA_in_selectStatement1636 = new BitSet(new ulong[]{0x20510000040800UL,0x800008200UL});
+		public static readonly BitSet _COMMA_in_selectStatement1636 = new BitSet(new ulong[]{0x40A20000040800UL,0x1000010400UL});
 		public static readonly BitSet _selectArgs_in_selectStatement1640 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _SELECT_in_selectStatement1654 = new BitSet(new ulong[]{0x40UL});
 		public static readonly BitSet _ASTERISK_in_selectStatement1656 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _selectArg_in_selectArgs1682 = new BitSet(new ulong[]{0x0UL,0x20000UL});
-		public static readonly BitSet _PLUS_in_selectArgs1684 = new BitSet(new ulong[]{0x20510000040000UL,0x800008200UL});
+		public static readonly BitSet _selectArg_in_selectArgs1682 = new BitSet(new ulong[]{0x0UL,0x40000UL});
+		public static readonly BitSet _PLUS_in_selectArgs1684 = new BitSet(new ulong[]{0x40A20000040000UL,0x1000010400UL});
 		public static readonly BitSet _selectArg_in_selectArgs1688 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _caseStatement_in_selectArgs1702 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _CASE_in_caseStatement1724 = new BitSet(new ulong[]{0x0UL,0x200000000000000UL});
-		public static readonly BitSet _whenBoolStatement_in_caseStatement1726 = new BitSet(new ulong[]{0x60000000UL,0x200000000000000UL});
-		public static readonly BitSet _ELSE_in_caseStatement1730 = new BitSet(new ulong[]{0x20510000040000UL,0x800008200UL});
-		public static readonly BitSet _caseExpression_in_caseStatement1732 = new BitSet(new ulong[]{0x40000000UL});
+		public static readonly BitSet _CASE_in_caseStatement1724 = new BitSet(new ulong[]{0x0UL,0x400000000000000UL});
+		public static readonly BitSet _whenBoolStatement_in_caseStatement1726 = new BitSet(new ulong[]{0xC0000000UL,0x400000000000000UL});
+		public static readonly BitSet _ELSE_in_caseStatement1730 = new BitSet(new ulong[]{0x40A20000040000UL,0x1000010400UL});
+		public static readonly BitSet _caseExpression_in_caseStatement1732 = new BitSet(new ulong[]{0x80000000UL});
 		public static readonly BitSet _END_in_caseStatement1736 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _CASE_in_caseStatement1753 = new BitSet(new ulong[]{0x20510000040000UL,0x800008200UL});
-		public static readonly BitSet _selectArg_in_caseStatement1755 = new BitSet(new ulong[]{0x0UL,0x200000000000000UL});
-		public static readonly BitSet _whenLiteralStatement_in_caseStatement1757 = new BitSet(new ulong[]{0x60000000UL,0x200000000000000UL});
-		public static readonly BitSet _ELSE_in_caseStatement1761 = new BitSet(new ulong[]{0x20510000040000UL,0x800008200UL});
-		public static readonly BitSet _caseExpression_in_caseStatement1763 = new BitSet(new ulong[]{0x40000000UL});
+		public static readonly BitSet _CASE_in_caseStatement1753 = new BitSet(new ulong[]{0x40A20000040000UL,0x1000010400UL});
+		public static readonly BitSet _selectArg_in_caseStatement1755 = new BitSet(new ulong[]{0x0UL,0x400000000000000UL});
+		public static readonly BitSet _whenLiteralStatement_in_caseStatement1757 = new BitSet(new ulong[]{0xC0000000UL,0x400000000000000UL});
+		public static readonly BitSet _ELSE_in_caseStatement1761 = new BitSet(new ulong[]{0x40A20000040000UL,0x1000010400UL});
+		public static readonly BitSet _caseExpression_in_caseStatement1763 = new BitSet(new ulong[]{0x80000000UL});
 		public static readonly BitSet _END_in_caseStatement1767 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _selectArg_in_caseExpression1792 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _WHEN_in_whenLiteralStatement1811 = new BitSet(new ulong[]{0x20000000000000UL,0x800000200UL});
-		public static readonly BitSet _literal_in_whenLiteralStatement1813 = new BitSet(new ulong[]{0x0UL,0x1000000000000UL});
-		public static readonly BitSet _THEN_in_whenLiteralStatement1815 = new BitSet(new ulong[]{0x20510000040000UL,0x800008200UL});
+		public static readonly BitSet _WHEN_in_whenLiteralStatement1811 = new BitSet(new ulong[]{0x40000000000000UL,0x1000000400UL});
+		public static readonly BitSet _literal_in_whenLiteralStatement1813 = new BitSet(new ulong[]{0x0UL,0x2000000000000UL});
+		public static readonly BitSet _THEN_in_whenLiteralStatement1815 = new BitSet(new ulong[]{0x40A20000040000UL,0x1000010400UL});
 		public static readonly BitSet _caseExpression_in_whenLiteralStatement1817 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _WHEN_in_whenBoolStatement1838 = new BitSet(new ulong[]{0x20510000040000UL,0x800009240UL});
-		public static readonly BitSet _boolExpression_in_whenBoolStatement1840 = new BitSet(new ulong[]{0x0UL,0x1000000000000UL});
-		public static readonly BitSet _THEN_in_whenBoolStatement1842 = new BitSet(new ulong[]{0x20510000040000UL,0x800008200UL});
+		public static readonly BitSet _WHEN_in_whenBoolStatement1838 = new BitSet(new ulong[]{0x40A20000040000UL,0x1000012480UL});
+		public static readonly BitSet _boolExpression_in_whenBoolStatement1840 = new BitSet(new ulong[]{0x0UL,0x2000000000000UL});
+		public static readonly BitSet _THEN_in_whenBoolStatement1842 = new BitSet(new ulong[]{0x40A20000040000UL,0x1000010400UL});
 		public static readonly BitSet _caseExpression_in_whenBoolStatement1844 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _andExpression_in_boolExpression1865 = new BitSet(new ulong[]{0x2UL,0x2000UL});
-		public static readonly BitSet _OR_in_boolExpression1868 = new BitSet(new ulong[]{0x20510000040000UL,0x800009240UL});
-		public static readonly BitSet _andExpression_in_boolExpression1871 = new BitSet(new ulong[]{0x2UL,0x2000UL});
+		public static readonly BitSet _andExpression_in_boolExpression1865 = new BitSet(new ulong[]{0x2UL,0x4000UL});
+		public static readonly BitSet _OR_in_boolExpression1868 = new BitSet(new ulong[]{0x40A20000040000UL,0x1000012480UL});
+		public static readonly BitSet _andExpression_in_boolExpression1871 = new BitSet(new ulong[]{0x2UL,0x4000UL});
 		public static readonly BitSet _boolTerm_in_andExpression1885 = new BitSet(new ulong[]{0x12UL});
-		public static readonly BitSet _AND_in_andExpression1888 = new BitSet(new ulong[]{0x20510000040000UL,0x800009240UL});
+		public static readonly BitSet _AND_in_andExpression1888 = new BitSet(new ulong[]{0x40A20000040000UL,0x1000012480UL});
 		public static readonly BitSet _boolTerm_in_andExpression1891 = new BitSet(new ulong[]{0x12UL});
-		public static readonly BitSet _NODES_in_boolTerm1906 = new BitSet(new ulong[]{0x80000000UL});
-		public static readonly BitSet _EQUALS_in_boolTerm1908 = new BitSet(new ulong[]{0x0UL,0x800000000UL});
+		public static readonly BitSet _NODES_in_boolTerm1906 = new BitSet(new ulong[]{0x100000000UL});
+		public static readonly BitSet _EQUALS_in_boolTerm1908 = new BitSet(new ulong[]{0x0UL,0x1000000000UL});
 		public static readonly BitSet _STRING_LITERAL_in_boolTerm1910 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _selectArg_in_boolTerm1926 = new BitSet(new ulong[]{0x1600060080000002UL,0x180UL});
-		public static readonly BitSet _boolOperator_in_boolTerm1929 = new BitSet(new ulong[]{0x20510000040000UL,0x800008200UL});
+		public static readonly BitSet _selectArg_in_boolTerm1926 = new BitSet(new ulong[]{0x2C000C0100000002UL,0x300UL});
+		public static readonly BitSet _boolOperator_in_boolTerm1929 = new BitSet(new ulong[]{0x40A20000040000UL,0x1000010400UL});
 		public static readonly BitSet _selectArg_in_boolTerm1932 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _OPENPAREN_in_boolTerm1940 = new BitSet(new ulong[]{0x20510000040000UL,0x800009240UL});
+		public static readonly BitSet _OPENPAREN_in_boolTerm1940 = new BitSet(new ulong[]{0x40A20000040000UL,0x1000012480UL});
 		public static readonly BitSet _boolExpression_in_boolTerm1943 = new BitSet(new ulong[]{0x10000UL});
 		public static readonly BitSet _CLOSEPAREN_in_boolTerm1945 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _pickStatement_in_selectArg2003 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _literal_in_selectArg2008 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _selectVariable_in_selectArg2013 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _primitiveFunction_in_selectArg2018 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _GETDATE_in_primitiveFunction2029 = new BitSet(new ulong[]{0x0UL,0x1000UL});
+		public static readonly BitSet _GETDATE_in_primitiveFunction2029 = new BitSet(new ulong[]{0x0UL,0x2000UL});
 		public static readonly BitSet _OPENPAREN_in_primitiveFunction2032 = new BitSet(new ulong[]{0x10000UL});
 		public static readonly BitSet _CLOSEPAREN_in_primitiveFunction2035 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _ID_in_selectVariable2047 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _COMMAND_VAR_in_selectVariable2059 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _IDENTITY_VAR_in_selectVariable2064 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _tableMemberReference_in_selectVariable2069 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _PICK_in_pickStatement2081 = new BitSet(new ulong[]{0x0UL,0x800000000UL});
-		public static readonly BitSet _STRING_LITERAL_in_pickStatement2083 = new BitSet(new ulong[]{0x2UL,0x40000000001UL});
-		public static readonly BitSet _takeStatement_in_pickStatement2085 = new BitSet(new ulong[]{0x2UL,0x1UL});
+		public static readonly BitSet _PICK_in_pickStatement2081 = new BitSet(new ulong[]{0x0UL,0x1000000000UL});
+		public static readonly BitSet _STRING_LITERAL_in_pickStatement2083 = new BitSet(new ulong[]{0x2UL,0x80000000002UL});
+		public static readonly BitSet _takeStatement_in_pickStatement2085 = new BitSet(new ulong[]{0x2UL,0x2UL});
 		public static readonly BitSet _matchStatement_in_pickStatement2088 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _TAKE_in_takeStatement2115 = new BitSet(new ulong[]{0x80UL});
-		public static readonly BitSet _ATTRIBUTE_in_takeStatement2117 = new BitSet(new ulong[]{0x0UL,0x800000000UL});
+		public static readonly BitSet _ATTRIBUTE_in_takeStatement2117 = new BitSet(new ulong[]{0x0UL,0x1000000000UL});
 		public static readonly BitSet _STRING_LITERAL_in_takeStatement2119 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _TAKE_in_takeStatement2132 = new BitSet(new ulong[]{0x0UL,0x800000000000UL});
+		public static readonly BitSet _TAKE_in_takeStatement2132 = new BitSet(new ulong[]{0x0UL,0x1000000000000UL});
 		public static readonly BitSet _TEXT_in_takeStatement2134 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _TAKE_in_takeStatement2145 = new BitSet(new ulong[]{0x80000000000UL});
+		public static readonly BitSet _TAKE_in_takeStatement2145 = new BitSet(new ulong[]{0x100000000000UL});
 		public static readonly BitSet _HTML_in_takeStatement2147 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _MATCH_in_matchStatement2165 = new BitSet(new ulong[]{0x0UL,0x800000000UL});
-		public static readonly BitSet _STRING_LITERAL_in_matchStatement2167 = new BitSet(new ulong[]{0x2UL,0x2000000UL});
+		public static readonly BitSet _MATCH_in_matchStatement2165 = new BitSet(new ulong[]{0x0UL,0x1000000000UL});
+		public static readonly BitSet _STRING_LITERAL_in_matchStatement2167 = new BitSet(new ulong[]{0x2UL,0x4000000UL});
 		public static readonly BitSet _replaceStatement_in_matchStatement2169 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _REPLACE_in_replaceStatement2192 = new BitSet(new ulong[]{0x0UL,0x800000000UL});
+		public static readonly BitSet _REPLACE_in_replaceStatement2192 = new BitSet(new ulong[]{0x0UL,0x1000000000UL});
 		public static readonly BitSet _STRING_LITERAL_in_replaceStatement2194 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _CREATE_in_createTableStatement2215 = new BitSet(new ulong[]{0x1000000000UL});
-		public static readonly BitSet _FILE_in_createTableStatement2217 = new BitSet(new ulong[]{0x100000000000UL});
-		public static readonly BitSet _ID_in_createTableStatement2219 = new BitSet(new ulong[]{0x0UL,0x1000UL});
-		public static readonly BitSet _OPENPAREN_in_createTableStatement2221 = new BitSet(new ulong[]{0x100000010000UL});
-		public static readonly BitSet _tableColumnArgs_in_createTableStatement2223 = new BitSet(new ulong[]{0x100000010000UL});
-		public static readonly BitSet _CLOSEPAREN_in_createTableStatement2226 = new BitSet(new ulong[]{0x8000000000000000UL,0x4000000000000000UL});
-		public static readonly BitSet _fileTableWithStatement_in_createTableStatement2228 = new BitSet(new ulong[]{0x8000000000000000UL});
+		public static readonly BitSet _CREATE_in_createTableStatement2215 = new BitSet(new ulong[]{0x2000000000UL});
+		public static readonly BitSet _FILE_in_createTableStatement2217 = new BitSet(new ulong[]{0x200000000000UL});
+		public static readonly BitSet _ID_in_createTableStatement2219 = new BitSet(new ulong[]{0x0UL,0x2000UL});
+		public static readonly BitSet _OPENPAREN_in_createTableStatement2221 = new BitSet(new ulong[]{0x200000010000UL});
+		public static readonly BitSet _tableColumnArgs_in_createTableStatement2223 = new BitSet(new ulong[]{0x200000010000UL});
+		public static readonly BitSet _CLOSEPAREN_in_createTableStatement2226 = new BitSet(new ulong[]{0x0UL,0x8000000000000001UL});
+		public static readonly BitSet _fileTableWithStatement_in_createTableStatement2228 = new BitSet(new ulong[]{0x0UL,0x1UL});
 		public static readonly BitSet _fileTableLocation_in_createTableStatement2231 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _CREATE_in_createTableStatement2252 = new BitSet(new ulong[]{0x200UL});
-		public static readonly BitSet _BUFFER_in_createTableStatement2254 = new BitSet(new ulong[]{0x100000000000UL});
-		public static readonly BitSet _ID_in_createTableStatement2256 = new BitSet(new ulong[]{0x0UL,0x1000UL});
-		public static readonly BitSet _OPENPAREN_in_createTableStatement2258 = new BitSet(new ulong[]{0x100000010000UL});
-		public static readonly BitSet _tableColumnArgs_in_createTableStatement2260 = new BitSet(new ulong[]{0x100000010000UL});
+		public static readonly BitSet _BUFFER_in_createTableStatement2254 = new BitSet(new ulong[]{0x200000000000UL});
+		public static readonly BitSet _ID_in_createTableStatement2256 = new BitSet(new ulong[]{0x0UL,0x2000UL});
+		public static readonly BitSet _OPENPAREN_in_createTableStatement2258 = new BitSet(new ulong[]{0x200000010000UL});
+		public static readonly BitSet _tableColumnArgs_in_createTableStatement2260 = new BitSet(new ulong[]{0x200000010000UL});
 		public static readonly BitSet _CLOSEPAREN_in_createTableStatement2263 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _CREATE_in_createTableStatement2279 = new BitSet(new ulong[]{0x0UL,0x8UL});
-		public static readonly BitSet _MSSQL_in_createTableStatement2281 = new BitSet(new ulong[]{0x100000000000UL});
-		public static readonly BitSet _ID_in_createTableStatement2283 = new BitSet(new ulong[]{0x0UL,0x1000UL});
-		public static readonly BitSet _OPENPAREN_in_createTableStatement2285 = new BitSet(new ulong[]{0x100000010000UL});
-		public static readonly BitSet _tableColumnArgs_in_createTableStatement2287 = new BitSet(new ulong[]{0x100000010000UL});
-		public static readonly BitSet _CLOSEPAREN_in_createTableStatement2290 = new BitSet(new ulong[]{0x0UL,0x4000000000000000UL});
+		public static readonly BitSet _CREATE_in_createTableStatement2279 = new BitSet(new ulong[]{0x0UL,0x10UL});
+		public static readonly BitSet _MSSQL_in_createTableStatement2281 = new BitSet(new ulong[]{0x200000000000UL});
+		public static readonly BitSet _ID_in_createTableStatement2283 = new BitSet(new ulong[]{0x0UL,0x2000UL});
+		public static readonly BitSet _OPENPAREN_in_createTableStatement2285 = new BitSet(new ulong[]{0x200000010000UL});
+		public static readonly BitSet _tableColumnArgs_in_createTableStatement2287 = new BitSet(new ulong[]{0x200000010000UL});
+		public static readonly BitSet _CLOSEPAREN_in_createTableStatement2290 = new BitSet(new ulong[]{0x0UL,0x8000000000000000UL});
 		public static readonly BitSet _sqlTableWithStatement_in_createTableStatement2292 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _LOCATION_in_fileTableLocation2316 = new BitSet(new ulong[]{0x20500000040000UL,0x800001200UL,0x1UL});
+		public static readonly BitSet _LOCATION_in_fileTableLocation2316 = new BitSet(new ulong[]{0x40A00000040000UL,0x1000002400UL,0x2UL});
 		public static readonly BitSet _mathExpression_in_fileTableLocation2319 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _WITH_in_sqlTableWithStatement2331 = new BitSet(new ulong[]{0x0UL,0x1000UL});
-		public static readonly BitSet _OPENPAREN_in_sqlTableWithStatement2333 = new BitSet(new ulong[]{0x500000UL});
+		public static readonly BitSet _WITH_in_sqlTableWithStatement2331 = new BitSet(new ulong[]{0x0UL,0x2000UL});
+		public static readonly BitSet _OPENPAREN_in_sqlTableWithStatement2333 = new BitSet(new ulong[]{0x900000UL});
 		public static readonly BitSet _sqlTableWithVariablesStatement_in_sqlTableWithStatement2335 = new BitSet(new ulong[]{0x10000UL});
 		public static readonly BitSet _CLOSEPAREN_in_sqlTableWithStatement2337 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _sqlTableWithVariableStatement_in_sqlTableWithVariablesStatement2358 = new BitSet(new ulong[]{0x20000UL});
-		public static readonly BitSet _COMMA_in_sqlTableWithVariablesStatement2360 = new BitSet(new ulong[]{0x500000UL});
+		public static readonly BitSet _COMMA_in_sqlTableWithVariablesStatement2360 = new BitSet(new ulong[]{0x900000UL});
 		public static readonly BitSet _sqlTableWithVariableStatement_in_sqlTableWithVariablesStatement2364 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _set_in_sqlTableWithVariableStatement2381 = new BitSet(new ulong[]{0x80000000UL});
-		public static readonly BitSet _EQUALS_in_sqlTableWithVariableStatement2390 = new BitSet(new ulong[]{0x0UL,0x800000000UL});
+		public static readonly BitSet _set_in_sqlTableWithVariableStatement2381 = new BitSet(new ulong[]{0x100000000UL});
+		public static readonly BitSet _EQUALS_in_sqlTableWithVariableStatement2390 = new BitSet(new ulong[]{0x0UL,0x1000000000UL});
 		public static readonly BitSet _STRING_LITERAL_in_sqlTableWithVariableStatement2393 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _WITH_in_fileTableWithStatement2404 = new BitSet(new ulong[]{0x0UL,0x1000UL});
-		public static readonly BitSet _OPENPAREN_in_fileTableWithStatement2406 = new BitSet(new ulong[]{0x800010000UL,0x8000000UL});
-		public static readonly BitSet _fileTableWithVariablesStatement_in_fileTableWithStatement2408 = new BitSet(new ulong[]{0x800010000UL,0x8000000UL});
+		public static readonly BitSet _WITH_in_fileTableWithStatement2404 = new BitSet(new ulong[]{0x0UL,0x2000UL});
+		public static readonly BitSet _OPENPAREN_in_fileTableWithStatement2406 = new BitSet(new ulong[]{0x1000010000UL,0x10000000UL});
+		public static readonly BitSet _fileTableWithVariablesStatement_in_fileTableWithStatement2408 = new BitSet(new ulong[]{0x1000010000UL,0x10000000UL});
 		public static readonly BitSet _CLOSEPAREN_in_fileTableWithStatement2411 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _fileTableWithVariableStatement_in_fileTableWithVariablesStatement2434 = new BitSet(new ulong[]{0x20000UL});
-		public static readonly BitSet _COMMA_in_fileTableWithVariablesStatement2436 = new BitSet(new ulong[]{0x800000000UL,0x8000000UL});
+		public static readonly BitSet _COMMA_in_fileTableWithVariablesStatement2436 = new BitSet(new ulong[]{0x1000000000UL,0x10000000UL});
 		public static readonly BitSet _fileTableWithVariableStatement_in_fileTableWithVariablesStatement2440 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _set_in_fileTableWithVariableStatement2456 = new BitSet(new ulong[]{0x80000000UL});
-		public static readonly BitSet _EQUALS_in_fileTableWithVariableStatement2465 = new BitSet(new ulong[]{0x0UL,0x800000000UL});
+		public static readonly BitSet _set_in_fileTableWithVariableStatement2456 = new BitSet(new ulong[]{0x100000000UL});
+		public static readonly BitSet _EQUALS_in_fileTableWithVariableStatement2465 = new BitSet(new ulong[]{0x0UL,0x1000000000UL});
 		public static readonly BitSet _STRING_LITERAL_in_fileTableWithVariableStatement2468 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _tableColumnArg_in_tableColumnArgs2480 = new BitSet(new ulong[]{0x20000UL});
-		public static readonly BitSet _COMMA_in_tableColumnArgs2482 = new BitSet(new ulong[]{0x100000000000UL});
+		public static readonly BitSet _COMMA_in_tableColumnArgs2482 = new BitSet(new ulong[]{0x200000000000UL});
 		public static readonly BitSet _tableColumnArg_in_tableColumnArgs2486 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _ID_in_tableColumnArg2507 = new BitSet(new ulong[]{0x40204000000000UL,0x400000000UL});
+		public static readonly BitSet _ID_in_tableColumnArg2507 = new BitSet(new ulong[]{0x80408000400000UL,0x800000000UL});
 		public static readonly BitSet _dataType_in_tableColumnArg2509 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _mathExpression_in_synpred30_Scrape959 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _setArg_in_synpred48_Scrape1251 = new BitSet(new ulong[]{0x20000UL});

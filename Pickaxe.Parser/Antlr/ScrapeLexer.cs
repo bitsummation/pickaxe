@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// $ANTLR 3.5.2 Scrape.g 2016-08-12 14:37:24
+// $ANTLR 3.5.2 Scrape.g 2016-08-12 22:19:22
 
 // The variable 'variable' is assigned but its value is never used.
 #pragma warning disable 219
@@ -29,8 +29,8 @@ using Antlr.Runtime.Misc;
 public partial class ScrapeLexer : Antlr.Runtime.Lexer
 {
 	public const int EOF=-1;
-	public const int T__128=128;
 	public const int T__129=129;
+	public const int T__130=130;
 	public const int AND=4;
 	public const int APOSTRAPHE=5;
 	public const int ASTERISK=6;
@@ -49,112 +49,113 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 	public const int COMMENT=19;
 	public const int CONNECTIONSTRING=20;
 	public const int CREATE=21;
-	public const int DBTABLE=22;
-	public const int DIGIT=23;
-	public const int DIV=24;
-	public const int DOT=25;
-	public const int DOWNLOAD_IMAGE=26;
-	public const int DOWNLOAD_PAGE=27;
-	public const int EACH=28;
-	public const int ELSE=29;
-	public const int END=30;
-	public const int EQUALS=31;
-	public const int EXEC=32;
-	public const int EXPAND=33;
-	public const int EXPAND_INTERATION_VARIABLE=34;
-	public const int FIELD_TERMINATOR=35;
-	public const int FILE=36;
-	public const int FILE_TABLE=37;
-	public const int FLOAT=38;
-	public const int FROM=39;
-	public const int GETDATE=40;
-	public const int GREATERTHAN=41;
-	public const int GREATERTHANEQUAL=42;
-	public const int HTML=43;
-	public const int ID=44;
-	public const int IDENTITY=45;
-	public const int IDENTITY_VAR=46;
-	public const int IN=47;
-	public const int INNER_JOIN=48;
-	public const int INSERT_DIRECTORY=49;
-	public const int INSERT_INTO=50;
-	public const int INSERT_INTO_DIRECTORY=51;
-	public const int INSERT_OVERWRITE=52;
-	public const int INT=53;
-	public const int INTEGER=54;
-	public const int JOIN=55;
-	public const int JS=56;
-	public const int LESSTHAN=57;
-	public const int LESSTHANEQUAL=58;
-	public const int LETTER=59;
-	public const int LIKE=60;
-	public const int LINE_COMMENT_DASH=61;
-	public const int LINE_COMMENT_SLASH=62;
-	public const int LOCATION=63;
-	public const int MATCH=64;
-	public const int MEMBER_REFERENCE=65;
-	public const int MINIS=66;
-	public const int MSSQL=67;
-	public const int MSSQL_TABLE=68;
-	public const int NEWLINE=69;
-	public const int NODES=70;
-	public const int NOTEQUAL=71;
-	public const int NOTLIKE=72;
-	public const int NULL=73;
-	public const int NULL_OPERATOR=74;
-	public const int OPENBRACE=75;
-	public const int OPENPAREN=76;
-	public const int OR=77;
-	public const int OTHERCHARS=78;
-	public const int PICK=79;
-	public const int PIPE=80;
-	public const int PLUS=81;
-	public const int POST_PICK=82;
-	public const int PRE_PICK=83;
-	public const int PROCEDURE=84;
-	public const int PROGRAM=85;
-	public const int PROXIES=86;
-	public const int PROXY_LIST=87;
-	public const int QUOTE=88;
-	public const int REPLACE=89;
-	public const int ROW_REFERENCE=90;
-	public const int ROW_TERMINATOR=91;
-	public const int SELECT=92;
-	public const int SELECT_ALL=93;
-	public const int SELECT_ARG=94;
-	public const int SELECT_ID=95;
-	public const int SELECT_STATEMENT=96;
-	public const int SET=97;
-	public const int STRING=98;
-	public const int STRING_LITERAL=99;
-	public const int TABLE=100;
-	public const int TABLE_ALIAS=101;
-	public const int TABLE_COLUMN_ARG=102;
-	public const int TABLE_COLUMN_ARGS=103;
-	public const int TABLE_MEMBER_REFERENCE=104;
-	public const int TABLE_VARIABLE_REFERENCE=105;
-	public const int TAKE=106;
-	public const int TAKE_ATTRIBUTE=107;
-	public const int TAKE_HTML=108;
-	public const int TAKE_TEXT=109;
-	public const int TEST=110;
-	public const int TEXT=111;
-	public const int THEN=112;
-	public const int THREAD=113;
-	public const int TO=114;
-	public const int TRUNCATE=115;
-	public const int UPDATE=116;
-	public const int VAR=117;
-	public const int VARIABLE_ASSIGNMENT=118;
-	public const int VARIABLE_DECLARATION=119;
-	public const int VARIABLE_REFERENCE=120;
-	public const int WHEN=121;
-	public const int WHEN_BOOL_STATEMENT=122;
-	public const int WHEN_LITERAL_STATEMENT=123;
-	public const int WHERE=124;
-	public const int WHILE=125;
-	public const int WITH=126;
-	public const int WS=127;
+	public const int DATETIME=22;
+	public const int DBTABLE=23;
+	public const int DIGIT=24;
+	public const int DIV=25;
+	public const int DOT=26;
+	public const int DOWNLOAD_IMAGE=27;
+	public const int DOWNLOAD_PAGE=28;
+	public const int EACH=29;
+	public const int ELSE=30;
+	public const int END=31;
+	public const int EQUALS=32;
+	public const int EXEC=33;
+	public const int EXPAND=34;
+	public const int EXPAND_INTERATION_VARIABLE=35;
+	public const int FIELD_TERMINATOR=36;
+	public const int FILE=37;
+	public const int FILE_TABLE=38;
+	public const int FLOAT=39;
+	public const int FROM=40;
+	public const int GETDATE=41;
+	public const int GREATERTHAN=42;
+	public const int GREATERTHANEQUAL=43;
+	public const int HTML=44;
+	public const int ID=45;
+	public const int IDENTITY=46;
+	public const int IDENTITY_VAR=47;
+	public const int IN=48;
+	public const int INNER_JOIN=49;
+	public const int INSERT_DIRECTORY=50;
+	public const int INSERT_INTO=51;
+	public const int INSERT_INTO_DIRECTORY=52;
+	public const int INSERT_OVERWRITE=53;
+	public const int INT=54;
+	public const int INTEGER=55;
+	public const int JOIN=56;
+	public const int JS=57;
+	public const int LESSTHAN=58;
+	public const int LESSTHANEQUAL=59;
+	public const int LETTER=60;
+	public const int LIKE=61;
+	public const int LINE_COMMENT_DASH=62;
+	public const int LINE_COMMENT_SLASH=63;
+	public const int LOCATION=64;
+	public const int MATCH=65;
+	public const int MEMBER_REFERENCE=66;
+	public const int MINIS=67;
+	public const int MSSQL=68;
+	public const int MSSQL_TABLE=69;
+	public const int NEWLINE=70;
+	public const int NODES=71;
+	public const int NOTEQUAL=72;
+	public const int NOTLIKE=73;
+	public const int NULL=74;
+	public const int NULL_OPERATOR=75;
+	public const int OPENBRACE=76;
+	public const int OPENPAREN=77;
+	public const int OR=78;
+	public const int OTHERCHARS=79;
+	public const int PICK=80;
+	public const int PIPE=81;
+	public const int PLUS=82;
+	public const int POST_PICK=83;
+	public const int PRE_PICK=84;
+	public const int PROCEDURE=85;
+	public const int PROGRAM=86;
+	public const int PROXIES=87;
+	public const int PROXY_LIST=88;
+	public const int QUOTE=89;
+	public const int REPLACE=90;
+	public const int ROW_REFERENCE=91;
+	public const int ROW_TERMINATOR=92;
+	public const int SELECT=93;
+	public const int SELECT_ALL=94;
+	public const int SELECT_ARG=95;
+	public const int SELECT_ID=96;
+	public const int SELECT_STATEMENT=97;
+	public const int SET=98;
+	public const int STRING=99;
+	public const int STRING_LITERAL=100;
+	public const int TABLE=101;
+	public const int TABLE_ALIAS=102;
+	public const int TABLE_COLUMN_ARG=103;
+	public const int TABLE_COLUMN_ARGS=104;
+	public const int TABLE_MEMBER_REFERENCE=105;
+	public const int TABLE_VARIABLE_REFERENCE=106;
+	public const int TAKE=107;
+	public const int TAKE_ATTRIBUTE=108;
+	public const int TAKE_HTML=109;
+	public const int TAKE_TEXT=110;
+	public const int TEST=111;
+	public const int TEXT=112;
+	public const int THEN=113;
+	public const int THREAD=114;
+	public const int TO=115;
+	public const int TRUNCATE=116;
+	public const int UPDATE=117;
+	public const int VAR=118;
+	public const int VARIABLE_ASSIGNMENT=119;
+	public const int VARIABLE_DECLARATION=120;
+	public const int VARIABLE_REFERENCE=121;
+	public const int WHEN=122;
+	public const int WHEN_BOOL_STATEMENT=123;
+	public const int WHEN_LITERAL_STATEMENT=124;
+	public const int WHERE=125;
+	public const int WHILE=126;
+	public const int WITH=127;
+	public const int WS=128;
 
 	// delegates
 	// delegators
@@ -182,19 +183,19 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 	partial void EnterRule(string ruleName, int ruleIndex);
 	partial void LeaveRule(string ruleName, int ruleIndex);
 
-	partial void EnterRule_T__128();
-	partial void LeaveRule_T__128();
+	partial void EnterRule_T__129();
+	partial void LeaveRule_T__129();
 
-	// $ANTLR start "T__128"
-	[GrammarRule("T__128")]
-	private void mT__128()
+	// $ANTLR start "T__129"
+	[GrammarRule("T__129")]
+	private void mT__129()
 	{
-		EnterRule_T__128();
-		EnterRule("T__128", 1);
-		TraceIn("T__128", 1);
+		EnterRule_T__129();
+		EnterRule("T__129", 1);
+		TraceIn("T__129", 1);
 		try
 		{
-			int _type = T__128;
+			int _type = T__129;
 			int _channel = DefaultTokenChannel;
 			// Scrape.g:8:8: ( '$' )
 			DebugEnterAlt(1);
@@ -210,26 +211,26 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("T__128", 1);
-			LeaveRule("T__128", 1);
-			LeaveRule_T__128();
+			TraceOut("T__129", 1);
+			LeaveRule("T__129", 1);
+			LeaveRule_T__129();
 		}
 	}
-	// $ANTLR end "T__128"
+	// $ANTLR end "T__129"
 
-	partial void EnterRule_T__129();
-	partial void LeaveRule_T__129();
+	partial void EnterRule_T__130();
+	partial void LeaveRule_T__130();
 
-	// $ANTLR start "T__129"
-	[GrammarRule("T__129")]
-	private void mT__129()
+	// $ANTLR start "T__130"
+	[GrammarRule("T__130")]
+	private void mT__130()
 	{
-		EnterRule_T__129();
-		EnterRule("T__129", 2);
-		TraceIn("T__129", 2);
+		EnterRule_T__130();
+		EnterRule("T__130", 2);
+		TraceIn("T__130", 2);
 		try
 		{
-			int _type = T__129;
+			int _type = T__130;
 			int _channel = DefaultTokenChannel;
 			// Scrape.g:9:8: ( 'on' )
 			DebugEnterAlt(1);
@@ -246,12 +247,12 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("T__129", 2);
-			LeaveRule("T__129", 2);
-			LeaveRule_T__129();
+			TraceOut("T__130", 2);
+			LeaveRule("T__130", 2);
+			LeaveRule_T__130();
 		}
 	}
-	// $ANTLR end "T__129"
+	// $ANTLR end "T__130"
 
 	partial void EnterRule_PROCEDURE();
 	partial void LeaveRule_PROCEDURE();
@@ -267,11 +268,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = PROCEDURE;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:434:10: ( 'procedure' )
+			// Scrape.g:435:10: ( 'procedure' )
 			DebugEnterAlt(1);
-			// Scrape.g:434:12: 'procedure'
+			// Scrape.g:435:12: 'procedure'
 			{
-			DebugLocation(434, 12);
+			DebugLocation(435, 12);
 			Match("procedure"); 
 
 
@@ -303,11 +304,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = GETDATE;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:435:9: ( 'getdate' )
+			// Scrape.g:436:9: ( 'getdate' )
 			DebugEnterAlt(1);
-			// Scrape.g:435:11: 'getdate'
+			// Scrape.g:436:11: 'getdate'
 			{
-			DebugLocation(435, 11);
+			DebugLocation(436, 11);
 			Match("getdate"); 
 
 
@@ -339,11 +340,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = EXEC;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:436:5: ( 'exec' )
+			// Scrape.g:437:5: ( 'exec' )
 			DebugEnterAlt(1);
-			// Scrape.g:436:7: 'exec'
+			// Scrape.g:437:7: 'exec'
 			{
-			DebugLocation(436, 7);
+			DebugLocation(437, 7);
 			Match("exec"); 
 
 
@@ -375,11 +376,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = CASE;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:437:5: ( 'case' )
+			// Scrape.g:438:5: ( 'case' )
 			DebugEnterAlt(1);
-			// Scrape.g:437:7: 'case'
+			// Scrape.g:438:7: 'case'
 			{
-			DebugLocation(437, 7);
+			DebugLocation(438, 7);
 			Match("case"); 
 
 
@@ -411,11 +412,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = WHEN;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:438:5: ( 'when' )
+			// Scrape.g:439:5: ( 'when' )
 			DebugEnterAlt(1);
-			// Scrape.g:438:7: 'when'
+			// Scrape.g:439:7: 'when'
 			{
-			DebugLocation(438, 7);
+			DebugLocation(439, 7);
 			Match("when"); 
 
 
@@ -447,11 +448,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = THEN;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:439:5: ( 'then' )
+			// Scrape.g:440:5: ( 'then' )
 			DebugEnterAlt(1);
-			// Scrape.g:439:7: 'then'
+			// Scrape.g:440:7: 'then'
 			{
-			DebugLocation(439, 7);
+			DebugLocation(440, 7);
 			Match("then"); 
 
 
@@ -483,11 +484,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = END;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:440:4: ( 'end' )
+			// Scrape.g:441:4: ( 'end' )
 			DebugEnterAlt(1);
-			// Scrape.g:440:6: 'end'
+			// Scrape.g:441:6: 'end'
 			{
-			DebugLocation(440, 6);
+			DebugLocation(441, 6);
 			Match("end"); 
 
 
@@ -519,11 +520,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = ELSE;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:441:5: ( 'else' )
+			// Scrape.g:442:5: ( 'else' )
 			DebugEnterAlt(1);
-			// Scrape.g:441:7: 'else'
+			// Scrape.g:442:7: 'else'
 			{
-			DebugLocation(441, 7);
+			DebugLocation(442, 7);
 			Match("else"); 
 
 
@@ -555,11 +556,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = VAR;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:443:4: ( 'var' )
+			// Scrape.g:444:4: ( 'var' )
 			DebugEnterAlt(1);
-			// Scrape.g:443:6: 'var'
+			// Scrape.g:444:6: 'var'
 			{
-			DebugLocation(443, 6);
+			DebugLocation(444, 6);
 			Match("var"); 
 
 
@@ -591,11 +592,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = AND;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:445:5: ( 'and' )
+			// Scrape.g:446:5: ( 'and' )
 			DebugEnterAlt(1);
-			// Scrape.g:445:7: 'and'
+			// Scrape.g:446:7: 'and'
 			{
-			DebugLocation(445, 7);
+			DebugLocation(446, 7);
 			Match("and"); 
 
 
@@ -627,11 +628,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = OR;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:446:4: ( 'or' )
+			// Scrape.g:447:4: ( 'or' )
 			DebugEnterAlt(1);
-			// Scrape.g:446:6: 'or'
+			// Scrape.g:447:6: 'or'
 			{
-			DebugLocation(446, 6);
+			DebugLocation(447, 6);
 			Match("or"); 
 
 
@@ -663,11 +664,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = EQUALS;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:448:8: ( '=' )
+			// Scrape.g:449:8: ( '=' )
 			DebugEnterAlt(1);
-			// Scrape.g:448:10: '='
+			// Scrape.g:449:10: '='
 			{
-			DebugLocation(448, 10);
+			DebugLocation(449, 10);
 			Match('='); 
 
 			}
@@ -698,11 +699,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = LESSTHAN;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:449:10: ( '<' )
+			// Scrape.g:450:10: ( '<' )
 			DebugEnterAlt(1);
-			// Scrape.g:449:12: '<'
+			// Scrape.g:450:12: '<'
 			{
-			DebugLocation(449, 12);
+			DebugLocation(450, 12);
 			Match('<'); 
 
 			}
@@ -733,11 +734,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = LESSTHANEQUAL;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:450:14: ( '<=' )
+			// Scrape.g:451:14: ( '<=' )
 			DebugEnterAlt(1);
-			// Scrape.g:450:16: '<='
+			// Scrape.g:451:16: '<='
 			{
-			DebugLocation(450, 16);
+			DebugLocation(451, 16);
 			Match("<="); 
 
 
@@ -769,11 +770,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = GREATERTHAN;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:451:12: ( '>' )
+			// Scrape.g:452:12: ( '>' )
 			DebugEnterAlt(1);
-			// Scrape.g:451:14: '>'
+			// Scrape.g:452:14: '>'
 			{
-			DebugLocation(451, 14);
+			DebugLocation(452, 14);
 			Match('>'); 
 
 			}
@@ -804,11 +805,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = GREATERTHANEQUAL;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:452:17: ( '>=' )
+			// Scrape.g:453:17: ( '>=' )
 			DebugEnterAlt(1);
-			// Scrape.g:452:19: '>='
+			// Scrape.g:453:19: '>='
 			{
-			DebugLocation(452, 19);
+			DebugLocation(453, 19);
 			Match(">="); 
 
 
@@ -840,11 +841,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = NOTEQUAL;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:453:9: ( '!=' )
+			// Scrape.g:454:9: ( '!=' )
 			DebugEnterAlt(1);
-			// Scrape.g:453:11: '!='
+			// Scrape.g:454:11: '!='
 			{
-			DebugLocation(453, 11);
+			DebugLocation(454, 11);
 			Match("!="); 
 
 
@@ -876,11 +877,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = LIKE;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:454:5: ( 'like' )
+			// Scrape.g:455:5: ( 'like' )
 			DebugEnterAlt(1);
-			// Scrape.g:454:7: 'like'
+			// Scrape.g:455:7: 'like'
 			{
-			DebugLocation(454, 7);
+			DebugLocation(455, 7);
 			Match("like"); 
 
 
@@ -912,11 +913,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = NOTLIKE;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:455:8: ( 'not like' )
+			// Scrape.g:456:8: ( 'not like' )
 			DebugEnterAlt(1);
-			// Scrape.g:455:10: 'not like'
+			// Scrape.g:456:10: 'not like'
 			{
-			DebugLocation(455, 10);
+			DebugLocation(456, 10);
 			Match("not like"); 
 
 
@@ -948,11 +949,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = NULL_OPERATOR;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:457:14: ( '??' )
+			// Scrape.g:458:14: ( '??' )
 			DebugEnterAlt(1);
-			// Scrape.g:457:16: '??'
+			// Scrape.g:458:16: '??'
 			{
-			DebugLocation(457, 16);
+			DebugLocation(458, 16);
 			Match("??"); 
 
 
@@ -984,11 +985,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = UPDATE;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:459:8: ( 'update' )
+			// Scrape.g:460:8: ( 'update' )
 			DebugEnterAlt(1);
-			// Scrape.g:459:10: 'update'
+			// Scrape.g:460:10: 'update'
 			{
-			DebugLocation(459, 10);
+			DebugLocation(460, 10);
 			Match("update"); 
 
 
@@ -1020,11 +1021,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = SET;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:460:5: ( 'set' )
+			// Scrape.g:461:5: ( 'set' )
 			DebugEnterAlt(1);
-			// Scrape.g:460:7: 'set'
+			// Scrape.g:461:7: 'set'
 			{
-			DebugLocation(460, 7);
+			DebugLocation(461, 7);
 			Match("set"); 
 
 
@@ -1056,11 +1057,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = INSERT_INTO;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:461:13: ( 'insert into' )
+			// Scrape.g:462:13: ( 'insert into' )
 			DebugEnterAlt(1);
-			// Scrape.g:461:15: 'insert into'
+			// Scrape.g:462:15: 'insert into'
 			{
-			DebugLocation(461, 15);
+			DebugLocation(462, 15);
 			Match("insert into"); 
 
 
@@ -1092,11 +1093,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = INSERT_OVERWRITE;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:462:18: ( 'insert overwrite' )
+			// Scrape.g:463:18: ( 'insert overwrite' )
 			DebugEnterAlt(1);
-			// Scrape.g:462:20: 'insert overwrite'
+			// Scrape.g:463:20: 'insert overwrite'
 			{
-			DebugLocation(462, 20);
+			DebugLocation(463, 20);
 			Match("insert overwrite"); 
 
 
@@ -1128,11 +1129,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = INSERT_DIRECTORY;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:463:18: ( 'insert file into' )
+			// Scrape.g:464:18: ( 'insert file into' )
 			DebugEnterAlt(1);
-			// Scrape.g:463:20: 'insert file into'
+			// Scrape.g:464:20: 'insert file into'
 			{
-			DebugLocation(463, 20);
+			DebugLocation(464, 20);
 			Match("insert file into"); 
 
 
@@ -1164,11 +1165,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = TRUNCATE;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:464:10: ( 'truncate' )
+			// Scrape.g:465:10: ( 'truncate' )
 			DebugEnterAlt(1);
-			// Scrape.g:464:12: 'truncate'
+			// Scrape.g:465:12: 'truncate'
 			{
-			DebugLocation(464, 12);
+			DebugLocation(465, 12);
 			Match("truncate"); 
 
 
@@ -1200,11 +1201,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = THREAD;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:465:8: ( 'thread' )
+			// Scrape.g:466:8: ( 'thread' )
 			DebugEnterAlt(1);
-			// Scrape.g:465:10: 'thread'
+			// Scrape.g:466:10: 'thread'
 			{
-			DebugLocation(465, 10);
+			DebugLocation(466, 10);
 			Match("thread"); 
 
 
@@ -1236,11 +1237,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = JS;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:466:4: ( 'js' )
+			// Scrape.g:467:4: ( 'js' )
 			DebugEnterAlt(1);
-			// Scrape.g:466:6: 'js'
+			// Scrape.g:467:6: 'js'
 			{
-			DebugLocation(466, 6);
+			DebugLocation(467, 6);
 			Match("js"); 
 
 
@@ -1272,11 +1273,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = WHILE;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:467:7: ( 'while' )
+			// Scrape.g:468:7: ( 'while' )
 			DebugEnterAlt(1);
-			// Scrape.g:467:9: 'while'
+			// Scrape.g:468:9: 'while'
 			{
-			DebugLocation(467, 9);
+			DebugLocation(468, 9);
 			Match("while"); 
 
 
@@ -1308,11 +1309,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = EACH;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:468:6: ( 'each' )
+			// Scrape.g:469:6: ( 'each' )
 			DebugEnterAlt(1);
-			// Scrape.g:468:8: 'each'
+			// Scrape.g:469:8: 'each'
 			{
-			DebugLocation(468, 8);
+			DebugLocation(469, 8);
 			Match("each"); 
 
 
@@ -1344,11 +1345,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = IN;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:469:4: ( 'in' )
+			// Scrape.g:470:4: ( 'in' )
 			DebugEnterAlt(1);
-			// Scrape.g:469:6: 'in'
+			// Scrape.g:470:6: 'in'
 			{
-			DebugLocation(469, 6);
+			DebugLocation(470, 6);
 			Match("in"); 
 
 
@@ -1380,11 +1381,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = SELECT;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:470:8: ( 'select' )
+			// Scrape.g:471:8: ( 'select' )
 			DebugEnterAlt(1);
-			// Scrape.g:470:10: 'select'
+			// Scrape.g:471:10: 'select'
 			{
-			DebugLocation(470, 10);
+			DebugLocation(471, 10);
 			Match("select"); 
 
 
@@ -1416,11 +1417,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = FROM;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:471:6: ( 'from' )
+			// Scrape.g:472:6: ( 'from' )
 			DebugEnterAlt(1);
-			// Scrape.g:471:8: 'from'
+			// Scrape.g:472:8: 'from'
 			{
-			DebugLocation(471, 8);
+			DebugLocation(472, 8);
 			Match("from"); 
 
 
@@ -1452,11 +1453,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = INNER_JOIN;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:472:12: ( 'inner join' )
+			// Scrape.g:473:12: ( 'inner join' )
 			DebugEnterAlt(1);
-			// Scrape.g:472:14: 'inner join'
+			// Scrape.g:473:14: 'inner join'
 			{
-			DebugLocation(472, 14);
+			DebugLocation(473, 14);
 			Match("inner join"); 
 
 
@@ -1488,11 +1489,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = JOIN;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:473:5: ( 'join' )
+			// Scrape.g:474:5: ( 'join' )
 			DebugEnterAlt(1);
-			// Scrape.g:473:7: 'join'
+			// Scrape.g:474:7: 'join'
 			{
-			DebugLocation(473, 7);
+			DebugLocation(474, 7);
 			Match("join"); 
 
 
@@ -1524,11 +1525,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = NODES;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:474:6: ( 'nodes' )
+			// Scrape.g:475:6: ( 'nodes' )
 			DebugEnterAlt(1);
-			// Scrape.g:474:8: 'nodes'
+			// Scrape.g:475:8: 'nodes'
 			{
-			DebugLocation(474, 8);
+			DebugLocation(475, 8);
 			Match("nodes"); 
 
 
@@ -1560,11 +1561,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = WHERE;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:475:7: ( 'where' )
+			// Scrape.g:476:7: ( 'where' )
 			DebugEnterAlt(1);
-			// Scrape.g:475:9: 'where'
+			// Scrape.g:476:9: 'where'
 			{
-			DebugLocation(475, 9);
+			DebugLocation(476, 9);
 			Match("where"); 
 
 
@@ -1596,11 +1597,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = PICK;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:476:6: ( 'pick' )
+			// Scrape.g:477:6: ( 'pick' )
 			DebugEnterAlt(1);
-			// Scrape.g:476:8: 'pick'
+			// Scrape.g:477:8: 'pick'
 			{
-			DebugLocation(476, 8);
+			DebugLocation(477, 8);
 			Match("pick"); 
 
 
@@ -1632,11 +1633,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = TAKE;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:477:6: ( 'take' )
+			// Scrape.g:478:6: ( 'take' )
 			DebugEnterAlt(1);
-			// Scrape.g:477:8: 'take'
+			// Scrape.g:478:8: 'take'
 			{
-			DebugLocation(477, 8);
+			DebugLocation(478, 8);
 			Match("take"); 
 
 
@@ -1668,11 +1669,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = MATCH;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:478:7: ( 'match' )
+			// Scrape.g:479:7: ( 'match' )
 			DebugEnterAlt(1);
-			// Scrape.g:478:9: 'match'
+			// Scrape.g:479:9: 'match'
 			{
-			DebugLocation(478, 9);
+			DebugLocation(479, 9);
 			Match("match"); 
 
 
@@ -1704,11 +1705,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = REPLACE;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:479:9: ( 'replace' )
+			// Scrape.g:480:9: ( 'replace' )
 			DebugEnterAlt(1);
-			// Scrape.g:479:11: 'replace'
+			// Scrape.g:480:11: 'replace'
 			{
-			DebugLocation(479, 11);
+			DebugLocation(480, 11);
 			Match("replace"); 
 
 
@@ -1740,11 +1741,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = ATTRIBUTE;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:480:11: ( 'attribute' )
+			// Scrape.g:481:11: ( 'attribute' )
 			DebugEnterAlt(1);
-			// Scrape.g:480:13: 'attribute'
+			// Scrape.g:481:13: 'attribute'
 			{
-			DebugLocation(480, 13);
+			DebugLocation(481, 13);
 			Match("attribute"); 
 
 
@@ -1776,11 +1777,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = TEXT;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:481:6: ( 'text' )
+			// Scrape.g:482:6: ( 'text' )
 			DebugEnterAlt(1);
-			// Scrape.g:481:8: 'text'
+			// Scrape.g:482:8: 'text'
 			{
-			DebugLocation(481, 8);
+			DebugLocation(482, 8);
 			Match("text"); 
 
 
@@ -1812,11 +1813,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = HTML;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:482:6: ( 'html' )
+			// Scrape.g:483:6: ( 'html' )
 			DebugEnterAlt(1);
-			// Scrape.g:482:8: 'html'
+			// Scrape.g:483:8: 'html'
 			{
-			DebugLocation(482, 8);
+			DebugLocation(483, 8);
 			Match("html"); 
 
 
@@ -1848,11 +1849,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = DOWNLOAD_IMAGE;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:483:16: ( 'download image' )
+			// Scrape.g:484:16: ( 'download image' )
 			DebugEnterAlt(1);
-			// Scrape.g:483:18: 'download image'
+			// Scrape.g:484:18: 'download image'
 			{
-			DebugLocation(483, 18);
+			DebugLocation(484, 18);
 			Match("download image"); 
 
 
@@ -1884,11 +1885,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = DOWNLOAD_PAGE;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:484:15: ( 'download page' )
+			// Scrape.g:485:15: ( 'download page' )
 			DebugEnterAlt(1);
-			// Scrape.g:484:17: 'download page'
+			// Scrape.g:485:17: 'download page'
 			{
-			DebugLocation(484, 17);
+			DebugLocation(485, 17);
 			Match("download page"); 
 
 
@@ -1920,11 +1921,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = IDENTITY;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:485:10: ( 'identity' )
+			// Scrape.g:486:10: ( 'identity' )
 			DebugEnterAlt(1);
-			// Scrape.g:485:12: 'identity'
+			// Scrape.g:486:12: 'identity'
 			{
-			DebugLocation(485, 12);
+			DebugLocation(486, 12);
 			Match("identity"); 
 
 
@@ -1956,11 +1957,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = EXPAND;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:486:8: ( 'expand' )
+			// Scrape.g:487:8: ( 'expand' )
 			DebugEnterAlt(1);
-			// Scrape.g:486:10: 'expand'
+			// Scrape.g:487:10: 'expand'
 			{
-			DebugLocation(486, 10);
+			DebugLocation(487, 10);
 			Match("expand"); 
 
 
@@ -1992,11 +1993,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = TO;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:487:4: ( 'to' )
+			// Scrape.g:488:4: ( 'to' )
 			DebugEnterAlt(1);
-			// Scrape.g:487:6: 'to'
+			// Scrape.g:488:6: 'to'
 			{
-			DebugLocation(487, 6);
+			DebugLocation(488, 6);
 			Match("to"); 
 
 
@@ -2028,11 +2029,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = PROXIES;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:488:8: ( 'proxies' )
+			// Scrape.g:489:8: ( 'proxies' )
 			DebugEnterAlt(1);
-			// Scrape.g:488:10: 'proxies'
+			// Scrape.g:489:10: 'proxies'
 			{
-			DebugLocation(488, 10);
+			DebugLocation(489, 10);
 			Match("proxies"); 
 
 
@@ -2064,11 +2065,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = TEST;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:489:6: ( 'test' )
+			// Scrape.g:490:6: ( 'test' )
 			DebugEnterAlt(1);
-			// Scrape.g:489:8: 'test'
+			// Scrape.g:490:8: 'test'
 			{
-			DebugLocation(489, 8);
+			DebugLocation(490, 8);
 			Match("test"); 
 
 
@@ -2100,11 +2101,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = NULL;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:490:6: ( 'null' )
+			// Scrape.g:491:6: ( 'null' )
 			DebugEnterAlt(1);
-			// Scrape.g:490:8: 'null'
+			// Scrape.g:491:8: 'null'
 			{
-			DebugLocation(490, 8);
+			DebugLocation(491, 8);
 			Match("null"); 
 
 
@@ -2136,11 +2137,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = CREATE;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:492:8: ( 'create' )
+			// Scrape.g:493:8: ( 'create' )
 			DebugEnterAlt(1);
-			// Scrape.g:492:10: 'create'
+			// Scrape.g:493:10: 'create'
 			{
-			DebugLocation(492, 10);
+			DebugLocation(493, 10);
 			Match("create"); 
 
 
@@ -2172,11 +2173,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = FILE;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:493:6: ( 'file' )
+			// Scrape.g:494:6: ( 'file' )
 			DebugEnterAlt(1);
-			// Scrape.g:493:8: 'file'
+			// Scrape.g:494:8: 'file'
 			{
-			DebugLocation(493, 8);
+			DebugLocation(494, 8);
 			Match("file"); 
 
 
@@ -2208,11 +2209,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = BUFFER;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:494:8: ( 'buffer' )
+			// Scrape.g:495:8: ( 'buffer' )
 			DebugEnterAlt(1);
-			// Scrape.g:494:10: 'buffer'
+			// Scrape.g:495:10: 'buffer'
 			{
-			DebugLocation(494, 10);
+			DebugLocation(495, 10);
 			Match("buffer"); 
 
 
@@ -2244,11 +2245,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = MSSQL;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:495:7: ( 'mssql' )
+			// Scrape.g:496:7: ( 'mssql' )
 			DebugEnterAlt(1);
-			// Scrape.g:495:9: 'mssql'
+			// Scrape.g:496:9: 'mssql'
 			{
-			DebugLocation(495, 9);
+			DebugLocation(496, 9);
 			Match("mssql"); 
 
 
@@ -2280,11 +2281,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = WITH;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:496:6: ( 'with' )
+			// Scrape.g:497:6: ( 'with' )
 			DebugEnterAlt(1);
-			// Scrape.g:496:8: 'with'
+			// Scrape.g:497:8: 'with'
 			{
-			DebugLocation(496, 8);
+			DebugLocation(497, 8);
 			Match("with"); 
 
 
@@ -2316,11 +2317,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = STRING;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:497:8: ( 'string' )
+			// Scrape.g:498:8: ( 'string' )
 			DebugEnterAlt(1);
-			// Scrape.g:497:10: 'string'
+			// Scrape.g:498:10: 'string'
 			{
-			DebugLocation(497, 10);
+			DebugLocation(498, 10);
 			Match("string"); 
 
 
@@ -2352,11 +2353,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = INTEGER;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:498:8: ( 'int' )
+			// Scrape.g:499:8: ( 'int' )
 			DebugEnterAlt(1);
-			// Scrape.g:498:10: 'int'
+			// Scrape.g:499:10: 'int'
 			{
-			DebugLocation(498, 10);
+			DebugLocation(499, 10);
 			Match("int"); 
 
 
@@ -2388,11 +2389,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = FLOAT;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:499:6: ( 'float' )
+			// Scrape.g:500:6: ( 'float' )
 			DebugEnterAlt(1);
-			// Scrape.g:499:8: 'float'
+			// Scrape.g:500:8: 'float'
 			{
-			DebugLocation(499, 8);
+			DebugLocation(500, 8);
 			Match("float"); 
 
 
@@ -2410,6 +2411,42 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 	}
 	// $ANTLR end "FLOAT"
 
+	partial void EnterRule_DATETIME();
+	partial void LeaveRule_DATETIME();
+
+	// $ANTLR start "DATETIME"
+	[GrammarRule("DATETIME")]
+	private void mDATETIME()
+	{
+		EnterRule_DATETIME();
+		EnterRule("DATETIME", 63);
+		TraceIn("DATETIME", 63);
+		try
+		{
+			int _type = DATETIME;
+			int _channel = DefaultTokenChannel;
+			// Scrape.g:501:10: ( 'datetime' )
+			DebugEnterAlt(1);
+			// Scrape.g:501:12: 'datetime'
+			{
+			DebugLocation(501, 12);
+			Match("datetime"); 
+
+
+			}
+
+			state.type = _type;
+			state.channel = _channel;
+		}
+		finally
+		{
+			TraceOut("DATETIME", 63);
+			LeaveRule("DATETIME", 63);
+			LeaveRule_DATETIME();
+		}
+	}
+	// $ANTLR end "DATETIME"
+
 	partial void EnterRule_FIELD_TERMINATOR();
 	partial void LeaveRule_FIELD_TERMINATOR();
 
@@ -2418,17 +2455,17 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 	private void mFIELD_TERMINATOR()
 	{
 		EnterRule_FIELD_TERMINATOR();
-		EnterRule("FIELD_TERMINATOR", 63);
-		TraceIn("FIELD_TERMINATOR", 63);
+		EnterRule("FIELD_TERMINATOR", 64);
+		TraceIn("FIELD_TERMINATOR", 64);
 		try
 		{
 			int _type = FIELD_TERMINATOR;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:500:18: ( 'fieldterminator' )
+			// Scrape.g:502:18: ( 'fieldterminator' )
 			DebugEnterAlt(1);
-			// Scrape.g:500:20: 'fieldterminator'
+			// Scrape.g:502:20: 'fieldterminator'
 			{
-			DebugLocation(500, 20);
+			DebugLocation(502, 20);
 			Match("fieldterminator"); 
 
 
@@ -2439,8 +2476,8 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("FIELD_TERMINATOR", 63);
-			LeaveRule("FIELD_TERMINATOR", 63);
+			TraceOut("FIELD_TERMINATOR", 64);
+			LeaveRule("FIELD_TERMINATOR", 64);
 			LeaveRule_FIELD_TERMINATOR();
 		}
 	}
@@ -2454,17 +2491,17 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 	private void mROW_TERMINATOR()
 	{
 		EnterRule_ROW_TERMINATOR();
-		EnterRule("ROW_TERMINATOR", 64);
-		TraceIn("ROW_TERMINATOR", 64);
+		EnterRule("ROW_TERMINATOR", 65);
+		TraceIn("ROW_TERMINATOR", 65);
 		try
 		{
 			int _type = ROW_TERMINATOR;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:501:16: ( 'rowterminator' )
+			// Scrape.g:503:16: ( 'rowterminator' )
 			DebugEnterAlt(1);
-			// Scrape.g:501:18: 'rowterminator'
+			// Scrape.g:503:18: 'rowterminator'
 			{
-			DebugLocation(501, 18);
+			DebugLocation(503, 18);
 			Match("rowterminator"); 
 
 
@@ -2475,8 +2512,8 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("ROW_TERMINATOR", 64);
-			LeaveRule("ROW_TERMINATOR", 64);
+			TraceOut("ROW_TERMINATOR", 65);
+			LeaveRule("ROW_TERMINATOR", 65);
 			LeaveRule_ROW_TERMINATOR();
 		}
 	}
@@ -2490,17 +2527,17 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 	private void mLOCATION()
 	{
 		EnterRule_LOCATION();
-		EnterRule("LOCATION", 65);
-		TraceIn("LOCATION", 65);
+		EnterRule("LOCATION", 66);
+		TraceIn("LOCATION", 66);
 		try
 		{
 			int _type = LOCATION;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:502:10: ( 'location' )
+			// Scrape.g:504:10: ( 'location' )
 			DebugEnterAlt(1);
-			// Scrape.g:502:12: 'location'
+			// Scrape.g:504:12: 'location'
 			{
-			DebugLocation(502, 12);
+			DebugLocation(504, 12);
 			Match("location"); 
 
 
@@ -2511,8 +2548,8 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("LOCATION", 65);
-			LeaveRule("LOCATION", 65);
+			TraceOut("LOCATION", 66);
+			LeaveRule("LOCATION", 66);
 			LeaveRule_LOCATION();
 		}
 	}
@@ -2526,17 +2563,17 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 	private void mCONNECTIONSTRING()
 	{
 		EnterRule_CONNECTIONSTRING();
-		EnterRule("CONNECTIONSTRING", 66);
-		TraceIn("CONNECTIONSTRING", 66);
+		EnterRule("CONNECTIONSTRING", 67);
+		TraceIn("CONNECTIONSTRING", 67);
 		try
 		{
 			int _type = CONNECTIONSTRING;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:503:18: ( 'connectionstring' )
+			// Scrape.g:505:18: ( 'connectionstring' )
 			DebugEnterAlt(1);
-			// Scrape.g:503:20: 'connectionstring'
+			// Scrape.g:505:20: 'connectionstring'
 			{
-			DebugLocation(503, 20);
+			DebugLocation(505, 20);
 			Match("connectionstring"); 
 
 
@@ -2547,8 +2584,8 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("CONNECTIONSTRING", 66);
-			LeaveRule("CONNECTIONSTRING", 66);
+			TraceOut("CONNECTIONSTRING", 67);
+			LeaveRule("CONNECTIONSTRING", 67);
 			LeaveRule_CONNECTIONSTRING();
 		}
 	}
@@ -2562,17 +2599,17 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 	private void mTABLE()
 	{
 		EnterRule_TABLE();
-		EnterRule("TABLE", 67);
-		TraceIn("TABLE", 67);
+		EnterRule("TABLE", 68);
+		TraceIn("TABLE", 68);
 		try
 		{
 			int _type = TABLE;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:504:7: ( 'table' )
+			// Scrape.g:506:7: ( 'table' )
 			DebugEnterAlt(1);
-			// Scrape.g:504:9: 'table'
+			// Scrape.g:506:9: 'table'
 			{
-			DebugLocation(504, 9);
+			DebugLocation(506, 9);
 			Match("table"); 
 
 
@@ -2583,8 +2620,8 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("TABLE", 67);
-			LeaveRule("TABLE", 67);
+			TraceOut("TABLE", 68);
+			LeaveRule("TABLE", 68);
 			LeaveRule_TABLE();
 		}
 	}
@@ -2598,17 +2635,17 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 	private void mDBTABLE()
 	{
 		EnterRule_DBTABLE();
-		EnterRule("DBTABLE", 68);
-		TraceIn("DBTABLE", 68);
+		EnterRule("DBTABLE", 69);
+		TraceIn("DBTABLE", 69);
 		try
 		{
 			int _type = DBTABLE;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:505:9: ( 'dbtable' )
+			// Scrape.g:507:9: ( 'dbtable' )
 			DebugEnterAlt(1);
-			// Scrape.g:505:11: 'dbtable'
+			// Scrape.g:507:11: 'dbtable'
 			{
-			DebugLocation(505, 11);
+			DebugLocation(507, 11);
 			Match("dbtable"); 
 
 
@@ -2619,8 +2656,8 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("DBTABLE", 68);
-			LeaveRule("DBTABLE", 68);
+			TraceOut("DBTABLE", 69);
+			LeaveRule("DBTABLE", 69);
 			LeaveRule_DBTABLE();
 		}
 	}
@@ -2634,20 +2671,20 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 	private void mSTRING_LITERAL()
 	{
 		EnterRule_STRING_LITERAL();
-		EnterRule("STRING_LITERAL", 69);
-		TraceIn("STRING_LITERAL", 69);
+		EnterRule("STRING_LITERAL", 70);
+		TraceIn("STRING_LITERAL", 70);
 		try
 		{
 			int _type = STRING_LITERAL;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:507:15: ( APOSTRAPHE (~ ( APOSTRAPHE ) )* APOSTRAPHE )
+			// Scrape.g:509:15: ( APOSTRAPHE (~ ( APOSTRAPHE ) )* APOSTRAPHE )
 			DebugEnterAlt(1);
-			// Scrape.g:507:17: APOSTRAPHE (~ ( APOSTRAPHE ) )* APOSTRAPHE
+			// Scrape.g:509:17: APOSTRAPHE (~ ( APOSTRAPHE ) )* APOSTRAPHE
 			{
-			DebugLocation(507, 17);
+			DebugLocation(509, 17);
 			mAPOSTRAPHE(); 
-			DebugLocation(507, 28);
-			// Scrape.g:507:28: (~ ( APOSTRAPHE ) )*
+			DebugLocation(509, 28);
+			// Scrape.g:509:28: (~ ( APOSTRAPHE ) )*
 			try { DebugEnterSubRule(1);
 			while (true)
 			{
@@ -2668,7 +2705,7 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 					DebugEnterAlt(1);
 					// Scrape.g:
 					{
-					DebugLocation(507, 28);
+					DebugLocation(509, 28);
 					input.Consume();
 
 
@@ -2685,7 +2722,7 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 
 			} finally { DebugExitSubRule(1); }
 
-			DebugLocation(507, 43);
+			DebugLocation(509, 43);
 			mAPOSTRAPHE(); 
 
 			}
@@ -2695,8 +2732,8 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("STRING_LITERAL", 69);
-			LeaveRule("STRING_LITERAL", 69);
+			TraceOut("STRING_LITERAL", 70);
+			LeaveRule("STRING_LITERAL", 70);
 			LeaveRule_STRING_LITERAL();
 		}
 	}
@@ -2710,17 +2747,17 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 	private void mIDENTITY_VAR()
 	{
 		EnterRule_IDENTITY_VAR();
-		EnterRule("IDENTITY_VAR", 70);
-		TraceIn("IDENTITY_VAR", 70);
+		EnterRule("IDENTITY_VAR", 71);
+		TraceIn("IDENTITY_VAR", 71);
 		try
 		{
 			int _type = IDENTITY_VAR;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:508:14: ( '@@identity' )
+			// Scrape.g:510:14: ( '@@identity' )
 			DebugEnterAlt(1);
-			// Scrape.g:508:16: '@@identity'
+			// Scrape.g:510:16: '@@identity'
 			{
-			DebugLocation(508, 16);
+			DebugLocation(510, 16);
 			Match("@@identity"); 
 
 
@@ -2731,8 +2768,8 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("IDENTITY_VAR", 70);
-			LeaveRule("IDENTITY_VAR", 70);
+			TraceOut("IDENTITY_VAR", 71);
+			LeaveRule("IDENTITY_VAR", 71);
 			LeaveRule_IDENTITY_VAR();
 		}
 	}
@@ -2746,20 +2783,20 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 	private void mCOMMAND_VAR()
 	{
 		EnterRule_COMMAND_VAR();
-		EnterRule("COMMAND_VAR", 71);
-		TraceIn("COMMAND_VAR", 71);
+		EnterRule("COMMAND_VAR", 72);
+		TraceIn("COMMAND_VAR", 72);
 		try
 		{
 			int _type = COMMAND_VAR;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:509:13: ( '@' ( DIGIT )+ )
+			// Scrape.g:511:13: ( '@' ( DIGIT )+ )
 			DebugEnterAlt(1);
-			// Scrape.g:509:15: '@' ( DIGIT )+
+			// Scrape.g:511:15: '@' ( DIGIT )+
 			{
-			DebugLocation(509, 15);
+			DebugLocation(511, 15);
 			Match('@'); 
-			DebugLocation(509, 19);
-			// Scrape.g:509:19: ( DIGIT )+
+			DebugLocation(511, 19);
+			// Scrape.g:511:19: ( DIGIT )+
 			int cnt2=0;
 			try { DebugEnterSubRule(2);
 			while (true)
@@ -2781,7 +2818,7 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 					DebugEnterAlt(1);
 					// Scrape.g:
 					{
-					DebugLocation(509, 19);
+					DebugLocation(511, 19);
 					input.Consume();
 
 
@@ -2811,8 +2848,8 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("COMMAND_VAR", 71);
-			LeaveRule("COMMAND_VAR", 71);
+			TraceOut("COMMAND_VAR", 72);
+			LeaveRule("COMMAND_VAR", 72);
 			LeaveRule_COMMAND_VAR();
 		}
 	}
@@ -2826,18 +2863,18 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 	private void mID()
 	{
 		EnterRule_ID();
-		EnterRule("ID", 72);
-		TraceIn("ID", 72);
+		EnterRule("ID", 73);
+		TraceIn("ID", 73);
 		try
 		{
 			int _type = ID;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:510:4: ( ( LETTER )+ )
+			// Scrape.g:512:4: ( ( LETTER )+ )
 			DebugEnterAlt(1);
-			// Scrape.g:510:6: ( LETTER )+
+			// Scrape.g:512:6: ( LETTER )+
 			{
-			DebugLocation(510, 6);
-			// Scrape.g:510:6: ( LETTER )+
+			DebugLocation(512, 6);
+			// Scrape.g:512:6: ( LETTER )+
 			int cnt3=0;
 			try { DebugEnterSubRule(3);
 			while (true)
@@ -2859,7 +2896,7 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 					DebugEnterAlt(1);
 					// Scrape.g:
 					{
-					DebugLocation(510, 6);
+					DebugLocation(512, 6);
 					input.Consume();
 
 
@@ -2889,8 +2926,8 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("ID", 72);
-			LeaveRule("ID", 72);
+			TraceOut("ID", 73);
+			LeaveRule("ID", 73);
 			LeaveRule_ID();
 		}
 	}
@@ -2904,17 +2941,17 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 	private void mASTERISK()
 	{
 		EnterRule_ASTERISK();
-		EnterRule("ASTERISK", 73);
-		TraceIn("ASTERISK", 73);
+		EnterRule("ASTERISK", 74);
+		TraceIn("ASTERISK", 74);
 		try
 		{
 			int _type = ASTERISK;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:511:10: ( '*' )
+			// Scrape.g:513:10: ( '*' )
 			DebugEnterAlt(1);
-			// Scrape.g:511:12: '*'
+			// Scrape.g:513:12: '*'
 			{
-			DebugLocation(511, 12);
+			DebugLocation(513, 12);
 			Match('*'); 
 
 			}
@@ -2924,8 +2961,8 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("ASTERISK", 73);
-			LeaveRule("ASTERISK", 73);
+			TraceOut("ASTERISK", 74);
+			LeaveRule("ASTERISK", 74);
 			LeaveRule_ASTERISK();
 		}
 	}
@@ -2939,17 +2976,17 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 	private void mDOT()
 	{
 		EnterRule_DOT();
-		EnterRule("DOT", 74);
-		TraceIn("DOT", 74);
+		EnterRule("DOT", 75);
+		TraceIn("DOT", 75);
 		try
 		{
 			int _type = DOT;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:512:5: ( '.' )
+			// Scrape.g:514:5: ( '.' )
 			DebugEnterAlt(1);
-			// Scrape.g:512:7: '.'
+			// Scrape.g:514:7: '.'
 			{
-			DebugLocation(512, 7);
+			DebugLocation(514, 7);
 			Match('.'); 
 
 			}
@@ -2959,8 +2996,8 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("DOT", 74);
-			LeaveRule("DOT", 74);
+			TraceOut("DOT", 75);
+			LeaveRule("DOT", 75);
 			LeaveRule_DOT();
 		}
 	}
@@ -2974,17 +3011,17 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 	private void mOPENPAREN()
 	{
 		EnterRule_OPENPAREN();
-		EnterRule("OPENPAREN", 75);
-		TraceIn("OPENPAREN", 75);
+		EnterRule("OPENPAREN", 76);
+		TraceIn("OPENPAREN", 76);
 		try
 		{
 			int _type = OPENPAREN;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:513:11: ( '(' )
+			// Scrape.g:515:11: ( '(' )
 			DebugEnterAlt(1);
-			// Scrape.g:513:13: '('
+			// Scrape.g:515:13: '('
 			{
-			DebugLocation(513, 13);
+			DebugLocation(515, 13);
 			Match('('); 
 
 			}
@@ -2994,8 +3031,8 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("OPENPAREN", 75);
-			LeaveRule("OPENPAREN", 75);
+			TraceOut("OPENPAREN", 76);
+			LeaveRule("OPENPAREN", 76);
 			LeaveRule_OPENPAREN();
 		}
 	}
@@ -3009,17 +3046,17 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 	private void mCLOSEPAREN()
 	{
 		EnterRule_CLOSEPAREN();
-		EnterRule("CLOSEPAREN", 76);
-		TraceIn("CLOSEPAREN", 76);
+		EnterRule("CLOSEPAREN", 77);
+		TraceIn("CLOSEPAREN", 77);
 		try
 		{
 			int _type = CLOSEPAREN;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:514:12: ( ')' )
+			// Scrape.g:516:12: ( ')' )
 			DebugEnterAlt(1);
-			// Scrape.g:514:14: ')'
+			// Scrape.g:516:14: ')'
 			{
-			DebugLocation(514, 14);
+			DebugLocation(516, 14);
 			Match(')'); 
 
 			}
@@ -3029,8 +3066,8 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("CLOSEPAREN", 76);
-			LeaveRule("CLOSEPAREN", 76);
+			TraceOut("CLOSEPAREN", 77);
+			LeaveRule("CLOSEPAREN", 77);
 			LeaveRule_CLOSEPAREN();
 		}
 	}
@@ -3044,17 +3081,17 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 	private void mOPENBRACE()
 	{
 		EnterRule_OPENBRACE();
-		EnterRule("OPENBRACE", 77);
-		TraceIn("OPENBRACE", 77);
+		EnterRule("OPENBRACE", 78);
+		TraceIn("OPENBRACE", 78);
 		try
 		{
 			int _type = OPENBRACE;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:515:11: ( '{' )
+			// Scrape.g:517:11: ( '{' )
 			DebugEnterAlt(1);
-			// Scrape.g:515:13: '{'
+			// Scrape.g:517:13: '{'
 			{
-			DebugLocation(515, 13);
+			DebugLocation(517, 13);
 			Match('{'); 
 
 			}
@@ -3064,8 +3101,8 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("OPENBRACE", 77);
-			LeaveRule("OPENBRACE", 77);
+			TraceOut("OPENBRACE", 78);
+			LeaveRule("OPENBRACE", 78);
 			LeaveRule_OPENBRACE();
 		}
 	}
@@ -3079,17 +3116,17 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 	private void mCLOSEBRACE()
 	{
 		EnterRule_CLOSEBRACE();
-		EnterRule("CLOSEBRACE", 78);
-		TraceIn("CLOSEBRACE", 78);
+		EnterRule("CLOSEBRACE", 79);
+		TraceIn("CLOSEBRACE", 79);
 		try
 		{
 			int _type = CLOSEBRACE;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:516:12: ( '}' )
+			// Scrape.g:518:12: ( '}' )
 			DebugEnterAlt(1);
-			// Scrape.g:516:14: '}'
+			// Scrape.g:518:14: '}'
 			{
-			DebugLocation(516, 14);
+			DebugLocation(518, 14);
 			Match('}'); 
 
 			}
@@ -3099,8 +3136,8 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("CLOSEBRACE", 78);
-			LeaveRule("CLOSEBRACE", 78);
+			TraceOut("CLOSEBRACE", 79);
+			LeaveRule("CLOSEBRACE", 79);
 			LeaveRule_CLOSEBRACE();
 		}
 	}
@@ -3114,17 +3151,17 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 	private void mPIPE()
 	{
 		EnterRule_PIPE();
-		EnterRule("PIPE", 79);
-		TraceIn("PIPE", 79);
+		EnterRule("PIPE", 80);
+		TraceIn("PIPE", 80);
 		try
 		{
 			int _type = PIPE;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:517:6: ( '|' )
+			// Scrape.g:519:6: ( '|' )
 			DebugEnterAlt(1);
-			// Scrape.g:517:8: '|'
+			// Scrape.g:519:8: '|'
 			{
-			DebugLocation(517, 8);
+			DebugLocation(519, 8);
 			Match('|'); 
 
 			}
@@ -3134,8 +3171,8 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("PIPE", 79);
-			LeaveRule("PIPE", 79);
+			TraceOut("PIPE", 80);
+			LeaveRule("PIPE", 80);
 			LeaveRule_PIPE();
 		}
 	}
@@ -3149,17 +3186,17 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 	private void mPLUS()
 	{
 		EnterRule_PLUS();
-		EnterRule("PLUS", 80);
-		TraceIn("PLUS", 80);
+		EnterRule("PLUS", 81);
+		TraceIn("PLUS", 81);
 		try
 		{
 			int _type = PLUS;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:518:6: ( '+' )
+			// Scrape.g:520:6: ( '+' )
 			DebugEnterAlt(1);
-			// Scrape.g:518:8: '+'
+			// Scrape.g:520:8: '+'
 			{
-			DebugLocation(518, 8);
+			DebugLocation(520, 8);
 			Match('+'); 
 
 			}
@@ -3169,8 +3206,8 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("PLUS", 80);
-			LeaveRule("PLUS", 80);
+			TraceOut("PLUS", 81);
+			LeaveRule("PLUS", 81);
 			LeaveRule_PLUS();
 		}
 	}
@@ -3184,17 +3221,17 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 	private void mMINIS()
 	{
 		EnterRule_MINIS();
-		EnterRule("MINIS", 81);
-		TraceIn("MINIS", 81);
+		EnterRule("MINIS", 82);
+		TraceIn("MINIS", 82);
 		try
 		{
 			int _type = MINIS;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:519:8: ( '-' )
+			// Scrape.g:521:8: ( '-' )
 			DebugEnterAlt(1);
-			// Scrape.g:519:10: '-'
+			// Scrape.g:521:10: '-'
 			{
-			DebugLocation(519, 10);
+			DebugLocation(521, 10);
 			Match('-'); 
 
 			}
@@ -3204,8 +3241,8 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("MINIS", 81);
-			LeaveRule("MINIS", 81);
+			TraceOut("MINIS", 82);
+			LeaveRule("MINIS", 82);
 			LeaveRule_MINIS();
 		}
 	}
@@ -3219,17 +3256,17 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 	private void mDIV()
 	{
 		EnterRule_DIV();
-		EnterRule("DIV", 82);
-		TraceIn("DIV", 82);
+		EnterRule("DIV", 83);
+		TraceIn("DIV", 83);
 		try
 		{
 			int _type = DIV;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:520:6: ( '/' )
+			// Scrape.g:522:6: ( '/' )
 			DebugEnterAlt(1);
-			// Scrape.g:520:8: '/'
+			// Scrape.g:522:8: '/'
 			{
-			DebugLocation(520, 8);
+			DebugLocation(522, 8);
 			Match('/'); 
 
 			}
@@ -3239,8 +3276,8 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("DIV", 82);
-			LeaveRule("DIV", 82);
+			TraceOut("DIV", 83);
+			LeaveRule("DIV", 83);
 			LeaveRule_DIV();
 		}
 	}
@@ -3254,17 +3291,17 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 	private void mCOMMA()
 	{
 		EnterRule_COMMA();
-		EnterRule("COMMA", 83);
-		TraceIn("COMMA", 83);
+		EnterRule("COMMA", 84);
+		TraceIn("COMMA", 84);
 		try
 		{
 			int _type = COMMA;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:521:7: ( ',' )
+			// Scrape.g:523:7: ( ',' )
 			DebugEnterAlt(1);
-			// Scrape.g:521:9: ','
+			// Scrape.g:523:9: ','
 			{
-			DebugLocation(521, 9);
+			DebugLocation(523, 9);
 			Match(','); 
 
 			}
@@ -3274,8 +3311,8 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("COMMA", 83);
-			LeaveRule("COMMA", 83);
+			TraceOut("COMMA", 84);
+			LeaveRule("COMMA", 84);
 			LeaveRule_COMMA();
 		}
 	}
@@ -3289,17 +3326,17 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 	private void mQUOTE()
 	{
 		EnterRule_QUOTE();
-		EnterRule("QUOTE", 84);
-		TraceIn("QUOTE", 84);
+		EnterRule("QUOTE", 85);
+		TraceIn("QUOTE", 85);
 		try
 		{
 			int _type = QUOTE;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:522:7: ( '\"' )
+			// Scrape.g:524:7: ( '\"' )
 			DebugEnterAlt(1);
-			// Scrape.g:522:9: '\"'
+			// Scrape.g:524:9: '\"'
 			{
-			DebugLocation(522, 9);
+			DebugLocation(524, 9);
 			Match('\"'); 
 
 			}
@@ -3309,8 +3346,8 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("QUOTE", 84);
-			LeaveRule("QUOTE", 84);
+			TraceOut("QUOTE", 85);
+			LeaveRule("QUOTE", 85);
 			LeaveRule_QUOTE();
 		}
 	}
@@ -3324,17 +3361,17 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 	private void mAPOSTRAPHE()
 	{
 		EnterRule_APOSTRAPHE();
-		EnterRule("APOSTRAPHE", 85);
-		TraceIn("APOSTRAPHE", 85);
+		EnterRule("APOSTRAPHE", 86);
+		TraceIn("APOSTRAPHE", 86);
 		try
 		{
 			int _type = APOSTRAPHE;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:523:12: ( '\\'' )
+			// Scrape.g:525:12: ( '\\'' )
 			DebugEnterAlt(1);
-			// Scrape.g:523:14: '\\''
+			// Scrape.g:525:14: '\\''
 			{
-			DebugLocation(523, 14);
+			DebugLocation(525, 14);
 			Match('\''); 
 
 			}
@@ -3344,8 +3381,8 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("APOSTRAPHE", 85);
-			LeaveRule("APOSTRAPHE", 85);
+			TraceOut("APOSTRAPHE", 86);
+			LeaveRule("APOSTRAPHE", 86);
 			LeaveRule_APOSTRAPHE();
 		}
 	}
@@ -3359,18 +3396,18 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 	private void mINT()
 	{
 		EnterRule_INT();
-		EnterRule("INT", 86);
-		TraceIn("INT", 86);
+		EnterRule("INT", 87);
+		TraceIn("INT", 87);
 		try
 		{
 			int _type = INT;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:524:5: ( ( DIGIT )+ )
+			// Scrape.g:526:5: ( ( DIGIT )+ )
 			DebugEnterAlt(1);
-			// Scrape.g:524:7: ( DIGIT )+
+			// Scrape.g:526:7: ( DIGIT )+
 			{
-			DebugLocation(524, 7);
-			// Scrape.g:524:7: ( DIGIT )+
+			DebugLocation(526, 7);
+			// Scrape.g:526:7: ( DIGIT )+
 			int cnt4=0;
 			try { DebugEnterSubRule(4);
 			while (true)
@@ -3392,7 +3429,7 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 					DebugEnterAlt(1);
 					// Scrape.g:
 					{
-					DebugLocation(524, 7);
+					DebugLocation(526, 7);
 					input.Consume();
 
 
@@ -3422,8 +3459,8 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("INT", 86);
-			LeaveRule("INT", 86);
+			TraceOut("INT", 87);
+			LeaveRule("INT", 87);
 			LeaveRule_INT();
 		}
 	}
@@ -3437,15 +3474,15 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 	private void mNEWLINE()
 	{
 		EnterRule_NEWLINE();
-		EnterRule("NEWLINE", 87);
-		TraceIn("NEWLINE", 87);
+		EnterRule("NEWLINE", 88);
+		TraceIn("NEWLINE", 88);
 		try
 		{
-			// Scrape.g:525:18: ( ( '\\n' | '\\r' ) )
+			// Scrape.g:527:18: ( ( '\\n' | '\\r' ) )
 			DebugEnterAlt(1);
 			// Scrape.g:
 			{
-			DebugLocation(525, 18);
+			DebugLocation(527, 18);
 			if (input.LA(1)=='\n'||input.LA(1)=='\r')
 			{
 				input.Consume();
@@ -3464,8 +3501,8 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("NEWLINE", 87);
-			LeaveRule("NEWLINE", 87);
+			TraceOut("NEWLINE", 88);
+			LeaveRule("NEWLINE", 88);
 			LeaveRule_NEWLINE();
 		}
 	}
@@ -3479,15 +3516,15 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 	private void mDIGIT()
 	{
 		EnterRule_DIGIT();
-		EnterRule("DIGIT", 88);
-		TraceIn("DIGIT", 88);
+		EnterRule("DIGIT", 89);
+		TraceIn("DIGIT", 89);
 		try
 		{
-			// Scrape.g:526:15: ( '0' .. '9' )
+			// Scrape.g:528:15: ( '0' .. '9' )
 			DebugEnterAlt(1);
 			// Scrape.g:
 			{
-			DebugLocation(526, 15);
+			DebugLocation(528, 15);
 			if ((input.LA(1)>='0' && input.LA(1)<='9'))
 			{
 				input.Consume();
@@ -3506,8 +3543,8 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("DIGIT", 88);
-			LeaveRule("DIGIT", 88);
+			TraceOut("DIGIT", 89);
+			LeaveRule("DIGIT", 89);
 			LeaveRule_DIGIT();
 		}
 	}
@@ -3521,15 +3558,15 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 	private void mLETTER()
 	{
 		EnterRule_LETTER();
-		EnterRule("LETTER", 89);
-		TraceIn("LETTER", 89);
+		EnterRule("LETTER", 90);
+		TraceIn("LETTER", 90);
 		try
 		{
-			// Scrape.g:527:17: ( ( 'a' .. 'z' | 'A' .. 'Z' ) )
+			// Scrape.g:529:17: ( ( 'a' .. 'z' | 'A' .. 'Z' ) )
 			DebugEnterAlt(1);
 			// Scrape.g:
 			{
-			DebugLocation(527, 17);
+			DebugLocation(529, 17);
 			if ((input.LA(1)>='A' && input.LA(1)<='Z')||(input.LA(1)>='a' && input.LA(1)<='z'))
 			{
 				input.Consume();
@@ -3548,8 +3585,8 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("LETTER", 89);
-			LeaveRule("LETTER", 89);
+			TraceOut("LETTER", 90);
+			LeaveRule("LETTER", 90);
 			LeaveRule_LETTER();
 		}
 	}
@@ -3563,15 +3600,15 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 	private void mOTHERCHARS()
 	{
 		EnterRule_OTHERCHARS();
-		EnterRule("OTHERCHARS", 90);
-		TraceIn("OTHERCHARS", 90);
+		EnterRule("OTHERCHARS", 91);
+		TraceIn("OTHERCHARS", 91);
 		try
 		{
-			// Scrape.g:528:21: ( ( '.' | '|' | '-' | '&' | ',' | '\\\\' | ':' ) )
+			// Scrape.g:530:21: ( ( '.' | '|' | '-' | '&' | ',' | '\\\\' | ':' ) )
 			DebugEnterAlt(1);
 			// Scrape.g:
 			{
-			DebugLocation(528, 21);
+			DebugLocation(530, 21);
 			if (input.LA(1)=='&'||(input.LA(1)>=',' && input.LA(1)<='.')||input.LA(1)==':'||input.LA(1)=='\\'||input.LA(1)=='|')
 			{
 				input.Consume();
@@ -3590,8 +3627,8 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("OTHERCHARS", 90);
-			LeaveRule("OTHERCHARS", 90);
+			TraceOut("OTHERCHARS", 91);
+			LeaveRule("OTHERCHARS", 91);
 			LeaveRule_OTHERCHARS();
 		}
 	}
@@ -3605,18 +3642,18 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 	private void mWS()
 	{
 		EnterRule_WS();
-		EnterRule("WS", 91);
-		TraceIn("WS", 91);
+		EnterRule("WS", 92);
+		TraceIn("WS", 92);
 		try
 		{
 			int _type = WS;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:529:4: ( ( ' ' | '\\t' | NEWLINE )+ )
+			// Scrape.g:531:4: ( ( ' ' | '\\t' | NEWLINE )+ )
 			DebugEnterAlt(1);
-			// Scrape.g:529:7: ( ' ' | '\\t' | NEWLINE )+
+			// Scrape.g:531:7: ( ' ' | '\\t' | NEWLINE )+
 			{
-			DebugLocation(529, 7);
-			// Scrape.g:529:7: ( ' ' | '\\t' | NEWLINE )+
+			DebugLocation(531, 7);
+			// Scrape.g:531:7: ( ' ' | '\\t' | NEWLINE )+
 			int cnt5=0;
 			try { DebugEnterSubRule(5);
 			while (true)
@@ -3638,7 +3675,7 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 					DebugEnterAlt(1);
 					// Scrape.g:
 					{
-					DebugLocation(529, 7);
+					DebugLocation(531, 7);
 					input.Consume();
 
 
@@ -3660,7 +3697,7 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 
 			} finally { DebugExitSubRule(5); }
 
-			DebugLocation(529, 27);
+			DebugLocation(531, 27);
 			_channel = Hidden;
 
 			}
@@ -3670,8 +3707,8 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("WS", 91);
-			LeaveRule("WS", 91);
+			TraceOut("WS", 92);
+			LeaveRule("WS", 92);
 			LeaveRule_WS();
 		}
 	}
@@ -3685,21 +3722,21 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 	private void mCOMMENT()
 	{
 		EnterRule_COMMENT();
-		EnterRule("COMMENT", 92);
-		TraceIn("COMMENT", 92);
+		EnterRule("COMMENT", 93);
+		TraceIn("COMMENT", 93);
 		try
 		{
 			int _type = COMMENT;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:530:9: ( '/*' ( . )* '*/' )
+			// Scrape.g:532:9: ( '/*' ( . )* '*/' )
 			DebugEnterAlt(1);
-			// Scrape.g:530:11: '/*' ( . )* '*/'
+			// Scrape.g:532:11: '/*' ( . )* '*/'
 			{
-			DebugLocation(530, 11);
+			DebugLocation(532, 11);
 			Match("/*"); 
 
-			DebugLocation(530, 16);
-			// Scrape.g:530:16: ( . )*
+			DebugLocation(532, 16);
+			// Scrape.g:532:16: ( . )*
 			try { DebugEnterSubRule(6);
 			while (true)
 			{
@@ -3733,9 +3770,9 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 				{
 				case 1:
 					DebugEnterAlt(1);
-					// Scrape.g:530:16: .
+					// Scrape.g:532:16: .
 					{
-					DebugLocation(530, 16);
+					DebugLocation(532, 16);
 					MatchAny(); 
 
 					}
@@ -3751,10 +3788,10 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 
 			} finally { DebugExitSubRule(6); }
 
-			DebugLocation(530, 19);
+			DebugLocation(532, 19);
 			Match("*/"); 
 
-			DebugLocation(530, 24);
+			DebugLocation(532, 24);
 			_channel = Hidden;
 
 			}
@@ -3764,8 +3801,8 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("COMMENT", 92);
-			LeaveRule("COMMENT", 92);
+			TraceOut("COMMENT", 93);
+			LeaveRule("COMMENT", 93);
 			LeaveRule_COMMENT();
 		}
 	}
@@ -3779,21 +3816,21 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 	private void mLINE_COMMENT_SLASH()
 	{
 		EnterRule_LINE_COMMENT_SLASH();
-		EnterRule("LINE_COMMENT_SLASH", 93);
-		TraceIn("LINE_COMMENT_SLASH", 93);
+		EnterRule("LINE_COMMENT_SLASH", 94);
+		TraceIn("LINE_COMMENT_SLASH", 94);
 		try
 		{
 			int _type = LINE_COMMENT_SLASH;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:531:20: ( '//' (~ NEWLINE )* )
+			// Scrape.g:533:20: ( '//' (~ NEWLINE )* )
 			DebugEnterAlt(1);
-			// Scrape.g:531:22: '//' (~ NEWLINE )*
+			// Scrape.g:533:22: '//' (~ NEWLINE )*
 			{
-			DebugLocation(531, 22);
+			DebugLocation(533, 22);
 			Match("//"); 
 
-			DebugLocation(531, 27);
-			// Scrape.g:531:27: (~ NEWLINE )*
+			DebugLocation(533, 27);
+			// Scrape.g:533:27: (~ NEWLINE )*
 			try { DebugEnterSubRule(7);
 			while (true)
 			{
@@ -3814,7 +3851,7 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 					DebugEnterAlt(1);
 					// Scrape.g:
 					{
-					DebugLocation(531, 27);
+					DebugLocation(533, 27);
 					input.Consume();
 
 
@@ -3831,7 +3868,7 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 
 			} finally { DebugExitSubRule(7); }
 
-			DebugLocation(531, 37);
+			DebugLocation(533, 37);
 			_channel = Hidden;
 
 			}
@@ -3841,8 +3878,8 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("LINE_COMMENT_SLASH", 93);
-			LeaveRule("LINE_COMMENT_SLASH", 93);
+			TraceOut("LINE_COMMENT_SLASH", 94);
+			LeaveRule("LINE_COMMENT_SLASH", 94);
 			LeaveRule_LINE_COMMENT_SLASH();
 		}
 	}
@@ -3856,21 +3893,21 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 	private void mLINE_COMMENT_DASH()
 	{
 		EnterRule_LINE_COMMENT_DASH();
-		EnterRule("LINE_COMMENT_DASH", 94);
-		TraceIn("LINE_COMMENT_DASH", 94);
+		EnterRule("LINE_COMMENT_DASH", 95);
+		TraceIn("LINE_COMMENT_DASH", 95);
 		try
 		{
 			int _type = LINE_COMMENT_DASH;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:532:19: ( '--' (~ NEWLINE )* )
+			// Scrape.g:534:19: ( '--' (~ NEWLINE )* )
 			DebugEnterAlt(1);
-			// Scrape.g:532:21: '--' (~ NEWLINE )*
+			// Scrape.g:534:21: '--' (~ NEWLINE )*
 			{
-			DebugLocation(532, 21);
+			DebugLocation(534, 21);
 			Match("--"); 
 
-			DebugLocation(532, 26);
-			// Scrape.g:532:26: (~ NEWLINE )*
+			DebugLocation(534, 26);
+			// Scrape.g:534:26: (~ NEWLINE )*
 			try { DebugEnterSubRule(8);
 			while (true)
 			{
@@ -3891,7 +3928,7 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 					DebugEnterAlt(1);
 					// Scrape.g:
 					{
-					DebugLocation(532, 26);
+					DebugLocation(534, 26);
 					input.Consume();
 
 
@@ -3908,7 +3945,7 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 
 			} finally { DebugExitSubRule(8); }
 
-			DebugLocation(532, 36);
+			DebugLocation(534, 36);
 			_channel = Hidden;
 
 			}
@@ -3918,8 +3955,8 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("LINE_COMMENT_DASH", 94);
-			LeaveRule("LINE_COMMENT_DASH", 94);
+			TraceOut("LINE_COMMENT_DASH", 95);
+			LeaveRule("LINE_COMMENT_DASH", 95);
 			LeaveRule_LINE_COMMENT_DASH();
 		}
 	}
@@ -3927,8 +3964,8 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 
 	public override void mTokens()
 	{
-		// Scrape.g:1:8: ( T__128 | T__129 | PROCEDURE | GETDATE | EXEC | CASE | WHEN | THEN | END | ELSE | VAR | AND | OR | EQUALS | LESSTHAN | LESSTHANEQUAL | GREATERTHAN | GREATERTHANEQUAL | NOTEQUAL | LIKE | NOTLIKE | NULL_OPERATOR | UPDATE | SET | INSERT_INTO | INSERT_OVERWRITE | INSERT_DIRECTORY | TRUNCATE | THREAD | JS | WHILE | EACH | IN | SELECT | FROM | INNER_JOIN | JOIN | NODES | WHERE | PICK | TAKE | MATCH | REPLACE | ATTRIBUTE | TEXT | HTML | DOWNLOAD_IMAGE | DOWNLOAD_PAGE | IDENTITY | EXPAND | TO | PROXIES | TEST | NULL | CREATE | FILE | BUFFER | MSSQL | WITH | STRING | INTEGER | FLOAT | FIELD_TERMINATOR | ROW_TERMINATOR | LOCATION | CONNECTIONSTRING | TABLE | DBTABLE | STRING_LITERAL | IDENTITY_VAR | COMMAND_VAR | ID | ASTERISK | DOT | OPENPAREN | CLOSEPAREN | OPENBRACE | CLOSEBRACE | PIPE | PLUS | MINIS | DIV | COMMA | QUOTE | APOSTRAPHE | INT | WS | COMMENT | LINE_COMMENT_SLASH | LINE_COMMENT_DASH )
-		int alt9=90;
+		// Scrape.g:1:8: ( T__129 | T__130 | PROCEDURE | GETDATE | EXEC | CASE | WHEN | THEN | END | ELSE | VAR | AND | OR | EQUALS | LESSTHAN | LESSTHANEQUAL | GREATERTHAN | GREATERTHANEQUAL | NOTEQUAL | LIKE | NOTLIKE | NULL_OPERATOR | UPDATE | SET | INSERT_INTO | INSERT_OVERWRITE | INSERT_DIRECTORY | TRUNCATE | THREAD | JS | WHILE | EACH | IN | SELECT | FROM | INNER_JOIN | JOIN | NODES | WHERE | PICK | TAKE | MATCH | REPLACE | ATTRIBUTE | TEXT | HTML | DOWNLOAD_IMAGE | DOWNLOAD_PAGE | IDENTITY | EXPAND | TO | PROXIES | TEST | NULL | CREATE | FILE | BUFFER | MSSQL | WITH | STRING | INTEGER | FLOAT | DATETIME | FIELD_TERMINATOR | ROW_TERMINATOR | LOCATION | CONNECTIONSTRING | TABLE | DBTABLE | STRING_LITERAL | IDENTITY_VAR | COMMAND_VAR | ID | ASTERISK | DOT | OPENPAREN | CLOSEPAREN | OPENBRACE | CLOSEBRACE | PIPE | PLUS | MINIS | DIV | COMMA | QUOTE | APOSTRAPHE | INT | WS | COMMENT | LINE_COMMENT_SLASH | LINE_COMMENT_DASH )
+		int alt9=91;
 		try { DebugEnterDecision(9, false);
 		try
 		{
@@ -3944,19 +3981,19 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 		case 1:
 			DebugEnterAlt(1);
-			// Scrape.g:1:10: T__128
+			// Scrape.g:1:10: T__129
 			{
 			DebugLocation(1, 10);
-			mT__128(); 
+			mT__129(); 
 
 			}
 			break;
 		case 2:
 			DebugEnterAlt(2);
-			// Scrape.g:1:17: T__129
+			// Scrape.g:1:17: T__130
 			{
 			DebugLocation(1, 17);
-			mT__129(); 
+			mT__130(); 
 
 			}
 			break;
@@ -4502,252 +4539,261 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 			break;
 		case 63:
 			DebugEnterAlt(63);
-			// Scrape.g:1:468: FIELD_TERMINATOR
+			// Scrape.g:1:468: DATETIME
 			{
 			DebugLocation(1, 468);
-			mFIELD_TERMINATOR(); 
+			mDATETIME(); 
 
 			}
 			break;
 		case 64:
 			DebugEnterAlt(64);
-			// Scrape.g:1:485: ROW_TERMINATOR
+			// Scrape.g:1:477: FIELD_TERMINATOR
 			{
-			DebugLocation(1, 485);
-			mROW_TERMINATOR(); 
+			DebugLocation(1, 477);
+			mFIELD_TERMINATOR(); 
 
 			}
 			break;
 		case 65:
 			DebugEnterAlt(65);
-			// Scrape.g:1:500: LOCATION
+			// Scrape.g:1:494: ROW_TERMINATOR
 			{
-			DebugLocation(1, 500);
-			mLOCATION(); 
+			DebugLocation(1, 494);
+			mROW_TERMINATOR(); 
 
 			}
 			break;
 		case 66:
 			DebugEnterAlt(66);
-			// Scrape.g:1:509: CONNECTIONSTRING
+			// Scrape.g:1:509: LOCATION
 			{
 			DebugLocation(1, 509);
-			mCONNECTIONSTRING(); 
+			mLOCATION(); 
 
 			}
 			break;
 		case 67:
 			DebugEnterAlt(67);
-			// Scrape.g:1:526: TABLE
+			// Scrape.g:1:518: CONNECTIONSTRING
 			{
-			DebugLocation(1, 526);
-			mTABLE(); 
+			DebugLocation(1, 518);
+			mCONNECTIONSTRING(); 
 
 			}
 			break;
 		case 68:
 			DebugEnterAlt(68);
-			// Scrape.g:1:532: DBTABLE
+			// Scrape.g:1:535: TABLE
 			{
-			DebugLocation(1, 532);
-			mDBTABLE(); 
+			DebugLocation(1, 535);
+			mTABLE(); 
 
 			}
 			break;
 		case 69:
 			DebugEnterAlt(69);
-			// Scrape.g:1:540: STRING_LITERAL
+			// Scrape.g:1:541: DBTABLE
 			{
-			DebugLocation(1, 540);
-			mSTRING_LITERAL(); 
+			DebugLocation(1, 541);
+			mDBTABLE(); 
 
 			}
 			break;
 		case 70:
 			DebugEnterAlt(70);
-			// Scrape.g:1:555: IDENTITY_VAR
+			// Scrape.g:1:549: STRING_LITERAL
 			{
-			DebugLocation(1, 555);
-			mIDENTITY_VAR(); 
+			DebugLocation(1, 549);
+			mSTRING_LITERAL(); 
 
 			}
 			break;
 		case 71:
 			DebugEnterAlt(71);
-			// Scrape.g:1:568: COMMAND_VAR
+			// Scrape.g:1:564: IDENTITY_VAR
 			{
-			DebugLocation(1, 568);
-			mCOMMAND_VAR(); 
+			DebugLocation(1, 564);
+			mIDENTITY_VAR(); 
 
 			}
 			break;
 		case 72:
 			DebugEnterAlt(72);
-			// Scrape.g:1:580: ID
+			// Scrape.g:1:577: COMMAND_VAR
 			{
-			DebugLocation(1, 580);
-			mID(); 
+			DebugLocation(1, 577);
+			mCOMMAND_VAR(); 
 
 			}
 			break;
 		case 73:
 			DebugEnterAlt(73);
-			// Scrape.g:1:583: ASTERISK
+			// Scrape.g:1:589: ID
 			{
-			DebugLocation(1, 583);
-			mASTERISK(); 
+			DebugLocation(1, 589);
+			mID(); 
 
 			}
 			break;
 		case 74:
 			DebugEnterAlt(74);
-			// Scrape.g:1:592: DOT
+			// Scrape.g:1:592: ASTERISK
 			{
 			DebugLocation(1, 592);
-			mDOT(); 
+			mASTERISK(); 
 
 			}
 			break;
 		case 75:
 			DebugEnterAlt(75);
-			// Scrape.g:1:596: OPENPAREN
+			// Scrape.g:1:601: DOT
 			{
-			DebugLocation(1, 596);
-			mOPENPAREN(); 
+			DebugLocation(1, 601);
+			mDOT(); 
 
 			}
 			break;
 		case 76:
 			DebugEnterAlt(76);
-			// Scrape.g:1:606: CLOSEPAREN
+			// Scrape.g:1:605: OPENPAREN
 			{
-			DebugLocation(1, 606);
-			mCLOSEPAREN(); 
+			DebugLocation(1, 605);
+			mOPENPAREN(); 
 
 			}
 			break;
 		case 77:
 			DebugEnterAlt(77);
-			// Scrape.g:1:617: OPENBRACE
+			// Scrape.g:1:615: CLOSEPAREN
 			{
-			DebugLocation(1, 617);
-			mOPENBRACE(); 
+			DebugLocation(1, 615);
+			mCLOSEPAREN(); 
 
 			}
 			break;
 		case 78:
 			DebugEnterAlt(78);
-			// Scrape.g:1:627: CLOSEBRACE
+			// Scrape.g:1:626: OPENBRACE
 			{
-			DebugLocation(1, 627);
-			mCLOSEBRACE(); 
+			DebugLocation(1, 626);
+			mOPENBRACE(); 
 
 			}
 			break;
 		case 79:
 			DebugEnterAlt(79);
-			// Scrape.g:1:638: PIPE
+			// Scrape.g:1:636: CLOSEBRACE
 			{
-			DebugLocation(1, 638);
-			mPIPE(); 
+			DebugLocation(1, 636);
+			mCLOSEBRACE(); 
 
 			}
 			break;
 		case 80:
 			DebugEnterAlt(80);
-			// Scrape.g:1:643: PLUS
+			// Scrape.g:1:647: PIPE
 			{
-			DebugLocation(1, 643);
-			mPLUS(); 
+			DebugLocation(1, 647);
+			mPIPE(); 
 
 			}
 			break;
 		case 81:
 			DebugEnterAlt(81);
-			// Scrape.g:1:648: MINIS
+			// Scrape.g:1:652: PLUS
 			{
-			DebugLocation(1, 648);
-			mMINIS(); 
+			DebugLocation(1, 652);
+			mPLUS(); 
 
 			}
 			break;
 		case 82:
 			DebugEnterAlt(82);
-			// Scrape.g:1:654: DIV
+			// Scrape.g:1:657: MINIS
 			{
-			DebugLocation(1, 654);
-			mDIV(); 
+			DebugLocation(1, 657);
+			mMINIS(); 
 
 			}
 			break;
 		case 83:
 			DebugEnterAlt(83);
-			// Scrape.g:1:658: COMMA
+			// Scrape.g:1:663: DIV
 			{
-			DebugLocation(1, 658);
-			mCOMMA(); 
+			DebugLocation(1, 663);
+			mDIV(); 
 
 			}
 			break;
 		case 84:
 			DebugEnterAlt(84);
-			// Scrape.g:1:664: QUOTE
+			// Scrape.g:1:667: COMMA
 			{
-			DebugLocation(1, 664);
-			mQUOTE(); 
+			DebugLocation(1, 667);
+			mCOMMA(); 
 
 			}
 			break;
 		case 85:
 			DebugEnterAlt(85);
-			// Scrape.g:1:670: APOSTRAPHE
+			// Scrape.g:1:673: QUOTE
 			{
-			DebugLocation(1, 670);
-			mAPOSTRAPHE(); 
+			DebugLocation(1, 673);
+			mQUOTE(); 
 
 			}
 			break;
 		case 86:
 			DebugEnterAlt(86);
-			// Scrape.g:1:681: INT
+			// Scrape.g:1:679: APOSTRAPHE
 			{
-			DebugLocation(1, 681);
-			mINT(); 
+			DebugLocation(1, 679);
+			mAPOSTRAPHE(); 
 
 			}
 			break;
 		case 87:
 			DebugEnterAlt(87);
-			// Scrape.g:1:685: WS
+			// Scrape.g:1:690: INT
 			{
-			DebugLocation(1, 685);
-			mWS(); 
+			DebugLocation(1, 690);
+			mINT(); 
 
 			}
 			break;
 		case 88:
 			DebugEnterAlt(88);
-			// Scrape.g:1:688: COMMENT
+			// Scrape.g:1:694: WS
 			{
-			DebugLocation(1, 688);
-			mCOMMENT(); 
+			DebugLocation(1, 694);
+			mWS(); 
 
 			}
 			break;
 		case 89:
 			DebugEnterAlt(89);
-			// Scrape.g:1:696: LINE_COMMENT_SLASH
+			// Scrape.g:1:697: COMMENT
 			{
-			DebugLocation(1, 696);
-			mLINE_COMMENT_SLASH(); 
+			DebugLocation(1, 697);
+			mCOMMENT(); 
 
 			}
 			break;
 		case 90:
 			DebugEnterAlt(90);
-			// Scrape.g:1:715: LINE_COMMENT_DASH
+			// Scrape.g:1:705: LINE_COMMENT_SLASH
 			{
-			DebugLocation(1, 715);
+			DebugLocation(1, 705);
+			mLINE_COMMENT_SLASH(); 
+
+			}
+			break;
+		case 91:
+			DebugEnterAlt(91);
+			// Scrape.g:1:724: LINE_COMMENT_DASH
+			{
+			DebugLocation(1, 724);
 			mLINE_COMMENT_DASH(); 
 
 			}
@@ -4771,58 +4817,58 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 	{
 		private const string DFA9_eotS =
 			"\x2\xFFFF\x9\x1E\x1\xFFFF\x1\x44\x1\x46\x1\xFFFF\x2\x1E\x1\xFFFF\xA\x1E"+
-			"\x1\x5D\xA\xFFFF\x1\x62\x1\x65\x4\xFFFF\x1\x66\x1\x67\x10\x1E\x1\x7D"+
-			"\x3\x1E\x4\xFFFF\x7\x1E\x1\x8D\x1\x1E\x1\x8F\xC\x1E\xB\xFFFF\x5\x1E\x1"+
-			"\xA3\xF\x1E\x1\xFFFF\x1\xB4\x1\xB5\x7\x1E\x1\xBD\x4\x1E\x1\xC2\x1\xFFFF"+
-			"\x1\x1E\x1\xFFFF\xF\x1E\x1\xD3\x1\x1E\x1\xD5\x1\x1E\x1\xFFFF\x1\xD7\x1"+
-			"\xD8\x1\xD9\x2\x1E\x1\xDC\x2\x1E\x1\xDF\x1\xE0\x2\x1E\x1\xE3\x1\x1E\x1"+
-			"\xE5\x1\xE6\x2\xFFFF\x1\x1E\x1\xE8\x1\x1E\x1\xFFFF\x1\x1E\x1\xEB\x1\x1E"+
-			"\x1\xFFFF\x4\x1E\x1\xFFFF\x1\x1E\x1\xF2\x1\xF3\x1\xF4\x6\x1E\x1\xFB\x5"+
-			"\x1E\x1\xFFFF\x1\x1E\x1\xFFFF\x1\x1E\x3\xFFFF\x2\x1E\x1\xFFFF\x1\x105"+
-			"\x1\x106\x2\xFFFF\x2\x1E\x1\xFFFF\x1\x109\x2\xFFFF\x1\x1E\x1\xFFFF\x1"+
-			"\x1E\x1\x10C\x1\xFFFF\x6\x1E\x3\xFFFF\x1\x1E\x1\x114\x1\x115\x1\x116"+
-			"\x2\x1E\x1\xFFFF\x6\x1E\x1\x11F\x1\x120\x1\x1E\x2\xFFFF\x1\x122\x1\x1E"+
-			"\x1\xFFFF\x2\x1E\x1\xFFFF\x1\x126\x1\x127\x1\x128\x1\x1E\x1\xFFFF\x2"+
-			"\x1E\x3\xFFFF\x4\x1E\x1\x130\x1\x1E\x1\x132\x1\x133\x2\xFFFF\x1\x1E\x1"+
-			"\xFFFF\x3\x1E\x4\xFFFF\x2\x1E\x1\x13D\x2\x1E\x1\x140\x1\xFFFF\x1\x1E"+
-			"\x2\xFFFF\x1\x1E\x1\x143\x1\x1E\x1\x145\x3\xFFFF\x1\x146\x1\x1E\x1\xFFFF"+
-			"\x2\x1E\x1\xFFFF\x1\x14A\x1\x1E\x1\xFFFF\x1\x14C\x2\xFFFF\x2\x1E\x2\xFFFF"+
-			"\x1\x1E\x1\xFFFF\x2\x1E\x2\xFFFF\x8\x1E\x1\x15C\x2\x1E\x1\xFFFF\x1\x1E"+
-			"\x1\x160\x1\x161\x2\xFFFF";
+			"\x1\x5E\xA\xFFFF\x1\x63\x1\x66\x4\xFFFF\x1\x67\x1\x68\x10\x1E\x1\x7E"+
+			"\x3\x1E\x4\xFFFF\x7\x1E\x1\x8E\x1\x1E\x1\x90\xD\x1E\xB\xFFFF\x5\x1E\x1"+
+			"\xA5\xF\x1E\x1\xFFFF\x1\xB6\x1\xB7\x7\x1E\x1\xBF\x4\x1E\x1\xC4\x1\xFFFF"+
+			"\x1\x1E\x1\xFFFF\x10\x1E\x1\xD6\x1\x1E\x1\xD8\x1\x1E\x1\xFFFF\x1\xDA"+
+			"\x1\xDB\x1\xDC\x2\x1E\x1\xDF\x2\x1E\x1\xE2\x1\xE3\x2\x1E\x1\xE6\x1\x1E"+
+			"\x1\xE8\x1\xE9\x2\xFFFF\x1\x1E\x1\xEB\x1\x1E\x1\xFFFF\x1\x1E\x1\xEE\x1"+
+			"\x1E\x1\xFFFF\x4\x1E\x1\xFFFF\x1\x1E\x1\xF5\x1\xF6\x1\xF7\x6\x1E\x1\xFE"+
+			"\x6\x1E\x1\xFFFF\x1\x1E\x1\xFFFF\x1\x1E\x3\xFFFF\x2\x1E\x1\xFFFF\x1\x109"+
+			"\x1\x10A\x2\xFFFF\x2\x1E\x1\xFFFF\x1\x10D\x2\xFFFF\x1\x1E\x1\xFFFF\x1"+
+			"\x1E\x1\x110\x1\xFFFF\x6\x1E\x3\xFFFF\x1\x1E\x1\x118\x1\x119\x1\x11A"+
+			"\x2\x1E\x1\xFFFF\x7\x1E\x1\x124\x1\x125\x1\x1E\x2\xFFFF\x1\x127\x1\x1E"+
+			"\x1\xFFFF\x2\x1E\x1\xFFFF\x1\x12B\x1\x12C\x1\x12D\x1\x1E\x1\xFFFF\x2"+
+			"\x1E\x3\xFFFF\x5\x1E\x1\x136\x1\x1E\x1\x138\x1\x139\x2\xFFFF\x1\x1E\x1"+
+			"\xFFFF\x3\x1E\x4\xFFFF\x2\x1E\x1\x143\x3\x1E\x1\x147\x1\xFFFF\x1\x1E"+
+			"\x2\xFFFF\x1\x1E\x1\x14A\x1\x1E\x1\x14C\x3\xFFFF\x1\x14D\x1\x1E\x1\xFFFF"+
+			"\x2\x1E\x1\x151\x1\xFFFF\x1\x152\x1\x1E\x1\xFFFF\x1\x154\x2\xFFFF\x2"+
+			"\x1E\x3\xFFFF\x1\x1E\x1\xFFFF\x2\x1E\x2\xFFFF\x8\x1E\x1\x164\x2\x1E\x1"+
+			"\xFFFF\x1\x1E\x1\x168\x1\x169\x2\xFFFF";
 		private const string DFA9_eofS =
-			"\x162\xFFFF";
+			"\x16A\xFFFF";
 		private const string DFA9_minS =
 			"\x1\x9\x1\xFFFF\x1\x6E\x1\x69\x1\x65\x2\x61\x1\x68\x2\x61\x1\x6E\x1\xFFFF"+
 			"\x2\x3D\x1\xFFFF\x1\x69\x1\x6F\x1\xFFFF\x1\x70\x1\x65\x1\x64\x1\x6F\x1"+
-			"\x69\x1\x61\x1\x65\x1\x74\x1\x62\x1\x75\x1\x0\x1\x30\x9\xFFFF\x1\x2D"+
+			"\x69\x1\x61\x1\x65\x1\x74\x1\x61\x1\x75\x1\x0\x1\x30\x9\xFFFF\x1\x2D"+
 			"\x1\x2A\x4\xFFFF\x2\x41\x1\x6F\x1\x63\x1\x74\x1\x65\x1\x64\x1\x73\x1"+
 			"\x63\x1\x73\x1\x65\x1\x6E\x1\x65\x1\x74\x1\x65\x1\x75\x1\x62\x1\x73\x1"+
 			"\x41\x1\x72\x1\x64\x1\x74\x4\xFFFF\x1\x6B\x1\x63\x1\x64\x1\x6C\x1\x64"+
 			"\x1\x6C\x1\x72\x1\x41\x1\x65\x1\x41\x1\x69\x1\x6F\x1\x65\x1\x6F\x1\x74"+
-			"\x1\x73\x1\x70\x1\x77\x1\x6D\x1\x77\x1\x74\x1\x66\xB\xFFFF\x1\x63\x1"+
+			"\x1\x73\x1\x70\x1\x77\x1\x6D\x1\x77\x2\x74\x1\x66\xB\xFFFF\x1\x63\x1"+
 			"\x6B\x1\x64\x1\x63\x1\x61\x1\x41\x1\x65\x1\x68\x1\x65\x1\x61\x2\x6E\x1"+
 			"\x6C\x1\x68\x1\x6E\x1\x65\x1\x6E\x1\x65\x1\x6C\x2\x74\x1\xFFFF\x2\x41"+
 			"\x1\x72\x1\x65\x1\x61\x1\x20\x1\x65\x1\x6C\x1\x61\x1\x41\x1\x65\x1\x69"+
 			"\x2\x65\x1\x41\x1\xFFFF\x1\x6E\x1\xFFFF\x1\x6E\x1\x6D\x1\x65\x1\x6C\x1"+
-			"\x61\x1\x63\x1\x71\x1\x6C\x1\x74\x1\x6C\x1\x6E\x1\x61\x1\x66\x1\x65\x1"+
-			"\x69\x1\x41\x1\x61\x1\x41\x1\x6E\x1\xFFFF\x3\x41\x1\x74\x1\x65\x1\x41"+
-			"\x2\x65\x2\x41\x1\x61\x1\x63\x1\x41\x1\x65\x2\x41\x2\xFFFF\x1\x69\x1"+
-			"\x41\x1\x74\x1\xFFFF\x1\x73\x1\x41\x1\x74\x1\xFFFF\x1\x63\x1\x6E\x2\x72"+
-			"\x1\xFFFF\x1\x74\x3\x41\x1\x64\x1\x74\x1\x68\x1\x6C\x1\x61\x1\x65\x1"+
-			"\x41\x1\x6C\x1\x62\x1\x65\x1\x64\x1\x65\x1\xFFFF\x1\x74\x1\xFFFF\x1\x64"+
-			"\x3\xFFFF\x1\x65\x1\x63\x1\xFFFF\x2\x41\x2\xFFFF\x1\x64\x1\x61\x1\xFFFF"+
-			"\x1\x41\x2\xFFFF\x1\x62\x1\xFFFF\x1\x69\x1\x41\x1\xFFFF\x1\x65\x1\x74"+
-			"\x1\x67\x1\x74\x1\x20\x1\x69\x3\xFFFF\x1\x74\x3\x41\x1\x63\x1\x72\x1"+
-			"\xFFFF\x1\x6F\x1\x6C\x1\x72\x1\x75\x1\x73\x1\x65\x2\x41\x1\x74\x2\xFFFF"+
-			"\x1\x41\x1\x74\x1\xFFFF\x1\x75\x1\x6F\x1\xFFFF\x3\x41\x1\x20\x1\xFFFF"+
-			"\x1\x74\x1\x65\x3\xFFFF\x1\x65\x1\x6D\x1\x61\x1\x65\x1\x41\x1\x72\x2"+
-			"\x41\x2\xFFFF\x1\x69\x1\xFFFF\x1\x65\x1\x74\x1\x6E\x3\xFFFF\x1\x66\x1"+
-			"\x79\x1\x72\x1\x41\x1\x69\x1\x64\x1\x41\x1\xFFFF\x1\x65\x2\xFFFF\x1\x6F"+
-			"\x1\x41\x1\x65\x1\x41\x3\xFFFF\x1\x41\x1\x6D\x1\xFFFF\x1\x6E\x1\x20\x1"+
-			"\xFFFF\x1\x41\x1\x6E\x1\xFFFF\x1\x41\x2\xFFFF\x1\x69\x1\x61\x1\x69\x1"+
-			"\xFFFF\x1\x73\x1\xFFFF\x1\x6E\x1\x74\x2\xFFFF\x1\x74\x1\x61\x1\x6F\x1"+
-			"\x72\x1\x74\x1\x72\x1\x69\x1\x6F\x1\x41\x1\x6E\x1\x72\x1\xFFFF\x1\x67"+
-			"\x2\x41\x2\xFFFF";
+			"\x61\x1\x63\x1\x71\x1\x6C\x1\x74\x1\x6C\x1\x6E\x1\x65\x1\x61\x1\x66\x1"+
+			"\x65\x1\x69\x1\x41\x1\x61\x1\x41\x1\x6E\x1\xFFFF\x3\x41\x1\x74\x1\x65"+
+			"\x1\x41\x2\x65\x2\x41\x1\x61\x1\x63\x1\x41\x1\x65\x2\x41\x2\xFFFF\x1"+
+			"\x69\x1\x41\x1\x74\x1\xFFFF\x1\x73\x1\x41\x1\x74\x1\xFFFF\x1\x63\x1\x6E"+
+			"\x2\x72\x1\xFFFF\x1\x74\x3\x41\x1\x64\x1\x74\x1\x68\x1\x6C\x1\x61\x1"+
+			"\x65\x1\x41\x1\x6C\x1\x74\x1\x62\x1\x65\x1\x64\x1\x65\x1\xFFFF\x1\x74"+
+			"\x1\xFFFF\x1\x64\x3\xFFFF\x1\x65\x1\x63\x1\xFFFF\x2\x41\x2\xFFFF\x1\x64"+
+			"\x1\x61\x1\xFFFF\x1\x41\x2\xFFFF\x1\x62\x1\xFFFF\x1\x69\x1\x41\x1\xFFFF"+
+			"\x1\x65\x1\x74\x1\x67\x1\x74\x1\x20\x1\x69\x3\xFFFF\x1\x74\x3\x41\x1"+
+			"\x63\x1\x72\x1\xFFFF\x1\x6F\x1\x69\x1\x6C\x1\x72\x1\x75\x1\x73\x1\x65"+
+			"\x2\x41\x1\x74\x2\xFFFF\x1\x41\x1\x74\x1\xFFFF\x1\x75\x1\x6F\x1\xFFFF"+
+			"\x3\x41\x1\x20\x1\xFFFF\x1\x74\x1\x65\x3\xFFFF\x1\x65\x1\x6D\x1\x61\x1"+
+			"\x6D\x1\x65\x1\x41\x1\x72\x2\x41\x2\xFFFF\x1\x69\x1\xFFFF\x1\x65\x1\x74"+
+			"\x1\x6E\x3\xFFFF\x1\x66\x1\x79\x1\x72\x1\x41\x1\x69\x1\x64\x1\x65\x1"+
+			"\x41\x1\xFFFF\x1\x65\x2\xFFFF\x1\x6F\x1\x41\x1\x65\x1\x41\x3\xFFFF\x1"+
+			"\x41\x1\x6D\x1\xFFFF\x1\x6E\x1\x20\x1\x41\x1\xFFFF\x1\x41\x1\x6E\x1\xFFFF"+
+			"\x1\x41\x2\xFFFF\x1\x69\x1\x61\x1\x69\x2\xFFFF\x1\x73\x1\xFFFF\x1\x6E"+
+			"\x1\x74\x2\xFFFF\x1\x74\x1\x61\x1\x6F\x1\x72\x1\x74\x1\x72\x1\x69\x1"+
+			"\x6F\x1\x41\x1\x6E\x1\x72\x1\xFFFF\x1\x67\x2\x41\x2\xFFFF";
 		private const string DFA9_maxS =
 			"\x1\x7D\x1\xFFFF\x2\x72\x1\x65\x1\x78\x1\x72\x1\x69\x1\x72\x1\x61\x1"+
 			"\x74\x1\xFFFF\x2\x3D\x1\xFFFF\x1\x6F\x1\x75\x1\xFFFF\x1\x70\x1\x74\x1"+
@@ -4831,48 +4877,49 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 			"\x64\x1\x73\x1\x63\x1\x73\x1\x65\x1\x6E\x1\x69\x1\x74\x1\x72\x1\x75\x1"+
 			"\x6B\x1\x78\x1\x7A\x1\x72\x1\x64\x1\x74\x4\xFFFF\x1\x6B\x1\x63\x1\x74"+
 			"\x1\x6C\x1\x64\x1\x74\x1\x72\x1\x7A\x1\x65\x1\x7A\x1\x69\x1\x6F\x1\x6C"+
-			"\x1\x6F\x1\x74\x1\x73\x1\x70\x1\x77\x1\x6D\x1\x77\x1\x74\x1\x66\xB\xFFFF"+
+			"\x1\x6F\x1\x74\x1\x73\x1\x70\x1\x77\x1\x6D\x1\x77\x2\x74\x1\x66\xB\xFFFF"+
 			"\x1\x78\x1\x6B\x1\x64\x1\x63\x1\x61\x1\x7A\x1\x65\x1\x68\x1\x65\x1\x61"+
 			"\x1\x6E\x1\x72\x1\x6C\x1\x68\x1\x6E\x1\x65\x1\x6E\x1\x65\x1\x6C\x2\x74"+
 			"\x1\xFFFF\x2\x7A\x1\x72\x1\x65\x1\x61\x1\x20\x1\x65\x1\x6C\x1\x61\x1"+
 			"\x7A\x1\x65\x1\x69\x2\x65\x1\x7A\x1\xFFFF\x1\x6E\x1\xFFFF\x1\x6E\x1\x6D"+
-			"\x1\x65\x1\x6C\x1\x61\x1\x63\x1\x71\x1\x6C\x1\x74\x1\x6C\x1\x6E\x1\x61"+
-			"\x1\x66\x1\x65\x1\x69\x1\x7A\x1\x61\x1\x7A\x1\x6E\x1\xFFFF\x3\x7A\x1"+
-			"\x74\x1\x65\x1\x7A\x2\x65\x2\x7A\x1\x61\x1\x63\x1\x7A\x1\x65\x2\x7A\x2"+
-			"\xFFFF\x1\x69\x1\x7A\x1\x74\x1\xFFFF\x1\x73\x1\x7A\x1\x74\x1\xFFFF\x1"+
-			"\x63\x1\x6E\x2\x72\x1\xFFFF\x1\x74\x3\x7A\x1\x64\x1\x74\x1\x68\x1\x6C"+
-			"\x1\x61\x1\x65\x1\x7A\x1\x6C\x1\x62\x1\x65\x1\x64\x1\x65\x1\xFFFF\x1"+
-			"\x74\x1\xFFFF\x1\x64\x3\xFFFF\x1\x65\x1\x63\x1\xFFFF\x2\x7A\x2\xFFFF"+
-			"\x1\x64\x1\x61\x1\xFFFF\x1\x7A\x2\xFFFF\x1\x62\x1\xFFFF\x1\x69\x1\x7A"+
-			"\x1\xFFFF\x1\x65\x1\x74\x1\x67\x1\x74\x1\x20\x1\x69\x3\xFFFF\x1\x74\x3"+
-			"\x7A\x1\x63\x1\x72\x1\xFFFF\x1\x6F\x1\x6C\x1\x72\x1\x75\x1\x73\x1\x65"+
-			"\x2\x7A\x1\x74\x2\xFFFF\x1\x7A\x1\x74\x1\xFFFF\x1\x75\x1\x6F\x1\xFFFF"+
-			"\x3\x7A\x1\x20\x1\xFFFF\x1\x74\x1\x65\x3\xFFFF\x1\x65\x1\x6D\x1\x61\x1"+
-			"\x65\x1\x7A\x1\x72\x2\x7A\x2\xFFFF\x1\x69\x1\xFFFF\x1\x65\x1\x74\x1\x6E"+
-			"\x3\xFFFF\x1\x6F\x1\x79\x1\x72\x1\x7A\x1\x69\x1\x64\x1\x7A\x1\xFFFF\x1"+
-			"\x65\x2\xFFFF\x1\x6F\x1\x7A\x1\x65\x1\x7A\x3\xFFFF\x1\x7A\x1\x6D\x1\xFFFF"+
-			"\x1\x6E\x1\x20\x1\xFFFF\x1\x7A\x1\x6E\x1\xFFFF\x1\x7A\x2\xFFFF\x1\x69"+
-			"\x1\x61\x1\x70\x1\xFFFF\x1\x73\x1\xFFFF\x1\x6E\x1\x74\x2\xFFFF\x1\x74"+
-			"\x1\x61\x1\x6F\x1\x72\x1\x74\x1\x72\x1\x69\x1\x6F\x1\x7A\x1\x6E\x1\x72"+
-			"\x1\xFFFF\x1\x67\x2\x7A\x2\xFFFF";
+			"\x1\x65\x1\x6C\x1\x61\x1\x63\x1\x71\x1\x6C\x1\x74\x1\x6C\x1\x6E\x1\x65"+
+			"\x1\x61\x1\x66\x1\x65\x1\x69\x1\x7A\x1\x61\x1\x7A\x1\x6E\x1\xFFFF\x3"+
+			"\x7A\x1\x74\x1\x65\x1\x7A\x2\x65\x2\x7A\x1\x61\x1\x63\x1\x7A\x1\x65\x2"+
+			"\x7A\x2\xFFFF\x1\x69\x1\x7A\x1\x74\x1\xFFFF\x1\x73\x1\x7A\x1\x74\x1\xFFFF"+
+			"\x1\x63\x1\x6E\x2\x72\x1\xFFFF\x1\x74\x3\x7A\x1\x64\x1\x74\x1\x68\x1"+
+			"\x6C\x1\x61\x1\x65\x1\x7A\x1\x6C\x1\x74\x1\x62\x1\x65\x1\x64\x1\x65\x1"+
+			"\xFFFF\x1\x74\x1\xFFFF\x1\x64\x3\xFFFF\x1\x65\x1\x63\x1\xFFFF\x2\x7A"+
+			"\x2\xFFFF\x1\x64\x1\x61\x1\xFFFF\x1\x7A\x2\xFFFF\x1\x62\x1\xFFFF\x1\x69"+
+			"\x1\x7A\x1\xFFFF\x1\x65\x1\x74\x1\x67\x1\x74\x1\x20\x1\x69\x3\xFFFF\x1"+
+			"\x74\x3\x7A\x1\x63\x1\x72\x1\xFFFF\x1\x6F\x1\x69\x1\x6C\x1\x72\x1\x75"+
+			"\x1\x73\x1\x65\x2\x7A\x1\x74\x2\xFFFF\x1\x7A\x1\x74\x1\xFFFF\x1\x75\x1"+
+			"\x6F\x1\xFFFF\x3\x7A\x1\x20\x1\xFFFF\x1\x74\x1\x65\x3\xFFFF\x1\x65\x1"+
+			"\x6D\x1\x61\x1\x6D\x1\x65\x1\x7A\x1\x72\x2\x7A\x2\xFFFF\x1\x69\x1\xFFFF"+
+			"\x1\x65\x1\x74\x1\x6E\x3\xFFFF\x1\x6F\x1\x79\x1\x72\x1\x7A\x1\x69\x1"+
+			"\x64\x1\x65\x1\x7A\x1\xFFFF\x1\x65\x2\xFFFF\x1\x6F\x1\x7A\x1\x65\x1\x7A"+
+			"\x3\xFFFF\x1\x7A\x1\x6D\x1\xFFFF\x1\x6E\x1\x20\x1\x7A\x1\xFFFF\x1\x7A"+
+			"\x1\x6E\x1\xFFFF\x1\x7A\x2\xFFFF\x1\x69\x1\x61\x1\x70\x2\xFFFF\x1\x73"+
+			"\x1\xFFFF\x1\x6E\x1\x74\x2\xFFFF\x1\x74\x1\x61\x1\x6F\x1\x72\x1\x74\x1"+
+			"\x72\x1\x69\x1\x6F\x1\x7A\x1\x6E\x1\x72\x1\xFFFF\x1\x67\x2\x7A\x2\xFFFF";
 		private const string DFA9_acceptS =
 			"\x1\xFFFF\x1\x1\x9\xFFFF\x1\xE\x2\xFFFF\x1\x13\x2\xFFFF\x1\x16\xC\xFFFF"+
-			"\x1\x48\x1\x49\x1\x4A\x1\x4B\x1\x4C\x1\x4D\x1\x4E\x1\x4F\x1\x50\x2\xFFFF"+
-			"\x1\x53\x1\x54\x1\x56\x1\x57\x16\xFFFF\x1\x10\x1\xF\x1\x12\x1\x11\x16"+
-			"\xFFFF\x1\x55\x1\x45\x1\x46\x1\x47\x1\x5A\x1\x51\x1\x58\x1\x59\x1\x52"+
-			"\x1\x2\x1\xD\x15\xFFFF\x1\x33\xF\xFFFF\x1\x21\x1\xFFFF\x1\x1E\x13\xFFFF"+
+			"\x1\x49\x1\x4A\x1\x4B\x1\x4C\x1\x4D\x1\x4E\x1\x4F\x1\x50\x1\x51\x2\xFFFF"+
+			"\x1\x54\x1\x55\x1\x57\x1\x58\x16\xFFFF\x1\x10\x1\xF\x1\x12\x1\x11\x17"+
+			"\xFFFF\x1\x56\x1\x46\x1\x47\x1\x48\x1\x5B\x1\x52\x1\x59\x1\x5A\x1\x53"+
+			"\x1\x2\x1\xD\x15\xFFFF\x1\x33\xF\xFFFF\x1\x21\x1\xFFFF\x1\x1E\x14\xFFFF"+
 			"\x1\x9\x10\xFFFF\x1\xB\x1\xC\x3\xFFFF\x1\x15\x3\xFFFF\x1\x18\x4\xFFFF"+
-			"\x1\x3D\x10\xFFFF\x1\x28\x1\xFFFF\x1\x5\x1\xFFFF\x1\xA\x1\x20\x1\x6\x2"+
+			"\x1\x3D\x11\xFFFF\x1\x28\x1\xFFFF\x1\x5\x1\xFFFF\x1\xA\x1\x20\x1\x6\x2"+
 			"\xFFFF\x1\x7\x2\xFFFF\x1\x3B\x1\x8\x2\xFFFF\x1\x29\x1\xFFFF\x1\x2D\x1"+
 			"\x35\x1\xFFFF\x1\x14\x2\xFFFF\x1\x36\x6\xFFFF\x1\x25\x1\x23\x1\x38\x6"+
-			"\xFFFF\x1\x2E\x9\xFFFF\x1\x27\x1\x1F\x2\xFFFF\x1\x43\x2\xFFFF\x1\x26"+
-			"\x4\xFFFF\x1\x24\x2\xFFFF\x1\x3E\x1\x2A\x1\x3A\x8\xFFFF\x1\x32\x1\x37"+
-			"\x1\xFFFF\x1\x1D\x3\xFFFF\x1\x17\x1\x22\x1\x3C\x7\xFFFF\x1\x39\x1\xFFFF"+
-			"\x1\x34\x1\x4\x4\xFFFF\x1\x19\x1\x1A\x1\x1B\x2\xFFFF\x1\x2B\x2\xFFFF"+
-			"\x1\x44\x2\xFFFF\x1\x1C\x1\xFFFF\x1\x41\x1\x31\x3\xFFFF\x1\x3\x1\xFFFF"+
-			"\x1\x2C\x2\xFFFF\x1\x2F\x1\x30\xB\xFFFF\x1\x40\x3\xFFFF\x1\x3F\x1\x42";
+			"\xFFFF\x1\x2E\xA\xFFFF\x1\x27\x1\x1F\x2\xFFFF\x1\x44\x2\xFFFF\x1\x26"+
+			"\x4\xFFFF\x1\x24\x2\xFFFF\x1\x3E\x1\x2A\x1\x3A\x9\xFFFF\x1\x32\x1\x37"+
+			"\x1\xFFFF\x1\x1D\x3\xFFFF\x1\x17\x1\x22\x1\x3C\x8\xFFFF\x1\x39\x1\xFFFF"+
+			"\x1\x34\x1\x4\x4\xFFFF\x1\x19\x1\x1A\x1\x1B\x2\xFFFF\x1\x2B\x3\xFFFF"+
+			"\x1\x45\x2\xFFFF\x1\x1C\x1\xFFFF\x1\x42\x1\x31\x3\xFFFF\x1\x3F\x1\x3"+
+			"\x1\xFFFF\x1\x2C\x2\xFFFF\x1\x2F\x1\x30\xB\xFFFF\x1\x41\x3\xFFFF\x1\x40"+
+			"\x1\x43";
 		private const string DFA9_specialS =
-			"\x1C\xFFFF\x1\x0\x145\xFFFF}>";
+			"\x1C\xFFFF\x1\x0\x14D\xFFFF}>";
 		private static readonly string[] DFA9_transitionS =
 			{
 				"\x2\x2C\x2\xFFFF\x1\x2C\x12\xFFFF\x1\x2C\x1\xE\x1\x2A\x1\xFFFF\x1\x1"+
@@ -4907,10 +4954,10 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 				"\x1\x55\x11\xFFFF\x1\x56",
 				"\x1\x57\x9\xFFFF\x1\x58",
 				"\x1\x59",
-				"\x1\x5B\xC\xFFFF\x1\x5A",
-				"\x1\x5C",
-				"\x0\x5E",
-				"\xA\x60\x6\xFFFF\x1\x5F",
+				"\x1\x5B\x1\x5C\xC\xFFFF\x1\x5A",
+				"\x1\x5D",
+				"\x0\x5F",
+				"\xA\x61\x6\xFFFF\x1\x60",
 				"",
 				"",
 				"",
@@ -4920,52 +4967,51 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 				"",
 				"",
 				"",
-				"\x1\x61",
-				"\x1\x63\x4\xFFFF\x1\x64",
+				"\x1\x62",
+				"\x1\x64\x4\xFFFF\x1\x65",
 				"",
 				"",
 				"",
 				"",
 				"\x1A\x1E\x6\xFFFF\x1A\x1E",
 				"\x1A\x1E\x6\xFFFF\x1A\x1E",
-				"\x1\x68",
 				"\x1\x69",
 				"\x1\x6A",
-				"\x1\x6B\xA\xFFFF\x1\x6C",
-				"\x1\x6D",
+				"\x1\x6B",
+				"\x1\x6C\xA\xFFFF\x1\x6D",
 				"\x1\x6E",
 				"\x1\x6F",
 				"\x1\x70",
 				"\x1\x71",
 				"\x1\x72",
-				"\x1\x73\x3\xFFFF\x1\x74",
-				"\x1\x75",
-				"\x1\x76\xC\xFFFF\x1\x77",
-				"\x1\x78",
-				"\x1\x7A\x8\xFFFF\x1\x79",
-				"\x1\x7C\x4\xFFFF\x1\x7B",
+				"\x1\x73",
+				"\x1\x74\x3\xFFFF\x1\x75",
+				"\x1\x76",
+				"\x1\x77\xC\xFFFF\x1\x78",
+				"\x1\x79",
+				"\x1\x7B\x8\xFFFF\x1\x7A",
+				"\x1\x7D\x4\xFFFF\x1\x7C",
 				"\x1A\x1E\x6\xFFFF\x1A\x1E",
-				"\x1\x7E",
 				"\x1\x7F",
 				"\x1\x80",
-				"",
-				"",
-				"",
-				"",
 				"\x1\x81",
+				"",
+				"",
+				"",
+				"",
 				"\x1\x82",
-				"\x1\x84\xF\xFFFF\x1\x83",
-				"\x1\x85",
+				"\x1\x83",
+				"\x1\x85\xF\xFFFF\x1\x84",
 				"\x1\x86",
-				"\x1\x88\x7\xFFFF\x1\x87",
-				"\x1\x89",
-				"\x1A\x1E\x6\xFFFF\xD\x1E\x1\x8B\x4\x1E\x1\x8A\x1\x8C\x6\x1E",
-				"\x1\x8E",
+				"\x1\x87",
+				"\x1\x89\x7\xFFFF\x1\x88",
+				"\x1\x8A",
+				"\x1A\x1E\x6\xFFFF\xD\x1E\x1\x8C\x4\x1E\x1\x8B\x1\x8D\x6\x1E",
+				"\x1\x8F",
 				"\x1A\x1E\x6\xFFFF\x1A\x1E",
-				"\x1\x90",
 				"\x1\x91",
-				"\x1\x93\x6\xFFFF\x1\x92",
-				"\x1\x94",
+				"\x1\x92",
+				"\x1\x94\x6\xFFFF\x1\x93",
 				"\x1\x95",
 				"\x1\x96",
 				"\x1\x97",
@@ -4974,6 +5020,8 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 				"\x1\x9A",
 				"\x1\x9B",
 				"\x1\x9C",
+				"\x1\x9D",
+				"\x1\x9E",
 				"",
 				"",
 				"",
@@ -4985,20 +5033,18 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 				"",
 				"",
 				"",
-				"\x1\x9D\x14\xFFFF\x1\x9E",
-				"\x1\x9F",
-				"\x1\xA0",
+				"\x1\x9F\x14\xFFFF\x1\xA0",
 				"\x1\xA1",
 				"\x1\xA2",
-				"\x1A\x1E\x6\xFFFF\x1A\x1E",
+				"\x1\xA3",
 				"\x1\xA4",
-				"\x1\xA5",
+				"\x1A\x1E\x6\xFFFF\x1A\x1E",
 				"\x1\xA6",
 				"\x1\xA7",
 				"\x1\xA8",
-				"\x1\xA9\x3\xFFFF\x1\xAA",
-				"\x1\xAB",
-				"\x1\xAC",
+				"\x1\xA9",
+				"\x1\xAA",
+				"\x1\xAB\x3\xFFFF\x1\xAC",
 				"\x1\xAD",
 				"\x1\xAE",
 				"\x1\xAF",
@@ -5006,27 +5052,27 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 				"\x1\xB1",
 				"\x1\xB2",
 				"\x1\xB3",
+				"\x1\xB4",
+				"\x1\xB5",
 				"",
 				"\x1A\x1E\x6\xFFFF\x1A\x1E",
 				"\x1A\x1E\x6\xFFFF\x1A\x1E",
-				"\x1\xB6",
-				"\x1\xB7",
 				"\x1\xB8",
 				"\x1\xB9",
 				"\x1\xBA",
 				"\x1\xBB",
 				"\x1\xBC",
-				"\x1A\x1E\x6\xFFFF\x1A\x1E",
+				"\x1\xBD",
 				"\x1\xBE",
-				"\x1\xBF",
+				"\x1A\x1E\x6\xFFFF\x1A\x1E",
 				"\x1\xC0",
 				"\x1\xC1",
+				"\x1\xC2",
+				"\x1\xC3",
 				"\x1A\x1E\x6\xFFFF\x1A\x1E",
 				"",
-				"\x1\xC3",
-				"",
-				"\x1\xC4",
 				"\x1\xC5",
+				"",
 				"\x1\xC6",
 				"\x1\xC7",
 				"\x1\xC8",
@@ -5040,197 +5086,206 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 				"\x1\xD0",
 				"\x1\xD1",
 				"\x1\xD2",
-				"\x1A\x1E\x6\xFFFF\x1A\x1E",
+				"\x1\xD3",
 				"\x1\xD4",
+				"\x1\xD5",
 				"\x1A\x1E\x6\xFFFF\x1A\x1E",
-				"\x1\xD6",
+				"\x1\xD7",
+				"\x1A\x1E\x6\xFFFF\x1A\x1E",
+				"\x1\xD9",
 				"",
 				"\x1A\x1E\x6\xFFFF\x1A\x1E",
 				"\x1A\x1E\x6\xFFFF\x1A\x1E",
-				"\x1A\x1E\x6\xFFFF\x1A\x1E",
-				"\x1\xDA",
-				"\x1\xDB",
 				"\x1A\x1E\x6\xFFFF\x1A\x1E",
 				"\x1\xDD",
 				"\x1\xDE",
 				"\x1A\x1E\x6\xFFFF\x1A\x1E",
-				"\x1A\x1E\x6\xFFFF\x1A\x1E",
+				"\x1\xE0",
 				"\x1\xE1",
-				"\x1\xE2",
+				"\x1A\x1E\x6\xFFFF\x1A\x1E",
 				"\x1A\x1E\x6\xFFFF\x1A\x1E",
 				"\x1\xE4",
+				"\x1\xE5",
 				"\x1A\x1E\x6\xFFFF\x1A\x1E",
-				"\x1A\x1E\x6\xFFFF\x1A\x1E",
-				"",
-				"",
 				"\x1\xE7",
 				"\x1A\x1E\x6\xFFFF\x1A\x1E",
-				"\x1\xE9",
+				"\x1A\x1E\x6\xFFFF\x1A\x1E",
+				"",
 				"",
 				"\x1\xEA",
 				"\x1A\x1E\x6\xFFFF\x1A\x1E",
 				"\x1\xEC",
 				"",
 				"\x1\xED",
-				"\x1\xEE",
+				"\x1A\x1E\x6\xFFFF\x1A\x1E",
 				"\x1\xEF",
-				"\x1\xF0",
 				"",
+				"\x1\xF0",
 				"\x1\xF1",
+				"\x1\xF2",
+				"\x1\xF3",
+				"",
+				"\x1\xF4",
 				"\x1A\x1E\x6\xFFFF\x1A\x1E",
 				"\x1A\x1E\x6\xFFFF\x1A\x1E",
 				"\x1A\x1E\x6\xFFFF\x1A\x1E",
-				"\x1\xF5",
-				"\x1\xF6",
-				"\x1\xF7",
 				"\x1\xF8",
 				"\x1\xF9",
 				"\x1\xFA",
-				"\x1A\x1E\x6\xFFFF\x1A\x1E",
+				"\x1\xFB",
 				"\x1\xFC",
 				"\x1\xFD",
-				"\x1\xFE",
+				"\x1A\x1E\x6\xFFFF\x1A\x1E",
 				"\x1\xFF",
 				"\x1\x100",
-				"",
 				"\x1\x101",
-				"",
 				"\x1\x102",
-				"",
-				"",
-				"",
 				"\x1\x103",
 				"\x1\x104",
 				"",
-				"\x1A\x1E\x6\xFFFF\x1A\x1E",
-				"\x1A\x1E\x6\xFFFF\x1A\x1E",
+				"\x1\x105",
+				"",
+				"\x1\x106",
+				"",
 				"",
 				"",
 				"\x1\x107",
 				"\x1\x108",
 				"",
 				"\x1A\x1E\x6\xFFFF\x1A\x1E",
+				"\x1A\x1E\x6\xFFFF\x1A\x1E",
 				"",
-				"",
-				"\x1\x10A",
 				"",
 				"\x1\x10B",
+				"\x1\x10C",
+				"",
 				"\x1A\x1E\x6\xFFFF\x1A\x1E",
 				"",
-				"\x1\x10D",
+				"",
 				"\x1\x10E",
+				"",
 				"\x1\x10F",
-				"\x1\x110",
+				"\x1A\x1E\x6\xFFFF\x1A\x1E",
+				"",
 				"\x1\x111",
 				"\x1\x112",
-				"",
-				"",
-				"",
 				"\x1\x113",
-				"\x1A\x1E\x6\xFFFF\x1A\x1E",
-				"\x1A\x1E\x6\xFFFF\x1A\x1E",
-				"\x1A\x1E\x6\xFFFF\x1A\x1E",
-				"\x1\x117",
-				"\x1\x118",
+				"\x1\x114",
+				"\x1\x115",
+				"\x1\x116",
 				"",
-				"\x1\x119",
-				"\x1\x11A",
+				"",
+				"",
+				"\x1\x117",
+				"\x1A\x1E\x6\xFFFF\x1A\x1E",
+				"\x1A\x1E\x6\xFFFF\x1A\x1E",
+				"\x1A\x1E\x6\xFFFF\x1A\x1E",
 				"\x1\x11B",
 				"\x1\x11C",
+				"",
 				"\x1\x11D",
 				"\x1\x11E",
-				"\x1A\x1E\x6\xFFFF\x1A\x1E",
-				"\x1A\x1E\x6\xFFFF\x1A\x1E",
+				"\x1\x11F",
+				"\x1\x120",
 				"\x1\x121",
-				"",
-				"",
-				"\x1A\x1E\x6\xFFFF\x1A\x1E",
+				"\x1\x122",
 				"\x1\x123",
+				"\x1A\x1E\x6\xFFFF\x1A\x1E",
+				"\x1A\x1E\x6\xFFFF\x1A\x1E",
+				"\x1\x126",
 				"",
-				"\x1\x124",
-				"\x1\x125",
 				"",
 				"\x1A\x1E\x6\xFFFF\x1A\x1E",
-				"\x1A\x1E\x6\xFFFF\x1A\x1E",
-				"\x1A\x1E\x6\xFFFF\x1A\x1E",
+				"\x1\x128",
+				"",
 				"\x1\x129",
-				"",
 				"\x1\x12A",
-				"\x1\x12B",
 				"",
-				"",
-				"",
-				"\x1\x12C",
-				"\x1\x12D",
+				"\x1A\x1E\x6\xFFFF\x1A\x1E",
+				"\x1A\x1E\x6\xFFFF\x1A\x1E",
+				"\x1A\x1E\x6\xFFFF\x1A\x1E",
 				"\x1\x12E",
+				"",
 				"\x1\x12F",
-				"\x1A\x1E\x6\xFFFF\x1A\x1E",
+				"\x1\x130",
+				"",
+				"",
+				"",
 				"\x1\x131",
-				"\x1A\x1E\x6\xFFFF\x1A\x1E",
-				"\x1A\x1E\x6\xFFFF\x1A\x1E",
-				"",
-				"",
+				"\x1\x132",
+				"\x1\x133",
 				"\x1\x134",
-				"",
 				"\x1\x135",
-				"\x1\x136",
+				"\x1A\x1E\x6\xFFFF\x1A\x1E",
 				"\x1\x137",
+				"\x1A\x1E\x6\xFFFF\x1A\x1E",
+				"\x1A\x1E\x6\xFFFF\x1A\x1E",
 				"",
 				"",
+				"\x1\x13A",
 				"",
-				"\x1\x13A\x2\xFFFF\x1\x138\x5\xFFFF\x1\x139",
 				"\x1\x13B",
 				"\x1\x13C",
-				"\x1A\x1E\x6\xFFFF\x1A\x1E",
-				"\x1\x13E",
-				"\x1\x13F",
-				"\x1A\x1E\x6\xFFFF\x1A\x1E",
+				"\x1\x13D",
 				"",
+				"",
+				"",
+				"\x1\x140\x2\xFFFF\x1\x13E\x5\xFFFF\x1\x13F",
 				"\x1\x141",
-				"",
-				"",
 				"\x1\x142",
 				"\x1A\x1E\x6\xFFFF\x1A\x1E",
 				"\x1\x144",
+				"\x1\x145",
+				"\x1\x146",
 				"\x1A\x1E\x6\xFFFF\x1A\x1E",
-				"",
-				"",
-				"",
-				"\x1A\x1E\x6\xFFFF\x1A\x1E",
-				"\x1\x147",
 				"",
 				"\x1\x148",
-				"\x1\x149",
 				"",
+				"",
+				"\x1\x149",
 				"\x1A\x1E\x6\xFFFF\x1A\x1E",
 				"\x1\x14B",
-				"",
 				"\x1A\x1E\x6\xFFFF\x1A\x1E",
 				"",
 				"",
-				"\x1\x14D",
+				"",
+				"\x1A\x1E\x6\xFFFF\x1A\x1E",
 				"\x1\x14E",
-				"\x1\x14F\x6\xFFFF\x1\x150",
 				"",
-				"\x1\x151",
+				"\x1\x14F",
+				"\x1\x150",
+				"\x1A\x1E\x6\xFFFF\x1A\x1E",
 				"",
-				"\x1\x152",
+				"\x1A\x1E\x6\xFFFF\x1A\x1E",
 				"\x1\x153",
 				"",
+				"\x1A\x1E\x6\xFFFF\x1A\x1E",
 				"",
-				"\x1\x154",
+				"",
 				"\x1\x155",
 				"\x1\x156",
-				"\x1\x157",
-				"\x1\x158",
+				"\x1\x157\x6\xFFFF\x1\x158",
+				"",
+				"",
 				"\x1\x159",
+				"",
 				"\x1\x15A",
 				"\x1\x15B",
-				"\x1A\x1E\x6\xFFFF\x1A\x1E",
+				"",
+				"",
+				"\x1\x15C",
 				"\x1\x15D",
 				"\x1\x15E",
-				"",
 				"\x1\x15F",
+				"\x1\x160",
+				"\x1\x161",
+				"\x1\x162",
+				"\x1\x163",
+				"\x1A\x1E\x6\xFFFF\x1A\x1E",
+				"\x1\x165",
+				"\x1\x166",
+				"",
+				"\x1\x167",
 				"\x1A\x1E\x6\xFFFF\x1A\x1E",
 				"\x1A\x1E\x6\xFFFF\x1A\x1E",
 				"",
@@ -5269,7 +5324,7 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 			this.transition = DFA9_transition;
 		}
 
-		public override string Description { get { return "1:1: Tokens : ( T__128 | T__129 | PROCEDURE | GETDATE | EXEC | CASE | WHEN | THEN | END | ELSE | VAR | AND | OR | EQUALS | LESSTHAN | LESSTHANEQUAL | GREATERTHAN | GREATERTHANEQUAL | NOTEQUAL | LIKE | NOTLIKE | NULL_OPERATOR | UPDATE | SET | INSERT_INTO | INSERT_OVERWRITE | INSERT_DIRECTORY | TRUNCATE | THREAD | JS | WHILE | EACH | IN | SELECT | FROM | INNER_JOIN | JOIN | NODES | WHERE | PICK | TAKE | MATCH | REPLACE | ATTRIBUTE | TEXT | HTML | DOWNLOAD_IMAGE | DOWNLOAD_PAGE | IDENTITY | EXPAND | TO | PROXIES | TEST | NULL | CREATE | FILE | BUFFER | MSSQL | WITH | STRING | INTEGER | FLOAT | FIELD_TERMINATOR | ROW_TERMINATOR | LOCATION | CONNECTIONSTRING | TABLE | DBTABLE | STRING_LITERAL | IDENTITY_VAR | COMMAND_VAR | ID | ASTERISK | DOT | OPENPAREN | CLOSEPAREN | OPENBRACE | CLOSEBRACE | PIPE | PLUS | MINIS | DIV | COMMA | QUOTE | APOSTRAPHE | INT | WS | COMMENT | LINE_COMMENT_SLASH | LINE_COMMENT_DASH );"; } }
+		public override string Description { get { return "1:1: Tokens : ( T__129 | T__130 | PROCEDURE | GETDATE | EXEC | CASE | WHEN | THEN | END | ELSE | VAR | AND | OR | EQUALS | LESSTHAN | LESSTHANEQUAL | GREATERTHAN | GREATERTHANEQUAL | NOTEQUAL | LIKE | NOTLIKE | NULL_OPERATOR | UPDATE | SET | INSERT_INTO | INSERT_OVERWRITE | INSERT_DIRECTORY | TRUNCATE | THREAD | JS | WHILE | EACH | IN | SELECT | FROM | INNER_JOIN | JOIN | NODES | WHERE | PICK | TAKE | MATCH | REPLACE | ATTRIBUTE | TEXT | HTML | DOWNLOAD_IMAGE | DOWNLOAD_PAGE | IDENTITY | EXPAND | TO | PROXIES | TEST | NULL | CREATE | FILE | BUFFER | MSSQL | WITH | STRING | INTEGER | FLOAT | DATETIME | FIELD_TERMINATOR | ROW_TERMINATOR | LOCATION | CONNECTIONSTRING | TABLE | DBTABLE | STRING_LITERAL | IDENTITY_VAR | COMMAND_VAR | ID | ASTERISK | DOT | OPENPAREN | CLOSEPAREN | OPENBRACE | CLOSEBRACE | PIPE | PLUS | MINIS | DIV | COMMA | QUOTE | APOSTRAPHE | INT | WS | COMMENT | LINE_COMMENT_SLASH | LINE_COMMENT_DASH );"; } }
 
 		public override void Error(NoViableAltException nvae)
 		{
@@ -5288,9 +5343,9 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 		case 0:
 			{
-				if (((LA9_1>='\u0000' && LA9_1<='\uFFFF'))) {s = 94;}
+				if (((LA9_1>='\u0000' && LA9_1<='\uFFFF'))) {s = 95;}
 
-				else s = 93;
+				else s = 94;
 
 				break;
 			}

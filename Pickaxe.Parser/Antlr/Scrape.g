@@ -425,6 +425,7 @@ dataType
 	| INTEGER
 	| FLOAT
 	| IDENTITY
+	| DATETIME 
 	;
 	
 /*
@@ -497,6 +498,7 @@ WITH : 'with';
 STRING : 'string';
 INTEGER: 'int';
 FLOAT: 'float';
+DATETIME : 'datetime';
 FIELD_TERMINATOR : 'fieldterminator';
 ROW_TERMINATOR : 'rowterminator';
 LOCATION : 'location';

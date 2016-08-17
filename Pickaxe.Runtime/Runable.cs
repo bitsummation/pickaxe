@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Reflection;
@@ -77,6 +78,11 @@ namespace Pickaxe.Runtime
         public void Run()
         {
             ServicePointManager.DefaultConnectionLimit = int.MaxValue;
+
+            var cultureInfo = new CultureInfo("en-US");
+            cultureInfo.DateTimeFormat.LongTimePattern = "HH:mm:ss.fff";
+            cultureInfo.DateTimeFormat.ShortDatePattern = "yyyy-MM-dd";
+            Thread.CurrentThread.CurrentCulture = cultureInfo;
 
             _instance.ExecutingThread = Thread.CurrentThread;
             var method = _runType.GetMethod("Run");

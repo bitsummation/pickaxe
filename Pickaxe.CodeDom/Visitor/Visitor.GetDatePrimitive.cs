@@ -23,6 +23,8 @@ namespace Pickaxe.CodeDom.Visitor
         public void Visit(GetDatePrimitive primitive)
         {
             var expression = new CodeMethodInvokeExpression(new CodeTypeReferenceExpression("PrimitiveFunctions"), "GetDate");
+
+            _codeStack.Peek().Scope = new ScopeData<Type> { Type = typeof(DateTime), CodeDomReference = new CodeTypeReference(typeof(DateTime)) };
             _codeStack.Peek().CodeExpression = expression;
         }
     }

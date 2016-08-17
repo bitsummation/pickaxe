@@ -68,6 +68,7 @@
         <Key word = "float" />
         <Key word = "string" />
         <Key word = "identity" />
+        <Key word = "datetime"/>
         <Key word = "var" />
       </KeyWords>
       

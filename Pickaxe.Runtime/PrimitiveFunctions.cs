@@ -13,15 +13,15 @@
  */
 
 using System;
+using System.Threading;
 
 namespace Pickaxe.Runtime
 {
     public static class PrimitiveFunctions
     {
-        public static string GetDate()
+        public static DateTime GetDate()
         {
-            return DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff");
+            return DateTime.Now;
         }
-   
     }
 }
