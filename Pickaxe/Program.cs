@@ -69,11 +69,19 @@ namespace Pickaxe
         private static void PrintHeader()
         {
             ConsoleAppender.PlatConsole.Print("");
-            ConsoleAppender.PlatConsole.Print("*****  *****  *****  *  *      *      *   *  ****");
-            ConsoleAppender.PlatConsole.Print("*   *    *    *      * *      * *      * *   *");
-            ConsoleAppender.PlatConsole.Print("*****    *    *      **      *****      *    ****");
-            ConsoleAppender.PlatConsole.Print("*        *    *      * *    *     *    * *   *");
-            ConsoleAppender.PlatConsole.Print("*      *****  *****  *  *  *       *  *   *  ****");
+            ConsoleAppender.PlatConsole.Print( " ____  _      _                  ");
+            ConsoleAppender.PlatConsole.Print(@"|  _ \(_) ___| | ____ ___  _____ ");
+            ConsoleAppender.PlatConsole.Print(@"| |_) | |/ __| |/ / _` \ \/ / _ \");
+            ConsoleAppender.PlatConsole.Print( "|  __/| | (__|   < (_| |>  <  __/");
+            ConsoleAppender.PlatConsole.Print(@"|_|   |_|\___|_|\_\__,_/_/\_\___|");
+            ConsoleAppender.PlatConsole.Print("");
+            ConsoleAppender.PlatConsole.Print("");
+            ConsoleAppender.PlatConsole.Print(@" /'-./\_");
+            ConsoleAppender.PlatConsole.Print( ":    ||,>");
+            ConsoleAppender.PlatConsole.Print(@" \.-'||");
+            ConsoleAppender.PlatConsole.Print( "     ||");
+            ConsoleAppender.PlatConsole.Print( "     ||");
+            ConsoleAppender.PlatConsole.Print( "     ||");
         }
 
         private static void ListErrors(string[] errors)
