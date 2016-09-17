@@ -35,16 +35,13 @@ namespace PickAxe.Tests
         {
               var input = @"
 
-create buffer b(t datetime)
+create buffer t(a int)
 
-var temp = 1
+insert into t
+select null
 
- insert into b
- select getdate()
- 
- select *
- from b
- where b.t > '5/8/2002'
+select *
+from t
 
 ";
 

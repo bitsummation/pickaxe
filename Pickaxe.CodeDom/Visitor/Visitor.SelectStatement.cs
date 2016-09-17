@@ -228,7 +228,7 @@ namespace Pickaxe.CodeDom.Visitor
                     for (int x = 1; x < selectArgAssignments.Count; x++)
                     {
                         var booleanTest = new CodeBinaryOperatorExpression(selectArgAssignments[x].Left, CodeBinaryOperatorType.IdentityInequality, new CodePrimitiveExpression(null));
-                        binaryExpression = new CodeBinaryOperatorExpression(binaryExpression, CodeBinaryOperatorType.BooleanAnd, booleanTest);
+                        binaryExpression = new CodeBinaryOperatorExpression(binaryExpression, CodeBinaryOperatorType.BooleanOr, booleanTest);
                     }
 
                     var addResults = new CodeMethodInvokeExpression(

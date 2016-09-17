@@ -341,9 +341,22 @@ namespace Pickaxe.Studio
             for (int x = 0; x < result.RowCount; x++)
             {
                 var rowItem = new ListViewItem((x + 1).ToString());
-
+                rowItem.UseItemStyleForSubItems = false;
                 foreach (var columnValue in result[x])
-                    rowItem.SubItems.Add(columnValue.ToString());
+                {
+                    var subitem = new ListViewItem.ListViewSubItem();
+                    if (columnValue == null)
+                    {
+                        subitem.Text = "NULL";
+                        subitem.BackColor = Color.FromArgb(255,255,225);
+                    }
+                    else
+                    {
+                        subitem.Text = columnValue.ToString();
+                    }
+
+                    rowItem.SubItems.Add(subitem);
+                }
 
                 items.Add(rowItem);
             }
