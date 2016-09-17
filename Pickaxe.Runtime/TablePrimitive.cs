@@ -84,7 +84,7 @@ namespace Pickaxe.Runtime
 
             public override Type Type
             {
-                get { return typeof(int); }
+                get { return typeof(int?); }
             }
 
             public override CodeExpression ToNative(CodeExpression expression)
@@ -112,7 +112,7 @@ namespace Pickaxe.Runtime
 
             public override Type Type
             {
-                get { return typeof(float); }
+                get { return typeof(float?); }
             }
 
             public override CodeExpression ToNative(CodeExpression expression)
@@ -148,7 +148,7 @@ namespace Pickaxe.Runtime
 
             public override Type Type
             {
-                get { return typeof(DateTime); }
+                get { return typeof(DateTime?); }
             }
 
             public override CodeExpression ToNative(CodeExpression expression)

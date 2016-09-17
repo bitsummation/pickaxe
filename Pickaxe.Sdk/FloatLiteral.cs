@@ -12,26 +12,20 @@
  * limitations under the License.
  */
 
-using Pickaxe.Runtime;
-using Pickaxe.Sdk;
 using System;
-using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace Pickaxe.CodeDom.Visitor
+namespace Pickaxe.Sdk
 {
-    public partial class CodeDomGenerator : IAstVisitor
+    public class FloatLiteral : AstNode
     {
-        public void Visit(TableColumnArg arg)
+        public float Value { get; set; }
+
+        public override void Accept(IAstVisitor visitor)
         {
-            var field = new CodeMemberField();
-            field.Name = arg.Variable;
-            field.Attributes = MemberAttributes.Public | MemberAttributes.Final;
-            field.Type = new CodeTypeReference(TablePrimitive.FromString(arg.Type).Type);
-            _codeStack.Peek().ParentMemberDefinitions.Add(field);
+            visitor.Visit(this);
         }
     }
 }

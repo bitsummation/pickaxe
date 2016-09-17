@@ -62,6 +62,7 @@ namespace Pickaxe.Sdk
         void Visit(TableVariableRowGetter variable);
         void Visit(StringLiteral literal);
         void Visit(IntegerLiteral literal);
+        void Visit(FloatLiteral literal);
         void Visit(NullLiteral literal);
 
         void Visit(VariableAssignmentStatement statement);

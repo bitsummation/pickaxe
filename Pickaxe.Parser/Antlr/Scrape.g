@@ -214,6 +214,7 @@ literal
 	: INT
 	| STRING_LITERAL
 	| NULL
+	| FL
 	;
 	
 
@@ -524,6 +525,7 @@ COMMA : ',';
 QUOTE : '"';
 APOSTRAPHE : '\'';
 INT : DIGIT+;
+FL :  ('0'..'9')+ '.' ('0'..'9')+;
 fragment NEWLINE : ('\n'|'\r');
 fragment DIGIT: '0'..'9';
 fragment LETTER :('a'..'z' | 'A'..'Z'); 

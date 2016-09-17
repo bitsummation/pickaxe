@@ -28,6 +28,9 @@ namespace PickAxe.Tests
         [Test]
         public void TestCodeRunner()
         {
+            var code = new Code(new string[0]);
+            code.Run();
+
         }
        
         [Test]
@@ -35,10 +38,10 @@ namespace PickAxe.Tests
         {
               var input = @"
 
-create buffer t(a int)
+create buffer t(a identity, b int, c float)
 
 insert into t
-select null
+select null, 3.234
 
 select *
 from t

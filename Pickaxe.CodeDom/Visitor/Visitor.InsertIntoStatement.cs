@@ -103,22 +103,29 @@ namespace Pickaxe.CodeDom.Visitor
                 if(descriptor.Type.Variables[x].Primitive.IsIdentity)
                 {
                     right = identityArgs.CodeExpression;
+                    loop.Statements.Add(new CodeAssignStatement(left, right));
                 }
                 else
                 {
-                    right = new CodeIndexerExpression(new CodeTypeReferenceExpression("row"), new CodeSnippetExpression(indexer.ToString()));
-                    right = descriptor.Type.Variables[x].Primitive.ToNative(right);
+                    var indexExpression = new CodeIndexerExpression(new CodeTypeReferenceExpression("row"), new CodeSnippetExpression(indexer.ToString()));
+                    right = descriptor.Type.Variables[x].Primitive.ToNative(indexExpression);
+
+                    loop.Statements.Add(new CodeAssignStatement(left, new CodePrimitiveExpression(null)));
+                    var assignCondition = new CodeConditionStatement(
+                        new CodeBinaryOperatorExpression(indexExpression,
+                            CodeBinaryOperatorType.IdentityInequality,
+                            new CodePrimitiveExpression(null)), new CodeAssignStatement(left, right));
+
+                    loop.Statements.Add(assignCondition);
                     indexer++;
                 }
 
-                loop.Statements.Add(new CodeAssignStatement(left, right));
             }
          
 
             loop.Statements.Add(new CodeMethodInvokeExpression(
                 new CodeMethodReferenceExpression(variableArgs.CodeExpression, "Add"),
                 new CodeVariableReferenceExpression("tableRow")));
-
 
 
             method.Statements.Add(loop);

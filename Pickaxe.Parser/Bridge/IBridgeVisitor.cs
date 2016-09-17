@@ -62,6 +62,7 @@ namespace Pickaxe.Parser.Bridge
         void Visit(TableVariableReference variable, CommonTree tree);
         void Visit(StringLiteral literal, CommonTree tree);
         void Visit(IntegerLiteral literal, CommonTree tree);
+        void Visit(FloatLiteral literal, CommonTree tree);
         void Visit(NullLiteral literal, CommonTree tree);
 
         void Visit(TakeTextStatement statement, CommonTree tree);

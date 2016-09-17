@@ -236,6 +236,13 @@ namespace Pickaxe.Parser.Bridge
             literal.Value = int.Parse(tree.Text);
         }
 
+        public void Visit(FloatLiteral literal, CommonTree tree)
+        {
+            Parent(tree).Children.Add(literal);
+            SetLine(literal, tree);
+            literal.Value = float.Parse(tree.Text);
+        }
+
         public void Visit(IdentityVariable identity, CommonTree tree)
         {
             Parent(tree).Children.Add(identity);

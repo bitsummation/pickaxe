@@ -139,6 +139,8 @@ namespace Pickaxe.Parser
                         return new AntlrBridgeTree<TableVariableReference>(payload, (node, tree, visitor) => visitor.Visit(node, tree));
                     if (payload.Type == ScrapeParser.INT)
                         return new AntlrBridgeTree<IntegerLiteral>(payload, (node, tree, visitor) => visitor.Visit(node, tree));
+                    if (payload.Type == ScrapeParser.FL)
+                        return new AntlrBridgeTree<FloatLiteral>(payload, (node, tree, visitor) => visitor.Visit(node, tree)); ;
                     if (payload.Type == ScrapeParser.STRING_LITERAL)
                         return new AntlrBridgeTree<StringLiteral>(payload, (node, tree, visitor) => visitor.Visit(node, tree));
                     if (payload.Type == ScrapeParser.NULL)
