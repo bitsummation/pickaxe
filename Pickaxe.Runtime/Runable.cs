@@ -78,6 +78,7 @@ namespace Pickaxe.Runtime
         public void Run()
         {
             ServicePointManager.DefaultConnectionLimit = int.MaxValue;
+            ServicePointManager.SecurityProtocol |= (SecurityProtocolType)3072; //TLS 1.2
 
             var cultureInfo = new CultureInfo("en-US");
             cultureInfo.DateTimeFormat.LongTimePattern = "HH:mm:ss.fff";
