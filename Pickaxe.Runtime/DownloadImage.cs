@@ -24,9 +24,9 @@ namespace Pickaxe.Runtime
     public class DownloadImage : IRow
     {
         public string url { get; set; }
-        public DateTime date { get; set; }
+        public DateTime? date { get; set; }
         public byte[] image { get; set; }
-        public int size { get; set; }
+        public int? size { get; set; }
         public string filename { get; set; }
 
         public static TableDescriptor Columns

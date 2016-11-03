@@ -35,8 +35,8 @@ namespace Pickaxe.Runtime
         public virtual string url { get; set; }
 
         public virtual IEnumerable<HtmlNode> nodes { get; set; }
-        public virtual DateTime date { get; set; }
-        public virtual int size { get; set; }
+        public virtual DateTime? date { get; set; }
+        public virtual int? size { get; set; }
 
         public virtual void Clear()
         {

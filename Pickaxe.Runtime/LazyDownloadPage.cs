@@ -71,7 +71,7 @@ namespace Pickaxe.Runtime
             }
         }
 
-        public override DateTime date
+        public override DateTime? date
         {
             get
             {
@@ -79,7 +79,7 @@ namespace Pickaxe.Runtime
             }
         }
 
-        public override int size
+        public override int? size
         {
             get
             {

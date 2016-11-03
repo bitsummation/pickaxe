@@ -23,7 +23,7 @@ namespace Pickaxe.Runtime
 {
     public class Expand : IRow
     {
-        public int value { get; set; }
+        public int? value { get; set; }
 
         public static TableDescriptor Columns
         {
