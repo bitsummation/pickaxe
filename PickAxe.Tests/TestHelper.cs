@@ -36,7 +36,6 @@ namespace PickAxe.Tests
         public static Runable Compile(string code, IHttpRequestFactory requestFactory)
         {
             var compiler = new Compiler(code);
-            var generatedCode = compiler.ToCode();
             var assembly = compiler.ToAssembly();
             Assert.IsTrue(compiler.Errors.Count == 0);
             var runable = new Runable(assembly);
