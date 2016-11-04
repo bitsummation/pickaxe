@@ -29,8 +29,8 @@ namespace Pickaxe.CodeDom.Visitor
             var leftArgs = VisitChild(statement.Left);
             var rightArgs = VisitChild(statement.Right);
 
-            Type leftType = Type.GetType(leftArgs.Scope.CodeDomReference.BaseType);
-            Type rightType = Type.GetType(rightArgs.Scope.CodeDomReference.BaseType);
+            Type leftType = leftArgs.Scope.CodeDomReference.GenerateType();
+            Type rightType = rightArgs.Scope.CodeDomReference.GenerateType();
             if (leftType != rightType && leftType != null)
             {
                 var leftPrimitive = TablePrimitive.FromType(leftType);

@@ -226,7 +226,7 @@ select 5
             {
                 called++;
                 Assert.IsTrue(table.Columns().Length == 2);
-                Assert.IsTrue(table.RowCount == 1);
+                Assert.IsTrue(table.RowCount == 3);
                 Assert.IsTrue(table[0][0].ToString() == "3");
                 Assert.IsTrue(table[0][1].ToString() == "hit");
             };

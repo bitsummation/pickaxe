@@ -29,9 +29,15 @@ namespace Pickaxe.CodeDom.Visitor
             var leftArgs = VisitChild(expression.Left, new CodeDomArg() { Scope = _codeStack.Peek().Scope });
             var rightArgs = VisitChild(expression.Right, new CodeDomArg() { Scope = _codeStack.Peek().Scope });
 
-            Type leftType = Type.GetType(leftArgs.Scope.CodeDomReference.BaseType);
-            Type rightType = Type.GetType(rightArgs.Scope.CodeDomReference.BaseType);
-            if (leftType != rightType)
+            Type leftType = null;
+            if(leftArgs.Scope != null)
+                leftType = leftArgs.Scope.CodeDomReference.GenerateType();
+
+            Type rightType = null;
+            if (rightArgs.Scope != null)
+                rightType = rightArgs.Scope.CodeDomReference.GenerateType();
+
+            if (leftType != null && rightType !=  null && leftType != rightType)
             {
                 if (leftType == typeof(string))
                 {

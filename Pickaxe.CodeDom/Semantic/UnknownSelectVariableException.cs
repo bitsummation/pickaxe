@@ -34,7 +34,7 @@ namespace Pickaxe.CodeDom.Semantic
         {
             get
             {
-                return string.Format("Unknown select variable {0} {1}", _variable, base.Message);
+                return string.Format("Unknown select variable '{0}' {1}", _variable, base.Message);
             }
         }
     }
