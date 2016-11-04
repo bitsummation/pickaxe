@@ -221,23 +221,11 @@ namespace Pickaxe.CodeDom.Visitor
 
                 codeLoop.Statements.AddRange(selectArgAssignments.ToArray());
 
-                //need to check if all are not null
-                if (selectArgAssignments.Count > 0)
-                {
-                    var binaryExpression = new CodeBinaryOperatorExpression(selectArgAssignments[0].Left, CodeBinaryOperatorType.IdentityInequality, new CodePrimitiveExpression(null));
-                    for (int x = 1; x < selectArgAssignments.Count; x++)
-                    {
-                        var booleanTest = new CodeBinaryOperatorExpression(selectArgAssignments[x].Left, CodeBinaryOperatorType.IdentityInequality, new CodePrimitiveExpression(null));
-                        binaryExpression = new CodeBinaryOperatorExpression(binaryExpression, CodeBinaryOperatorType.BooleanOr, booleanTest);
-                    }
-
-                    var addResults = new CodeMethodInvokeExpression(
-                        new CodeMethodReferenceExpression(new CodeTypeReferenceExpression("result"), "Add"),
-                        new CodeArgumentReferenceExpression("resultRow"));
-
-                    var ifCondition = new CodeConditionStatement(binaryExpression, new CodeExpressionStatement(addResults));
-                    codeLoop.Statements.Add(ifCondition);
-                }
+                var addResults = new CodeMethodInvokeExpression(
+                    new CodeMethodReferenceExpression(new CodeTypeReferenceExpression("result"), "Add"),
+                    new CodeArgumentReferenceExpression("resultRow"));
+                codeLoop.Statements.Add(addResults);
+                
 
                 methodStatements.Add(outerLoop);
 
