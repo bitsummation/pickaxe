@@ -62,7 +62,7 @@ namespace Pickaxe.Runtime
             {
                 int contentlength;
                 var doc = GetDocument(runtime.RequestFactory, wire, out contentlength);
-                table.Add(new DownloadPage() { url = wire.Url, nodes = new[] { doc.DocumentNode }, date = DateTime.Now, size = contentlength });
+                table.Add(new DownloadPage() { url = wire.Url, nodes = new DownloadedNodes(new[] { doc.DocumentNode }), date = DateTime.Now, size = contentlength });
             }
 
             return table;

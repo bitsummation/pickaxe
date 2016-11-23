@@ -37,13 +37,8 @@ namespace Pickaxe.Runtime
             get
             {
                 _parent.Process();
-
                 if (_inner == null)
-                {
                     _inner = _parent.GetResult();
-                    if (CssSelector != null)
-                        ApplyCssSelector();
-                }
 
                 return _inner;
             }
@@ -53,7 +48,7 @@ namespace Pickaxe.Runtime
             }
         }
 
-        protected abstract void ApplyCssSelector();
+        protected abstract void ApplyCssSelector(IEnumerable<HtmlNode> nodes);
 
         public override string url
         {
@@ -63,10 +58,14 @@ namespace Pickaxe.Runtime
             }
         }
 
-        public override IEnumerable<HtmlNode> nodes
+        public override DownloadedNodes nodes
         {
             get
             {
+                var nodes = Inner.nodes;
+                if(CssSelector != null)
+                        ApplyCssSelector(nodes);
+
                 return Inner.nodes;
             }
         }

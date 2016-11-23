@@ -253,8 +253,7 @@ whereStatement
 
 fromStatement
 	: FROM t=ID a=ID? innerJoinStatement? -> ^(FROM TABLE_VARIABLE_REFERENCE[$t] ^(TABLE_ALIAS $a)? innerJoinStatement?) 
-	| FROM^ tableGenerationClause
-	| FROM OPENPAREN tableGenerationClause CLOSEPAREN ID tableHint? -> ^(FROM tableGenerationClause ^(TABLE_ALIAS ID) tableHint?)
+	| FROM tableGenerationClause ID? tableHint? innerJoinStatement? -> ^(FROM tableGenerationClause ^(TABLE_ALIAS ID)? tableHint? innerJoinStatement?)
 	;
 
 tableHint
@@ -327,6 +326,7 @@ andExpression
 	
 boolTerm
 	: NODES EQUALS STRING_LITERAL -> ^(NODES SELECT_ID[$NODES] STRING_LITERAL)
+	| t=ID DOT NODES EQUALS STRING_LITERAL -> ^(NODES ^(TABLE_MEMBER_REFERENCE ROW_REFERENCE[$t] MEMBER_REFERENCE[$NODES]) STRING_LITERAL)
 	| selectArg (boolOperator^ selectArg)? 
 	| OPENPAREN! boolExpression CLOSEPAREN!
 	;

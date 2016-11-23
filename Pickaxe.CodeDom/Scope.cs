@@ -34,6 +34,8 @@ namespace Pickaxe.CodeDom
             ScopeIdentifier = "Scope_" +  Guid.NewGuid().ToString("N");
             if(mainType != null)
                 CreateType(mainType);
+
+            JoinMembers = new List<CodeMemberField>();
         }
 
         private void CreateType(CodeDomTypeDefinition mainType)
@@ -171,6 +173,9 @@ namespace Pickaxe.CodeDom
                 return false;
             }
         }
+
+
+        public IList<CodeMemberField> JoinMembers { get; set; }
 
         public virtual SelectMatch[] FindTableVariable(string variable)
         {

@@ -51,7 +51,7 @@ namespace Pickaxe.CodeDom.Visitor
             field.Name = aliasBase.Alias == null ? string.Empty : aliasBase.Alias.Id;
             field.Attributes = MemberAttributes.Public | MemberAttributes.Final;
             field.Type = statementDomArg.Scope.CodeDomReference.TypeArguments[0];
-            _joinMembers.Add(field);
+            Scope.Current.JoinMembers.Add(field);
             bufferTable.Members.Add(field);
 
             method.Statements.Add(new CodeVariableDeclarationStatement(statementDomArg.Scope.CodeDomReference, "table", statementDomArg.CodeExpression));
@@ -106,7 +106,6 @@ namespace Pickaxe.CodeDom.Visitor
             GenerateCallStatement(method.Statements, statement.Line.Line);
             _mainType.Type.Members.Add(method);
 
-            _joinMembers.Clear();
             CodeTypeReference anonType;
             var fetchMethod = CreateFetch(statement, out anonType);
             method.Statements.Add(new CodeVariableDeclarationStatement(new CodeTypeReference("IEnumerable", anonType), "join",

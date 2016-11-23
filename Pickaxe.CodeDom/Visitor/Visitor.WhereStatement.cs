@@ -84,40 +84,6 @@ namespace Pickaxe.CodeDom.Visitor
             method.Statements.Add(new CodeMethodInvokeExpression(
                 new CodeVariableReferenceExpression("newTable"), "SetRows", new CodeVariableReferenceExpression("rows")));
 
-
-            if(statement.NodesBooleanExpression != null)
-            {
-                method.Statements.Add(new CodeVariableDeclarationStatement(
-                    new CodeTypeReference("IEnumerator",
-                        new CodeTypeReference(_codeStack.Peek().Scope.CodeDomReference.TypeArguments[0].BaseType)), "i",
-                        new CodeMethodInvokeExpression(new CodeVariableReferenceExpression("newTable"), "GetEnumerator")));
-
-                var loop = new CodeIterationStatement();
-                method.Statements.Add(loop);
-                loop.InitStatement = new CodeSnippetStatement();
-                loop.IncrementStatement = new CodeSnippetStatement();
-                loop.TestExpression = new CodeMethodInvokeExpression(new CodeVariableReferenceExpression("i"), "MoveNext");
-                
-                loop.Statements.Add(new CodeVariableDeclarationStatement(new CodeTypeReference(_codeStack.Peek().Scope.CodeDomReference.TypeArguments[0].BaseType), "row",
-                    new CodePropertyReferenceExpression(new CodeVariableReferenceExpression("i"), "Current")));
-
-                var aliases = Scope.Current.AliasType<DownloadPage>();
-                if(aliases.Length == 1)
-                {
-                    loop.Statements.Add(new CodeAssignStatement(
-                        new CodePropertyReferenceExpression(new CodeVariableReferenceExpression("row"), aliases[0]),
-                        new CodeMethodInvokeExpression(
-                        new CodePropertyReferenceExpression(new CodeVariableReferenceExpression("row"), aliases[0]), "CssWhere",
-                        new CodePrimitiveExpression(statement.NodesBooleanExpression.Selector))));
-                    
-                }
-                else if(aliases.Length > 0) //more than one 
-                {
-                    throw new InvalidOperationException("AmbiguousSelectVariable");
-                    //Errors.Add(new AmbiguousSelectVariable(new Semantic.LineInfo(statement.NodesBooleanExpression.Line.Line, statement.NodesBooleanExpression.Line.CharacterPosition), "nodes"));
-                }
-            }
-
             method.Statements.Add(new CodeMethodReturnStatement(new CodeVariableReferenceExpression("newTable")));
 
             var methodcall = new CodeMethodInvokeExpression(

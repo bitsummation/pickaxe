@@ -21,12 +21,18 @@ namespace Pickaxe.Runtime
 {
     public class SelectDownloadTable : ThreadedDownloadTable
     {
+        private IList<IHttpWire> _downloads;
+
         public SelectDownloadTable(LazyDownloadArgs args)
-            : base(args) { }
+            : base(args)
+
+        {
+            //_downloads = Wires.ToList();
+        }
 
         public sealed override IEnumerator<DownloadPage> GetEnumerator() //Give out empty lazy wrappers
         {
-            foreach (IHttpWire url in Wires)
+            foreach (IHttpWire url in Wires.ToList())
             {
                 yield return new SelectDownloadPage(this);
             }

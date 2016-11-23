@@ -22,7 +22,7 @@ using System.Text;
 namespace Pickaxe.CodeDom
 {
     internal class SelectScope : Scope
-    {
+    { 
         public SelectScope() : base(null)
         {
         }

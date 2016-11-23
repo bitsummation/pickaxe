@@ -28,9 +28,8 @@ namespace PickAxe.Tests
         [Test]
         public void TestCodeRunner()
         {
-            var code = new Code(new string[0]);
-            code.Run();
-
+            //var code = new Code(new string[0]);
+            //code.Run();
         }
        
         [Test]
@@ -38,13 +37,24 @@ namespace PickAxe.Tests
         {
               var input = @"
 
-create buffer t(a identity, b int, c float)
 
-insert into t
-select null, 3.234
+create buffer specialty(id identity, url string, spec string)
 
-select *
-from t
+insert into specialty
+select
+	'http://doctor.webmd.com' + pick 'a' take attribute 'href',
+	pick 'a'
+from download page 'http://doctor.webmd.com/find-a-doctor/specialties'
+where nodes ='section.seo-lists div:nth-child(3) li'
+
+--states
+select
+	'http://doctor.webmd.com' + pick 'a' take attribute 'href',
+	d.url,
+	spec
+from download page (select url from specialty) d with (thread(4))
+join specialty s on s.url = d.url
+where s.url like 'blah' and nodes = 'div.states li'
 
 ";
 

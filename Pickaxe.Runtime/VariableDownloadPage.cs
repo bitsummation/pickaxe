@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Fizzler.Systems.HtmlAgilityPack;
+using HtmlAgilityPack;
 
 namespace Pickaxe.Runtime
 {
@@ -27,13 +28,14 @@ namespace Pickaxe.Runtime
         {
         }
 
-        public override DownloadPage CssWhere(string selector)
+        public override bool CssWhere(ref DownloadPage page, string selector)
         {
             var newNodes = nodes.First().QuerySelectorAll(selector).ToArray();
-            return new DownloadPage() { date = date, nodes = newNodes, size = size, url = url };
+            page = new DownloadPage() { date = date, nodes = new DownloadedNodes(newNodes), size = size, url = url };
+            return true;
         }
 
-        protected override void ApplyCssSelector()
+        protected override void ApplyCssSelector(IEnumerable<HtmlNode> nodes)
         {
         }
     }

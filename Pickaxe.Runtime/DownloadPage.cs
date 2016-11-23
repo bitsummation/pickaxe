@@ -29,12 +29,12 @@ namespace Pickaxe.Runtime
         {
             var doc = new HtmlDocument();
             doc.LoadHtml("");
-            return new DownloadPage() { url = string.Empty, nodes = new[] { doc.DocumentNode }, date = DateTime.MinValue, size = 0 };
+            return new DownloadPage() { url = string.Empty, nodes = new DownloadedNodes(new[] { doc.DocumentNode }), date = DateTime.MinValue, size = 0 };
         }
 
         public virtual string url { get; set; }
 
-        public virtual IEnumerable<HtmlNode> nodes { get; set; }
+        public virtual DownloadedNodes nodes { get; set; }
         public virtual DateTime? date { get; set; }
         public virtual int? size { get; set; }
 
@@ -43,10 +43,11 @@ namespace Pickaxe.Runtime
             nodes = null;
         }
 
-        public virtual DownloadPage CssWhere(string selector)
+        public virtual bool CssWhere(ref DownloadPage page, string selector)
         {
             var newNodes = nodes.First().QuerySelectorAll(selector).ToArray();
-            return new DownloadPage() { date = date, nodes = newNodes, size = size, url = url };
+            page = new DownloadPage() { date = date, nodes = new DownloadedNodes(newNodes), size = size, url = url };
+            return true;
         }
 
         public static TableDescriptor Columns

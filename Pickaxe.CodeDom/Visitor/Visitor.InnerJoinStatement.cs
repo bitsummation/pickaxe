@@ -31,10 +31,10 @@ namespace Pickaxe.CodeDom.Visitor
         {
             //the inner is the new join (ic). Everything else is outer (oc)
 
-            string innerMatch = @"row\.(" + aliasBAse.Alias.Id + @")\.(\w+)";
-            string outerMatch = @"row\.([^" + aliasBAse.Alias.Id + @"])\.(\w+)";
-            statement = Regex.Replace(statement, innerMatch, "ic.$1.$2");
-            statement = Regex.Replace(statement, outerMatch, "oc.$1.$2");
+            string innerMatch = @"row\.(" + aliasBAse.Alias.Id + @")";
+            string outerMatch = @"row\.([^" + aliasBAse.Alias.Id + @"])";
+            statement = Regex.Replace(statement, innerMatch, "ic.$1");
+            statement = Regex.Replace(statement, outerMatch, "oc.$1");
 
             return statement;
         }
@@ -60,7 +60,7 @@ namespace Pickaxe.CodeDom.Visitor
             var bufferTable = new CodeTypeDeclaration(anon) { TypeAttributes = TypeAttributes.NestedPrivate };
             bufferTable.BaseTypes.Add(new CodeTypeReference("IRow"));
             _mainType.Type.Members.Add(bufferTable);
-            bufferTable.Members.AddRange(_joinMembers.ToArray());
+            bufferTable.Members.AddRange(Scope.Current.JoinMembers.ToArray());
 
             //Do Join
             var anonType = new CodeTypeReference(anon);
@@ -100,20 +100,20 @@ namespace Pickaxe.CodeDom.Visitor
 
             joinIf.TrueStatements.Add(new CodeVariableDeclarationStatement(anonType, "t", new CodeObjectCreateExpression(anonType)));
             
-            for(int x = 0; x <_joinMembers.Count - 1; x++)
+            for(int x = 0; x < Scope.Current.JoinMembers.Count - 1; x++)
             {
                 joinIf.TrueStatements.Add(new CodeAssignStatement(
                     new CodePropertyReferenceExpression(
-                        new CodeVariableReferenceExpression("t"), _joinMembers[x].Name),
+                        new CodeVariableReferenceExpression("t"), Scope.Current.JoinMembers[x].Name),
                     new CodePropertyReferenceExpression(
-                        new CodeVariableReferenceExpression("oc"), _joinMembers[x].Name)));
+                        new CodeVariableReferenceExpression("oc"), Scope.Current.JoinMembers[x].Name)));
             }
 
             joinIf.TrueStatements.Add(new CodeAssignStatement(
                     new CodePropertyReferenceExpression(
-                        new CodeVariableReferenceExpression("t"), _joinMembers[_joinMembers.Count-1].Name),
+                        new CodeVariableReferenceExpression("t"), Scope.Current.JoinMembers[Scope.Current.JoinMembers.Count-1].Name),
                     new CodePropertyReferenceExpression(
-                        new CodeVariableReferenceExpression("ic"), _joinMembers[_joinMembers.Count - 1].Name)));
+                        new CodeVariableReferenceExpression("ic"), Scope.Current.JoinMembers[Scope.Current.JoinMembers.Count - 1].Name)));
 
 
             joinIf.TrueStatements.Add(new CodeMethodInvokeExpression(new CodeVariableReferenceExpression("join"), "Add", new CodeVariableReferenceExpression("t")));

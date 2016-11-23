@@ -48,10 +48,13 @@ namespace Pickaxe.CodeDom.Visitor
         {
             VerifyCssSelector(statement.Selector, new Semantic.LineInfo(statement.Line.Line, statement.Line.CharacterPosition));
 
-            _codeStack.Peek()
-                .ParentStatements.Add(new CodeMethodInvokeExpression(new CodeTypeReferenceExpression("result"),
-                    "AddColumn",
-                    new CodePrimitiveExpression(statement.Selector)));
+            if (!string.IsNullOrEmpty(statement.Selector))
+            {
+                _codeStack.Peek()
+                    .ParentStatements.Add(new CodeMethodInvokeExpression(new CodeTypeReferenceExpression("result"),
+                        "AddColumn",
+                        new CodePrimitiveExpression(statement.Selector)));
+            }
 
             var expression = new CodeMethodInvokeExpression(
                 new CodeTypeReferenceExpression("node"),

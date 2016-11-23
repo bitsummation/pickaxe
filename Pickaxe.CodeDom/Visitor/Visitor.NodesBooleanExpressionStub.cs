@@ -18,6 +18,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.CodeDom;
+using System.Text.RegularExpressions;
 
 namespace Pickaxe.CodeDom.Visitor
 {
@@ -25,10 +26,12 @@ namespace Pickaxe.CodeDom.Visitor
     {
         public void Visit(NodesBooleanExpression expression)
         {
-            VisitChild(expression.Left, new CodeDomArg() { Scope = _codeStack.Peek().Scope });
-            VisitChild(expression.Right, new CodeDomArg() { Scope = _codeStack.Peek().Scope });
+            var left = VisitChild(expression.Left, new CodeDomArg() { Scope = _codeStack.Peek().Scope });
+            var right = VisitChild(expression.Right, new CodeDomArg() { Scope = _codeStack.Peek().Scope });
 
-            _codeStack.Peek().CodeExpression = new CodePrimitiveExpression(true);
+            //strip .nodes
+            var leftExpr = new CodeSnippetExpression(Regex.Replace(GenerateCodeFromExpression(left.CodeExpression), "\\.nodes", ""));
+            _codeStack.Peek().CodeExpression = new CodeMethodInvokeExpression(leftExpr, "CssWhere", new CodeDirectionExpression(FieldDirection.Ref, leftExpr), right.CodeExpression);
         }
     }
 }
