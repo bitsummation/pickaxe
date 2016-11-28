@@ -19,9 +19,9 @@ create buffer categories(relativeUrl string)
 
 insert into categories
 select
-    pick 'a.lhn-menu-toggle' take attribute 'href'
+    pick 'a.SideBarMenu-toggle' take attribute 'href'
 from download page (select url from superCategories) with (thread(5))
-where nodes = 'div.zone[data-zone="zone3"] li'
+where nodes = '.expander-content li.SideBarMenuModuleItem'
 
 create buffer division(url string)
 
@@ -30,15 +30,17 @@ select 'http://walmart.com' + relativeUrl
 from categories    
 where relativeUrl like '%/browse/%'
 
+
 insert into division
 select
     pick '' take attribute 'href'
 from download page (select 'http://walmart.com' + relativeUrl from categories where relativeUrl like '%/cp/%') with (thread(5))
-where nodes = '.tile-section-0,.tile-section-1'    
+where nodes = '.ModuleDrawerTile-link'    
 
 update division
 set url = 'http://walmart.com' + url
 where url not like '%walmart.com%'
+
 
 create buffer fetchPage (first int, last int, url string)
 
