@@ -33,7 +33,10 @@ namespace Pickaxe.Runtime
         {
             var args = new LazyDownloadArgs(runtime, threadCount);
             foreach (var row in table)
-                args.Wires.Add(new WebRequestHttpWire(row[0].ToString(), runtime, line));
+            {
+                if (row[0] != null)
+                    args.Wires.Add(new WebRequestHttpWire(row[0].ToString(), runtime, line));
+            }
 
             return args;
         }

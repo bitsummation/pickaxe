@@ -39,7 +39,7 @@ namespace Pickaxe.CodeDom.Visitor
             method.Statements.Add(new CodeVariableDeclarationStatement(method.ReturnType, "expandTable",
                 new CodeObjectCreateExpression(new CodeTypeReference("RuntimeTable", new CodeTypeReference("Expand")))));
             
-            method.Statements.Add(new CodeVariableDeclarationStatement(typeof(int), "x"));
+            method.Statements.Add(new CodeVariableDeclarationStatement(typeof(int?), "x"));
 
             var loop = new CodeIterationStatement();
             loop.InitStatement =  new CodeAssignStatement( new CodeVariableReferenceExpression("x"), fromDomArgs.CodeExpression);
