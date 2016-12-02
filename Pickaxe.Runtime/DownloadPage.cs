@@ -29,7 +29,7 @@ namespace Pickaxe.Runtime
         {
             var doc = new HtmlDocument();
             doc.LoadHtml("");
-            return new DownloadPage() { url = string.Empty, nodes = new DownloadedNodes(new[] { doc.DocumentNode }), date = DateTime.MinValue, size = 0 };
+            return new DownloadPage() { url = string.Empty, nodes = new DownloadedNodes(doc), date = DateTime.MinValue, size = 0 };
         }
 
         public virtual string url { get; set; }

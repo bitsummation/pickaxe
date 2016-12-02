@@ -11,6 +11,12 @@ namespace Pickaxe.Runtime
     {
         private IEnumerable<HtmlNode> _nodes { get; set; }
 
+        public DownloadedNodes(HtmlDocument doc) : this (new[] { doc.DocumentNode })
+        {
+            if (string.IsNullOrEmpty(doc.DocumentNode.InnerText)) //no nodes in root
+                _nodes = new HtmlNode[0];
+        }
+
         public DownloadedNodes(IEnumerable<HtmlNode> nodes)
         {
             _nodes = nodes;
