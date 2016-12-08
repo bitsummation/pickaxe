@@ -189,7 +189,7 @@ namespace Pickaxe.CodeDom.Visitor
                     //Needed only for DownloadRow
                     outerLoop.Statements.Add(
                         new CodeVariableDeclarationStatement(
-                            new CodeTypeReference("IEnumerator", new CodeTypeReference("HtmlNode")),
+                            new CodeTypeReference("IEnumerator", new CodeTypeReference("HtmlElement")),
                             "y",
                             new CodeMethodInvokeExpression(
                                 new CodeMethodReferenceExpression(
@@ -206,7 +206,7 @@ namespace Pickaxe.CodeDom.Visitor
 
                     //Needed only for DownloadRow
                     codeLoop.Statements.Add(new CodeVariableDeclarationStatement(
-                        new CodeTypeReference("HtmlNode"),
+                        new CodeTypeReference("HtmlElement"),
                         "node",
                         new CodePropertyReferenceExpression(new CodeTypeReferenceExpression("y"), "Current")));
 
@@ -232,7 +232,7 @@ namespace Pickaxe.CodeDom.Visitor
                 if (outerLoopNeeded)
                 {
                     var aliases = Scope.Current.AliasType<DownloadPage>();
-                    outerLoop.Statements.Add(new CodeMethodInvokeExpression(new CodePropertyReferenceExpression(new CodeVariableReferenceExpression("row"), aliases[0]), "Clear"));
+                    //outerLoop.Statements.Add(new CodeMethodInvokeExpression(new CodePropertyReferenceExpression(new CodeVariableReferenceExpression("row"), aliases[0]), "Clear"));
                 }
 
                 var callSelect = new CodeExpressionStatement(new CodeMethodInvokeExpression(null, "OnSelect", new CodeVariableReferenceExpression("result")));

@@ -12,12 +12,11 @@
  * limitations under the License.
  */
 
+using Pickaxe.Runtime.Dom;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Fizzler.Systems.HtmlAgilityPack;
-using HtmlAgilityPack;
 
 namespace Pickaxe.Runtime
 {
@@ -34,7 +33,7 @@ namespace Pickaxe.Runtime
             return true;
         }
 
-        protected override void ApplyCssSelector(IEnumerable<HtmlNode> nodes)
+        protected override void ApplyCssSelector(IEnumerable<HtmlElement> nodes)
         {
             Inner.nodes = new DownloadedNodes(nodes.First().QuerySelectorAll(CssSelector));
         }

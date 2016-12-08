@@ -13,6 +13,8 @@
  */
 
 using HtmlAgilityPack;
+using Pickaxe.Runtime.AgilityPackFizzler;
+using Pickaxe.Runtime.Dom;
 using Pickaxe.Runtime.Internal;
 using System;
 using System.Collections.Generic;
@@ -41,7 +43,7 @@ namespace Pickaxe.Runtime
             return new DownloadImage() { date = DateTime.Now, image = bytes, size = bytes.Length, url = wire.Url, filename = fileName };
         }
 
-        private static HtmlDocument GetDocument(IHttpRequestFactory factory, IHttpWire wire, out int length)
+        private static HtmlDoc GetDocument(IHttpRequestFactory factory, IHttpWire wire, out int length)
         {
             var request = CreateRequest(factory, wire);
             var bytes = request.Download();
@@ -50,8 +52,8 @@ namespace Pickaxe.Runtime
             length = bytes.Length;
             html = Encoding.UTF8.GetString(bytes, 0, bytes.Length);
 
-            HtmlDocument doc = new HtmlDocument();
-            doc.LoadHtml(html);
+            HtmlDoc doc = Config.DomFactory.Create();
+            doc.Load(html);
             return doc;
         }
 

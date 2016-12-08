@@ -12,7 +12,6 @@
  * limitations under the License.
  */
 
-using HtmlAgilityPack;
 using Pickaxe.Sdk;
 using System;
 using System.CodeDom;
@@ -20,8 +19,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Fizzler.Systems.HtmlAgilityPack;
 using Pickaxe.CodeDom.Semantic;
+using Pickaxe.Runtime;
+using Pickaxe.Runtime.Dom;
 
 namespace Pickaxe.CodeDom.Visitor
 {
@@ -32,16 +32,10 @@ namespace Pickaxe.CodeDom.Visitor
             if (string.IsNullOrEmpty(selector))
                 return;
 
-            HtmlDocument doc = new HtmlDocument();
-            doc.LoadHtml("<html></html>");
-            try
-            {
-                doc.DocumentNode.QuerySelector(selector);
-            }
-            catch(Exception e)
-            {
-                Errors.Add(new BadCssSelector(e.Message, lineInfo));
-            }
+            HtmlDoc doc = Config.DomFactory.Create();
+            bool valid = doc.ValidateCss(selector);
+            if(!valid)
+                Errors.Add(new BadCssSelector(selector, lineInfo));
         }
 
         public void Visit(PickStatement statement)

@@ -1,28 +1,42 @@
-﻿using HtmlAgilityPack;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Collections;
+using Pickaxe.Runtime.Dom;
 
 namespace Pickaxe.Runtime
 {
-    public class DownloadedNodes : IEnumerable<HtmlNode>
+    public class DownloadedNodes : IEnumerable<HtmlElement>
     {
-        private IEnumerable<HtmlNode> _nodes { get; set; }
+        private IEnumerable<HtmlElement> _nodes { get; set; }
 
-        public DownloadedNodes(HtmlDocument doc) : this (new[] { doc.DocumentNode })
+        public static DownloadedNodes Empty
         {
-            if (string.IsNullOrEmpty(doc.DocumentNode.InnerText)) //no nodes in root
-                _nodes = new HtmlNode[0];
+            get
+            {
+                return new DownloadedNodes();
+            }
         }
 
-        public DownloadedNodes(IEnumerable<HtmlNode> nodes)
+        public DownloadedNodes()
+        {
+            _nodes = new HtmlElement[0];
+        }
+
+        public DownloadedNodes(HtmlDoc doc) : this (new[] { doc.FirstElement})
+        {
+            if (doc.IsEmpty) //no nodes in root
+                _nodes = new HtmlElement[0];
+        }
+
+        public DownloadedNodes(IEnumerable<HtmlElement> nodes)
         {
             _nodes = nodes;
         }
 
-        public IEnumerator<HtmlNode> GetEnumerator()
+        public IEnumerator<HtmlElement> GetEnumerator()
         {
             return _nodes.GetEnumerator();
         }

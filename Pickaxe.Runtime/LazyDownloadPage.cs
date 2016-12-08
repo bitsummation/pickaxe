@@ -12,7 +12,7 @@
  * limitations under the License.
  */
 
-using HtmlAgilityPack;
+using Pickaxe.Runtime.Dom;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -48,7 +48,7 @@ namespace Pickaxe.Runtime
             }
         }
 
-        protected abstract void ApplyCssSelector(IEnumerable<HtmlNode> nodes);
+        protected abstract void ApplyCssSelector(IEnumerable<HtmlElement> nodes);
 
         public override string url
         {

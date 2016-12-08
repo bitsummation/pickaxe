@@ -14,12 +14,11 @@
 
 using System.Linq;
 using System.Text;
-using Fizzler.Systems.HtmlAgilityPack;
-using HtmlAgilityPack;
 using System.Text.RegularExpressions;
 using System.IO;
 using System.Net;
 using System.Collections.Generic;
+using Pickaxe.Runtime.Dom;
 
 namespace Pickaxe.Runtime
 {
@@ -42,38 +41,38 @@ namespace Pickaxe.Runtime
             }
         }
 
-        public static HtmlNode Pick(this HtmlNode node, string selector)
+        public static HtmlElement Pick(this HtmlElement node, string selector)
         {
-            HtmlNode returnNode = node;
+            HtmlElement returnNode = node;
             if(!string.IsNullOrEmpty(selector))
                 returnNode = node.QuerySelector(selector);
 
             return returnNode;
         }
 
-        public static string TakeAttribute(this HtmlNode node, string attribute)
+        public static string TakeAttribute(this HtmlElement node, string attribute)
         {
             string text = null;
-            if (node != null && node.Attributes[attribute] != null)
-                text = WebUtility.HtmlDecode(node.Attributes[attribute].Value);
+            if (node != null && node.AttributeExists(attribute))
+                text = WebUtility.HtmlDecode(node.TakeAttribute(attribute));
 
             return text;
         }
 
-        public static string TakeText(this HtmlNode node)
+        public static string TakeText(this HtmlElement node)
         {
             string text = null;
             if (node != null)
-                text = WebUtility.HtmlDecode(node.InnerText);
+                text = WebUtility.HtmlDecode(node.TakeText());
 
             return text;
         }
 
-        public static string TakeHtml(this HtmlNode node)
+        public static string TakeHtml(this HtmlElement node)
         {
             string text = null;
             if (node != null)
-                text = node.InnerHtml;
+                text = node.TakeHtml();
 
             return text;
         }

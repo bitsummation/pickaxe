@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AngleSharp">
+      <HintPath>..\Binaries\AngleSharp\AngleSharp.dll</HintPath>
+    </Reference>
     <Reference Include="Fizzler.Systems.HtmlAgilityPack">
       <HintPath>..\Binaries\fizzler-0.9\Fizzler.Systems.HtmlAgilityPack.dll</HintPath>
     </Reference>
@@ -57,6 +60,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AgilityPackFizzler\AgilityDoc.cs" />
+    <Compile Include="AgilityPackFizzler\AgilityElement.cs" />
+    <Compile Include="AgilityPackFizzler\AgilityFactory.cs" />
+    <Compile Include="AngleSharp\AngleSharpDoc.cs" />
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="BufferTable.cs" />
     <Compile Include="CodeTable.cs" />
@@ -64,6 +71,9 @@
     <Compile Include="Debug\BreakProcesser.cs" />
     <Compile Include="Debug\IBreak.cs" />
     <Compile Include="Debug\IDebug.cs" />
+    <Compile Include="Dom\DomFactory.cs" />
+    <Compile Include="Dom\HtmlDoc.cs" />
+    <Compile Include="Dom\HtmlElement.cs" />
     <Compile Include="DownloadedNodes.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="LazyDownloadArgs.cs" />

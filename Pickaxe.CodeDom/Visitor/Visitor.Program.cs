@@ -29,8 +29,8 @@ namespace Pickaxe.CodeDom.Visitor
         {
             var mainNamespace = new CodeNamespace("");
             mainNamespace.Imports.Add(new CodeNamespaceImport("System"));
-            mainNamespace.Imports.Add(new CodeNamespaceImport("HtmlAgilityPack"));
             mainNamespace.Imports.Add(new CodeNamespaceImport("Pickaxe.Runtime"));
+            mainNamespace.Imports.Add(new CodeNamespaceImport("Pickaxe.Runtime.Dom"));
             mainNamespace.Imports.Add(new CodeNamespaceImport("System.Collections.Generic"));
             mainNamespace.Imports.Add(new CodeNamespaceImport("System.Linq"));
 

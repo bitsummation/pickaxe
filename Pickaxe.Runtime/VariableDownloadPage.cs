@@ -16,8 +16,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Fizzler.Systems.HtmlAgilityPack;
-using HtmlAgilityPack;
+using Pickaxe.Runtime.Dom;
 
 namespace Pickaxe.Runtime
 {
@@ -35,7 +34,7 @@ namespace Pickaxe.Runtime
             return true;
         }
 
-        protected override void ApplyCssSelector(IEnumerable<HtmlNode> nodes)
+        protected override void ApplyCssSelector(IEnumerable<HtmlElement> nodes)
         {
         }
     }

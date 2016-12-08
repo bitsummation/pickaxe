@@ -65,7 +65,7 @@ namespace Pickaxe.CodeDom.Visitor
 
             if (_codeStack.Peek().Tag != null) //pick statement
             {
-                var htmlNodeParam = new CodeParameterDeclarationExpression(new CodeTypeReference("HtmlNode"), "node");
+                var htmlNodeParam = new CodeParameterDeclarationExpression(new CodeTypeReference("HtmlElement"), "node");
                 methodcall.Parameters.Add(new CodeVariableReferenceExpression("node"));
                 method.Parameters.Add(htmlNodeParam);
             }

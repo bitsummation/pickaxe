@@ -12,6 +12,7 @@
  * limitations under the License.
  */
 
+using Pickaxe.Runtime.Dom;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,5 +23,6 @@ namespace Pickaxe.Runtime
     public static class Config
     {
         public const string LogKey = "tabname";
+        public static DomFactory DomFactory = new AgilityPackFizzler.AgilityFactory();
     }
 }
