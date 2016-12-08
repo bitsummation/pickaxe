@@ -35,7 +35,8 @@ namespace Pickaxe.Runtime
 
         protected override void ApplyCssSelector(IEnumerable<HtmlElement> nodes)
         {
-            Inner.nodes = new DownloadedNodes(nodes.First().QuerySelectorAll(CssSelector));
+            if(nodes.Count() > 0)
+                Inner.nodes = new DownloadedNodes(nodes.First().QuerySelectorAll(CssSelector));
         }
 
         public override void Clear()
