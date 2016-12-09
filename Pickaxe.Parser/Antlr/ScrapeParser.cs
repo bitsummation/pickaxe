@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// $ANTLR 3.5.2 Scrape.g 2016-12-09 09:54:58
+// $ANTLR 3.5.2 Scrape.g 2016-12-09 10:44:16
 
 // The variable 'variable' is assigned but its value is never used.
 #pragma warning disable 219
@@ -358,7 +358,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 				{
 				// AST REWRITE
-				// elements: noBraceBlock, proxyStatement
+				// elements: proxyStatement, noBraceBlock
 				// token labels: 
 				// rule labels: retval
 				// token list labels: 
@@ -579,7 +579,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: block, PROCEDURE, tableColumnArgs, ID
+			// elements: PROCEDURE, tableColumnArgs, ID, block
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -1141,7 +1141,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: EXEC, ID, procedureCallList
+			// elements: ID, procedureCallList, EXEC
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -1599,7 +1599,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: PROXIES, proxyTest, proxyList
+			// elements: proxyList, PROXIES, proxyTest
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -2000,7 +2000,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: block, WHILE
+			// elements: WHILE, block
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -2621,7 +2621,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: EXPAND, expandVar, expandVar, expandBlock
+			// elements: expandVar, EXPAND, expandVar, expandBlock
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -3717,7 +3717,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: assignmentExpression, ID
+			// elements: ID, assignmentExpression
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -3831,7 +3831,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: variableReference, assignmentExpression
+			// elements: assignmentExpression, variableReference
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -4953,7 +4953,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 				{
 				// AST REWRITE
-				// elements: sqlStatement, mathExpression
+				// elements: mathExpression, sqlStatement
 				// token labels: 
 				// rule labels: retval
 				// token list labels: 
@@ -5192,7 +5192,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: fromStatement, setArgs, ID, whereStatement, UPDATE
+			// elements: whereStatement, fromStatement, setArgs, ID, UPDATE
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -5566,7 +5566,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: selectArgs, selectArg
+			// elements: selectArg, selectArgs
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -5731,7 +5731,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: whereStatement, selectStatement, fromStatement
+			// elements: fromStatement, selectStatement, whereStatement
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -6069,7 +6069,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 				{
 				// AST REWRITE
-				// elements: a, FROM, innerJoinStatement
+				// elements: innerJoinStatement, a, FROM
 				// token labels: a
 				// rule labels: retval
 				// token list labels: 
@@ -6246,7 +6246,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 				{
 				// AST REWRITE
-				// elements: FROM, innerJoinStatement, tableGenerationClause, ID, tableHint
+				// elements: tableGenerationClause, ID, tableHint, innerJoinStatement, FROM
 				// token labels: 
 				// rule labels: retval
 				// token list labels: 
@@ -6742,7 +6742,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 				{
 				// AST REWRITE
-				// elements: JS, jsArg
+				// elements: jsArg, JS
 				// token labels: 
 				// rule labels: retval
 				// token list labels: 
@@ -7009,7 +7009,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: boolExpression, a, innerJoinStatement
+			// elements: innerJoinStatement, boolExpression, a
 			// token labels: a
 			// rule labels: retval
 			// token list labels: 
@@ -7521,7 +7521,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 				{
 				// AST REWRITE
-				// elements: SELECT, selectArgs
+				// elements: selectArgs, SELECT
 				// token labels: 
 				// rule labels: retval
 				// token list labels: 
@@ -7713,321 +7713,15 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 				{
 					int alt43=2;
 					try { DebugEnterDecision(43, false);
-					switch (input.LA(1))
+					try
 					{
-					case PICK:
-						{
-						int LA43_2 = input.LA(2);
-
-						if ((LA43_2==STRING_LITERAL))
-						{
-							switch (input.LA(3))
-							{
-							case TAKE:
-								{
-								switch (input.LA(4))
-								{
-								case ATTRIBUTE:
-									{
-									int LA43_5 = input.LA(5);
-
-									if ((LA43_5==STRING_LITERAL))
-									{
-										int LA43_6 = input.LA(6);
-
-										if ((LA43_6==MATCH))
-										{
-											int LA43_7 = input.LA(7);
-
-											if ((LA43_7==STRING_LITERAL))
-											{
-												int LA43_8 = input.LA(8);
-
-												if ((LA43_8==REPLACE))
-												{
-													int LA43_9 = input.LA(9);
-
-													if ((LA43_9==STRING_LITERAL))
-													{
-														int LA43_10 = input.LA(10);
-
-														if ((LA43_10==PLUS))
-														{
-															alt43 = 1;
-														}
-
-
-													}
-
-
-												}
-												else if ((LA43_8==PLUS))
-												{
-													alt43 = 1;
-												}
-
-
-											}
-
-
-										}
-										else if ((LA43_6==PLUS))
-										{
-											alt43 = 1;
-										}
-
-
-									}
-
-
-									}
-									break;
-								case TEXT:
-									{
-									int LA43_5 = input.LA(5);
-
-									if ((LA43_5==MATCH))
-									{
-										int LA43_6 = input.LA(6);
-
-										if ((LA43_6==STRING_LITERAL))
-										{
-											int LA43_7 = input.LA(7);
-
-											if ((LA43_7==REPLACE))
-											{
-												int LA43_8 = input.LA(8);
-
-												if ((LA43_8==STRING_LITERAL))
-												{
-													int LA43_9 = input.LA(9);
-
-													if ((LA43_9==PLUS))
-													{
-														alt43 = 1;
-													}
-
-
-												}
-
-
-											}
-											else if ((LA43_7==PLUS))
-											{
-												alt43 = 1;
-											}
-
-
-										}
-
-
-									}
-									else if ((LA43_5==PLUS))
-									{
-										alt43 = 1;
-									}
-
-
-									}
-									break;
-								case HTML:
-									{
-									int LA43_5 = input.LA(5);
-
-									if ((LA43_5==MATCH))
-									{
-										int LA43_6 = input.LA(6);
-
-										if ((LA43_6==STRING_LITERAL))
-										{
-											int LA43_7 = input.LA(7);
-
-											if ((LA43_7==REPLACE))
-											{
-												int LA43_8 = input.LA(8);
-
-												if ((LA43_8==STRING_LITERAL))
-												{
-													int LA43_9 = input.LA(9);
-
-													if ((LA43_9==PLUS))
-													{
-														alt43 = 1;
-													}
-
-
-												}
-
-
-											}
-											else if ((LA43_7==PLUS))
-											{
-												alt43 = 1;
-											}
-
-
-										}
-
-
-									}
-									else if ((LA43_5==PLUS))
-									{
-										alt43 = 1;
-									}
-
-
-									}
-									break;
-								}
-
-								}
-								break;
-							case MATCH:
-								{
-								int LA43_4 = input.LA(4);
-
-								if ((LA43_4==STRING_LITERAL))
-								{
-									int LA43_5 = input.LA(5);
-
-									if ((LA43_5==REPLACE))
-									{
-										int LA43_6 = input.LA(6);
-
-										if ((LA43_6==STRING_LITERAL))
-										{
-											int LA43_7 = input.LA(7);
-
-											if ((LA43_7==PLUS))
-											{
-												alt43 = 1;
-											}
-
-
-										}
-
-
-									}
-									else if ((LA43_5==PLUS))
-									{
-										alt43 = 1;
-									}
-
-
-								}
-
-
-								}
-								break;
-							case PLUS:
-								{
-								alt43 = 1;
-								}
-								break;
-							}
-
-						}
-
-
-						}
-						break;
-					case FL:
-					case INT:
-					case NULL:
-					case STRING_LITERAL:
-						{
-						int LA43_2 = input.LA(2);
-
-						if ((LA43_2==PLUS))
-						{
-							alt43 = 1;
-						}
-
-
-						}
-						break;
-					case ID:
-						{
-						int LA43_2 = input.LA(2);
-
-						if ((LA43_2==DOT))
-						{
-							int LA43_3 = input.LA(3);
-
-							if ((LA43_3==ID))
-							{
-								int LA43_4 = input.LA(4);
-
-								if ((LA43_4==PLUS))
-								{
-									alt43 = 1;
-								}
-
-
-							}
-
-
-						}
-						else if ((LA43_2==PLUS))
-						{
-							alt43 = 1;
-						}
-
-
-						}
-						break;
-					case COMMAND_VAR:
-						{
-						int LA43_2 = input.LA(2);
-
-						if ((LA43_2==PLUS))
-						{
-							alt43 = 1;
-						}
-
-
-						}
-						break;
-					case IDENTITY_VAR:
-						{
-						int LA43_2 = input.LA(2);
-
-						if ((LA43_2==PLUS))
-						{
-							alt43 = 1;
-						}
-
-
-						}
-						break;
-					case GETDATE:
-						{
-						int LA43_2 = input.LA(2);
-
-						if ((LA43_2==OPENPAREN))
-						{
-							int LA43_3 = input.LA(3);
-
-							if ((LA43_3==CLOSEPAREN))
-							{
-								int LA43_4 = input.LA(4);
-
-								if ((LA43_4==PLUS))
-								{
-									alt43 = 1;
-								}
-
-
-							}
-
-
-						}
-
-
-						}
-						break;
+						alt43 = dfa43.Predict(input);
 					}
-
+					catch (NoViableAltException nvae)
+					{
+						DebugRecognitionException(nvae);
+						throw;
+					}
 					} finally { DebugExitDecision(43); }
 					switch ( alt43 )
 					{
@@ -8366,7 +8060,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 				{
 				// AST REWRITE
-				// elements: whenBoolStatement, caseExpression
+				// elements: caseExpression, whenBoolStatement
 				// token labels: 
 				// rule labels: retval
 				// token list labels: 
@@ -8525,7 +8219,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 				{
 				// AST REWRITE
-				// elements: whenLiteralStatement, selectArg, caseExpression
+				// elements: caseExpression, selectArg, whenLiteralStatement
 				// token labels: 
 				// rule labels: retval
 				// token list labels: 
@@ -10031,7 +9725,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 	partial void EnterRule_pickStatement();
 	partial void LeaveRule_pickStatement();
 	// $ANTLR start "pickStatement"
-	// Scrape.g:363:1: pickStatement : PICK STRING_LITERAL ( takeStatement )? ( matchStatement )? -> ^( PICK STRING_LITERAL ( takeStatement )? ( matchStatement )? ) ;
+	// Scrape.g:363:1: pickStatement : PICK STRING_LITERAL ( takeStatement )? ( matchStatement )* -> ^( PICK STRING_LITERAL ( takeStatement )? ( matchStatement )* ) ;
 	[GrammarRule("pickStatement")]
 	private AstParserRuleReturnScope<CommonTree, CommonToken> pickStatement()
 	{
@@ -10058,9 +9752,9 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 		DebugLocation(363, 1);
 		try
 		{
-			// Scrape.g:364:2: ( PICK STRING_LITERAL ( takeStatement )? ( matchStatement )? -> ^( PICK STRING_LITERAL ( takeStatement )? ( matchStatement )? ) )
+			// Scrape.g:364:2: ( PICK STRING_LITERAL ( takeStatement )? ( matchStatement )* -> ^( PICK STRING_LITERAL ( takeStatement )? ( matchStatement )* ) )
 			DebugEnterAlt(1);
-			// Scrape.g:364:4: PICK STRING_LITERAL ( takeStatement )? ( matchStatement )?
+			// Scrape.g:364:4: PICK STRING_LITERAL ( takeStatement )? ( matchStatement )*
 			{
 			DebugLocation(364, 4);
 			PICK242=(CommonToken)Match(input,PICK,Follow._PICK_in_pickStatement2115); if (state.failed) return retval; 
@@ -10102,41 +9796,52 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 			} finally { DebugExitSubRule(56); }
 
 			DebugLocation(364, 39);
-			// Scrape.g:364:39: ( matchStatement )?
-			int alt57=2;
+			// Scrape.g:364:39: ( matchStatement )*
 			try { DebugEnterSubRule(57);
-			try { DebugEnterDecision(57, false);
-			int LA57_1 = input.LA(1);
+			while (true)
+			{
+				int alt57=2;
+				try { DebugEnterDecision(57, false);
+				int LA57_1 = input.LA(1);
 
-			if ((LA57_1==MATCH))
-			{
-				alt57 = 1;
-			}
-			} finally { DebugExitDecision(57); }
-			switch (alt57)
-			{
-			case 1:
-				DebugEnterAlt(1);
-				// Scrape.g:364:39: matchStatement
+				if ((LA57_1==MATCH))
 				{
-				DebugLocation(364, 39);
-				PushFollow(Follow._matchStatement_in_pickStatement2122);
-				matchStatement245=matchStatement();
-				PopFollow();
-				if (state.failed) return retval;
-				if (state.backtracking == 0) stream_matchStatement.Add(matchStatement245.Tree);
-
+					alt57 = 1;
 				}
-				break;
 
+
+				} finally { DebugExitDecision(57); }
+				switch ( alt57 )
+				{
+				case 1:
+					DebugEnterAlt(1);
+					// Scrape.g:364:39: matchStatement
+					{
+					DebugLocation(364, 39);
+					PushFollow(Follow._matchStatement_in_pickStatement2122);
+					matchStatement245=matchStatement();
+					PopFollow();
+					if (state.failed) return retval;
+					if (state.backtracking == 0) stream_matchStatement.Add(matchStatement245.Tree);
+
+					}
+					break;
+
+				default:
+					goto loop57;
+				}
 			}
+
+			loop57:
+				;
+
 			} finally { DebugExitSubRule(57); }
 
 
 
 			{
 			// AST REWRITE
-			// elements: PICK, matchStatement, STRING_LITERAL, takeStatement
+			// elements: STRING_LITERAL, PICK, takeStatement, matchStatement
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -10147,10 +9852,10 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.Tree:null);
 
 			root_0 = (CommonTree)adaptor.Nil();
-			// 364:55: -> ^( PICK STRING_LITERAL ( takeStatement )? ( matchStatement )? )
+			// 364:55: -> ^( PICK STRING_LITERAL ( takeStatement )? ( matchStatement )* )
 			{
 				DebugLocation(364, 58);
-				// Scrape.g:364:58: ^( PICK STRING_LITERAL ( takeStatement )? ( matchStatement )? )
+				// Scrape.g:364:58: ^( PICK STRING_LITERAL ( takeStatement )? ( matchStatement )* )
 				{
 				CommonTree root_1 = (CommonTree)adaptor.Nil();
 				DebugLocation(364, 60);
@@ -10168,8 +9873,8 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 				}
 				stream_takeStatement.Reset();
 				DebugLocation(364, 95);
-				// Scrape.g:364:95: ( matchStatement )?
-				if (stream_matchStatement.HasNext)
+				// Scrape.g:364:95: ( matchStatement )*
+				while ( stream_matchStatement.HasNext )
 				{
 					DebugLocation(364, 95);
 					adaptor.AddChild(root_1, stream_matchStatement.NextTree());
@@ -10550,7 +10255,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: MATCH, STRING_LITERAL, replaceStatement
+			// elements: STRING_LITERAL, MATCH, replaceStatement
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -10662,7 +10367,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: STRING_LITERAL, REPLACE
+			// elements: REPLACE, STRING_LITERAL
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -10941,7 +10646,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 				{
 				// AST REWRITE
-				// elements: fileTableLocation, fileTableWithStatement, tableColumnArgs, ID
+				// elements: fileTableLocation, fileTableWithStatement, ID, tableColumnArgs
 				// token labels: 
 				// rule labels: retval
 				// token list labels: 
@@ -11065,7 +10770,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 				{
 				// AST REWRITE
-				// elements: ID, tableColumnArgs
+				// elements: tableColumnArgs, ID
 				// token labels: 
 				// rule labels: retval
 				// token list labels: 
@@ -11184,7 +10889,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 				{
 				// AST REWRITE
-				// elements: sqlTableWithStatement, ID, tableColumnArgs
+				// elements: ID, tableColumnArgs, sqlTableWithStatement
 				// token labels: 
 				// rule labels: retval
 				// token list labels: 
@@ -11386,7 +11091,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: sqlTableWithVariablesStatement, WITH
+			// elements: WITH, sqlTableWithVariablesStatement
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -11793,7 +11498,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: fileTableWithVariablesStatement, WITH
+			// elements: WITH, fileTableWithVariablesStatement
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -12325,7 +12030,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: ID, dataType
+			// elements: dataType, ID
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -12628,12 +12333,14 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 	#region DFA
 	private DFA14 dfa14;
 	private DFA34 dfa34;
+	private DFA43 dfa43;
 
 	protected override void InitDFAs()
 	{
 		base.InitDFAs();
 		dfa14 = new DFA14( this, SpecialStateTransition14 );
 		dfa34 = new DFA34( this );
+		dfa43 = new DFA43( this );
 	}
 
 	private class DFA14 : DFA
@@ -12831,6 +12538,116 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 		}
 
 		public override string Description { get { return "()* loopback of 260:19: ( hint PIPE )*"; } }
+
+		public override void Error(NoViableAltException nvae)
+		{
+			DebugRecognitionException(nvae);
+		}
+	}
+
+	private class DFA43 : DFA
+	{
+		private const string DFA43_eotS =
+			"\x17\xFFFF";
+		private const string DFA43_eofS =
+			"\x2\xFFFF\x4\x8\x1\xFFFF\x1\x8\x6\xFFFF\x2\x8\x1\xFFFF\x4\x8\x1\xFFFF"+
+			"\x1\x8";
+		private const string DFA43_minS =
+			"\x1\x12\x1\x65\x4\xF\x1\x4E\x1\xF\x2\xFFFF\x1\x2E\x1\x10\x1\x7\x1\x65"+
+			"\x2\xF\x1\x65\x4\xF\x1\x65\x1\xF";
+		private const string DFA43_maxS =
+			"\x2\x65\x4\x7F\x1\x4E\x1\x7F\x2\xFFFF\x1\x2E\x1\x10\x1\x71\x1\x65\x2"+
+			"\x7F\x1\x65\x4\x7F\x1\x65\x1\x7F";
+		private const string DFA43_acceptS =
+			"\x8\xFFFF\x1\x2\x1\x1\xD\xFFFF";
+		private const string DFA43_specialS =
+			"\x17\xFFFF}>";
+		private static readonly string[] DFA43_transitionS =
+			{
+				"\x1\x4\x14\xFFFF\x1\x2\x2\xFFFF\x1\x6\x3\xFFFF\x1\x3\x1\xFFFF\x1\x5"+
+				"\x6\xFFFF\x1\x2\x13\xFFFF\x1\x2\x5\xFFFF\x1\x1\x13\xFFFF\x1\x2",
+				"\x1\x7",
+				"\x4\x8\x2\xFFFF\x1\x8\x7\xFFFF\x1\x8\x3\xFFFF\x1\x8\x7\xFFFF\x1\x8"+
+				"\x4\xFFFF\x1\x8\x1\xFFFF\x1\x8\x2\xFFFF\x2\x8\x1\xFFFF\x1\x8\x1C\xFFFF"+
+				"\x1\x9\xA\xFFFF\x1\x8\x16\xFFFF\x3\x8\x6\xFFFF\x2\x8",
+				"\x4\x8\x2\xFFFF\x1\x8\x4\xFFFF\x1\xA\x2\xFFFF\x1\x8\x3\xFFFF\x1\x8"+
+				"\x7\xFFFF\x1\x8\x4\xFFFF\x1\x8\x1\xFFFF\x1\x8\x2\xFFFF\x2\x8\x1\xFFFF"+
+				"\x1\x8\x1C\xFFFF\x1\x9\xA\xFFFF\x1\x8\x16\xFFFF\x3\x8\x6\xFFFF\x2\x8",
+				"\x4\x8\x2\xFFFF\x1\x8\x7\xFFFF\x1\x8\x3\xFFFF\x1\x8\x7\xFFFF\x1\x8"+
+				"\x4\xFFFF\x1\x8\x1\xFFFF\x1\x8\x2\xFFFF\x2\x8\x1\xFFFF\x1\x8\x1C\xFFFF"+
+				"\x1\x9\xA\xFFFF\x1\x8\x16\xFFFF\x3\x8\x6\xFFFF\x2\x8",
+				"\x4\x8\x2\xFFFF\x1\x8\x7\xFFFF\x1\x8\x3\xFFFF\x1\x8\x7\xFFFF\x1\x8"+
+				"\x4\xFFFF\x1\x8\x1\xFFFF\x1\x8\x2\xFFFF\x2\x8\x1\xFFFF\x1\x8\x1C\xFFFF"+
+				"\x1\x9\xA\xFFFF\x1\x8\x16\xFFFF\x3\x8\x6\xFFFF\x2\x8",
+				"\x1\xB",
+				"\x4\x8\x2\xFFFF\x1\x8\x7\xFFFF\x1\x8\x3\xFFFF\x1\x8\x7\xFFFF\x1\x8"+
+				"\x4\xFFFF\x1\x8\x1\xFFFF\x1\x8\x2\xFFFF\x2\x8\x1\xFFFF\x1\x8\xB\xFFFF"+
+				"\x1\xD\x10\xFFFF\x1\x9\xA\xFFFF\x1\x8\xD\xFFFF\x1\xC\x8\xFFFF\x3\x8"+
+				"\x6\xFFFF\x2\x8",
+				"",
+				"",
+				"\x1\xE",
+				"\x1\xF",
+				"\x1\x10\x25\xFFFF\x1\x12\x43\xFFFF\x1\x11",
+				"\x1\x13",
+				"\x4\x8\x2\xFFFF\x1\x8\x7\xFFFF\x1\x8\x3\xFFFF\x1\x8\x7\xFFFF\x1\x8"+
+				"\x4\xFFFF\x1\x8\x1\xFFFF\x1\x8\x2\xFFFF\x2\x8\x1\xFFFF\x1\x8\x1C\xFFFF"+
+				"\x1\x9\xA\xFFFF\x1\x8\x16\xFFFF\x3\x8\x6\xFFFF\x2\x8",
+				"\x4\x8\x2\xFFFF\x1\x8\x7\xFFFF\x1\x8\x3\xFFFF\x1\x8\x7\xFFFF\x1\x8"+
+				"\x4\xFFFF\x1\x8\x1\xFFFF\x1\x8\x2\xFFFF\x2\x8\x1\xFFFF\x1\x8\x1C\xFFFF"+
+				"\x1\x9\xA\xFFFF\x1\x8\x16\xFFFF\x3\x8\x6\xFFFF\x2\x8",
+				"\x1\x14",
+				"\x4\x8\x2\xFFFF\x1\x8\x7\xFFFF\x1\x8\x3\xFFFF\x1\x8\x7\xFFFF\x1\x8"+
+				"\x4\xFFFF\x1\x8\x1\xFFFF\x1\x8\x2\xFFFF\x2\x8\x1\xFFFF\x1\x8\xB\xFFFF"+
+				"\x1\xD\x10\xFFFF\x1\x9\xA\xFFFF\x1\x8\x16\xFFFF\x3\x8\x6\xFFFF\x2\x8",
+				"\x4\x8\x2\xFFFF\x1\x8\x7\xFFFF\x1\x8\x3\xFFFF\x1\x8\x7\xFFFF\x1\x8"+
+				"\x4\xFFFF\x1\x8\x1\xFFFF\x1\x8\x2\xFFFF\x2\x8\x1\xFFFF\x1\x8\xB\xFFFF"+
+				"\x1\xD\x10\xFFFF\x1\x9\xA\xFFFF\x1\x8\x16\xFFFF\x3\x8\x6\xFFFF\x2\x8",
+				"\x4\x8\x2\xFFFF\x1\x8\x7\xFFFF\x1\x8\x3\xFFFF\x1\x8\x7\xFFFF\x1\x8"+
+				"\x4\xFFFF\x1\x8\x1\xFFFF\x1\x8\x2\xFFFF\x2\x8\x1\xFFFF\x1\x8\xB\xFFFF"+
+				"\x1\xD\x10\xFFFF\x1\x9\x7\xFFFF\x1\x15\x2\xFFFF\x1\x8\x16\xFFFF\x3\x8"+
+				"\x6\xFFFF\x2\x8",
+				"\x4\x8\x2\xFFFF\x1\x8\x7\xFFFF\x1\x8\x3\xFFFF\x1\x8\x7\xFFFF\x1\x8"+
+				"\x4\xFFFF\x1\x8\x1\xFFFF\x1\x8\x2\xFFFF\x2\x8\x1\xFFFF\x1\x8\xB\xFFFF"+
+				"\x1\xD\x10\xFFFF\x1\x9\xA\xFFFF\x1\x8\x16\xFFFF\x3\x8\x6\xFFFF\x2\x8",
+				"\x1\x16",
+				"\x4\x8\x2\xFFFF\x1\x8\x7\xFFFF\x1\x8\x3\xFFFF\x1\x8\x7\xFFFF\x1\x8"+
+				"\x4\xFFFF\x1\x8\x1\xFFFF\x1\x8\x2\xFFFF\x2\x8\x1\xFFFF\x1\x8\xB\xFFFF"+
+				"\x1\xD\x10\xFFFF\x1\x9\xA\xFFFF\x1\x8\x16\xFFFF\x3\x8\x6\xFFFF\x2\x8"
+			};
+
+		private static readonly short[] DFA43_eot = DFA.UnpackEncodedString(DFA43_eotS);
+		private static readonly short[] DFA43_eof = DFA.UnpackEncodedString(DFA43_eofS);
+		private static readonly char[] DFA43_min = DFA.UnpackEncodedStringToUnsignedChars(DFA43_minS);
+		private static readonly char[] DFA43_max = DFA.UnpackEncodedStringToUnsignedChars(DFA43_maxS);
+		private static readonly short[] DFA43_accept = DFA.UnpackEncodedString(DFA43_acceptS);
+		private static readonly short[] DFA43_special = DFA.UnpackEncodedString(DFA43_specialS);
+		private static readonly short[][] DFA43_transition;
+
+		static DFA43()
+		{
+			int numStates = DFA43_transitionS.Length;
+			DFA43_transition = new short[numStates][];
+			for ( int i=0; i < numStates; i++ )
+			{
+				DFA43_transition[i] = DFA.UnpackEncodedString(DFA43_transitionS[i]);
+			}
+		}
+
+		public DFA43( BaseRecognizer recognizer )
+		{
+			this.recognizer = recognizer;
+			this.decisionNumber = 43;
+			this.eot = DFA43_eot;
+			this.eof = DFA43_eof;
+			this.min = DFA43_min;
+			this.max = DFA43_max;
+			this.accept = DFA43_accept;
+			this.special = DFA43_special;
+			this.transition = DFA43_transition;
+		}
+
+		public override string Description { get { return "()* loopback of 296:4: ( selectArg PLUS )*"; } }
 
 		public override void Error(NoViableAltException nvae)
 		{
@@ -13093,7 +12910,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 		public static readonly BitSet _PICK_in_pickStatement2115 = new BitSet(new ulong[]{0x0UL,0x2000000000UL});
 		public static readonly BitSet _STRING_LITERAL_in_pickStatement2117 = new BitSet(new ulong[]{0x2UL,0x100000000004UL});
 		public static readonly BitSet _takeStatement_in_pickStatement2119 = new BitSet(new ulong[]{0x2UL,0x4UL});
-		public static readonly BitSet _matchStatement_in_pickStatement2122 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _matchStatement_in_pickStatement2122 = new BitSet(new ulong[]{0x2UL,0x4UL});
 		public static readonly BitSet _TAKE_in_takeStatement2149 = new BitSet(new ulong[]{0x80UL});
 		public static readonly BitSet _ATTRIBUTE_in_takeStatement2151 = new BitSet(new ulong[]{0x0UL,0x2000000000UL});
 		public static readonly BitSet _STRING_LITERAL_in_takeStatement2153 = new BitSet(new ulong[]{0x2UL});

@@ -15,10 +15,6 @@
 using Pickaxe.Sdk;
 using System;
 using System.CodeDom;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Pickaxe.CodeDom.Semantic;
 using Pickaxe.Runtime;
 using Pickaxe.Runtime.Dom;
@@ -61,17 +57,21 @@ namespace Pickaxe.CodeDom.Visitor
             var takeExpression = takeDomArg.CodeExpression as CodeMethodInvokeExpression;
             takeExpression.Method.TargetObject = expression;
 
-            if (statement.Match != null && statement.Match.Replace != null)
+            var aggExpression = takeExpression;
+            foreach (var match in statement.Matches)
             {
-                takeExpression = new CodeMethodInvokeExpression(takeExpression, "MatchReplace", new CodePrimitiveExpression(statement.Match.Value), new CodePrimitiveExpression(statement.Match.Replace.Value));
-            }
-            else if (statement.Match != null)
-            {
-                takeExpression = new CodeMethodInvokeExpression(takeExpression, "Match", new CodePrimitiveExpression(statement.Match.Value));
+                if (match.Replace != null)
+                {
+                    aggExpression = new CodeMethodInvokeExpression(aggExpression, "MatchReplace", new CodePrimitiveExpression(match.Value), new CodePrimitiveExpression(match.Replace.Value));
+                }
+                else // no replace
+                {
+                    aggExpression = new CodeMethodInvokeExpression(aggExpression, "Match", new CodePrimitiveExpression(match.Value));
+                }
             }
 
             _codeStack.Peek().Tag = true;
-            _codeStack.Peek().CodeExpression = takeExpression;
+            _codeStack.Peek().CodeExpression = aggExpression;
             _codeStack.Peek().Scope = new ScopeData<Type> { Type = typeof(string), CodeDomReference = new CodeTypeReference(typeof(string)) };
         }
     }

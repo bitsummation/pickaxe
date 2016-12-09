@@ -27,11 +27,11 @@ namespace Pickaxe.Sdk
             }
         }
 
-        public MatchExpression Match
+        public MatchExpression[] Matches
         {
             get
             {
-                return Children.Where(x => x.GetType() == typeof(MatchExpression)).Cast<MatchExpression>().SingleOrDefault();
+                return Children.Where(x => x.GetType() == typeof(MatchExpression)).Cast<MatchExpression>().ToArray();
             }
         }
 
