@@ -23,7 +23,6 @@ from download page (select
 where nodes = 'table.asos tbody tr'
 
 select
-	d.url,
 	s.city,
 	s.state,
 	pick 'tr:nth-of-type(3) td:nth-of-type(2)', --temp
