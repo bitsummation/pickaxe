@@ -13,23 +13,25 @@ each(var p in pages){
 	from expand(1 to p.endPage) 
 }
 
-create buffer companies(company string, ticker string)
+create buffer companies(company string, ticker string, url string)
 
 --get all nasdaq companies
 insert into companies
 select
 	pick 'td:nth-child(1) a:first-child',
-	pick 'td:nth-child(2) h3 a' match '\w+'
+	pick 'td:nth-child(2) h3 a' match '\w+',
+	'https://www.google.com/finance?q=' + pick 'td:nth-child(2) h3 a' match '\w+'
 from download page (select url from pageUrls) with (thread(10))
 where nodes = '#CompanylistResults tr'
 
---get all nasdaq prices from yahoo
+--get all nasdaq prices from google
 create buffer prices(company string, price string)
 insert into prices
 select
-	pick '.title h2',
-	pick '.time_rtq_ticker'
-from download page (select 'http://finance.yahoo.com/q?s=' + ticker from companies) with (thread(10))
+	c.ticker,
+	pick '.pr'
+from download page (select url from companies where company != null and ticker != null) d with (thread(10))
+join companies c on c.url = d.url
 
 select *
 from prices
