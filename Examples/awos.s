@@ -23,11 +23,18 @@ from download page (select
 where nodes = 'table.asos tbody tr'
 
 select
+	d.url,
 	s.city,
 	s.state,
-	pick 'td:nth-child(2)'
+	pick 'tr:nth-of-type(3) td:nth-of-type(2)', --temp
+	pick 'tr:nth-of-type(4) td:nth-of-type(2)', --dewpoint
+	pick 'tr:nth-of-type(5) td:nth-of-type(2)', --pressure
+	pick 'tr:nth-of-type(6) td:nth-of-type(2)', --winds
+	pick 'tr:nth-of-type(7) td:nth-of-type(2)', --Visbility
+	pick 'tr:nth-of-type(8) td:nth-of-type(2)', --ceiling,
+	pick 'tr:nth-of-type(8) td:nth-of-type(2)' --clouds,
 from download page (select url from station) d with (thread(10))
 join station s on s.url = d.url
-where nodes = 'table[cellpadding="3"] tr:nth-last-of-type(n+2)'
+where nodes = '#awc_main_content table:not([align="left"])'
 
 
