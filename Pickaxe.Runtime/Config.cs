@@ -23,6 +23,6 @@ namespace Pickaxe.Runtime
     public static class Config
     {
         public const string LogKey = "tabname";
-        public static DomFactory DomFactory = new AgilityPackFizzler.AgilityFactory();
+        public static DomFactory DomFactory = new AngleSharp.AngleSharpFactory();
     }
 }
