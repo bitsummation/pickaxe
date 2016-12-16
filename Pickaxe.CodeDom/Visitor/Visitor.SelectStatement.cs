@@ -232,7 +232,7 @@ namespace Pickaxe.CodeDom.Visitor
                 if (outerLoopNeeded)
                 {
                     var aliases = Scope.Current.AliasType<DownloadPage>();
-                    //outerLoop.Statements.Add(new CodeMethodInvokeExpression(new CodePropertyReferenceExpression(new CodeVariableReferenceExpression("row"), aliases[0]), "Clear"));
+                    outerLoop.Statements.Add(new CodeMethodInvokeExpression(new CodePropertyReferenceExpression(new CodeVariableReferenceExpression("row"), aliases[0]), "Clear"));
                 }
 
                 var callSelect = new CodeExpressionStatement(new CodeMethodInvokeExpression(null, "OnSelect", new CodeVariableReferenceExpression("result")));

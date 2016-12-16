@@ -75,6 +75,7 @@
     <Compile Include="Debug\BreakProcesser.cs" />
     <Compile Include="Debug\IBreak.cs" />
     <Compile Include="Debug\IDebug.cs" />
+    <Compile Include="Dom\CacheElement.cs" />
     <Compile Include="Dom\DomFactory.cs" />
     <Compile Include="Dom\HtmlDoc.cs" />
     <Compile Include="Dom\HtmlElement.cs" />

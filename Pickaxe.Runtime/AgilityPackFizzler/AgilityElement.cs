@@ -78,5 +78,10 @@ namespace Pickaxe.Runtime.AgilityPackFizzler
         {
             return Element.InnerText;
         }
+
+        internal override void Clear()
+        {
+            Handle = null;
+        }
     }
 }

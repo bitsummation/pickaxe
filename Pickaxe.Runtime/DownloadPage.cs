@@ -36,7 +36,7 @@ namespace Pickaxe.Runtime
 
         public virtual void Clear()
         {
-            nodes = null;
+            nodes.Clear();
         }
 
         public virtual bool CssWhere(ref DownloadPage page, string selector)

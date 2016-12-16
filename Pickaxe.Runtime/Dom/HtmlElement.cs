@@ -26,8 +26,11 @@ namespace Pickaxe.Runtime.Dom
             if (handle == null)
                 throw new InvalidOperationException("handle should not be null");
 
+            Cache = new Dictionary<string, CacheElement>();
             Handle = handle;
         }
+
+        internal Dictionary<string, CacheElement> Cache { get; private set; } 
 
         internal object Handle { get; set; }
 
@@ -38,5 +41,7 @@ namespace Pickaxe.Runtime.Dom
         internal abstract string TakeAttribute(string attr);
         internal abstract string TakeText();
         internal abstract string TakeHtml();
+
+        internal abstract void Clear();
     }
 }

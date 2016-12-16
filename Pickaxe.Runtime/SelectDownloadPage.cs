@@ -37,12 +37,13 @@ namespace Pickaxe.Runtime
         {
             if(nodes.Count() > 0)
                 Inner.nodes = new DownloadedNodes(nodes.First().QuerySelectorAll(CssSelector));
+
+            CssSelector = null;
         }
 
         public override void Clear()
         {
             Inner.Clear();
-            Inner = null;
         }
     }
 }

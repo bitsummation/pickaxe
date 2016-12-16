@@ -24,8 +24,12 @@ namespace Pickaxe.Runtime.AngleSharp
 {
     internal class AngleSharpElement : HtmlElement
     {
-        internal AngleSharpElement(IElement element) : base(element)
-        { }
+        private string _pickSelector;
+
+        internal AngleSharpElement(IElement element, string pickSelector) : base(element)
+        {
+            _pickSelector = pickSelector;
+        }
 
         internal IElement Element
         {
@@ -42,9 +46,16 @@ namespace Pickaxe.Runtime.AngleSharp
 
         public override HtmlElement QuerySelector(string cssSelector)
         {
+            if (Cache.ContainsKey(cssSelector))
+                return Cache[cssSelector];
+
             var node = Element.QuerySelector(cssSelector);
             if (node != null)
-                return new AngleSharpElement(node);
+            {
+                var element = new AngleSharpElement(node, cssSelector);
+                element.Cache.Add(cssSelector, new CacheElement());
+                return element;
+            }
 
             return null;
         }
@@ -54,7 +65,7 @@ namespace Pickaxe.Runtime.AngleSharp
             var list = new List<HtmlElement>();
 
             foreach (var e in Element.QuerySelectorAll(cssSelector).ToArray())
-                list.Add(new AngleSharpElement(e));
+                list.Add(new AngleSharpElement(e, null));
 
             return list.ToArray();
         }
@@ -62,19 +73,29 @@ namespace Pickaxe.Runtime.AngleSharp
         internal override string TakeAttribute(string attr)
         {
             if (AttributeExists(attr))
+            {
+                Cache[_pickSelector].AttrCache.Add(attr, Element.Attributes[attr].Value);
                 return Element.Attributes[attr].Value;
+            }
 
             return null;
         }
 
         internal override string TakeHtml()
         {
+            Cache[_pickSelector].Html = Element.InnerHtml;
             return Element.InnerHtml;
         }
 
         internal override string TakeText()
         {
+            Cache[_pickSelector].Text = Element.TextContent;
             return Element.TextContent;
+        }
+
+        internal override void Clear()
+        {
+            Handle = null;
         }
     }
 }

@@ -31,7 +31,7 @@ namespace Pickaxe.Runtime.AngleSharp
         {
             get
             {
-                return new AngleSharpElement(_doc.DocumentElement);
+                return new AngleSharpElement(_doc.DocumentElement, null);
             }
         }
 

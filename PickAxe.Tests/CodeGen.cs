@@ -31,8 +31,8 @@ namespace PickAxe.Tests
         {
             ServicePointManager.DefaultConnectionLimit = int.MaxValue;
             ServicePointManager.SecurityProtocol |= (SecurityProtocolType)3072; //TLS 1.2
-            //var code = new Code(new string[0]);
-            //code.Run();
+            var code = new Code(new string[0]);
+            code.Run();
         }
        
         [Test]
@@ -40,15 +40,23 @@ namespace PickAxe.Tests
         {
               var input = @"
 
+create buffer specialty(id identity, url string, spec string)
 
+insert into specialty
 select
-	pick 'td:nth-child(1) a' take attribute 'href' match 'raw' replace 'decoded', --match 'hours=36' replace 'hours=0', --link to details
-	pick 'td:nth-child(1) a', --station
-	pick 'td:nth-child(2)', --city
-	pick 'td:nth-child(4)' --state
-from download page 'https://www.faa.gov/air_traffic/weather/asos/?state=OR'
-where nodes = 'table.asos tbody tr'
+	'http://doctor.webmd.com' + pick 'a' take attribute 'href',
+	pick 'a'
+from download page 'http://doctor.webmd.com/find-a-doctor/specialties'
+where nodes ='section.seo-lists div:nth-child(3) li'
 
+
+--states
+select
+	'http://doctor.webmd.com' + pick 'a' take attribute 'href',
+	d.url,
+	spec
+from download page (select url from specialty) d with (thread(4))
+join specialty s on s.url = d.url and d.nodes = 'div.states li'
 
 ";
 

@@ -25,7 +25,12 @@ namespace Pickaxe.Runtime
             _nodes = new HtmlElement[0];
         }
 
-        public DownloadedNodes(HtmlDoc doc) : this (new[] { doc.FirstElement})
+        public static DownloadedNodes FromHtmlDoc(HtmlDoc doc)
+        {
+            return new DownloadedNodes(doc);
+        }
+
+        private DownloadedNodes(HtmlDoc doc) : this (new[] { doc.FirstElement})
         {
             if (doc.IsEmpty) //no nodes in root
                 _nodes = new HtmlElement[0];
@@ -34,6 +39,12 @@ namespace Pickaxe.Runtime
         public DownloadedNodes(IEnumerable<HtmlElement> nodes)
         {
             _nodes = nodes;
+        }
+
+        public void Clear()
+        {
+            foreach (var node in _nodes)
+                node.Clear();
         }
 
         public IEnumerator<HtmlElement> GetEnumerator()
