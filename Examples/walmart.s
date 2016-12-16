@@ -30,12 +30,11 @@ select 'http://walmart.com' + relativeUrl
 from categories    
 where relativeUrl like '%/browse/%'
 
-
 insert into division
 select
     pick '' take attribute 'href'
 from download page (select 'http://walmart.com' + relativeUrl from categories where relativeUrl like '%/cp/%') with (thread(5))
-where nodes = '.ModuleDrawerTile-link'    
+where nodes = 'a.TempoCategoryTile-tile-overlay'    
 
 update division
 set url = 'http://walmart.com' + url
