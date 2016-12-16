@@ -42,12 +42,12 @@ namespace Pickaxe.Runtime.Dom
 
         internal override string TakeText()
         {
-            throw new NotImplementedException();
+            return Text;
         }
 
         internal override string TakeHtml()
         {
-            throw new NotImplementedException();
+            return Html;
         }
 
         internal override void Clear()

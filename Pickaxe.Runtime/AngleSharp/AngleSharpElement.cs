@@ -46,14 +46,17 @@ namespace Pickaxe.Runtime.AngleSharp
 
         public override HtmlElement QuerySelector(string cssSelector)
         {
-            if (Cache.ContainsKey(cssSelector))
+            if (Element == null && Cache.ContainsKey(cssSelector))
                 return Cache[cssSelector];
 
             var node = Element.QuerySelector(cssSelector);
             if (node != null)
             {
+                if(!Cache.ContainsKey(cssSelector))
+                    Cache.Add(cssSelector, new CacheElement());
+                
                 var element = new AngleSharpElement(node, cssSelector);
-                element.Cache.Add(cssSelector, new CacheElement());
+                element.Cache = Cache;
                 return element;
             }
 

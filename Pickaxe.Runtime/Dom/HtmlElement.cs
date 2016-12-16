@@ -30,7 +30,7 @@ namespace Pickaxe.Runtime.Dom
             Handle = handle;
         }
 
-        internal Dictionary<string, CacheElement> Cache { get; private set; } 
+        internal Dictionary<string, CacheElement> Cache { get; set; } 
 
         internal object Handle { get; set; }
 
