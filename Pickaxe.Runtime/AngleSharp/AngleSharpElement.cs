@@ -49,13 +49,16 @@ namespace Pickaxe.Runtime.AngleSharp
             if (Element == null && Cache.ContainsKey(cssSelector))
                 return Cache[cssSelector];
 
-            var node = Element.QuerySelector(cssSelector);
-            if (node != null)
+            IElement returnNode = Element;
+            if(!string.IsNullOrEmpty(cssSelector))
+                returnNode = Element.QuerySelector(cssSelector);
+
+            if (returnNode != null)
             {
                 if(!Cache.ContainsKey(cssSelector))
                     Cache.Add(cssSelector, new CacheElement());
-                
-                var element = new AngleSharpElement(node, cssSelector);
+
+                var element = new AngleSharpElement(returnNode, cssSelector);
                 element.Cache = Cache;
                 return element;
             }

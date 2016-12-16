@@ -19,85 +19,92 @@ using System.Linq;
 public class Code : RuntimeBase
 {
 
-    private Scope_d18c866693af4bf790e1ab771616caf2 _Scope_d18c866693af4bf790e1ab771616caf2;
+    private Scope_8dfe732b2bda4e9ab508d180c6fbbec7 _Scope_8dfe732b2bda4e9ab508d180c6fbbec7;
 
-    private Scope_e65069abca6c40bc87a931d47aaf829b _Scope_e65069abca6c40bc87a931d47aaf829b;
+    private Scope_630a58f5085046f9b8ae371b47a3d059 _Scope_630a58f5085046f9b8ae371b47a3d059;
 
     public Code(string[] args) :
         base(args)
     {
-        _Scope_d18c866693af4bf790e1ab771616caf2 = new Scope_d18c866693af4bf790e1ab771616caf2();
-        _Scope_e65069abca6c40bc87a931d47aaf829b = new Scope_e65069abca6c40bc87a931d47aaf829b();
+        _Scope_8dfe732b2bda4e9ab508d180c6fbbec7 = new Scope_8dfe732b2bda4e9ab508d180c6fbbec7();
+        _Scope_630a58f5085046f9b8ae371b47a3d059 = new Scope_630a58f5085046f9b8ae371b47a3d059();
         TotalOperations = (TotalOperations + 2);
     }
 
     public void Run()
     {
         InitProxies();
-        Block_366598335ed8458d8d235126886847c9();
-        Step_d681d994e7f4419fa20a57cebff18a99();
+        Block_da1bb42a72a441e39927c63ec440936e();
+        Step_0efb733c4fe844b789a66bf2e2215121();
     }
 
-    public void Block_366598335ed8458d8d235126886847c9()
+    public void Block_da1bb42a72a441e39927c63ec440936e()
     {
-        Step_7bf4c14a3e9f4aad93f087e913a0a297();
-        Step_33f9cae88f224ef18641930ee0a39763();
+        Step_e27c71722bb74afe98b01ab32b5e554a();
+        Step_0079f9f726174b00bf685411fe9888e6();
     }
 
-    private CodeTable<anon_78043731f5f34f92a88ffad8e787aab3> From_a3c03791676f4e7ebe31ab2cbbe05cc1()
+    private CodeTable<anon_c4ce52c2b81548ff8336a665ca72e628> From_a1150f36367142cbabf66d2ee9e3c202()
     {
-        Call(9);
-        IEnumerable<anon_78043731f5f34f92a88ffad8e787aab3> join = Fetch_78fed019d3e64955ac2764502d47e75d();
-        CodeTable<anon_78043731f5f34f92a88ffad8e787aab3> newTable = new CodeTable<anon_78043731f5f34f92a88ffad8e787aab3>();
+        Call(10);
+        IEnumerable<anon_c4ce52c2b81548ff8336a665ca72e628> join = Fetch_fbe15ab6f9504a279264d5a496f75d13();
+        CodeTable<anon_c4ce52c2b81548ff8336a665ca72e628> newTable = new CodeTable<anon_c4ce52c2b81548ff8336a665ca72e628>();
         newTable.SetRows(join.ToList());
         return newTable;
     }
 
-    private RuntimeTable<DownloadPage> Download_0615cdedec754410955af12cb203a098()
+    private CodeTable<anon_6ce54fa854704a58ad49ba0cce4a6c67> From_2b1b6dd0349347bdb0c87393d9f8c76f()
     {
-        Call(9);
-        return new SelectDownloadTable(Pickaxe.Runtime.LazyDownloadArgs.CreateWebRequestArgs(this, 9, 1, "http://doctor.webmd.com/find-a-doctor/specialties"));
+        Call(13);
+        IEnumerable<anon_6ce54fa854704a58ad49ba0cce4a6c67> join = Fetch_56c94dcfb131458786b4faa4d57f267d();
+        CodeTable<anon_6ce54fa854704a58ad49ba0cce4a6c67> newTable = new CodeTable<anon_6ce54fa854704a58ad49ba0cce4a6c67>();
+        newTable.SetRows(join.ToList());
+        return newTable;
     }
 
-    private IEnumerable<anon_78043731f5f34f92a88ffad8e787aab3> Fetch_78fed019d3e64955ac2764502d47e75d()
+    private RuntimeTable<DownloadPage> Download_cde3c511edc24a6aaa8e6b892cc05467()
     {
-        RuntimeTable<DownloadPage> table = Download_0615cdedec754410955af12cb203a098();
+        Call(13);
+        return new SelectDownloadTable(Pickaxe.Runtime.LazyDownloadArgs.CreateWebRequestArgs(this, 13, 1, "http://www.golaketravis.com/waterlevel/"));
+    }
+
+    private IEnumerable<anon_6ce54fa854704a58ad49ba0cce4a6c67> Fetch_56c94dcfb131458786b4faa4d57f267d()
+    {
+        RuntimeTable<DownloadPage> table = Download_cde3c511edc24a6aaa8e6b892cc05467();
         return table.Select(o =>
         {
-            return Copy_9851f5e707824ea1a5b6d9b5d5c0f05c(o);
+            return Copy_fb6917b30448424ba3c5229da3acb6e0(o);
         });
     }
 
-    private anon_78043731f5f34f92a88ffad8e787aab3 Copy_9851f5e707824ea1a5b6d9b5d5c0f05c(DownloadPage o)
+    private anon_6ce54fa854704a58ad49ba0cce4a6c67 Copy_fb6917b30448424ba3c5229da3acb6e0(DownloadPage o)
     {
-        anon_78043731f5f34f92a88ffad8e787aab3 t = new anon_78043731f5f34f92a88ffad8e787aab3();
+        anon_6ce54fa854704a58ad49ba0cce4a6c67 t = new anon_6ce54fa854704a58ad49ba0cce4a6c67();
         t.DownloadPage = o;
         return t;
     }
 
-    private Table<ResultRow> Select_cf310b8823374e25921b9e57b2dd87f7()
+    private Table<ResultRow> Select_4d2df6ab95ae4bc5852046b2522f7a3b()
     {
-        Call(6);
+        Call(11);
         RuntimeTable<ResultRow> result = new RuntimeTable<ResultRow>();
         result.AddColumn("(No column name)");
-        result.AddColumn("a");
-        CodeTable<anon_78043731f5f34f92a88ffad8e787aab3> fromTable = From_a3c03791676f4e7ebe31ab2cbbe05cc1();
-        fromTable = Where_2ed5f16592f34197969ab115411fd731(fromTable);
-        IEnumerator<anon_78043731f5f34f92a88ffad8e787aab3> x = fromTable.GetEnumerator();
+        CodeTable<anon_6ce54fa854704a58ad49ba0cce4a6c67> fromTable = From_2b1b6dd0349347bdb0c87393d9f8c76f();
+        fromTable = Where_d669577facaf4af9aa5b22bd81c382d3(fromTable);
+        IEnumerator<anon_6ce54fa854704a58ad49ba0cce4a6c67> x = fromTable.GetEnumerator();
         for (
         ; x.MoveNext();
         )
         {
-            anon_78043731f5f34f92a88ffad8e787aab3 row = x.Current;
+            anon_6ce54fa854704a58ad49ba0cce4a6c67 row = x.Current;
             IEnumerator<HtmlElement> y = row.DownloadPage.nodes.GetEnumerator();
             for (
             ; y.MoveNext();
             )
             {
                 HtmlElement node = y.Current;
-                ResultRow resultRow = new ResultRow(2);
-                resultRow[0] = Pickaxe.Runtime.Helper.NullConcat("http://doctor.webmd.com", node.Pick("a").TakeAttribute("href"));
-                resultRow[1] = node.Pick("a").TakeText();
+                ResultRow resultRow = new ResultRow(1);
+                resultRow[0] = Pickaxe.Runtime.Helper.NullConcat("http://www.golaketravis.com/waterlevel/", node.Pick("").TakeAttribute("href"));
                 result.Add(resultRow);
             }
             row.DownloadPage.Clear();
@@ -105,278 +112,230 @@ public class Code : RuntimeBase
         return result;
     }
 
-    private CodeTable<anon_78043731f5f34f92a88ffad8e787aab3> Where_2ed5f16592f34197969ab115411fd731(CodeTable<anon_78043731f5f34f92a88ffad8e787aab3> table)
+    private CodeTable<anon_6ce54fa854704a58ad49ba0cce4a6c67> Where_d669577facaf4af9aa5b22bd81c382d3(CodeTable<anon_6ce54fa854704a58ad49ba0cce4a6c67> table)
     {
-        Call(10);
-        CodeTable<anon_78043731f5f34f92a88ffad8e787aab3> newTable = new CodeTable<anon_78043731f5f34f92a88ffad8e787aab3>();
-        IList<anon_78043731f5f34f92a88ffad8e787aab3> rows = table.Where(row =>
+        Call(14);
+        CodeTable<anon_6ce54fa854704a58ad49ba0cce4a6c67> newTable = new CodeTable<anon_6ce54fa854704a58ad49ba0cce4a6c67>();
+        IList<anon_6ce54fa854704a58ad49ba0cce4a6c67> rows = table.Where(row =>
         {
-            return row.DownloadPage.CssWhere(ref row.DownloadPage, "section.seo-lists div:nth-child(3) li");
+            return row.DownloadPage.CssWhere(ref row.DownloadPage, "table[width=\"100%\"] td[style=\"background-color: #62ABCC;\"] p.white a");
         }).ToList();
         newTable.SetRows(rows);
         return newTable;
     }
 
-    private void Insert_84a6e454241d4fed8b7532a0f9309575()
+    private RuntimeTable<DownloadPage> Download_870b92d6d51745aaa5095aac50d842ba()
     {
-        Call(5);
-        Table<ResultRow> resultRows = Select_cf310b8823374e25921b9e57b2dd87f7();
-        _Scope_e65069abca6c40bc87a931d47aaf829b.specialty.BeforeInsert(false);
-        _Scope_d18c866693af4bf790e1ab771616caf2.g_identity = _Scope_e65069abca6c40bc87a931d47aaf829b.specialty.RowCount;
-        IEnumerator<ResultRow> x = resultRows.GetEnumerator();
-        for (
-        ; x.MoveNext();
-        )
-        {
-            _Scope_d18c866693af4bf790e1ab771616caf2.g_identity = (_Scope_d18c866693af4bf790e1ab771616caf2.g_identity + 1);
-            ResultRow row = x.Current;
-            specialty tableRow = new specialty();
-            tableRow.id = _Scope_d18c866693af4bf790e1ab771616caf2.g_identity;
-            tableRow.url = null;
-            if ((row[0] != null))
-            {
-                tableRow.url = Convert.ToString(row[0]);
-            }
-            tableRow.spec = null;
-            if ((row[1] != null))
-            {
-                tableRow.spec = Convert.ToString(row[1]);
-            }
-            _Scope_e65069abca6c40bc87a931d47aaf829b.specialty.Add(tableRow);
-        }
-        _Scope_e65069abca6c40bc87a931d47aaf829b.specialty.AfterInsert();
+        Call(10);
+        return new SelectDownloadTable(Pickaxe.Runtime.LazyDownloadArgs.CreateWebRequestArgs(this, 10, 10, Select_4d2df6ab95ae4bc5852046b2522f7a3b()));
     }
 
-    public void Step_7bf4c14a3e9f4aad93f087e913a0a297()
+    private IEnumerable<anon_c4ce52c2b81548ff8336a665ca72e628> Fetch_fbe15ab6f9504a279264d5a496f75d13()
     {
-        Insert_84a6e454241d4fed8b7532a0f9309575();
-        OnProgress();
-    }
-
-    private CodeTable<anon_7760c78b53b04a9dae05f2bcb750f205> From_8d95be5f05b94af4a69b8d457d480890()
-    {
-        Call(18);
-        IEnumerable<anon_3c3f1c8d45574955857b39955b5565f5> join = Fetch_0d1f9e63a26e49cbb0c89b084ecdb9e9();
-        return Join_624f8dcd877e4c70b9c28c9f4e42b3b4(join);
-    }
-
-    private CodeTable<anon_a260b3d58c0a4ac1b447cb789b903d38> From_1c48a7cde3d44485a658f033895f1308()
-    {
-        Call(18);
-        IEnumerable<anon_a260b3d58c0a4ac1b447cb789b903d38> join = Fetch_31fc7c568a08458c8728524eb1572420();
-        CodeTable<anon_a260b3d58c0a4ac1b447cb789b903d38> newTable = new CodeTable<anon_a260b3d58c0a4ac1b447cb789b903d38>();
-        newTable.SetRows(join.ToList());
-        return newTable;
-    }
-
-    private IEnumerable<anon_a260b3d58c0a4ac1b447cb789b903d38> Fetch_31fc7c568a08458c8728524eb1572420()
-    {
-        CodeTable<specialty> table = _Scope_e65069abca6c40bc87a931d47aaf829b.specialty;
+        RuntimeTable<DownloadPage> table = Download_870b92d6d51745aaa5095aac50d842ba();
         return table.Select(o =>
         {
-            return Copy_ba99b5510dc4436a8880965cb9042a64(o);
+            return Copy_1b6bd57d3e69428dbad8f6cab7c77dea(o);
         });
     }
 
-    private anon_a260b3d58c0a4ac1b447cb789b903d38 Copy_ba99b5510dc4436a8880965cb9042a64(specialty o)
+    private anon_c4ce52c2b81548ff8336a665ca72e628 Copy_1b6bd57d3e69428dbad8f6cab7c77dea(DownloadPage o)
     {
-        anon_a260b3d58c0a4ac1b447cb789b903d38 t = new anon_a260b3d58c0a4ac1b447cb789b903d38();
-        t.specialty = o;
+        anon_c4ce52c2b81548ff8336a665ca72e628 t = new anon_c4ce52c2b81548ff8336a665ca72e628();
+        t.DownloadPage = o;
         return t;
     }
 
-    private Table<ResultRow> Select_32dfbe9b40204eefb5222bdecc417626()
+    private Table<ResultRow> Select_568fdc533f8940febf421911ff951abc()
     {
-        Call(18);
+        Call(6);
         RuntimeTable<ResultRow> result = new RuntimeTable<ResultRow>();
-        result.AddColumn("url");
-        CodeTable<anon_a260b3d58c0a4ac1b447cb789b903d38> fromTable = From_1c48a7cde3d44485a658f033895f1308();
-        IEnumerator<anon_a260b3d58c0a4ac1b447cb789b903d38> x = fromTable.GetEnumerator();
+        result.AddColumn("td:nth-child(1) p.bold");
+        result.AddColumn("td:nth-child(1) p.bold");
+        result.AddColumn("td:nth-child(2) p");
+        CodeTable<anon_c4ce52c2b81548ff8336a665ca72e628> fromTable = From_a1150f36367142cbabf66d2ee9e3c202();
+        fromTable = Where_24d8b762d4b74d30b3e54e8c50349216(fromTable);
+        IEnumerator<anon_c4ce52c2b81548ff8336a665ca72e628> x = fromTable.GetEnumerator();
         for (
         ; x.MoveNext();
         )
         {
-            anon_a260b3d58c0a4ac1b447cb789b903d38 row = x.Current;
-            ResultRow resultRow = new ResultRow(1);
-            resultRow[0] = row.specialty.url;
-            result.Add(resultRow);
-        }
-        return result;
-    }
-
-    private RuntimeTable<DownloadPage> Download_64a36b7dc84f435a9fb46b1bc819de46()
-    {
-        Call(18);
-        return new SelectDownloadTable(Pickaxe.Runtime.LazyDownloadArgs.CreateWebRequestArgs(this, 18, 4, Select_32dfbe9b40204eefb5222bdecc417626()));
-    }
-
-    private IEnumerable<anon_3c3f1c8d45574955857b39955b5565f5> Fetch_0d1f9e63a26e49cbb0c89b084ecdb9e9()
-    {
-        RuntimeTable<DownloadPage> table = Download_64a36b7dc84f435a9fb46b1bc819de46();
-        return table.Select(o =>
-        {
-            return Copy_8cb662ceb923448ebfa637fd90910d73(o);
-        });
-    }
-
-    private anon_3c3f1c8d45574955857b39955b5565f5 Copy_8cb662ceb923448ebfa637fd90910d73(DownloadPage o)
-    {
-        anon_3c3f1c8d45574955857b39955b5565f5 t = new anon_3c3f1c8d45574955857b39955b5565f5();
-        t.d = o;
-        return t;
-    }
-
-    private CodeTable<anon_7760c78b53b04a9dae05f2bcb750f205> Join_624f8dcd877e4c70b9c28c9f4e42b3b4(IEnumerable<anon_3c3f1c8d45574955857b39955b5565f5> outer)
-    {
-        Call(19);
-        IEnumerable<anon_198f26b7905c4bada7d550940534b415> table = Fetch_5b6da73f0a554ca9bb7dac48b9bdfbae();
-        IList<anon_7760c78b53b04a9dae05f2bcb750f205> join = new List<anon_7760c78b53b04a9dae05f2bcb750f205>();
-        IEnumerator<anon_3c3f1c8d45574955857b39955b5565f5> o = outer.GetEnumerator();
-        for (
-        ; o.MoveNext();
-        )
-        {
-            anon_3c3f1c8d45574955857b39955b5565f5 oc = o.Current;
-            IEnumerator<anon_198f26b7905c4bada7d550940534b415> i = table.GetEnumerator();
-            for (
-            ; i.MoveNext();
-            )
-            {
-                anon_198f26b7905c4bada7d550940534b415 ic = i.Current;
-                if (((ic.s.url == oc.d.url)
-            && oc.d.CssWhere(ref oc.d, "div.states li")))
-                {
-                    anon_7760c78b53b04a9dae05f2bcb750f205 t = new anon_7760c78b53b04a9dae05f2bcb750f205();
-                    t.d = oc.d;
-                    t.s = ic.s;
-                    join.Add(t);
-                }
-            }
-        }
-        CodeTable<anon_7760c78b53b04a9dae05f2bcb750f205> newTable = new CodeTable<anon_7760c78b53b04a9dae05f2bcb750f205>();
-        newTable.SetRows(join.ToList());
-        return newTable;
-    }
-
-    private IEnumerable<anon_198f26b7905c4bada7d550940534b415> Fetch_5b6da73f0a554ca9bb7dac48b9bdfbae()
-    {
-        CodeTable<specialty> table = _Scope_e65069abca6c40bc87a931d47aaf829b.specialty;
-        return table.Select(o =>
-        {
-            return Copy_50b22c358adc45b2a4b2b4b2654243be(o);
-        });
-    }
-
-    private anon_198f26b7905c4bada7d550940534b415 Copy_50b22c358adc45b2a4b2b4b2654243be(specialty o)
-    {
-        anon_198f26b7905c4bada7d550940534b415 t = new anon_198f26b7905c4bada7d550940534b415();
-        t.s = o;
-        return t;
-    }
-
-    private Table<ResultRow> Select_fb982a63e33340a281868f3dbf9186b1()
-    {
-        Call(14);
-        RuntimeTable<ResultRow> result = new RuntimeTable<ResultRow>();
-        result.AddColumn("(No column name)");
-        result.AddColumn("url");
-        result.AddColumn("spec");
-        CodeTable<anon_7760c78b53b04a9dae05f2bcb750f205> fromTable = From_8d95be5f05b94af4a69b8d457d480890();
-        IEnumerator<anon_7760c78b53b04a9dae05f2bcb750f205> x = fromTable.GetEnumerator();
-        for (
-        ; x.MoveNext();
-        )
-        {
-            anon_7760c78b53b04a9dae05f2bcb750f205 row = x.Current;
-            IEnumerator<HtmlElement> y = row.d.nodes.GetEnumerator();
+            anon_c4ce52c2b81548ff8336a665ca72e628 row = x.Current;
+            IEnumerator<HtmlElement> y = row.DownloadPage.nodes.GetEnumerator();
             for (
             ; y.MoveNext();
             )
             {
                 HtmlElement node = y.Current;
                 ResultRow resultRow = new ResultRow(3);
-                resultRow[0] = Pickaxe.Runtime.Helper.NullConcat("http://doctor.webmd.com", node.Pick("a").TakeAttribute("href"));
-                resultRow[1] = row.d.url;
-                resultRow[2] = row.s.spec;
+                resultRow[0] = node.Pick("td:nth-child(1) p.bold").TakeText().MatchReplace("(\\d+)-(\\w+)", "$2");
+                resultRow[1] = node.Pick("td:nth-child(1) p.bold").TakeText().MatchReplace("(\\d+)-(\\w+)", "$1");
+                resultRow[2] = node.Pick("td:nth-child(2) p").TakeText().Match("\\d{3}\\.\\d{2}");
                 result.Add(resultRow);
             }
-            row.d.Clear();
+            row.DownloadPage.Clear();
+        }
+        return result;
+    }
+
+    private CodeTable<anon_c4ce52c2b81548ff8336a665ca72e628> Where_24d8b762d4b74d30b3e54e8c50349216(CodeTable<anon_c4ce52c2b81548ff8336a665ca72e628> table)
+    {
+        Call(16);
+        CodeTable<anon_c4ce52c2b81548ff8336a665ca72e628> newTable = new CodeTable<anon_c4ce52c2b81548ff8336a665ca72e628>();
+        IList<anon_c4ce52c2b81548ff8336a665ca72e628> rows = table.Where(row =>
+        {
+            return row.DownloadPage.CssWhere(ref row.DownloadPage, "table[width=\"600\"] tr");
+        }).ToList();
+        newTable.SetRows(rows);
+        return newTable;
+    }
+
+    private void Insert_695fb06464bb4c90be7de32f7886fc10()
+    {
+        Call(5);
+        Table<ResultRow> resultRows = Select_568fdc533f8940febf421911ff951abc();
+        _Scope_630a58f5085046f9b8ae371b47a3d059.levels.BeforeInsert(false);
+        _Scope_8dfe732b2bda4e9ab508d180c6fbbec7.g_identity = _Scope_630a58f5085046f9b8ae371b47a3d059.levels.RowCount;
+        IEnumerator<ResultRow> x = resultRows.GetEnumerator();
+        for (
+        ; x.MoveNext();
+        )
+        {
+            _Scope_8dfe732b2bda4e9ab508d180c6fbbec7.g_identity = (_Scope_8dfe732b2bda4e9ab508d180c6fbbec7.g_identity + 1);
+            ResultRow row = x.Current;
+            levels tableRow = new levels();
+            tableRow.month = null;
+            if ((row[0] != null))
+            {
+                tableRow.month = Convert.ToString(row[0]);
+            }
+            tableRow.year = null;
+            if ((row[1] != null))
+            {
+                tableRow.year = Convert.ToString(row[1]);
+            }
+            tableRow.level = null;
+            if ((row[2] != null))
+            {
+                tableRow.level = Convert.ToSingle(row[2]);
+            }
+            _Scope_630a58f5085046f9b8ae371b47a3d059.levels.Add(tableRow);
+        }
+        _Scope_630a58f5085046f9b8ae371b47a3d059.levels.AfterInsert();
+    }
+
+    public void Step_e27c71722bb74afe98b01ab32b5e554a()
+    {
+        Insert_695fb06464bb4c90be7de32f7886fc10();
+        OnProgress();
+    }
+
+    private CodeTable<anon_d2ccb6644f6447189942a34379619c9c> From_dc05354c94884a5cb5a3b73dd40be1b8()
+    {
+        Call(19);
+        IEnumerable<anon_d2ccb6644f6447189942a34379619c9c> join = Fetch_9c1879177a2d4909b8ad5a1ccfb662e0();
+        CodeTable<anon_d2ccb6644f6447189942a34379619c9c> newTable = new CodeTable<anon_d2ccb6644f6447189942a34379619c9c>();
+        newTable.SetRows(join.ToList());
+        return newTable;
+    }
+
+    private IEnumerable<anon_d2ccb6644f6447189942a34379619c9c> Fetch_9c1879177a2d4909b8ad5a1ccfb662e0()
+    {
+        CodeTable<levels> table = _Scope_630a58f5085046f9b8ae371b47a3d059.levels;
+        return table.Select(o =>
+        {
+            return Copy_d9124d2cc0294724a2915e0b8f0373c5(o);
+        });
+    }
+
+    private anon_d2ccb6644f6447189942a34379619c9c Copy_d9124d2cc0294724a2915e0b8f0373c5(levels o)
+    {
+        anon_d2ccb6644f6447189942a34379619c9c t = new anon_d2ccb6644f6447189942a34379619c9c();
+        t.levels = o;
+        return t;
+    }
+
+    private Table<ResultRow> Select_d0c39ff7d08c463dae23d0df92f1017f()
+    {
+        Call(18);
+        RuntimeTable<ResultRow> result = new RuntimeTable<ResultRow>();
+        result.AddColumn("month");
+        result.AddColumn("year");
+        result.AddColumn("level");
+        CodeTable<anon_d2ccb6644f6447189942a34379619c9c> fromTable = From_dc05354c94884a5cb5a3b73dd40be1b8();
+        IEnumerator<anon_d2ccb6644f6447189942a34379619c9c> x = fromTable.GetEnumerator();
+        for (
+        ; x.MoveNext();
+        )
+        {
+            anon_d2ccb6644f6447189942a34379619c9c row = x.Current;
+            ResultRow resultRow = new ResultRow(3);
+            resultRow[0] = row.levels.month;
+            resultRow[1] = row.levels.year;
+            resultRow[2] = row.levels.level;
+            result.Add(resultRow);
         }
         OnSelect(result);
         return result;
     }
 
-    public void Step_33f9cae88f224ef18641930ee0a39763()
+    public void Step_0079f9f726174b00bf685411fe9888e6()
     {
-        Select_fb982a63e33340a281868f3dbf9186b1();
+        Select_d0c39ff7d08c463dae23d0df92f1017f();
         OnProgress();
     }
 
-    public void Step_d681d994e7f4419fa20a57cebff18a99()
+    public void Step_0efb733c4fe844b789a66bf2e2215121()
     {
         OnProgress(new ProgressArgs(TotalOperations, TotalOperations));
     }
 
-    private class Scope_d18c866693af4bf790e1ab771616caf2
+    private class Scope_8dfe732b2bda4e9ab508d180c6fbbec7
     {
 
         public int g_identity;
 
-        public Scope_d18c866693af4bf790e1ab771616caf2()
+        public Scope_8dfe732b2bda4e9ab508d180c6fbbec7()
         {
         }
     }
 
-    private class Scope_e65069abca6c40bc87a931d47aaf829b
+    private class Scope_630a58f5085046f9b8ae371b47a3d059
     {
 
-        public CodeTable<specialty> specialty;
+        public CodeTable<levels> levels;
 
-        public Scope_e65069abca6c40bc87a931d47aaf829b()
+        public Scope_630a58f5085046f9b8ae371b47a3d059()
         {
-            specialty = new BufferTable<specialty>();
+            levels = new BufferTable<levels>();
         }
     }
 
-    private class specialty : IRow
+    private class levels : IRow
     {
 
-        public System.Nullable<int> id;
+        public string month;
 
-        public string url;
+        public string year;
 
-        public string spec;
+        public System.Nullable<float> level;
     }
 
-    private class anon_78043731f5f34f92a88ffad8e787aab3 : IRow
+    private class anon_6ce54fa854704a58ad49ba0cce4a6c67 : IRow
     {
 
         public DownloadPage DownloadPage;
     }
 
-    private class anon_a260b3d58c0a4ac1b447cb789b903d38 : IRow
+    private class anon_c4ce52c2b81548ff8336a665ca72e628 : IRow
     {
 
-        public specialty specialty;
+        public DownloadPage DownloadPage;
     }
 
-    private class anon_3c3f1c8d45574955857b39955b5565f5 : IRow
+    private class anon_d2ccb6644f6447189942a34379619c9c : IRow
     {
 
-        public DownloadPage d;
-    }
-
-    private class anon_198f26b7905c4bada7d550940534b415 : IRow
-    {
-
-        public specialty s;
-    }
-
-    private class anon_7760c78b53b04a9dae05f2bcb750f205 : IRow
-    {
-
-        public DownloadPage d;
-
-        public specialty s;
+        public levels levels;
     }
 }

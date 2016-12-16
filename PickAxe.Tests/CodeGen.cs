@@ -40,23 +40,23 @@ namespace PickAxe.Tests
         {
               var input = @"
 
-create buffer specialty(id identity, url string, spec string)
+create buffer levels(month string, year string, level float)
 
-insert into specialty
+insert into levels
 select
-	'http://doctor.webmd.com' + pick 'a' take attribute 'href',
-	pick 'a'
-from download page 'http://doctor.webmd.com/find-a-doctor/specialties'
-where nodes ='section.seo-lists div:nth-child(3) li'
+	pick 'td:nth-child(1) p.bold' match '(\d+)-(\w+)' replace '$2',
+	pick 'td:nth-child(1) p.bold' match '(\d+)-(\w+)' replace '$1',
+	pick 'td:nth-child(2) p' match '\d{3}\.\d{2}'
+from download page (
+	select
+		'http://www.golaketravis.com/waterlevel/' + pick '' take attribute 'href'
+	from download page 'http://www.golaketravis.com/waterlevel/'
+	where nodes = 'table[width=""100%""] td[style=""background-color: #62ABCC;""] p.white a'
+	) with (thread(10))
+where nodes = 'table[width=""600""] tr'
 
-
---states
-select
-	'http://doctor.webmd.com' + pick 'a' take attribute 'href',
-	d.url,
-	spec
-from download page (select url from specialty) d with (thread(4))
-join specialty s on s.url = d.url and d.nodes = 'div.states li'
+select *
+from levels
 
 ";
 

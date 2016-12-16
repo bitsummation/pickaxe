@@ -43,11 +43,7 @@ namespace Pickaxe.Runtime
 
         public static HtmlElement Pick(this HtmlElement node, string selector)
         {
-            HtmlElement returnNode = node;
-            if(!string.IsNullOrEmpty(selector))
-                returnNode = node.QuerySelector(selector);
-
-            return returnNode;
+            return node.QuerySelector(selector);
         }
 
         public static string TakeAttribute(this HtmlElement node, string attribute)
