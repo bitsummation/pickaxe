@@ -42,6 +42,7 @@ tokens {
   VARIABLE_DECLARATION;
   VARIABLE_ASSIGNMENT;
   SELECT_STATEMENT;
+  NESTED_SELECT_STATEMENT;
   SELECT_ARG;
   TAKE_ATTRIBUTE;
   TAKE_TEXT;
@@ -244,7 +245,11 @@ setArg
 /************* SELECTS *******************/
 
 sqlStatement
-	: selectStatement fromStatement? whereStatement? -> ^(SELECT_STATEMENT selectStatement fromStatement? whereStatement?)
+	: selectStatement^ fromStatement? whereStatement?
+	;
+
+nestedSqlStatement
+	: nestedSelectStatement^ fromStatement? whereStatement?
 	;
 
 whereStatement
@@ -254,6 +259,7 @@ whereStatement
 fromStatement
 	: FROM t=ID a=ID? innerJoinStatement? -> ^(FROM TABLE_VARIABLE_REFERENCE[$t] ^(TABLE_ALIAS $a)? innerJoinStatement?) 
 	| FROM tableGenerationClause ID? tableHint? innerJoinStatement? -> ^(FROM tableGenerationClause ^(TABLE_ALIAS ID)? tableHint? innerJoinStatement?)
+	| FROM OPENPAREN nestedSqlStatement CLOSEPAREN ID? innerJoinStatement? -> ^(FROM nestedSqlStatement ^(TABLE_ALIAS ID)? innerJoinStatement?)
 	;
 
 tableHint
@@ -287,10 +293,13 @@ innerJoin
 	;
 
 selectStatement
-	: SELECT (selectArgs COMMA)* selectArgs -> ^(SELECT selectArgs*)
-	| SELECT ASTERISK -> ^(SELECT ^(SELECT_ARG SELECT_ALL[$ASTERISK]))
+	: SELECT (selectArgs COMMA)* selectArgs -> ^(SELECT_STATEMENT selectArgs*)
+	| SELECT ASTERISK -> ^(SELECT_STATEMENT ^(SELECT_ARG SELECT_ALL[$ASTERISK]))
 	;
 
+nestedSelectStatement
+	: SELECT (selectArgs COMMA)* selectArgs -> ^(NESTED_SELECT_STATEMENT selectArgs*)
+	;
 
 selectArgs
 	: (selectArg PLUS)* selectArg -> ^(SELECT_ARG selectArg*)

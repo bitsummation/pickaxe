@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// $ANTLR 3.5.2 Scrape.g 2016-12-12 21:15:31
+// $ANTLR 3.5.2 Scrape.g 2016-12-17 12:08:03
 
 // The variable 'variable' is assigned but its value is never used.
 #pragma warning disable 219
@@ -29,8 +29,8 @@ using Antlr.Runtime.Misc;
 public partial class ScrapeLexer : Antlr.Runtime.Lexer
 {
 	public const int EOF=-1;
-	public const int T__130=130;
 	public const int T__131=131;
+	public const int T__132=132;
 	public const int AND=4;
 	public const int APOSTRAPHE=5;
 	public const int ASTERISK=6;
@@ -98,65 +98,66 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 	public const int MINIS=68;
 	public const int MSSQL=69;
 	public const int MSSQL_TABLE=70;
-	public const int NEWLINE=71;
-	public const int NODES=72;
-	public const int NOTEQUAL=73;
-	public const int NOTLIKE=74;
-	public const int NULL=75;
-	public const int NULL_OPERATOR=76;
-	public const int OPENBRACE=77;
-	public const int OPENPAREN=78;
-	public const int OR=79;
-	public const int OTHERCHARS=80;
-	public const int PICK=81;
-	public const int PIPE=82;
-	public const int PLUS=83;
-	public const int POST_PICK=84;
-	public const int PRE_PICK=85;
-	public const int PROCEDURE=86;
-	public const int PROGRAM=87;
-	public const int PROXIES=88;
-	public const int PROXY_LIST=89;
-	public const int QUOTE=90;
-	public const int REPLACE=91;
-	public const int ROW_REFERENCE=92;
-	public const int ROW_TERMINATOR=93;
-	public const int SELECT=94;
-	public const int SELECT_ALL=95;
-	public const int SELECT_ARG=96;
-	public const int SELECT_ID=97;
-	public const int SELECT_STATEMENT=98;
-	public const int SET=99;
-	public const int STRING=100;
-	public const int STRING_LITERAL=101;
-	public const int TABLE=102;
-	public const int TABLE_ALIAS=103;
-	public const int TABLE_COLUMN_ARG=104;
-	public const int TABLE_COLUMN_ARGS=105;
-	public const int TABLE_MEMBER_REFERENCE=106;
-	public const int TABLE_VARIABLE_REFERENCE=107;
-	public const int TAKE=108;
-	public const int TAKE_ATTRIBUTE=109;
-	public const int TAKE_HTML=110;
-	public const int TAKE_TEXT=111;
-	public const int TEST=112;
-	public const int TEXT=113;
-	public const int THEN=114;
-	public const int THREAD=115;
-	public const int TO=116;
-	public const int TRUNCATE=117;
-	public const int UPDATE=118;
-	public const int VAR=119;
-	public const int VARIABLE_ASSIGNMENT=120;
-	public const int VARIABLE_DECLARATION=121;
-	public const int VARIABLE_REFERENCE=122;
-	public const int WHEN=123;
-	public const int WHEN_BOOL_STATEMENT=124;
-	public const int WHEN_LITERAL_STATEMENT=125;
-	public const int WHERE=126;
-	public const int WHILE=127;
-	public const int WITH=128;
-	public const int WS=129;
+	public const int NESTED_SELECT_STATEMENT=71;
+	public const int NEWLINE=72;
+	public const int NODES=73;
+	public const int NOTEQUAL=74;
+	public const int NOTLIKE=75;
+	public const int NULL=76;
+	public const int NULL_OPERATOR=77;
+	public const int OPENBRACE=78;
+	public const int OPENPAREN=79;
+	public const int OR=80;
+	public const int OTHERCHARS=81;
+	public const int PICK=82;
+	public const int PIPE=83;
+	public const int PLUS=84;
+	public const int POST_PICK=85;
+	public const int PRE_PICK=86;
+	public const int PROCEDURE=87;
+	public const int PROGRAM=88;
+	public const int PROXIES=89;
+	public const int PROXY_LIST=90;
+	public const int QUOTE=91;
+	public const int REPLACE=92;
+	public const int ROW_REFERENCE=93;
+	public const int ROW_TERMINATOR=94;
+	public const int SELECT=95;
+	public const int SELECT_ALL=96;
+	public const int SELECT_ARG=97;
+	public const int SELECT_ID=98;
+	public const int SELECT_STATEMENT=99;
+	public const int SET=100;
+	public const int STRING=101;
+	public const int STRING_LITERAL=102;
+	public const int TABLE=103;
+	public const int TABLE_ALIAS=104;
+	public const int TABLE_COLUMN_ARG=105;
+	public const int TABLE_COLUMN_ARGS=106;
+	public const int TABLE_MEMBER_REFERENCE=107;
+	public const int TABLE_VARIABLE_REFERENCE=108;
+	public const int TAKE=109;
+	public const int TAKE_ATTRIBUTE=110;
+	public const int TAKE_HTML=111;
+	public const int TAKE_TEXT=112;
+	public const int TEST=113;
+	public const int TEXT=114;
+	public const int THEN=115;
+	public const int THREAD=116;
+	public const int TO=117;
+	public const int TRUNCATE=118;
+	public const int UPDATE=119;
+	public const int VAR=120;
+	public const int VARIABLE_ASSIGNMENT=121;
+	public const int VARIABLE_DECLARATION=122;
+	public const int VARIABLE_REFERENCE=123;
+	public const int WHEN=124;
+	public const int WHEN_BOOL_STATEMENT=125;
+	public const int WHEN_LITERAL_STATEMENT=126;
+	public const int WHERE=127;
+	public const int WHILE=128;
+	public const int WITH=129;
+	public const int WS=130;
 
 	// delegates
 	// delegators
@@ -184,19 +185,19 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 	partial void EnterRule(string ruleName, int ruleIndex);
 	partial void LeaveRule(string ruleName, int ruleIndex);
 
-	partial void EnterRule_T__130();
-	partial void LeaveRule_T__130();
+	partial void EnterRule_T__131();
+	partial void LeaveRule_T__131();
 
-	// $ANTLR start "T__130"
-	[GrammarRule("T__130")]
-	private void mT__130()
+	// $ANTLR start "T__131"
+	[GrammarRule("T__131")]
+	private void mT__131()
 	{
-		EnterRule_T__130();
-		EnterRule("T__130", 1);
-		TraceIn("T__130", 1);
+		EnterRule_T__131();
+		EnterRule("T__131", 1);
+		TraceIn("T__131", 1);
 		try
 		{
-			int _type = T__130;
+			int _type = T__131;
 			int _channel = DefaultTokenChannel;
 			// Scrape.g:8:8: ( '$' )
 			DebugEnterAlt(1);
@@ -212,26 +213,26 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("T__130", 1);
-			LeaveRule("T__130", 1);
-			LeaveRule_T__130();
+			TraceOut("T__131", 1);
+			LeaveRule("T__131", 1);
+			LeaveRule_T__131();
 		}
 	}
-	// $ANTLR end "T__130"
+	// $ANTLR end "T__131"
 
-	partial void EnterRule_T__131();
-	partial void LeaveRule_T__131();
+	partial void EnterRule_T__132();
+	partial void LeaveRule_T__132();
 
-	// $ANTLR start "T__131"
-	[GrammarRule("T__131")]
-	private void mT__131()
+	// $ANTLR start "T__132"
+	[GrammarRule("T__132")]
+	private void mT__132()
 	{
-		EnterRule_T__131();
-		EnterRule("T__131", 2);
-		TraceIn("T__131", 2);
+		EnterRule_T__132();
+		EnterRule("T__132", 2);
+		TraceIn("T__132", 2);
 		try
 		{
-			int _type = T__131;
+			int _type = T__132;
 			int _channel = DefaultTokenChannel;
 			// Scrape.g:9:8: ( 'on' )
 			DebugEnterAlt(1);
@@ -248,12 +249,12 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("T__131", 2);
-			LeaveRule("T__131", 2);
-			LeaveRule_T__131();
+			TraceOut("T__132", 2);
+			LeaveRule("T__132", 2);
+			LeaveRule_T__132();
 		}
 	}
-	// $ANTLR end "T__131"
+	// $ANTLR end "T__132"
 
 	partial void EnterRule_PROCEDURE();
 	partial void LeaveRule_PROCEDURE();
@@ -269,11 +270,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = PROCEDURE;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:436:10: ( 'procedure' )
+			// Scrape.g:445:10: ( 'procedure' )
 			DebugEnterAlt(1);
-			// Scrape.g:436:12: 'procedure'
+			// Scrape.g:445:12: 'procedure'
 			{
-			DebugLocation(436, 12);
+			DebugLocation(445, 12);
 			Match("procedure"); 
 
 
@@ -305,11 +306,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = GETDATE;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:437:9: ( 'getdate' )
+			// Scrape.g:446:9: ( 'getdate' )
 			DebugEnterAlt(1);
-			// Scrape.g:437:11: 'getdate'
+			// Scrape.g:446:11: 'getdate'
 			{
-			DebugLocation(437, 11);
+			DebugLocation(446, 11);
 			Match("getdate"); 
 
 
@@ -341,11 +342,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = EXEC;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:438:5: ( 'exec' )
+			// Scrape.g:447:5: ( 'exec' )
 			DebugEnterAlt(1);
-			// Scrape.g:438:7: 'exec'
+			// Scrape.g:447:7: 'exec'
 			{
-			DebugLocation(438, 7);
+			DebugLocation(447, 7);
 			Match("exec"); 
 
 
@@ -377,11 +378,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = CASE;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:439:5: ( 'case' )
+			// Scrape.g:448:5: ( 'case' )
 			DebugEnterAlt(1);
-			// Scrape.g:439:7: 'case'
+			// Scrape.g:448:7: 'case'
 			{
-			DebugLocation(439, 7);
+			DebugLocation(448, 7);
 			Match("case"); 
 
 
@@ -413,11 +414,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = WHEN;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:440:5: ( 'when' )
+			// Scrape.g:449:5: ( 'when' )
 			DebugEnterAlt(1);
-			// Scrape.g:440:7: 'when'
+			// Scrape.g:449:7: 'when'
 			{
-			DebugLocation(440, 7);
+			DebugLocation(449, 7);
 			Match("when"); 
 
 
@@ -449,11 +450,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = THEN;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:441:5: ( 'then' )
+			// Scrape.g:450:5: ( 'then' )
 			DebugEnterAlt(1);
-			// Scrape.g:441:7: 'then'
+			// Scrape.g:450:7: 'then'
 			{
-			DebugLocation(441, 7);
+			DebugLocation(450, 7);
 			Match("then"); 
 
 
@@ -485,11 +486,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = END;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:442:4: ( 'end' )
+			// Scrape.g:451:4: ( 'end' )
 			DebugEnterAlt(1);
-			// Scrape.g:442:6: 'end'
+			// Scrape.g:451:6: 'end'
 			{
-			DebugLocation(442, 6);
+			DebugLocation(451, 6);
 			Match("end"); 
 
 
@@ -521,11 +522,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = ELSE;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:443:5: ( 'else' )
+			// Scrape.g:452:5: ( 'else' )
 			DebugEnterAlt(1);
-			// Scrape.g:443:7: 'else'
+			// Scrape.g:452:7: 'else'
 			{
-			DebugLocation(443, 7);
+			DebugLocation(452, 7);
 			Match("else"); 
 
 
@@ -557,11 +558,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = VAR;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:445:4: ( 'var' )
+			// Scrape.g:454:4: ( 'var' )
 			DebugEnterAlt(1);
-			// Scrape.g:445:6: 'var'
+			// Scrape.g:454:6: 'var'
 			{
-			DebugLocation(445, 6);
+			DebugLocation(454, 6);
 			Match("var"); 
 
 
@@ -593,11 +594,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = AND;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:447:5: ( 'and' )
+			// Scrape.g:456:5: ( 'and' )
 			DebugEnterAlt(1);
-			// Scrape.g:447:7: 'and'
+			// Scrape.g:456:7: 'and'
 			{
-			DebugLocation(447, 7);
+			DebugLocation(456, 7);
 			Match("and"); 
 
 
@@ -629,11 +630,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = OR;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:448:4: ( 'or' )
+			// Scrape.g:457:4: ( 'or' )
 			DebugEnterAlt(1);
-			// Scrape.g:448:6: 'or'
+			// Scrape.g:457:6: 'or'
 			{
-			DebugLocation(448, 6);
+			DebugLocation(457, 6);
 			Match("or"); 
 
 
@@ -665,11 +666,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = EQUALS;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:450:8: ( '=' )
+			// Scrape.g:459:8: ( '=' )
 			DebugEnterAlt(1);
-			// Scrape.g:450:10: '='
+			// Scrape.g:459:10: '='
 			{
-			DebugLocation(450, 10);
+			DebugLocation(459, 10);
 			Match('='); 
 
 			}
@@ -700,11 +701,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = LESSTHAN;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:451:10: ( '<' )
+			// Scrape.g:460:10: ( '<' )
 			DebugEnterAlt(1);
-			// Scrape.g:451:12: '<'
+			// Scrape.g:460:12: '<'
 			{
-			DebugLocation(451, 12);
+			DebugLocation(460, 12);
 			Match('<'); 
 
 			}
@@ -735,11 +736,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = LESSTHANEQUAL;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:452:14: ( '<=' )
+			// Scrape.g:461:14: ( '<=' )
 			DebugEnterAlt(1);
-			// Scrape.g:452:16: '<='
+			// Scrape.g:461:16: '<='
 			{
-			DebugLocation(452, 16);
+			DebugLocation(461, 16);
 			Match("<="); 
 
 
@@ -771,11 +772,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = GREATERTHAN;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:453:12: ( '>' )
+			// Scrape.g:462:12: ( '>' )
 			DebugEnterAlt(1);
-			// Scrape.g:453:14: '>'
+			// Scrape.g:462:14: '>'
 			{
-			DebugLocation(453, 14);
+			DebugLocation(462, 14);
 			Match('>'); 
 
 			}
@@ -806,11 +807,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = GREATERTHANEQUAL;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:454:17: ( '>=' )
+			// Scrape.g:463:17: ( '>=' )
 			DebugEnterAlt(1);
-			// Scrape.g:454:19: '>='
+			// Scrape.g:463:19: '>='
 			{
-			DebugLocation(454, 19);
+			DebugLocation(463, 19);
 			Match(">="); 
 
 
@@ -842,11 +843,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = NOTEQUAL;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:455:9: ( '!=' )
+			// Scrape.g:464:9: ( '!=' )
 			DebugEnterAlt(1);
-			// Scrape.g:455:11: '!='
+			// Scrape.g:464:11: '!='
 			{
-			DebugLocation(455, 11);
+			DebugLocation(464, 11);
 			Match("!="); 
 
 
@@ -878,11 +879,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = LIKE;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:456:5: ( 'like' )
+			// Scrape.g:465:5: ( 'like' )
 			DebugEnterAlt(1);
-			// Scrape.g:456:7: 'like'
+			// Scrape.g:465:7: 'like'
 			{
-			DebugLocation(456, 7);
+			DebugLocation(465, 7);
 			Match("like"); 
 
 
@@ -914,11 +915,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = NOTLIKE;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:457:8: ( 'not like' )
+			// Scrape.g:466:8: ( 'not like' )
 			DebugEnterAlt(1);
-			// Scrape.g:457:10: 'not like'
+			// Scrape.g:466:10: 'not like'
 			{
-			DebugLocation(457, 10);
+			DebugLocation(466, 10);
 			Match("not like"); 
 
 
@@ -950,11 +951,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = NULL_OPERATOR;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:459:14: ( '??' )
+			// Scrape.g:468:14: ( '??' )
 			DebugEnterAlt(1);
-			// Scrape.g:459:16: '??'
+			// Scrape.g:468:16: '??'
 			{
-			DebugLocation(459, 16);
+			DebugLocation(468, 16);
 			Match("??"); 
 
 
@@ -986,11 +987,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = UPDATE;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:461:8: ( 'update' )
+			// Scrape.g:470:8: ( 'update' )
 			DebugEnterAlt(1);
-			// Scrape.g:461:10: 'update'
+			// Scrape.g:470:10: 'update'
 			{
-			DebugLocation(461, 10);
+			DebugLocation(470, 10);
 			Match("update"); 
 
 
@@ -1022,11 +1023,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = SET;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:462:5: ( 'set' )
+			// Scrape.g:471:5: ( 'set' )
 			DebugEnterAlt(1);
-			// Scrape.g:462:7: 'set'
+			// Scrape.g:471:7: 'set'
 			{
-			DebugLocation(462, 7);
+			DebugLocation(471, 7);
 			Match("set"); 
 
 
@@ -1058,11 +1059,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = INSERT_INTO;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:463:13: ( 'insert into' )
+			// Scrape.g:472:13: ( 'insert into' )
 			DebugEnterAlt(1);
-			// Scrape.g:463:15: 'insert into'
+			// Scrape.g:472:15: 'insert into'
 			{
-			DebugLocation(463, 15);
+			DebugLocation(472, 15);
 			Match("insert into"); 
 
 
@@ -1094,11 +1095,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = INSERT_OVERWRITE;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:464:18: ( 'insert overwrite' )
+			// Scrape.g:473:18: ( 'insert overwrite' )
 			DebugEnterAlt(1);
-			// Scrape.g:464:20: 'insert overwrite'
+			// Scrape.g:473:20: 'insert overwrite'
 			{
-			DebugLocation(464, 20);
+			DebugLocation(473, 20);
 			Match("insert overwrite"); 
 
 
@@ -1130,11 +1131,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = INSERT_DIRECTORY;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:465:18: ( 'insert file into' )
+			// Scrape.g:474:18: ( 'insert file into' )
 			DebugEnterAlt(1);
-			// Scrape.g:465:20: 'insert file into'
+			// Scrape.g:474:20: 'insert file into'
 			{
-			DebugLocation(465, 20);
+			DebugLocation(474, 20);
 			Match("insert file into"); 
 
 
@@ -1166,11 +1167,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = TRUNCATE;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:466:10: ( 'truncate' )
+			// Scrape.g:475:10: ( 'truncate' )
 			DebugEnterAlt(1);
-			// Scrape.g:466:12: 'truncate'
+			// Scrape.g:475:12: 'truncate'
 			{
-			DebugLocation(466, 12);
+			DebugLocation(475, 12);
 			Match("truncate"); 
 
 
@@ -1202,11 +1203,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = THREAD;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:467:8: ( 'thread' )
+			// Scrape.g:476:8: ( 'thread' )
 			DebugEnterAlt(1);
-			// Scrape.g:467:10: 'thread'
+			// Scrape.g:476:10: 'thread'
 			{
-			DebugLocation(467, 10);
+			DebugLocation(476, 10);
 			Match("thread"); 
 
 
@@ -1238,11 +1239,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = JS;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:468:4: ( 'js' )
+			// Scrape.g:477:4: ( 'js' )
 			DebugEnterAlt(1);
-			// Scrape.g:468:6: 'js'
+			// Scrape.g:477:6: 'js'
 			{
-			DebugLocation(468, 6);
+			DebugLocation(477, 6);
 			Match("js"); 
 
 
@@ -1274,11 +1275,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = WHILE;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:469:7: ( 'while' )
+			// Scrape.g:478:7: ( 'while' )
 			DebugEnterAlt(1);
-			// Scrape.g:469:9: 'while'
+			// Scrape.g:478:9: 'while'
 			{
-			DebugLocation(469, 9);
+			DebugLocation(478, 9);
 			Match("while"); 
 
 
@@ -1310,11 +1311,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = EACH;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:470:6: ( 'each' )
+			// Scrape.g:479:6: ( 'each' )
 			DebugEnterAlt(1);
-			// Scrape.g:470:8: 'each'
+			// Scrape.g:479:8: 'each'
 			{
-			DebugLocation(470, 8);
+			DebugLocation(479, 8);
 			Match("each"); 
 
 
@@ -1346,11 +1347,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = IN;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:471:4: ( 'in' )
+			// Scrape.g:480:4: ( 'in' )
 			DebugEnterAlt(1);
-			// Scrape.g:471:6: 'in'
+			// Scrape.g:480:6: 'in'
 			{
-			DebugLocation(471, 6);
+			DebugLocation(480, 6);
 			Match("in"); 
 
 
@@ -1382,11 +1383,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = SELECT;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:472:8: ( 'select' )
+			// Scrape.g:481:8: ( 'select' )
 			DebugEnterAlt(1);
-			// Scrape.g:472:10: 'select'
+			// Scrape.g:481:10: 'select'
 			{
-			DebugLocation(472, 10);
+			DebugLocation(481, 10);
 			Match("select"); 
 
 
@@ -1418,11 +1419,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = FROM;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:473:6: ( 'from' )
+			// Scrape.g:482:6: ( 'from' )
 			DebugEnterAlt(1);
-			// Scrape.g:473:8: 'from'
+			// Scrape.g:482:8: 'from'
 			{
-			DebugLocation(473, 8);
+			DebugLocation(482, 8);
 			Match("from"); 
 
 
@@ -1454,11 +1455,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = INNER_JOIN;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:474:12: ( 'inner join' )
+			// Scrape.g:483:12: ( 'inner join' )
 			DebugEnterAlt(1);
-			// Scrape.g:474:14: 'inner join'
+			// Scrape.g:483:14: 'inner join'
 			{
-			DebugLocation(474, 14);
+			DebugLocation(483, 14);
 			Match("inner join"); 
 
 
@@ -1490,11 +1491,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = JOIN;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:475:5: ( 'join' )
+			// Scrape.g:484:5: ( 'join' )
 			DebugEnterAlt(1);
-			// Scrape.g:475:7: 'join'
+			// Scrape.g:484:7: 'join'
 			{
-			DebugLocation(475, 7);
+			DebugLocation(484, 7);
 			Match("join"); 
 
 
@@ -1526,11 +1527,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = NODES;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:476:6: ( 'nodes' )
+			// Scrape.g:485:6: ( 'nodes' )
 			DebugEnterAlt(1);
-			// Scrape.g:476:8: 'nodes'
+			// Scrape.g:485:8: 'nodes'
 			{
-			DebugLocation(476, 8);
+			DebugLocation(485, 8);
 			Match("nodes"); 
 
 
@@ -1562,11 +1563,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = WHERE;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:477:7: ( 'where' )
+			// Scrape.g:486:7: ( 'where' )
 			DebugEnterAlt(1);
-			// Scrape.g:477:9: 'where'
+			// Scrape.g:486:9: 'where'
 			{
-			DebugLocation(477, 9);
+			DebugLocation(486, 9);
 			Match("where"); 
 
 
@@ -1598,11 +1599,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = PICK;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:478:6: ( 'pick' )
+			// Scrape.g:487:6: ( 'pick' )
 			DebugEnterAlt(1);
-			// Scrape.g:478:8: 'pick'
+			// Scrape.g:487:8: 'pick'
 			{
-			DebugLocation(478, 8);
+			DebugLocation(487, 8);
 			Match("pick"); 
 
 
@@ -1634,11 +1635,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = TAKE;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:479:6: ( 'take' )
+			// Scrape.g:488:6: ( 'take' )
 			DebugEnterAlt(1);
-			// Scrape.g:479:8: 'take'
+			// Scrape.g:488:8: 'take'
 			{
-			DebugLocation(479, 8);
+			DebugLocation(488, 8);
 			Match("take"); 
 
 
@@ -1670,11 +1671,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = MATCH;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:480:7: ( 'match' )
+			// Scrape.g:489:7: ( 'match' )
 			DebugEnterAlt(1);
-			// Scrape.g:480:9: 'match'
+			// Scrape.g:489:9: 'match'
 			{
-			DebugLocation(480, 9);
+			DebugLocation(489, 9);
 			Match("match"); 
 
 
@@ -1706,11 +1707,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = REPLACE;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:481:9: ( 'replace' )
+			// Scrape.g:490:9: ( 'replace' )
 			DebugEnterAlt(1);
-			// Scrape.g:481:11: 'replace'
+			// Scrape.g:490:11: 'replace'
 			{
-			DebugLocation(481, 11);
+			DebugLocation(490, 11);
 			Match("replace"); 
 
 
@@ -1742,11 +1743,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = ATTRIBUTE;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:482:11: ( 'attribute' )
+			// Scrape.g:491:11: ( 'attribute' )
 			DebugEnterAlt(1);
-			// Scrape.g:482:13: 'attribute'
+			// Scrape.g:491:13: 'attribute'
 			{
-			DebugLocation(482, 13);
+			DebugLocation(491, 13);
 			Match("attribute"); 
 
 
@@ -1778,11 +1779,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = TEXT;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:483:6: ( 'text' )
+			// Scrape.g:492:6: ( 'text' )
 			DebugEnterAlt(1);
-			// Scrape.g:483:8: 'text'
+			// Scrape.g:492:8: 'text'
 			{
-			DebugLocation(483, 8);
+			DebugLocation(492, 8);
 			Match("text"); 
 
 
@@ -1814,11 +1815,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = HTML;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:484:6: ( 'html' )
+			// Scrape.g:493:6: ( 'html' )
 			DebugEnterAlt(1);
-			// Scrape.g:484:8: 'html'
+			// Scrape.g:493:8: 'html'
 			{
-			DebugLocation(484, 8);
+			DebugLocation(493, 8);
 			Match("html"); 
 
 
@@ -1850,11 +1851,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = DOWNLOAD_IMAGE;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:485:16: ( 'download image' )
+			// Scrape.g:494:16: ( 'download image' )
 			DebugEnterAlt(1);
-			// Scrape.g:485:18: 'download image'
+			// Scrape.g:494:18: 'download image'
 			{
-			DebugLocation(485, 18);
+			DebugLocation(494, 18);
 			Match("download image"); 
 
 
@@ -1886,11 +1887,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = DOWNLOAD_PAGE;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:486:15: ( 'download page' )
+			// Scrape.g:495:15: ( 'download page' )
 			DebugEnterAlt(1);
-			// Scrape.g:486:17: 'download page'
+			// Scrape.g:495:17: 'download page'
 			{
-			DebugLocation(486, 17);
+			DebugLocation(495, 17);
 			Match("download page"); 
 
 
@@ -1922,11 +1923,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = IDENTITY;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:487:10: ( 'identity' )
+			// Scrape.g:496:10: ( 'identity' )
 			DebugEnterAlt(1);
-			// Scrape.g:487:12: 'identity'
+			// Scrape.g:496:12: 'identity'
 			{
-			DebugLocation(487, 12);
+			DebugLocation(496, 12);
 			Match("identity"); 
 
 
@@ -1958,11 +1959,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = EXPAND;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:488:8: ( 'expand' )
+			// Scrape.g:497:8: ( 'expand' )
 			DebugEnterAlt(1);
-			// Scrape.g:488:10: 'expand'
+			// Scrape.g:497:10: 'expand'
 			{
-			DebugLocation(488, 10);
+			DebugLocation(497, 10);
 			Match("expand"); 
 
 
@@ -1994,11 +1995,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = TO;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:489:4: ( 'to' )
+			// Scrape.g:498:4: ( 'to' )
 			DebugEnterAlt(1);
-			// Scrape.g:489:6: 'to'
+			// Scrape.g:498:6: 'to'
 			{
-			DebugLocation(489, 6);
+			DebugLocation(498, 6);
 			Match("to"); 
 
 
@@ -2030,11 +2031,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = PROXIES;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:490:8: ( 'proxies' )
+			// Scrape.g:499:8: ( 'proxies' )
 			DebugEnterAlt(1);
-			// Scrape.g:490:10: 'proxies'
+			// Scrape.g:499:10: 'proxies'
 			{
-			DebugLocation(490, 10);
+			DebugLocation(499, 10);
 			Match("proxies"); 
 
 
@@ -2066,11 +2067,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = TEST;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:491:6: ( 'test' )
+			// Scrape.g:500:6: ( 'test' )
 			DebugEnterAlt(1);
-			// Scrape.g:491:8: 'test'
+			// Scrape.g:500:8: 'test'
 			{
-			DebugLocation(491, 8);
+			DebugLocation(500, 8);
 			Match("test"); 
 
 
@@ -2102,11 +2103,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = NULL;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:492:6: ( 'null' )
+			// Scrape.g:501:6: ( 'null' )
 			DebugEnterAlt(1);
-			// Scrape.g:492:8: 'null'
+			// Scrape.g:501:8: 'null'
 			{
-			DebugLocation(492, 8);
+			DebugLocation(501, 8);
 			Match("null"); 
 
 
@@ -2138,11 +2139,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = CREATE;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:494:8: ( 'create' )
+			// Scrape.g:503:8: ( 'create' )
 			DebugEnterAlt(1);
-			// Scrape.g:494:10: 'create'
+			// Scrape.g:503:10: 'create'
 			{
-			DebugLocation(494, 10);
+			DebugLocation(503, 10);
 			Match("create"); 
 
 
@@ -2174,11 +2175,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = FILE;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:495:6: ( 'file' )
+			// Scrape.g:504:6: ( 'file' )
 			DebugEnterAlt(1);
-			// Scrape.g:495:8: 'file'
+			// Scrape.g:504:8: 'file'
 			{
-			DebugLocation(495, 8);
+			DebugLocation(504, 8);
 			Match("file"); 
 
 
@@ -2210,11 +2211,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = BUFFER;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:496:8: ( 'buffer' )
+			// Scrape.g:505:8: ( 'buffer' )
 			DebugEnterAlt(1);
-			// Scrape.g:496:10: 'buffer'
+			// Scrape.g:505:10: 'buffer'
 			{
-			DebugLocation(496, 10);
+			DebugLocation(505, 10);
 			Match("buffer"); 
 
 
@@ -2246,11 +2247,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = MSSQL;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:497:7: ( 'mssql' )
+			// Scrape.g:506:7: ( 'mssql' )
 			DebugEnterAlt(1);
-			// Scrape.g:497:9: 'mssql'
+			// Scrape.g:506:9: 'mssql'
 			{
-			DebugLocation(497, 9);
+			DebugLocation(506, 9);
 			Match("mssql"); 
 
 
@@ -2282,11 +2283,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = WITH;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:498:6: ( 'with' )
+			// Scrape.g:507:6: ( 'with' )
 			DebugEnterAlt(1);
-			// Scrape.g:498:8: 'with'
+			// Scrape.g:507:8: 'with'
 			{
-			DebugLocation(498, 8);
+			DebugLocation(507, 8);
 			Match("with"); 
 
 
@@ -2318,11 +2319,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = STRING;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:499:8: ( 'string' )
+			// Scrape.g:508:8: ( 'string' )
 			DebugEnterAlt(1);
-			// Scrape.g:499:10: 'string'
+			// Scrape.g:508:10: 'string'
 			{
-			DebugLocation(499, 10);
+			DebugLocation(508, 10);
 			Match("string"); 
 
 
@@ -2354,11 +2355,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = INTEGER;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:500:8: ( 'int' )
+			// Scrape.g:509:8: ( 'int' )
 			DebugEnterAlt(1);
-			// Scrape.g:500:10: 'int'
+			// Scrape.g:509:10: 'int'
 			{
-			DebugLocation(500, 10);
+			DebugLocation(509, 10);
 			Match("int"); 
 
 
@@ -2390,11 +2391,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = FLOAT;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:501:6: ( 'float' )
+			// Scrape.g:510:6: ( 'float' )
 			DebugEnterAlt(1);
-			// Scrape.g:501:8: 'float'
+			// Scrape.g:510:8: 'float'
 			{
-			DebugLocation(501, 8);
+			DebugLocation(510, 8);
 			Match("float"); 
 
 
@@ -2426,11 +2427,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = DATETIME;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:502:10: ( 'datetime' )
+			// Scrape.g:511:10: ( 'datetime' )
 			DebugEnterAlt(1);
-			// Scrape.g:502:12: 'datetime'
+			// Scrape.g:511:12: 'datetime'
 			{
-			DebugLocation(502, 12);
+			DebugLocation(511, 12);
 			Match("datetime"); 
 
 
@@ -2462,11 +2463,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = FIELD_TERMINATOR;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:503:18: ( 'fieldterminator' )
+			// Scrape.g:512:18: ( 'fieldterminator' )
 			DebugEnterAlt(1);
-			// Scrape.g:503:20: 'fieldterminator'
+			// Scrape.g:512:20: 'fieldterminator'
 			{
-			DebugLocation(503, 20);
+			DebugLocation(512, 20);
 			Match("fieldterminator"); 
 
 
@@ -2498,11 +2499,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = ROW_TERMINATOR;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:504:16: ( 'rowterminator' )
+			// Scrape.g:513:16: ( 'rowterminator' )
 			DebugEnterAlt(1);
-			// Scrape.g:504:18: 'rowterminator'
+			// Scrape.g:513:18: 'rowterminator'
 			{
-			DebugLocation(504, 18);
+			DebugLocation(513, 18);
 			Match("rowterminator"); 
 
 
@@ -2534,11 +2535,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = LOCATION;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:505:10: ( 'location' )
+			// Scrape.g:514:10: ( 'location' )
 			DebugEnterAlt(1);
-			// Scrape.g:505:12: 'location'
+			// Scrape.g:514:12: 'location'
 			{
-			DebugLocation(505, 12);
+			DebugLocation(514, 12);
 			Match("location"); 
 
 
@@ -2570,11 +2571,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = CONNECTIONSTRING;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:506:18: ( 'connectionstring' )
+			// Scrape.g:515:18: ( 'connectionstring' )
 			DebugEnterAlt(1);
-			// Scrape.g:506:20: 'connectionstring'
+			// Scrape.g:515:20: 'connectionstring'
 			{
-			DebugLocation(506, 20);
+			DebugLocation(515, 20);
 			Match("connectionstring"); 
 
 
@@ -2606,11 +2607,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = TABLE;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:507:7: ( 'table' )
+			// Scrape.g:516:7: ( 'table' )
 			DebugEnterAlt(1);
-			// Scrape.g:507:9: 'table'
+			// Scrape.g:516:9: 'table'
 			{
-			DebugLocation(507, 9);
+			DebugLocation(516, 9);
 			Match("table"); 
 
 
@@ -2642,11 +2643,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = DBTABLE;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:508:9: ( 'dbtable' )
+			// Scrape.g:517:9: ( 'dbtable' )
 			DebugEnterAlt(1);
-			// Scrape.g:508:11: 'dbtable'
+			// Scrape.g:517:11: 'dbtable'
 			{
-			DebugLocation(508, 11);
+			DebugLocation(517, 11);
 			Match("dbtable"); 
 
 
@@ -2678,14 +2679,14 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = STRING_LITERAL;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:510:15: ( APOSTRAPHE (~ ( APOSTRAPHE ) )* APOSTRAPHE )
+			// Scrape.g:519:15: ( APOSTRAPHE (~ ( APOSTRAPHE ) )* APOSTRAPHE )
 			DebugEnterAlt(1);
-			// Scrape.g:510:17: APOSTRAPHE (~ ( APOSTRAPHE ) )* APOSTRAPHE
+			// Scrape.g:519:17: APOSTRAPHE (~ ( APOSTRAPHE ) )* APOSTRAPHE
 			{
-			DebugLocation(510, 17);
+			DebugLocation(519, 17);
 			mAPOSTRAPHE(); 
-			DebugLocation(510, 28);
-			// Scrape.g:510:28: (~ ( APOSTRAPHE ) )*
+			DebugLocation(519, 28);
+			// Scrape.g:519:28: (~ ( APOSTRAPHE ) )*
 			try { DebugEnterSubRule(1);
 			while (true)
 			{
@@ -2706,7 +2707,7 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 					DebugEnterAlt(1);
 					// Scrape.g:
 					{
-					DebugLocation(510, 28);
+					DebugLocation(519, 28);
 					input.Consume();
 
 
@@ -2723,7 +2724,7 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 
 			} finally { DebugExitSubRule(1); }
 
-			DebugLocation(510, 43);
+			DebugLocation(519, 43);
 			mAPOSTRAPHE(); 
 
 			}
@@ -2754,11 +2755,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = IDENTITY_VAR;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:511:14: ( '@@identity' )
+			// Scrape.g:520:14: ( '@@identity' )
 			DebugEnterAlt(1);
-			// Scrape.g:511:16: '@@identity'
+			// Scrape.g:520:16: '@@identity'
 			{
-			DebugLocation(511, 16);
+			DebugLocation(520, 16);
 			Match("@@identity"); 
 
 
@@ -2790,14 +2791,14 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = COMMAND_VAR;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:512:13: ( '@' ( DIGIT )+ )
+			// Scrape.g:521:13: ( '@' ( DIGIT )+ )
 			DebugEnterAlt(1);
-			// Scrape.g:512:15: '@' ( DIGIT )+
+			// Scrape.g:521:15: '@' ( DIGIT )+
 			{
-			DebugLocation(512, 15);
+			DebugLocation(521, 15);
 			Match('@'); 
-			DebugLocation(512, 19);
-			// Scrape.g:512:19: ( DIGIT )+
+			DebugLocation(521, 19);
+			// Scrape.g:521:19: ( DIGIT )+
 			int cnt2=0;
 			try { DebugEnterSubRule(2);
 			while (true)
@@ -2819,7 +2820,7 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 					DebugEnterAlt(1);
 					// Scrape.g:
 					{
-					DebugLocation(512, 19);
+					DebugLocation(521, 19);
 					input.Consume();
 
 
@@ -2870,12 +2871,12 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = ID;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:513:4: ( ( LETTER )+ )
+			// Scrape.g:522:4: ( ( LETTER )+ )
 			DebugEnterAlt(1);
-			// Scrape.g:513:6: ( LETTER )+
+			// Scrape.g:522:6: ( LETTER )+
 			{
-			DebugLocation(513, 6);
-			// Scrape.g:513:6: ( LETTER )+
+			DebugLocation(522, 6);
+			// Scrape.g:522:6: ( LETTER )+
 			int cnt3=0;
 			try { DebugEnterSubRule(3);
 			while (true)
@@ -2897,7 +2898,7 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 					DebugEnterAlt(1);
 					// Scrape.g:
 					{
-					DebugLocation(513, 6);
+					DebugLocation(522, 6);
 					input.Consume();
 
 
@@ -2948,11 +2949,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = ASTERISK;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:514:10: ( '*' )
+			// Scrape.g:523:10: ( '*' )
 			DebugEnterAlt(1);
-			// Scrape.g:514:12: '*'
+			// Scrape.g:523:12: '*'
 			{
-			DebugLocation(514, 12);
+			DebugLocation(523, 12);
 			Match('*'); 
 
 			}
@@ -2983,11 +2984,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = DOT;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:515:5: ( '.' )
+			// Scrape.g:524:5: ( '.' )
 			DebugEnterAlt(1);
-			// Scrape.g:515:7: '.'
+			// Scrape.g:524:7: '.'
 			{
-			DebugLocation(515, 7);
+			DebugLocation(524, 7);
 			Match('.'); 
 
 			}
@@ -3018,11 +3019,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = OPENPAREN;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:516:11: ( '(' )
+			// Scrape.g:525:11: ( '(' )
 			DebugEnterAlt(1);
-			// Scrape.g:516:13: '('
+			// Scrape.g:525:13: '('
 			{
-			DebugLocation(516, 13);
+			DebugLocation(525, 13);
 			Match('('); 
 
 			}
@@ -3053,11 +3054,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = CLOSEPAREN;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:517:12: ( ')' )
+			// Scrape.g:526:12: ( ')' )
 			DebugEnterAlt(1);
-			// Scrape.g:517:14: ')'
+			// Scrape.g:526:14: ')'
 			{
-			DebugLocation(517, 14);
+			DebugLocation(526, 14);
 			Match(')'); 
 
 			}
@@ -3088,11 +3089,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = OPENBRACE;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:518:11: ( '{' )
+			// Scrape.g:527:11: ( '{' )
 			DebugEnterAlt(1);
-			// Scrape.g:518:13: '{'
+			// Scrape.g:527:13: '{'
 			{
-			DebugLocation(518, 13);
+			DebugLocation(527, 13);
 			Match('{'); 
 
 			}
@@ -3123,11 +3124,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = CLOSEBRACE;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:519:12: ( '}' )
+			// Scrape.g:528:12: ( '}' )
 			DebugEnterAlt(1);
-			// Scrape.g:519:14: '}'
+			// Scrape.g:528:14: '}'
 			{
-			DebugLocation(519, 14);
+			DebugLocation(528, 14);
 			Match('}'); 
 
 			}
@@ -3158,11 +3159,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = PIPE;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:520:6: ( '|' )
+			// Scrape.g:529:6: ( '|' )
 			DebugEnterAlt(1);
-			// Scrape.g:520:8: '|'
+			// Scrape.g:529:8: '|'
 			{
-			DebugLocation(520, 8);
+			DebugLocation(529, 8);
 			Match('|'); 
 
 			}
@@ -3193,11 +3194,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = PLUS;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:521:6: ( '+' )
+			// Scrape.g:530:6: ( '+' )
 			DebugEnterAlt(1);
-			// Scrape.g:521:8: '+'
+			// Scrape.g:530:8: '+'
 			{
-			DebugLocation(521, 8);
+			DebugLocation(530, 8);
 			Match('+'); 
 
 			}
@@ -3228,11 +3229,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = MINIS;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:522:8: ( '-' )
+			// Scrape.g:531:8: ( '-' )
 			DebugEnterAlt(1);
-			// Scrape.g:522:10: '-'
+			// Scrape.g:531:10: '-'
 			{
-			DebugLocation(522, 10);
+			DebugLocation(531, 10);
 			Match('-'); 
 
 			}
@@ -3263,11 +3264,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = DIV;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:523:6: ( '/' )
+			// Scrape.g:532:6: ( '/' )
 			DebugEnterAlt(1);
-			// Scrape.g:523:8: '/'
+			// Scrape.g:532:8: '/'
 			{
-			DebugLocation(523, 8);
+			DebugLocation(532, 8);
 			Match('/'); 
 
 			}
@@ -3298,11 +3299,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = COMMA;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:524:7: ( ',' )
+			// Scrape.g:533:7: ( ',' )
 			DebugEnterAlt(1);
-			// Scrape.g:524:9: ','
+			// Scrape.g:533:9: ','
 			{
-			DebugLocation(524, 9);
+			DebugLocation(533, 9);
 			Match(','); 
 
 			}
@@ -3333,11 +3334,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = QUOTE;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:525:7: ( '\"' )
+			// Scrape.g:534:7: ( '\"' )
 			DebugEnterAlt(1);
-			// Scrape.g:525:9: '\"'
+			// Scrape.g:534:9: '\"'
 			{
-			DebugLocation(525, 9);
+			DebugLocation(534, 9);
 			Match('\"'); 
 
 			}
@@ -3368,11 +3369,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = APOSTRAPHE;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:526:12: ( '\\'' )
+			// Scrape.g:535:12: ( '\\'' )
 			DebugEnterAlt(1);
-			// Scrape.g:526:14: '\\''
+			// Scrape.g:535:14: '\\''
 			{
-			DebugLocation(526, 14);
+			DebugLocation(535, 14);
 			Match('\''); 
 
 			}
@@ -3403,12 +3404,12 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = INT;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:527:5: ( ( DIGIT )+ )
+			// Scrape.g:536:5: ( ( DIGIT )+ )
 			DebugEnterAlt(1);
-			// Scrape.g:527:7: ( DIGIT )+
+			// Scrape.g:536:7: ( DIGIT )+
 			{
-			DebugLocation(527, 7);
-			// Scrape.g:527:7: ( DIGIT )+
+			DebugLocation(536, 7);
+			// Scrape.g:536:7: ( DIGIT )+
 			int cnt4=0;
 			try { DebugEnterSubRule(4);
 			while (true)
@@ -3430,7 +3431,7 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 					DebugEnterAlt(1);
 					// Scrape.g:
 					{
-					DebugLocation(527, 7);
+					DebugLocation(536, 7);
 					input.Consume();
 
 
@@ -3481,12 +3482,12 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = FL;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:528:4: ( ( '0' .. '9' )+ '.' ( '0' .. '9' )+ )
+			// Scrape.g:537:4: ( ( '0' .. '9' )+ '.' ( '0' .. '9' )+ )
 			DebugEnterAlt(1);
-			// Scrape.g:528:7: ( '0' .. '9' )+ '.' ( '0' .. '9' )+
+			// Scrape.g:537:7: ( '0' .. '9' )+ '.' ( '0' .. '9' )+
 			{
-			DebugLocation(528, 7);
-			// Scrape.g:528:7: ( '0' .. '9' )+
+			DebugLocation(537, 7);
+			// Scrape.g:537:7: ( '0' .. '9' )+
 			int cnt5=0;
 			try { DebugEnterSubRule(5);
 			while (true)
@@ -3508,7 +3509,7 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 					DebugEnterAlt(1);
 					// Scrape.g:
 					{
-					DebugLocation(528, 7);
+					DebugLocation(537, 7);
 					input.Consume();
 
 
@@ -3530,10 +3531,10 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 
 			} finally { DebugExitSubRule(5); }
 
-			DebugLocation(528, 19);
+			DebugLocation(537, 19);
 			Match('.'); 
-			DebugLocation(528, 23);
-			// Scrape.g:528:23: ( '0' .. '9' )+
+			DebugLocation(537, 23);
+			// Scrape.g:537:23: ( '0' .. '9' )+
 			int cnt6=0;
 			try { DebugEnterSubRule(6);
 			while (true)
@@ -3555,7 +3556,7 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 					DebugEnterAlt(1);
 					// Scrape.g:
 					{
-					DebugLocation(528, 23);
+					DebugLocation(537, 23);
 					input.Consume();
 
 
@@ -3604,11 +3605,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		TraceIn("NEWLINE", 89);
 		try
 		{
-			// Scrape.g:529:18: ( ( '\\n' | '\\r' ) )
+			// Scrape.g:538:18: ( ( '\\n' | '\\r' ) )
 			DebugEnterAlt(1);
 			// Scrape.g:
 			{
-			DebugLocation(529, 18);
+			DebugLocation(538, 18);
 			if (input.LA(1)=='\n'||input.LA(1)=='\r')
 			{
 				input.Consume();
@@ -3646,11 +3647,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		TraceIn("DIGIT", 90);
 		try
 		{
-			// Scrape.g:530:15: ( '0' .. '9' )
+			// Scrape.g:539:15: ( '0' .. '9' )
 			DebugEnterAlt(1);
 			// Scrape.g:
 			{
-			DebugLocation(530, 15);
+			DebugLocation(539, 15);
 			if ((input.LA(1)>='0' && input.LA(1)<='9'))
 			{
 				input.Consume();
@@ -3688,11 +3689,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		TraceIn("LETTER", 91);
 		try
 		{
-			// Scrape.g:531:17: ( ( 'a' .. 'z' | 'A' .. 'Z' ) )
+			// Scrape.g:540:17: ( ( 'a' .. 'z' | 'A' .. 'Z' ) )
 			DebugEnterAlt(1);
 			// Scrape.g:
 			{
-			DebugLocation(531, 17);
+			DebugLocation(540, 17);
 			if ((input.LA(1)>='A' && input.LA(1)<='Z')||(input.LA(1)>='a' && input.LA(1)<='z'))
 			{
 				input.Consume();
@@ -3730,11 +3731,11 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		TraceIn("OTHERCHARS", 92);
 		try
 		{
-			// Scrape.g:532:21: ( ( '.' | '|' | '-' | '&' | ',' | '\\\\' | ':' ) )
+			// Scrape.g:541:21: ( ( '.' | '|' | '-' | '&' | ',' | '\\\\' | ':' ) )
 			DebugEnterAlt(1);
 			// Scrape.g:
 			{
-			DebugLocation(532, 21);
+			DebugLocation(541, 21);
 			if (input.LA(1)=='&'||(input.LA(1)>=',' && input.LA(1)<='.')||input.LA(1)==':'||input.LA(1)=='\\'||input.LA(1)=='|')
 			{
 				input.Consume();
@@ -3774,12 +3775,12 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = WS;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:533:4: ( ( ' ' | '\\t' | NEWLINE )+ )
+			// Scrape.g:542:4: ( ( ' ' | '\\t' | NEWLINE )+ )
 			DebugEnterAlt(1);
-			// Scrape.g:533:7: ( ' ' | '\\t' | NEWLINE )+
+			// Scrape.g:542:7: ( ' ' | '\\t' | NEWLINE )+
 			{
-			DebugLocation(533, 7);
-			// Scrape.g:533:7: ( ' ' | '\\t' | NEWLINE )+
+			DebugLocation(542, 7);
+			// Scrape.g:542:7: ( ' ' | '\\t' | NEWLINE )+
 			int cnt7=0;
 			try { DebugEnterSubRule(7);
 			while (true)
@@ -3801,7 +3802,7 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 					DebugEnterAlt(1);
 					// Scrape.g:
 					{
-					DebugLocation(533, 7);
+					DebugLocation(542, 7);
 					input.Consume();
 
 
@@ -3823,7 +3824,7 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 
 			} finally { DebugExitSubRule(7); }
 
-			DebugLocation(533, 27);
+			DebugLocation(542, 27);
 			_channel = Hidden;
 
 			}
@@ -3854,15 +3855,15 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = COMMENT;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:534:9: ( '/*' ( . )* '*/' )
+			// Scrape.g:543:9: ( '/*' ( . )* '*/' )
 			DebugEnterAlt(1);
-			// Scrape.g:534:11: '/*' ( . )* '*/'
+			// Scrape.g:543:11: '/*' ( . )* '*/'
 			{
-			DebugLocation(534, 11);
+			DebugLocation(543, 11);
 			Match("/*"); 
 
-			DebugLocation(534, 16);
-			// Scrape.g:534:16: ( . )*
+			DebugLocation(543, 16);
+			// Scrape.g:543:16: ( . )*
 			try { DebugEnterSubRule(8);
 			while (true)
 			{
@@ -3896,9 +3897,9 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 				{
 				case 1:
 					DebugEnterAlt(1);
-					// Scrape.g:534:16: .
+					// Scrape.g:543:16: .
 					{
-					DebugLocation(534, 16);
+					DebugLocation(543, 16);
 					MatchAny(); 
 
 					}
@@ -3914,10 +3915,10 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 
 			} finally { DebugExitSubRule(8); }
 
-			DebugLocation(534, 19);
+			DebugLocation(543, 19);
 			Match("*/"); 
 
-			DebugLocation(534, 24);
+			DebugLocation(543, 24);
 			_channel = Hidden;
 
 			}
@@ -3948,15 +3949,15 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = LINE_COMMENT_SLASH;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:535:20: ( '//' (~ NEWLINE )* )
+			// Scrape.g:544:20: ( '//' (~ NEWLINE )* )
 			DebugEnterAlt(1);
-			// Scrape.g:535:22: '//' (~ NEWLINE )*
+			// Scrape.g:544:22: '//' (~ NEWLINE )*
 			{
-			DebugLocation(535, 22);
+			DebugLocation(544, 22);
 			Match("//"); 
 
-			DebugLocation(535, 27);
-			// Scrape.g:535:27: (~ NEWLINE )*
+			DebugLocation(544, 27);
+			// Scrape.g:544:27: (~ NEWLINE )*
 			try { DebugEnterSubRule(9);
 			while (true)
 			{
@@ -3977,7 +3978,7 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 					DebugEnterAlt(1);
 					// Scrape.g:
 					{
-					DebugLocation(535, 27);
+					DebugLocation(544, 27);
 					input.Consume();
 
 
@@ -3994,7 +3995,7 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 
 			} finally { DebugExitSubRule(9); }
 
-			DebugLocation(535, 37);
+			DebugLocation(544, 37);
 			_channel = Hidden;
 
 			}
@@ -4025,15 +4026,15 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 			int _type = LINE_COMMENT_DASH;
 			int _channel = DefaultTokenChannel;
-			// Scrape.g:536:19: ( '--' (~ NEWLINE )* )
+			// Scrape.g:545:19: ( '--' (~ NEWLINE )* )
 			DebugEnterAlt(1);
-			// Scrape.g:536:21: '--' (~ NEWLINE )*
+			// Scrape.g:545:21: '--' (~ NEWLINE )*
 			{
-			DebugLocation(536, 21);
+			DebugLocation(545, 21);
 			Match("--"); 
 
-			DebugLocation(536, 26);
-			// Scrape.g:536:26: (~ NEWLINE )*
+			DebugLocation(545, 26);
+			// Scrape.g:545:26: (~ NEWLINE )*
 			try { DebugEnterSubRule(10);
 			while (true)
 			{
@@ -4054,7 +4055,7 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 					DebugEnterAlt(1);
 					// Scrape.g:
 					{
-					DebugLocation(536, 26);
+					DebugLocation(545, 26);
 					input.Consume();
 
 
@@ -4071,7 +4072,7 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 
 			} finally { DebugExitSubRule(10); }
 
-			DebugLocation(536, 36);
+			DebugLocation(545, 36);
 			_channel = Hidden;
 
 			}
@@ -4090,7 +4091,7 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 
 	public override void mTokens()
 	{
-		// Scrape.g:1:8: ( T__130 | T__131 | PROCEDURE | GETDATE | EXEC | CASE | WHEN | THEN | END | ELSE | VAR | AND | OR | EQUALS | LESSTHAN | LESSTHANEQUAL | GREATERTHAN | GREATERTHANEQUAL | NOTEQUAL | LIKE | NOTLIKE | NULL_OPERATOR | UPDATE | SET | INSERT_INTO | INSERT_OVERWRITE | INSERT_DIRECTORY | TRUNCATE | THREAD | JS | WHILE | EACH | IN | SELECT | FROM | INNER_JOIN | JOIN | NODES | WHERE | PICK | TAKE | MATCH | REPLACE | ATTRIBUTE | TEXT | HTML | DOWNLOAD_IMAGE | DOWNLOAD_PAGE | IDENTITY | EXPAND | TO | PROXIES | TEST | NULL | CREATE | FILE | BUFFER | MSSQL | WITH | STRING | INTEGER | FLOAT | DATETIME | FIELD_TERMINATOR | ROW_TERMINATOR | LOCATION | CONNECTIONSTRING | TABLE | DBTABLE | STRING_LITERAL | IDENTITY_VAR | COMMAND_VAR | ID | ASTERISK | DOT | OPENPAREN | CLOSEPAREN | OPENBRACE | CLOSEBRACE | PIPE | PLUS | MINIS | DIV | COMMA | QUOTE | APOSTRAPHE | INT | FL | WS | COMMENT | LINE_COMMENT_SLASH | LINE_COMMENT_DASH )
+		// Scrape.g:1:8: ( T__131 | T__132 | PROCEDURE | GETDATE | EXEC | CASE | WHEN | THEN | END | ELSE | VAR | AND | OR | EQUALS | LESSTHAN | LESSTHANEQUAL | GREATERTHAN | GREATERTHANEQUAL | NOTEQUAL | LIKE | NOTLIKE | NULL_OPERATOR | UPDATE | SET | INSERT_INTO | INSERT_OVERWRITE | INSERT_DIRECTORY | TRUNCATE | THREAD | JS | WHILE | EACH | IN | SELECT | FROM | INNER_JOIN | JOIN | NODES | WHERE | PICK | TAKE | MATCH | REPLACE | ATTRIBUTE | TEXT | HTML | DOWNLOAD_IMAGE | DOWNLOAD_PAGE | IDENTITY | EXPAND | TO | PROXIES | TEST | NULL | CREATE | FILE | BUFFER | MSSQL | WITH | STRING | INTEGER | FLOAT | DATETIME | FIELD_TERMINATOR | ROW_TERMINATOR | LOCATION | CONNECTIONSTRING | TABLE | DBTABLE | STRING_LITERAL | IDENTITY_VAR | COMMAND_VAR | ID | ASTERISK | DOT | OPENPAREN | CLOSEPAREN | OPENBRACE | CLOSEBRACE | PIPE | PLUS | MINIS | DIV | COMMA | QUOTE | APOSTRAPHE | INT | FL | WS | COMMENT | LINE_COMMENT_SLASH | LINE_COMMENT_DASH )
 		int alt11=92;
 		try { DebugEnterDecision(11, false);
 		try
@@ -4107,19 +4108,19 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 		{
 		case 1:
 			DebugEnterAlt(1);
-			// Scrape.g:1:10: T__130
+			// Scrape.g:1:10: T__131
 			{
 			DebugLocation(1, 10);
-			mT__130(); 
+			mT__131(); 
 
 			}
 			break;
 		case 2:
 			DebugEnterAlt(2);
-			// Scrape.g:1:17: T__131
+			// Scrape.g:1:17: T__132
 			{
 			DebugLocation(1, 17);
-			mT__131(); 
+			mT__132(); 
 
 			}
 			break;
@@ -5462,7 +5463,7 @@ public partial class ScrapeLexer : Antlr.Runtime.Lexer
 			this.transition = DFA11_transition;
 		}
 
-		public override string Description { get { return "1:1: Tokens : ( T__130 | T__131 | PROCEDURE | GETDATE | EXEC | CASE | WHEN | THEN | END | ELSE | VAR | AND | OR | EQUALS | LESSTHAN | LESSTHANEQUAL | GREATERTHAN | GREATERTHANEQUAL | NOTEQUAL | LIKE | NOTLIKE | NULL_OPERATOR | UPDATE | SET | INSERT_INTO | INSERT_OVERWRITE | INSERT_DIRECTORY | TRUNCATE | THREAD | JS | WHILE | EACH | IN | SELECT | FROM | INNER_JOIN | JOIN | NODES | WHERE | PICK | TAKE | MATCH | REPLACE | ATTRIBUTE | TEXT | HTML | DOWNLOAD_IMAGE | DOWNLOAD_PAGE | IDENTITY | EXPAND | TO | PROXIES | TEST | NULL | CREATE | FILE | BUFFER | MSSQL | WITH | STRING | INTEGER | FLOAT | DATETIME | FIELD_TERMINATOR | ROW_TERMINATOR | LOCATION | CONNECTIONSTRING | TABLE | DBTABLE | STRING_LITERAL | IDENTITY_VAR | COMMAND_VAR | ID | ASTERISK | DOT | OPENPAREN | CLOSEPAREN | OPENBRACE | CLOSEBRACE | PIPE | PLUS | MINIS | DIV | COMMA | QUOTE | APOSTRAPHE | INT | FL | WS | COMMENT | LINE_COMMENT_SLASH | LINE_COMMENT_DASH );"; } }
+		public override string Description { get { return "1:1: Tokens : ( T__131 | T__132 | PROCEDURE | GETDATE | EXEC | CASE | WHEN | THEN | END | ELSE | VAR | AND | OR | EQUALS | LESSTHAN | LESSTHANEQUAL | GREATERTHAN | GREATERTHANEQUAL | NOTEQUAL | LIKE | NOTLIKE | NULL_OPERATOR | UPDATE | SET | INSERT_INTO | INSERT_OVERWRITE | INSERT_DIRECTORY | TRUNCATE | THREAD | JS | WHILE | EACH | IN | SELECT | FROM | INNER_JOIN | JOIN | NODES | WHERE | PICK | TAKE | MATCH | REPLACE | ATTRIBUTE | TEXT | HTML | DOWNLOAD_IMAGE | DOWNLOAD_PAGE | IDENTITY | EXPAND | TO | PROXIES | TEST | NULL | CREATE | FILE | BUFFER | MSSQL | WITH | STRING | INTEGER | FLOAT | DATETIME | FIELD_TERMINATOR | ROW_TERMINATOR | LOCATION | CONNECTIONSTRING | TABLE | DBTABLE | STRING_LITERAL | IDENTITY_VAR | COMMAND_VAR | ID | ASTERISK | DOT | OPENPAREN | CLOSEPAREN | OPENBRACE | CLOSEBRACE | PIPE | PLUS | MINIS | DIV | COMMA | QUOTE | APOSTRAPHE | INT | FL | WS | COMMENT | LINE_COMMENT_SLASH | LINE_COMMENT_DASH );"; } }
 
 		public override void Error(NoViableAltException nvae)
 		{

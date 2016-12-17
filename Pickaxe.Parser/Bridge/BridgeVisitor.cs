@@ -161,11 +161,14 @@ namespace Pickaxe.Parser.Bridge
         {
             Parent(tree).Children.Add(statement);
             SetLine(statement, tree);
+            VisitChildren(tree);
+        }
 
-            Debug.Assert(tree.Children[0].Type == AntlrParser.SELECT);
-
-            VisitChildren(((CommonTree)tree.Children[0]));
-            Visit(tree.Children.Skip(1).ToList());
+        public void Visit(NestedSelectStatement statement, CommonTree tree)
+        {
+            Parent(tree).Children.Add(statement);
+            SetLine(statement, tree);
+            VisitChildren(tree);
         }
 
         public void Visit(SelectArg arg, CommonTree tree)

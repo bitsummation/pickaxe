@@ -12,6 +12,7 @@ using Pickaxe.Runtime;
 using Pickaxe.Runtime.Dom;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 
 
@@ -320,6 +321,25 @@ public class Code : RuntimeBase
 
         public System.Nullable<float> level;
     }
+
+    /*
+    //nested selects are just like other types
+
+    //Anoymouse select variables
+    private class select_8ce54fa854704a58ad49ba0cce4a6c67 : IRow
+    {
+        [Order(1)]
+        [Description("month")]
+        public string month;
+        
+        [Order(2)]
+        [Description("year")]
+        public string year;
+
+        [Order(3)]
+        [Description("level")]
+        public System.Nullable<float> level;
+    }*/
 
     private class anon_6ce54fa854704a58ad49ba0cce4a6c67 : IRow
     {

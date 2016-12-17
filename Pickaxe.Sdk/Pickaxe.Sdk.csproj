@@ -59,6 +59,7 @@
     <Compile Include="LikeExpression.cs" />
     <Compile Include="MatchExpression.cs" />
     <Compile Include="MsSqlTable.cs" />
+    <Compile Include="NestedSelectStatement.cs" />
     <Compile Include="NodesBooleanExpression.cs" />
     <Compile Include="DivisionOperator.cs" />
     <Compile Include="DownloadImageExpression.cs" />
