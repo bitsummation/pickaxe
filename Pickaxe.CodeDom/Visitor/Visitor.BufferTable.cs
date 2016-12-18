@@ -27,20 +27,24 @@ namespace Pickaxe.CodeDom.Visitor
 {
     public partial class CodeDomGenerator : IAstVisitor
     {
-        public void Visit(BufferTable table)
+        private IScopeData CreateBufferTable(BufferTable table)
         {
             var descriptor = new TableDescriptor(typeof(BufferTable<>));
             var bufferTable = new CodeTypeDeclaration(table.Variable) { TypeAttributes = TypeAttributes.NestedPrivate };
             bufferTable.BaseTypes.Add(new CodeTypeReference("IRow"));
 
             var bufferCodeDomType = new CodeTypeReference("CodeTable", new CodeTypeReference(table.Variable));
-            Scope.Current.Type.Type.Members.Add(
-                new CodeMemberField(bufferCodeDomType, table.Variable) { Attributes = MemberAttributes.Public | MemberAttributes.Final });
+            
+            if (Scope.Current.Type != null) //select scopes have no type
+            {
+                Scope.Current.Type.Type.Members.Add(
+                    new CodeMemberField(bufferCodeDomType, table.Variable) { Attributes = MemberAttributes.Public | MemberAttributes.Final });
 
-            Scope.Current.Type.Constructor.Statements.Add(new CodeAssignStatement(
-                new CodeSnippetExpression(table.Variable),
-                new CodeObjectCreateExpression(
-                    new CodeTypeReference("BufferTable", new CodeTypeReference(table.Variable)))));
+                Scope.Current.Type.Constructor.Statements.Add(new CodeAssignStatement(
+                    new CodeSnippetExpression(table.Variable),
+                    new CodeObjectCreateExpression(
+                        new CodeTypeReference("BufferTable", new CodeTypeReference(table.Variable)))));
+            }
 
             foreach (var arg in table.Args)
             {
@@ -55,6 +59,12 @@ namespace Pickaxe.CodeDom.Visitor
                 Errors.Add(new VariableAlreadyExists(new Semantic.LineInfo(table.Line.Line, table.Line.CharacterPosition), table.Variable));
 
             Scope.Current.RegisterTable(table.Variable, descriptor, bufferCodeDomType);
+            return new ScopeData<TableDescriptor> { Type = descriptor, CodeDomReference = bufferCodeDomType };
+        }
+
+        public void Visit(BufferTable table)
+        {
+            CreateBufferTable(table);
         }
     }
 }

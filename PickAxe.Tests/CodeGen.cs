@@ -31,8 +31,8 @@ namespace PickAxe.Tests
         {
             ServicePointManager.DefaultConnectionLimit = int.MaxValue;
             ServicePointManager.SecurityProtocol |= (SecurityProtocolType)3072; //TLS 1.2
-            var code = new Code(new string[0]);
-            code.Run();
+            //var code = new Code(new string[0]);
+            //code.Run();
         }
        
         [Test]
@@ -40,23 +40,15 @@ namespace PickAxe.Tests
         {
               var input = @"
 
-create buffer levels(month string, year string, level float)
-
-insert into levels
-select
-	pick 'td:nth-child(1) p.bold' match '(\d+)-(\w+)' replace '$2',
-	pick 'td:nth-child(1) p.bold' match '(\d+)-(\w+)' replace '$1',
-	pick 'td:nth-child(2) p' match '\d{3}\.\d{2}'
-from download page (
-	select
-		'http://www.golaketravis.com/waterlevel/' + pick '' take attribute 'href'
-	from download page 'http://www.golaketravis.com/waterlevel/'
-	where nodes = 'table[width=""100%""] td[style=""background-color: #62ABCC;""] p.white a'
-	) with (thread(10))
-where nodes = 'table[width=""600""] tr'
+create buffer temp (val string)
 
 select *
-from levels
+from (
+	select
+		pick 'li.current a',
+		pick 'li:nth-child(7) a'
+	from download page 'http://vtss.brockreeve.com/?t=All'
+	where nodes = 'ol.page-nav' ) b
 
 ";
 

@@ -259,7 +259,7 @@ whereStatement
 fromStatement
 	: FROM t=ID a=ID? innerJoinStatement? -> ^(FROM TABLE_VARIABLE_REFERENCE[$t] ^(TABLE_ALIAS $a)? innerJoinStatement?) 
 	| FROM tableGenerationClause ID? tableHint? innerJoinStatement? -> ^(FROM tableGenerationClause ^(TABLE_ALIAS ID)? tableHint? innerJoinStatement?)
-	| FROM OPENPAREN nestedSqlStatement CLOSEPAREN ID? innerJoinStatement? -> ^(FROM nestedSqlStatement ^(TABLE_ALIAS ID)? innerJoinStatement?)
+	| FROM OPENPAREN nestedSqlStatement CLOSEPAREN ID innerJoinStatement? -> ^(FROM nestedSqlStatement ^(TABLE_ALIAS ID) innerJoinStatement?)
 	;
 
 tableHint
