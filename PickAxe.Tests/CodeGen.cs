@@ -45,7 +45,7 @@ create buffer temp (val string)
 select *
 from (
 	select
-		pick 'li.current a',
+		pick 'li.current a' take text as page,
 		pick 'li:nth-child(7) a'
 	from download page 'http://vtss.brockreeve.com/?t=All'
 	where nodes = 'ol.page-nav' ) b

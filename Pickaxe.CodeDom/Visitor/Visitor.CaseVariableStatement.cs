@@ -26,6 +26,7 @@ namespace Pickaxe.CodeDom.Visitor
         public void Visit(CaseVariableStatement statement)
         {
             var domArg = new CodeDomArg();
+            SelectArgsInfo selectArg = null;
 
             CodeMemberMethod method = new CodeMemberMethod();
             method.Name = "Case_" + domArg.MethodIdentifier;
@@ -35,7 +36,7 @@ namespace Pickaxe.CodeDom.Visitor
 
             var caseArgs = VisitChild(statement.Case, new CodeDomArg() { Scope = _codeStack.Peek().Scope });
             if (caseArgs.Tag != null)
-                _codeStack.Peek().Tag = caseArgs.Tag;
+                selectArg = domArg.Tag as SelectArgsInfo; ;
 
             method.Statements.Add(new CodeVariableDeclarationStatement(new CodeTypeReference(typeof(object)), "var", caseArgs.CodeExpression));
 
@@ -43,7 +44,7 @@ namespace Pickaxe.CodeDom.Visitor
             {
                 domArg = VisitChild(childArg, new CodeDomArg() { Scope = _codeStack.Peek().Scope });
                 if (domArg.Tag != null)
-                    _codeStack.Peek().Tag = domArg.Tag;
+                    selectArg = domArg.Tag as SelectArgsInfo;
 
                 method.Statements.AddRange(domArg.ParentStatements);
             }
@@ -54,7 +55,7 @@ namespace Pickaxe.CodeDom.Visitor
             {
                 domArg = VisitChild(statement.ElseStatement, new CodeDomArg() { Scope = _codeStack.Peek().Scope });
                 if (domArg.Tag != null)
-                    _codeStack.Peek().Tag = domArg.Tag;
+                    selectArg = domArg.Tag as SelectArgsInfo;
 
                 method.Statements.Add(new CodeMethodReturnStatement(domArg.CodeExpression));
             }
@@ -66,20 +67,15 @@ namespace Pickaxe.CodeDom.Visitor
             method.Parameters.Add(rowParam);
             methodcall.Parameters.Add(new CodeVariableReferenceExpression("row"));
 
-            if(_codeStack.Peek().Tag != null) //pick statement
+            if (_codeStack.Peek().Tag != null && selectArg.IsPickStatement) //pick statement
             {
                 var htmlNodeParam = new CodeParameterDeclarationExpression(new CodeTypeReference("HtmlElement"), "node");
                 methodcall.Parameters.Add(new CodeVariableReferenceExpression("node"));
                 method.Parameters.Add(htmlNodeParam);
             }
 
-            _codeStack.Peek()
-                  .ParentStatements.Add(new CodeMethodInvokeExpression(new CodeTypeReferenceExpression("result"),
-                      "AddColumn",
-                      new CodePrimitiveExpression("(No column name)")));
-
+            _codeStack.Peek().Tag = selectArg;
             _codeStack.Peek().CodeExpression = methodcall;
-
         }
     }
 }

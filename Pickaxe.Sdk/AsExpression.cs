@@ -20,28 +20,13 @@ using System.Threading.Tasks;
 
 namespace Pickaxe.Sdk
 {
-    public class SelectArg : AstNode
-    {   
-        public AstNode[] Args
-        {
-            get
-            {
-                return Children.Where(x => x.GetType() != typeof(AsExpression)).ToArray(); ;
-            }
-        }
-
-        public AsExpression As
-        {
-            get
-            {
-                return Children.Where(x => x.GetType() == typeof(AsExpression)).Cast<AsExpression>().FirstOrDefault();
-            }
-        }
+    public class AsExpression : AstNode
+    {
+        public string Alias { get; set; }
 
         public override void Accept(IAstVisitor visitor)
         {
             visitor.Visit(this);
         }
-
     }
 }

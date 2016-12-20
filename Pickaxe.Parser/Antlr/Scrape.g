@@ -302,8 +302,8 @@ nestedSelectStatement
 	;
 
 selectArgs
-	: (selectArg PLUS)* selectArg -> ^(SELECT_ARG selectArg*)
-	| caseStatement -> ^(SELECT_ARG caseStatement)
+	: (selectArg PLUS)* selectArg (AS ID)? -> ^(SELECT_ARG selectArg* ^(AS ID)?)
+	| caseStatement (AS ID)? -> ^(SELECT_ARG caseStatement ^(AS ID)?)
 	;
 
 /*******CASE STATEMENT********/
@@ -352,7 +352,7 @@ boolOperator
 	;
 
 selectArg
-	: pickStatement
+	: pickStatement  
 	| literal
 	| selectVariable
 	| primitiveFunction
@@ -370,7 +370,7 @@ selectVariable
 	;
 	
 pickStatement
-	: PICK STRING_LITERAL takeStatement? matchStatement* -> ^(PICK STRING_LITERAL takeStatement? matchStatement* )
+	: PICK STRING_LITERAL takeStatement? matchStatement* -> ^(PICK STRING_LITERAL takeStatement? matchStatement*)
 	;
 
 takeStatement
@@ -479,6 +479,7 @@ WHILE : 'while';
 EACH : 'each';
 IN : 'in';
 SELECT : 'select';
+AS : 'as';
 FROM : 'from';
 INNER_JOIN : 'inner join';
 JOIN: 'join';

@@ -34,14 +34,14 @@ namespace Pickaxe.CodeDom.Visitor
             for (int x = 0; x < statement.Args.Length; x++) //select args
             {
                 var domSelectArg = VisitChild(statement.Args[x], new CodeDomArg() { Scope = scope });
-                if (domSelectArg.Tag != null)
+                if (((SelectArgsInfo)domSelectArg.Tag).IsPickStatement) 
                     outerLoopNeeded = true;
 
                 var primitive = TablePrimitive.FromType(Type.GetType(domSelectArg.Scope.CodeDomReference.BaseType));
-                bufferTable.Children.Add(new TableColumnArg() {Variable = "a" + x, Type = primitive.TypeString });
+                bufferTable.Children.Add(new TableColumnArg() { Variable = ((SelectArgsInfo)domSelectArg.Tag).DisplayColumnName, Type = primitive.TypeString });
 
                 var assignment = new CodeAssignStatement();
-                assignment.Left = new CodePropertyReferenceExpression(new CodeTypeReferenceExpression("resultRow"), "a" + x);
+                assignment.Left = new CodePropertyReferenceExpression(new CodeTypeReferenceExpression("resultRow"), ((SelectArgsInfo)domSelectArg.Tag).DisplayColumnName);
                 assignment.Right = domSelectArg.CodeExpression;
                 codeAssignments.Add(assignment);
             }

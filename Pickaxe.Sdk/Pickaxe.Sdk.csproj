@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="AliasBase.cs" />
     <Compile Include="AndExpression.cs" />
+    <Compile Include="AsExpression.cs" />
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="Block.cs" />
     <Compile Include="BooleanExpression.cs" />

@@ -36,22 +36,14 @@ namespace Pickaxe.CodeDom.Visitor
 
         public void Visit(PickStatement statement)
         {
+            var selectInfo = new SelectArgsInfo() {IsPickStatement = true};
             VerifyCssSelector(statement.Selector, new Semantic.LineInfo(statement.Line.Line, statement.Line.CharacterPosition));
-
-            if (!string.IsNullOrEmpty(statement.Selector))
-            {
-                _codeStack.Peek()
-                    .ParentStatements.Add(new CodeMethodInvokeExpression(new CodeTypeReferenceExpression("result"),
-                        "AddColumn",
-                        new CodePrimitiveExpression(statement.Selector)));
-            }
 
             var expression = new CodeMethodInvokeExpression(
                 new CodeTypeReferenceExpression("node"),
                 "Pick",
                 new CodePrimitiveExpression(statement.Selector)
                 );
-
 
             var takeDomArg = VisitChild(statement.TakeStatement);
             var takeExpression = takeDomArg.CodeExpression as CodeMethodInvokeExpression;
@@ -70,7 +62,7 @@ namespace Pickaxe.CodeDom.Visitor
                 }
             }
 
-            _codeStack.Peek().Tag = true;
+            _codeStack.Peek().Tag = selectInfo;
             _codeStack.Peek().CodeExpression = aggExpression;
             _codeStack.Peek().Scope = new ScopeData<Type> { Type = typeof(string), CodeDomReference = new CodeTypeReference(typeof(string)) };
         }

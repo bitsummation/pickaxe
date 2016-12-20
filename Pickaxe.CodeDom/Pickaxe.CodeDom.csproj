@@ -53,6 +53,7 @@
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="CodeDomArg.cs" />
     <Compile Include="Extensions.cs" />
+    <Compile Include="SelectArgsInfo.cs" />
     <Compile Include="SelectMatch.cs" />
     <Compile Include="SelectScope.cs" />
     <Compile Include="Semantic\AmbiguousSelectVariable.cs" />
@@ -68,6 +69,7 @@
     <Compile Include="Semantic\VariableAlreadyExists.cs" />
     <Compile Include="Visitor\Visitor.AdditionOperator.cs" />
     <Compile Include="Visitor\Visitor.AndExpression.cs" />
+    <Compile Include="Visitor\Visitor.AsExpression.cs" />
     <Compile Include="Visitor\Visitor.Block.cs" />
     <Compile Include="Visitor\Visitor.CaseBooleanStatement.cs" />
     <Compile Include="Visitor\Visitor.CaseVariableStatement.cs" />

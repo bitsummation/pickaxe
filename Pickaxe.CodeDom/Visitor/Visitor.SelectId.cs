@@ -28,12 +28,12 @@ namespace Pickaxe.CodeDom.Visitor
     {
         public void Visit(SelectId id)
         {
+            var selectInfo = new SelectArgsInfo();
+
             _codeStack.Peek().Scope = new ScopeData<Type> { Type = typeof(int), CodeDomReference = new CodeTypeReference(typeof(int)) };
             _codeStack.Peek().CodeExpression = new CodeFieldReferenceExpression(new CodeTypeReferenceExpression("row"), id.Id);
-             _codeStack.Peek()
-                   .ParentStatements.Add(new CodeMethodInvokeExpression(new CodeTypeReferenceExpression("result"),
-                       "AddColumn",
-                       new CodePrimitiveExpression(id.Id))); 
+            selectInfo.ColumnName = id.Id;
+            _codeStack.Peek().Tag = selectInfo;
 
             //1. Here we need to look through the select scope to get the variable.
             //If there, put correct table prefix.

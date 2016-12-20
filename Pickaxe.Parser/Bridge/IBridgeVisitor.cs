@@ -29,6 +29,7 @@ namespace Pickaxe.Parser.Bridge
         void Visit(InsertOverwriteStatement statement, CommonTree tree);
         void Visit(InsertIntoDirectoryStatement statement, CommonTree tree);
         void Visit(SelectArg arg, CommonTree tree);
+        void Visit(AsExpression expression, CommonTree tree);
         void Visit(UpdateSetArgs arg, CommonTree tree);
         void Visit(UpdateStatement statement, CommonTree tree);
         void Visit(SelectStatement statement, CommonTree tree);

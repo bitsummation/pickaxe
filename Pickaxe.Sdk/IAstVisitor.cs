@@ -30,6 +30,7 @@ namespace Pickaxe.Sdk
         void Visit(SelectStatement statement);
         void Visit(NestedSelectStatement statement);
         void Visit(SelectArg arg);
+        void Visit(AsExpression expression);
         void Visit(FromStatement statement);
         void Visit(InnerJoinStatement statement);
         void Visit(WhereStatement statement);

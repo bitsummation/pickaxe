@@ -18,30 +18,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Pickaxe.Sdk
+namespace Pickaxe.CodeDom
 {
-    public class SelectArg : AstNode
-    {   
-        public AstNode[] Args
+    internal class SelectArgsInfo
+    {
+        public SelectArgsInfo()
+        {
+            IsPickStatement = false;
+            ColumnName = null;
+        }
+
+        public bool IsPickStatement { get; set; }
+        public string ColumnName { get; set; }
+
+        public string DisplayColumnName
         {
             get
             {
-                return Children.Where(x => x.GetType() != typeof(AsExpression)).ToArray(); ;
+                return string.IsNullOrEmpty(ColumnName) ? "(No column name)" : ColumnName;
             }
         }
-
-        public AsExpression As
-        {
-            get
-            {
-                return Children.Where(x => x.GetType() == typeof(AsExpression)).Cast<AsExpression>().FirstOrDefault();
-            }
-        }
-
-        public override void Accept(IAstVisitor visitor)
-        {
-            visitor.Visit(this);
-        }
-
     }
 }

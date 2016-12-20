@@ -177,6 +177,15 @@ namespace Pickaxe.Parser.Bridge
             VisitChildren(tree);
         }
 
+        public void Visit(AsExpression expression, CommonTree tree)
+        {
+            Parent(tree).Children.Add(expression);
+            SetLine(expression, tree);
+            VisitChildren(tree);
+
+            expression.Alias = tree.GetChild(0).Text;
+        }
+
         public void Visit(PickStatement statement, CommonTree tree)
         {
             Parent(tree).Children.Add(statement);

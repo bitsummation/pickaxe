@@ -27,6 +27,8 @@ namespace Pickaxe.CodeDom.Visitor
     {
         public void Visit(TableMemberReference variable)
         {
+            var selectInfo = new SelectArgsInfo();
+
             _codeStack.Peek().Scope = new ScopeData<Type> { Type = typeof(string), CodeDomReference = new CodeTypeReference(typeof(string)) };
             var rowArgs = VisitChild(variable.RowReference);
 
@@ -42,10 +44,8 @@ namespace Pickaxe.CodeDom.Visitor
                 }
             }
 
-            _codeStack.Peek()
-                   .ParentStatements.Add(new CodeMethodInvokeExpression(new CodeTypeReferenceExpression("result"),
-                       "AddColumn",
-                       new CodePrimitiveExpression(variable.Member)));
+            selectInfo.ColumnName = variable.Member;
+            _codeStack.Peek().Tag = selectInfo;
 
             var expression = new CodeFieldReferenceExpression(rowArgs.CodeExpression, variable.Member);
             _codeStack.Peek().CodeExpression = expression;

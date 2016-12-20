@@ -23,19 +23,8 @@ namespace Pickaxe.CodeDom.Visitor
 {
     public partial class CodeDomGenerator : IAstVisitor
     {
-        public void Visit(WhenBooleanStatement statement)
+        public void Visit(AsExpression expression)
         {
-            var arg = VisitChild(statement.Expression, new CodeDomArg() { Scope = _codeStack.Peek().Scope });
-            _codeStack.Peek().Tag = arg.Tag;
-
-            var condition = new CodeConditionStatement();
-            condition.Condition = arg.CodeExpression;
-
-            var then = VisitChild(statement.Then, new CodeDomArg() { Scope = _codeStack.Peek().Scope });
-            condition.TrueStatements.Add(new CodeMethodReturnStatement(then.CodeExpression));
-            _codeStack.Peek().Tag = arg.Tag;
-
-            _codeStack.Peek().ParentStatements.Add(condition);
         }
     }
 }

@@ -61,6 +61,39 @@ namespace PickAxe.Tests
         }
 
         [Test]
+        public void Select_NoFrom()
+        {
+            var code = @"
+      
+ select
+    1, 2 as num, 'test', 6.78 as measure 
+";
+
+            var runable = TestHelper.Compile(code, _requestFactory);
+
+            int called = 0;
+            runable.Select += (table) =>
+            {
+                called++;
+                Assert.IsTrue(table.Columns().Length == 4);
+                Assert.IsTrue(table.Columns()[0] == "(No column name)");
+                Assert.IsTrue(table.Columns()[1] == "num");
+                Assert.IsTrue(table.Columns()[2] == "(No column name)");
+                Assert.IsTrue(table.Columns()[3] == "measure");
+
+                Assert.IsTrue(table.RowCount == 1);
+                Assert.IsTrue(table[0][0].ToString() == "1");
+                Assert.IsTrue(table[0][1].ToString() == "2");
+                Assert.IsTrue(table[0][2].ToString() == "test");
+                Assert.IsTrue(table[0][3].ToString() == "6.78");
+            };
+
+            runable.Run();
+            Assert.True(called == 1);
+
+        }
+
+        [Test]
         public void Select_StringConcat()
         {
              var code = @"
@@ -106,7 +139,7 @@ namespace PickAxe.Tests
             {
                 called++;
                 Assert.IsTrue(table.Columns().Length == 1);
-                Assert.IsTrue(table.Columns()[0] == ".address");
+                Assert.IsTrue(table.Columns()[0] == "(No column name)");
                 Assert.IsTrue(table.RowCount == 1);
                 Assert.IsTrue(table[0][0].ToString() == "4332 Forest Hill Blvd");
             };
@@ -133,7 +166,7 @@ namespace PickAxe.Tests
             {
                 called++;
                 Assert.IsTrue(table.Columns().Length == 1);
-                Assert.IsTrue(table.Columns()[0] == "div.dollar");
+                Assert.IsTrue(table.Columns()[0] == "(No column name)");
                 Assert.IsTrue(table.RowCount == 1);
                 Assert.IsTrue(table[0][0].ToString() == "6566.00");
             };
@@ -194,6 +227,65 @@ namespace PickAxe.Tests
 
             runable.Run();
             Assert.True(called == 1);
+        }
+
+        [Test]
+        public void Select_TestCaseMultiple()
+        {
+            var code = @"
+  
+create buffer temp(id int)
+      
+insert into temp
+select 3
+
+insert into temp
+select 2
+
+insert into temp
+select 5
+
+insert into temp
+select 10
+
+ select
+    id,
+    case id
+        when 5 then 'five'
+        when 2 then 'two'
+        when 3 then 'three'
+        else 'no'
+        end as description
+    from temp
+ 
+";
+
+            var runable = TestHelper.Compile(code, _requestFactory);
+
+            int called = 0;
+            runable.Select += (table) =>
+            {
+                called++;
+                Assert.IsTrue(table.Columns().Length == 2);
+                Assert.IsTrue(table.Columns()[0] == "id");
+                Assert.IsTrue(table.Columns()[1] == "description");
+
+                Assert.IsTrue(table.RowCount == 4);
+                Assert.IsTrue(table[0][0].ToString() == "3");
+                Assert.IsTrue(table[0][1].ToString() == "three");
+                Assert.IsTrue(table[1][0].ToString() == "2");
+                Assert.IsTrue(table[1][1].ToString() == "two");
+                Assert.IsTrue(table[2][0].ToString() == "5");
+                Assert.IsTrue(table[2][1].ToString() == "five");
+                Assert.IsTrue(table[3][0].ToString() == "10");
+                Assert.IsTrue(table[3][1].ToString() == "no");
+
+            };
+
+            runable.Run();
+            Assert.True(called == 1);
+
+
         }
 
         [Test]

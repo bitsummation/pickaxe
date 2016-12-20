@@ -60,7 +60,7 @@ namespace Pickaxe.CodeDom.Visitor
                 assignment.Left = new CodeIndexerExpression(new CodeTypeReferenceExpression("resultRow"), new CodeSnippetExpression(x.ToString()));
                 assignment.Right = domSelectArg.CodeExpression;
 
-                methodStatements.AddRange(domSelectArg.ParentStatements);
+                methodStatements.Add(new CodeMethodInvokeExpression(new CodeTypeReferenceExpression("result"), "AddColumn", new CodePrimitiveExpression(((SelectArgsInfo)domSelectArg.Tag).DisplayColumnName)));
 
                 selectArgAssignments.Add(assignment);
             }
@@ -125,15 +125,14 @@ namespace Pickaxe.CodeDom.Visitor
                 for (int x = 0; x < statement.Args.Length; x++) //select args
                 {
                     var domSelectArg = VisitChild(statement.Args[x], new CodeDomArg() { Scope = fromDomArg.Scope });
-                    if (domSelectArg.Tag != null)
+                    if (((SelectArgsInfo)domSelectArg.Tag).IsPickStatement)
                         outerLoopNeeded = true;
 
                     var assignment = new CodeAssignStatement();
                     assignment.Left = new CodeIndexerExpression(new CodeTypeReferenceExpression("resultRow"), new CodeSnippetExpression(x.ToString()));
                     assignment.Right = domSelectArg.CodeExpression;
 
-                    methodStatements.AddRange(domSelectArg.ParentStatements);
-
+                    methodStatements.Add(new CodeMethodInvokeExpression(new CodeTypeReferenceExpression("result"), "AddColumn", new CodePrimitiveExpression(((SelectArgsInfo)domSelectArg.Tag).DisplayColumnName)));
                     selectArgAssignments.Add(assignment);
                 }
 
