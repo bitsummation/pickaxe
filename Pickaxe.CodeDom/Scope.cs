@@ -28,10 +28,15 @@ namespace Pickaxe.CodeDom
 
         public static Scope Current { get; private set; }
 
+        public string ScopeGuid { get; private set; }
+        public string ScopeIdentifier { get; private set; }
+        public CodeDomTypeDefinition Type { get; private set; }
+
         protected Scope(CodeDomTypeDefinition mainType)
         {
             _scope = new Dictionary<string, IScopeData>();
-            ScopeIdentifier = "Scope_" +  Guid.NewGuid().ToString("N");
+            ScopeGuid = Guid.NewGuid().ToString("N");
+            ScopeIdentifier = "Scope_" +  ScopeGuid;
             if(mainType != null)
                 CreateType(mainType);
 
@@ -53,9 +58,6 @@ namespace Pickaxe.CodeDom
 
             mainType.Type.Members.Add(Type.Type);
         }
-
-        public string ScopeIdentifier { get; private set; }
-        public CodeDomTypeDefinition Type { get; private set; }
 
         public static void Reset()
         {

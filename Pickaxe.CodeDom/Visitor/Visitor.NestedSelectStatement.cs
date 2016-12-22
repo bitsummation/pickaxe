@@ -30,7 +30,8 @@ namespace Pickaxe.CodeDom.Visitor
         private BufferTable FetchBufferTable(NestedSelectStatement statement, IScopeData scope, IList<CodeAssignStatement> codeAssignments, out Boolean outerLoopNeeded)
         {
             outerLoopNeeded = false;
-            var bufferTable = new BufferTable(){Variable = "b"};
+            string aliasId = ((AliasBase)statement.Parent).Alias.Id;
+            var bufferTable = new BufferTable() { Variable = aliasId };
 
             for (int x = 0; x < statement.Args.Length; x++) //select args
             {

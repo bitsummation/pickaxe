@@ -46,9 +46,9 @@ select *
 from (
 	select
 		pick 'li.current a' take text as page,
-		pick 'li:nth-child(7) a'
+		pick 'li:nth-child(7) a' as p
 	from download page 'http://vtss.brockreeve.com/?t=All'
-	where nodes = 'ol.page-nav' ) b
+	where nodes = 'ol.page-nav' ) t
 
 ";
 
