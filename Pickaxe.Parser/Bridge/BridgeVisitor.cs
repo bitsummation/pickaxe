@@ -174,6 +174,7 @@ namespace Pickaxe.Parser.Bridge
         public void Visit(SelectArg arg, CommonTree tree)
         {
             Parent(tree).Children.Add(arg);
+            SetLine(arg, tree);
             VisitChildren(tree);
         }
 

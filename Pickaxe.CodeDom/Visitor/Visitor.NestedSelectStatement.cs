@@ -12,6 +12,7 @@
  * limitations under the License.
  */
 
+using Pickaxe.CodeDom.Semantic;
 using Pickaxe.Runtime;
 using Pickaxe.Sdk;
 using System;
@@ -36,6 +37,9 @@ namespace Pickaxe.CodeDom.Visitor
                 var domSelectArg = VisitChild(statement.Args[x], new CodeDomArg() { Scope = scope });
                 if (((SelectArgsInfo)domSelectArg.Tag).IsPickStatement) 
                     outerLoopNeeded = true;
+
+                if(((SelectArgsInfo)domSelectArg.Tag).ColumnName == null) //have to have a column name in a nested select
+                    Errors.Add(new NoColumnName(x + 1, new Semantic.LineInfo(statement.Args[x].Line.Line, statement.Args[x].Line.CharacterPosition)));
 
                 var primitive = TablePrimitive.FromType(Type.GetType(domSelectArg.Scope.CodeDomReference.BaseType));
                 bufferTable.Children.Add(new TableColumnArg() { Variable = ((SelectArgsInfo)domSelectArg.Tag).DisplayColumnName, Type = primitive.TypeString });
