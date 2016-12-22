@@ -82,9 +82,9 @@ namespace Pickaxe.CodeDom.Visitor
                 bool outerLoopNeeded;
                 bufferTable = FetchBufferTable(statement, fromDomArg.Scope, selectArgAssignments, out outerLoopNeeded);
 
-                methodStatements.Add(new CodeVariableDeclarationStatement(new CodeTypeReference("CodeTable", new CodeTypeReference("b")),
+                methodStatements.Add(new CodeVariableDeclarationStatement(new CodeTypeReference("CodeTable", new CodeTypeReference(bufferTable.Variable)),
                        "result",
-                       new CodeObjectCreateExpression(new CodeTypeReference("BufferTable", new CodeTypeReference("b")))));
+                       new CodeObjectCreateExpression(new CodeTypeReference("BufferTable", new CodeTypeReference(bufferTable.Variable)))));
 
                 methodStatements.Add(new CodeVariableDeclarationStatement(fromDomArg.Scope.CodeDomReference,
                     "fromTable",
@@ -163,9 +163,9 @@ namespace Pickaxe.CodeDom.Visitor
 
                 //Needed for both.
                 codeLoop.Statements.Add(new CodeVariableDeclarationStatement(
-                    new CodeTypeReference("b"),
+                    new CodeTypeReference(bufferTable.Variable),
                     "resultRow",
-                    new CodeObjectCreateExpression(new CodeTypeReference("b"))));
+                    new CodeObjectCreateExpression(new CodeTypeReference(bufferTable.Variable))));
 
                 codeLoop.Statements.AddRange(selectArgAssignments.ToArray());
 
@@ -195,39 +195,6 @@ namespace Pickaxe.CodeDom.Visitor
 
             _codeStack.Peek().CodeExpression = methodcall;
             _codeStack.Peek().Scope = new ScopeData<TableDescriptor>() { CodeDomReference = method.ReturnType };
-
-            //descriptor = Scope.Current.GetTableDescriptor(statement.Variable.Id);
-
-
-                /*
-            var methodStatements = new CodeStatementCollection();
-            var selectArgAssignments = new List<CodeAssignStatement>();
-             = false;
-
-            var typePair = new List<VariableTypePair>();
-
-            for (int x = 0; x < statement.Args.Length; x++) //select args
-            {
-                var domSelectArg = VisitChild(statement.Args[x], new CodeDomArg() { Scope = fromDomArg.Scope });
-                if (domSelectArg.Tag != null)
-                    outerLoopNeeded = true;
-
-                var primitive = TablePrimitive.FromType(Type.GetType(domSelectArg.Scope.CodeDomReference.BaseType));
-                typePair.Add(new VariableTypePair() { Variable = "a", Primitive = primitive });
-
-                //var assignment = new CodeAssignStatement();
-                //resultRow.a
-                //resultRow.b
-                //assignment.Left = new CodeIndexerExpression(new CodeTypeReferenceExpression("resultRow"), new CodeSnippetExpression(x.ToString()));
-                //assignment.Right = domSelectArg.CodeExpression;
-
-                //methodStatements.AddRange(domSelectArg.ParentStatements);
-
-                //selectArgAssignments.Add(assignment);
-            }
-
-            //CreateBufferTable(new BufferTable(){Variable = "b", Args = })*/
-
         }
 
     }

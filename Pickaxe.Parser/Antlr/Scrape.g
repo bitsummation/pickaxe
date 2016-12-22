@@ -279,6 +279,7 @@ jsArg
 
 innerJoinStatement
 	: innerJoin t=ID a=ID? 'on' boolExpression innerJoinStatement? -> ^(INNER_JOIN TABLE_VARIABLE_REFERENCE[$t] ^(TABLE_ALIAS $a)? boolExpression innerJoinStatement?)
+	| innerJoin OPENPAREN nestedSqlStatement CLOSEPAREN ID 'on' boolExpression innerJoinStatement? -> ^(INNER_JOIN nestedSqlStatement ^(TABLE_ALIAS ID) boolExpression innerJoinStatement?)
 	;
 
 tableGenerationClause

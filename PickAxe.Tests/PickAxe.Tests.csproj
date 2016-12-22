@@ -57,6 +57,7 @@
     <Compile Include="CommandArgTests.cs" />
     <Compile Include="EachTests.cs" />
     <Compile Include="JoinTests.cs" />
+    <Compile Include="NestedSelectTests.cs" />
     <Compile Include="PrimitiveFunctionTests.cs" />
     <Compile Include="SelectTests.cs" />
     <Compile Include="TestCode.cs" />

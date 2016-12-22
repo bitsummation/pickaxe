@@ -42,7 +42,7 @@ namespace PickAxe.Tests
 
 create buffer temp (val string)
 
-select *
+select t.p
 from (
 	select
 		pick 'li.current a' take text as page,
