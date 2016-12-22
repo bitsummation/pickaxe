@@ -49,6 +49,15 @@ namespace PickAxe.Tests
         <li>1,975</li>
         <li>2,566,888</li>
     </div>
+    <table>
+        <tr>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>3</td>
+        </tr>
+    </table>
 </div>
 
 ";
@@ -352,6 +361,36 @@ select 5
 
             runable.Run();
             Assert.True(called == 1);
+        }
+
+        [Test]
+        public void Select_Nulls()
+        {
+            var code = @"
+        
+ select
+    pick 'td:nth-child(2)'
+    from download page 'http://mock.com'
+    where nodes = 'table tr'
+";
+
+            var runable = TestHelper.Compile(code, _requestFactory);
+
+            int called = 0;
+            runable.Select += (table) =>
+            {
+                called++;
+                Assert.IsTrue(table.Columns().Length == 1);
+                Assert.IsTrue(table.Columns()[0] == "(No column name)");
+                Assert.IsTrue(table.RowCount == 2);
+
+                Assert.IsTrue(table[0][0] == null);
+                Assert.IsTrue(table[1][0].ToString() == "3");
+            };
+
+            runable.Run();
+            Assert.True(called == 1);
+
         }
     }
 }
