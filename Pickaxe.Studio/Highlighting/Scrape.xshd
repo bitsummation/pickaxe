@@ -101,6 +101,7 @@
         <Key word = "else" />
         <Key word = "end" />
         <Key word = "on" />
+        <Key word = "as" />
         <Key word = "set" />
         <Key word = "thread" />
         <Key word = "js" />

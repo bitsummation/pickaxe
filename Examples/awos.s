@@ -25,13 +25,13 @@ where nodes = 'table.asos tbody tr'
 select
 	s.city,
 	s.state,
-	pick 'tr:nth-of-type(3) td:nth-of-type(2)', --temp
-	pick 'tr:nth-of-type(4) td:nth-of-type(2)', --dewpoint
-	pick 'tr:nth-of-type(5) td:nth-of-type(2)', --pressure
-	pick 'tr:nth-of-type(6) td:nth-of-type(2)', --winds
-	pick 'tr:nth-of-type(7) td:nth-of-type(2)', --Visbility
-	pick 'tr:nth-of-type(8) td:nth-of-type(2)', --ceiling,
-	pick 'tr:nth-of-type(8) td:nth-of-type(2)' --clouds,
+	pick 'tr:nth-of-type(3) td:nth-of-type(2)' as temp, 
+	pick 'tr:nth-of-type(4) td:nth-of-type(2)' as dewpoint, 
+	pick 'tr:nth-of-type(5) td:nth-of-type(2)' as pressure, 
+	pick 'tr:nth-of-type(6) td:nth-of-type(2)' as wind, 
+	pick 'tr:nth-of-type(7) td:nth-of-type(2)' as visibility, 
+	pick 'tr:nth-of-type(8) td:nth-of-type(2)' as ceiling, 
+	pick 'tr:nth-of-type(8) td:nth-of-type(2)' as clouds
 from download page (select url from station) d with (thread(10))
 join station s on s.url = d.url
 where nodes = '#awc_main_content table:not([align="left"])'
