@@ -15,4 +15,5 @@ where nodes = 'table[width="600"] tr'
 
 select *
 from levels
+where month != null
 
