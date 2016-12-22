@@ -80,7 +80,7 @@ from (
         public void Nested_Select_Join()
         {
             var code = @"
-    select t.p, p.k
+    select t.p, p.de
     from (
 	    select
             1 as k,
@@ -90,7 +90,8 @@ from (
     ) t
     join ( 
         select
-            1 as k 
+            1 as k,
+            10 as de
 ) p on p.k = t.k
 ";
 
@@ -100,16 +101,18 @@ from (
             runable.Select += (table) =>
             {
                 called++;
-                Assert.IsTrue(table.Columns().Length == 1);
+                Assert.IsTrue(table.Columns().Length == 2);
                 Assert.IsTrue(table.Columns()[0] == "p");
+                Assert.IsTrue(table.Columns()[1] == "de");
                 Assert.IsTrue(table.RowCount == 2);
-                Assert.IsTrue(table[0][0].ToString() == "6,566,888");
-                Assert.IsTrue(table[1][0].ToString() == "2,566,888");
+                Assert.IsTrue(table[0][0].ToString() == "6");
+                Assert.IsTrue(table[0][1].ToString() == "10");
+                Assert.IsTrue(table[1][0].ToString() == "3");
+                Assert.IsTrue(table[1][1].ToString() == "10");
             };
 
             runable.Run();
             Assert.True(called == 1);
-           
         }
 
     }

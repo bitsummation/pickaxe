@@ -26,7 +26,7 @@ using System.Threading.Tasks;
 namespace Pickaxe.CodeDom.Visitor
 {
     public partial class CodeDomGenerator : IAstVisitor
-    {
+    {   
         private BufferTable FetchBufferTable(NestedSelectStatement statement, IScopeData scope, IList<CodeAssignStatement> codeAssignments, out Boolean outerLoopNeeded)
         {
             outerLoopNeeded = false;
@@ -42,7 +42,7 @@ namespace Pickaxe.CodeDom.Visitor
                 if(((SelectArgsInfo)domSelectArg.Tag).ColumnName == null) //have to have a column name in a nested select
                     Errors.Add(new NoColumnName(x + 1, new Semantic.LineInfo(statement.Args[x].Line.Line, statement.Args[x].Line.CharacterPosition)));
 
-                var primitive = TablePrimitive.FromType(Type.GetType(domSelectArg.Scope.CodeDomReference.BaseType));
+                var primitive = TablePrimitive.FromType(domSelectArg.Scope.CodeType);
                 bufferTable.Children.Add(new TableColumnArg() { Variable = ((SelectArgsInfo)domSelectArg.Tag).DisplayColumnName, Type = primitive.TypeString });
 
                 var assignment = new CodeAssignStatement();
@@ -54,20 +54,79 @@ namespace Pickaxe.CodeDom.Visitor
             return bufferTable;
         }
 
+        private void GenerateNestedSelectOnly(string bufferVariable, IList<CodeAssignStatement> codeAssignments, SelectStatement statement)
+        {
+            var fromDomArg = new CodeDomArg();
+
+            CodeMemberMethod method = new CodeMemberMethod();
+            method.Name = "Nested_Select_" + fromDomArg.MethodIdentifier;
+            method.Attributes = MemberAttributes.Private;
+            method.ReturnType = new CodeTypeReference("CodeTable", new CodeTypeReference(bufferVariable));
+            GenerateCallStatement(method.Statements, statement.Line.Line);
+
+            _mainType.Type.Members.Add(method);
+
+            var methodStatements = new CodeStatementCollection();
+
+            methodStatements.Add(new CodeVariableDeclarationStatement(new CodeTypeReference("CodeTable", new CodeTypeReference(bufferVariable)),
+                          "result",
+                          new CodeObjectCreateExpression(new CodeTypeReference("BufferTable", new CodeTypeReference(bufferVariable)))));
+
+            methodStatements.Add(new CodeVariableDeclarationStatement(
+                    new CodeTypeReference(bufferVariable),
+                    "resultRow",
+                    new CodeObjectCreateExpression(new CodeTypeReference(bufferVariable))));
+
+            var addResults = new CodeMethodInvokeExpression(
+                    new CodeMethodReferenceExpression(new CodeTypeReferenceExpression("result"), "Add"),
+                    new CodeArgumentReferenceExpression("resultRow"));
+
+            methodStatements.AddRange(codeAssignments.ToArray());
+            methodStatements.Add(addResults);
+           
+            methodStatements.Add(new CodeMethodReturnStatement(new CodeTypeReferenceExpression("result")));
+
+            method.Statements.AddRange(methodStatements);
+
+            var methodcall = new CodeMethodInvokeExpression(
+                new CodeMethodReferenceExpression(null, method.Name));
+
+            _codeStack.Peek().CodeExpression = methodcall;
+            _codeStack.Peek().Scope = new ScopeData<TableDescriptor>() { CodeDomReference = method.ReturnType };
+        }
+
+        private void SelectOnly(NestedSelectStatement statement)
+        {
+            BufferTable bufferTable;
+            var selectArgAssignments = new List<CodeAssignStatement>();
+            bool outerLoopNeeded;
+
+            using (Scope.PushSelect())
+            {
+                bufferTable = FetchBufferTable(statement, null, selectArgAssignments, out outerLoopNeeded);
+                GenerateNestedSelectOnly(bufferTable.Variable, selectArgAssignments, statement);
+            }
+
+            var scope = CreateBufferTable(bufferTable);
+            _codeStack.Peek().Scope = new ScopeData<TableDescriptor>() { CodeDomReference = scope.CodeDomReference};
+        }
+
         public void Visit(NestedSelectStatement statement)
         {
             BufferTable bufferTable;
             CodeMemberMethod method = new CodeMemberMethod();
             var methodStatements = new CodeStatementCollection();
             var selectArgAssignments = new List<CodeAssignStatement>();
+            bool outerLoopNeeded;
+
+            if (statement.From == null)
+            {
+                SelectOnly(statement);
+                return;
+            }
 
             using (Scope.PushSelect())
             {
-                if (statement.From == null)
-                {
-                    GenerateSelectOnly(statement);
-                    return;
-                }
 
                 var fromDomArg = VisitChild(statement.From);
                 var rowType = fromDomArg.Scope.CodeDomReference.TypeArguments[0];
@@ -79,7 +138,6 @@ namespace Pickaxe.CodeDom.Visitor
                 _mainType.Type.Members.Add(method);
 
                 //create type
-                bool outerLoopNeeded;
                 bufferTable = FetchBufferTable(statement, fromDomArg.Scope, selectArgAssignments, out outerLoopNeeded);
 
                 methodStatements.Add(new CodeVariableDeclarationStatement(new CodeTypeReference("CodeTable", new CodeTypeReference(bufferTable.Variable)),

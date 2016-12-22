@@ -24,6 +24,13 @@ namespace Pickaxe.CodeDom
     internal class ScopeData<TType> : IScopeData
     {
         public TType Type { get; set; }
-        public CodeTypeReference CodeDomReference { get; set; }
+
+        public override Type CodeType
+        {
+            get
+            {
+                return Type as Type;
+            }
+        }
     }
 }

@@ -40,15 +40,19 @@ namespace PickAxe.Tests
         {
               var input = @"
 
-create buffer temp (val string)
+ select t.p, p.k
+    from (
+	    select
+            1 as k,
+		    pick 'li:nth-of-type(2)' as p
+	    from download page 'http://mock.com'
+	    where nodes = '#match-tests'
+    ) t
+    join ( 
+        select
+            1 as k 
+) p on p.k = t.k
 
-select t.p
-from (
-	select
-		pick 'li.current a' take text as page,
-		pick 'li:nth-child(7) a' as p
-	from download page 'http://vtss.brockreeve.com/?t=All'
-	where nodes = 'ol.page-nav' ) t
 
 ";
 

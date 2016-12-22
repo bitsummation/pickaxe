@@ -21,8 +21,9 @@ using System.Threading.Tasks;
 
 namespace Pickaxe.CodeDom
 {
-    internal interface IScopeData
+    internal abstract class IScopeData
     {
-        CodeTypeReference CodeDomReference { get; set; }
+        public CodeTypeReference CodeDomReference { get; set; }
+        public abstract Type CodeType { get; }
     }
 }
