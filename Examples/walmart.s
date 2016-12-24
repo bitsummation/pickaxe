@@ -15,7 +15,7 @@ select 'http://www.walmart.com/cp/Health/976760'
 insert into superCategories
 select 'http://www.walmart.com/cp/Baby-Products/5427'
 
-create buffer categories(relativeUrl string)
+create buffer categories(url string)
 
 insert into categories
 select
@@ -23,17 +23,21 @@ select
 from download page (select url from superCategories) with (thread(5))
 where nodes = '.expander-content li.SideBarMenuModuleItem'
 
+update categories
+set url = 'http://walmart.com' + url
+where url not like '%walmart.com%'
+
 create buffer division(url string)
 
 insert into division
-select 'http://walmart.com' + relativeUrl
+select url
 from categories    
-where relativeUrl like '%/browse/%'
+where url like '%/browse/%'
 
 insert into division
 select
     pick '' take attribute 'href'
-from download page (select 'http://walmart.com' + relativeUrl from categories where relativeUrl like '%/cp/%') with (thread(5))
+from download page (select url from categories where url like '%/cp/%') with (thread(5))
 where nodes = 'a.TempoCategoryTile-tile-overlay'    
 
 update division
