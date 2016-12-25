@@ -3,7 +3,7 @@
 Pickaxe uses SQL statements combined with CSS selectors to pick out text from a web page. If you know SQL and a little about CSS selectors and want to capture data from the web, this is the tool for you.
 ## Downloads
 ---
-Found [here](https://github.com/bitsummation/pickaxe/releases). It requires .NET framework 4.0. **Pickaxe.zip** contains the GUI editor and only runs on windows. The **Pickaxe-Console.zip** is the command line version that runs on non-windows platforms using mono as well as windows. See Command Line section below.
+Found [here](https://github.com/bitsummation/pickaxe/releases). It requires .NET framework 4.5. **Pickaxe.zip** contains the GUI editor and only runs on windows. The **Pickaxe-Console.zip** is the command line version that runs on non-windows platforms using mono as well as windows. See Command Line section below.
 ## Quickstart
 ---
 Download **Pickaxe.zip** from above and unzip the contents and double click on **Pickaxe.Studio.exe** to run the GUI editor. Below is a screen shot of the editor. A full runnable example that scrapes a forum I host is found [here](https://raw.githubusercontent.com/bitsummation/pickaxe/master/Examples/vtss.s). Others can be found [here](https://github.com/bitsummation/pickaxe/tree/master/Examples).

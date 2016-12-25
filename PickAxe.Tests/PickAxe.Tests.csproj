@@ -67,6 +67,7 @@
     <Compile Include="ProcedureCallTests.cs" />
     <Compile Include="UpdateTests.cs" />
     <Compile Include="WhereTests.cs" />
+    <Compile Include="WhileTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
