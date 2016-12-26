@@ -103,6 +103,42 @@ namespace PickAxe.Tests
         }
 
         [Test]
+        public void Select_Identity()
+        {
+            var code = @"
+      
+create buffer temp(id identity, name string)
+
+insert into temp
+select 'test'
+
+insert into temp
+select 'test2'
+
+select *
+from temp
+
+";
+
+            var runable = TestHelper.Compile(code, _requestFactory);
+
+            int called = 0;
+            runable.Select += (table) =>
+            {
+                called++;
+                Assert.IsTrue(table.Columns().Length == 2);
+                Assert.IsTrue(table.Columns()[0] == "id");
+                Assert.IsTrue(table.Columns()[1] == "name");
+                Assert.IsTrue(table.RowCount == 2);
+                Assert.IsTrue(table[0][0].ToString() == "1");
+                Assert.IsTrue(table[1][0].ToString() == "2");
+            };
+
+            runable.Run();
+            Assert.True(called == 1);
+        }
+
+        [Test]
         public void Select_StringConcat()
         {
              var code = @"
