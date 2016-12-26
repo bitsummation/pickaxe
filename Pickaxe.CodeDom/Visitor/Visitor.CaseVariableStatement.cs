@@ -36,7 +36,7 @@ namespace Pickaxe.CodeDom.Visitor
 
             var caseArgs = VisitChild(statement.Case, new CodeDomArg() { Scope = _codeStack.Peek().Scope });
             if (caseArgs.Tag != null)
-                selectArg = domArg.Tag as SelectArgsInfo; ;
+                selectArg = caseArgs.Tag as SelectArgsInfo;
 
             method.Statements.Add(new CodeVariableDeclarationStatement(new CodeTypeReference(typeof(object)), "var", caseArgs.CodeExpression));
 
@@ -67,7 +67,7 @@ namespace Pickaxe.CodeDom.Visitor
             method.Parameters.Add(rowParam);
             methodcall.Parameters.Add(new CodeVariableReferenceExpression("row"));
 
-            if (_codeStack.Peek().Tag != null && selectArg.IsPickStatement) //pick statement
+            if (selectArg != null && selectArg.IsPickStatement) //pick statement
             {
                 var htmlNodeParam = new CodeParameterDeclarationExpression(new CodeTypeReference("HtmlElement"), "node");
                 methodcall.Parameters.Add(new CodeVariableReferenceExpression("node"));

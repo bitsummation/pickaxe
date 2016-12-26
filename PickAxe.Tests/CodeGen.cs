@@ -40,18 +40,11 @@ namespace PickAxe.Tests
         {
               var input = @"
 
- select t.p, p.k
-    from (
-	    select
-            1 as k,
-		    pick 'li:nth-of-type(2)' as p
-	    from download page 'http://mock.com'
-	    where nodes = '#match-tests'
-    ) t
-    join ( 
-        select
-            1 as k 
-) p on p.k = t.k
+       
+ select
+    case when pick 'li:first-child' take text match '[\d\.]+' < 9000 then 2 end
+    from download page 'http://mock.com'
+    where nodes = '#match-tests'
 
 
 ";

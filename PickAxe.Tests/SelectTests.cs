@@ -336,6 +336,35 @@ select 5
             Assert.True(called == 1);
         }
 
+
+        [Test]
+        public void Select_TestPickFirstCase()
+        {
+            var code = @"
+        
+ select
+    case pick 'li:first-child' take text match '[\d\.]+' when 6566 then 2 end,
+pick 'li:first-child' take text match '[\d\.]+'
+    from download page 'http://mock.com'
+    where nodes = '#match-tests'
+ 
+";
+            var runable = TestHelper.Compile(code, _requestFactory);
+
+            int called = 0;
+            runable.Select += (table) =>
+            {
+                called++;
+                Assert.IsTrue(table.Columns().Length == 1);
+                Assert.IsTrue(table.RowCount == 2);
+                Assert.IsTrue(table[0][0].ToString() == "2");
+            };
+
+            runable.Run();
+            Assert.True(called == 1);
+        }
+
+
         [Test]
         public void Select_TestCaseBooleanPick()
         {
