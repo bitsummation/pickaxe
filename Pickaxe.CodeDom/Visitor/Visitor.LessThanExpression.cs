@@ -24,27 +24,25 @@ namespace Pickaxe.CodeDom.Visitor
 {
     public partial class CodeDomGenerator : IAstVisitor
     {
-        private void DoBoolean(BooleanExpression expression, CodeBinaryOperatorType operation)
-        {
-            var leftArgs = VisitChild(expression.Left, new CodeDomArg() { Scope = _codeStack.Peek().Scope });
-            var rightArgs = VisitChild(expression.Right, new CodeDomArg() { Scope = _codeStack.Peek().Scope });
 
+        private CodeExpression DoBoolean(CodeDomArg leftArgs, CodeDomArg rightArgs, CodeBinaryOperatorType operation)
+        {
             Type leftType = null;
-            if(leftArgs.Scope != null)
+            if (leftArgs.Scope != null)
                 leftType = leftArgs.Scope.CodeDomReference.GenerateType();
 
             Type rightType = null;
             if (rightArgs.Scope != null)
                 rightType = rightArgs.Scope.CodeDomReference.GenerateType();
 
-            if (leftType != null && rightType !=  null && leftType != rightType)
+            if (leftType != null && rightType != null && leftType != rightType)
             {
-                if (leftType == typeof(string))
+                if (leftType == typeof(string) || leftType == typeof(object))
                 {
                     var primitive = TablePrimitive.FromType(rightType);
                     leftArgs.CodeExpression = primitive.ToNative(leftArgs.CodeExpression);
                 }
-                else if(rightType == typeof(string))
+                else if (rightType == typeof(string))
                 {
                     var primitive = TablePrimitive.FromType(leftType);
                     rightArgs.CodeExpression = primitive.ToNative(rightArgs.CodeExpression);
@@ -56,7 +54,15 @@ namespace Pickaxe.CodeDom.Visitor
             if (rightArgs.Tag != null)
                 _codeStack.Peek().Tag = rightArgs.Tag;
 
-            _codeStack.Peek().CodeExpression = new CodeBinaryOperatorExpression(leftArgs.CodeExpression, operation, rightArgs.CodeExpression);
+            return new CodeBinaryOperatorExpression(leftArgs.CodeExpression, operation, rightArgs.CodeExpression);
+        }
+
+        private void DoBoolean(BooleanExpression expression, CodeBinaryOperatorType operation)
+        {
+            var leftArgs = VisitChild(expression.Left, new CodeDomArg() { Scope = _codeStack.Peek().Scope });
+            var rightArgs = VisitChild(expression.Right, new CodeDomArg() { Scope = _codeStack.Peek().Scope });
+
+            _codeStack.Peek().CodeExpression = DoBoolean(leftArgs, rightArgs, operation);
         }
 
         public void Visit(LessThanExpression expression)

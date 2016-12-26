@@ -41,11 +41,29 @@ namespace PickAxe.Tests
               var input = @"
 
        
- select
-    case when pick 'li:first-child' take text match '[\d\.]+' < 9000 then 2 end
-    from download page 'http://mock.com'
-    where nodes = '#match-tests'
+ create buffer temp(id int)
+      
+insert into temp
+select 3
 
+insert into temp
+select 2
+
+insert into temp
+select 5
+
+insert into temp
+select 10
+
+ select
+    id,
+    case id
+        when 5 then 'five'
+        when 2 then 'two'
+        when 3 then 'three'
+        else 'no'
+        end as description
+    from temp
 
 ";
 

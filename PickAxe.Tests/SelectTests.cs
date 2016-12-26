@@ -343,8 +343,7 @@ select 5
             var code = @"
         
  select
-    case pick 'li:first-child' take text match '[\d\.]+' when 6566 then 2 end,
-pick 'li:first-child' take text match '[\d\.]+'
+    case pick 'li:first-child' take text match '[\d\.]+' when 6566 then 2 end
     from download page 'http://mock.com'
     where nodes = '#match-tests'
  

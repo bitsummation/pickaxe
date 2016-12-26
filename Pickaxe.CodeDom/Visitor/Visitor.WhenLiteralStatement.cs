@@ -35,8 +35,10 @@ namespace Pickaxe.CodeDom.Visitor
             }
             else
             {
+                //always convert from object to type
+                var leftArgs = new CodeDomArg(){Scope =  new ScopeData<Type> { Type = typeof(object), CodeDomReference = new CodeTypeReference(typeof(object)) }, CodeExpression = new CodeVariableReferenceExpression("var")};
                 var preCondition = new CodeBinaryOperatorExpression(new CodeVariableReferenceExpression("var"), CodeBinaryOperatorType.IdentityInequality, new CodePrimitiveExpression(null));
-                condition.Condition = new CodeBinaryOperatorExpression(preCondition, CodeBinaryOperatorType.BooleanAnd, new CodeMethodInvokeExpression(new CodeVariableReferenceExpression("var"), "Equals", arg.CodeExpression));
+                condition.Condition = new CodeBinaryOperatorExpression(preCondition, CodeBinaryOperatorType.BooleanAnd, DoBoolean(leftArgs, arg, CodeBinaryOperatorType.IdentityEquality));
             }
 
             var then = VisitChild(statement.Then);
