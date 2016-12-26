@@ -196,13 +196,13 @@ where nodes = 'tr.topic-list-item'
 Capture the commit information from this page.
 ```sql
 select
-	case pick '.icon .octicon-file-text'
-		when null then 'Folder'
-		else 'File'
-	end, --folder/file
-	pick '.content a', --name
-	pick '.message a', --comment
-	pick '.age span' --date
+    case pick '.icon .octicon-file-text'
+        when null then 'Folder'
+        else 'File' 
+    end as type, --folder/file
+    pick '.content a' as name, --name
+    pick '.message a' as comment, --comment
+    pick '.age span' as date --date
 from download page 'https://github.com/bitsummation/pickaxe'
 where nodes = 'table.files tr.js-navigation-item'
 ```
