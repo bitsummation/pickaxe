@@ -196,7 +196,10 @@ namespace Pickaxe
 
                 for (int col = 0; col < lengths.Count - 1; col++)
                 {
-                    int len = Truncate(result[row][col].ToString()).Length + 2;
+                    int len = "NULL".ToString().Length + 2;
+                    if(result[row][col] != null)
+                        len = Truncate(result[row][col].ToString()).Length + 2;
+                    
                     if (len > lengths[col+1])
                         lengths[col+1] = len;
                 }
@@ -297,7 +300,12 @@ namespace Pickaxe
                 {
                     var valueList = new List<string>();
                     for (int col = 0; col < lengths.Count - 1; col++)
-                        valueList.Add(result[row][col].ToString());
+                    {
+                        if (result[row][col] != null)
+                            valueList.Add(result[row][col].ToString());
+                        else
+                            valueList.Add("NULL");
+                    }
 
                     valueList.Insert(0, (row + 1).ToString());
                     ConsoleAppender.PlatConsole.Print(Values(lengths, valueList.ToArray()));
