@@ -61,6 +61,9 @@ namespace Pickaxe.Runtime
             if (node != null)
                 text = WebUtility.HtmlDecode(node.TakeText());
 
+            if (text != null)
+                text = text.Trim();
+
             return text;
         }
 
