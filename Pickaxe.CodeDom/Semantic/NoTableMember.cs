@@ -24,7 +24,7 @@ namespace Pickaxe.CodeDom.Semantic
     {
         private string _variable;
 
-        public NoTableMember(LineInfo line, string variable)
+        internal NoTableMember(LineInfo line, string variable)
             : base(line)
         {
             _variable = variable;

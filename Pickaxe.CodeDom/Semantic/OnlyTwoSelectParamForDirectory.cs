@@ -22,7 +22,7 @@ namespace Pickaxe.CodeDom.Semantic
 {
     public class OnlyTwoSelectParamForDirectory : SemanticException
     {
-        public OnlyTwoSelectParamForDirectory(LineInfo line)
+        internal OnlyTwoSelectParamForDirectory(LineInfo line)
             : base(line)
         {
         }

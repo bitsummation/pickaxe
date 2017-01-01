@@ -22,7 +22,7 @@ namespace Pickaxe.CodeDom.Semantic
 {
     public class DownloadRequireString : SemanticException
     {
-        public DownloadRequireString(LineInfo line)
+        internal DownloadRequireString(LineInfo line)
             : base(line)
         {
         }

@@ -24,7 +24,7 @@ namespace Pickaxe.CodeDom.Semantic
     {
         private string _variable;
 
-        public NotTableRowVariableException(LineInfo line, string variable)
+        internal NotTableRowVariableException(LineInfo line, string variable)
             : base(line)
         {
             _variable = variable;

@@ -24,7 +24,7 @@ namespace Pickaxe.CodeDom.Semantic
     {
         private string _variable;
 
-        public VariableAlreadyExists(LineInfo line, string variable)
+        internal VariableAlreadyExists(LineInfo line, string variable)
             : base(line)
         {
             _variable = variable;

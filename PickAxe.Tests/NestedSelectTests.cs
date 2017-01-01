@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Pickaxe.CodeDom.Semantic;
 
 namespace PickAxe.Tests
 {
@@ -44,6 +45,41 @@ namespace PickAxe.Tests
             var requestFactory = new Mock<IHttpRequestFactory>();
             requestFactory.Setup(x => x.Create(It.IsAny<IHttpWire>())).Returns(httpRequest.Object);
             _requestFactory = requestFactory.Object;
+        }
+
+        [Test]
+        public void Nested_NoStatedNameExpectedError()
+        {
+            var code = @"
+  
+select *
+from (
+	select
+		pick 'li:nth-last-of-type(1)'
+	from download page 'http://mock.com'
+	where nodes = '#match-tests' ) t
+";
+
+            TestHelper.CompileExpectError(typeof(NoColumnName), code, _requestFactory);
+
+        }
+
+
+        [Test]
+        public void Nested_AmbiguousError()
+        {
+            var code = @"
+  
+select *
+from (
+	select
+		pick 'li:nth-of-type(1)' as p,
+        pick 'li:nth-of-type(1)' as p
+	from download page 'http://mock.com'
+	where nodes = '#match-tests' ) t
+";
+
+            TestHelper.CompileExpectError(typeof(AmbiguousSelectVariable), 2, code, _requestFactory);
         }
 
         [Test]

@@ -19,11 +19,11 @@ using System.Text;
 
 namespace Pickaxe.CodeDom.Semantic
 {
-    internal class AmbiguousSelectVariable : SemanticException
+    public class AmbiguousSelectVariable : SemanticException
     {
         private SelectMatch[] _matches;
 
-        public AmbiguousSelectVariable(SelectMatch[] matches, LineInfo line)
+        internal AmbiguousSelectVariable(SelectMatch[] matches, LineInfo line)
             : base(line)
         {
             _matches = matches;

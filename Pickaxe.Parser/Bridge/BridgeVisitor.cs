@@ -400,6 +400,7 @@ namespace Pickaxe.Parser.Bridge
         public void Visit(SelectAll all, CommonTree tree)
         {
             Parent(tree).Children.Add(all);
+            SetLine(all, tree);
         }
 
         public void Visit(WhileStatement whileStatement, CommonTree tree)

@@ -22,7 +22,7 @@ namespace Pickaxe.CodeDom.Semantic
 {
     public class InsertSelectArgsNotEqual : SemanticException
     {
-        public InsertSelectArgsNotEqual(LineInfo line)
+        internal InsertSelectArgsNotEqual(LineInfo line)
             : base(line)
         {
         }

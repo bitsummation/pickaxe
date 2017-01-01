@@ -20,7 +20,7 @@ using System.Threading.Tasks;
 
 namespace Pickaxe.CodeDom.Semantic
 {
-    internal class NoColumnName : SemanticException
+    public class NoColumnName : SemanticException
     {
         private int _columnNumber;
 

@@ -39,8 +39,18 @@ namespace Pickaxe.CodeDom.Visitor
                     Errors.Add(new NoTableMember(new Semantic.LineInfo(variable.Line.Line, variable.Line.CharacterPosition), variable.Member));
                 else
                 {
-                    var member = descriptor.Type.Variables.Where(x => x.Variable == variable.Member).Single();
-                    _codeStack.Peek().Scope = new ScopeData<Type> { Type = member.Primitive.Type, CodeDomReference = new CodeTypeReference(member.Primitive.Type) };
+                    var members = descriptor.Type.Variables.Where(x => x.Variable == variable.Member).ToList();
+
+                    if (members.Count > 1)
+                    {
+                        var selectMatches = members.Select(x => new SelectMatch() { TableVariable = x }).ToArray();
+                        Errors.Add(new AmbiguousSelectVariable(selectMatches, new Semantic.LineInfo(variable.Line.Line, variable.Line.CharacterPosition)));
+                    }
+                    else
+                    {
+                        var member = members.Single();
+                        _codeStack.Peek().Scope = new ScopeData<Type> { Type = member.Primitive.Type, CodeDomReference = new CodeTypeReference(member.Primitive.Type) };
+                    }
                 }
             }
 

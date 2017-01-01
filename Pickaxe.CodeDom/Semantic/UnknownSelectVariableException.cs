@@ -24,7 +24,7 @@ namespace Pickaxe.CodeDom.Semantic
     {
         private string _variable;
 
-         public UnknownSelectVariableException(LineInfo line, string variable)
+         internal UnknownSelectVariableException(LineInfo line, string variable)
             : base(line)
         {
             _variable = variable;

@@ -22,9 +22,9 @@ namespace Pickaxe.CodeDom.Semantic
 {
     public class NotTableVariableException : SemanticException
     {
-         private string _variable;
+        private string _variable;
 
-        public NotTableVariableException(LineInfo line, string variable)
+        internal NotTableVariableException(LineInfo line, string variable)
             : base(line)
         {
             _variable = variable;

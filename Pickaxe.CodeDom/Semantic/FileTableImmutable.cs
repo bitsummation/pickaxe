@@ -21,7 +21,7 @@ namespace Pickaxe.CodeDom.Semantic
 {
     public class FileTableImmutable : SemanticException
     {
-         public FileTableImmutable(LineInfo line)
+         internal FileTableImmutable(LineInfo line)
             : base(line)
         {
         }

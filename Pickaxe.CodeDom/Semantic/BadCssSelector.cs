@@ -23,7 +23,7 @@ namespace Pickaxe.CodeDom.Semantic
     {
         private string _cssMessage;
 
-        public BadCssSelector(string cssMessage, LineInfo line)
+        internal BadCssSelector(string cssMessage, LineInfo line)
             : base(line)
         {
             _cssMessage = cssMessage;

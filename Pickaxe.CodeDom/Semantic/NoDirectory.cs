@@ -21,7 +21,7 @@ namespace Pickaxe.CodeDom.Semantic
 {
     public class NoDirectory : SemanticException
     {
-        public NoDirectory(LineInfo line)
+        internal NoDirectory(LineInfo line)
             : base(line)
         {
         }

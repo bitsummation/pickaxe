@@ -34,7 +34,8 @@ namespace Pickaxe.CodeDom.Visitor
             {
                 var tableReferance = new TableMemberReference {
                     Member = match.TableVariable.Variable,
-                    RowReference = new TableVariableRowReference { Id = match.TableAlias }
+                    RowReference = new TableVariableRowReference { Id = match.TableAlias },
+                    Line = all.Line
                 };
 
                 var arg = new SelectArg();
