@@ -19,9 +19,9 @@ create buffer categories(url string)
 
 insert into categories
 select
-    pick 'a.SideBarMenu-toggle' take attribute 'href'
+    pick 'a' take attribute 'href'
 from download page (select url from superCategories) with (thread(5))
-where nodes = '.expander-content li.SideBarMenuModuleItem'
+where nodes = '.expander-content li.SideBarMenuModuleItem ul.block-list li'
 
 update categories
 set url = 'http://walmart.com' + url
@@ -52,7 +52,7 @@ select
     pick 'li:nth-child(1)',
     pick 'li:last-child',
     url
-from download page (select url from division) with (thread(10))
+from download page (select url from division) with (js|thread(10))
 where nodes = '.paginator-list'
 
 create buffer urls(url string)
@@ -70,10 +70,10 @@ create buffer product(url string, description string, price string)
 insert overwrite product
 select
     url,
-    pick '.tile-heading div',
-    pick '.price-display' match '[\d.]+'
-from download page (select url from urls) with (thread(5))
-where nodes = '.tile-grid-unit-wrapper'
+    pick '.prod-ProductTitle div',
+    pick '.Price-characteristic' + '.' + pick '.Price-mantissa'
+from download page (select url from urls) with (js|thread(5))
+where nodes = '.search-result-gridview-item'
 
 select *
 from product
