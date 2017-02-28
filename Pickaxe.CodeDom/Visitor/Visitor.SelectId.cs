@@ -30,7 +30,7 @@ namespace Pickaxe.CodeDom.Visitor
         {
             var selectInfo = new SelectArgsInfo();
 
-            _codeStack.Peek().Scope = new ScopeData<Type> { Type = typeof(int), CodeDomReference = new CodeTypeReference(typeof(int)) };
+            _codeStack.Peek().Scope = new ScopeData<Type> { Type = typeof(int?), CodeDomReference = new CodeTypeReference(typeof(int?)) };
             _codeStack.Peek().CodeExpression = new CodeFieldReferenceExpression(new CodeTypeReferenceExpression("row"), id.Id);
             selectInfo.ColumnName = id.Id;
             _codeStack.Peek().Tag = selectInfo;
