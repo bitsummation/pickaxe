@@ -65,11 +65,12 @@ each(var p in fetchPage)
     from expand (p.first to p.last)
 }
 
-create buffer product(url string, description string, price string)
+create buffer product(url string, detailUrl string, description string, price string)
 
 insert overwrite product
 select
     url,
+    'http://walmart.com' + pick '.product-title-link' take attribute 'href',
     pick '.prod-ProductTitle div',
     pick '.Price-characteristic' + '.' + pick '.Price-mantissa'
 from download page (select url from urls) with (js|thread(5))
