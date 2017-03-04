@@ -49,6 +49,7 @@ namespace Pickaxe.Sdk
         void Visit(ExpandIterationVariable variable);
         void Visit(DownloadPageExpression expression);
         void Visit(DownloadImageExpression expression);
+        void Visit(JavascriptCode code);
 
         void Visit(WhileStatement whileStatement);
         void Visit(EachStatement eachStatement);

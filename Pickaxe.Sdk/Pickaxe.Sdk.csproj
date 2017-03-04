@@ -56,6 +56,7 @@
     <Compile Include="GetDatePrimitive.cs" />
     <Compile Include="IdentityVariable.cs" />
     <Compile Include="InnerJoinStatement.cs" />
+    <Compile Include="JavascriptCode.cs" />
     <Compile Include="JSTableHint.cs" />
     <Compile Include="LikeExpression.cs" />
     <Compile Include="MatchExpression.cs" />

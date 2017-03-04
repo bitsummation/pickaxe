@@ -90,6 +90,11 @@ namespace Pickaxe.Parser.Bridge
             return Regex.Replace(literal, "'", "");
         }
 
+        private static string ParseQuoteLiteral(string literal)
+        {
+            return Regex.Replace(literal, @"""", "");
+        }
+
         public void Visit(MsSqlTable table, CommonTree tree)
         {
             Parent(tree).Children.Add(table);
@@ -320,6 +325,15 @@ namespace Pickaxe.Parser.Bridge
             SetLine(expression, tree);
             Parent(tree).Children.Add(expression);
             VisitChildren(tree);
+        }
+
+        public void Visit(JavascriptCode code, CommonTree tree)
+        {
+            SetLine(code, tree);
+            Parent(tree).Children.Add(code);
+            VisitChildren(tree);
+
+            code.Code = ParseQuoteLiteral(tree.GetChild(0).Text);
         }
 
         public void Visit(DownloadImageExpression expression, CommonTree tree)
@@ -646,5 +660,6 @@ namespace Pickaxe.Parser.Bridge
             Parent(tree).Children.Add(primitive);
             SetLine(primitive, tree);
         }
+
     }
 }

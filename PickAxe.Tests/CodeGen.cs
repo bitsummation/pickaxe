@@ -38,22 +38,20 @@ namespace PickAxe.Tests
         [Test]
         public void BasicCodeGenTest()
         {
-              var input = @"
+            var input = @"
 
-       
- create buffer temp(id int)
-      
-insert into temp
-select 3
+ select *
+from download page 'https://www.walmart.com/ip/Gatorade-Variety-Pack-12-Oz-18-Pk/16224470' with (js) => {
+""
+	var primaryProductId = __WML_REDUX_INITIAL_STATE__.product.primaryProduct;
 
-select *
-from temp
+	var primaryProduct = __WML_REDUX_INITIAL_STATE__.product.products[primaryProductId];
 
-select *
-from download page 'https://www.walmart.com/ip/Five-Hour-Energy-Drink-Orange-12-Count-Display/29757808' with (js)
+	return [{upc:primaryProduct.upc, url:url}];
+""
+}      
 
 ";
-
             var compiler = new Compiler(input);
             var sources = compiler.ToCode();
             Assert.IsTrue(compiler.Errors.Count == 0);

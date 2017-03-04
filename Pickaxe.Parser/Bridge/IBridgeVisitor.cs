@@ -51,6 +51,7 @@ namespace Pickaxe.Parser.Bridge
         void Visit(ExpandIterationVariable variable, CommonTree tree);
         void Visit(DownloadPageExpression expression, CommonTree tree);
         void Visit(DownloadImageExpression expression, CommonTree tree);
+        void Visit(JavascriptCode code, CommonTree tree);
 
         void Visit(WhileStatement whileStatement, CommonTree tree);
         void Visit(EachStatement eachStatement, CommonTree tree);
