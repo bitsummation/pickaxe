@@ -1,4 +1,5 @@
-﻿/* Copyright 2015 Brock Reeve
+﻿using System;
+/* Copyright 2015 Brock Reeve
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,15 +13,26 @@
  * limitations under the License.
  */
 
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Pickaxe.Runtime
 {
-    public interface IHttpRequest
+    public class DynamicObject : IRow
     {
-        object Download();
+        private Dictionary<string, string> _properties;
+
+        public DynamicObject()
+        {
+            _properties = new Dictionary<string, string>();
+        }
+
+        public void Add(string property, string value)
+        {
+            _properties.Add(property, value);
+        }
+
     }
 }

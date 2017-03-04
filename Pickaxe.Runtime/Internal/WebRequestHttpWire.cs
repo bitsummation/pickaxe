@@ -42,7 +42,7 @@ namespace Pickaxe.Runtime.Internal
             return request;
         }
 
-        protected override byte[] DownloadImpl()
+        protected override object DownloadImpl()
         {
             var request = CreateHttpWebRequest();
             byte[] bytes = new byte[0];

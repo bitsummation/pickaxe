@@ -33,7 +33,9 @@ namespace Pickaxe.Runtime
         private static DownloadImage GetImage(IHttpRequestFactory factory, IHttpWire wire)
         {
             var request = CreateRequest(factory, wire);
-            var bytes = request.Download();
+            var bytes = request.Download() as byte[];
+            if (bytes == null)
+                bytes = new byte[0];
 
             string extension = Path.GetExtension(wire.Url);
             string fileName = Guid.NewGuid().ToString("N") + extension;
@@ -46,7 +48,9 @@ namespace Pickaxe.Runtime
         private static HtmlDoc GetDocument(IHttpRequestFactory factory, IHttpWire wire, out int length)
         {
             var request = CreateRequest(factory, wire);
-            var bytes = request.Download();
+            var bytes = request.Download() as byte[];
+            if (bytes == null)
+                bytes = new byte[0];
 
             string html = string.Empty;
             length = bytes.Length;
@@ -68,6 +72,11 @@ namespace Pickaxe.Runtime
             }
 
             return table;
+        }
+
+        public static RuntimeTable<DynamicObject> DownloadJSPage(IRuntime runtime, IHttpWire wire)
+        {
+            return null;
         }
 
         public static RuntimeTable<DownloadPage> DownloadPage(IRuntime runtime, IHttpWire wire)

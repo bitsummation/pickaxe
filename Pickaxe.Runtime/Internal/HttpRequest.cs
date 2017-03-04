@@ -26,10 +26,10 @@ namespace Pickaxe.Runtime.Internal
 
         protected HttpRequest(IHttpWire wire)
         {
-            Wire = wire as HttpWire;
+            Wire = wire;
         }
 
-        protected HttpWire Wire { get; private set; }
+        protected IHttpWire Wire { get; private set; }
 
         protected abstract bool OnError(DownloadError error);
 
@@ -40,9 +40,9 @@ namespace Pickaxe.Runtime.Internal
             Log.InfoFormat("Download success, Url = {0}", Wire.Url);
         }
 
-        public byte[] Download()
+        public object Download()
         {
-            byte[] bytes = new byte[0];
+            object bytes = new byte[0];
 
             while (true)
             {

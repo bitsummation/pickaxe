@@ -46,24 +46,11 @@ namespace PickAxe.Tests
 insert into temp
 select 3
 
-insert into temp
-select 2
+select *
+from temp
 
-insert into temp
-select 5
-
-insert into temp
-select 10
-
- select
-    id,
-    case id
-        when 5 then 'five'
-        when 2 then 'two'
-        when 3 then 'three'
-        else 'no'
-        end as description
-    from temp
+select *
+from download page 'https://www.walmart.com/ip/Five-Hour-Energy-Drink-Orange-12-Count-Display/29757808' with (js)
 
 ";
 

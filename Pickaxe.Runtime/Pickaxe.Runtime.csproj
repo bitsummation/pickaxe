@@ -47,6 +47,10 @@
       <HintPath>..\Binaries\Log4Net\log4net.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Binaries\JsonNET\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -80,7 +84,9 @@
     <Compile Include="Dom\HtmlDoc.cs" />
     <Compile Include="Dom\HtmlElement.cs" />
     <Compile Include="DownloadedNodes.cs" />
+    <Compile Include="DynamicObject.cs" />
     <Compile Include="Helper.cs" />
+    <Compile Include="Internal\SeleniumExecJsHttpWire.cs" />
     <Compile Include="LazyDownloadArgs.cs" />
     <Compile Include="DownloadImage.cs" />
     <Compile Include="DownloadPage.cs" />
