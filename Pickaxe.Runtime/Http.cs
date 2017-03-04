@@ -13,6 +13,8 @@
  */
 
 using HtmlAgilityPack;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Pickaxe.Runtime.AgilityPackFizzler;
 using Pickaxe.Runtime.Dom;
 using Pickaxe.Runtime.Internal;
@@ -61,6 +63,33 @@ namespace Pickaxe.Runtime
             return doc;
         }
 
+        private static RuntimeTable<DynamicObject> ProcesJson(IHttpRequestFactory factory, IHttpWire wire)
+        {
+            var request = CreateRequest(factory, wire);
+            var json = request.Download() as string;
+            if (json == null)
+                json = string.Empty;
+
+            dynamic objectValue = JsonConvert.DeserializeObject(json);
+            if (!(objectValue is JArray))
+                throw new InvalidOperationException("must return array from java script");
+
+            var dynamics = new List<DynamicObject>();
+            var properties = new List<Dictionary<string, object>>();
+            foreach (var v in objectValue)
+            {
+                var dynamic = new DynamicObject();
+                Dictionary<string, object> values = v.ToObject<Dictionary<string, object>>();
+
+                foreach (var p in values.Keys)
+                    dynamic.Add(p, values[p].ToString());
+            }
+
+            var table = new RuntimeTable<DynamicObject>();
+            table.SetRows(dynamics);
+            return table;
+        }
+
         private static RuntimeTable<DownloadPage> DownloadPage(IRuntime runtime, IHttpWire[] wires)
         {
             var table = new RuntimeTable<DownloadPage>();
@@ -76,7 +105,7 @@ namespace Pickaxe.Runtime
 
         public static RuntimeTable<DynamicObject> DownloadJSPage(IRuntime runtime, IHttpWire wire)
         {
-            return null;
+            return ProcesJson(runtime.RequestFactory, wire);
         }
 
         public static RuntimeTable<DownloadPage> DownloadPage(IRuntime runtime, IHttpWire wire)
