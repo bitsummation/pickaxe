@@ -22,7 +22,7 @@ namespace Pickaxe.Runtime
 {
     public class SelectDownloadPage : LazyDownloadPage
     {
-        public SelectDownloadPage(ThreadedDownloadTable parent) : base(parent)
+        public SelectDownloadPage(ThreadedDownloadTable<DownloadPage> parent) : base(parent)
         {
         }
 

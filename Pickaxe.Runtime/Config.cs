@@ -22,6 +22,9 @@ namespace Pickaxe.Runtime
 {
     public static class Config
     {
+        [ThreadStatic]
+        public static string LogValue;
+
         public const string LogKey = "tabname";
         public static DomFactory DomFactory = new AngleSharp.AngleSharpFactory();
     }

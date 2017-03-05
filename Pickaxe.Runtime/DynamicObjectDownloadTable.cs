@@ -20,40 +20,25 @@ using System.Threading.Tasks;
 
 namespace Pickaxe.Runtime
 {
-    public class DynamicObject : IRow
+    public class DynamicObjectDownloadTable : ThreadedDownloadTable<DynamicObject>
     {
-        private Dictionary<string, string> _properties;
+        public DynamicObjectDownloadTable(LazyDownloadArgs args)
+            : base(args)
 
-        public DynamicObject()
         {
-            _properties = new Dictionary<string, string>();
         }
 
-        public void Add(string property, string value)
+        public sealed override IEnumerator<DynamicObject> GetEnumerator() //Give out empty lazy wrappers
         {
-            _properties.Add(property, value);
-        }
-
-        public virtual string this[string prop]
-        {
-            get
+            foreach (IHttpWire url in Wires.ToList())
             {
-                string returnValue = null;
-                if (_properties.ContainsKey(prop))
-                    returnValue = _properties[prop];
-
-                return returnValue;
+                yield return new DynamicObjectWrapper(this);
             }
         }
 
-        public static TableDescriptor Columns
+        protected override RuntimeTable<DynamicObject> Fetch(IRuntime runtime, IHttpWire wire)
         {
-            get
-            {
-                var variablePair = new List<VariableTypePair>();
-                return new TableDescriptor(typeof(DynamicObject)) { Variables = variablePair };
-            }
+            return Http.DownloadJSPage(runtime, wire);
         }
-
     }
 }

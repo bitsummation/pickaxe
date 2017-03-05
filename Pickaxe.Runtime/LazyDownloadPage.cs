@@ -22,10 +22,10 @@ namespace Pickaxe.Runtime
 {
     public abstract class LazyDownloadPage : DownloadPage
     {
-        private ThreadedDownloadTable _parent;
+        private ThreadedDownloadTable<DownloadPage> _parent;
         private DownloadPage _inner;
         
-        protected LazyDownloadPage(ThreadedDownloadTable parent)
+        protected LazyDownloadPage(ThreadedDownloadTable<DownloadPage> parent)
         {
             _parent = parent;
         }

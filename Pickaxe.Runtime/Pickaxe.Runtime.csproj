@@ -85,6 +85,8 @@
     <Compile Include="Dom\HtmlElement.cs" />
     <Compile Include="DownloadedNodes.cs" />
     <Compile Include="DynamicObject.cs" />
+    <Compile Include="DynamicObjectDownloadTable.cs" />
+    <Compile Include="DynamicObjectWrapper.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="Internal\SeleniumExecJsHttpWire.cs" />
     <Compile Include="LazyDownloadArgs.cs" />

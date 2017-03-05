@@ -20,38 +20,37 @@ using System.Threading.Tasks;
 
 namespace Pickaxe.Runtime
 {
-    public class DynamicObject : IRow
+    public class DynamicObjectWrapper : DynamicObject
     {
-        private Dictionary<string, string> _properties;
-
-        public DynamicObject()
+        private ThreadedDownloadTable<DynamicObject> _parent;
+        private DynamicObject _inner;
+        
+        public DynamicObjectWrapper(ThreadedDownloadTable<DynamicObject> parent)
         {
-            _properties = new Dictionary<string, string>();
+            _parent = parent;
         }
 
-        public void Add(string property, string value)
-        {
-            _properties.Add(property, value);
-        }
-
-        public virtual string this[string prop]
+        protected DynamicObject Inner
         {
             get
             {
-                string returnValue = null;
-                if (_properties.ContainsKey(prop))
-                    returnValue = _properties[prop];
+                _parent.Process();
+                if (_inner == null)
+                    _inner = _parent.GetResult();
 
-                return returnValue;
+                return _inner;
+            }
+            set
+            {
+                _inner = null;
             }
         }
 
-        public static TableDescriptor Columns
+        public override string this[string prop]
         {
             get
             {
-                var variablePair = new List<VariableTypePair>();
-                return new TableDescriptor(typeof(DynamicObject)) { Variables = variablePair };
+                return Inner[prop];
             }
         }
 
