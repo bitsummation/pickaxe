@@ -33,22 +33,22 @@ namespace Pickaxe.Runtime.Internal
 
         protected override object RunPostDownload(IWebDriver driver)
         {
-            IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
+            IJavaScriptExecutor jsExecutor = (IJavaScriptExecutor)driver;
 
             string script = string.Format(@"
 
-var pickaxe = {};
+var pickaxe = {{}};
 
 pickaxe.url = arguments[0];
-pickaxe.func = function(url) {
+pickaxe.func = function(url) {{
 	{0}
-};
+}};
 
 return JSON.stringify(pickaxe.func(pickaxe.url));
 
-", js);
+", _js);
 
-            string json = (string)js.ExecuteScript(script, driver.Url);
+            string json = (string)jsExecutor.ExecuteScript(script, driver.Url);
             return json;
         }
     }

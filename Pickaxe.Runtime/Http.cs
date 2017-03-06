@@ -83,6 +83,8 @@ namespace Pickaxe.Runtime
 
                 foreach (var p in values.Keys)
                     dynamic.Add(p, values[p].ToString());
+
+                dynamics.Add(dynamic);
             }
 
             var table = new RuntimeTable<DynamicObject>();

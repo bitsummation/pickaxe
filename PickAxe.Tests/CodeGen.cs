@@ -40,6 +40,7 @@ namespace PickAxe.Tests
         {
             var input = @"
 
+
  select upc, url
 from download page 'https://www.walmart.com/ip/Gatorade-Variety-Pack-12-Oz-18-Pk/16224470' with (js) => {
 ""
@@ -50,6 +51,7 @@ from download page 'https://www.walmart.com/ip/Gatorade-Variety-Pack-12-Oz-18-Pk
 	return [{upc:primaryProduct.upc, url:url}];
 ""
 }      
+
 
 ";
             var compiler = new Compiler(input);
