@@ -65,15 +65,33 @@ each(var p in fetchPage)
     from expand (p.first to p.last)
 }
 
-create buffer product(url string, description string, price string)
+create buffer product(url string, detailUrl string, description string, price string, upc string)
 
 insert overwrite product
 select
     url,
+    'http://www.walmart.com' + pick '.prod-ProductCard--Image a' take attribute 'href',
     pick '.prod-ProductTitle div',
-    pick '.Price-characteristic' + '.' + pick '.Price-mantissa'
-from download page (select url from urls) with (js|thread(5))
+    pick '.Price-characteristic' + '.' + pick '.Price-mantissa',
+    ''
+from download page (select url from urls) with (js|thread(10))
 where nodes = '.search-result-gridview-item'
+
+
+update p
+set p.upc = u.upc
+from (select upc, url
+	from download page (select detailUrl from product) with (js|thread(10)) => {
+	"
+		var primaryProductId = __WML_REDUX_INITIAL_STATE__.product.primaryProduct;
+	
+		var primaryProduct = __WML_REDUX_INITIAL_STATE__.product.products[primaryProductId];
+	
+		return [{upc:primaryProduct.upc, url:url}];
+	"
+	}) u
+join product p on p.detailUrl = u.url
+
 
 select *
 from product

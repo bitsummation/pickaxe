@@ -71,23 +71,30 @@ namespace Pickaxe.Runtime
                 json = string.Empty;
 
             dynamic objectValue = JsonConvert.DeserializeObject(json);
-            if (!(objectValue is JArray))
-                throw new InvalidOperationException("must return array from java script");
-
             var dynamics = new List<DynamicObject>();
-            var properties = new List<Dictionary<string, object>>();
-            foreach (var v in objectValue)
+
+            if (objectValue != null)
             {
-                var dynamic = new DynamicObject();
-                Dictionary<string, object> values = v.ToObject<Dictionary<string, object>>();
+                if (!(objectValue is JArray))
+                    throw new InvalidOperationException("must return array from java script");
 
-                foreach (var p in values.Keys)
-                    dynamic.Add(p, values[p].ToString());
+                var properties = new List<Dictionary<string, object>>();
+                foreach (var v in objectValue)
+                {
+                    var dynamic = new DynamicObject();
+                    Dictionary<string, object> values = v.ToObject<Dictionary<string, object>>();
 
-                dynamics.Add(dynamic);
+                    foreach (var p in values.Keys)
+                        dynamic.Add(p, values[p].ToString());
+
+                    dynamics.Add(dynamic);
+                }
             }
 
             var table = new RuntimeTable<DynamicObject>();
+            if(dynamics.Count == 0)
+                dynamics.Add(new DynamicObject());
+
             table.SetRows(dynamics);
             return table;
         }

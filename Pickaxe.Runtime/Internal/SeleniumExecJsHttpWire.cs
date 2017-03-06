@@ -48,7 +48,7 @@ return JSON.stringify(pickaxe.func(pickaxe.url));
 
 ", _js);
 
-            string json = (string)jsExecutor.ExecuteScript(script, driver.Url);
+            string json = (string)jsExecutor.ExecuteScript(script, Url);
             return json;
         }
     }
