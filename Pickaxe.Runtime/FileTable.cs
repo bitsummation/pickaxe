@@ -16,6 +16,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -42,6 +43,7 @@ namespace Pickaxe.Runtime
                 using(var reader = new StreamReader(Location))
                 {
                     string line;
+                    reader.ReadLine();// skip first row
                     while ((line = reader.ReadLine()) != null)
                     {
                         var columns = line.Split(new[] { FieldTerminator }, StringSplitOptions.None);
@@ -53,10 +55,20 @@ namespace Pickaxe.Runtime
             }
         }
 
+        private void WriteHeaders()
+        {
+            Type myType = typeof(TRow);
+            var orderedFields = myType.GetFields(BindingFlags.Public|BindingFlags.Instance).OrderBy(field => field.MetadataToken);
+            var propertyNames = orderedFields.Select(x => x.Name).ToArray();
+            string line = string.Join(FieldTerminator, propertyNames) + RowTerminator;
+            _writer.Write(line);
+        }
+
         public override void BeforeInsert(bool overwrite)
         {
             base.BeforeInsert(overwrite);
             _writer = new StreamWriter(Location, !overwrite);
+            WriteHeaders();
         }
 
         public override void AfterInsert()

@@ -65,7 +65,9 @@ each(var p in fetchPage)
     from expand (p.first to p.last)
 }
 
-create buffer product(url string, detailUrl string, description string, price string, upc string)
+create buffer product(url string, detailUrl string, description string, price string,
+upc string, wupc string, itemId string, itemNumber string, productType string, brand string,
+manufacturerName string, manufacturerProductId string, primaryShelfId string)
 
 insert overwrite product
 select
@@ -73,21 +75,41 @@ select
     'http://www.walmart.com' + pick '.prod-ProductCard--Image a' take attribute 'href',
     pick '.prod-ProductTitle div',
     pick '.Price-characteristic' + '.' + pick '.Price-mantissa',
-    ''
+    '','','','','','','','',''
 from download page (select url from urls) with (js|thread(10))
 where nodes = '.search-result-gridview-item'
 
 
 update p
-set p.upc = u.upc
-from (select upc, url
+set p.upc = u.upc,
+	p.wupc = u.wupc,
+	p.itemId = u.itemId,
+	p.itemNumber = u.itemNumber,
+	p.productType = u.productType,
+	p.brand = u.brand,
+	p.manufacturerName = u.manufacturerName,
+	p.manufacturerProductId = u.manufacturerProductId,
+	p.primaryShelfId = u.primaryShelfId
+	
+from (select upc, wupc, itemId, itemNumber, productType, brand, manufacturerName, manufacturerProductId, primaryShelfId, url
 	from download page (select detailUrl from product) with (js|thread(10)) => {
 	"
 		var primaryProductId = __WML_REDUX_INITIAL_STATE__.product.primaryProduct;
 	
 		var primaryProduct = __WML_REDUX_INITIAL_STATE__.product.products[primaryProductId];
 	
-		return [{upc:primaryProduct.upc, url:url}];
+		return [{
+		upc:primaryProduct.upc,
+		wupc:primaryProduct.wupc,
+		itemId:primaryProduct.usItemId,
+		itemNumber:primaryProduct.productAttributes.walmartItemNumber,
+		productType:primaryProduct.productType,
+		brand: primaryProduct.productAttributes.brand,
+		manufacturerName:primaryProduct.productAttributes.manufacturerName,
+		manufacturerProductId:primaryProduct.productAttributes.manufacturerProductId,
+		primaryShelfId:primaryProduct.productAttributes.primaryShelfId,
+		url:url
+		}];
 	"
 	}) u
 join product p on p.detailUrl = u.url
