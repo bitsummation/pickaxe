@@ -13,6 +13,7 @@
  */
 
 using Pickaxe.CodeDom.Semantic;
+using Pickaxe.Runtime;
 using Pickaxe.Sdk;
 using System;
 using System.CodeDom;
@@ -32,11 +33,24 @@ namespace Pickaxe.CodeDom.Visitor
             _codeStack.Peek().Scope = new ScopeData<Type> { Type = typeof(string), CodeDomReference = new CodeTypeReference(typeof(string)) };
             var rowArgs = VisitChild(variable.RowReference);
 
+            var expression = new CodeFieldReferenceExpression(rowArgs.CodeExpression, variable.Member);
+            _codeStack.Peek().CodeExpression = expression;
+
             if (Scope.Current.IsTableRowRegistered(variable.RowReference.Id))
             {
+                
                 var descriptor = Scope.Current.GetTableDescriptor(variable.RowReference.Id);
-                if (!descriptor.Type.Variables.Any(x => x.Variable == variable.Member)) //error don't know member
+                var dynamicAlias = Scope.Current.AliasType<DynamicObject>();
+                if (dynamicAlias.Length > 0) //alias is a dynamic type so we get it from there
+                {
+                    _codeStack.Peek().CodeExpression = new CodeIndexerExpression(rowArgs.CodeExpression, new CodePrimitiveExpression(variable.Member));
+                    _codeStack.Peek().Scope = new ScopeData<Type> { Type = typeof(string), CodeDomReference = new CodeTypeReference(typeof(string)) };
+                   
+                }
+                else if (!descriptor.Type.Variables.Any(x => x.Variable == variable.Member)) //error don't know member
+                {
                     Errors.Add(new NoTableMember(new Semantic.LineInfo(variable.Line.Line, variable.Line.CharacterPosition), variable.Member));
+                }
                 else
                 {
                     var members = descriptor.Type.Variables.Where(x => x.Variable == variable.Member).ToList();
@@ -57,8 +71,7 @@ namespace Pickaxe.CodeDom.Visitor
             selectInfo.ColumnName = variable.Member;
             _codeStack.Peek().Tag = selectInfo;
 
-            var expression = new CodeFieldReferenceExpression(rowArgs.CodeExpression, variable.Member);
-            _codeStack.Peek().CodeExpression = expression;
+            
         }
     }
 }
