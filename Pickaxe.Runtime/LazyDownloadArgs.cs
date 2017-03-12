@@ -52,8 +52,10 @@ namespace Pickaxe.Runtime
         {
             var args = new LazyDownloadArgs(runtime, threadCount);
             foreach (var row in table)
-                args.Wires.Add(new SeleniumHttpWire(row[0].ToString(), cssElement, cssTimeout, runtime, line));
-
+            {
+                if (row[0] != null)
+                    args.Wires.Add(new SeleniumHttpWire(row[0].ToString(), cssElement, cssTimeout, runtime, line));
+            }
             return args;
         }
 
@@ -70,8 +72,10 @@ namespace Pickaxe.Runtime
         {
             var args = new LazyDownloadArgs(runtime, threadCount);
             foreach (var row in table)
-                args.Wires.Add(new SeleniumExecJsHttpWire(row[0].ToString(), cssElement, cssTimeout, runtime, line, js));
-
+            {
+                if (row[0] != null)
+                    args.Wires.Add(new SeleniumExecJsHttpWire(row[0].ToString(), cssElement, cssTimeout, runtime, line, js));
+            }
             return args;
         }
 
