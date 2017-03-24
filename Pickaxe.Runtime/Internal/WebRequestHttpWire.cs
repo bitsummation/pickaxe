@@ -34,8 +34,9 @@ namespace Pickaxe.Runtime.Internal
             request.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
             request.Timeout = 30000; //30 seconds
             request.UserAgent = "pickaxe/1.0";
-
+            request.AllowAutoRedirect = true;
             request.Method = "GET";
+
             if(Proxy != null)
                 request.Proxy = new WebProxy(Proxy.ProxyUrl, Proxy.Port);
 
