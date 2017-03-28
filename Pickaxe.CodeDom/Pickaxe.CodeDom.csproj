@@ -67,6 +67,7 @@
     <Compile Include="Semantic\NotTableRowVariableException.cs" />
     <Compile Include="Semantic\DownloadRequireString.cs" />
     <Compile Include="Semantic\OnlyTwoSelectParamForDirectory.cs" />
+    <Compile Include="Semantic\SelectNoColumnsFound.cs" />
     <Compile Include="Semantic\VariableAlreadyExists.cs" />
     <Compile Include="Visitor\Visitor.AdditionOperator.cs" />
     <Compile Include="Visitor\Visitor.AndExpression.cs" />

@@ -12,6 +12,7 @@
  * limitations under the License.
  */
 
+using Pickaxe.CodeDom.Semantic;
 using Pickaxe.Runtime;
 using Pickaxe.Sdk;
 using System;
@@ -29,8 +30,10 @@ namespace Pickaxe.CodeDom.Visitor
             all.Parent.Parent.Children.Remove(all.Parent);
 
             var tableMatches = Scope.Current.FindAll();
+            if(tableMatches.Length == 0) //only has a dynamic object and we can't tell the property names till runtime. Compile error.
+                Errors.Add(new SelectNoColumnsFound(new Semantic.LineInfo(all.Line.Line, all.Line.CharacterPosition)));
 
-            foreach(var match in tableMatches)
+            foreach (var match in tableMatches)
             {
                 var tableReferance = new TableMemberReference {
                     Member = match.TableVariable.Variable,
