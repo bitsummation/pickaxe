@@ -92,7 +92,7 @@ set p.upc = u.upc,
 	p.primaryShelfId = u.primaryShelfId
 	
 from (select upc, wupc, itemId, itemNumber, productType, brand, manufacturerName, manufacturerProductId, primaryShelfId, url
-	from download page (select detailUrl from product) with (js|thread(10)) => {
+	from download page (select detailUrl from product) with (js|thread(10)) => (
 	"
 		var primaryProductId = __WML_REDUX_INITIAL_STATE__.product.primaryProduct;
 	
@@ -111,7 +111,7 @@ from (select upc, wupc, itemId, itemNumber, productType, brand, manufacturerName
 		url:url
 		}];
 	"
-	}) u
+	)) u
 join product p on p.detailUrl = u.url
 
 

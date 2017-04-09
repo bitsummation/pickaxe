@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// $ANTLR 3.5.2 Scrape.g 2017-03-08 11:45:06
+// $ANTLR 3.5.2 Scrape.g 2017-04-08 20:52:11
 
 // The variable 'variable' is assigned but its value is never used.
 #pragma warning disable 219
@@ -584,7 +584,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: PROCEDURE, block, ID, tableColumnArgs
+			// elements: PROCEDURE, tableColumnArgs, ID, block
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -1146,7 +1146,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: EXEC, procedureCallList, ID
+			// elements: procedureCallList, ID, EXEC
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -1604,7 +1604,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: proxyTest, proxyList, PROXIES
+			// elements: proxyList, PROXIES, proxyTest
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -2005,7 +2005,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: WHILE, block
+			// elements: block, WHILE
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -2626,7 +2626,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: expandVar, expandVar, EXPAND, expandBlock
+			// elements: expandVar, EXPAND, expandBlock, expandVar
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -3192,7 +3192,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 	partial void EnterRule_javascriptCode();
 	partial void LeaveRule_javascriptCode();
 	// $ANTLR start "javascriptCode"
-	// Scrape.g:158:1: javascriptCode : LAMBDA OPENBRACE STRING_LITERAL_QUOTE CLOSEBRACE -> ^( JAVASCRIPT_CODE STRING_LITERAL_QUOTE ) ;
+	// Scrape.g:158:1: javascriptCode : LAMBDA OPENPAREN STRING_LITERAL_QUOTE CLOSEPAREN -> ^( JAVASCRIPT_CODE STRING_LITERAL_QUOTE ) ;
 	[GrammarRule("javascriptCode")]
 	private AstParserRuleReturnScope<CommonTree, CommonToken> javascriptCode()
 	{
@@ -3205,41 +3205,41 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 		CommonTree root_0 = default(CommonTree);
 
 		CommonToken LAMBDA82 = default(CommonToken);
-		CommonToken OPENBRACE83 = default(CommonToken);
+		CommonToken OPENPAREN83 = default(CommonToken);
 		CommonToken STRING_LITERAL_QUOTE84 = default(CommonToken);
-		CommonToken CLOSEBRACE85 = default(CommonToken);
+		CommonToken CLOSEPAREN85 = default(CommonToken);
 
 		CommonTree LAMBDA82_tree = default(CommonTree);
-		CommonTree OPENBRACE83_tree = default(CommonTree);
+		CommonTree OPENPAREN83_tree = default(CommonTree);
 		CommonTree STRING_LITERAL_QUOTE84_tree = default(CommonTree);
-		CommonTree CLOSEBRACE85_tree = default(CommonTree);
-		RewriteRuleITokenStream stream_OPENBRACE=new RewriteRuleITokenStream(adaptor,"token OPENBRACE");
+		CommonTree CLOSEPAREN85_tree = default(CommonTree);
+		RewriteRuleITokenStream stream_CLOSEPAREN=new RewriteRuleITokenStream(adaptor,"token CLOSEPAREN");
 		RewriteRuleITokenStream stream_LAMBDA=new RewriteRuleITokenStream(adaptor,"token LAMBDA");
+		RewriteRuleITokenStream stream_OPENPAREN=new RewriteRuleITokenStream(adaptor,"token OPENPAREN");
 		RewriteRuleITokenStream stream_STRING_LITERAL_QUOTE=new RewriteRuleITokenStream(adaptor,"token STRING_LITERAL_QUOTE");
-		RewriteRuleITokenStream stream_CLOSEBRACE=new RewriteRuleITokenStream(adaptor,"token CLOSEBRACE");
 		try { DebugEnterRule(GrammarFileName, "javascriptCode");
 		DebugLocation(158, 1);
 		try
 		{
-			// Scrape.g:159:2: ( LAMBDA OPENBRACE STRING_LITERAL_QUOTE CLOSEBRACE -> ^( JAVASCRIPT_CODE STRING_LITERAL_QUOTE ) )
+			// Scrape.g:159:2: ( LAMBDA OPENPAREN STRING_LITERAL_QUOTE CLOSEPAREN -> ^( JAVASCRIPT_CODE STRING_LITERAL_QUOTE ) )
 			DebugEnterAlt(1);
-			// Scrape.g:159:4: LAMBDA OPENBRACE STRING_LITERAL_QUOTE CLOSEBRACE
+			// Scrape.g:159:4: LAMBDA OPENPAREN STRING_LITERAL_QUOTE CLOSEPAREN
 			{
 			DebugLocation(159, 4);
 			LAMBDA82=(CommonToken)Match(input,LAMBDA,Follow._LAMBDA_in_javascriptCode794); if (state.failed) return retval; 
 			if (state.backtracking == 0) stream_LAMBDA.Add(LAMBDA82);
 
 			DebugLocation(159, 11);
-			OPENBRACE83=(CommonToken)Match(input,OPENBRACE,Follow._OPENBRACE_in_javascriptCode796); if (state.failed) return retval; 
-			if (state.backtracking == 0) stream_OPENBRACE.Add(OPENBRACE83);
+			OPENPAREN83=(CommonToken)Match(input,OPENPAREN,Follow._OPENPAREN_in_javascriptCode796); if (state.failed) return retval; 
+			if (state.backtracking == 0) stream_OPENPAREN.Add(OPENPAREN83);
 
 			DebugLocation(159, 21);
 			STRING_LITERAL_QUOTE84=(CommonToken)Match(input,STRING_LITERAL_QUOTE,Follow._STRING_LITERAL_QUOTE_in_javascriptCode798); if (state.failed) return retval; 
 			if (state.backtracking == 0) stream_STRING_LITERAL_QUOTE.Add(STRING_LITERAL_QUOTE84);
 
 			DebugLocation(159, 42);
-			CLOSEBRACE85=(CommonToken)Match(input,CLOSEBRACE,Follow._CLOSEBRACE_in_javascriptCode800); if (state.failed) return retval; 
-			if (state.backtracking == 0) stream_CLOSEBRACE.Add(CLOSEBRACE85);
+			CLOSEPAREN85=(CommonToken)Match(input,CLOSEPAREN,Follow._CLOSEPAREN_in_javascriptCode800); if (state.failed) return retval; 
+			if (state.backtracking == 0) stream_CLOSEPAREN.Add(CLOSEPAREN85);
 
 
 
@@ -3871,7 +3871,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: ID, assignmentExpression
+			// elements: assignmentExpression, ID
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -3985,7 +3985,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: variableReference, assignmentExpression
+			// elements: assignmentExpression, variableReference
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -5047,7 +5047,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 				{
 				// AST REWRITE
-				// elements: INSERT_INTO, sqlStatement
+				// elements: sqlStatement, INSERT_INTO
 				// token labels: 
 				// rule labels: retval
 				// token list labels: 
@@ -5107,7 +5107,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 				{
 				// AST REWRITE
-				// elements: sqlStatement, mathExpression
+				// elements: mathExpression, sqlStatement
 				// token labels: 
 				// rule labels: retval
 				// token list labels: 
@@ -5165,7 +5165,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 				{
 				// AST REWRITE
-				// elements: sqlStatement, INSERT_OVERWRITE
+				// elements: INSERT_OVERWRITE, sqlStatement
 				// token labels: 
 				// rule labels: retval
 				// token list labels: 
@@ -5346,7 +5346,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: setArgs, UPDATE, fromStatement, whereStatement, ID
+			// elements: UPDATE, setArgs, fromStatement, ID, whereStatement
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -6080,7 +6080,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: boolExpression, WHERE
+			// elements: WHERE, boolExpression
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -6320,7 +6320,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 				{
 				// AST REWRITE
-				// elements: a, innerJoinStatement, FROM
+				// elements: innerJoinStatement, FROM, a
 				// token labels: a
 				// rule labels: retval
 				// token list labels: 
@@ -6497,7 +6497,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 				{
 				// AST REWRITE
-				// elements: ID, tableGenerationClause, FROM, tableHint, innerJoinStatement
+				// elements: tableHint, FROM, innerJoinStatement, ID, tableGenerationClause
 				// token labels: 
 				// rule labels: retval
 				// token list labels: 
@@ -6629,7 +6629,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 				{
 				// AST REWRITE
-				// elements: innerJoinStatement, FROM, ID, nestedSqlStatement
+				// elements: ID, FROM, nestedSqlStatement, innerJoinStatement
 				// token labels: 
 				// rule labels: retval
 				// token list labels: 
@@ -7109,7 +7109,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 				{
 				// AST REWRITE
-				// elements: jsArg, JS
+				// elements: JS, jsArg
 				// token labels: 
 				// rule labels: retval
 				// token list labels: 
@@ -7426,7 +7426,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 				{
 				// AST REWRITE
-				// elements: boolExpression, a, innerJoinStatement
+				// elements: innerJoinStatement, boolExpression, a
 				// token labels: a
 				// rule labels: retval
 				// token list labels: 
@@ -7564,7 +7564,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 				{
 				// AST REWRITE
-				// elements: boolExpression, innerJoinStatement, ID, nestedSqlStatement
+				// elements: ID, nestedSqlStatement, innerJoinStatement, boolExpression
 				// token labels: 
 				// rule labels: retval
 				// token list labels: 
@@ -8599,7 +8599,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 				{
 				// AST REWRITE
-				// elements: AS, ID, selectArg
+				// elements: ID, selectArg, AS
 				// token labels: 
 				// rule labels: retval
 				// token list labels: 
@@ -8630,7 +8630,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 					stream_selectArg.Reset();
 					DebugLocation(311, 68);
 					// Scrape.g:311:68: ( ^( AS ID ) )?
-					if (stream_AS.HasNext||stream_ID.HasNext)
+					if (stream_ID.HasNext||stream_AS.HasNext)
 					{
 						DebugLocation(311, 68);
 						// Scrape.g:311:68: ^( AS ID )
@@ -8646,8 +8646,8 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 						}
 
 					}
-					stream_AS.Reset();
 					stream_ID.Reset();
+					stream_AS.Reset();
 
 					adaptor.AddChild(root_0, root_1);
 					}
@@ -8707,7 +8707,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 				{
 				// AST REWRITE
-				// elements: ID, caseStatement, AS
+				// elements: caseStatement, ID, AS
 				// token labels: 
 				// rule labels: retval
 				// token list labels: 
@@ -9367,7 +9367,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: literal, caseExpression
+			// elements: caseExpression, literal
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -9988,7 +9988,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 				{
 				// AST REWRITE
-				// elements: STRING_LITERAL, NODES
+				// elements: NODES, STRING_LITERAL
 				// token labels: 
 				// rule labels: retval
 				// token list labels: 
@@ -10750,7 +10750,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: matchStatement, PICK, STRING_LITERAL, takeStatement
+			// elements: takeStatement, PICK, STRING_LITERAL, matchStatement
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -11164,7 +11164,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: STRING_LITERAL, MATCH, replaceStatement
+			// elements: MATCH, STRING_LITERAL, replaceStatement
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -11276,7 +11276,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: REPLACE, STRING_LITERAL
+			// elements: STRING_LITERAL, REPLACE
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -11555,7 +11555,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 				{
 				// AST REWRITE
-				// elements: ID, fileTableWithStatement, fileTableLocation, tableColumnArgs
+				// elements: fileTableWithStatement, ID, tableColumnArgs, fileTableLocation
 				// token labels: 
 				// rule labels: retval
 				// token list labels: 
@@ -11679,7 +11679,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 				{
 				// AST REWRITE
-				// elements: tableColumnArgs, ID
+				// elements: ID, tableColumnArgs
 				// token labels: 
 				// rule labels: retval
 				// token list labels: 
@@ -11798,7 +11798,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 				{
 				// AST REWRITE
-				// elements: sqlTableWithStatement, ID, tableColumnArgs
+				// elements: ID, tableColumnArgs, sqlTableWithStatement
 				// token labels: 
 				// rule labels: retval
 				// token list labels: 
@@ -12939,7 +12939,7 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: ID, dataType
+			// elements: dataType, ID
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -13694,10 +13694,10 @@ public partial class ScrapeParser : Antlr.Runtime.Parser
 		public static readonly BitSet _downloadExpressionArg_in_downloadPageExpresssion777 = new BitSet(new ulong[]{0x2000000000000002UL,0x0UL,0x20UL});
 		public static readonly BitSet _tableHint_in_downloadPageExpresssion779 = new BitSet(new ulong[]{0x2000000000000002UL});
 		public static readonly BitSet _javascriptCode_in_downloadPageExpresssion782 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _LAMBDA_in_javascriptCode794 = new BitSet(new ulong[]{0x0UL,0x20000UL});
-		public static readonly BitSet _OPENBRACE_in_javascriptCode796 = new BitSet(new ulong[]{0x0UL,0x40000000000UL});
-		public static readonly BitSet _STRING_LITERAL_QUOTE_in_javascriptCode798 = new BitSet(new ulong[]{0x10000UL});
-		public static readonly BitSet _CLOSEBRACE_in_javascriptCode800 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _LAMBDA_in_javascriptCode794 = new BitSet(new ulong[]{0x0UL,0x40000UL});
+		public static readonly BitSet _OPENPAREN_in_javascriptCode796 = new BitSet(new ulong[]{0x0UL,0x40000000000UL});
+		public static readonly BitSet _STRING_LITERAL_QUOTE_in_javascriptCode798 = new BitSet(new ulong[]{0x20000UL});
+		public static readonly BitSet _CLOSEPAREN_in_javascriptCode800 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _DOWNLOAD_IMAGE_in_downloadImageExpression819 = new BitSet(new ulong[]{0x2800000080000UL,0x20000040000UL});
 		public static readonly BitSet _downloadExpressionArg_in_downloadImageExpression822 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _STRING_LITERAL_in_downloadExpressionArg833 = new BitSet(new ulong[]{0x2UL});

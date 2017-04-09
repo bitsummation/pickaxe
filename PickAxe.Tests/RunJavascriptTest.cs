@@ -15,16 +15,16 @@ namespace PickAxe.Tests
     {
 
         [Test]
-        public void ReturnObjectArrayOneElement()
+        public void RunJavascript_ReturnObjectArrayOneElement()
         {
             var code = string.Format(@"
    select upc
-from download page '{0}\Test.html' with (js) => {{
+from download page '{0}\Test.html' with (js) => (
 ""
   
             return [{{ upc: t.f, url: t.s}}];
             ""
-}} ", Directory.GetCurrentDirectory());
+) ", Directory.GetCurrentDirectory());
 
             var runable = TestHelper.Compile(code, null);
 
@@ -42,16 +42,16 @@ from download page '{0}\Test.html' with (js) => {{
         }
 
         [Test]
-        public void ReturnObjectArrayMultipleElementsDifferentProperties()
+        public void RunJavascript_ReturnObjectArrayMultipleElementsDifferentProperties()
         {
             var code = string.Format(@"
    select upc, blah
-from download page '{0}\Test.html' with (js) => {{
+from download page '{0}\Test.html' with (js) => (
 ""
   
             return [{{ upc: t.f, url: t.s}}, {{blah:'blah'}}];
             ""
-}} ", Directory.GetCurrentDirectory());
+) ", Directory.GetCurrentDirectory());
 
             var runable = TestHelper.Compile(code, null);
 
@@ -66,6 +66,7 @@ from download page '{0}\Test.html' with (js) => {{
                 Assert.IsTrue(table[0][0].ToString() == "first");
                 Assert.IsTrue(table[0][1] == null);
 
+                Assert.IsTrue(table.Columns()[1] == "blah");
                 Assert.IsTrue(table[1][0] == null);
                 Assert.IsTrue(table[1][1].ToString() == "blah");
 
@@ -77,16 +78,16 @@ from download page '{0}\Test.html' with (js) => {{
 
 
         [Test]
-        public void ReturnObject()
+        public void RunJavascript_ReturnObject()
         {
             var code = string.Format(@"
    select upc, url
-from download page '{0}\Test.html' with (js) => {{
+from download page '{0}\Test.html' with (js) => (
 ""
   
             return {{ upc: t.f, url: t.s}};
             ""
-}} ", Directory.GetCurrentDirectory());
+) ", Directory.GetCurrentDirectory());
 
             var runable = TestHelper.Compile(code, null);
 
@@ -107,16 +108,16 @@ from download page '{0}\Test.html' with (js) => {{
 
 
         [Test]
-        public void ReturnObjectArrayNoJsHint()
+        public void RunJavascript_ReturnObjectArrayNoJsHint()
         {
             var code = string.Format(@"
    select upc
-from download page '{0}\Test.html' => {{
+from download page '{0}\Test.html' => (
 ""
   
             return [{{ upc: t.f, url: t.s}}];
             ""
-}} ", Directory.GetCurrentDirectory());
+) ", Directory.GetCurrentDirectory());
 
             var runable = TestHelper.Compile(code, null);
 
