@@ -30,9 +30,29 @@ namespace Pickaxe.Runtime
 
         public sealed override IEnumerator<DynamicObject> GetEnumerator() //Give out empty lazy wrappers
         {
-            foreach (IHttpWire url in Wires.ToList())
+            Process();
+            while (true)
             {
-                yield return new DynamicObjectWrapper(this);
+                if (FinishedDownloading)
+                {
+                    while (ResultCount > 0)
+                    {
+                        DecrementResultCount();
+                        yield return new DynamicObjectWrapper(this);
+                    }
+
+                    break;
+                }
+                else
+                {
+                    while (!FinishedDownloading && ResultCount == 0) //spin wait
+                    { }
+                    if (FinishedDownloading)
+                        continue;
+                       
+                    DecrementResultCount();
+                    yield return new DynamicObjectWrapper(this);
+                }
             }
         }
 

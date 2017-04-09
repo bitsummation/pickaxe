@@ -58,7 +58,7 @@ namespace Pickaxe.Runtime.Internal
             try
             {
                 phantom = new PhantomJSDriver(driverService);
-                phantom.Navigate().GoToUrl(Url);
+                phantom.Navigate().GoToUrl(new Uri(Url));
 
                 if (!String.IsNullOrEmpty(_cssElement))
                 {

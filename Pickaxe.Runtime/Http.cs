@@ -12,10 +12,8 @@
  * limitations under the License.
  */
 
-using HtmlAgilityPack;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using Pickaxe.Runtime.AgilityPackFizzler;
 using Pickaxe.Runtime.Dom;
 using Pickaxe.Runtime.Internal;
 using System;
@@ -70,16 +68,18 @@ namespace Pickaxe.Runtime
             if (json == null)
                 json = string.Empty;
 
-            dynamic objectValue = JsonConvert.DeserializeObject(json);
+            dynamic serializedValue = JsonConvert.DeserializeObject(json);
             var dynamics = new List<DynamicObject>();
 
-            if (objectValue != null)
+            if (serializedValue != null)
             {
-                if (!(objectValue is JArray))
-                    throw new InvalidOperationException("must return array from java script");
+                IEnumerable<dynamic> jsonArray = serializedValue;
 
+                if (!(serializedValue is JArray))
+                    jsonArray = new[] { serializedValue };
+                
                 var properties = new List<Dictionary<string, object>>();
-                foreach (var v in objectValue)
+                foreach (dynamic v in jsonArray)
                 {
                     var dynamic = new DynamicObject();
                     Dictionary<string, object> values = v.ToObject<Dictionary<string, object>>();

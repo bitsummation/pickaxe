@@ -40,17 +40,16 @@ namespace PickAxe.Tests
         {
             var input = @"
 
-
- select upc, url
+ select upc
 from download page 'https://www.walmart.com/ip/Gatorade-Variety-Pack-12-Oz-18-Pk/16224470' with (js) => {
 ""
-	var primaryProductId = __WML_REDUX_INITIAL_STATE__.product.primaryProduct;
+    var primaryProductId = __WML_REDUX_INITIAL_STATE__.product.primaryProduct;
 
-	var primaryProduct = __WML_REDUX_INITIAL_STATE__.product.products[primaryProductId];
+            var primaryProduct = __WML_REDUX_INITIAL_STATE__.product.products[primaryProductId];
 
-	return [{upc:primaryProduct.upc, url:url}];
-""
-}      
+            return [{ upc: primaryProduct.upc, url: url}];
+            ""
+}     
 
 
 ";

@@ -29,6 +29,10 @@ namespace Pickaxe.Runtime
 
         private LazyDownloadArgs _args;
 
+        private object ResultCountLock = new object();
+        private int _resultCount;
+
+        protected bool FinishedDownloading { get; private set; }
         private bool _running;
         private bool _callOnProgres;
 
@@ -44,6 +48,8 @@ namespace Pickaxe.Runtime
             foreach (var wire in args.Wires)
                 Wires.Enqueue(wire);
 
+            _resultCount = 0;
+            FinishedDownloading = false;
             _args.Runtime.TotalOperations += args.Wires.Count;
             _callOnProgres = true;            
         }
@@ -77,10 +83,18 @@ namespace Pickaxe.Runtime
 
                 lock (ResultLock)
                 {
-                    foreach(var p in downloadResult)
+                    foreach (var p in downloadResult)
+                    {
                         _results.Enqueue(p);
+                        lock(ResultCountLock)
+                        {
+                            _resultCount++;
+                        }
+                    }
                 }
             }
+
+            FinishedDownloading = true;
         }
 
         private void ProcesImpl(string logValue)
@@ -116,6 +130,28 @@ namespace Pickaxe.Runtime
                 result = FetchResult();
          
             return result;
+        }
+
+        protected int ResultCount
+        {
+            get
+            {
+                int count;
+                lock (ResultCountLock)
+                {
+                    count = _resultCount;
+                }
+
+                return count;
+            }
+        }
+
+        protected void DecrementResultCount()
+        {
+            lock (ResultCountLock)
+            {
+                _resultCount--;
+            }
         }
 
         public void Process()
