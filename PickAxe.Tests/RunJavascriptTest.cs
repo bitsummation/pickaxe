@@ -15,6 +15,56 @@ namespace PickAxe.Tests
     {
 
         [Test]
+        public void RunJavascript_InvalidJavscript()
+        {
+            var code = string.Format(@"
+   select upc, url
+from download page '{0}\Test.html' with (js) => (
+""
+            as sladjf lsjafs
+            f () nlah f ;;;;
+            ""
+) ", Directory.GetCurrentDirectory());
+
+            var runable = TestHelper.Compile(code, null);
+
+            int called = 0;
+            runable.Select += (table) =>
+            {
+                called++;
+                Assert.IsTrue(table.RowCount == 0);
+            };
+
+            runable.Run();
+            Assert.True(called == 1);
+        }
+
+        [Test]
+        public void RunJavascript_ReturnNull()
+        {
+            var code = string.Format(@"
+   select upc, url
+from download page '{0}\Test.html' with (js) => (
+""
+  
+            return null;
+            ""
+) ", Directory.GetCurrentDirectory());
+
+            var runable = TestHelper.Compile(code, null);
+
+            int called = 0;
+            runable.Select += (table) =>
+            {
+                called++;
+                Assert.IsTrue(table.RowCount == 0);
+            };
+
+            runable.Run();
+            Assert.True(called == 1);
+        }
+
+        [Test]
         public void RunJavascript_ReturnObjectArrayOneElement()
         {
             var code = string.Format(@"

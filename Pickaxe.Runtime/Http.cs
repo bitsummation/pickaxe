@@ -92,9 +92,6 @@ namespace Pickaxe.Runtime
             }
 
             var table = new RuntimeTable<DynamicObject>();
-            if(dynamics.Count == 0)
-                dynamics.Add(new DynamicObject());
-
             table.SetRows(dynamics);
             return table;
         }
