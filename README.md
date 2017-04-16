@@ -213,12 +213,13 @@ from (
 ) p
 join (
 	select upc, url
-	from download page 'https://www.walmart.com/ip/Cheerios-Family-Size-Gluten-Free-Cereal-21-oz/33886599' with (js) => (
-    "
+	from download page 'https://www.walmart.com/ip/Cheerios-Family-Size-Gluten-Free-Cereal-21-oz/33886599' with (js) => 
+    (
+      "
         var primaryProductId = __WML_REDUX_INITIAL_STATE__.product.primaryProduct;
         var primaryProduct = __WML_REDUX_INITIAL_STATE__.product.products[primaryProductId];
         return { upc:primaryProduct.upc, url:url };
-    "
+      "
 	)
 ) u on u.url = p.url
 ```

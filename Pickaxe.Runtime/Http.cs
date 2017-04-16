@@ -71,7 +71,7 @@ namespace Pickaxe.Runtime
             dynamic serializedValue = JsonConvert.DeserializeObject(json);
             var dynamics = new List<DynamicObject>();
 
-            if (serializedValue != null)
+            if (serializedValue != null && serializedValue is IEnumerable<dynamic>)
             {
                 IEnumerable<dynamic> jsonArray = serializedValue;
 

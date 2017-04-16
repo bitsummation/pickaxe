@@ -1,5 +1,6 @@
 ﻿using Moq;
 using NUnit.Framework;
+using Pickaxe.CodeDom.Semantic;
 using Pickaxe.Runtime;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,46 @@ namespace PickAxe.Tests
     [TestFixture]
     public class RunJavascriptTest
     {
+
+        [Test]
+        public void RunJavascript_SelectStarNotSupported()
+        {
+            var code = string.Format(@"
+   select *
+from download page '{0}\Test.html' with (js) => (
+""
+  
+            return {{}}
+            ""
+) ", Directory.GetCurrentDirectory());
+
+            TestHelper.CompileExpectError(typeof(SelectNoColumnsFound), code, null);
+        }
+
+        [Test]
+        public void RunJavascript_ReturnScalar()
+        {
+            var code = string.Format(@"
+  select upc, url
+from download page '{0}\Test.html' with (js) => (
+""
+  
+            return url;
+            ""
+) ", Directory.GetCurrentDirectory());
+
+            var runable = TestHelper.Compile(code, null);
+
+            int called = 0;
+            runable.Select += (table) =>
+            {
+                called++;
+                Assert.IsTrue(table.RowCount == 0);
+            };
+
+            runable.Run();
+            Assert.True(called == 1);
+        }
 
         [Test]
         public void RunJavascript_InvalidJavscript()
