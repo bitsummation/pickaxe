@@ -245,7 +245,7 @@ namespace Pickaxe.Studio
         private void Compile(string source)
         {
             ThreadContext.Properties[Config.LogKey] = _logValue;
-            ThreadedDownloadTable.LogValue = _logValue;
+            Config.LogValue = _logValue;
 
             DoInvoke(new Action(() =>
             {

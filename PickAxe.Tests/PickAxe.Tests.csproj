@@ -59,6 +59,7 @@
     <Compile Include="JoinTests.cs" />
     <Compile Include="NestedSelectTests.cs" />
     <Compile Include="PrimitiveFunctionTests.cs" />
+    <Compile Include="RunJavascriptTest.cs" />
     <Compile Include="SelectTests.cs" />
     <Compile Include="TestCode.cs" />
     <Compile Include="ExpandTests.cs" />
@@ -88,6 +89,11 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Test.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -30,7 +30,7 @@ namespace Pickaxe.CodeDom.Visitor
         {
             var selectInfo = new SelectArgsInfo();
 
-            _codeStack.Peek().Scope = new ScopeData<Type> { Type = typeof(int), CodeDomReference = new CodeTypeReference(typeof(int)) };
+            _codeStack.Peek().Scope = new ScopeData<Type> { Type = typeof(int?), CodeDomReference = new CodeTypeReference(typeof(int?)) };
             _codeStack.Peek().CodeExpression = new CodeFieldReferenceExpression(new CodeTypeReferenceExpression("row"), id.Id);
             selectInfo.ColumnName = id.Id;
             _codeStack.Peek().Tag = selectInfo;
@@ -41,8 +41,9 @@ namespace Pickaxe.CodeDom.Visitor
             //if we can't find we need to dig up the scope
 
             var tableMatches = Scope.Current.FindTableVariable(id.Id);
+            var dynamicAlias = Scope.Current.AliasType<DynamicObject>();
 
-            if(tableMatches.Length > 0)
+            if (tableMatches.Length > 0)
             {
                 if (tableMatches.Length == 1) //we only found one
                 {
@@ -52,7 +53,12 @@ namespace Pickaxe.CodeDom.Visitor
                 else //error we found more than 1
                     Errors.Add(new AmbiguousSelectVariable(tableMatches, new Semantic.LineInfo(id.Line.Line, id.Line.CharacterPosition)));
             }
-            else //not found in the table variable so look up scope
+            else if (dynamicAlias.Length == 1) //if there is an dynamic alias in the select scope we try to get the variable from it even if it might be in the global scope
+            {
+                _codeStack.Peek().CodeExpression = new CodeIndexerExpression(new CodeFieldReferenceExpression(new CodeTypeReferenceExpression("row"), dynamicAlias[0]), new CodePrimitiveExpression(id.Id));
+                _codeStack.Peek().Scope = new ScopeData<Type> { Type = typeof(string), CodeDomReference = new CodeTypeReference(typeof(string)) };
+            }
+            else //not found in the table variable so look up scope. if dynamic table we need to generate 
             {
                 //Need to check in the Scope to see if variable is defined there. If in select statmenet it is valid to put variables in it.
                 if (Scope.Current.IsRegistered(id.Id))

@@ -16,26 +16,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Pickaxe.Runtime.Dom;
+using System.Threading.Tasks;
 
-namespace Pickaxe.Runtime
+namespace Pickaxe.Sdk
 {
-    public class VariableDownloadPage : LazyDownloadPage
+    public class JavascriptCode : AstNode
     {
-        public VariableDownloadPage(ThreadedDownloadTable<DownloadPage> parent)
-            : base(parent)
-        {
-        }
+        public string Code { get; set;}
 
-        public override bool CssWhere(ref DownloadPage page, string selector)
+        public override void Accept(IAstVisitor visitor)
         {
-            var newNodes = nodes.First().QuerySelectorAll(selector).ToArray();
-            page = new DownloadPage() { date = date, nodes = new DownloadedNodes(newNodes), size = size, url = url };
-            return true;
-        }
-
-        protected override void ApplyCssSelector(IEnumerable<HtmlElement> nodes)
-        {
+            visitor.Visit(this);
         }
     }
 }

@@ -34,9 +34,14 @@ namespace Pickaxe.Runtime.Internal
             _cssTimeout = cssTimeout;
         }
 
-        protected override byte[] DownloadImpl()
+        protected virtual object RunPostDownload(IWebDriver driver)
         {
-            byte[] bytes = new byte[0];
+            return null;
+        }
+
+        protected override object DownloadImpl()
+        {
+            object bytes = new byte[0];
 
             var driverService = PhantomJSDriverService.CreateDefaultService();
             driverService.HideCommandPromptWindow = true;
@@ -53,7 +58,7 @@ namespace Pickaxe.Runtime.Internal
             try
             {
                 phantom = new PhantomJSDriver(driverService);
-                phantom.Navigate().GoToUrl(Url);
+                phantom.Navigate().GoToUrl(new Uri(Url));
 
                 if (!String.IsNullOrEmpty(_cssElement))
                 {
@@ -62,8 +67,17 @@ namespace Pickaxe.Runtime.Internal
                     wait.Until(drv => drv.FindElement(By.CssSelector(_cssElement)));
                 }
 
-                string html = phantom.PageSource;
-                bytes = Encoding.UTF8.GetBytes(html);
+                var postObject = RunPostDownload(phantom);
+
+                if (postObject != null)
+                {
+                    bytes = postObject;
+                }
+                else
+                {
+                    string html = phantom.PageSource;
+                    bytes = Encoding.UTF8.GetBytes(html);
+                }
             }
             finally
             {

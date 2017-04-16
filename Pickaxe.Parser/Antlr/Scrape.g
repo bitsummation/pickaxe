@@ -57,6 +57,7 @@ tokens {
   CASE_BOOL;
   CASE_VAR;
   CASE_EXPRESSION;
+  JAVASCRIPT_CODE;
 }
 
 /*
@@ -151,7 +152,11 @@ downloadExpression
 	;
 
 downloadPageExpresssion
-	: DOWNLOAD_PAGE^ downloadExpressionArg tableHint?
+	: DOWNLOAD_PAGE^ downloadExpressionArg tableHint? javascriptCode?
+	;
+
+javascriptCode
+	: LAMBDA OPENPAREN STRING_LITERAL_QUOTE CLOSEPAREN -> ^(JAVASCRIPT_CODE STRING_LITERAL_QUOTE)
 	;
 
 downloadImageExpression
@@ -467,6 +472,7 @@ LIKE: 'like';
 NOTLIKE: 'not like';
 
 NULL_OPERATOR: '??';
+LAMBDA: '=>';
 
 UPDATE : 'update';
 SET : 'set';
@@ -519,6 +525,7 @@ TABLE : 'table';
 DBTABLE : 'dbtable';
 
 STRING_LITERAL: APOSTRAPHE ~(APOSTRAPHE)* APOSTRAPHE;
+STRING_LITERAL_QUOTE: QUOTE ~(QUOTE)* QUOTE;
 IDENTITY_VAR : '@@identity';
 COMMAND_VAR : '@' DIGIT+;
 ID : LETTER+;

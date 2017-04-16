@@ -16,26 +16,43 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Pickaxe.Runtime.Dom;
+using System.Threading.Tasks;
 
 namespace Pickaxe.Runtime
 {
-    public class VariableDownloadPage : LazyDownloadPage
+    public class DynamicObjectWrapper : DynamicObject
     {
-        public VariableDownloadPage(ThreadedDownloadTable<DownloadPage> parent)
-            : base(parent)
+        private ThreadedDownloadTable<DynamicObject> _parent;
+        private DynamicObject _inner;
+        
+        public DynamicObjectWrapper(ThreadedDownloadTable<DynamicObject> parent)
         {
+            _parent = parent;
         }
 
-        public override bool CssWhere(ref DownloadPage page, string selector)
+        protected DynamicObject Inner
         {
-            var newNodes = nodes.First().QuerySelectorAll(selector).ToArray();
-            page = new DownloadPage() { date = date, nodes = new DownloadedNodes(newNodes), size = size, url = url };
-            return true;
+            get
+            {
+                _parent.Process();
+                if (_inner == null)
+                    _inner = _parent.GetResult();
+
+                return _inner;
+            }
+            set
+            {
+                _inner = null;
+            }
         }
 
-        protected override void ApplyCssSelector(IEnumerable<HtmlElement> nodes)
+        public override string this[string prop]
         {
+            get
+            {
+                return Inner[prop];
+            }
         }
+
     }
 }

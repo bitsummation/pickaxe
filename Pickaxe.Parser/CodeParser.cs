@@ -121,6 +121,8 @@ namespace Pickaxe.Parser
                         return new AntlrBridgeTree<DownloadPageExpression>(payload, (node, tree, visitor) => visitor.Visit(node, tree));
                     if (payload.Type == ScrapeParser.DOWNLOAD_IMAGE)
                         return new AntlrBridgeTree<DownloadImageExpression>(payload, (node, tree, visitor) => visitor.Visit(node, tree));
+                    if(payload.Type == ScrapeParser.JAVASCRIPT_CODE)
+                        return new AntlrBridgeTree<JavascriptCode>(payload, (node, tree, visitor) => visitor.Visit(node, tree));
 
                     if(payload.Type == ScrapeParser.WHILE)
                         return new AntlrBridgeTree<WhileStatement>(payload, (node, tree, visitor) => visitor.Visit(node, tree));

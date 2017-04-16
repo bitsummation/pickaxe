@@ -55,6 +55,7 @@ namespace Pickaxe.CodeDom.Visitor
             Scope.Current.RegisterTable("DownloadPage", DownloadPage.Columns, new CodeTypeReference("Table", new CodeTypeReference("DownloadPage")));
             Scope.Current.RegisterTable("DownloadImage", DownloadImage.Columns, new CodeTypeReference("Table", new CodeTypeReference("DownloadImage")));
             Scope.Current.RegisterTable("Expand", Expand.Columns, new CodeTypeReference("Table", new CodeTypeReference("Expand")));
+            Scope.Current.RegisterTable("DynamicObject", DynamicObject.Columns, new CodeTypeReference("Table", new CodeTypeReference("DynamicObject")));
 
             //Register @@identity
             Scope.Current.RegisterPrimitive("@@identity", typeof(int), new CodeTypeReference(typeof(int)));

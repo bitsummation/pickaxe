@@ -21,6 +21,6 @@ namespace Pickaxe.Runtime
 {
     public interface IHttpRequest
     {
-        byte[] Download();
+        object Download();
     }
 }

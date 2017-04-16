@@ -38,35 +38,20 @@ namespace PickAxe.Tests
         [Test]
         public void BasicCodeGenTest()
         {
-              var input = @"
+            var input = @"
 
-       
- create buffer temp(id int)
-      
-insert into temp
-select 3
+ select upc
+from download page 'https://www.walmart.com/ip/Gatorade-Variety-Pack-12-Oz-18-Pk/16224470' with (js) => (
+""
+    var primaryProductId = __WML_REDUX_INITIAL_STATE__.product.primaryProduct;
 
-insert into temp
-select 2
+            var primaryProduct = __WML_REDUX_INITIAL_STATE__.product.products[primaryProductId];
 
-insert into temp
-select 5
-
-insert into temp
-select 10
-
- select
-    id,
-    case id
-        when 5 then 'five'
-        when 2 then 'two'
-        when 3 then 'three'
-        else 'no'
-        end as description
-    from temp
+            return [{ upc: primaryProduct.upc, url: url}];
+            ""
+)   
 
 ";
-
             var compiler = new Compiler(input);
             var sources = compiler.ToCode();
             Assert.IsTrue(compiler.Errors.Count == 0);

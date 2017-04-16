@@ -21,17 +21,18 @@ using System.Threading;
 
 namespace Pickaxe.Runtime
 {
-    public abstract class ThreadedDownloadTable : RuntimeTable<DownloadPage>
-    {
-        [ThreadStatic]
-        public static string LogValue;
-        
+    public abstract class ThreadedDownloadTable<TRow> : RuntimeTable<TRow> where TRow : IRow
+    {  
         private object ResultLock = new object();
         private object UrlLock = new object();
-        private Queue<DownloadPage> _results;
+        private Queue<TRow> _results;
 
         private LazyDownloadArgs _args;
 
+        private object ResultCountLock = new object();
+        private int _resultCount;
+
+        protected bool FinishedDownloading { get; private set; }
         private bool _running;
         private bool _callOnProgres;
 
@@ -39,7 +40,7 @@ namespace Pickaxe.Runtime
             : base()
         {
             Wires = new Queue<IHttpWire>();
-            _results = new Queue<DownloadPage>();
+            _results = new Queue<TRow>();
 
             _args = args;
             _running = false;
@@ -47,9 +48,13 @@ namespace Pickaxe.Runtime
             foreach (var wire in args.Wires)
                 Wires.Enqueue(wire);
 
+            _resultCount = 0;
+            FinishedDownloading = false;
             _args.Runtime.TotalOperations += args.Wires.Count;
             _callOnProgres = true;            
         }
+
+        protected abstract RuntimeTable<TRow> Fetch(IRuntime runtime, IHttpWire wire);
 
         protected Queue<IHttpWire> Wires {get; private set;}
 
@@ -71,17 +76,25 @@ namespace Pickaxe.Runtime
                 if (wire == null) //nothing left in queue
                     break;
 
-                var downloadResult = Http.DownloadPage(_args.Runtime, wire);
+                var downloadResult = Fetch(_args.Runtime, wire);
                 
                 if(_callOnProgres)
                     _args.Runtime.OnProgress();
 
                 lock (ResultLock)
                 {
-                    foreach(var p in downloadResult)
+                    foreach (var p in downloadResult)
+                    {
                         _results.Enqueue(p);
+                        lock(ResultCountLock)
+                        {
+                            _resultCount++;
+                        }
+                    }
                 }
             }
+
+            FinishedDownloading = true;
         }
 
         private void ProcesImpl(string logValue)
@@ -98,9 +111,9 @@ namespace Pickaxe.Runtime
             }
         }
 
-        private DownloadPage FetchResult()
+        private TRow FetchResult()
         {
-            DownloadPage result = null;
+            TRow result = default(TRow);
             lock (ResultLock)
             {
                 if (_results.Count > 0)
@@ -110,13 +123,35 @@ namespace Pickaxe.Runtime
             return result;
         }
 
-        public DownloadPage GetResult()
+        public TRow GetResult()
         {
-            DownloadPage result = null;
+            TRow result = default(TRow);
             while (result == null)
                 result = FetchResult();
          
             return result;
+        }
+
+        protected int ResultCount
+        {
+            get
+            {
+                int count;
+                lock (ResultCountLock)
+                {
+                    count = _resultCount;
+                }
+
+                return count;
+            }
+        }
+
+        protected void DecrementResultCount()
+        {
+            lock (ResultCountLock)
+            {
+                _resultCount--;
+            }
         }
 
         public void Process()
@@ -124,7 +159,7 @@ namespace Pickaxe.Runtime
             if (!_running)
             {
                 _running = true;
-                var logValue = ThreadedDownloadTable.LogValue;
+                var logValue = Config.LogValue;
                 Thread thread = new Thread(() => ProcesImpl(logValue));
 
                 thread.Start();

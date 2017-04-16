@@ -22,9 +22,11 @@ namespace Pickaxe.CodeDom.Visitor
 {
     public partial class CodeDomGenerator : IAstVisitor
     {
-        private void GenerateDownloadDeffered(DownloadPageExpression expression, CodeTypeReference returnType, int line)
+        private void GenerateDownloadDeffered(DownloadPageExpression expression, ref CodeTypeReference returnType, int line)
         {
             var statementDomArg = VisitChild(expression.Statement);
+            //if in select context pick the lazy download type~
+            var downloadType = Scope.Current.IsSelect ? "SelectDownloadTable" : "VariableDownloadTable";
 
             if (statementDomArg.Scope.CodeDomReference.BaseType == typeof(Table<>).Name)
             {
@@ -60,20 +62,37 @@ namespace Pickaxe.CodeDom.Visitor
                     new CodePrimitiveExpression(threadCount),
                     statementDomArg.CodeExpression);
             }
-
+            string cssWaitElement = null;
+            int cssTimeout = 5;
             if(expression.JSTableHint != null)
             {
+                cssWaitElement = expression.JSTableHint.CssWaitElement;
+                cssTimeout = expression.JSTableHint.CssTimeoutSeconds;
+
                 argsExpression = new CodeMethodInvokeExpression(new CodeTypeReferenceExpression(typeof(LazyDownloadArgs)), "CreateSeleniumArgs",
                     new CodeThisReferenceExpression(),
                     new CodePrimitiveExpression(line),
                     new CodePrimitiveExpression(threadCount),
-                    new CodePrimitiveExpression(expression.JSTableHint.CssWaitElement),
-                    new CodePrimitiveExpression(expression.JSTableHint.CssTimeoutSeconds),
+                    new CodePrimitiveExpression(cssWaitElement),
+                    new CodePrimitiveExpression(cssTimeout),
                     statementDomArg.CodeExpression);
             }
 
-            //if in select context pick the lazy download type~
-            var downloadType = Scope.Current.IsSelect ? "SelectDownloadTable" : "VariableDownloadTable";
+            if (expression.JavascriptCode != null)
+            {
+                argsExpression = new CodeMethodInvokeExpression(new CodeTypeReferenceExpression(typeof(LazyDownloadArgs)), "CreateJavaScriptArgs",
+                  new CodeThisReferenceExpression(),
+                  new CodePrimitiveExpression(line),
+                  new CodePrimitiveExpression(threadCount),
+                  new CodePrimitiveExpression(cssWaitElement),
+                  new CodePrimitiveExpression(cssTimeout),
+                  statementDomArg.CodeExpression,
+                  new CodePrimitiveExpression(expression.JavascriptCode.Code));
+
+                downloadType = "DynamicObjectDownloadTable";
+                returnType = new CodeTypeReference("RuntimeTable", new CodeTypeReference("DynamicObject"));
+                method.ReturnType = returnType;
+            }
 
             method.Statements.Add(new CodeMethodReturnStatement(new CodeObjectCreateExpression(new CodeTypeReference(downloadType),
                 argsExpression)));
@@ -119,7 +138,7 @@ namespace Pickaxe.CodeDom.Visitor
         public void Visit(DownloadPageExpression expression)
         {
             var type = new CodeTypeReference("RuntimeTable", new CodeTypeReference("DownloadPage"));
-            GenerateDownloadDeffered(expression, type, expression.Line.Line);
+            GenerateDownloadDeffered(expression, ref type, expression.Line.Line);
 
             _codeStack.Peek().Scope = new ScopeData<TableDescriptor> { Type = DownloadPage.Columns, CodeDomReference = type};
         }

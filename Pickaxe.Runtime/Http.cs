@@ -12,8 +12,8 @@
  * limitations under the License.
  */
 
-using HtmlAgilityPack;
-using Pickaxe.Runtime.AgilityPackFizzler;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Pickaxe.Runtime.Dom;
 using Pickaxe.Runtime.Internal;
 using System;
@@ -33,7 +33,9 @@ namespace Pickaxe.Runtime
         private static DownloadImage GetImage(IHttpRequestFactory factory, IHttpWire wire)
         {
             var request = CreateRequest(factory, wire);
-            var bytes = request.Download();
+            var bytes = request.Download() as byte[];
+            if (bytes == null)
+                bytes = new byte[0];
 
             string extension = Path.GetExtension(wire.Url);
             string fileName = Guid.NewGuid().ToString("N") + extension;
@@ -46,7 +48,9 @@ namespace Pickaxe.Runtime
         private static HtmlDoc GetDocument(IHttpRequestFactory factory, IHttpWire wire, out int length)
         {
             var request = CreateRequest(factory, wire);
-            var bytes = request.Download();
+            var bytes = request.Download() as byte[];
+            if (bytes == null)
+                bytes = new byte[0];
 
             string html = string.Empty;
             length = bytes.Length;
@@ -55,6 +59,41 @@ namespace Pickaxe.Runtime
             HtmlDoc doc = Config.DomFactory.Create();
             doc.Load(html);
             return doc;
+        }
+
+        private static RuntimeTable<DynamicObject> ProcesJson(IHttpRequestFactory factory, IHttpWire wire)
+        {
+            var request = CreateRequest(factory, wire);
+            var json = request.Download() as string;
+            if (json == null)
+                json = string.Empty;
+
+            dynamic serializedValue = JsonConvert.DeserializeObject(json);
+            var dynamics = new List<DynamicObject>();
+
+            if (serializedValue != null && serializedValue is IEnumerable<dynamic>)
+            {
+                IEnumerable<dynamic> jsonArray = serializedValue;
+
+                if (!(serializedValue is JArray))
+                    jsonArray = new[] { serializedValue };
+                
+                var properties = new List<Dictionary<string, object>>();
+                foreach (dynamic v in jsonArray)
+                {
+                    var dynamic = new DynamicObject();
+                    Dictionary<string, object> values = v.ToObject<Dictionary<string, object>>();
+
+                    foreach (var p in values.Keys)
+                        dynamic.Add(p, values[p].ToString());
+
+                    dynamics.Add(dynamic);
+                }
+            }
+
+            var table = new RuntimeTable<DynamicObject>();
+            table.SetRows(dynamics);
+            return table;
         }
 
         private static RuntimeTable<DownloadPage> DownloadPage(IRuntime runtime, IHttpWire[] wires)
@@ -68,6 +107,11 @@ namespace Pickaxe.Runtime
             }
 
             return table;
+        }
+
+        public static RuntimeTable<DynamicObject> DownloadJSPage(IRuntime runtime, IHttpWire wire)
+        {
+            return ProcesJson(runtime.RequestFactory, wire);
         }
 
         public static RuntimeTable<DownloadPage> DownloadPage(IRuntime runtime, IHttpWire wire)

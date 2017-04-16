@@ -23,7 +23,15 @@ namespace Pickaxe.Sdk
             get
             {
                 return Children.Where(x => x.GetType() != typeof(ThreadTableHint) &&
-                    x.GetType() != typeof(JSTableHint)).Single();
+                    x.GetType() != typeof(JSTableHint) && x.GetType() != typeof(JavascriptCode)).Single();
+            }
+        }
+
+        public JavascriptCode JavascriptCode
+        {
+            get
+            {
+                return Children.Where(x => x.GetType() == typeof(JavascriptCode)).Cast<JavascriptCode>().SingleOrDefault();
             }
         }
 

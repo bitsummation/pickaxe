@@ -67,6 +67,7 @@
     <Compile Include="Semantic\NotTableRowVariableException.cs" />
     <Compile Include="Semantic\DownloadRequireString.cs" />
     <Compile Include="Semantic\OnlyTwoSelectParamForDirectory.cs" />
+    <Compile Include="Semantic\SelectNoColumnsFound.cs" />
     <Compile Include="Semantic\VariableAlreadyExists.cs" />
     <Compile Include="Visitor\Visitor.AdditionOperator.cs" />
     <Compile Include="Visitor\Visitor.AndExpression.cs" />
@@ -88,6 +89,7 @@
     <Compile Include="Visitor\Visitor.IdentityVariable.cs.cs" />
     <Compile Include="Visitor\Visitor.InnerJoinStatement.cs" />
     <Compile Include="Visitor\Visitor.InsertIntoDirectoryStatement.cs" />
+    <Compile Include="Visitor\Visitor.JavascriptCode.cs" />
     <Compile Include="Visitor\Visitor.JSTableHint.cs" />
     <Compile Include="Visitor\Visitor.LessThanEqualExpression.cs" />
     <Compile Include="Visitor\Visitor.LessThanExpression.cs" />

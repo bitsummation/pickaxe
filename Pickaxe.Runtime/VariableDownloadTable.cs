@@ -19,7 +19,7 @@ using System.Text;
 
 namespace Pickaxe.Runtime
 {
-    public class VariableDownloadTable : ThreadedDownloadTable
+    public class VariableDownloadTable : ThreadedDownloadTable<DownloadPage>
     {
         private IList<LazyDownloadPage> _pages;
 
@@ -36,6 +36,11 @@ namespace Pickaxe.Runtime
             {
                 _pages.Add(new VariableDownloadPage(this));
             }
+        }
+
+        protected override RuntimeTable<DownloadPage> Fetch(IRuntime runtime, IHttpWire wire)
+        {
+            return Http.DownloadPage(runtime, wire);
         }
 
         public override IEnumerator<DownloadPage> GetEnumerator() //Give out empty lazy wrappers

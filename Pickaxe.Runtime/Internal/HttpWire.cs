@@ -34,12 +34,12 @@ namespace Pickaxe.Runtime.Internal
         public Proxy Proxy { get; set; }
         public string Url {get; private set;}
 
-        public byte[] Download()
+        public object Download()
         {
             _runtime.Call(_line);
             return DownloadImpl();
         }
 
-        protected abstract byte[] DownloadImpl();
+        protected abstract object DownloadImpl();
     }
 }

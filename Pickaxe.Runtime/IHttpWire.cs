@@ -21,6 +21,8 @@ namespace Pickaxe.Runtime
 {
     public interface IHttpWire
     {
-        string Url { get; } 
+        string Url { get; }
+        object Download();
+        Proxy Proxy { get; set; }
     }
 }

@@ -19,7 +19,7 @@ using System.Text;
 
 namespace Pickaxe.Runtime
 {
-    public class SelectDownloadTable : ThreadedDownloadTable
+    public class SelectDownloadTable : ThreadedDownloadTable<DownloadPage>
     {        
         public SelectDownloadTable(LazyDownloadArgs args)
             : base(args)
@@ -33,6 +33,11 @@ namespace Pickaxe.Runtime
             {
                 yield return new SelectDownloadPage(this);
             }
+        }
+
+        protected override RuntimeTable<DownloadPage> Fetch(IRuntime runtime, IHttpWire wire)
+        {
+            return Http.DownloadPage(runtime, wire);
         }
     }
 }
