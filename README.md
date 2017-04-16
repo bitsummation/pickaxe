@@ -37,8 +37,8 @@ select
 from download page 'https://www.faa.gov/air_traffic/weather/asos/?state=TX'	
 where nodes = 'table.asos tbody tr'
 ```
-### Nested selects
-We create a memory table to store state strings then we insert states into it. The nested select statement allows the download page statement to download multiple pages at once. 
+### Nested download selects
+We create a memory table to store state strings then we insert states into it. The nested download select statement allows the download page statement to download multiple pages at once. 
 ```sql
 create buffer states(state string)
 
@@ -189,6 +189,38 @@ select
 	pick '.views span' --views
 from download page 'https://try.discourse.org/' with (js('tr.topic-list-item', 5))
 where nodes = 'tr.topic-list-item'
+```
+#### Run Javascript
+Run Javascript on the downloaded pages. Must return a javascript object or array of objects. The url variable is given by the framwork and stores the url of the downloaded page.
+```sql
+select upc, u
+from download page 'https://www.walmart.com/ip/Cheerios-Family-Size-Gluten-Free-Cereal-21-oz/33886599' with (js) => (
+	"
+		var primaryProductId = __WML_REDUX_INITIAL_STATE__.product.primaryProduct;
+		var primaryProduct = __WML_REDUX_INITIAL_STATE__.product.products[primaryProductId];
+		return { upc:primaryProduct.upc, u:url };
+	"
+)
+```
+## Sub Queries
+```sql
+select p.title, u.upc
+from (
+	select
+	pick '.prod-ProductTitle div' as title,
+	url
+	from download page 'https://www.walmart.com/ip/Cheerios-Family-Size-Gluten-Free-Cereal-21-oz/33886599'
+) p
+join (
+	select upc, url
+	from download page 'https://www.walmart.com/ip/Cheerios-Family-Size-Gluten-Free-Cereal-21-oz/33886599' with (js) => (
+    "
+        var primaryProductId = __WML_REDUX_INITIAL_STATE__.product.primaryProduct;
+        var primaryProduct = __WML_REDUX_INITIAL_STATE__.product.products[primaryProductId];
+        return { upc:primaryProduct.upc, url:url };
+    "
+	)
+) u on u.url = p.url
 ```
 ## More Examples
 ---
