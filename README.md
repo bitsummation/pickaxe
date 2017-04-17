@@ -30,11 +30,11 @@ The pick expression picks out nodes under each node specified in the where claus
 * take html - takes the html of the node
 ```sql
 select
-	pick 'td:nth-child(1) a' take attribute 'href', --link to details
-	pick 'td:nth-child(1) a', --station
-	pick 'td:nth-child(2)', --city
-	pick 'td:nth-child(4)' --state
-from download page 'https://www.faa.gov/air_traffic/weather/asos/?state=TX'	
+    pick 'td:nth-child(1) a' take attribute 'href' as details,
+    pick 'td:nth-child(1) a' as station,
+    pick 'td:nth-child(2)' as city,
+    pick 'td:nth-child(4)' as state 
+from download page 'https://www.faa.gov/air_traffic/weather/asos/?state=TX' 
 where nodes = 'table.asos tbody tr'
 ```
 ### Nested download selects
