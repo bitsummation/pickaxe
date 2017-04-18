@@ -191,7 +191,7 @@ from download page 'https://try.discourse.org/' with (js('tr.topic-list-item', 5
 where nodes = 'tr.topic-list-item'
 ```
 #### Run Javascript
-Run Javascript on the downloaded pages. Must return a javascript object or array of objects. The url variable is given by the framwork and stores the url of the downloaded page.
+Run Javascript on the downloaded pages. Must return a javascript object or array of objects. The url variable is given by the framework and stores the url of the downloaded page.
 ```sql
 select upc, u
 from download page 'https://www.walmart.com/ip/Cheerios-Family-Size-Gluten-Free-Cereal-21-oz/33886599' with (js) => (
