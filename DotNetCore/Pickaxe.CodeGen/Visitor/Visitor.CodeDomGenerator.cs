@@ -110,25 +110,35 @@ namespace Pickaxe.CodeDom.Visitor
         }
 
 
-        private CodeMemberMethod CreateStepMethod()
+        private MethodDeclarationSyntax CreateStepMethod()
         {
-            var method = new CodeMemberMethod();
+            var method = SyntaxFactory.MethodDeclaration(
+                SyntaxFactory.PredefinedType(
+                    SyntaxFactory.Token(SyntaxKind.VoidKeyword)),
+                SyntaxFactory.Identifier("Step_" + Guid.NewGuid().ToString("N")))
+                .WithModifiers(
+                SyntaxFactory.TokenList(
+                    SyntaxFactory.Token(SyntaxKind.PublicKeyword)))
+                    .WithBody(
+                        SyntaxFactory.Block());
 
-            method.Name = "Step_" + Guid.NewGuid().ToString("N");
-            method.Attributes = MemberAttributes.Public | MemberAttributes.Final;
-
-            _mainType.Type.Members.Add(method);
+            _mainType.AddMember(method);
             return method;
         }
 
-        private CodeMemberMethod CreateBlockMethod()
+        private MethodDeclarationSyntax CreateBlockMethod()
         {
-            var method = new CodeMemberMethod();
+            var method = SyntaxFactory.MethodDeclaration(
+                SyntaxFactory.PredefinedType(
+                    SyntaxFactory.Token(SyntaxKind.VoidKeyword)),
+                SyntaxFactory.Identifier("Block_" + Guid.NewGuid().ToString("N")))
+                .WithModifiers(
+                SyntaxFactory.TokenList(
+                    SyntaxFactory.Token(SyntaxKind.PublicKeyword)))
+                    .WithBody(
+                        SyntaxFactory.Block());
 
-            method.Name = "Block_" + Guid.NewGuid().ToString("N");
-            method.Attributes = MemberAttributes.Public | MemberAttributes.Final;
-
-            _mainType.Type.Members.Add(method);
+            _mainType.AddMember(method);
             return method;
         }
     }

@@ -40,16 +40,11 @@ namespace PickAxe.Tests
         {
             var input = @"
 
- select upc
-from download page 'https://www.walmart.com/ip/Gatorade-Variety-Pack-12-Oz-18-Pk/16224470' with (js) => (
-""
-    var primaryProductId = __WML_REDUX_INITIAL_STATE__.product.primaryProduct;
+create buffer states(state string)
 
-            var primaryProduct = __WML_REDUX_INITIAL_STATE__.product.products[primaryProductId];
-
-            return [{ upc: primaryProduct.upc, url: url}];
-            ""
-)   
+ select *
+from download page 'https://www.faa.gov/air_traffic/weather/asos/?state=TX'
+where nodes = 'table.asos tbody tr'
 
 ";
             var compiler = new Compiler(input);

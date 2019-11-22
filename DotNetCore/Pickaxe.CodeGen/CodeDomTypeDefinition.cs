@@ -42,6 +42,17 @@ namespace Pickaxe.CodeDom
             Type = Type.AddBaseListTypes(SyntaxFactory.SimpleBaseType(SyntaxFactory.IdentifierName("baseType")));
         }
 
+        public void SetModifier(SyntaxKind kind)
+        {
+            Type = Type.WithModifiers(SyntaxFactory.TokenList(
+                        SyntaxFactory.Token(kind)));
+        }
+
+        public void AddMember(MemberDeclarationSyntax member)
+        {
+            Type = Type.AddMembers(member);
+        }
+
         public ClassDeclarationSyntax Type { get; private set; }
         public ConstructorDeclarationSyntax Constructor { get; set; }
     }

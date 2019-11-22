@@ -12,12 +12,11 @@
  * limitations under the License.
  */
 
+using Microsoft.CodeAnalysis.CSharp;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Pickaxe.Runtime;
 using System;
-using System.CodeDom;
 using System.Collections.Generic;
-using System.Reflection;
-using System.Security.Cryptography;
 
 namespace Pickaxe.CodeDom
 {
@@ -40,21 +39,33 @@ namespace Pickaxe.CodeDom
             if(mainType != null)
                 CreateType(mainType);
 
-            JoinMembers = new List<CodeMemberField>();
+            JoinMembers = new List<MemberDeclarationSyntax>();
         }
 
         private void CreateType(CodeDomTypeDefinition mainType)
         {
             Type = new CodeDomTypeDefinition(ScopeIdentifier);
-            Type.Type.TypeAttributes = TypeAttributes.NestedPrivate;
+            Type.SetModifier(SyntaxKind.PrivateKeyword);
 
-            var classType = new CodeTypeReference(ScopeIdentifier);
-            mainType.Type.Members.Add(
-                new CodeMemberField(classType, "_" + ScopeIdentifier));
+            mainType.Type.Members.Add(SyntaxFactory.FieldDeclaration(
+                SyntaxFactory.VariableDeclaration(
+                    SyntaxFactory.IdentifierName(ScopeIdentifier))
+                        .AddVariables(
+                            SyntaxFactory.VariableDeclarator(
+                                SyntaxFactory.Identifier("_" + ScopeIdentifier))
+                                )).
+                                WithModifiers(
+                SyntaxFactory.TokenList(
+                    SyntaxFactory.Token(SyntaxKind.PrivateKeyword))));
 
-            mainType.Constructor.Statements.Add(new CodeAssignStatement(
-              new CodeSnippetExpression("_" + ScopeIdentifier),
-              new CodeObjectCreateExpression(classType)));
+            mainType.Constructor.Body.AddStatements(SyntaxFactory.ExpressionStatement(
+                SyntaxFactory.AssignmentExpression(
+                    SyntaxKind.SimpleAssignmentExpression,
+                    SyntaxFactory.IdentifierName("_" + ScopeIdentifier),
+                    SyntaxFactory.ObjectCreationExpression(
+                        SyntaxFactory.IdentifierName(ScopeIdentifier))
+                        .WithArgumentList(
+                        SyntaxFactory.ArgumentList()))));
 
             mainType.Type.Members.Add(Type.Type);
         }
@@ -177,7 +188,7 @@ namespace Pickaxe.CodeDom
         }
 
 
-        public IList<CodeMemberField> JoinMembers { get; set; }
+        public IList<MemberDeclarationSyntax> JoinMembers { get; set; }
 
         public virtual SelectMatch[] FindTableVariable(string variable)
         {
@@ -199,9 +210,9 @@ namespace Pickaxe.CodeDom
             return null;
         }
 
-        public virtual CodeExpression CreateExpression(string variable)
+        public virtual IdentifierNameSyntax CreateExpression(string variable)
         {
-            return new CodeVariableReferenceExpression("_" + ScopeIdentifier + "." + variable);
+            return SyntaxFactory.IdentifierName("_" + ScopeIdentifier + "." + variable);
         }
 
         public void Dispose()
