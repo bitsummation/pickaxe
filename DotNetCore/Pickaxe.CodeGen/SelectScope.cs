@@ -12,6 +12,7 @@
  * limitations under the License.
  */
 
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Pickaxe.Runtime;
 using System;
 using System.CodeDom;
@@ -93,9 +94,10 @@ namespace Pickaxe.CodeDom
             return null;
         }
 
-        public override CodeExpression CreateExpression(string variable)
+        public override ExpressionSyntax CreateExpression(string variable)
         {
-            return new CodeFieldReferenceExpression(new CodeVariableReferenceExpression("row"), variable);
+            return null;
+            //return new CodeFieldReferenceExpression(new CodeVariableReferenceExpression("row"), variable);
         }
     }
 }

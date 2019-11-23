@@ -25,11 +25,12 @@ namespace Pickaxe.CodeDom.Visitor
     {
         public void Visit(NullOperator op)
         {
-            var leftArgs = VisitChild(op.Left);
+            /*var leftArgs = VisitChild(op.Left);
             var rightArgs = VisitChild(op.Right);
 
             _codeStack.Peek().Scope = leftArgs.Scope;
             _codeStack.Peek().CodeExpression = new CodeMethodInvokeExpression(leftArgs.CodeExpression, "NullOperator", rightArgs.CodeExpression);
+            */
         }
     }
 }

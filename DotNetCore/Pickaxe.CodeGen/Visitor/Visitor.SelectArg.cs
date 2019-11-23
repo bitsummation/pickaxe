@@ -27,7 +27,7 @@ namespace Pickaxe.CodeDom.Visitor
     {
         public void Visit(SelectArg arg)
         {
-            var selectInfo = new SelectArgsInfo();
+           /* var selectInfo = new SelectArgsInfo();
 
             var childDomArgs = new List<CodeDomArg>();
             foreach (var childArg in arg.Args)
@@ -60,7 +60,7 @@ namespace Pickaxe.CodeDom.Visitor
 
             _codeStack.Peek().Tag = selectInfo;
             _codeStack.Peek().Scope = scope;
-            _codeStack.Peek().CodeExpression = expression;
+            _codeStack.Peek().CodeExpression = expression;*/
         }
     }
 }

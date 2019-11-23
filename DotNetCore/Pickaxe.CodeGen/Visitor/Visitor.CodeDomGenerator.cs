@@ -14,13 +14,13 @@
 
 using System;
 using System.Collections.Generic;
-using System.Reflection;
 using Pickaxe.Sdk;
 using Pickaxe.Runtime;
 using Pickaxe.CodeDom.Semantic;
 using System.Linq;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.CSharp;
+using Microsoft.CodeAnalysis;
 
 namespace Pickaxe.CodeDom.Visitor
 {
@@ -53,32 +53,52 @@ namespace Pickaxe.CodeDom.Visitor
         private void InitScope() //add runtime types
         {
             //DownloadPage
-            Scope.Current.RegisterTable("DownloadPage", DownloadPage.Columns, new CodeTypeReference("Table", new CodeTypeReference("DownloadPage")));
-            Scope.Current.RegisterTable("DownloadImage", DownloadImage.Columns, new CodeTypeReference("Table", new CodeTypeReference("DownloadImage")));
-            Scope.Current.RegisterTable("Expand", Expand.Columns, new CodeTypeReference("Table", new CodeTypeReference("Expand")));
-            Scope.Current.RegisterTable("DynamicObject", DynamicObject.Columns, new CodeTypeReference("Table", new CodeTypeReference("DynamicObject")));
+            Scope.Current.RegisterTable("DownloadPage", DownloadPage.Columns);
+            Scope.Current.RegisterTable("DownloadImage", DownloadImage.Columns);
+            Scope.Current.RegisterTable("Expand", Expand.Columns);
+            Scope.Current.RegisterTable("DynamicObject", DynamicObject.Columns);
 
             //Register @@identity
-            Scope.Current.RegisterPrimitive("@@identity", typeof(int), new CodeTypeReference(typeof(int)));
-            Scope.Current.Type.Type.Members.Add(
-               new CodeMemberField() { Name = "g_identity", Type =  new CodeTypeReference(typeof(int)), Attributes = MemberAttributes.Public | MemberAttributes.Final });
+            Scope.Current.RegisterPrimitive("@@identity", typeof(int));
+
+            Scope.Current.Type.AddMember(SyntaxFactory.FieldDeclaration(
+                    SyntaxFactory.VariableDeclaration(
+                        SyntaxFactory.PredefinedType(
+                            SyntaxFactory.Token(SyntaxKind.IntKeyword)))
+                    .WithVariables(
+                        SyntaxFactory.SingletonSeparatedList<VariableDeclaratorSyntax>(
+                            SyntaxFactory.VariableDeclarator(
+                                SyntaxFactory.Identifier("g_identity")))))
+                .WithModifiers(
+                    SyntaxFactory.TokenList(
+                        SyntaxFactory.Token(SyntaxKind.PublicKeyword)))
+                );
         }
 
         public IList<SemanticException> Errors { get; private set; }
 
-        public CompilationUnitSyntax Generate()
+        public SyntaxTree Generate()
         { 
             _program.Accept(this);
-            return _unit;
+            return _unit.SyntaxTree;
         }
 
         private void CallOnProgressComplete(List<StatementSyntax> statements)
         {
-            var progressArgs = new CodeObjectCreateExpression(new CodeTypeReference("ProgressArgs"),
-                new CodePropertyReferenceExpression(null, "TotalOperations"),
-                new CodePropertyReferenceExpression(null, "TotalOperations"));
-
-            statements.Add(new CodeMethodInvokeExpression(null, "OnProgress", progressArgs));
+            statements.Add(
+                SyntaxFactory.ExpressionStatement(
+                    SyntaxFactory.InvocationExpression(
+                        SyntaxFactory.IdentifierName("OnProgress"))
+                    .AddArgumentListArguments(
+                        SyntaxFactory.Argument(
+                            SyntaxFactory.ObjectCreationExpression(
+                                SyntaxFactory.IdentifierName("ProgressArgs"))
+                            .AddArgumentListArguments(
+                                SyntaxFactory.Argument(
+                                    SyntaxFactory.IdentifierName("TotalOperations")),
+                                SyntaxFactory.Argument(
+                                    SyntaxFactory.IdentifierName("TotalOperations"))))))
+                );
         }
 
         private void CallOnProgress(List<StatementSyntax> statements, bool increaseTotal = true)
@@ -86,15 +106,24 @@ namespace Pickaxe.CodeDom.Visitor
             if(increaseTotal)
                 _totalOperations++;
 
-            var methodcall = new CodeMethodInvokeExpression(
-                new CodeMethodReferenceExpression(null, "OnProgress"));
-
-            statements.Add(methodcall);
+            statements.Add(
+                SyntaxFactory.ExpressionStatement(
+                    SyntaxFactory.InvocationExpression(
+                        SyntaxFactory.IdentifierName("OnProgress"))
+                    ));
         }
 
         private void GenerateCallStatement(List<StatementSyntax> statements, int line)
         {
-            statements.Add(new CodeMethodInvokeExpression(new CodeMethodReferenceExpression(null, "Call"), new CodePrimitiveExpression(line)));
+            statements.Add(SyntaxFactory.ExpressionStatement(
+                SyntaxFactory.InvocationExpression(
+                    SyntaxFactory.IdentifierName("Call"))
+                .AddArgumentListArguments(
+                    SyntaxFactory.Argument(
+                        SyntaxFactory.LiteralExpression(
+                            SyntaxKind.NumericLiteralExpression,
+                            SyntaxFactory.Literal(line)))))
+                );
         }
 
         private CodeDomArg VisitChild(AstNode node, CodeDomArg arg)

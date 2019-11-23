@@ -28,7 +28,7 @@ namespace Pickaxe.CodeDom.Visitor
 {
     public partial class CodeDomGenerator : IAstVisitor
     {
-        private void BuildIRowReaderImplementation(CodeTypeDeclaration type, TableColumnArg[] tableArgs)
+        /*private void BuildIRowReaderImplementation(CodeTypeDeclaration type, TableColumnArg[] tableArgs)
         {
             var method = new CodeMemberMethod();
             method.Name = "Load";
@@ -70,10 +70,11 @@ namespace Pickaxe.CodeDom.Visitor
             method.Statements.Add(new CodeMethodReturnStatement(new CodeVariableReferenceExpression("print")));
             type.Members.Add(method);
         }
+        */
 
         public void Visit(FileTable table)
         {
-            var descriptor = new TableDescriptor(typeof(FileTable<>));
+            /*var descriptor = new TableDescriptor(typeof(FileTable<>));
             var fileTable = new CodeTypeDeclaration(table.Variable) { TypeAttributes = TypeAttributes.NestedPrivate };
             fileTable.BaseTypes.Add(new CodeTypeReference("IRowWriter"));
             fileTable.BaseTypes.Add(new CodeTypeReference("IRowReader"));
@@ -129,7 +130,7 @@ namespace Pickaxe.CodeDom.Visitor
                new CodeMethodReferenceExpression(null, method.Name));
 
             _codeStack.Peek().ParentStatements.Add(methodcall);
-            _codeStack.Peek().CodeExpression = methodcall;
+            _codeStack.Peek().CodeExpression = methodcall;*/
         }
 
     }

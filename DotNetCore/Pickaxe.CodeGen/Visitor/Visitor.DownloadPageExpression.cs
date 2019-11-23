@@ -22,7 +22,7 @@ namespace Pickaxe.CodeDom.Visitor
 {
     public partial class CodeDomGenerator : IAstVisitor
     {
-        private void GenerateDownloadDeffered(DownloadPageExpression expression, ref CodeTypeReference returnType, int line)
+        /*private void GenerateDownloadDeffered(DownloadPageExpression expression, ref CodeTypeReference returnType, int line)
         {
             var statementDomArg = VisitChild(expression.Statement);
             //if in select context pick the lazy download type~
@@ -133,14 +133,14 @@ namespace Pickaxe.CodeDom.Visitor
 
             _codeStack.Peek().CodeExpression = methodcall;
             return method;
-        }
+        }*/
 
         public void Visit(DownloadPageExpression expression)
         {
-            var type = new CodeTypeReference("RuntimeTable", new CodeTypeReference("DownloadPage"));
-            GenerateDownloadDeffered(expression, ref type, expression.Line.Line);
+            //var type = new CodeTypeReference("RuntimeTable", new CodeTypeReference("DownloadPage"));
+            //GenerateDownloadDeffered(expression, ref type, expression.Line.Line);
 
-            _codeStack.Peek().Scope = new ScopeData<TableDescriptor> { Type = DownloadPage.Columns, CodeDomReference = type};
+            //_codeStack.Peek().Scope = new ScopeData<TableDescriptor> { Type = DownloadPage.Columns, CodeDomReference = type};
         }
     }
 }

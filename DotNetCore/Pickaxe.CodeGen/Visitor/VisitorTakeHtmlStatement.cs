@@ -25,10 +25,10 @@ namespace Pickaxe.CodeDom.Visitor
     {
         public void Visit(TakeHtmlStatement statement)
         {
-            var expression = new CodeMethodInvokeExpression();
+            /*var expression = new CodeMethodInvokeExpression();
             expression.Method.MethodName = "TakeHtml";
 
-            _codeStack.Peek().CodeExpression = expression;
+            _codeStack.Peek().CodeExpression = expression;*/
         }
     }
 }

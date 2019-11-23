@@ -41,7 +41,7 @@ namespace Pickaxe.CodeDom.Visitor
 
         public void Visit(InnerJoinStatement statement)
         {
-            CodeMemberMethod method = new CodeMemberMethod();
+            /*CodeMemberMethod method = new CodeMemberMethod();
             method.Name = "Join_" + Guid.NewGuid().ToString("N");
             method.Attributes = MemberAttributes.Private;
             method.Parameters.Add(new CodeParameterDeclarationExpression(new CodeTypeReference("IEnumerable", _codeStack.Peek().Scope.CodeDomReference), "outer"));
@@ -145,6 +145,7 @@ namespace Pickaxe.CodeDom.Visitor
 
             _codeStack.Peek().CodeExpression = new CodeMethodInvokeExpression(
                new CodeMethodReferenceExpression(null, method.Name), new CodeVariableReferenceExpression("join"));
+               */
         }
     }
 }

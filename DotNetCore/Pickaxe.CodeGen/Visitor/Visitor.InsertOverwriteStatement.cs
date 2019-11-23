@@ -25,7 +25,7 @@ namespace Pickaxe.CodeDom.Visitor
     {
         public void Visit(InsertOverwriteStatement statement)
         {
-            DoInsert(statement);
+            //DoInsert(statement);
         }
     }
 }

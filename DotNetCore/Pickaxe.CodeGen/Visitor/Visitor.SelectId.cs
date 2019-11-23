@@ -28,6 +28,7 @@ namespace Pickaxe.CodeDom.Visitor
     {
         public void Visit(SelectId id)
         {
+            /*
             var selectInfo = new SelectArgsInfo();
 
             _codeStack.Peek().Scope = new ScopeData<Type> { Type = typeof(int?), CodeDomReference = new CodeTypeReference(typeof(int?)) };
@@ -71,6 +72,7 @@ namespace Pickaxe.CodeDom.Visitor
                 else
                     Errors.Add(new UnknownSelectVariableException(new Semantic.LineInfo(id.Line.Line, id.Line.CharacterPosition), id.Id));
             }
+            */
         }
     }
 }

@@ -28,6 +28,7 @@ namespace Pickaxe.CodeDom.Visitor
     {
         public void Visit(TableVariableReference variable)
         {
+            /*
             IScopeData codeType;
             Scope scope = Scope.Current;
 
@@ -49,6 +50,7 @@ namespace Pickaxe.CodeDom.Visitor
 
             _codeStack.Peek().Scope = codeType;
             _codeStack.Peek().CodeExpression = new CodeVariableReferenceExpression("_" + scope.ScopeIdentifier + "." + variable.Id); 
+            */
         }
     }
 }

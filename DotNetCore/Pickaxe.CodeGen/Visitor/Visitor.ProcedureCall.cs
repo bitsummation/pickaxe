@@ -26,6 +26,7 @@ namespace Pickaxe.CodeDom.Visitor
     {
         public void Visit(ProcedureCall call)
         {
+           /*
             var domArg = new CodeDomArg();
 
             CodeMemberMethod method = new CodeMemberMethod();
@@ -70,6 +71,7 @@ namespace Pickaxe.CodeDom.Visitor
             var methodcall = new CodeMethodInvokeExpression(
               new CodeMethodReferenceExpression(null, method.Name));
             _codeStack.Peek().ParentStatements.Add(methodcall);
+            */
         }
     }
 }

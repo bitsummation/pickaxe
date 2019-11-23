@@ -26,8 +26,8 @@ namespace Pickaxe.CodeDom.Visitor
     {
         public void Visit(IntegerLiteral literal)
         {
-            _codeStack.Peek().CodeExpression = new CodePrimitiveExpression(literal.Value);
-            _codeStack.Peek().Scope = new ScopeData<Type> { Type = typeof(int?), CodeDomReference = new CodeTypeReference(typeof(int?)) };
+           // _codeStack.Peek().CodeExpression = new CodePrimitiveExpression(literal.Value);
+           // _codeStack.Peek().Scope = new ScopeData<Type> { Type = typeof(int?), CodeDomReference = new CodeTypeReference(typeof(int?)) };
         }
     }
 }

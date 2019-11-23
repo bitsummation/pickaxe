@@ -27,7 +27,7 @@ namespace Pickaxe.CodeDom.Visitor
     {
         public void Visit(TableVariableRowGetter variable)
         {
-            Visit((TableVariableReference)variable);
+            /*Visit((TableVariableReference)variable);
             ScopeData<TableDescriptor> scope = new ScopeData<TableDescriptor> { Type = new TableDescriptor(null), CodeDomReference = new CodeTypeReference("Table", new CodeTypeReference(variable.Id)) };
             if (Scope.Current.IsTableRegistered(variable.Id))
             {
@@ -36,7 +36,7 @@ namespace Pickaxe.CodeDom.Visitor
                     scope = new ScopeData<TableDescriptor> { Type = scope.Type, CodeDomReference = scope.CodeDomReference.TypeArguments[0] };
             }
 
-            _codeStack.Peek().Scope = scope;
+            _codeStack.Peek().Scope = scope;*/
         }
     }
 }

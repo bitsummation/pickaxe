@@ -103,14 +103,14 @@ namespace Pickaxe.CodeDom
             _scope[variable] = data;
         }
 
-        public void RegisterPrimitive(string variable, Type type, CodeTypeReference codeDomType)
+        public void RegisterPrimitive(string variable, Type type)
         {
-            _scope[variable] = new ScopeData<Type> { Type = type, CodeDomReference = codeDomType };
+            _scope[variable] = new ScopeData<Type> { Type = type};
         }
 
-        public void RegisterTable(string variable, TableDescriptor descriptor, CodeTypeReference codeDomType)
+        public void RegisterTable(string variable, TableDescriptor descriptor)
         {
-            _scope[variable] = new ScopeData<TableDescriptor> { Type = descriptor, CodeDomReference = codeDomType };
+            _scope[variable] = new ScopeData<TableDescriptor> { Type = descriptor};
         }
 
         private static Scope FindScope(Scope scope, string variable)
@@ -153,7 +153,7 @@ namespace Pickaxe.CodeDom
         {
             var scope = FindScope(variable);
             if (scope != null && scope._scope.ContainsKey(variable))
-                return (scope._scope[variable] is ScopeData<TableDescriptor> && scope._scope[variable].CodeDomReference.TypeArguments.Count > 0);
+                return (scope._scope[variable] is ScopeData<TableDescriptor> /*&& scope._scope[variable].CodeDomReference.TypeArguments.Count > 0*/);
 
             return false;
         }
@@ -162,7 +162,7 @@ namespace Pickaxe.CodeDom
         {
             var scope = FindScope(variable);
             if (scope != null && scope._scope.ContainsKey(variable))
-                return (scope._scope[variable] is ScopeData<TableDescriptor> && scope._scope[variable].CodeDomReference.TypeArguments.Count == 0);
+                return (scope._scope[variable] is ScopeData<TableDescriptor> /*&& scope._scope[variable].CodeDomReference.TypeArguments.Count == 0*/ );
 
             return false;
         }
@@ -210,7 +210,7 @@ namespace Pickaxe.CodeDom
             return null;
         }
 
-        public virtual IdentifierNameSyntax CreateExpression(string variable)
+        public virtual ExpressionSyntax CreateExpression(string variable)
         {
             return SyntaxFactory.IdentifierName("_" + ScopeIdentifier + "." + variable);
         }

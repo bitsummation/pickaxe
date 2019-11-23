@@ -23,7 +23,7 @@ namespace Pickaxe.CodeDom
 {
     internal abstract class IScopeData
     {
-        public CodeTypeReference CodeDomReference { get; set; }
+        //public CodeTypeReference CodeDomReference { get; set; }
         public abstract Type CodeType { get; }
     }
 }

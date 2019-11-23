@@ -1,6 +1,7 @@
 ﻿using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.Emit;
+using Pickaxe.Emit;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -58,25 +59,9 @@ namespace Rosyln
 
             return unit.SyntaxTree;
         }
-
-        static void Main(string[] args)
+        private static void GenTest()
         {
-
-            string codeToCompile = @"
-
-            using System;
-            namespace RoslynCompileSample
-            {
-                public class Writer
-                {
-                    public void Write(string message)
-                    {
-                        Console.WriteLine($""you said '{message}!'"");
-                    }
-                }
-            }";
-
-            SyntaxTree syntaxTree  = BuildTree();
+            SyntaxTree syntaxTree = BuildTree();
             var code = syntaxTree.GetRoot().NormalizeWhitespace().ToFullString();
 
             //SyntaxTree syntaxTree = CSharpSyntaxTree.ParseText(codeToCompile);
@@ -94,7 +79,7 @@ namespace Rosyln
                 assemblyName,
                 syntaxTrees: new[] { syntaxTree },
                 references: references,
-                options: new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary).WithOptimizationLevel(OptimizationLevel.Release) );
+                options: new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary).WithOptimizationLevel(OptimizationLevel.Release));
 
             using (var ms = new MemoryStream())
             {
@@ -121,7 +106,19 @@ namespace Rosyln
                 var meth = type.GetMember("Write").First() as MethodInfo;
                 meth.Invoke(instance, new[] { "joel" });
             }
+        }
 
+        static void Main(string[] args)
+        {
+            var input = @"
+
+ select *
+from download page 'https://www.faa.gov/air_traffic/weather/asos/?state=TX'
+where nodes = 'table.asos tbody tr'
+
+";
+            var compiler = new Compiler(input);
+            var sources = compiler.ToCode();
         }
     }
 }

@@ -25,11 +25,13 @@ namespace Pickaxe.CodeDom.Visitor
     {
         public void Visit(DivisionOperator op)
         {
+            /*
             var leftArgs = VisitChild(op.Left);
             var rightArgs = VisitChild(op.Rigth);
 
             _codeStack.Peek().Scope = rightArgs.Scope;
              _codeStack.Peek().CodeExpression = new CodeBinaryOperatorExpression(leftArgs.CodeExpression, CodeBinaryOperatorType.Divide, rightArgs.CodeExpression);
+             */
         }
     }
 }

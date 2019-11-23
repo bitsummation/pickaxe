@@ -26,6 +26,7 @@ namespace Pickaxe.CodeDom.Visitor
     {
         public void Visit(Block block)
         {
+            /*
             var method = CreateBlockMethod();
 
             using (Scope.Push(_mainType))
@@ -46,6 +47,7 @@ namespace Pickaxe.CodeDom.Visitor
             }
 
             _codeStack.Peek().ParentStatements.Add(new CodeMethodInvokeExpression(new CodeMethodReferenceExpression(null, method.Name)));
+            */
         }
     }
 }

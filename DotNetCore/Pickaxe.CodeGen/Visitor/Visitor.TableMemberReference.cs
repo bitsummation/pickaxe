@@ -28,6 +28,7 @@ namespace Pickaxe.CodeDom.Visitor
     {
         public void Visit(TableMemberReference variable)
         {
+            /*
             var selectInfo = new SelectArgsInfo();
 
             _codeStack.Peek().Scope = new ScopeData<Type> { Type = typeof(string), CodeDomReference = new CodeTypeReference(typeof(string)) };
@@ -70,7 +71,7 @@ namespace Pickaxe.CodeDom.Visitor
 
             selectInfo.ColumnName = variable.Member;
             _codeStack.Peek().Tag = selectInfo;
-
+            */
             
         }
     }

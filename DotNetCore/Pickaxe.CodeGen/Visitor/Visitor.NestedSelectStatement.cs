@@ -27,6 +27,7 @@ namespace Pickaxe.CodeDom.Visitor
 {
     public partial class CodeDomGenerator : IAstVisitor
     {   
+        /*
         private BufferTable FetchBufferTable(NestedSelectStatement statement, IScopeData scope, IList<CodeAssignStatement> codeAssignments, out Boolean outerLoopNeeded)
         {
             outerLoopNeeded = false;
@@ -110,9 +111,11 @@ namespace Pickaxe.CodeDom.Visitor
             var scope = CreateBufferTable(bufferTable);
             _codeStack.Peek().Scope = new ScopeData<TableDescriptor>() { CodeDomReference = scope.CodeDomReference};
         }
-
+        */
+        
         public void Visit(NestedSelectStatement statement)
         {
+            /*
             BufferTable bufferTable;
             CodeMemberMethod method = new CodeMemberMethod();
             var methodStatements = new List<StatementSyntax>();
@@ -253,7 +256,8 @@ namespace Pickaxe.CodeDom.Visitor
 
             _codeStack.Peek().CodeExpression = methodcall;
             _codeStack.Peek().Scope = new ScopeData<TableDescriptor>() { CodeDomReference = method.ReturnType };
+            */
         }
-
+        
     }
 }

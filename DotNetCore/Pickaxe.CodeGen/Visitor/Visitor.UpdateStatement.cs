@@ -27,6 +27,7 @@ namespace Pickaxe.CodeDom.Visitor
     {
         public void Visit(UpdateStatement statement)
         {
+            /*
             using (Scope.PushSelect())
             {
                 CodeMemberMethod method = new CodeMemberMethod();
@@ -97,7 +98,8 @@ namespace Pickaxe.CodeDom.Visitor
                         new CodeMethodReferenceExpression(null, method.Name));
                 _codeStack.Peek().CodeExpression = methodcall;
                 _codeStack.Peek().ParentStatements.Add(methodcall);
-            }
+                
+            }*/
         }
     }
 }

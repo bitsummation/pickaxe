@@ -26,7 +26,7 @@ namespace Pickaxe.CodeDom.Visitor
 {
     public partial class CodeDomGenerator : IAstVisitor
     {
-        private CodeMemberMethod CreateFetch(AliasBase aliasBase, out CodeTypeReference anonType)
+        /*private CodeMemberMethod CreateFetch(AliasBase aliasBase, out CodeTypeReference anonType)
         {
             var statementDomArg = VisitChild(aliasBase.Statement);
             if (Scope.Current.IsTableRegistered(statementDomArg.Scope.CodeDomReference.TypeArguments[0].BaseType))
@@ -97,9 +97,11 @@ namespace Pickaxe.CodeDom.Visitor
 
             return method;
         }
+        */
 
         public void Visit(FromStatement statement)
         {
+            /*
             CodeMemberMethod method = new CodeMemberMethod();
             method.Name = "From_" + Guid.NewGuid().ToString("N");
             method.Attributes = MemberAttributes.Private;
@@ -139,6 +141,8 @@ namespace Pickaxe.CodeDom.Visitor
               new CodeMethodReferenceExpression(null, method.Name));
 
             _codeStack.Peek().CodeExpression = methodcall;
+            */
         }
+        
     }
 }

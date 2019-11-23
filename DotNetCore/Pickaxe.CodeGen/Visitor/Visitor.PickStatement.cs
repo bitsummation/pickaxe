@@ -36,6 +36,7 @@ namespace Pickaxe.CodeDom.Visitor
 
         public void Visit(PickStatement statement)
         {
+            /*
             var selectInfo = new SelectArgsInfo() {IsPickStatement = true};
             VerifyCssSelector(statement.Selector, new Semantic.LineInfo(statement.Line.Line, statement.Line.CharacterPosition));
 
@@ -65,6 +66,8 @@ namespace Pickaxe.CodeDom.Visitor
             _codeStack.Peek().Tag = selectInfo;
             _codeStack.Peek().CodeExpression = aggExpression;
             _codeStack.Peek().Scope = new ScopeData<Type> { Type = typeof(string), CodeDomReference = new CodeTypeReference(typeof(string)) };
+            
+             */
         }
     }
 }

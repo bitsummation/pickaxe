@@ -28,6 +28,7 @@ namespace Pickaxe.CodeDom.Visitor
     {
         public void Visit(InsertIntoDirectoryStatement statement)
         {
+            /*
             if (statement.Select.Args.Length != 2) //can only select one thing into a directory
             {
                 Errors.Add(new OnlyTwoSelectParamForDirectory(new Semantic.LineInfo(statement.Line.Line, statement.Line.CharacterPosition)));
@@ -72,6 +73,7 @@ namespace Pickaxe.CodeDom.Visitor
 
             _codeStack.Peek().ParentStatements.Add(methodcall);
             _codeStack.Peek().CodeExpression = methodcall;
+            */
         }
     }
 }

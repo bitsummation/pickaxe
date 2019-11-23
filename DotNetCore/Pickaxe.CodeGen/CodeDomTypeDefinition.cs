@@ -39,7 +39,7 @@ namespace Pickaxe.CodeDom
 
         public void AddBaseType(string baseType)
         {
-            Type = Type.AddBaseListTypes(SyntaxFactory.SimpleBaseType(SyntaxFactory.IdentifierName("baseType")));
+            Type = Type.AddBaseListTypes(SyntaxFactory.SimpleBaseType(SyntaxFactory.IdentifierName(baseType)));
         }
 
         public void SetModifier(SyntaxKind kind)
@@ -53,7 +53,7 @@ namespace Pickaxe.CodeDom
             Type = Type.AddMembers(member);
         }
 
-        public ClassDeclarationSyntax Type { get; private set; }
-        public ConstructorDeclarationSyntax Constructor { get; set; }
+        private ClassDeclarationSyntax Type { get; set; }
+        private ConstructorDeclarationSyntax Constructor { get; set; }
     }
 }

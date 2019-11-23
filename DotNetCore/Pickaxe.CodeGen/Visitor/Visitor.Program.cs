@@ -12,14 +12,10 @@
  * limitations under the License.
  */
 
-using Pickaxe.Runtime;
+using Microsoft.CodeAnalysis.CSharp;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Pickaxe.Sdk;
-using System;
-using System.CodeDom;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Pickaxe.CodeDom.Visitor
 {
@@ -27,23 +23,24 @@ namespace Pickaxe.CodeDom.Visitor
     {
         public void Visit(Program program) //generate namespace/class definition
         {
-            var mainNamespace = new CodeNamespace("");
-            mainNamespace.Imports.Add(new CodeNamespaceImport("System"));
-            mainNamespace.Imports.Add(new CodeNamespaceImport("Pickaxe.Runtime"));
-            mainNamespace.Imports.Add(new CodeNamespaceImport("Pickaxe.Runtime.Dom"));
-            mainNamespace.Imports.Add(new CodeNamespaceImport("System.Collections.Generic"));
-            mainNamespace.Imports.Add(new CodeNamespaceImport("System.Linq"));
+            _unit = _unit.AddUsings(SyntaxFactory.UsingDirective(SyntaxFactory.ParseName("System")),
+                SyntaxFactory.UsingDirective(SyntaxFactory.ParseName("Pickaxe.Runtime")),
+                SyntaxFactory.UsingDirective(SyntaxFactory.ParseName("Pickaxe.Runtime.Dom")),
+                SyntaxFactory.UsingDirective(SyntaxFactory.ParseName("System.Linq")),
+                SyntaxFactory.UsingDirective(SyntaxFactory.ParseName("System.Collections.Generic"))
+                );
 
-            mainNamespace.Types.Add(_mainType.Type);
+            var mainNamespace = SyntaxFactory.NamespaceDeclaration(SyntaxFactory.IdentifierName(""));
 
-            CodeMemberMethod method = new CodeMemberMethod();
-            method.Name = "Run";
-            method.Attributes = MemberAttributes.Public | MemberAttributes.Final;
+            var method = SyntaxFactory.MethodDeclaration(SyntaxFactory.PredefinedType(SyntaxFactory.Token(SyntaxKind.VoidKeyword)), "Run")
+               .WithModifiers(
+                SyntaxFactory.TokenList(
+                   SyntaxFactory.Token(SyntaxKind.PublicKeyword)
+                   )
+               );
 
-            method.Statements.Add(new CodeMethodInvokeExpression(new CodeMethodReferenceExpression(null, "InitProxies")));
-            
-            _mainType.Type.Members.Add(method);
-            _unit.Namespaces.Add(mainNamespace);
+            var runStatements = new List<StatementSyntax>();
+            runStatements.Add(SyntaxFactory.ExpressionStatement(SyntaxFactory.InvocationExpression(SyntaxFactory.IdentifierName("InitProxies"))));
 
             _mainType.Constructor.Parameters.Add(new CodeParameterDeclarationExpression(new CodeTypeReference(typeof(string[])), "args"));
             _mainType.Constructor.BaseConstructorArgs.Add(new CodeVariableReferenceExpression("args"));
@@ -51,12 +48,12 @@ namespace Pickaxe.CodeDom.Visitor
             foreach (var child in program.Children)
             {
                 var arg = VisitChild(child);
-                method.Statements.AddRange(arg.ParentStatements);
+                runStatements.AddRange(arg.ParentStatements);
             }
 
             var stepMethod = CreateStepMethod();
-            method.Statements.Add(new CodeMethodInvokeExpression(
-                new CodeMethodReferenceExpression(null, stepMethod.Name)));
+            runStatements.Add(SyntaxFactory.ExpressionStatement(SyntaxFactory.InvocationExpression(SyntaxFactory.IdentifierName(stepMethod.Identifier))));
+
             CallOnProgressComplete(stepMethod.Statements);
 
             _mainType.Constructor.Statements.Add(new CodeAssignStatement(new CodePropertyReferenceExpression(null, "TotalOperations"),
@@ -64,6 +61,14 @@ namespace Pickaxe.CodeDom.Visitor
                     CodeBinaryOperatorType.Add,
                     new CodePrimitiveExpression(_totalOperations))
                     ));
+
+            method = method.WithBody(SyntaxFactory.Block(
+                 runStatements
+             ));
+
+            _mainType.AddMember(method);
+            mainNamespace = mainNamespace.AddMembers(_mainType.Type);
+            _unit = _unit.AddMembers(mainNamespace);
         }
     }
 }

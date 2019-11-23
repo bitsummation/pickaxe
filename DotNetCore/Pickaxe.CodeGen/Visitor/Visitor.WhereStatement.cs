@@ -30,7 +30,7 @@ namespace Pickaxe.CodeDom.Visitor
     public partial class CodeDomGenerator : IAstVisitor
     {
         //used for anonymous delegates. No codedom for those. Could change to actual delegates. Not idea but like anonymouse delagates
-        private string GenerateCodeFromStatement(CodeStatement statement)
+        /*private string GenerateCodeFromStatement(CodeStatement statement)
         {
             string code = string.Empty;
             using (CSharpCodeProvider csc = new CSharpCodeProvider())
@@ -55,9 +55,10 @@ namespace Pickaxe.CodeDom.Visitor
 
             return code;
         }
-
+        */
         public void Visit(WhereStatement statement)
         {
+            /*
             var statementDomArg = VisitChild(statement.BooleanExpression, new CodeDomArg() { Scope = _codeStack.Peek().Scope });
 
             CodeMemberMethod method = new CodeMemberMethod();
@@ -89,7 +90,8 @@ namespace Pickaxe.CodeDom.Visitor
             var methodcall = new CodeMethodInvokeExpression(
              new CodeMethodReferenceExpression(null, method.Name), new CodeArgumentReferenceExpression("fromTable"));
 
-            _codeStack.Peek().CodeExpression = methodcall;
+            _codeStack.Peek().CodeExpression = methodcall;*/
         }
+        
     }
 }

@@ -25,6 +25,7 @@ namespace Pickaxe.CodeDom.Visitor
     {
         public void Visit(WhenBooleanStatement statement)
         {
+            /*
             var arg = VisitChild(statement.Expression, new CodeDomArg() { Scope = _codeStack.Peek().Scope });
             _codeStack.Peek().Tag = arg.Tag;
 
@@ -36,6 +37,7 @@ namespace Pickaxe.CodeDom.Visitor
             _codeStack.Peek().Tag = arg.Tag;
 
             _codeStack.Peek().ParentStatements.Add(condition);
+            */
         }
     }
 }

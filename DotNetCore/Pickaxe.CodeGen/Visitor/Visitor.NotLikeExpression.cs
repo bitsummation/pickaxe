@@ -23,10 +23,11 @@ namespace Pickaxe.CodeDom.Visitor
     {
         public void Visit(NotLikeExpression op)
         {
-            var leftArgs = VisitChild(op.Left);
+            /*var leftArgs = VisitChild(op.Left);
             var rightArgs = VisitChild(op.Right);
 
             _codeStack.Peek().CodeExpression = new CodeBinaryOperatorExpression(new CodeMethodInvokeExpression(new CodeTypeReferenceExpression(typeof(Helper)), "Like", leftArgs.CodeExpression, rightArgs.CodeExpression), CodeBinaryOperatorType.IdentityEquality, new CodePrimitiveExpression(false));
+            */
         }
     }
 }

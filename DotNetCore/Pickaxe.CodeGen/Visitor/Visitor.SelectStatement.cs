@@ -25,7 +25,7 @@ namespace Pickaxe.CodeDom.Visitor
 {
     public partial class CodeDomGenerator : IAstVisitor
     {
-        private void GenerateSelectOnly(SelectStatement statement)
+        /*private void GenerateSelectOnly(SelectStatement statement)
         {
             var fromDomArg = new CodeDomArg();
 
@@ -85,10 +85,11 @@ namespace Pickaxe.CodeDom.Visitor
             _codeStack.Peek().Scope = new ScopeData<TableDescriptor>() { CodeDomReference = method.ReturnType };
             _codeStack.Peek().ParentStatements.Add(methodcall);
         }
-
+        */
 
         public void Visit(SelectStatement statement)
         {
+            /*
             using (Scope.PushSelect())
             {
                 if (statement.From == null)
@@ -246,7 +247,8 @@ namespace Pickaxe.CodeDom.Visitor
                 _codeStack.Peek().CodeExpression = methodcall;
                 _codeStack.Peek().Scope = new ScopeData<TableDescriptor>() { CodeDomReference = method.ReturnType };
                 _codeStack.Peek().ParentStatements.Add(methodcall);
-            }
+                
+            }*/
         }
     }
 }

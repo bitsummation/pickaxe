@@ -25,7 +25,7 @@ namespace Pickaxe.CodeDom.Visitor
     {
         public void Visit(CaseBooleanStatement statement)
         {
-            var domArg = new CodeDomArg();
+            /*var domArg = new CodeDomArg();
             SelectArgsInfo selectArg = null;
 
             CodeMemberMethod method = new CodeMemberMethod();
@@ -68,7 +68,7 @@ namespace Pickaxe.CodeDom.Visitor
 
             _codeStack.Peek().Tag = selectArg;
             _mainType.Type.Members.Add(method);
-            _codeStack.Peek().CodeExpression = methodcall;
+            _codeStack.Peek().CodeExpression = methodcall;*/
         }
     }
 }

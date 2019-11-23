@@ -25,9 +25,10 @@ namespace Pickaxe.CodeDom.Visitor
     {
         public void Visit(NullLiteral literal)
         {
-            _codeStack.Peek().Scope = null;
+            /*_codeStack.Peek().Scope = null;
             _codeStack.Peek().Tag = "null";
-            _codeStack.Peek().CodeExpression = new CodePrimitiveExpression(null);
+            _codeStack.Peek().CodeExpression = new CodePrimitiveExpression(null);*/
+
         }
     }
 }

@@ -11,4 +11,8 @@
     <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="3.3.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Pickaxe.Emit\Pickaxe.Emit.csproj" />
+  </ItemGroup>
+
 </Project>

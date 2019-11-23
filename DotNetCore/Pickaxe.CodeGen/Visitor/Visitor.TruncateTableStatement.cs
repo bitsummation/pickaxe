@@ -25,12 +25,12 @@ namespace Pickaxe.CodeDom.Visitor
     {
         public void Visit(TruncateTableStatement statement)
         {
-            var variableArgs = VisitChild(statement.Variable);
+            /*var variableArgs = VisitChild(statement.Variable);
 
             var expression = new CodeMethodInvokeExpression(new CodeMethodReferenceExpression(variableArgs.CodeExpression, "Truncate"));
 
             _codeStack.Peek().ParentStatements.Add(expression);
-            _codeStack.Peek().CodeExpression = expression;
+            _codeStack.Peek().CodeExpression = expression;*/
         }
     }
 }

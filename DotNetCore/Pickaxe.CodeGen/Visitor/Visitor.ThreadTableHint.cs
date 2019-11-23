@@ -25,7 +25,7 @@ namespace Pickaxe.CodeDom.Visitor
     {
         public void Visit(ThreadTableHint hint)
         {
-            _codeStack.Peek().CodeExpression = new CodePrimitiveExpression(hint.ThreadCount);
+           // _codeStack.Peek().CodeExpression = new CodePrimitiveExpression(hint.ThreadCount);
         }
     }
 }

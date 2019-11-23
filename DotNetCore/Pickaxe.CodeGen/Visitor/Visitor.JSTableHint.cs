@@ -25,7 +25,7 @@ namespace Pickaxe.CodeDom.Visitor
     {
         public void Visit(JSTableHint hint)
         {
-            _codeStack.Peek().CodeExpression = new CodePrimitiveExpression(hint.CssWaitElement);
+            //_codeStack.Peek().CodeExpression = new CodePrimitiveExpression(hint.CssWaitElement);
         }
     }
 }

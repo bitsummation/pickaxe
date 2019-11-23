@@ -12,6 +12,7 @@
  * limitations under the License.
  */
 
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Pickaxe.Runtime;
 using Pickaxe.Sdk;
 using System;
@@ -25,7 +26,7 @@ namespace Pickaxe.CodeDom.Visitor
     public partial class CodeDomGenerator : IAstVisitor
     {
 
-        private CodeExpression DoBoolean(CodeDomArg leftArgs, CodeDomArg rightArgs, CodeBinaryOperatorType operation)
+        /*private ExpressionSyntax DoBoolean(CodeDomArg leftArgs, CodeDomArg rightArgs, CodeBinaryOperatorType operation)
         {
             Type leftType = null;
             if (leftArgs.Scope != null)
@@ -63,11 +64,11 @@ namespace Pickaxe.CodeDom.Visitor
             var rightArgs = VisitChild(expression.Right, new CodeDomArg() { Scope = _codeStack.Peek().Scope });
 
             _codeStack.Peek().CodeExpression = DoBoolean(leftArgs, rightArgs, operation);
-        }
+        }*/
 
         public void Visit(LessThanExpression expression)
         {
-            DoBoolean(expression, CodeBinaryOperatorType.LessThan);
+            //DoBoolean(expression, CodeBinaryOperatorType.LessThan);
         }
     }
 }
