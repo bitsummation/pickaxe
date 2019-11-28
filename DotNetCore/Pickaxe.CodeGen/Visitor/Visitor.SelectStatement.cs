@@ -12,14 +12,10 @@
  * limitations under the License.
  */
 
-using Pickaxe.Runtime;
+using Microsoft.CodeAnalysis.CSharp;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Pickaxe.Sdk;
-using System;
-using System.CodeDom;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Pickaxe.CodeDom.Visitor
 {
@@ -89,37 +85,53 @@ namespace Pickaxe.CodeDom.Visitor
 
         public void Visit(SelectStatement statement)
         {
-            /*
             using (Scope.PushSelect())
             {
                 if (statement.From == null)
                 {
-                    GenerateSelectOnly(statement);
+                    //GenerateSelectOnly(statement);
                     return;
                 }
 
                 var fromDomArg = VisitChild(statement.From);
-                var rowType = fromDomArg.Scope.CodeDomReference.TypeArguments[0];
 
-                CodeMemberMethod method = new CodeMemberMethod();
-                method.Name = "Select_" + fromDomArg.MethodIdentifier;
-                method.Attributes = MemberAttributes.Private;
-                method.ReturnType = new CodeTypeReference("Table", new CodeTypeReference("ResultRow"));
-                GenerateCallStatement(method.Statements, statement.Line.Line);
+                //var anon = "anon_" + Guid.NewGuid().ToString("N");
+                //var rowType = fromDomArg.Scope.CodeDomReference.TypeArguments[0];
 
-                _mainType.Type.Members.Add(method);
+                //TypeSyntax
+                var method = SyntaxFactory.MethodDeclaration(
+                    SyntaxFactory.GenericName(
+                        SyntaxFactory.Identifier("Table"))
+                        .AddTypeArgumentListArguments(SyntaxFactory.IdentifierName("ResultRow")),
+                    SyntaxFactory.Identifier("Select_" + fromDomArg.MethodIdentifier))
+                    .WithModifiers(
+                    SyntaxFactory.TokenList(
+                        SyntaxFactory.Token(SyntaxKind.PrivateKeyword)))
+                        .WithBody(
+                    SyntaxFactory.Block());
 
                 var methodStatements = new List<StatementSyntax>();
+                GenerateCallStatement(methodStatements, statement.Line.Line);
 
-                methodStatements.Add(new CodeVariableDeclarationStatement(new CodeTypeReference("RuntimeTable", new CodeTypeReference("ResultRow")),
-                    "result",
-                    new CodeObjectCreateExpression(new CodeTypeReference("RuntimeTable", new CodeTypeReference("ResultRow")))));
+                var resultRowTypeSyntax = SyntaxFactory.GenericName(
+                    SyntaxFactory.Identifier("RuntimeTable"))
+                    .AddTypeArgumentListArguments(
+                    SyntaxFactory.IdentifierName("ResultRow"));
+
+                methodStatements.Add(
+                    SyntaxFactory.LocalDeclarationStatement(
+                                SyntaxFactory.VariableDeclaration(resultRowTypeSyntax)
+                                .AddVariables(SyntaxFactory.VariableDeclarator(SyntaxFactory.Identifier("result"))
+                                .WithInitializer(SyntaxFactory.EqualsValueClause(
+                                                SyntaxFactory.ObjectCreationExpression(resultRowTypeSyntax).AddArgumentListArguments()
+                                                ))))
+                                                );
 
 
-                var selectArgAssignments = new List<CodeAssignStatement>();
+                var selectArgAssignments = new List<StatementSyntax>();
                 if (statement.Args.Length > 0) //visit first one in case select *
                     VisitChild(statement.Args[0], new CodeDomArg() { Scope = fromDomArg.Scope });
-
+                
                 var outerLoopNeeded = false;
 
                 //Needed for both
@@ -129,20 +141,52 @@ namespace Pickaxe.CodeDom.Visitor
                     if (((SelectArgsInfo)domSelectArg.Tag).IsPickStatement)
                         outerLoopNeeded = true;
 
-                    var assignment = new CodeAssignStatement();
-                    assignment.Left = new CodeIndexerExpression(new CodeTypeReferenceExpression("resultRow"), new CodeSnippetExpression(x.ToString()));
-                    assignment.Right = domSelectArg.CodeExpression;
+                    selectArgAssignments.Add(
+                        SyntaxFactory.ExpressionStatement(
+                               SyntaxFactory.AssignmentExpression(
+                                   SyntaxKind.SimpleAssignmentExpression,
+                                   SyntaxFactory.ElementAccessExpression(
+                                       SyntaxFactory.IdentifierName("resultRow"))
+                                   .WithArgumentList(
+                                       SyntaxFactory.BracketedArgumentList(
+                                           SyntaxFactory.SingletonSeparatedList(
+                                               SyntaxFactory.Argument(
+                                                   SyntaxFactory.LiteralExpression(
+                                                       SyntaxKind.NumericLiteralExpression,
+                                                       SyntaxFactory.Literal(x)))))),
+                                   domSelectArg.CodeExpression))
+                                   );
 
-                    methodStatements.Add(new CodeMethodInvokeExpression(new CodeTypeReferenceExpression("result"), "AddColumn", new CodePrimitiveExpression(((SelectArgsInfo)domSelectArg.Tag).DisplayColumnName)));
-                    selectArgAssignments.Add(assignment);
+                    methodStatements.Add(
+                        SyntaxFactory.ExpressionStatement(
+                                SyntaxFactory.InvocationExpression(
+                                    SyntaxFactory.MemberAccessExpression(
+                                        SyntaxKind.SimpleMemberAccessExpression,
+                                        SyntaxFactory.IdentifierName("result"),
+                                        SyntaxFactory.IdentifierName("AddColumn")))
+                                .WithArgumentList(
+                                    SyntaxFactory.ArgumentList(
+                                        SyntaxFactory.SingletonSeparatedList(
+                                            SyntaxFactory.Argument(
+                                                SyntaxFactory.LiteralExpression(
+                                                    SyntaxKind.StringLiteralExpression,
+                                                    SyntaxFactory.Literal(((SelectArgsInfo)domSelectArg.Tag).DisplayColumnName)))))))
+                                                    );
                 }
 
+                methodStatements.Add(
+                    SyntaxFactory.LocalDeclarationStatement(
+                                    SyntaxFactory.VariableDeclaration(
+                                       fromDomArg.Scope.GenericTypeSyntax)
+                                    .AddVariables(
+                                            SyntaxFactory.VariableDeclarator(
+                                                SyntaxFactory.Identifier("fromTable"))
+                                            .WithInitializer(
+                                                SyntaxFactory.EqualsValueClause(
+                                                   fromDomArg.CodeExpression))))
+                                                   );
 
-                methodStatements.Add(new CodeVariableDeclarationStatement(fromDomArg.Scope.CodeDomReference,
-                "fromTable",
-                fromDomArg.CodeExpression));
-
-                if (statement.Where != null)
+                /*if (statement.Where != null)
                 {
                     var domWhereArgs = VisitChild(statement.Where, new CodeDomArg() { Scope = fromDomArg.Scope });
                     methodStatements.Add(new CodeAssignStatement(new CodeVariableReferenceExpression("fromTable"), domWhereArgs.CodeExpression));
@@ -239,16 +283,31 @@ namespace Pickaxe.CodeDom.Visitor
                 methodStatements.Add(callSelect);
                 methodStatements.Add(new CodeMethodReturnStatement(new CodeTypeReferenceExpression("result")));
                 method.Statements.AddRange(methodStatements);
+                
 
                 var methodcall = new CodeMethodInvokeExpression(
                     new CodeMethodReferenceExpression(null, method.Name));
 
+               
                 _codeStack.Peek().Tag = new Action(() => method.Statements.Remove(callSelect));
                 _codeStack.Peek().CodeExpression = methodcall;
                 _codeStack.Peek().Scope = new ScopeData<TableDescriptor>() { CodeDomReference = method.ReturnType };
                 _codeStack.Peek().ParentStatements.Add(methodcall);
-                
-            }*/
+                */
+
+                var methodCall = 
+                    SyntaxFactory.InvocationExpression(
+                        SyntaxFactory.IdentifierName(method.Identifier));
+
+                method = method.WithBody(SyntaxFactory.Block(
+                                        methodStatements
+                                        ));
+
+                _mainType.AddMember(method);
+
+                _codeStack.Peek().CodeExpression = methodCall;
+                _codeStack.Peek().ParentStatements.Add(SyntaxFactory.ExpressionStatement(methodCall));
+            }
         }
     }
 }

@@ -12,6 +12,7 @@
  * limitations under the License.
  */
 
+using Microsoft.CodeAnalysis.CSharp;
 using Pickaxe.Sdk;
 using System;
 using System.CodeDom;
@@ -26,8 +27,13 @@ namespace Pickaxe.CodeDom.Visitor
     {
         public void Visit(StringLiteral literal)
         {
-            //_codeStack.Peek().CodeExpression = new CodePrimitiveExpression(literal.Value);
-            //_codeStack.Peek().Scope = new ScopeData<Type> { Type = typeof(string), CodeDomReference = new CodeTypeReference(typeof(string)) };
+            _codeStack.Peek().CodeExpression = SyntaxFactory.LiteralExpression(
+                SyntaxKind.StringLiteralExpression,
+                SyntaxFactory.Literal(literal.Value));
+
+            _codeStack.Peek().Scope = new ScopeData<Type> { Type = typeof(string), TypeSyntax = SyntaxFactory.PredefinedType(
+                    SyntaxFactory.Token(SyntaxKind.StringKeyword))
+            };
         }
 
     }

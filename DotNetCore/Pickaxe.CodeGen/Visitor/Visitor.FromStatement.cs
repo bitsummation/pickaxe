@@ -12,6 +12,8 @@
  * limitations under the License.
  */
 
+using Microsoft.CodeAnalysis.CSharp;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Pickaxe.Runtime;
 using Pickaxe.Sdk;
 using System;
@@ -26,122 +28,245 @@ namespace Pickaxe.CodeDom.Visitor
 {
     public partial class CodeDomGenerator : IAstVisitor
     {
-        /*private CodeMemberMethod CreateFetch(AliasBase aliasBase, out CodeTypeReference anonType)
+        private MethodDeclarationSyntax CreateFetch(AliasBase aliasBase, out TypeSyntax anonType)
         {
             var statementDomArg = VisitChild(aliasBase.Statement);
-            if (Scope.Current.IsTableRegistered(statementDomArg.Scope.CodeDomReference.TypeArguments[0].BaseType))
+            if (Scope.Current.IsTableRegistered(statementDomArg.Scope.GenericTypeSyntax.TypeArgumentList.Arguments[0].GetText().ToString()))
             {
-                var scope = Scope.Current.GetTableDescriptor(statementDomArg.Scope.CodeDomReference.TypeArguments[0].BaseType);
+                var scope = Scope.Current.GetTableDescriptor(statementDomArg.Scope.GenericTypeSyntax.TypeArgumentList.Arguments[0].GetText().ToString());
                 if (aliasBase.Alias == null)
-                    aliasBase.Children.Add(new TableAlias { Id = statementDomArg.Scope.CodeDomReference.TypeArguments[0].BaseType });
+                    aliasBase.Children.Add(new TableAlias { Id = statementDomArg.Scope.GenericTypeSyntax.TypeArgumentList.Arguments[0].GetText().ToString() });
 
-                Scope.Current.Register(aliasBase.Alias.Id, new ScopeData<TableDescriptor> { Type = scope.Type, CodeDomReference = scope.CodeDomReference.TypeArguments[0] });
+                Scope.Current.Register(aliasBase.Alias.Id, new ScopeData<TableDescriptor> { Type = scope.Type, TypeSyntax = scope.TypeSyntax });
             }
 
-            CodeMemberMethod method = new CodeMemberMethod();
-            method.Name = "Fetch_" + Guid.NewGuid().ToString("N");
-            _mainType.Type.Members.Add(method);
+            var method = SyntaxFactory.MethodDeclaration(
+                  SyntaxFactory.PredefinedType(
+                      SyntaxFactory.Token(SyntaxKind.VoidKeyword)),
+                   SyntaxFactory.Identifier("Fetch_" + Guid.NewGuid().ToString("N")))
+                   .WithModifiers(
+                   SyntaxFactory.TokenList(
+                       SyntaxFactory.Token(SyntaxKind.PrivateKeyword)))
+                       .WithBody(
+                   SyntaxFactory.Block());
+
+            var methodStatements = new List<StatementSyntax>();
 
             var anon = "anon_" + Guid.NewGuid().ToString("N");
-            var bufferTable = new CodeTypeDeclaration(anon) { TypeAttributes = TypeAttributes.NestedPrivate };
-            bufferTable.BaseTypes.Add(new CodeTypeReference("IRow"));
-            _mainType.Type.Members.Add(bufferTable);
+            var bufferTable = SyntaxFactory.ClassDeclaration(anon).WithModifiers(
+             SyntaxFactory.TokenList(
+                 SyntaxFactory.Token(SyntaxKind.PrivateKeyword)
+                 )
+             );
 
-            var field = new CodeMemberField();
-            field.Name = aliasBase.Alias == null ? string.Empty : aliasBase.Alias.Id;
-            field.Attributes = MemberAttributes.Public | MemberAttributes.Final;
-            field.Type = statementDomArg.Scope.CodeDomReference.TypeArguments[0];
+            bufferTable = bufferTable.AddBaseListTypes(SyntaxFactory.SimpleBaseType(SyntaxFactory.IdentifierName("IRow")));
+            var field = SyntaxFactory.FieldDeclaration(
+                            SyntaxFactory.VariableDeclaration(
+                                SyntaxFactory.IdentifierName(statementDomArg.Scope.GenericTypeSyntax.TypeArgumentList.Arguments[0].GetText().ToString()))
+                            .AddVariables(
+                                    SyntaxFactory.VariableDeclarator(
+                                        SyntaxFactory.Identifier(aliasBase.Alias == null ? string.Empty : aliasBase.Alias.Id))))
+                        .WithModifiers(
+                            SyntaxFactory.TokenList(
+                                SyntaxFactory.Token(SyntaxKind.PublicKeyword)));
+
+            bufferTable = bufferTable.AddMembers(field);
+
+            anonType = SyntaxFactory.IdentifierName(anon);
             Scope.Current.JoinMembers.Add(field);
-            bufferTable.Members.Add(field);
 
-            method.Statements.Add(new CodeVariableDeclarationStatement(statementDomArg.Scope.CodeDomReference, "table", statementDomArg.CodeExpression));
-
-            anonType = new CodeTypeReference(anon);
+            methodStatements.Add(
+                SyntaxFactory.LocalDeclarationStatement(
+                    SyntaxFactory.VariableDeclaration(statementDomArg.Scope.GenericTypeSyntax)
+                    .AddVariables(
+                        SyntaxFactory.VariableDeclarator(
+                            SyntaxFactory.Identifier("table"))
+                            .WithInitializer(
+                            SyntaxFactory.EqualsValueClause(
+                                statementDomArg.CodeExpression))))
+                                );
+          
 
             var copyStatments = new List<StatementSyntax>();
-            copyStatments.Add(new CodeVariableDeclarationStatement(anonType, "t",
-               new CodeObjectCreateExpression(anonType)));
 
-            copyStatments.Add(new CodeAssignStatement(new CodePropertyReferenceExpression(new CodeVariableReferenceExpression("t"), field.Name),
-                new CodeVariableReferenceExpression("o")));
+            copyStatments.Add(
+                SyntaxFactory.LocalDeclarationStatement(
+                    SyntaxFactory.VariableDeclaration(anonType)
+                    .AddVariables(
+                        SyntaxFactory.VariableDeclarator(
+                            SyntaxFactory.Identifier("t"))
+                            .WithInitializer(
+                            SyntaxFactory.EqualsValueClause(
+                                SyntaxFactory.ObjectCreationExpression(anonType)
+                                .WithArgumentList(
+                                    SyntaxFactory.ArgumentList())))))
+                                    );
 
-            copyStatments.Add(new CodeMethodReturnStatement(new CodeVariableReferenceExpression("t")));
+            copyStatments.Add(
+            SyntaxFactory.ExpressionStatement(
+                                SyntaxFactory.AssignmentExpression(
+                                    SyntaxKind.SimpleAssignmentExpression,
+                                    SyntaxFactory.MemberAccessExpression(
+                                        SyntaxKind.SimpleMemberAccessExpression,
+                                        SyntaxFactory.IdentifierName("t"),
+                                        SyntaxFactory.IdentifierName(field.Declaration.Variables[0].Identifier.Text)),
+                                    SyntaxFactory.IdentifierName("o")))
+                                    );
+            copyStatments.Add(
+                SyntaxFactory.ReturnStatement(
+                    SyntaxFactory.IdentifierName("t"))
+                    );
 
-            var codeParams = new CodeParameterDeclarationExpressionCollection();
-            codeParams.Add(new CodeParameterDeclarationExpression(statementDomArg.Scope.CodeDomReference.TypeArguments[0], "o"));
+
+            var codeParams = SyntaxFactory.ParameterList(
+                SyntaxFactory.SingletonSeparatedList<ParameterSyntax>(
+                                SyntaxFactory.Parameter(
+                                    SyntaxFactory.Identifier("o"))
+                                .WithType(
+                                    SyntaxFactory.IdentifierName(statementDomArg.Scope.GenericTypeSyntax.TypeArgumentList.Arguments[0].GetText().ToString()))));
+
             var copyMethod = CreateCopyMethod(codeParams, copyStatments);
 
-            var anonExpression = new CodeSnippetExpression("o => {" + GenerateCodeFromStatement(
-                new CodeMethodReturnStatement(
-                    new CodeMethodInvokeExpression(new CodeMethodReferenceExpression(null, copyMethod.Name),
-                        new CodeVariableReferenceExpression("o")))) + "}");
+            methodStatements.Add(SyntaxFactory.ReturnStatement(
+                                SyntaxFactory.InvocationExpression(
+                                    SyntaxFactory.MemberAccessExpression(
+                                        SyntaxKind.SimpleMemberAccessExpression,
+                                        SyntaxFactory.IdentifierName("table"),
+                                        SyntaxFactory.IdentifierName("Select")))
+                                .WithArgumentList(
+                                    SyntaxFactory.ArgumentList(
+                                        SyntaxFactory.SingletonSeparatedList<ArgumentSyntax>(
+                                            SyntaxFactory.Argument(
+                                                SyntaxFactory.SimpleLambdaExpression(
+                                                    SyntaxFactory.Parameter(
+                                                        SyntaxFactory.Identifier("o")),
+                                                    SyntaxFactory.Block(
+                                                        SyntaxFactory.SingletonList<StatementSyntax>(
+                                                            SyntaxFactory.ReturnStatement(
+                                                                SyntaxFactory.InvocationExpression(
+                                                                    SyntaxFactory.IdentifierName(copyMethod.Identifier.Text))
+                                                                .WithArgumentList(
+                                                                    SyntaxFactory.ArgumentList(
+                                                                        SyntaxFactory.SingletonSeparatedList<ArgumentSyntax>(
+                                                                            SyntaxFactory.Argument(
+                                                                                SyntaxFactory.IdentifierName("o"))))))))))))))
+                                                                                );
 
-            method.Statements.Add(new CodeMethodReturnStatement(new CodeMethodInvokeExpression(new CodeMethodReferenceExpression(
-                       new CodeTypeReferenceExpression("table"), "Select"), anonExpression)));
+            _mainType.AddMember(bufferTable);
 
+            method = method.WithReturnType(SyntaxFactory.GenericName(
+                      SyntaxFactory.Identifier("IEnumerable"))
+                      .AddTypeArgumentListArguments(anonType));
 
-            method.ReturnType = new CodeTypeReference("IEnumerable", anonType);
-            copyMethod.ReturnType = anonType;
+            copyMethod = copyMethod.WithReturnType(anonType);
 
+            method = method.WithBody(SyntaxFactory.Block(
+                        methodStatements
+                        ));
+
+            _mainType.AddMember(copyMethod);
+            _mainType.AddMember(method);
             return method;
         }
 
-        private CodeMemberMethod CreateCopyMethod(CodeParameterDeclarationExpressionCollection methodParams, List<StatementSyntax> statements)
+        private MethodDeclarationSyntax CreateCopyMethod(ParameterListSyntax methodParams, List<StatementSyntax> statements)
         {
-            CodeMemberMethod method = new CodeMemberMethod();
-            method.Name = "Copy_" + Guid.NewGuid().ToString("N");
-            method.Parameters.AddRange(methodParams);
-            _mainType.Type.Members.Add(method);
-
-            method.Statements.AddRange(statements);
-
-            return method;
+            return SyntaxFactory.MethodDeclaration(
+                           SyntaxFactory.PredefinedType(
+                               SyntaxFactory.Token(SyntaxKind.VoidKeyword)),
+                           SyntaxFactory.Identifier("Copy_" + Guid.NewGuid().ToString("N")))
+                       .WithModifiers(
+                           SyntaxFactory.TokenList(
+                               SyntaxFactory.Token(SyntaxKind.PrivateKeyword)))
+                       .WithParameterList(methodParams)
+                       .WithBody(
+                        SyntaxFactory.Block(statements));
         }
-        */
+        
 
         public void Visit(FromStatement statement)
         {
-            /*
-            CodeMemberMethod method = new CodeMemberMethod();
-            method.Name = "From_" + Guid.NewGuid().ToString("N");
-            method.Attributes = MemberAttributes.Private;
-            GenerateCallStatement(method.Statements, statement.Line.Line);
-            _mainType.Type.Members.Add(method);
+            var method = SyntaxFactory.MethodDeclaration(
+                    SyntaxFactory.PredefinedType(
+                        SyntaxFactory.Token(SyntaxKind.VoidKeyword)),
+                    SyntaxFactory.Identifier("From_" + Guid.NewGuid().ToString("N")))
+                    .WithModifiers(
+                    SyntaxFactory.TokenList(
+                        SyntaxFactory.Token(SyntaxKind.PrivateKeyword)))
+                        .WithBody(
+                    SyntaxFactory.Block());
 
-            CodeTypeReference anonType;
+            var methodStatements = new List<StatementSyntax>();  
+            GenerateCallStatement(methodStatements, statement.Line.Line);
+
+            TypeSyntax anonType;
             var fetchMethod = CreateFetch(statement, out anonType);
-            method.Statements.Add(new CodeVariableDeclarationStatement(new CodeTypeReference("IEnumerable", anonType), "join",
-                    new CodeMethodInvokeExpression(new CodeMethodReferenceExpression(null, fetchMethod.Name))));
+
+            methodStatements.Add(SyntaxFactory.LocalDeclarationStatement(
+                                SyntaxFactory.VariableDeclaration(SyntaxFactory.GenericName(
+                                    SyntaxFactory.Identifier("IEnumerable"))
+                                    .AddTypeArgumentListArguments(
+                                    anonType))
+                                .AddVariables(SyntaxFactory.VariableDeclarator(SyntaxFactory.Identifier("join"))
+                                .WithInitializer(SyntaxFactory.EqualsValueClause(
+                                                SyntaxFactory.InvocationExpression(SyntaxFactory.IdentifierName(fetchMethod.Identifier)
+                                                )))))
+                                                );
 
             if(statement.Join != null)
             {
-                var args = VisitChild(statement.Join, new CodeDomArg() {Scope = new ScopeData<Type> { Type = typeof(int), CodeDomReference = anonType} });
+                var args = VisitChild(statement.Join, new CodeDomArg() {Scope = new ScopeData<Type> { Type = typeof(int), TypeSyntax = anonType} });
 
-                method.Statements.Add(new CodeMethodReturnStatement(args.CodeExpression));
-                method.ReturnType = args.Scope.CodeDomReference;
+                methodStatements.Add(SyntaxFactory.ReturnStatement(args.CodeExpression));
+                method = method.WithReturnType(args.Scope.TypeSyntax);
+
                 _codeStack.Peek().Scope = args.Scope;
             }
             else
             {
-                var tableType = new CodeTypeReference("CodeTable", anonType);
-                method.ReturnType = tableType;
-                _codeStack.Peek().Scope = new ScopeData<Type> { Type = typeof(int), CodeDomReference = tableType };
+                var tableType = SyntaxFactory.GenericName(
+                    SyntaxFactory.Identifier("CodeTable"))
+                    .AddTypeArgumentListArguments(anonType);
 
-                method.Statements.Add(new CodeVariableDeclarationStatement(tableType, "newTable",
-                    new CodeObjectCreateExpression(tableType)));
+                method = method.WithReturnType(tableType);
+                _codeStack.Peek().Scope = new ScopeData<Type> { Type = typeof(int), TypeSyntax = tableType };
 
-                method.Statements.Add(new CodeMethodInvokeExpression(
-                    new CodeVariableReferenceExpression("newTable"), "SetRows",
-                    new CodeMethodInvokeExpression(new CodeVariableReferenceExpression("join"), "ToList")));
+                methodStatements.Add(SyntaxFactory.LocalDeclarationStatement(
+                                SyntaxFactory.VariableDeclaration(tableType)
+                                .AddVariables(SyntaxFactory.VariableDeclarator(SyntaxFactory.Identifier("newTable"))
+                                .WithInitializer(SyntaxFactory.EqualsValueClause(
+                                                SyntaxFactory.ObjectCreationExpression(tableType).AddArgumentListArguments()
+                                                ))))
+                                                );
 
-                method.Statements.Add(new CodeMethodReturnStatement(new CodeVariableReferenceExpression("newTable")));
+                methodStatements.Add(
+                    SyntaxFactory.ExpressionStatement(
+                        SyntaxFactory.InvocationExpression(SyntaxFactory.MemberAccessExpression(
+                            SyntaxKind.SimpleMemberAccessExpression,
+                            SyntaxFactory.IdentifierName("newTable"),
+                            SyntaxFactory.IdentifierName("SetRows")))
+                            .AddArgumentListArguments(SyntaxFactory.Argument(
+                                SyntaxFactory.InvocationExpression(
+                                    SyntaxFactory.MemberAccessExpression(
+                                        SyntaxKind.SimpleMemberAccessExpression,
+                                        SyntaxFactory.IdentifierName("join"),
+                                        SyntaxFactory.IdentifierName("ToList")))))
+                                                        ));
+
+                methodStatements.Add(SyntaxFactory.ReturnStatement(
+                           SyntaxFactory.IdentifierName("newTable"))
+                           );
             }
 
-            var methodcall = new CodeMethodInvokeExpression(
-              new CodeMethodReferenceExpression(null, method.Name));
+            var methodcall = SyntaxFactory.InvocationExpression(
+                        SyntaxFactory.IdentifierName(method.Identifier));
 
+            method = method.WithBody(SyntaxFactory.Block(
+                           methodStatements
+                           ));
+
+            _mainType.AddMember(method);
             _codeStack.Peek().CodeExpression = methodcall;
-            */
         }
         
     }

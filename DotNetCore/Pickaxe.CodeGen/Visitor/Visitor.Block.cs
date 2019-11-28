@@ -12,13 +12,10 @@
  * limitations under the License.
  */
 
+using Microsoft.CodeAnalysis.CSharp;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Pickaxe.Sdk;
-using System;
-using System.CodeDom;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Pickaxe.CodeDom.Visitor
 {
@@ -26,7 +23,6 @@ namespace Pickaxe.CodeDom.Visitor
     {
         public void Visit(Block block)
         {
-            /*
             var method = CreateBlockMethod();
 
             using (Scope.Push(_mainType))
@@ -37,17 +33,32 @@ namespace Pickaxe.CodeDom.Visitor
                     if (arg.ParentStatements.Count > 0)
                     {
                         var stepMethod = CreateStepMethod();
-                        stepMethod.Statements.AddRange(arg.ParentStatements);
+                        var stepMethodStatements = new List<StatementSyntax>();
+                        stepMethodStatements.AddRange(arg.ParentStatements);
+
                         if (_codeStack.Peek().Tag == null)
-                            CallOnProgress(stepMethod.Statements);
-                        
-                        method.Statements.Add(new CodeMethodInvokeExpression(new CodeMethodReferenceExpression(null, stepMethod.Name)));
+                            CallOnProgress(stepMethodStatements);
+
+                        method = method.AddBodyStatements(
+                            SyntaxFactory.ExpressionStatement(
+                                SyntaxFactory.InvocationExpression(
+                                    SyntaxFactory.IdentifierName(stepMethod.Identifier))));
+
+                        stepMethod = stepMethod.WithBody(SyntaxFactory.Block(
+                            stepMethodStatements
+                            ));
+
+                        _mainType.AddMember(stepMethod);
                     }
                 }
             }
 
-            _codeStack.Peek().ParentStatements.Add(new CodeMethodInvokeExpression(new CodeMethodReferenceExpression(null, method.Name)));
-            */
+            _mainType.AddMember(method);
+
+            _codeStack.Peek().ParentStatements.Add(
+                SyntaxFactory.ExpressionStatement(
+                    SyntaxFactory.InvocationExpression(
+                        SyntaxFactory.IdentifierName(method.Identifier))));
         }
     }
 }

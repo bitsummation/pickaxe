@@ -12,6 +12,7 @@
  * limitations under the License.
  */
 
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using System;
 using System.CodeDom;
 using System.Collections.Generic;
@@ -23,7 +24,15 @@ namespace Pickaxe.CodeDom
 {
     internal abstract class IScopeData
     {
-        //public CodeTypeReference CodeDomReference { get; set; }
+        public TypeSyntax TypeSyntax { get; set; }
+        public GenericNameSyntax GenericTypeSyntax
+        {
+            get
+            {
+                return TypeSyntax as GenericNameSyntax;
+            }
+        }
+
         public abstract Type CodeType { get; }
     }
 }

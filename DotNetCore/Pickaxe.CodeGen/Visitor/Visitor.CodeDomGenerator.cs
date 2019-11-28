@@ -53,13 +53,34 @@ namespace Pickaxe.CodeDom.Visitor
         private void InitScope() //add runtime types
         {
             //DownloadPage
-            Scope.Current.RegisterTable("DownloadPage", DownloadPage.Columns);
-            Scope.Current.RegisterTable("DownloadImage", DownloadImage.Columns);
-            Scope.Current.RegisterTable("Expand", Expand.Columns);
-            Scope.Current.RegisterTable("DynamicObject", DynamicObject.Columns);
+            Scope.Current.RegisterTable("DownloadPage", DownloadPage.Columns,
+                SyntaxFactory.GenericName(
+                    SyntaxFactory.Identifier("Table"))
+                    .AddTypeArgumentListArguments(
+                    SyntaxFactory.IdentifierName("DownloadPage")));
+
+            Scope.Current.RegisterTable("DownloadImage", DownloadImage.Columns,
+                SyntaxFactory.GenericName(
+                    SyntaxFactory.Identifier("Table"))
+                    .AddTypeArgumentListArguments(
+                    SyntaxFactory.IdentifierName("DownloadImage")));
+
+            Scope.Current.RegisterTable("Expand", Expand.Columns,
+                SyntaxFactory.GenericName(
+                    SyntaxFactory.Identifier("Table"))
+                    .AddTypeArgumentListArguments(
+                    SyntaxFactory.IdentifierName("Expand")));
+            
+            Scope.Current.RegisterTable("DynamicObject", DynamicObject.Columns,
+                SyntaxFactory.GenericName(
+                    SyntaxFactory.Identifier("Table"))
+                    .AddTypeArgumentListArguments(
+                    SyntaxFactory.IdentifierName("DynamicObject")));
 
             //Register @@identity
-            Scope.Current.RegisterPrimitive("@@identity", typeof(int));
+            Scope.Current.RegisterPrimitive("@@identity", typeof(int),
+                SyntaxFactory.PredefinedType(
+                    SyntaxFactory.Token(SyntaxKind.IntKeyword)));
 
             Scope.Current.Type.AddMember(SyntaxFactory.FieldDeclaration(
                     SyntaxFactory.VariableDeclaration(
@@ -73,6 +94,9 @@ namespace Pickaxe.CodeDom.Visitor
                     SyntaxFactory.TokenList(
                         SyntaxFactory.Token(SyntaxKind.PublicKeyword)))
                 );
+
+            Scope.Current.Type.AddMember(Scope.Current.Type.GetConstructor());
+            _mainType.AddMember(Scope.Current.Type.GetClassDeclaration());
         }
 
         public IList<SemanticException> Errors { get; private set; }
@@ -83,9 +107,9 @@ namespace Pickaxe.CodeDom.Visitor
             return _unit.SyntaxTree;
         }
 
-        private void CallOnProgressComplete(List<StatementSyntax> statements)
+        private StatementSyntax CallOnProgressComplete()
         {
-            statements.Add(
+            return
                 SyntaxFactory.ExpressionStatement(
                     SyntaxFactory.InvocationExpression(
                         SyntaxFactory.IdentifierName("OnProgress"))
@@ -97,8 +121,7 @@ namespace Pickaxe.CodeDom.Visitor
                                 SyntaxFactory.Argument(
                                     SyntaxFactory.IdentifierName("TotalOperations")),
                                 SyntaxFactory.Argument(
-                                    SyntaxFactory.IdentifierName("TotalOperations"))))))
-                );
+                                    SyntaxFactory.IdentifierName("TotalOperations"))))));
         }
 
         private void CallOnProgress(List<StatementSyntax> statements, bool increaseTotal = true)
@@ -139,7 +162,7 @@ namespace Pickaxe.CodeDom.Visitor
         }
 
 
-        private MethodDeclarationSyntax CreateStepMethod()
+        private static MethodDeclarationSyntax CreateStepMethod()
         {
             var method = SyntaxFactory.MethodDeclaration(
                 SyntaxFactory.PredefinedType(
@@ -151,11 +174,10 @@ namespace Pickaxe.CodeDom.Visitor
                     .WithBody(
                         SyntaxFactory.Block());
 
-            _mainType.AddMember(method);
             return method;
         }
 
-        private MethodDeclarationSyntax CreateBlockMethod()
+        private static MethodDeclarationSyntax CreateBlockMethod()
         {
             var method = SyntaxFactory.MethodDeclaration(
                 SyntaxFactory.PredefinedType(
@@ -167,7 +189,6 @@ namespace Pickaxe.CodeDom.Visitor
                     .WithBody(
                         SyntaxFactory.Block());
 
-            _mainType.AddMember(method);
             return method;
         }
     }

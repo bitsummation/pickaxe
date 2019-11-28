@@ -12,6 +12,7 @@
  * limitations under the License.
  */
 
+using Microsoft.CodeAnalysis.CSharp;
 using Pickaxe.Runtime;
 using Pickaxe.Sdk;
 using System;
@@ -27,7 +28,7 @@ namespace Pickaxe.CodeDom.Visitor
     {
         public void Visit(SelectArg arg)
         {
-           /* var selectInfo = new SelectArgsInfo();
+            var selectInfo = new SelectArgsInfo();
 
             var childDomArgs = new List<CodeDomArg>();
             foreach (var childArg in arg.Args)
@@ -40,7 +41,13 @@ namespace Pickaxe.CodeDom.Visitor
             var scope = childDomArgs[0].Scope;
             for (int x = 1; x < childDomArgs.Count; x++)
             {
-                expression = new CodeMethodInvokeExpression(new CodeTypeReferenceExpression(typeof(Helper)), "NullConcat", expression, childDomArgs[x].CodeExpression);
+                expression = SyntaxFactory.InvocationExpression(
+                                    SyntaxFactory.MemberAccessExpression(
+                                        SyntaxKind.SimpleMemberAccessExpression,
+                                        SyntaxFactory.IdentifierName("Helper"),
+                                        SyntaxFactory.IdentifierName("NullConcat")))
+                                        .AddArgumentListArguments(SyntaxFactory.Argument(expression), SyntaxFactory.Argument(childDomArgs[x].CodeExpression));
+
                 scope = childDomArgs[x].Scope;
             }
 
@@ -60,7 +67,7 @@ namespace Pickaxe.CodeDom.Visitor
 
             _codeStack.Peek().Tag = selectInfo;
             _codeStack.Peek().Scope = scope;
-            _codeStack.Peek().CodeExpression = expression;*/
+            _codeStack.Peek().CodeExpression = expression;
         }
     }
 }

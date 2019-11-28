@@ -26,7 +26,7 @@ namespace Pickaxe.CodeDom.Visitor
             _unit = _unit.AddUsings(SyntaxFactory.UsingDirective(SyntaxFactory.ParseName("System")),
                 SyntaxFactory.UsingDirective(SyntaxFactory.ParseName("Pickaxe.Runtime")),
                 SyntaxFactory.UsingDirective(SyntaxFactory.ParseName("Pickaxe.Runtime.Dom")),
-                SyntaxFactory.UsingDirective(SyntaxFactory.ParseName("System.Linq")),
+               // SyntaxFactory.UsingDirective(SyntaxFactory.ParseName("System.Linq")),
                 SyntaxFactory.UsingDirective(SyntaxFactory.ParseName("System.Collections.Generic"))
                 );
 
@@ -42,8 +42,25 @@ namespace Pickaxe.CodeDom.Visitor
             var runStatements = new List<StatementSyntax>();
             runStatements.Add(SyntaxFactory.ExpressionStatement(SyntaxFactory.InvocationExpression(SyntaxFactory.IdentifierName("InitProxies"))));
 
-            _mainType.Constructor.Parameters.Add(new CodeParameterDeclarationExpression(new CodeTypeReference(typeof(string[])), "args"));
-            _mainType.Constructor.BaseConstructorArgs.Add(new CodeVariableReferenceExpression("args"));
+            _mainType.ConstructorAddParameters(
+                SyntaxFactory.Parameter(
+                    SyntaxFactory.Identifier("args"))
+                    .WithType(
+                    SyntaxFactory.ArrayType(
+                        SyntaxFactory.PredefinedType(
+                            SyntaxFactory.Token(SyntaxKind.StringKeyword)))
+                            .AddRankSpecifiers(
+                        SyntaxFactory.ArrayRankSpecifier(
+                            SyntaxFactory.SingletonSeparatedList<ExpressionSyntax>(
+                                SyntaxFactory.OmittedArraySizeExpression())))));
+
+            _mainType.ConstructorAddBaseArgs(
+                SyntaxFactory.ConstructorInitializer(
+                    SyntaxKind.BaseConstructorInitializer,
+                    SyntaxFactory.ArgumentList(
+                        SyntaxFactory.SingletonSeparatedList(
+                            SyntaxFactory.Argument(
+                                SyntaxFactory.IdentifierName("args"))))));
 
             foreach (var child in program.Children)
             {
@@ -52,22 +69,33 @@ namespace Pickaxe.CodeDom.Visitor
             }
 
             var stepMethod = CreateStepMethod();
-            runStatements.Add(SyntaxFactory.ExpressionStatement(SyntaxFactory.InvocationExpression(SyntaxFactory.IdentifierName(stepMethod.Identifier))));
+            runStatements.Add(
+                SyntaxFactory.ExpressionStatement(
+                    SyntaxFactory.InvocationExpression(SyntaxFactory.IdentifierName(stepMethod.Identifier))));
 
-            CallOnProgressComplete(stepMethod.Statements);
+            stepMethod = stepMethod.AddBodyStatements(CallOnProgressComplete());
 
-            _mainType.Constructor.Statements.Add(new CodeAssignStatement(new CodePropertyReferenceExpression(null, "TotalOperations"),
-                    new CodeBinaryOperatorExpression(new CodePropertyReferenceExpression(null, "TotalOperations"),
-                    CodeBinaryOperatorType.Add,
-                    new CodePrimitiveExpression(_totalOperations))
-                    ));
+            _mainType.ConstructorStatement(
+                SyntaxFactory.ExpressionStatement(
+                    SyntaxFactory.AssignmentExpression(
+                        SyntaxKind.SimpleAssignmentExpression,
+                        SyntaxFactory.IdentifierName("TotalOperations"),
+                        SyntaxFactory.BinaryExpression(
+                            SyntaxKind.AddExpression,
+                            SyntaxFactory.IdentifierName("TotalOperations"),
+                            SyntaxFactory.LiteralExpression(
+                                SyntaxKind.NumericLiteralExpression,
+                                SyntaxFactory.Literal(_totalOperations))
+                                ))));
 
             method = method.WithBody(SyntaxFactory.Block(
                  runStatements
              ));
 
+            _mainType.AddMember(stepMethod);
             _mainType.AddMember(method);
-            mainNamespace = mainNamespace.AddMembers(_mainType.Type);
+            _mainType.AddMember(_mainType.GetConstructor());
+            mainNamespace = mainNamespace.AddMembers(_mainType.GetClassDeclaration());
             _unit = _unit.AddMembers(mainNamespace);
         }
     }

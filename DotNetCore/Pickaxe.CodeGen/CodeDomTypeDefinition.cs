@@ -34,7 +34,7 @@ namespace Pickaxe.CodeDom
                   )).WithBody(SyntaxFactory.Block());
 
 
-            Type = type.AddMembers(Constructor);
+            Type = type;
         }
 
         public void AddBaseType(string baseType)
@@ -51,6 +51,31 @@ namespace Pickaxe.CodeDom
         public void AddMember(MemberDeclarationSyntax member)
         {
             Type = Type.AddMembers(member);
+        }
+
+        public void ConstructorAddParameters(ParameterSyntax parameter)
+        {
+            Constructor = Constructor.AddParameterListParameters(parameter);   
+        }
+
+        public void ConstructorAddBaseArgs(ConstructorInitializerSyntax initializer)
+        {
+            Constructor = Constructor.WithInitializer(initializer);
+        }
+
+        public void ConstructorStatement(StatementSyntax statement)
+        {
+            Constructor = Constructor.AddBodyStatements(statement);
+        }
+
+        public ClassDeclarationSyntax GetClassDeclaration()
+        {
+            return Type;
+        }
+
+        public ConstructorDeclarationSyntax GetConstructor()
+        {
+            return Constructor;
         }
 
         private ClassDeclarationSyntax Type { get; set; }

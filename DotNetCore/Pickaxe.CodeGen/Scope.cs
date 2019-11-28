@@ -24,6 +24,7 @@ namespace Pickaxe.CodeDom
     {
         protected Dictionary<string, IScopeData> _scope;
         private Scope _parent;
+        private CodeDomTypeDefinition _mainType;
 
         public static Scope Current { get; private set; }
 
@@ -36,8 +37,11 @@ namespace Pickaxe.CodeDom
             _scope = new Dictionary<string, IScopeData>();
             ScopeGuid = Guid.NewGuid().ToString("N");
             ScopeIdentifier = "Scope_" +  ScopeGuid;
-            if(mainType != null)
+            if (mainType != null)
+            {
+                _mainType = mainType;
                 CreateType(mainType);
+            }
 
             JoinMembers = new List<MemberDeclarationSyntax>();
         }
@@ -47,7 +51,7 @@ namespace Pickaxe.CodeDom
             Type = new CodeDomTypeDefinition(ScopeIdentifier);
             Type.SetModifier(SyntaxKind.PrivateKeyword);
 
-            mainType.Type.Members.Add(SyntaxFactory.FieldDeclaration(
+            mainType.AddMember(SyntaxFactory.FieldDeclaration(
                 SyntaxFactory.VariableDeclaration(
                     SyntaxFactory.IdentifierName(ScopeIdentifier))
                         .AddVariables(
@@ -58,7 +62,7 @@ namespace Pickaxe.CodeDom
                 SyntaxFactory.TokenList(
                     SyntaxFactory.Token(SyntaxKind.PrivateKeyword))));
 
-            mainType.Constructor.Body.AddStatements(SyntaxFactory.ExpressionStatement(
+            mainType.ConstructorStatement(SyntaxFactory.ExpressionStatement(
                 SyntaxFactory.AssignmentExpression(
                     SyntaxKind.SimpleAssignmentExpression,
                     SyntaxFactory.IdentifierName("_" + ScopeIdentifier),
@@ -66,8 +70,6 @@ namespace Pickaxe.CodeDom
                         SyntaxFactory.IdentifierName(ScopeIdentifier))
                         .WithArgumentList(
                         SyntaxFactory.ArgumentList()))));
-
-            mainType.Type.Members.Add(Type.Type);
         }
 
         public static void Reset()
@@ -93,6 +95,12 @@ namespace Pickaxe.CodeDom
 
         private void Pop()
         {
+            if (Type != null)
+            {
+                Type.AddMember(Type.GetConstructor());
+                _mainType.AddMember(Type.GetClassDeclaration());
+            }
+
             Current = Current._parent;
         }
 
@@ -103,14 +111,14 @@ namespace Pickaxe.CodeDom
             _scope[variable] = data;
         }
 
-        public void RegisterPrimitive(string variable, Type type)
+        public void RegisterPrimitive(string variable, Type type, TypeSyntax typeSyntax)
         {
-            _scope[variable] = new ScopeData<Type> { Type = type};
+            _scope[variable] = new ScopeData<Type> { Type = type, TypeSyntax = typeSyntax};
         }
 
-        public void RegisterTable(string variable, TableDescriptor descriptor)
+        public void RegisterTable(string variable, TableDescriptor descriptor, TypeSyntax typeSyntax)
         {
-            _scope[variable] = new ScopeData<TableDescriptor> { Type = descriptor};
+            _scope[variable] = new ScopeData<TableDescriptor> { Type = descriptor, TypeSyntax = typeSyntax};
         }
 
         private static Scope FindScope(Scope scope, string variable)
