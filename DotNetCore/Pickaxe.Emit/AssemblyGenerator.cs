@@ -8,7 +8,6 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.Loader;
-using System.Text;
 
 namespace Pickaxe.Emit
 {
@@ -29,6 +28,8 @@ namespace Pickaxe.Emit
             var errors = new List<string>();
 
             var refPaths = new[] {
+                Assembly.Load("System.Collections").Location,
+                typeof(Enumerable).GetTypeInfo().Assembly.Location,
                 typeof(System.Object).GetTypeInfo().Assembly.Location,
                 typeof(Console).GetTypeInfo().Assembly.Location,
                 typeof(FileTable<>).GetTypeInfo().Assembly.Location,
