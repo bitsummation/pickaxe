@@ -25,8 +25,8 @@ namespace Pickaxe.CodeDom.Visitor
     {
         public void Visit(ExpandIterationVariable variable)
         {
-            /*_codeStack.Peek().Scope = new ScopeData<Type> { Type = typeof(int), CodeDomReference = new CodeTypeReference(typeof(int)) };
-            _codeStack.Peek().CodeExpression = new CodeVariableReferenceExpression("x");*/
+            _codeStack.Peek().Scope = new ScopeData<Type> { Type = typeof(int), CodeDomReference = new CodeTypeReference(typeof(int)) };
+            _codeStack.Peek().CodeExpression = new CodeVariableReferenceExpression("x");
         }
     }
 }

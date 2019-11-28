@@ -25,7 +25,7 @@ namespace Pickaxe.CodeDom.Visitor
     {
         public void Visit(OrExpression expression)
         {
-            //DoBooleanAggregate(expression, CodeBinaryOperatorType.BooleanOr);
+            DoBooleanAggregate(expression, CodeBinaryOperatorType.BooleanOr);
         }
     }
 }

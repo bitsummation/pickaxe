@@ -12,7 +12,6 @@
  * limitations under the License.
  */
 
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Pickaxe.Sdk;
 using System;
 using System.CodeDom;
@@ -26,7 +25,7 @@ namespace Pickaxe.CodeDom.Visitor
     {
         public void Visit(WhenLiteralStatement statement)
         {
-            /*var collection = new List<StatementSyntax>();
+            CodeStatementCollection collection = new CodeStatementCollection();
             var arg = VisitChild(statement.Literal);
 
             var condition = new CodeConditionStatement();
@@ -45,8 +44,7 @@ namespace Pickaxe.CodeDom.Visitor
             var then = VisitChild(statement.Then);
             condition.TrueStatements.Add(new CodeMethodReturnStatement(then.CodeExpression));
             _codeStack.Peek().Tag = then.Tag;
-            _codeStack.Peek().ParentStatements.Add(condition);*/
-
+            _codeStack.Peek().ParentStatements.Add(condition);
         }
     }
 }

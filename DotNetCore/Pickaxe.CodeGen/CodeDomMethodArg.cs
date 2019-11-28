@@ -23,13 +23,15 @@ namespace Pickaxe.CodeDom
 {
     internal class CodeDomMethodArg
     {
-        public CodeDomMethodArg(string parameterName, string globalName)
+        public CodeDomMethodArg(string parameterName, CodeTypeReference parameterType, string globalName)
         {
             ParameterName = parameterName;
+            ParameterType = parameterType;
             GlobalName = globalName;
         }
 
         public string GlobalName { get; private set; } 
         public string ParameterName { get; private set; }
+        public CodeTypeReference ParameterType { get; private set; }
     }
 }

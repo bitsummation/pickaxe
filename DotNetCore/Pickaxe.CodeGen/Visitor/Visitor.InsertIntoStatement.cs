@@ -28,9 +28,9 @@ namespace Pickaxe.CodeDom.Visitor
     {
         public void Visit(InsertIntoStatement statement)
         {
-            //DoInsert(statement);
+            DoInsert(statement);
         }
-        /*
+
         private void DoInsert(InsertIntoStatement statement)
         {
             var variableArgs = VisitChild(statement.Variable);
@@ -139,7 +139,6 @@ namespace Pickaxe.CodeDom.Visitor
 
             _codeStack.Peek().ParentStatements.Add(methodcall);
             _codeStack.Peek().CodeExpression = methodcall;
-            
-        }*/
+        }
     }
 }

@@ -8,7 +8,7 @@ namespace Pickaxe.CodeDom
 {
     public static class Extensions
     {
-        /*public static Type GenerateType(this CodeTypeReference reference)
+        public static Type GenerateType(this CodeTypeReference reference)
         {
             Type type = Type.GetType(reference.BaseType);
             var typeArgs = new List<Type>();
@@ -25,6 +25,6 @@ namespace Pickaxe.CodeDom
             }
 
             return type;
-        }*/
+        }
     }
 }

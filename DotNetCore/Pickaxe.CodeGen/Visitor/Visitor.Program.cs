@@ -12,10 +12,14 @@
  * limitations under the License.
  */
 
-using Microsoft.CodeAnalysis.CSharp;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Pickaxe.Runtime;
 using Pickaxe.Sdk;
+using System;
+using System.CodeDom;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Pickaxe.CodeDom.Visitor
 {
@@ -23,80 +27,43 @@ namespace Pickaxe.CodeDom.Visitor
     {
         public void Visit(Program program) //generate namespace/class definition
         {
-            _unit = _unit.AddUsings(SyntaxFactory.UsingDirective(SyntaxFactory.ParseName("System")),
-                SyntaxFactory.UsingDirective(SyntaxFactory.ParseName("Pickaxe.Runtime")),
-                SyntaxFactory.UsingDirective(SyntaxFactory.ParseName("Pickaxe.Runtime.Dom")),
-               // SyntaxFactory.UsingDirective(SyntaxFactory.ParseName("System.Linq")),
-                SyntaxFactory.UsingDirective(SyntaxFactory.ParseName("System.Collections.Generic"))
-                );
+            var mainNamespace = new CodeNamespace("");
+            mainNamespace.Imports.Add(new CodeNamespaceImport("System"));
+            mainNamespace.Imports.Add(new CodeNamespaceImport("Pickaxe.Runtime"));
+            mainNamespace.Imports.Add(new CodeNamespaceImport("Pickaxe.Runtime.Dom"));
+            mainNamespace.Imports.Add(new CodeNamespaceImport("System.Collections.Generic"));
+            mainNamespace.Imports.Add(new CodeNamespaceImport("System.Linq"));
 
-            var mainNamespace = SyntaxFactory.NamespaceDeclaration(SyntaxFactory.IdentifierName(""));
+            mainNamespace.Types.Add(_mainType.Type);
 
-            var method = SyntaxFactory.MethodDeclaration(SyntaxFactory.PredefinedType(SyntaxFactory.Token(SyntaxKind.VoidKeyword)), "Run")
-               .WithModifiers(
-                SyntaxFactory.TokenList(
-                   SyntaxFactory.Token(SyntaxKind.PublicKeyword)
-                   )
-               );
+            CodeMemberMethod method = new CodeMemberMethod();
+            method.Name = "Run";
+            method.Attributes = MemberAttributes.Public | MemberAttributes.Final;
 
-            var runStatements = new List<StatementSyntax>();
-            runStatements.Add(SyntaxFactory.ExpressionStatement(SyntaxFactory.InvocationExpression(SyntaxFactory.IdentifierName("InitProxies"))));
+            method.Statements.Add(new CodeMethodInvokeExpression(new CodeMethodReferenceExpression(null, "InitProxies")));
+            
+            _mainType.Type.Members.Add(method);
+            _unit.Namespaces.Add(mainNamespace);
 
-            _mainType.ConstructorAddParameters(
-                SyntaxFactory.Parameter(
-                    SyntaxFactory.Identifier("args"))
-                    .WithType(
-                    SyntaxFactory.ArrayType(
-                        SyntaxFactory.PredefinedType(
-                            SyntaxFactory.Token(SyntaxKind.StringKeyword)))
-                            .AddRankSpecifiers(
-                        SyntaxFactory.ArrayRankSpecifier(
-                            SyntaxFactory.SingletonSeparatedList<ExpressionSyntax>(
-                                SyntaxFactory.OmittedArraySizeExpression())))));
-
-            _mainType.ConstructorAddBaseArgs(
-                SyntaxFactory.ConstructorInitializer(
-                    SyntaxKind.BaseConstructorInitializer,
-                    SyntaxFactory.ArgumentList(
-                        SyntaxFactory.SingletonSeparatedList(
-                            SyntaxFactory.Argument(
-                                SyntaxFactory.IdentifierName("args"))))));
+            _mainType.Constructor.Parameters.Add(new CodeParameterDeclarationExpression(new CodeTypeReference(typeof(string[])), "args"));
+            _mainType.Constructor.BaseConstructorArgs.Add(new CodeVariableReferenceExpression("args"));
 
             foreach (var child in program.Children)
             {
                 var arg = VisitChild(child);
-                runStatements.AddRange(arg.ParentStatements);
+                method.Statements.AddRange(arg.ParentStatements);
             }
 
             var stepMethod = CreateStepMethod();
-            runStatements.Add(
-                SyntaxFactory.ExpressionStatement(
-                    SyntaxFactory.InvocationExpression(SyntaxFactory.IdentifierName(stepMethod.Identifier))));
+            method.Statements.Add(new CodeMethodInvokeExpression(
+                new CodeMethodReferenceExpression(null, stepMethod.Name)));
+            CallOnProgressComplete(stepMethod.Statements);
 
-            stepMethod = stepMethod.AddBodyStatements(CallOnProgressComplete());
-
-            _mainType.ConstructorStatement(
-                SyntaxFactory.ExpressionStatement(
-                    SyntaxFactory.AssignmentExpression(
-                        SyntaxKind.SimpleAssignmentExpression,
-                        SyntaxFactory.IdentifierName("TotalOperations"),
-                        SyntaxFactory.BinaryExpression(
-                            SyntaxKind.AddExpression,
-                            SyntaxFactory.IdentifierName("TotalOperations"),
-                            SyntaxFactory.LiteralExpression(
-                                SyntaxKind.NumericLiteralExpression,
-                                SyntaxFactory.Literal(_totalOperations))
-                                ))));
-
-            method = method.WithBody(SyntaxFactory.Block(
-                 runStatements
-             ));
-
-            _mainType.AddMember(stepMethod);
-            _mainType.AddMember(method);
-            _mainType.AddMember(_mainType.GetConstructor());
-            mainNamespace = mainNamespace.AddMembers(_mainType.GetClassDeclaration());
-            _unit = _unit.AddMembers(mainNamespace);
+            _mainType.Constructor.Statements.Add(new CodeAssignStatement(new CodePropertyReferenceExpression(null, "TotalOperations"),
+                    new CodeBinaryOperatorExpression(new CodePropertyReferenceExpression(null, "TotalOperations"),
+                    CodeBinaryOperatorType.Add,
+                    new CodePrimitiveExpression(_totalOperations))
+                    ));
         }
     }
 }

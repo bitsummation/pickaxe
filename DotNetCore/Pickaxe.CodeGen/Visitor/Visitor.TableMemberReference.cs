@@ -12,12 +12,15 @@
  * limitations under the License.
  */
 
-using Microsoft.CodeAnalysis.CSharp;
 using Pickaxe.CodeDom.Semantic;
 using Pickaxe.Runtime;
 using Pickaxe.Sdk;
 using System;
+using System.CodeDom;
+using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Pickaxe.CodeDom.Visitor
 {
@@ -27,13 +30,7 @@ namespace Pickaxe.CodeDom.Visitor
         {
             var selectInfo = new SelectArgsInfo();
 
-            _codeStack.Peek().Scope = new ScopeData<Type>
-            {
-                Type = typeof(string),
-                TypeSyntax = SyntaxFactory.PredefinedType(
-                    SyntaxFactory.Token(SyntaxKind.StringKeyword))
-            };
-
+            _codeStack.Peek().Scope = new ScopeData<Type> { Type = typeof(string), CodeDomReference = new CodeTypeReference(typeof(string)) };
             var rowArgs = VisitChild(variable.RowReference);
 
             var expression = new CodeFieldReferenceExpression(rowArgs.CodeExpression, variable.Member);
@@ -41,6 +38,7 @@ namespace Pickaxe.CodeDom.Visitor
 
             if (Scope.Current.IsTableRowRegistered(variable.RowReference.Id))
             {
+                
                 var descriptor = Scope.Current.GetTableDescriptor(variable.RowReference.Id);
                 var dynamicAlias = Scope.Current.AliasType<DynamicObject>();
                 if (dynamicAlias.Length > 0) //alias is a dynamic type so we get it from there
@@ -72,6 +70,8 @@ namespace Pickaxe.CodeDom.Visitor
 
             selectInfo.ColumnName = variable.Member;
             _codeStack.Peek().Tag = selectInfo;
+
+            
         }
     }
 }

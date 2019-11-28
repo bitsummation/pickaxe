@@ -12,8 +12,7 @@
  * limitations under the License.
  */
 
-using Microsoft.CodeAnalysis.CSharp;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
+using System.CodeDom;
 
 namespace Pickaxe.CodeDom
 {
@@ -21,64 +20,17 @@ namespace Pickaxe.CodeDom
     {
         public CodeDomTypeDefinition(string typeName)
         {
-            var type = SyntaxFactory.ClassDeclaration(typeName).WithModifiers(
-              SyntaxFactory.TokenList(
-                  SyntaxFactory.Token(SyntaxKind.PublicKeyword)
-                  )
-              );
+            Type = new CodeTypeDeclaration(typeName);
+            Type.IsClass = true;
+            
+            CodeConstructor classConstructor = new CodeConstructor();
+            classConstructor.Attributes = MemberAttributes.Public;
+            Constructor = classConstructor;
 
-            Constructor = SyntaxFactory.ConstructorDeclaration(typeName)
-                .WithModifiers(
-                    SyntaxFactory.TokenList(
-                        SyntaxFactory.Token(SyntaxKind.PublicKeyword)
-                  )).WithBody(SyntaxFactory.Block());
-
-
-            Type = type;
+            Type.Members.Add(Constructor);
         }
 
-        public void AddBaseType(string baseType)
-        {
-            Type = Type.AddBaseListTypes(SyntaxFactory.SimpleBaseType(SyntaxFactory.IdentifierName(baseType)));
-        }
-
-        public void SetModifier(SyntaxKind kind)
-        {
-            Type = Type.WithModifiers(SyntaxFactory.TokenList(
-                        SyntaxFactory.Token(kind)));
-        }
-
-        public void AddMember(MemberDeclarationSyntax member)
-        {
-            Type = Type.AddMembers(member);
-        }
-
-        public void ConstructorAddParameters(ParameterSyntax parameter)
-        {
-            Constructor = Constructor.AddParameterListParameters(parameter);   
-        }
-
-        public void ConstructorAddBaseArgs(ConstructorInitializerSyntax initializer)
-        {
-            Constructor = Constructor.WithInitializer(initializer);
-        }
-
-        public void ConstructorStatement(StatementSyntax statement)
-        {
-            Constructor = Constructor.AddBodyStatements(statement);
-        }
-
-        public ClassDeclarationSyntax GetClassDeclaration()
-        {
-            return Type;
-        }
-
-        public ConstructorDeclarationSyntax GetConstructor()
-        {
-            return Constructor;
-        }
-
-        private ClassDeclarationSyntax Type { get; set; }
-        private ConstructorDeclarationSyntax Constructor { get; set; }
+        public CodeTypeDeclaration Type { get; private set; }
+        public CodeConstructor Constructor { get; set; }
     }
 }

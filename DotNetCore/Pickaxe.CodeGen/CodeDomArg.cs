@@ -12,9 +12,13 @@
  * limitations under the License.
  */
 
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 
 namespace Pickaxe.CodeDom
 {
@@ -24,28 +28,28 @@ namespace Pickaxe.CodeDom
         {
         }
 
-        public CodeDomArg(ExpressionSyntax codeExpression)
+        public CodeDomArg(CodeExpression codeExpression)
             : this(codeExpression, null)
         {
         }
 
-        public CodeDomArg(ExpressionSyntax codeExpression, IScopeData scope)
+        public CodeDomArg(CodeExpression codeExpression, IScopeData scope)
         {
             MethodIdentifier = Guid.NewGuid().ToString("N");
             CodeExpression = codeExpression;
             Scope = scope;
 
-            ParentMemberDefinitions = new List<MemberDeclarationSyntax>();
-            ParentStatements = new List<StatementSyntax>();
+            ParentMemberDefinitions = new CodeTypeMemberCollection();
+            ParentStatements = new CodeStatementCollection();
         }
 
         public object Tag { get; set; }
 
-        public List<MemberDeclarationSyntax> ParentMemberDefinitions { get; set; }
-        public List<StatementSyntax> ParentStatements { get; set; }
+        public CodeTypeMemberCollection ParentMemberDefinitions { get; set; }
+        public CodeStatementCollection ParentStatements { get; set; }
 
         public string MethodIdentifier { get; private set; }
-        public ExpressionSyntax CodeExpression { get; set; }
+        public CodeExpression CodeExpression { get; set; }
         public IScopeData Scope { get; set; }
 
     }

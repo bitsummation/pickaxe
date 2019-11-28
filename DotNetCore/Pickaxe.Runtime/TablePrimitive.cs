@@ -12,9 +12,12 @@
  * limitations under the License.
  */
 
-using Microsoft.CodeAnalysis.CSharp;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using System;
+using System.CodeDom;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Pickaxe.Runtime
 {
@@ -69,7 +72,7 @@ namespace Pickaxe.Runtime
         public virtual bool IsIdentity { get { return false; } }
         public abstract string TypeString { get; }
         public abstract Type Type { get; }
-        public abstract ExpressionSyntax ToNative(ExpressionSyntax expression);
+        public abstract CodeExpression ToNative(CodeExpression expression);
 
         private class IntegerImpl : TablePrimitive
         {
@@ -83,16 +86,9 @@ namespace Pickaxe.Runtime
                 get { return typeof(int?); }
             }
 
-            public override ExpressionSyntax ToNative(ExpressionSyntax expression)
+            public override CodeExpression ToNative(CodeExpression expression)
             {
-                return SyntaxFactory.InvocationExpression(
-               SyntaxFactory.MemberAccessExpression(SyntaxKind.SimpleMemberAccessExpression, SyntaxFactory.IdentifierName("Convert"), SyntaxFactory.IdentifierName("ToInt32"))
-               ).WithArgumentList(
-               SyntaxFactory.ArgumentList(
-                   SyntaxFactory.SingletonSeparatedList(
-                   SyntaxFactory.Argument(
-                       expression
-                       ))));
+                return new CodeMethodInvokeExpression(new CodeTypeReferenceExpression("Convert"), "ToInt32", expression);
             }
         }
 
@@ -118,16 +114,9 @@ namespace Pickaxe.Runtime
                 get { return typeof(float?); }
             }
 
-            public override ExpressionSyntax ToNative(ExpressionSyntax expression)
+            public override CodeExpression ToNative(CodeExpression expression)
             {
-                return SyntaxFactory.InvocationExpression(
-                 SyntaxFactory.MemberAccessExpression(SyntaxKind.SimpleMemberAccessExpression, SyntaxFactory.IdentifierName("Convert"), SyntaxFactory.IdentifierName("ToSingle"))
-                 ).WithArgumentList(
-                 SyntaxFactory.ArgumentList(
-                     SyntaxFactory.SingletonSeparatedList(
-                     SyntaxFactory.Argument(
-                         expression
-                         ))));
+                return new CodeMethodInvokeExpression(new CodeTypeReferenceExpression("Convert"), "ToSingle", expression);
             }
         }
 
@@ -143,16 +132,9 @@ namespace Pickaxe.Runtime
                 get { return typeof(string); }
             }
 
-            public override ExpressionSyntax ToNative(ExpressionSyntax expression)
+            public override CodeExpression ToNative(CodeExpression expression)
             {
-                return SyntaxFactory.InvocationExpression(
-                    SyntaxFactory.MemberAccessExpression(SyntaxKind.SimpleMemberAccessExpression, SyntaxFactory.IdentifierName("Convert"), SyntaxFactory.IdentifierName("ToString"))
-                   ).WithArgumentList(
-                   SyntaxFactory.ArgumentList(
-                       SyntaxFactory.SingletonSeparatedList(
-                       SyntaxFactory.Argument(
-                           expression
-                           ))));
+                return new CodeMethodInvokeExpression(new CodeTypeReferenceExpression("Convert"), "ToString", expression);
             }
         }
 
@@ -168,17 +150,9 @@ namespace Pickaxe.Runtime
                 get { return typeof(DateTime?); }
             }
 
-            public override ExpressionSyntax ToNative(ExpressionSyntax expression)
+            public override CodeExpression ToNative(CodeExpression expression)
             {
-                return SyntaxFactory.InvocationExpression(
-                    SyntaxFactory.MemberAccessExpression(SyntaxKind.SimpleMemberAccessExpression, SyntaxFactory.IdentifierName("Convert"), SyntaxFactory.IdentifierName("ToDateTime"))
-                    ).WithArgumentList(
-                    SyntaxFactory.ArgumentList(
-                        SyntaxFactory.SingletonSeparatedList(
-                        SyntaxFactory.Argument(
-                            expression
-                            ))));
-
+                return new CodeMethodInvokeExpression(new CodeTypeReferenceExpression("Convert"), "ToDateTime", expression);
             }
         }
     }

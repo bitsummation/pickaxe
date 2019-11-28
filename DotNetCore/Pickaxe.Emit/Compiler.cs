@@ -1,12 +1,13 @@
 ﻿using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Microsoft.CodeAnalysis.CSharp;
 using Pickaxe.CodeDom.Visitor;
-using Pickaxe.Parser;
 using System;
+using System.CodeDom;
+using System.CodeDom.Compiler;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 
 namespace Pickaxe.Emit
 {
@@ -32,7 +33,7 @@ namespace Pickaxe.Emit
             var treeList = new List<SyntaxTree>();
             foreach (var source in _sources)
             {
-                var parser = new CodeParser(source);
+                var parser = new Parser.CodeParser(source);
                 var ast = parser.Parse();
                 if (parser.Errors.Any()) //antlr parse errors
                     Errors.AddRange(parser.Errors);
@@ -40,13 +41,35 @@ namespace Pickaxe.Emit
                 if (!Errors.Any())
                 {
                     var generator = new CodeDomGenerator(ast);
-                    treeList.Add(generator.Generate());
+                    var unit = generator.Generate();
+
                     if (generator.Errors.Any()) //Semantic erros
                         Errors.AddRange(generator.Errors);
+                    else
+                    {
+                        SyntaxTree tree = CSharpSyntaxTree.ParseText(ToCSharpSource(unit));
+                        treeList.Add(tree);
+                    }
                 }
             }
 
             return treeList.ToArray();
+        }
+
+        public static string ToCSharpSource(CodeCompileUnit unit)
+        {
+            string code = string.Empty;
+            var provider = CodeDomProvider.CreateProvider("CSharp");
+            var options = new CodeGeneratorOptions();
+            options.BracingStyle = "C";
+            using (StringWriter writer = new StringWriter())
+            {
+                provider.GenerateCodeFromCompileUnit(
+                  unit, writer, options);
+                code = writer.ToString();
+            }
+
+            return code;
         }
 
         public string[] ToCode() //generate source code.

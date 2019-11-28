@@ -27,7 +27,6 @@ namespace Pickaxe.CodeDom.Visitor
     {
         public void Visit(VariableDeclarationStatement statement)
         {
-            /*
             var statementDomArg = VisitChild(statement.Expression);
 
             if (Scope.Current.IsCurrentScopeRegistered(statement.Variable)) //if variable in the same scope is already registered we add an error
@@ -42,7 +41,6 @@ namespace Pickaxe.CodeDom.Visitor
 
             _codeStack.Peek().Scope = statementDomArg.Scope;
             _codeStack.Peek().ParentStatements.Add(assignment);
-            */
         } 
     }
 }

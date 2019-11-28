@@ -26,11 +26,10 @@ namespace Pickaxe.CodeDom.Visitor
     {
         public void Visit(TakeTextStatement statement)
         {
-           /* var expression = new CodeMethodInvokeExpression();
+            var expression = new CodeMethodInvokeExpression();
             expression.Method.MethodName = "TakeText";
 
             _codeStack.Peek().CodeExpression = expression;
-            */
         }
     }
 }

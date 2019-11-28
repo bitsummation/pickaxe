@@ -23,7 +23,7 @@ namespace Pickaxe.CodeDom.Visitor
 {
     public partial class CodeDomGenerator : IAstVisitor
     {
-        /*private void DoBooleanAggregate(BooleanExpression expression, CodeBinaryOperatorType operation)
+        private void DoBooleanAggregate(BooleanExpression expression, CodeBinaryOperatorType operation)
         {
             var leftArgs = VisitChild(expression.Left, new CodeDomArg() { Scope = _codeStack.Peek().Scope });
             var rightArgs = VisitChild(expression.Right, new CodeDomArg() { Scope = _codeStack.Peek().Scope });
@@ -34,11 +34,11 @@ namespace Pickaxe.CodeDom.Visitor
                 _codeStack.Peek().Tag = rightArgs.Tag;
 
             _codeStack.Peek().CodeExpression = new CodeBinaryOperatorExpression(leftArgs.CodeExpression, operation, rightArgs.CodeExpression);
-        }*/
+        }
 
         public void Visit(AndExpression expression)
         {
-            //DoBooleanAggregate(expression, CodeBinaryOperatorType.BooleanAnd);
+            DoBooleanAggregate(expression, CodeBinaryOperatorType.BooleanAnd);
         }
     }
 }

@@ -27,7 +27,7 @@ namespace Pickaxe.CodeDom.Visitor
 {
     public partial class CodeDomGenerator : IAstVisitor
     {
-        /*private IScopeData CreateBufferTable(BufferTable table)
+        private IScopeData CreateBufferTable(BufferTable table)
         {
             var descriptor = new TableDescriptor(typeof(BufferTable<>));
             var bufferTable = new CodeTypeDeclaration(table.Variable) { TypeAttributes = TypeAttributes.NestedPrivate };
@@ -60,11 +60,11 @@ namespace Pickaxe.CodeDom.Visitor
 
             Scope.Current.RegisterTable(table.Variable, descriptor, bufferCodeDomType);
             return new ScopeData<TableDescriptor> { Type = descriptor, CodeDomReference = bufferCodeDomType };
-        }*/
+        }
 
         public void Visit(BufferTable table)
         {
-           // CreateBufferTable(table);
+            CreateBufferTable(table);
         }
     }
 }

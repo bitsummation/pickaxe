@@ -25,7 +25,6 @@ namespace Pickaxe.CodeDom.Visitor
     {
         public void Visit(ProxyStatement statement)
         {
-            /*
             var selectArgs = VisitChild(statement.Test);
             VisitChild(statement.List);
 
@@ -46,8 +45,7 @@ namespace Pickaxe.CodeDom.Visitor
                 new CodePrimitiveExpression(0))
                 ));
 
-            _mainType.Type.Members.Add(method);*/
-
+            _mainType.Type.Members.Add(method);
         }
     }
 }

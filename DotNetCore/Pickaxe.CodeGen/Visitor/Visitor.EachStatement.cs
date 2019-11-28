@@ -26,7 +26,6 @@ namespace Pickaxe.CodeDom.Visitor
     {
         public void Visit(EachStatement eachStatement)
         {
-            /*
             using (Scope.Push(_mainType))
             {
                 var iterationArg = VisitChild(eachStatement.IterationVariable);
@@ -74,8 +73,7 @@ namespace Pickaxe.CodeDom.Visitor
                 _mainType.Type.Members.Add(method);
                 _codeStack.Peek().ParentStatements.Add(methodcall);
                 _codeStack.Peek().CodeExpression = methodcall;
-                
-            }*/
+            }
         }
     }
 }

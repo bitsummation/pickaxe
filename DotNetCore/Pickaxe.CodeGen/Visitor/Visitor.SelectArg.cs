@@ -12,7 +12,6 @@
  * limitations under the License.
  */
 
-using Microsoft.CodeAnalysis.CSharp;
 using Pickaxe.Runtime;
 using Pickaxe.Sdk;
 using System;
@@ -41,13 +40,7 @@ namespace Pickaxe.CodeDom.Visitor
             var scope = childDomArgs[0].Scope;
             for (int x = 1; x < childDomArgs.Count; x++)
             {
-                expression = SyntaxFactory.InvocationExpression(
-                                    SyntaxFactory.MemberAccessExpression(
-                                        SyntaxKind.SimpleMemberAccessExpression,
-                                        SyntaxFactory.IdentifierName("Helper"),
-                                        SyntaxFactory.IdentifierName("NullConcat")))
-                                        .AddArgumentListArguments(SyntaxFactory.Argument(expression), SyntaxFactory.Argument(childDomArgs[x].CodeExpression));
-
+                expression = new CodeMethodInvokeExpression(new CodeTypeReferenceExpression(typeof(Helper)), "NullConcat", expression, childDomArgs[x].CodeExpression);
                 scope = childDomArgs[x].Scope;
             }
 

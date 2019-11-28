@@ -26,7 +26,6 @@ namespace Pickaxe.CodeDom.Visitor
     {
         public void Visit(VariableAssignmentStatement statement)
         {
-            /*
             var leftArgs = VisitChild(statement.Left);
             var rightArgs = VisitChild(statement.Right);
 
@@ -42,7 +41,6 @@ namespace Pickaxe.CodeDom.Visitor
 
             _codeStack.Peek().Scope = rightArgs.Scope;
             _codeStack.Peek().ParentStatements.Add(assignment);
-            */
         }
     }
     

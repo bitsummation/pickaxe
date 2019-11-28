@@ -27,7 +27,6 @@ namespace Pickaxe.CodeDom.Visitor
     {
         public void Visit(ExpandExpression expression)
         {
-            /*
             var fromDomArgs = VisitChild(expression.From);
             var toDomArgs = VisitChild(expression.To);
             var expressionArgs = VisitChild(expression.Expression);
@@ -66,7 +65,6 @@ namespace Pickaxe.CodeDom.Visitor
 
             _codeStack.Peek().CodeExpression = methodcall;
             _codeStack.Peek().Scope = new ScopeData<TableDescriptor> { Type = Expand.Columns, CodeDomReference = method.ReturnType };
-            */
         }
     }
 }

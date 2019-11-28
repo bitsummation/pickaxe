@@ -12,11 +12,12 @@
  * limitations under the License.
  */
 
-using Microsoft.CodeAnalysis.CSharp;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Pickaxe.Runtime;
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
+using System.Reflection;
+using System.Security.Cryptography;
 
 namespace Pickaxe.CodeDom
 {
@@ -24,7 +25,6 @@ namespace Pickaxe.CodeDom
     {
         protected Dictionary<string, IScopeData> _scope;
         private Scope _parent;
-        private CodeDomTypeDefinition _mainType;
 
         public static Scope Current { get; private set; }
 
@@ -37,39 +37,26 @@ namespace Pickaxe.CodeDom
             _scope = new Dictionary<string, IScopeData>();
             ScopeGuid = Guid.NewGuid().ToString("N");
             ScopeIdentifier = "Scope_" +  ScopeGuid;
-            if (mainType != null)
-            {
-                _mainType = mainType;
+            if(mainType != null)
                 CreateType(mainType);
-            }
 
-            JoinMembers = new List<MemberDeclarationSyntax>();
+            JoinMembers = new List<CodeMemberField>();
         }
 
         private void CreateType(CodeDomTypeDefinition mainType)
         {
             Type = new CodeDomTypeDefinition(ScopeIdentifier);
-            Type.SetModifier(SyntaxKind.PrivateKeyword);
+            Type.Type.TypeAttributes = TypeAttributes.NestedPrivate;
 
-            mainType.AddMember(SyntaxFactory.FieldDeclaration(
-                SyntaxFactory.VariableDeclaration(
-                    SyntaxFactory.IdentifierName(ScopeIdentifier))
-                        .AddVariables(
-                            SyntaxFactory.VariableDeclarator(
-                                SyntaxFactory.Identifier("_" + ScopeIdentifier))
-                                )).
-                                WithModifiers(
-                SyntaxFactory.TokenList(
-                    SyntaxFactory.Token(SyntaxKind.PrivateKeyword))));
+            var classType = new CodeTypeReference(ScopeIdentifier);
+            mainType.Type.Members.Add(
+                new CodeMemberField(classType, "_" + ScopeIdentifier));
 
-            mainType.ConstructorStatement(SyntaxFactory.ExpressionStatement(
-                SyntaxFactory.AssignmentExpression(
-                    SyntaxKind.SimpleAssignmentExpression,
-                    SyntaxFactory.IdentifierName("_" + ScopeIdentifier),
-                    SyntaxFactory.ObjectCreationExpression(
-                        SyntaxFactory.IdentifierName(ScopeIdentifier))
-                        .WithArgumentList(
-                        SyntaxFactory.ArgumentList()))));
+            mainType.Constructor.Statements.Add(new CodeAssignStatement(
+              new CodeSnippetExpression("_" + ScopeIdentifier),
+              new CodeObjectCreateExpression(classType)));
+
+            mainType.Type.Members.Add(Type.Type);
         }
 
         public static void Reset()
@@ -95,12 +82,6 @@ namespace Pickaxe.CodeDom
 
         private void Pop()
         {
-            if (Type != null)
-            {
-                Type.AddMember(Type.GetConstructor());
-                _mainType.AddMember(Type.GetClassDeclaration());
-            }
-
             Current = Current._parent;
         }
 
@@ -111,14 +92,14 @@ namespace Pickaxe.CodeDom
             _scope[variable] = data;
         }
 
-        public void RegisterPrimitive(string variable, Type type, TypeSyntax typeSyntax)
+        public void RegisterPrimitive(string variable, Type type, CodeTypeReference codeDomType)
         {
-            _scope[variable] = new ScopeData<Type> { Type = type, TypeSyntax = typeSyntax};
+            _scope[variable] = new ScopeData<Type> { Type = type, CodeDomReference = codeDomType };
         }
 
-        public void RegisterTable(string variable, TableDescriptor descriptor, TypeSyntax typeSyntax)
+        public void RegisterTable(string variable, TableDescriptor descriptor, CodeTypeReference codeDomType)
         {
-            _scope[variable] = new ScopeData<TableDescriptor> { Type = descriptor, TypeSyntax = typeSyntax};
+            _scope[variable] = new ScopeData<TableDescriptor> { Type = descriptor, CodeDomReference = codeDomType };
         }
 
         private static Scope FindScope(Scope scope, string variable)
@@ -161,7 +142,7 @@ namespace Pickaxe.CodeDom
         {
             var scope = FindScope(variable);
             if (scope != null && scope._scope.ContainsKey(variable))
-                return (scope._scope[variable] is ScopeData<TableDescriptor> /*&& scope._scope[variable].CodeDomReference.TypeArguments.Count > 0*/);
+                return (scope._scope[variable] is ScopeData<TableDescriptor> && scope._scope[variable].CodeDomReference.TypeArguments.Count > 0);
 
             return false;
         }
@@ -170,7 +151,7 @@ namespace Pickaxe.CodeDom
         {
             var scope = FindScope(variable);
             if (scope != null && scope._scope.ContainsKey(variable))
-                return (scope._scope[variable] is ScopeData<TableDescriptor> /*&& scope._scope[variable].CodeDomReference.TypeArguments.Count == 0*/ );
+                return (scope._scope[variable] is ScopeData<TableDescriptor> && scope._scope[variable].CodeDomReference.TypeArguments.Count == 0);
 
             return false;
         }
@@ -196,7 +177,7 @@ namespace Pickaxe.CodeDom
         }
 
 
-        public IList<MemberDeclarationSyntax> JoinMembers { get; set; }
+        public IList<CodeMemberField> JoinMembers { get; set; }
 
         public virtual SelectMatch[] FindTableVariable(string variable)
         {
@@ -218,9 +199,9 @@ namespace Pickaxe.CodeDom
             return null;
         }
 
-        public virtual ExpressionSyntax CreateExpression(string variable)
+        public virtual CodeExpression CreateExpression(string variable)
         {
-            return SyntaxFactory.IdentifierName("_" + ScopeIdentifier + "." + variable);
+            return new CodeVariableReferenceExpression("_" + ScopeIdentifier + "." + variable);
         }
 
         public void Dispose()

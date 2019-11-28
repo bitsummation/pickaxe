@@ -27,7 +27,6 @@ namespace Pickaxe.CodeDom.Visitor
     {
         public void Visit(ProxyList statement)
         {
-            /*
             var property = new CodeMemberProperty();
             property.Attributes = MemberAttributes.Override | MemberAttributes.Family;
             property.Name = "Proxies";
@@ -50,8 +49,7 @@ namespace Pickaxe.CodeDom.Visitor
 
             property.GetStatements.Add(new CodeMethodReturnStatement(new CodeVariableReferenceExpression("proxies")));
 
-            _mainType.Type.Members.Add(property); */
-
+            _mainType.Type.Members.Add(property);
         }
     }
 }

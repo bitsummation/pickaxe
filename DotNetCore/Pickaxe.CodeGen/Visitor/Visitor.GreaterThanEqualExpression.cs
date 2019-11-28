@@ -25,7 +25,7 @@ namespace Pickaxe.CodeDom.Visitor
     {
         public void Visit(GreaterThanEqualExpression expression)
         {
-            //DoBoolean(expression, CodeBinaryOperatorType.GreaterThanOrEqual);
+            DoBoolean(expression, CodeBinaryOperatorType.GreaterThanOrEqual);
         }
     }
 }

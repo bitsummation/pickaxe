@@ -26,7 +26,7 @@ namespace Pickaxe.CodeDom.Visitor
     {
         public void Visit(ProcedureDefinition statement)
         {
-           /*var argList = new List<CodeParameterDeclarationExpression>();
+            var argList = new List<CodeParameterDeclarationExpression>();
             foreach (var arg in statement.Args)
             {
                 var variableType = TablePrimitive.FromString(arg.Type).Type;
@@ -48,7 +48,7 @@ namespace Pickaxe.CodeDom.Visitor
 
             //visit block
             var blockArgs = VisitChild(statement.Block);
-            _codeStack.Peek().ParentStatements.AddRange(blockArgs.ParentStatements);*/
+            _codeStack.Peek().ParentStatements.AddRange(blockArgs.ParentStatements);
         }
     }
 }

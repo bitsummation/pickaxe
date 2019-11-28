@@ -27,13 +27,11 @@ namespace Pickaxe.CodeDom.Visitor
     {
         public void Visit(TableColumnArg arg)
         {
-            /*
             var field = new CodeMemberField();
             field.Name = arg.Variable;
             field.Attributes = MemberAttributes.Public | MemberAttributes.Final;
             field.Type = new CodeTypeReference(TablePrimitive.FromString(arg.Type).Type);
             _codeStack.Peek().ParentMemberDefinitions.Add(field);
-            */
         }
     }
 }

@@ -28,8 +28,8 @@ namespace Pickaxe.CodeDom.Visitor
             var leftArgs = VisitChild(op.Left);
             var rightArgs = VisitChild(op.Rigth);
 
-            //_codeStack.Peek().Scope = rightArgs.Scope;
-            //_codeStack.Peek().CodeExpression = new CodeBinaryOperatorExpression(leftArgs.CodeExpression, CodeBinaryOperatorType.Add, rightArgs.CodeExpression);
+            _codeStack.Peek().Scope = rightArgs.Scope;
+            _codeStack.Peek().CodeExpression = new CodeBinaryOperatorExpression(leftArgs.CodeExpression, CodeBinaryOperatorType.Add, rightArgs.CodeExpression);
         }
     }
 }

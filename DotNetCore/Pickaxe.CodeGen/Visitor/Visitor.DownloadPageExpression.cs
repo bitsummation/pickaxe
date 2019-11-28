@@ -12,89 +12,56 @@
  * limitations under the License.
  */
 
-using Microsoft.CodeAnalysis.CSharp;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
-using Pickaxe.CodeDom.Semantic;
 using Pickaxe.Runtime;
+using Pickaxe.CodeDom.Semantic;
 using Pickaxe.Sdk;
 using System;
-using System.Collections.Generic;
+using System.CodeDom;
 
 namespace Pickaxe.CodeDom.Visitor
 {
     public partial class CodeDomGenerator : IAstVisitor
     {
-        private void GenerateDownloadDeffered(DownloadPageExpression expression, ref GenericNameSyntax returnType, int line)
+        private void GenerateDownloadDeffered(DownloadPageExpression expression, ref CodeTypeReference returnType, int line)
         {
             var statementDomArg = VisitChild(expression.Statement);
             //if in select context pick the lazy download type~
             var downloadType = Scope.Current.IsSelect ? "SelectDownloadTable" : "VariableDownloadTable";
 
-            if (statementDomArg.Scope.TypeSyntax.GetText().ToString() == typeof(Table<>).Name)
+            if (statementDomArg.Scope.CodeDomReference.BaseType == typeof(Table<>).Name)
             {
                 if (statementDomArg.Tag != null)
                     ((Action)statementDomArg.Tag)(); //remove call to OnSelect
             }
-            else if (statementDomArg.Scope.TypeSyntax.GetText().ToString() != typeof(string).Name.ToLower())
+            else if (statementDomArg.Scope.CodeDomReference.BaseType != typeof(string).FullName)
                 Errors.Add(new DownloadRequireString(new Semantic.LineInfo(expression.Statement.Line.Line, expression.Statement.Line.CharacterPosition)));
 
-            var method = SyntaxFactory.MethodDeclaration(
-                returnType,
-                 SyntaxFactory.Identifier("Download_" + statementDomArg.MethodIdentifier))
-                 .WithModifiers(
-                 SyntaxFactory.TokenList(
-                     SyntaxFactory.Token(SyntaxKind.PrivateKeyword)))
-                     .WithBody(
-                 SyntaxFactory.Block());
+            CodeMemberMethod method = new CodeMemberMethod();
+            method.Name = "Download_" + statementDomArg.MethodIdentifier;
+            method.ReturnType = returnType;
 
-            var methodStatements = new List<StatementSyntax>();
-            GenerateCallStatement(methodStatements, line);
+            _mainType.Type.Members.Add(method);
+            GenerateCallStatement(method.Statements, line);
 
-            ExpressionSyntax argsExpression = null;
+            CodeExpression argsExpression = null;
 
             int threadCount = 1;
-
-            argsExpression = SyntaxFactory.InvocationExpression(
-                                    SyntaxFactory.MemberAccessExpression(
-                                        SyntaxKind.SimpleMemberAccessExpression,
-                                        SyntaxFactory.IdentifierName("LazyDownloadArgs"),
-                                        SyntaxFactory.IdentifierName("CreateWebRequestArgs")))
-                                .AddArgumentListArguments(
-                                                SyntaxFactory.Argument(
-                                                    SyntaxFactory.ThisExpression()),
-                                                SyntaxFactory.Argument(
-                                                    SyntaxFactory.LiteralExpression(
-                                                        SyntaxKind.NumericLiteralExpression,
-                                                        SyntaxFactory.Literal(line))),
-                                                SyntaxFactory.Argument(
-                                                    SyntaxFactory.LiteralExpression(
-                                                        SyntaxKind.NumericLiteralExpression,
-                                                        SyntaxFactory.Literal(threadCount))),
-                                                SyntaxFactory.Argument(statementDomArg.CodeExpression));
+            argsExpression = new CodeMethodInvokeExpression(new CodeTypeReferenceExpression(typeof(LazyDownloadArgs)), "CreateWebRequestArgs",
+                    new CodeThisReferenceExpression(),
+                    new CodePrimitiveExpression(line),
+                    new CodePrimitiveExpression(threadCount),
+                    statementDomArg.CodeExpression);
 
             if (expression.ThreadHint != null)
             {
                 threadCount = expression.ThreadHint.ThreadCount;
 
-                argsExpression = SyntaxFactory.InvocationExpression(
-                                     SyntaxFactory.MemberAccessExpression(
-                                         SyntaxKind.SimpleMemberAccessExpression,
-                                         SyntaxFactory.IdentifierName("LazyDownloadArgs"),
-                                         SyntaxFactory.IdentifierName("CreateWebRequestArgs")))
-                                 .AddArgumentListArguments(
-                                                 SyntaxFactory.Argument(
-                                                     SyntaxFactory.ThisExpression()),
-                                                 SyntaxFactory.Argument(
-                                                     SyntaxFactory.LiteralExpression(
-                                                         SyntaxKind.NumericLiteralExpression,
-                                                         SyntaxFactory.Literal(line))),
-                                                 SyntaxFactory.Argument(
-                                                     SyntaxFactory.LiteralExpression(
-                                                         SyntaxKind.NumericLiteralExpression,
-                                                         SyntaxFactory.Literal(threadCount))),
-                                                 SyntaxFactory.Argument(statementDomArg.CodeExpression));
+                argsExpression = new CodeMethodInvokeExpression(new CodeTypeReferenceExpression(typeof(LazyDownloadArgs)), "CreateWebRequestArgs",
+                    new CodeThisReferenceExpression(),
+                    new CodePrimitiveExpression(line),
+                    new CodePrimitiveExpression(threadCount),
+                    statementDomArg.CodeExpression);
             }
-
             string cssWaitElement = null;
             int cssTimeout = 5;
             if(expression.JSTableHint != null)
@@ -102,99 +69,78 @@ namespace Pickaxe.CodeDom.Visitor
                 cssWaitElement = expression.JSTableHint.CssWaitElement;
                 cssTimeout = expression.JSTableHint.CssTimeoutSeconds;
 
-                argsExpression = SyntaxFactory.InvocationExpression(
-                                   SyntaxFactory.MemberAccessExpression(
-                                       SyntaxKind.SimpleMemberAccessExpression,
-                                       SyntaxFactory.IdentifierName("LazyDownloadArgs"),
-                                       SyntaxFactory.IdentifierName("CreateSeleniumArgs")))
-                               .AddArgumentListArguments(
-                                               SyntaxFactory.Argument(
-                                                   SyntaxFactory.ThisExpression()),
-                                               SyntaxFactory.Argument(
-                                                   SyntaxFactory.LiteralExpression(
-                                                       SyntaxKind.NumericLiteralExpression,
-                                                       SyntaxFactory.Literal(line))),
-                                               SyntaxFactory.Argument(
-                                                   SyntaxFactory.LiteralExpression(
-                                                       SyntaxKind.NumericLiteralExpression,
-                                                       SyntaxFactory.Literal(threadCount))),
-                                                SyntaxFactory.Argument(
-                                                   SyntaxFactory.LiteralExpression(
-                                                       SyntaxKind.NumericLiteralExpression,
-                                                       SyntaxFactory.Literal(cssWaitElement))),
-                                                SyntaxFactory.Argument(
-                                                   SyntaxFactory.LiteralExpression(
-                                                       SyntaxKind.NumericLiteralExpression,
-                                                       SyntaxFactory.Literal(cssTimeout))),
-                                               SyntaxFactory.Argument(statementDomArg.CodeExpression));
+                argsExpression = new CodeMethodInvokeExpression(new CodeTypeReferenceExpression(typeof(LazyDownloadArgs)), "CreateSeleniumArgs",
+                    new CodeThisReferenceExpression(),
+                    new CodePrimitiveExpression(line),
+                    new CodePrimitiveExpression(threadCount),
+                    new CodePrimitiveExpression(cssWaitElement),
+                    new CodePrimitiveExpression(cssTimeout),
+                    statementDomArg.CodeExpression);
             }
 
             if (expression.JavascriptCode != null)
             {
-                argsExpression = SyntaxFactory.InvocationExpression(
-                                  SyntaxFactory.MemberAccessExpression(
-                                      SyntaxKind.SimpleMemberAccessExpression,
-                                      SyntaxFactory.IdentifierName("LazyDownloadArgs"),
-                                      SyntaxFactory.IdentifierName("CreateJavaScriptArgs")))
-                              .AddArgumentListArguments(
-                                              SyntaxFactory.Argument(
-                                                  SyntaxFactory.ThisExpression()),
-                                              SyntaxFactory.Argument(
-                                                  SyntaxFactory.LiteralExpression(
-                                                      SyntaxKind.NumericLiteralExpression,
-                                                      SyntaxFactory.Literal(line))),
-                                              SyntaxFactory.Argument(
-                                                  SyntaxFactory.LiteralExpression(
-                                                      SyntaxKind.NumericLiteralExpression,
-                                                      SyntaxFactory.Literal(threadCount))),
-                                               SyntaxFactory.Argument(
-                                                  SyntaxFactory.LiteralExpression(
-                                                      SyntaxKind.NumericLiteralExpression,
-                                                      SyntaxFactory.Literal(cssWaitElement))),
-                                               SyntaxFactory.Argument(
-                                                  SyntaxFactory.LiteralExpression(
-                                                      SyntaxKind.NumericLiteralExpression,
-                                                      SyntaxFactory.Literal(cssTimeout))),
-                                              SyntaxFactory.Argument(statementDomArg.CodeExpression),
-                                                 SyntaxFactory.Argument(
-                                                  SyntaxFactory.LiteralExpression(
-                                                      SyntaxKind.NumericLiteralExpression,
-                                                      SyntaxFactory.Literal(expression.JavascriptCode.Code))));
+                argsExpression = new CodeMethodInvokeExpression(new CodeTypeReferenceExpression(typeof(LazyDownloadArgs)), "CreateJavaScriptArgs",
+                  new CodeThisReferenceExpression(),
+                  new CodePrimitiveExpression(line),
+                  new CodePrimitiveExpression(threadCount),
+                  new CodePrimitiveExpression(cssWaitElement),
+                  new CodePrimitiveExpression(cssTimeout),
+                  statementDomArg.CodeExpression,
+                  new CodePrimitiveExpression(expression.JavascriptCode.Code));
 
                 downloadType = "DynamicObjectDownloadTable";
-                returnType = SyntaxFactory.GenericName(
-                      SyntaxFactory.Identifier("RuntimeTable"))
-                      .AddTypeArgumentListArguments(SyntaxFactory.IdentifierName("DynamicObject"));
-
-                method = method.WithReturnType(returnType);
+                returnType = new CodeTypeReference("RuntimeTable", new CodeTypeReference("DynamicObject"));
+                method.ReturnType = returnType;
             }
 
-            methodStatements.Add(SyntaxFactory.ReturnStatement(
-                                SyntaxFactory.ObjectCreationExpression(
-                                    SyntaxFactory.IdentifierName(downloadType))
-                                    .AddArgumentListArguments(SyntaxFactory.Argument(argsExpression)))
-                                    );
+            method.Statements.Add(new CodeMethodReturnStatement(new CodeObjectCreateExpression(new CodeTypeReference(downloadType),
+                argsExpression)));
 
-            var methodcall = SyntaxFactory.InvocationExpression(
-                       SyntaxFactory.IdentifierName(method.Identifier));
+            var methodcall = new CodeMethodInvokeExpression(
+               new CodeMethodReferenceExpression(null, method.Name));
 
-            method = method.WithBody(SyntaxFactory.Block(
-                        methodStatements
-                        ));
-
-            _mainType.AddMember(method);
             _codeStack.Peek().CodeExpression = methodcall;
+        }
+
+        private CodeMemberMethod DownloadImpl(AstNode statement, string methodName, CodeTypeReference returnType, int line)
+        {
+            var statementDomArg = VisitChild(statement);
+
+            if(statementDomArg.Scope.CodeDomReference.BaseType == typeof(Table<>).Name)
+            {
+                if (statementDomArg.Tag != null)
+                    ((Action)statementDomArg.Tag)(); //remove call to OnSelect
+            }
+            else if( statementDomArg.Scope.CodeDomReference.BaseType != typeof(string).FullName)
+                Errors.Add(new DownloadRequireString(new Semantic.LineInfo(statement.Line.Line, statement.Line.CharacterPosition)));
+
+            CodeMemberMethod method = new CodeMemberMethod();
+            method.Name = "Download_" + statementDomArg.MethodIdentifier;
+            method.Attributes = MemberAttributes.Private;
+            method.ReturnType = returnType;
+            GenerateCallStatement(method.Statements, line);
+
+            method.Statements.Add(new CodeMethodReturnStatement(
+             new CodeMethodInvokeExpression(
+                 new CodeMethodReferenceExpression(new CodeTypeReferenceExpression("Http"), methodName), new CodeThisReferenceExpression(),
+                 statementDomArg.CodeExpression, new CodePrimitiveExpression(line))));
+
+            _mainType.Type.Members.Add(method);
+
+            var methodcall = new CodeMethodInvokeExpression(
+                new CodeMethodReferenceExpression(null, method.Name));
+
+            _codeStack.Peek().CodeExpression = methodcall;
+            return method;
         }
 
         public void Visit(DownloadPageExpression expression)
         {
-            var type = SyntaxFactory.GenericName(
-                        SyntaxFactory.Identifier("RuntimeTable"))
-                        .AddTypeArgumentListArguments(SyntaxFactory.IdentifierName("DownloadPage"));
-
+            var type = new CodeTypeReference("RuntimeTable", new CodeTypeReference("DownloadPage"));
             GenerateDownloadDeffered(expression, ref type, expression.Line.Line);
 
-            _codeStack.Peek().Scope = new ScopeData<TableDescriptor> { Type = DownloadPage.Columns, TypeSyntax = type};
+            _codeStack.Peek().Scope = new ScopeData<TableDescriptor> { Type = DownloadPage.Columns, CodeDomReference = type};
         }
     }
 }

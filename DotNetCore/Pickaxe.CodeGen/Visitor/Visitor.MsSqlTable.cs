@@ -28,7 +28,6 @@ namespace Pickaxe.CodeDom.Visitor
     {
         public void Visit(MsSqlTable table)
         {
-            /*
             var descriptor = new TableDescriptor(typeof(MsSqlTable<>));
             var sqlTable = new CodeTypeDeclaration(table.Variable) { TypeAttributes = TypeAttributes.NestedPrivate };
             sqlTable.BaseTypes.Add(new CodeTypeReference("IRow"));
@@ -80,7 +79,6 @@ namespace Pickaxe.CodeDom.Visitor
 
             _codeStack.Peek().ParentStatements.Add(methodcall);
             _codeStack.Peek().CodeExpression = methodcall;
-            */
         }
     }
 }

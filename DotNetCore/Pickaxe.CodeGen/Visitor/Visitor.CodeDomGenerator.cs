@@ -13,21 +13,20 @@
  */
 
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
+using System.Reflection;
 using Pickaxe.Sdk;
 using Pickaxe.Runtime;
 using Pickaxe.CodeDom.Semantic;
 using System.Linq;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
-using Microsoft.CodeAnalysis.CSharp;
-using Microsoft.CodeAnalysis;
 
 namespace Pickaxe.CodeDom.Visitor
 {
     public partial class CodeDomGenerator : IAstVisitor
     {
         private AstNode _program;
-        private CompilationUnitSyntax _unit;
+        private CodeCompileUnit _unit;
         private CodeDomTypeDefinition _mainType;
 
         private int _totalOperations;
@@ -41,9 +40,9 @@ namespace Pickaxe.CodeDom.Visitor
             _program = program;
             _codeStack = new Stack<CodeDomArg>();
 
-            _unit = SyntaxFactory.CompilationUnit();
+            _unit = new CodeCompileUnit();
             _mainType = new CodeDomTypeDefinition("Code");
-            _mainType.AddBaseType("RuntimeBase");
+            _mainType.Type.BaseTypes.Add("RuntimeBase");
 
             Scope.Reset();
             Scope.Push(_mainType);
@@ -53,100 +52,48 @@ namespace Pickaxe.CodeDom.Visitor
         private void InitScope() //add runtime types
         {
             //DownloadPage
-            Scope.Current.RegisterTable("DownloadPage", DownloadPage.Columns,
-                SyntaxFactory.GenericName(
-                    SyntaxFactory.Identifier("Table"))
-                    .AddTypeArgumentListArguments(
-                    SyntaxFactory.IdentifierName("DownloadPage")));
-
-            Scope.Current.RegisterTable("DownloadImage", DownloadImage.Columns,
-                SyntaxFactory.GenericName(
-                    SyntaxFactory.Identifier("Table"))
-                    .AddTypeArgumentListArguments(
-                    SyntaxFactory.IdentifierName("DownloadImage")));
-
-            Scope.Current.RegisterTable("Expand", Expand.Columns,
-                SyntaxFactory.GenericName(
-                    SyntaxFactory.Identifier("Table"))
-                    .AddTypeArgumentListArguments(
-                    SyntaxFactory.IdentifierName("Expand")));
-            
-            Scope.Current.RegisterTable("DynamicObject", DynamicObject.Columns,
-                SyntaxFactory.GenericName(
-                    SyntaxFactory.Identifier("Table"))
-                    .AddTypeArgumentListArguments(
-                    SyntaxFactory.IdentifierName("DynamicObject")));
+            Scope.Current.RegisterTable("DownloadPage", DownloadPage.Columns, new CodeTypeReference("Table", new CodeTypeReference("DownloadPage")));
+            Scope.Current.RegisterTable("DownloadImage", DownloadImage.Columns, new CodeTypeReference("Table", new CodeTypeReference("DownloadImage")));
+            Scope.Current.RegisterTable("Expand", Expand.Columns, new CodeTypeReference("Table", new CodeTypeReference("Expand")));
+            Scope.Current.RegisterTable("DynamicObject", DynamicObject.Columns, new CodeTypeReference("Table", new CodeTypeReference("DynamicObject")));
 
             //Register @@identity
-            Scope.Current.RegisterPrimitive("@@identity", typeof(int),
-                SyntaxFactory.PredefinedType(
-                    SyntaxFactory.Token(SyntaxKind.IntKeyword)));
-
-            Scope.Current.Type.AddMember(SyntaxFactory.FieldDeclaration(
-                    SyntaxFactory.VariableDeclaration(
-                        SyntaxFactory.PredefinedType(
-                            SyntaxFactory.Token(SyntaxKind.IntKeyword)))
-                    .WithVariables(
-                        SyntaxFactory.SingletonSeparatedList<VariableDeclaratorSyntax>(
-                            SyntaxFactory.VariableDeclarator(
-                                SyntaxFactory.Identifier("g_identity")))))
-                .WithModifiers(
-                    SyntaxFactory.TokenList(
-                        SyntaxFactory.Token(SyntaxKind.PublicKeyword)))
-                );
-
-            Scope.Current.Type.AddMember(Scope.Current.Type.GetConstructor());
-            _mainType.AddMember(Scope.Current.Type.GetClassDeclaration());
+            Scope.Current.RegisterPrimitive("@@identity", typeof(int), new CodeTypeReference(typeof(int)));
+            Scope.Current.Type.Type.Members.Add(
+               new CodeMemberField() { Name = "g_identity", Type =  new CodeTypeReference(typeof(int)), Attributes = MemberAttributes.Public | MemberAttributes.Final });
         }
 
         public IList<SemanticException> Errors { get; private set; }
 
-        public SyntaxTree Generate()
+        public CodeCompileUnit Generate()
         { 
             _program.Accept(this);
-            return _unit.SyntaxTree;
+            return _unit;
         }
 
-        private StatementSyntax CallOnProgressComplete()
+        private void CallOnProgressComplete(CodeStatementCollection statements)
         {
-            return
-                SyntaxFactory.ExpressionStatement(
-                    SyntaxFactory.InvocationExpression(
-                        SyntaxFactory.IdentifierName("OnProgress"))
-                    .AddArgumentListArguments(
-                        SyntaxFactory.Argument(
-                            SyntaxFactory.ObjectCreationExpression(
-                                SyntaxFactory.IdentifierName("ProgressArgs"))
-                            .AddArgumentListArguments(
-                                SyntaxFactory.Argument(
-                                    SyntaxFactory.IdentifierName("TotalOperations")),
-                                SyntaxFactory.Argument(
-                                    SyntaxFactory.IdentifierName("TotalOperations"))))));
+            var progressArgs = new CodeObjectCreateExpression(new CodeTypeReference("ProgressArgs"),
+                new CodePropertyReferenceExpression(null, "TotalOperations"),
+                new CodePropertyReferenceExpression(null, "TotalOperations"));
+
+            statements.Add(new CodeMethodInvokeExpression(null, "OnProgress", progressArgs));
         }
 
-        private void CallOnProgress(List<StatementSyntax> statements, bool increaseTotal = true)
+        private void CallOnProgress(CodeStatementCollection statements, bool increaseTotal = true)
         {
             if(increaseTotal)
                 _totalOperations++;
 
-            statements.Add(
-                SyntaxFactory.ExpressionStatement(
-                    SyntaxFactory.InvocationExpression(
-                        SyntaxFactory.IdentifierName("OnProgress"))
-                    ));
+            var methodcall = new CodeMethodInvokeExpression(
+                new CodeMethodReferenceExpression(null, "OnProgress"));
+
+            statements.Add(methodcall);
         }
 
-        private void GenerateCallStatement(List<StatementSyntax> statements, int line)
+        private void GenerateCallStatement(CodeStatementCollection statements, int line)
         {
-            statements.Add(SyntaxFactory.ExpressionStatement(
-                SyntaxFactory.InvocationExpression(
-                    SyntaxFactory.IdentifierName("Call"))
-                .AddArgumentListArguments(
-                    SyntaxFactory.Argument(
-                        SyntaxFactory.LiteralExpression(
-                            SyntaxKind.NumericLiteralExpression,
-                            SyntaxFactory.Literal(line)))))
-                );
+            statements.Add(new CodeMethodInvokeExpression(new CodeMethodReferenceExpression(null, "Call"), new CodePrimitiveExpression(line)));
         }
 
         private CodeDomArg VisitChild(AstNode node, CodeDomArg arg)
@@ -162,33 +109,25 @@ namespace Pickaxe.CodeDom.Visitor
         }
 
 
-        private static MethodDeclarationSyntax CreateStepMethod()
+        private CodeMemberMethod CreateStepMethod()
         {
-            var method = SyntaxFactory.MethodDeclaration(
-                SyntaxFactory.PredefinedType(
-                    SyntaxFactory.Token(SyntaxKind.VoidKeyword)),
-                SyntaxFactory.Identifier("Step_" + Guid.NewGuid().ToString("N")))
-                .WithModifiers(
-                SyntaxFactory.TokenList(
-                    SyntaxFactory.Token(SyntaxKind.PublicKeyword)))
-                    .WithBody(
-                        SyntaxFactory.Block());
+            var method = new CodeMemberMethod();
 
+            method.Name = "Step_" + Guid.NewGuid().ToString("N");
+            method.Attributes = MemberAttributes.Public | MemberAttributes.Final;
+
+            _mainType.Type.Members.Add(method);
             return method;
         }
 
-        private static MethodDeclarationSyntax CreateBlockMethod()
+        private CodeMemberMethod CreateBlockMethod()
         {
-            var method = SyntaxFactory.MethodDeclaration(
-                SyntaxFactory.PredefinedType(
-                    SyntaxFactory.Token(SyntaxKind.VoidKeyword)),
-                SyntaxFactory.Identifier("Block_" + Guid.NewGuid().ToString("N")))
-                .WithModifiers(
-                SyntaxFactory.TokenList(
-                    SyntaxFactory.Token(SyntaxKind.PublicKeyword)))
-                    .WithBody(
-                        SyntaxFactory.Block());
+            var method = new CodeMemberMethod();
 
+            method.Name = "Block_" + Guid.NewGuid().ToString("N");
+            method.Attributes = MemberAttributes.Public | MemberAttributes.Final;
+
+            _mainType.Type.Members.Add(method);
             return method;
         }
     }

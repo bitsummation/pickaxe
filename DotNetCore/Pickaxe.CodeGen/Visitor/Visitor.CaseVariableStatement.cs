@@ -25,7 +25,6 @@ namespace Pickaxe.CodeDom.Visitor
     {
         public void Visit(CaseVariableStatement statement)
         {
-            /*
             var domArg = new CodeDomArg();
             SelectArgsInfo selectArg = null;
 
@@ -77,7 +76,6 @@ namespace Pickaxe.CodeDom.Visitor
 
             _codeStack.Peek().Tag = selectArg;
             _codeStack.Peek().CodeExpression = methodcall;
-            */
         }
     }
 }

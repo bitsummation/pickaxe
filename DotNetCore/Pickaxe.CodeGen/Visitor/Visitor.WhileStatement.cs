@@ -25,7 +25,7 @@ namespace Pickaxe.CodeDom.Visitor
     {
         public void Visit(WhileStatement whileStatement)
         {
-            /*using (Scope.Push(_mainType))
+            using (Scope.Push(_mainType))
             {
                 var tableArg = VisitChild(whileStatement.TableReference);
 
@@ -50,7 +50,7 @@ namespace Pickaxe.CodeDom.Visitor
                 _mainType.Type.Members.Add(method);
                 _codeStack.Peek().ParentStatements.Add(methodcall);
                 _codeStack.Peek().CodeExpression = methodcall;
-            }*/
+            }
         }
     }
 }
