@@ -1,10 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29215.179
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rosyln", "Rosyln\Rosyln.csproj", "{4C19131D-DD26-4FD6-8733-6C61B6A9387C}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pickaxe.Sdk", "Pickaxe.Sdk\Pickaxe.Sdk.csproj", "{43BDFE71-73B3-4430-A9E6-317F8D7140B6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pickaxe.Parser", "Pickaxe.Parser\Pickaxe.Parser.csproj", "{584D48CA-1B6E-4AF4-B251-71344D10E905}"
@@ -13,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pickaxe.Runtime", "Pickaxe.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pickaxe.CodeGen", "Pickaxe.CodeGen\Pickaxe.CodeGen.csproj", "{8DAD67DB-3D57-497B-BB36-CE834E479BE2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pickaxe.Emit", "Pickaxe.Emit\Pickaxe.Emit.csproj", "{2B432903-4A80-4146-AF6A-D8EEED19C297}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pickaxe.Emit", "Pickaxe.Emit\Pickaxe.Emit.csproj", "{2B432903-4A80-4146-AF6A-D8EEED19C297}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pickaxe.Console", "Pickaxe.Console\Pickaxe.Console.csproj", "{DFD51B29-6B1C-46F3-AF68-85894800D7C9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,10 +21,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4C19131D-DD26-4FD6-8733-6C61B6A9387C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4C19131D-DD26-4FD6-8733-6C61B6A9387C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4C19131D-DD26-4FD6-8733-6C61B6A9387C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4C19131D-DD26-4FD6-8733-6C61B6A9387C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{43BDFE71-73B3-4430-A9E6-317F8D7140B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{43BDFE71-73B3-4430-A9E6-317F8D7140B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{43BDFE71-73B3-4430-A9E6-317F8D7140B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -45,6 +41,10 @@ Global
 		{2B432903-4A80-4146-AF6A-D8EEED19C297}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B432903-4A80-4146-AF6A-D8EEED19C297}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2B432903-4A80-4146-AF6A-D8EEED19C297}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFD51B29-6B1C-46F3-AF68-85894800D7C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFD51B29-6B1C-46F3-AF68-85894800D7C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFD51B29-6B1C-46F3-AF68-85894800D7C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFD51B29-6B1C-46F3-AF68-85894800D7C9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
