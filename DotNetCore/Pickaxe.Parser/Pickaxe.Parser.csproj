@@ -11,5 +11,23 @@
   <ItemGroup>
     <ProjectReference Include="..\Pickaxe.Sdk\Pickaxe.Sdk.csproj" />
   </ItemGroup>
+  
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <PropertyGroup>
+      <BaseDir>$(ProjectDir)Antlr</BaseDir>
+    </PropertyGroup>
+    <Exec ContinueOnError="true" WorkingDirectory="$(BaseDir)" Command="java -cp &quot;$([System.IO.Path]::Combine($(ProjectDir),'..', '..', 'Binaries', 'Antlr', 'antlr-3.5.2.jar'))&quot; org.antlr.Tool &quot;$([System.IO.Path]::Combine($(ProjectDir), 'Antlr', 'Scrape.g'))&quot;" />
+    <ItemGroup>
+      <Compile Include="Antlr/*$(DefaultLanguageSourceExtension)" Exclude="@(Compile)" />
+    </ItemGroup>
+  </Target>
 
+  
+  <Target Name="CleanParser" AfterTargets="AfterClean">
+    <Delete Files="$(ProjectDir)Antlr\ScrapeLexer.cs" />
+	<Delete Files="$(ProjectDir)Antlr\ScrapeParser.cs" />
+	<Delete Files="$(ProjectDir)Antlr\Scrape.tokens" />
+  </Target>
+  
+  
 </Project>
