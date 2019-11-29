@@ -77,14 +77,15 @@ namespace Pickaxe.Console
             var columns = values;
             for (int x = 0; x < lengths.Count; x++)
             {
+                string columnValue = Truncate(columns[x]);
                 middle.Append("|");
-                int totalPadding = (lengths[x] - columns[x].Length);
+                int totalPadding = (lengths[x] - columnValue.Length);
                 int leftPadding = 1;
                 int righPaddding = totalPadding - leftPadding;
                 for (int pad = 0; pad < leftPadding; pad++)
                     middle.Append(" ");
 
-                middle.Append(string.Format("{0}", Truncate(columns[x])));
+                middle.Append(string.Format("{0}", Truncate(columnValue)));
                 for (int pad = 0; pad < righPaddding; pad++)
                     middle.Append(" ");
             }
