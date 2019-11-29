@@ -13,17 +13,13 @@ namespace Pickaxe.Console
             System.Console.Write("pickaxe> ");
             while (true)
             {
-                char character = Convert.ToChar(System.Console.Read());
-
-                if (character == '\n')
+                var line = System.Console.ReadLine();
+                builder.Append(line);
+                if(line.EndsWith(';')) //run it
                 {
-                    System.Console.Write("      -> ");
-                }
-                if (character == ';') //run it. 
-                {
-                    while (Convert.ToChar(System.Console.Read()) != '\n') { } //clear buf
-
-                    Thread thread = new Thread(() => Runner.Run(new[] { builder.ToString() }, new string[0]));
+                    builder.Remove(builder.Length - 1, 1); //remove ;
+                    var source = builder.ToString();
+                    Thread thread = new Thread(() => Runner.Run(new[] { source }, new string[0]));
                     thread.Start();
                     thread.Join();
 
@@ -32,8 +28,8 @@ namespace Pickaxe.Console
                     System.Console.Write("pickaxe> ");
                     continue;
                 }
-
-                builder.Append(character);
+                
+                System.Console.Write("      -> ");
             }
         }
     }
