@@ -14,11 +14,11 @@ namespace Pickaxe.Console
             while (true)
             {
                 var line = System.Console.ReadLine();
-                builder.Append(line);
+                builder.AppendLine(line);               
                 if(line.EndsWith(';')) //run it
                 {
-                    builder.Remove(builder.Length - 1, 1); //remove ;
                     var source = builder.ToString();
+                    source = source.Replace(";", "");
                     Thread thread = new Thread(() => Runner.Run(new[] { source }, new string[0]));
                     thread.Start();
                     thread.Join();
