@@ -15,8 +15,9 @@
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
     <PropertyGroup>
       <BaseDir>$(ProjectDir)Antlr</BaseDir>
+	   <Antlr>"C:\Program Files\Java\jre7\bin\java" -cp "$([System.IO.Path]::Combine($(ProjectDir),'..', '..', 'Binaries', 'Antlr', 'antlr-3.5.2.jar'))" org.antlr.Tool "$([System.IO.Path]::Combine($(ProjectDir), 'Antlr', 'Scrape.g'))"</Antlr>
     </PropertyGroup>
-    <Exec ContinueOnError="true" WorkingDirectory="$(BaseDir)" Command="java -cp &quot;$([System.IO.Path]::Combine($(ProjectDir),'..', '..', 'Binaries', 'Antlr', 'antlr-3.5.2.jar'))&quot; org.antlr.Tool &quot;$([System.IO.Path]::Combine($(ProjectDir), 'Antlr', 'Scrape.g'))&quot;" />
+    <Exec ContinueOnError="true" WorkingDirectory="$(BaseDir)" Command="$(Antlr)"/>
     <ItemGroup>
       <Compile Include="Antlr/*$(DefaultLanguageSourceExtension)" Exclude="@(Compile)" />
     </ItemGroup>

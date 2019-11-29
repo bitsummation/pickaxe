@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pickaxe.CodeGen", "Pickaxe.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pickaxe.Emit", "Pickaxe.Emit\Pickaxe.Emit.csproj", "{2B432903-4A80-4146-AF6A-D8EEED19C297}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pickaxe.Console", "Pickaxe.Console\Pickaxe.Console.csproj", "{DFD51B29-6B1C-46F3-AF68-85894800D7C9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pickaxe.Console", "Pickaxe.Console\Pickaxe.Console.csproj", "{DFD51B29-6B1C-46F3-AF68-85894800D7C9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pickaxe.Tests", "Pickaxe.Tests\Pickaxe.Tests.csproj", "{CAA67BDF-B6DF-487A-ACE1-20D8F1F77591}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{DFD51B29-6B1C-46F3-AF68-85894800D7C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DFD51B29-6B1C-46F3-AF68-85894800D7C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DFD51B29-6B1C-46F3-AF68-85894800D7C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CAA67BDF-B6DF-487A-ACE1-20D8F1F77591}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAA67BDF-B6DF-487A-ACE1-20D8F1F77591}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAA67BDF-B6DF-487A-ACE1-20D8F1F77591}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAA67BDF-B6DF-487A-ACE1-20D8F1F77591}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
