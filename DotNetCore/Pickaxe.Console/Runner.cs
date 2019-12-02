@@ -153,7 +153,7 @@ namespace Pickaxe.Console
                 }
                 catch (Exception e)
                 {
-                    System.Console.WriteLine("Unexpected Exception", e);
+                    System.Console.WriteLine("Unexpected Exception: {0}", e);
                 }
             }
         }

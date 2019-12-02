@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -8,6 +8,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Pickaxe.Emit\Pickaxe.Emit.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Log4net.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
