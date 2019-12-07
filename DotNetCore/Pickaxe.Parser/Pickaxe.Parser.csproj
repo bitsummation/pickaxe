@@ -12,6 +12,7 @@
     <ProjectReference Include="..\Pickaxe.Sdk\Pickaxe.Sdk.csproj" />
   </ItemGroup>
   
+  <!--
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
     <PropertyGroup>
       <BaseDir>$(ProjectDir)Antlr</BaseDir>
@@ -30,5 +31,6 @@
 	<Delete Files="$(ProjectDir)Antlr\Scrape.tokens" />
   </Target>
   
+  -->
   
 </Project>
