@@ -24,7 +24,7 @@ namespace Pickaxe.Console
                     thread.Join();
 
                     builder.Clear();
-
+                    System.Console.WriteLine("");
                     System.Console.Write("pickaxe> ");
                     continue;
                 }

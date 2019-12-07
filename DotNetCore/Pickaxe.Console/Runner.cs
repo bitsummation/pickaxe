@@ -127,6 +127,34 @@ namespace Pickaxe.Console
             System.Console.WriteLine(border.ToString());            
         }
 
+        private static string RenderProgress(ProgressArgs e)
+        {
+            float value = 0;
+            if (e.TotalOperations > 0)
+                value = (e.CompletedOperations / (float)e.TotalOperations);
+
+            //[###-----------------] 35/100  35%
+            var builder = new StringBuilder();
+            int map = (int)(Math.Round(value * 20));
+            builder.Append("[");
+            for (int x = 0; x < 20; x++)
+            {
+                if (x < map)
+                    builder.Append("#");
+                else
+                    builder.Append("-");
+            }
+            builder.Append("]");
+
+            return string.Format("{0} {1}/{2} {3}%", builder.ToString(), e.CompletedOperations, e.TotalOperations, (int)Math.Round(value * 100));
+        }
+
+        private static void OnProgress(ProgressArgs args)
+        {
+            System.Console.Write(RenderProgress(args));
+            System.Console.CursorLeft = 0;
+        }
+
         public static void Run(string[] source, string[] args)
         {
             var compiler = new Compiler(source);
@@ -139,13 +167,14 @@ namespace Pickaxe.Console
             {
                 var runable = new Runable(generatedAssembly, args);
                 runable.Select += OnSelectResults;
-                //runable.Progress += OnProgress;
+                runable.Progress += OnProgress;
 
                 try
                 {
                     PrintRunning();
                     runable.Run();
                     runable.Select -= OnSelectResults;
+                    runable.Progress -= OnProgress;
                 }
                 catch (ThreadAbortException)
                 {
@@ -157,5 +186,7 @@ namespace Pickaxe.Console
                 }
             }
         }
+
+      
     }
 }
