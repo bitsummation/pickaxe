@@ -13,11 +13,9 @@
  */
 
 using OpenQA.Selenium;
-using OpenQA.Selenium.PhantomJS;
+using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 
 namespace Pickaxe.Runtime.Internal
@@ -43,31 +41,36 @@ namespace Pickaxe.Runtime.Internal
         {
             object bytes = new byte[0];
 
-            var driverService = PhantomJSDriverService.CreateDefaultService();
+            var driverService = ChromeDriverService.CreateDefaultService();
+            driverService.SuppressInitialDiagnosticInformation = true;
             driverService.HideCommandPromptWindow = true;
-            driverService.LoadImages = false;
-            driverService.IgnoreSslErrors = true;
 
-            if(Proxy != null)
+            ChromeOptions options = new ChromeOptions();
+            options.AddArguments("headless");
+            options.AddArguments("no-sandbox");
+            options.AddArgument("start-maximized");
+            options.AddArgument("disable-extensions");
+
+            if (Proxy != null)
             {
-                driverService.ProxyType = "http";
-                driverService.Proxy = Proxy.ToString();
+                options.AddArgument(string.Format("proxy-server={0}", Proxy));
             }
 
-            PhantomJSDriver phantom = null;
+            ChromeDriver driver = null;
             try
             {
-                phantom = new PhantomJSDriver(driverService);
-                phantom.Navigate().GoToUrl(new Uri(Url));
+                driver = new ChromeDriver(driverService, options);
+
+                driver.Navigate().GoToUrl(new Uri(Url));
 
                 if (!String.IsNullOrEmpty(_cssElement))
                 {
-                    var wait = new WebDriverWait(phantom, TimeSpan.FromSeconds(_cssTimeout));
+                    var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(_cssTimeout));
                     wait.Message = "Couldn't find element in page";
                     wait.Until(drv => drv.FindElement(By.CssSelector(_cssElement)));
                 }
 
-                var postObject = RunPostDownload(phantom);
+                var postObject = RunPostDownload(driver);
 
                 if (postObject != null)
                 {
@@ -75,14 +78,14 @@ namespace Pickaxe.Runtime.Internal
                 }
                 else
                 {
-                    string html = phantom.PageSource;
+                    string html = driver.PageSource;
                     bytes = Encoding.UTF8.GetBytes(html);
                 }
             }
             finally
             {
-                if (phantom != null)
-                    phantom.Dispose();
+                if (driver != null)
+                    driver.Quit();
             }
 
             return bytes;

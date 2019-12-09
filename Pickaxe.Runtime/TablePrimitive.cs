@@ -12,7 +12,6 @@
  * limitations under the License.
  */
 
-using HtmlAgilityPack;
 using System;
 using System.CodeDom;
 using System.Collections.Generic;

@@ -13,19 +13,25 @@ update subcats
 set url = 'https://walmart.com' + url
 where url not like '%walmart.com%'
 
-
 select
-	pick 'div.search-result-product-title a span' as description,
-	pick 'div.product-price-with-fulfillment span.price-main-block span.visuallyhidden' as price
+	pick 'h1.prod-ProductTitle' as description,
+	pick 'span.price-group span.price-characteristic' take attribute 'content' as price,
+	pick 'div.hf-Bot meta' take attribute 'content' as sku
 from download page (
 
 	select
-	'https://walmart.com' + pick 'a' take attribute 'href'
-	from download page (select url from subcats) with (js|thread(3))
-	where nodes = 'div.paginator ul.paginator-list li:not(.paginator-list-gap)'
-	
-) with (js|thread(5))
-where nodes = 'div.search-product-result li.Grid-col div.search-result-gridview-item'
+		'https://walmart.com' + pick 'div.search-result-productimage a' take attribute 'href' as url
+	from download page (
 
+		select
+		'https://walmart.com' + pick 'a' take attribute 'href'
+		from download page (select url from subcats) with (js|thread(3))
+		where nodes = 'div.paginator ul.paginator-list li:not(.paginator-list-gap)'
+		
+	) with (js|thread(5))
+	where nodes = 'div.search-product-result li.Grid-col div.search-result-gridview-item'
+	
+) with (js|thread(20))
+where nodes = 'div.product-atf'
 
 

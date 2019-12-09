@@ -1,25 +1,13 @@
-﻿/* Copyright 2015 Brock Reeve
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
+﻿using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp;
 using Pickaxe.CodeDom.Visitor;
-using Pickaxe.Parser;
 using System;
 using System.CodeDom;
+using System.CodeDom.Compiler;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 
 namespace Pickaxe.Emit
 {
@@ -27,7 +15,8 @@ namespace Pickaxe.Emit
     {
         private string[] _sources;
 
-        public Compiler(string source) : this(new string[]{source})
+        public Compiler(string source)
+            : this(new string[] { source })
         {
         }
 
@@ -39,12 +28,12 @@ namespace Pickaxe.Emit
 
         public List<Exception> Errors { get; private set; }
 
-        private CodeCompileUnit[] GetCompileUnits()
+        private SyntaxTree[] CodeGenCore()
         {
-            var compileUnits = new List<CodeCompileUnit>();
+            var treeList = new List<SyntaxTree>();
             foreach (var source in _sources)
             {
-                var parser = new CodeParser(source);
+                var parser = new Parser.CodeParser(source);
                 var ast = parser.Parse();
                 if (parser.Errors.Any()) //antlr parse errors
                     Errors.AddRange(parser.Errors);
@@ -52,23 +41,45 @@ namespace Pickaxe.Emit
                 if (!Errors.Any())
                 {
                     var generator = new CodeDomGenerator(ast);
-                    compileUnits.Add(generator.Generate());
+                    var unit = generator.Generate();
+
                     if (generator.Errors.Any()) //Semantic erros
                         Errors.AddRange(generator.Errors);
+                    else
+                    {
+                        SyntaxTree tree = CSharpSyntaxTree.ParseText(ToCSharpSource(unit));
+                        treeList.Add(tree);
+                    }
                 }
             }
 
-            return compileUnits.ToArray();
+            return treeList.ToArray();
+        }
+
+        public static string ToCSharpSource(CodeCompileUnit unit)
+        {
+            string code = string.Empty;
+            var provider = CodeDomProvider.CreateProvider("CSharp");
+            var options = new CodeGeneratorOptions();
+            options.BracingStyle = "C";
+            using (StringWriter writer = new StringWriter())
+            {
+                provider.GenerateCodeFromCompileUnit(
+                  unit, writer, options);
+                code = writer.ToString();
+            }
+
+            return code;
         }
 
         public string[] ToCode() //generate source code.
         {
             var source = new List<string>();
-            var compileUnits = GetCompileUnits();
+            var compileUnits = CodeGenCore();
             if (!Errors.Any())
             {
                 foreach (var unit in compileUnits)
-                    source.Add(Persist.ToCSharpSource(unit));
+                    source.Add(unit.GetRoot().NormalizeWhitespace().ToFullString());
             }
 
             return source.ToArray();
@@ -76,11 +87,11 @@ namespace Pickaxe.Emit
 
         public Assembly ToAssembly()
         {
-            Assembly generatedAssembly = null; 
-            var compileUnits = GetCompileUnits();   
+            Assembly generatedAssembly = null;
+            var trees = CodeGenCore();
             if (!Errors.Any())
             {
-                var persist = new PersistAssembly(compileUnits);
+                var persist = new AssemblyGenerator(trees);
                 generatedAssembly = persist.ToAssembly();
                 if (persist.Errors.Any()) //c# compile errors
                     Errors.AddRange(persist.Errors.Select(x => new Exception(x)));

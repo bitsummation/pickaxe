@@ -1,82 +1,13 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{993BE73F-783E-4A78-AA20-40CAB88B1812}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Pickaxe.Emit</RootNamespace>
-    <AssemblyName>Pickaxe.Emit</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
+    <TargetFramework>netcoreapp2.2</TargetFramework>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>none</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="HtmlAgilityPack">
-      <HintPath>..\Binaries\fizzler-0.9\HtmlAgilityPack.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
+    <ProjectReference Include="..\Pickaxe.CodeGen\Pickaxe.CodeGen.csproj" />
+    <ProjectReference Include="..\Pickaxe.Parser\Pickaxe.Parser.csproj" />
+    <ProjectReference Include="..\Pickaxe.Runtime\Pickaxe.Runtime.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="AssemblyInfo.cs" />
-    <Compile Include="Compiler.cs" />
-    <Compile Include="Persist.cs" />
-    <Compile Include="PersistAssembly.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Properties\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Pickaxe.CodeDom\Pickaxe.CodeDom.csproj">
-      <Project>{0e2a75fa-428f-413f-8652-f909b576b3a6}</Project>
-      <Name>Pickaxe.CodeDom</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Pickaxe.Parser\Pickaxe.Parser.csproj">
-      <Project>{2ef31714-0e48-46ac-8fb9-8b7e5353853d}</Project>
-      <Name>Pickaxe.Parser</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Pickaxe.Runtime\Pickaxe.Runtime.csproj">
-      <Project>{2f7623e0-3b2b-4242-8113-636a74f82d09}</Project>
-      <Name>Pickaxe.Runtime</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Pickaxe.Sdk\Pickaxe.Sdk.csproj">
-      <Project>{ee99f3be-6d67-49c9-8443-e5ad5de4bd91}</Project>
-      <Name>Pickaxe.Sdk</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
 </Project>
