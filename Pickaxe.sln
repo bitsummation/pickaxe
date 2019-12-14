@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26730.12
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29215.179
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pickaxe.Sdk", "Pickaxe.Sdk\Pickaxe.Sdk.csproj", "{43BDFE71-73B3-4430-A9E6-317F8D7140B6}"
 EndProject

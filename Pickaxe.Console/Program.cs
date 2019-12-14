@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Net;
 using System.Reflection;
 
 namespace Pickaxe.Console
@@ -26,17 +27,27 @@ namespace Pickaxe.Console
 
             if (args.Length != 0)
             {
-                if (!File.Exists(args[0]))
-                {
-                    System.Console.WriteLine(string.Format("File {0} not found.", args[0]));
-                    return;
-                }
-
-                //run the file
                 var sources = new List<string>();
-                using (var reader = new StreamReader(args[0]))
+
+                if (args[0].StartsWith("http") || args[0].StartsWith("https"))
                 {
-                    sources.Add(reader.ReadToEnd());
+                    using (var client = new WebClient())
+                    {
+                        sources.Add(client.DownloadString(args[0]));
+                    }
+                }
+                else
+                {
+                    if (!File.Exists(args[0]))
+                    {
+                        System.Console.WriteLine(string.Format("File {0} not found.", args[0]));
+                        return;
+                    }
+
+                    using (var reader = new StreamReader(args[0]))
+                    {
+                        sources.Add(reader.ReadToEnd());
+                    }
                 }
 
                 Runner.Run(sources.ToArray(), new string[] { });
