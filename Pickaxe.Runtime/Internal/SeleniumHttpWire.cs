@@ -50,6 +50,7 @@ namespace Pickaxe.Runtime.Internal
             options.AddArguments("no-sandbox");
             options.AddArgument("start-maximized");
             options.AddArgument("disable-extensions");
+            options.AddArgument("disable-dev-shm-usage");
 
             if (Proxy != null)
             {

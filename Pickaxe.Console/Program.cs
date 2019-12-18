@@ -21,7 +21,7 @@ namespace Pickaxe.Console
         public static void Main(string[] args)
         {
             string location = System.Reflection.Assembly.GetExecutingAssembly().Location;
-            string log4netPath = Path.Combine(Path.GetDirectoryName(location), "Log4net.config");
+            string log4netPath = Path.Combine(Path.GetDirectoryName(location), "Log4Net.config");
             var logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
             log4net.Config.XmlConfigurator.Configure(logRepository, new FileInfo(log4netPath));
 
