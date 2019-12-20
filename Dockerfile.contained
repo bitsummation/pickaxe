@@ -1,0 +1,27 @@
+FROM amazonlinux
+WORKDIR /google-chrome
+
+RUN yum -y install wget && \
+    yum -y install tar && \
+    yum -y install gzip && \
+    yum -y install unzip
+    
+RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm && \
+    yum -y install google-chrome-stable_current_x86_64.rpm
+
+WORKDIR /chrome-driver
+
+RUN wget https://chromedriver.storage.googleapis.com/79.0.3945.36/chromedriver_linux64.zip && \
+    unzip chromedriver_linux64.zip
+
+ENV PATH /chrome-driver:$PATH
+
+WORKDIR /pickaxe-bin
+
+RUN wget https://github.com/bitsummation/pickaxe/releases/download/12.2019.17/self-contained-pickaxe-linux-x64.tar.gz && \
+    tar xzf self-contained-pickaxe-linux-x64.tar.gz && \
+    rm self-contained-pickaxe-linux-x64.tar.gz
+
+ENV PATH /pickaxe-bin:$PATH
+
+WORKDIR /

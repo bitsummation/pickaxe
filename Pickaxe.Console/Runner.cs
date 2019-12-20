@@ -175,6 +175,7 @@ namespace Pickaxe.Console
                     runable.Run();
                     runable.Select -= OnSelectResults;
                     runable.Progress -= OnProgress;
+                    System.Console.WriteLine("");
                 }
                 catch (ThreadAbortException)
                 {
