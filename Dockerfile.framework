@@ -23,7 +23,7 @@ RUN rpm -Uvh https://packages.microsoft.com/config/centos/7/packages-microsoft-p
 
 WORKDIR /pickaxe-bin
 
-RUN wget https://github.com/bitsummation/pickaxe/releases/download/12.2019.17/pickaxe-linux-x64.tar.gz && \
+RUN wget https://github.com/bitsummation/pickaxe/releases/download/2019.12.21/pickaxe-linux-x64.tar.gz && \
     tar xzf pickaxe-linux-x64.tar.gz && \
     rm pickaxe-linux-x64.tar.gz
 
