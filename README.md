@@ -1,15 +1,59 @@
 # Pickaxe
 ---
-Pickaxe uses SQL statements combined with CSS selectors to pick out text from a web page. If you know SQL and a little about CSS selectors and want to capture data from the web, this is the tool for you.
+Pickaxe uses SQL statements combined with CSS selectors to pick out text from a web page. If you know SQL and a little about CSS selectors, this is the tool for you.
 ## Downloads
 ---
-Found [here](https://github.com/bitsummation/pickaxe/releases). It requires .NET framework 4.5. **Pickaxe.zip** contains the GUI editor and only runs on windows. The **Pickaxe-Console.zip** is the command line version that runs on non-windows platforms using mono as well as windows. See Command Line section below.
-## Quickstart
+Pickaxe runs on linux, MacOS, and windows. See installation instructions below. Quickest way to get started is to run command below if docker is installed:
+```console
+docker run -it bitsummation/pickaxe /bin/bash
+```
 ---
-Download **Pickaxe.zip** from above and unzip the contents and double click on **Pickaxe.Studio.exe** to run the GUI editor. Below is a screen shot of the editor. A full runnable example that scrapes a forum I host is found [here](https://raw.githubusercontent.com/bitsummation/pickaxe/master/Examples/vtss.s). Others can be found [here](https://github.com/bitsummation/pickaxe/tree/master/Examples).
-
-![](https://cloud.githubusercontent.com/assets/13210937/14195656/810cb08e-f781-11e5-9638-960a1659477d.png)
-
+Pickaxe is command line tool. Once installed or docker images is running you type pickaxe. If no arguments are given, it runs in interactive mode where code can be typed into the prompt and then when a semicolon is typed the code is run. A file location can be passed or a url to source on the web. Run below to see if things are working.
+```console
+bash-4.2# pickaxe https://raw.githubusercontent.com/bitsummation/pickaxe/CoreWithCodeDom/Examples/nfl-divisions.s
+```
+you should see a table like:
+```console
++----+----------------------+------+-------+
+|    | team                 | wins | loses |
++----+----------------------+------+-------+
+| 1  | New England Patriots | 11   | 3     |
+| 2  | Buffalo Bills        | 10   | 4     |
+| 3  | New York Jets        | 5    | 9     |
+| 4  | Miami Dolphins       | 3    | 11    |
+| 5  | Baltimore Ravens     | 12   | 2     |
+| 6  | Pittsburgh Steelers  | 8    | 6     |
+| 7  | Cleveland Browns     | 6    | 8     |
+| 8  | Cincinnati Bengals   | 1    | 13    |
+| 9  | Houston Texans       | 9    | 5     |
+| 10 | Tennessee Titans     | 8    | 6     |
+| 11 | Indianapolis Colts   | 6    | 8     |
+| 12 | Jacksonville Jaguars | 5    | 9     |
+| 13 | Kansas City Chiefs   | 10   | 4     |
+| 14 | Oakland Raiders      | 6    | 8     |
+| 15 | Denver Broncos       | 5    | 9     |
+| 16 | Los Angeles Chargers | 5    | 9     |
+| 17 | Dallas Cowboys       | 7    | 7     |
+| 18 | Philadelphia Eagles  | 7    | 7     |
+| 19 | New York Giants      | 3    | 11    |
+| 20 | Washington Redskins  | 3    | 11    |
+| 21 | Green Bay Packers    | 11   | 3     |
+| 22 | Minnesota Vikings    | 10   | 4     |
+| 23 | Chicago Bears        | 7    | 7     |
+| 24 | Detroit Lions        | 3    | 10    |
+| 25 | New Orleans Saints   | 11   | 3     |
+| 26 | Tampa Bay Buccaneers | 7    | 7     |
+| 27 | Atlanta Falcons      | 5    | 9     |
+| 28 | Carolina Panthers    | 5    | 9     |
+| 29 | Seattle Seahawks     | 11   | 3     |
+| 30 | San Francisco 49ers  | 11   | 3     |
+| 31 | Los Angeles Rams     | 8    | 6     |
+| 32 | Arizona Cardinals    | 4    | 9     |
++----+----------------------+------+-------+
+```
+## How To Write Queries
+---
+Pickaxe uses SQL like statements to select text from web pages. Instead of the SQL statements running against a database they run against live web pages.
 ### Download Page
 Download page returns a table with columns url, nodes, date, size. The statement below downloads aviation weather information for airports in Texas.
 ```sql
