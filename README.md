@@ -10,46 +10,21 @@ docker run -it bitsummation/pickaxe /bin/bash
 ---
 Pickaxe is command line tool. Once installed or docker images is running you type pickaxe. If no arguments are given, it runs in interactive mode where code can be typed into the prompt and then when a semicolon is typed the code is run. A file location can be passed or a url to source on the web. Run below to see if things are working.
 ```console
-bash-4.2# pickaxe https://raw.githubusercontent.com/bitsummation/pickaxe/CoreWithCodeDom/Examples/nfl-divisions.s
+bash-4.2# pickaxe https://raw.githubusercontent.com/bitsummation/pickaxe/CoreWithCodeDom/Examples/georgetown-airport.s
 ```
 you should see a table like:
 ```console
-+----+----------------------+------+-------+
-|    | team                 | wins | loses |
-+----+----------------------+------+-------+
-| 1  | New England Patriots | 11   | 3     |
-| 2  | Buffalo Bills        | 10   | 4     |
-| 3  | New York Jets        | 5    | 9     |
-| 4  | Miami Dolphins       | 3    | 11    |
-| 5  | Baltimore Ravens     | 12   | 2     |
-| 6  | Pittsburgh Steelers  | 8    | 6     |
-| 7  | Cleveland Browns     | 6    | 8     |
-| 8  | Cincinnati Bengals   | 1    | 13    |
-| 9  | Houston Texans       | 9    | 5     |
-| 10 | Tennessee Titans     | 8    | 6     |
-| 11 | Indianapolis Colts   | 6    | 8     |
-| 12 | Jacksonville Jaguars | 5    | 9     |
-| 13 | Kansas City Chiefs   | 10   | 4     |
-| 14 | Oakland Raiders      | 6    | 8     |
-| 15 | Denver Broncos       | 5    | 9     |
-| 16 | Los Angeles Chargers | 5    | 9     |
-| 17 | Dallas Cowboys       | 7    | 7     |
-| 18 | Philadelphia Eagles  | 7    | 7     |
-| 19 | New York Giants      | 3    | 11    |
-| 20 | Washington Redskins  | 3    | 11    |
-| 21 | Green Bay Packers    | 11   | 3     |
-| 22 | Minnesota Vikings    | 10   | 4     |
-| 23 | Chicago Bears        | 7    | 7     |
-| 24 | Detroit Lions        | 3    | 10    |
-| 25 | New Orleans Saints   | 11   | 3     |
-| 26 | Tampa Bay Buccaneers | 7    | 7     |
-| 27 | Atlanta Falcons      | 5    | 9     |
-| 28 | Carolina Panthers    | 5    | 9     |
-| 29 | Seattle Seahawks     | 11   | 3     |
-| 30 | San Francisco 49ers  | 11   | 3     |
-| 31 | Los Angeles Rams     | 8    | 6     |
-| 32 | Arizona Cardinals    | 4    | 9     |
-+----+----------------------+------+-------+
++---+-----+-------+------+-----------+----------+
+|   | day | time  | wind | visibilty | weather  |
++---+-----+-------+------+-----------+----------+
+| 1 | 21  | 11:56 | N 5  | 10.00     | Fog/Mist |
+| 2 | 21  | 10:56 | NE 3 | 10.00     | Fog/Mist |
+| 3 | 21  | 09:56 | Calm | 6.00      | Fog/Mist |
+| 4 | 21  | 08:56 | E 3  | 0.25      | Fog/Mist |
+| 5 | 21  | 07:56 | E 5  | 0.25      | Fog/Mist |
+| 6 | 21  | 06:53 | Calm | 0.75      | Fog/Mist |
+| 7 | 21  | 05:56 | Calm | 1.00      | Fog/Mist |
++---+-----+-------+------+-----------+----------+
 ```
 ## How To Write Queries
 ---
@@ -415,19 +390,26 @@ Get command line values in program. The ?? is used to assign a default value if 
 @1 = @1 ?? 'first'
 @2 = @2 ?? 'second'
 ```
-### REPL Interactive Mode
-To run in interactive mode, run pickaxe.exe without any arguments. Now type in statements. When you want the statement to run, end with a semicolon. The statement will then be executed. See screen shot below:
-![](https://cloud.githubusercontent.com/assets/13210937/13126421/f66b240a-d58f-11e5-875c-40344f44b3fe.png)
-
-## Tutorials
+## Installation Instructions
 ---
-* [Pickaxe Tutorial #1](http://brockreeve.com/post/2015/07/23/SQL-based-web-scraper-language-Tutorial-1.aspx)
-* [Pickaxe Tutorial #2](http://brockreeve.com/post/2015/07/31/SQL-based-web-scraper-language-Tutorial-2.aspx)
-* [Pickaxe Tutorial #3](http://brockreeve.com/post/2015/08/06/Pickaxe-August-2015-release-notes.aspx)
+If .NET Core Runtime 3.1 is installed on machine then download and extract:
+##### Linux
+https://github.com/bitsummation/pickaxe/releases/latest/download/pickaxe-linux-x64.tar.gz
+##### MacOS
+https://github.com/bitsummation/pickaxe/releases/latest/download/pickaxe-osx-x64.tar.gz
+##### Windows
+https://github.com/bitsummation/pickaxe/releases/latest/download/pickaxe-win-x64.zip
 
-[Contact me](http://brockreeve.com/contact.aspx) with feedback/questions.
-## Video
----
-30 minute in depth video of language features. [Pickaxe Video Tutorial](https://www.youtube.com/watch?v=-F-FftxaXOs)
+If .NET Core Runtime 3.1 is not installed on machine then downlod and extract:
+##### Linux
+https://github.com/bitsummation/pickaxe/releases/latest/download/self-contained-pickaxe-linux-x64.tar.gz
+##### MacOS
+https://github.com/bitsummation/pickaxe/releases/latest/download/self-contained-pickaxe-osx-x64.tar.gz
+##### Windows
+https://github.com/bitsummation/pickaxe/releases/latest/download/self-contained-pickaxe-win-x64.zip
+
+Download and extract chrome driver for the right version of your installed chrome:
+https://chromedriver.chromium.org/
+Put the location in the path so it can be run from any directory.
 
 
