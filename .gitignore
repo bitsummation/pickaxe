@@ -34,10 +34,10 @@ obj/
 [Bb]in/[Dd]ebug*/
 [Rr]elease*/
 TestResults*/
+.vs/
 Build\Artifact*/
 Ankh.NoLoad
 *.VisualState.xml
-*.bat
 *.DotSettings
 
 #Mercurial patching

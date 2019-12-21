@@ -1,153 +1,17 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2F7623E0-3B2B-4242-8113-636A74F82D09}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Pickaxe.Runtime</RootNamespace>
-    <AssemblyName>Pickaxe.Runtime</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
+    <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>none</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="AngleSharp">
-      <HintPath>..\Binaries\AngleSharp\AngleSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="Fizzler.Systems.HtmlAgilityPack">
-      <HintPath>..\Binaries\fizzler-0.9\Fizzler.Systems.HtmlAgilityPack.dll</HintPath>
-    </Reference>
-    <Reference Include="HtmlAgilityPack">
-      <HintPath>..\Binaries\fizzler-0.9\HtmlAgilityPack.dll</HintPath>
-    </Reference>
-    <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Binaries\Log4Net\log4net.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Binaries\JsonNET\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
-    <Reference Include="WebDriver">
-      <HintPath>..\Binaries\Selenium\WebDriver.dll</HintPath>
-    </Reference>
-    <Reference Include="WebDriver.Support">
-      <HintPath>..\Binaries\Selenium\WebDriver.Support.dll</HintPath>
-    </Reference>
+    <PackageReference Include="AngleSharp" Version="0.13.0" />
+    <PackageReference Include="log4net" Version="2.0.8" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="3.3.1" />
+    <PackageReference Include="Selenium.Support" Version="3.141.0" />
+    <PackageReference Include="Selenium.WebDriver" Version="3.141.0" />
+    <PackageReference Include="System.CodeDom" Version="4.6.0" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.7.0" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="AgilityPackFizzler\AgilityDoc.cs" />
-    <Compile Include="AgilityPackFizzler\AgilityElement.cs" />
-    <Compile Include="AgilityPackFizzler\AgilityFactory.cs" />
-    <Compile Include="AngleSharp\AngleSharpDoc.cs" />
-    <Compile Include="AngleSharp\AngleSharpElement.cs" />
-    <Compile Include="AngleSharp\AngleSharpFactory.cs" />
-    <Compile Include="AssemblyInfo.cs" />
-    <Compile Include="BufferTable.cs" />
-    <Compile Include="CodeTable.cs" />
-    <Compile Include="Config.cs" />
-    <Compile Include="Debug\BreakProcesser.cs" />
-    <Compile Include="Debug\IBreak.cs" />
-    <Compile Include="Debug\IDebug.cs" />
-    <Compile Include="Dom\CacheElement.cs" />
-    <Compile Include="Dom\DomFactory.cs" />
-    <Compile Include="Dom\HtmlDoc.cs" />
-    <Compile Include="Dom\HtmlElement.cs" />
-    <Compile Include="DownloadedNodes.cs" />
-    <Compile Include="DynamicObject.cs" />
-    <Compile Include="DynamicObjectDownloadTable.cs" />
-    <Compile Include="DynamicObjectWrapper.cs" />
-    <Compile Include="Helper.cs" />
-    <Compile Include="Internal\SeleniumExecJsHttpWire.cs" />
-    <Compile Include="LazyDownloadArgs.cs" />
-    <Compile Include="DownloadImage.cs" />
-    <Compile Include="DownloadPage.cs" />
-    <Compile Include="IHttpWire.cs" />
-    <Compile Include="Internal\HttpProxySelector.cs" />
-    <Compile Include="Internal\HttpWire.cs" />
-    <Compile Include="Internal\SeleniumHttpWire.cs" />
-    <Compile Include="Internal\WebRequestHttpWire.cs" />
-    <Compile Include="LazyDownloadPage.cs" />
-    <Compile Include="MsSqlTable.cs" />
-    <Compile Include="PrimitiveFunctions.cs" />
-    <Compile Include="SelectDownloadPage.cs" />
-    <Compile Include="SelectDownloadTable.cs" />
-    <Compile Include="ThreadedDownloadTable.cs" />
-    <Compile Include="Expand.cs" />
-    <Compile Include="Extensions.cs" />
-    <Compile Include="FileTable.cs" />
-    <Compile Include="Http.cs" />
-    <Compile Include="DownloadError.cs" />
-    <Compile Include="IHttpRequestFactory.cs" />
-    <Compile Include="Internal\HttpRequest.cs" />
-    <Compile Include="Internal\HttpRequestFactory.cs" />
-    <Compile Include="IHttpRequest.cs" />
-    <Compile Include="Internal\ProxyHttpRequest.cs" />
-    <Compile Include="Internal\RetryHttpRequest.cs" />
-    <Compile Include="IRuntime.cs" />
-    <Compile Include="Proxy.cs" />
-    <Compile Include="Internal\ProxyHttpRequestSelector.cs" />
-    <Compile Include="Internal\ProxySelector.cs" />
-    <Compile Include="IRow.cs" />
-    <Compile Include="IRowReader.cs" />
-    <Compile Include="IRowWriter.cs" />
-    <Compile Include="ProgressArgs.cs" />
-    <Compile Include="ResultRow.cs" />
-    <Compile Include="Runable.cs" />
-    <Compile Include="RuntimeBase.cs" />
-    <Compile Include="RuntimeTable.cs" />
-    <Compile Include="Table.cs" />
-    <Compile Include="TableDescriptor.cs" />
-    <Compile Include="TablePrimitive.cs" />
-    <Compile Include="VariableDownloadPage.cs" />
-    <Compile Include="VariableDownloadTable.cs" />
-    <Compile Include="VariableTypePair.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Properties\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="..\Binaries\Phantom\phantomjs.exe">
-      <Link>phantomjs.exe</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
 </Project>

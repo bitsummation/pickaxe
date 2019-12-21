@@ -1,15 +1,34 @@
 # Pickaxe
 ---
-Pickaxe uses SQL statements combined with CSS selectors to pick out text from a web page. If you know SQL and a little about CSS selectors and want to capture data from the web, this is the tool for you.
+Pickaxe uses SQL statements combined with CSS selectors to pick out text from a web page. If you know SQL and a little about CSS selectors, this is the tool for you.
 ## Downloads
 ---
-Found [here](https://github.com/bitsummation/pickaxe/releases). It requires .NET framework 4.5. **Pickaxe.zip** contains the GUI editor and only runs on windows. The **Pickaxe-Console.zip** is the command line version that runs on non-windows platforms using mono as well as windows. See Command Line section below.
-## Quickstart
+Pickaxe runs on linux, MacOS, and windows. Quickest way to get started is to run command below if docker is installed. To install locally, see installation instructions at bottom of page.
+```console
+docker run -it bitsummation/pickaxe /bin/bash
+```
 ---
-Download **Pickaxe.zip** from above and unzip the contents and double click on **Pickaxe.Studio.exe** to run the GUI editor. Below is a screen shot of the editor. A full runnable example that scrapes a forum I host is found [here](https://raw.githubusercontent.com/bitsummation/pickaxe/master/Examples/vtss.s). Others can be found [here](https://github.com/bitsummation/pickaxe/tree/master/Examples).
-
-![](https://cloud.githubusercontent.com/assets/13210937/14195656/810cb08e-f781-11e5-9638-960a1659477d.png)
-
+Pickaxe is command line tool. Once installed or docker images is running you type pickaxe. If no arguments are given, it runs in interactive mode where code can be typed into the prompt and then when a semicolon is typed the code is run. A file location can be passed or a url to source on the web. Run below to see if things are working.
+```console
+bash-4.2# pickaxe https://raw.githubusercontent.com/bitsummation/pickaxe/CoreWithCodeDom/Examples/georgetown-airport.s
+```
+you should see a table like:
+```console
++---+-----+-------+------+-----------+----------+
+|   | day | time  | wind | visibilty | weather  |
++---+-----+-------+------+-----------+----------+
+| 1 | 21  | 11:56 | N 5  | 10.00     | Fog/Mist |
+| 2 | 21  | 10:56 | NE 3 | 10.00     | Fog/Mist |
+| 3 | 21  | 09:56 | Calm | 6.00      | Fog/Mist |
+| 4 | 21  | 08:56 | E 3  | 0.25      | Fog/Mist |
+| 5 | 21  | 07:56 | E 5  | 0.25      | Fog/Mist |
+| 6 | 21  | 06:53 | Calm | 0.75      | Fog/Mist |
+| 7 | 21  | 05:56 | Calm | 1.00      | Fog/Mist |
++---+-----+-------+------+-----------+----------+
+```
+## How To Write Queries
+---
+Pickaxe uses SQL like statements to select text from web pages. Instead of the SQL statements running against a database they run against live web pages.
 ### Download Page
 Download page returns a table with columns url, nodes, date, size. The statement below downloads aviation weather information for airports in Texas.
 ```sql
@@ -371,19 +390,24 @@ Get command line values in program. The ?? is used to assign a default value if 
 @1 = @1 ?? 'first'
 @2 = @2 ?? 'second'
 ```
-### REPL Interactive Mode
-To run in interactive mode, run pickaxe.exe without any arguments. Now type in statements. When you want the statement to run, end with a semicolon. The statement will then be executed. See screen shot below:
-![](https://cloud.githubusercontent.com/assets/13210937/13126421/f66b240a-d58f-11e5-875c-40344f44b3fe.png)
-
-## Tutorials
+## Installation Instructions
 ---
-* [Pickaxe Tutorial #1](http://brockreeve.com/post/2015/07/23/SQL-based-web-scraper-language-Tutorial-1.aspx)
-* [Pickaxe Tutorial #2](http://brockreeve.com/post/2015/07/31/SQL-based-web-scraper-language-Tutorial-2.aspx)
-* [Pickaxe Tutorial #3](http://brockreeve.com/post/2015/08/06/Pickaxe-August-2015-release-notes.aspx)
-
-[Contact me](http://brockreeve.com/contact.aspx) with feedback/questions.
-## Video
----
-30 minute in depth video of language features. [Pickaxe Video Tutorial](https://www.youtube.com/watch?v=-F-FftxaXOs)
+1. If .NET Core Runtime 3.1 is installed on machine then download and extract:
+**Linux**
+ https://github.com/bitsummation/pickaxe/releases/latest/download/pickaxe-linux-x64.tar.gz
+**MacOS**
+https://github.com/bitsummation/pickaxe/releases/latest/download/pickaxe-osx-x64.tar.gz
+**Windows**
+https://github.com/bitsummation/pickaxe/releases/latest/download/pickaxe-win-x64.zip
+If .NET Core Runtime 3.1 is not installed on machine then downlod and extract:
+**Linux**
+https://github.com/bitsummation/pickaxe/releases/latest/download/self-contained-pickaxe-linux-x64.tar.gz
+**MacOS**
+https://github.com/bitsummation/pickaxe/releases/latest/download/self-contained-pickaxe-osx-x64.tar.gz
+**Windows**
+https://github.com/bitsummation/pickaxe/releases/latest/download/self-contained-pickaxe-win-x64.zip
+2. Download and extract chrome driver for the right version of your installed chrome:
+https://chromedriver.chromium.org/
+Put the location in the path so it can be run from any directory.
 
 

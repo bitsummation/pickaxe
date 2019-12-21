@@ -15,11 +15,8 @@
 
 using Pickaxe.Runtime.Dom;
 using System;
-using AngleSharp.Parser.Html;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using AngleSharp.Dom.Html;
+using AngleSharp.Html.Dom;
+using AngleSharp.Html.Parser;
 
 namespace Pickaxe.Runtime.AngleSharp
 {
@@ -27,7 +24,7 @@ namespace Pickaxe.Runtime.AngleSharp
     {
         private IHtmlDocument _doc;
 
-        public override HtmlElement FirstElement
+        public override Dom.HtmlElement FirstElement
         {
             get
             {
@@ -46,14 +43,14 @@ namespace Pickaxe.Runtime.AngleSharp
         public override void Load(string html)
         {
             var parser = new HtmlParser();
-            _doc = parser.Parse(html);
+            _doc = parser.ParseDocument(html);
         }
 
         public override bool ValidateCss(string cssSelector)
         {
             bool valid = true;
             var parser = new HtmlParser();
-            var doc = parser.Parse("<html></html>");
+            var doc = parser.ParseDocument("<html></html>");
 
             try
             {

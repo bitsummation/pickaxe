@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.CodeDom" Version="4.6.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Pickaxe.Runtime\Pickaxe.Runtime.csproj" />
+    <ProjectReference Include="..\Pickaxe.Sdk\Pickaxe.Sdk.csproj" />
+  </ItemGroup>
+
+</Project>
