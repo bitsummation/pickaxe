@@ -392,23 +392,21 @@ Get command line values in program. The ?? is used to assign a default value if 
 ```
 ## Installation Instructions
 ---
-If .NET Core Runtime 3.1 is installed on machine then download and extract:
-##### Linux
-https://github.com/bitsummation/pickaxe/releases/latest/download/pickaxe-linux-x64.tar.gz
-##### MacOS
+1. If .NET Core Runtime 3.1 is installed on machine then download and extract:
+**Linux**
+ https://github.com/bitsummation/pickaxe/releases/latest/download/pickaxe-linux-x64.tar.gz
+**MacOS**
 https://github.com/bitsummation/pickaxe/releases/latest/download/pickaxe-osx-x64.tar.gz
-##### Windows
+**Windows**
 https://github.com/bitsummation/pickaxe/releases/latest/download/pickaxe-win-x64.zip
-
 If .NET Core Runtime 3.1 is not installed on machine then downlod and extract:
-##### Linux
+**Linux**
 https://github.com/bitsummation/pickaxe/releases/latest/download/self-contained-pickaxe-linux-x64.tar.gz
-##### MacOS
+**MacOS**
 https://github.com/bitsummation/pickaxe/releases/latest/download/self-contained-pickaxe-osx-x64.tar.gz
-##### Windows
+**Windows**
 https://github.com/bitsummation/pickaxe/releases/latest/download/self-contained-pickaxe-win-x64.zip
-
-Download and extract chrome driver for the right version of your installed chrome:
+2. Download and extract chrome driver for the right version of your installed chrome:
 https://chromedriver.chromium.org/
 Put the location in the path so it can be run from any directory.
 
