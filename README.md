@@ -3,7 +3,7 @@
 Pickaxe uses SQL statements combined with CSS selectors to pick out text from a web page. If you know SQL and a little about CSS selectors, this is the tool for you.
 ## Downloads
 ---
-Pickaxe runs on linux, MacOS, and windows. See installation instructions below. Quickest way to get started is to run command below if docker is installed:
+Pickaxe runs on linux, MacOS, and windows. Quickest way to get started is to run command below if docker is installed. To install locally, see installation instructions at bottom of page.
 ```console
 docker run -it bitsummation/pickaxe /bin/bash
 ```
