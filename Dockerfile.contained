@@ -18,7 +18,7 @@ ENV PATH /chrome-driver:$PATH
 
 WORKDIR /pickaxe-bin
 
-RUN wget https://github.com/bitsummation/pickaxe/releases/download/2019.12.21/self-contained-pickaxe-linux-x64.tar.gz && \
+RUN wget https://github.com/bitsummation/pickaxe/releases/latest/download/self-contained-pickaxe-linux-x64.tar.gz && \
     tar xzf self-contained-pickaxe-linux-x64.tar.gz && \
     rm self-contained-pickaxe-linux-x64.tar.gz
 
