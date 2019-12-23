@@ -10,7 +10,7 @@ docker run -it bitsummation/pickaxe /bin/bash
 ---
 Pickaxe is command line tool. Once installed or docker images is running you type pickaxe. If no arguments are given, it runs in interactive mode where code can be typed into the prompt and then when a semicolon is typed the code is run. A file location can be passed or a url to source on the web. Run below to see if things are working.
 ```console
-bash-4.2# pickaxe https://raw.githubusercontent.com/bitsummation/pickaxe/CoreWithCodeDom/Examples/georgetown-airport.s
+bash-4.2# pickaxe https://raw.githubusercontent.com/bitsummation/pickaxe/master/Examples/georgetown-airport.s
 ```
 you should see a table like:
 ```console
