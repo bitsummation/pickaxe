@@ -399,7 +399,7 @@ Get command line values in program. The ?? is used to assign a default value if 
 https://github.com/bitsummation/pickaxe/releases/latest/download/pickaxe-osx-x64.tar.gz  
 **Windows**  
 https://github.com/bitsummation/pickaxe/releases/latest/download/pickaxe-win-x64.zip  
-If .NET Core Runtime 3.1 is not installed on machine then downlod and extract:  
+Else if .NET Core Runtime 3.1 is not installed on machine then downlod and extract:  
 **Linux**  
 https://github.com/bitsummation/pickaxe/releases/latest/download/self-contained-pickaxe-linux-x64.tar.gz  
 **MacOS**  
