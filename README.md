@@ -8,7 +8,7 @@ Pickaxe runs on linux, MacOS, and windows. Quickest way to get started is to run
 docker run -it bitsummation/pickaxe /bin/bash
 ```
 ---
-Pickaxe is command line tool. Once installed or docker images is running you type pickaxe. If no arguments are given, it runs in interactive mode where code can be typed into the prompt and then when a semicolon is typed the code is run. A file location can be passed or a url to source on the web. Run below to see if things are working.
+Pickaxe is command line tool. Once installed or docker images is running you type pickaxe. If no arguments are given, it runs in interactive mode where code can be typed into the prompt and when a semicolon is typed the code is run. A file location to the source code can be passed or a url to source on the web. Run below to see if things are working.
 ```console
 pickaxe https://raw.githubusercontent.com/bitsummation/pickaxe/master/Examples/georgetown-airport.s
 ```
@@ -26,6 +26,8 @@ you should see a table like:
 | 7 | 21  | 05:56 | Calm | 1.00      | Fog/Mist |
 +---+-----+-------+------+-----------+----------+
 ```
+More examples are found here:
+https://github.com/bitsummation/pickaxe/tree/master/Examples
 ## How To Write Queries
 ---
 Pickaxe uses SQL like statements to select text from web pages. Instead of the SQL statements running against a database they run against live web pages.
