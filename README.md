@@ -393,10 +393,10 @@ Get command line values in program. The ?? is used to assign a default value if 
 ## Installation Instructions
 ---
 1. If .NET Core Runtime 3.1 is installed on machine then download and extract:
-**Linux**
- https://github.com/bitsummation/pickaxe/releases/latest/download/pickaxe-linux-x64.tar.gz
-**MacOS**
-https://github.com/bitsummation/pickaxe/releases/latest/download/pickaxe-osx-x64.tar.gz
+**Linux**  
+ https://github.com/bitsummation/pickaxe/releases/latest/download/pickaxe-linux-x64.tar.gz  
+**MacOS**  
+https://github.com/bitsummation/pickaxe/releases/latest/download/pickaxe-osx-x64.tar.gz  
 **Windows**
 https://github.com/bitsummation/pickaxe/releases/latest/download/pickaxe-win-x64.zip
 If .NET Core Runtime 3.1 is not installed on machine then downlod and extract:
