@@ -11,9 +11,8 @@ from download page (
 	from download page 'http://www.golaketravis.com/waterlevel/'
 	where nodes = 'table[width="100%"] td[style="background-color: #62ABCC;"] p.white a'
 	) with (thread(10))
-where nodes = 'table[width="600"] tr'
+where nodes = 'table[cellpadding=2] tbody tr'
 
 select *
 from levels
 where month != null
-

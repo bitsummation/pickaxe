@@ -1,8 +1,7 @@
 select
-	pick 'td:nth-child(2)' as position,
-	pick 'td:nth-child(5) .hidden-small' as player,
-	pick 'td:nth-child(6)' as score,
-	pick 'td:nth-child(7)' as hole,
-	pick 'td:nth-child(8)' as round
+	pick 'td.position' as position,
+	pick 'td.player-name' as name,
+	pick 'td.total' as score,
+	pick 'td.thru' as hole
 from download page 'http://www.pgatour.com/leaderboard.html' with (js)
-where nodes = '.leaderboard-item tr.row-main'
+where nodes = 'table.leaderboard.leaderboard-table tbody  tr.line-row'

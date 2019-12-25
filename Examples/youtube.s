@@ -5,7 +5,7 @@ insert into t
 select *
 from expand (1 to 3)
 
-create buffer videos(url string, link string, title string, views int, duration string)
+create buffer videos(url string, link string, title string, views string, duration string)
 
 create buffer urls(url string)
 
