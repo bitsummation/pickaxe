@@ -32,7 +32,7 @@ https://github.com/bitsummation/pickaxe/tree/master/Examples
 ---
 Pickaxe uses SQL like statements to select text from web pages. Instead of the SQL statements running against a database they run against live web pages.
 ### Download Page
-Download page returns a table with columns url, nodes, date, size. The statement below downloads aviation weather information for airports in Texas.
+Download page returns a table with columns url, nodes, date, size. The statement below downloads the entire web page but doesn't select any nodes in the where clause so not very useful. 
 ```sql
 select *
 from download page 'https://www.faa.gov/air_traffic/weather/asos/?state=TX'
