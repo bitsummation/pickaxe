@@ -38,7 +38,7 @@ select *
 from download page 'https://www.faa.gov/air_traffic/weather/asos/?state=TX'
 ```
 ### Where
-Select the nodes we are interested in. To accomplish, set the nodes equal to a css expression. The css selector below gets all tr nodes that are under the table with class asos.
+Select the nodes we are interested in. To accomplish, set the nodes equal to a css expression. The css selector below gets all tr nodes that are under the table with class asos. In this case, multiple tr nodes are selected but nothing of interested is returned until we select nodes under each tr using the pick expression in the select statement.
 ```sql
 select *
 from download page 'https://www.faa.gov/air_traffic/weather/asos/?state=TX'
